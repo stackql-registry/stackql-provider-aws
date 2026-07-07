@@ -146,6 +146,7 @@ paths:
       x-stackql-resource: fhir_datastores
       x-stackql-method: describe_fhir_datastore
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DatastoreProperties
   /DescribeFHIRExportJob:
     post:
       operationId: DescribeFHIRExportJob
@@ -186,6 +187,7 @@ paths:
       x-stackql-resource: fhir_export_jobs
       x-stackql-method: describe_fhir_export_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExportJobProperties
   /DescribeFHIRImportJob:
     post:
       operationId: DescribeFHIRImportJob
@@ -226,6 +228,7 @@ paths:
       x-stackql-resource: fhir_import_jobs
       x-stackql-method: describe_fhir_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ImportJobProperties
   /ListFHIRDatastores:
     post:
       operationId: ListFHIRDatastores
@@ -409,7 +412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /StartFHIRExportJob:
@@ -556,7 +559,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -596,7 +599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

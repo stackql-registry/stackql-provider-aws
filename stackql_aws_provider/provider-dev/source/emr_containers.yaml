@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobRunResponse'
-      x-stackql-resource: job_run
+      x-stackql-resource: virtual_clusters
       x-stackql-method: cancel_job_run
       x-stackql-verb: EXEC
     get:
@@ -72,6 +72,7 @@ paths:
       x-stackql-resource: job_runs
       x-stackql-method: describe_job_run
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.jobRun
   /jobtemplates:
     post:
       operationId: CreateJobTemplate
@@ -151,6 +152,9 @@ paths:
       x-stackql-method: list_job_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /virtualclusters/{virtual_cluster_id}/endpoints:
     post:
       operationId: CreateManagedEndpoint
@@ -260,6 +264,9 @@ paths:
       x-stackql-method: list_managed_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.endpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /securityconfigurations:
     post:
       operationId: CreateSecurityConfiguration
@@ -339,6 +346,9 @@ paths:
       x-stackql-method: list_security_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.securityConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /virtualclusters:
     post:
       operationId: CreateVirtualCluster
@@ -445,6 +455,9 @@ paths:
       x-stackql-method: list_virtual_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.virtualClusters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /jobtemplates/{template_id}:
     delete:
       operationId: DeleteJobTemplate
@@ -490,6 +503,7 @@ paths:
       x-stackql-resource: job_templates
       x-stackql-method: describe_job_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.jobTemplate
   /virtualclusters/{virtual_cluster_id}/endpoints/{endpoint_id}:
     delete:
       operationId: DeleteManagedEndpoint
@@ -545,6 +559,7 @@ paths:
       x-stackql-resource: managed_endpoints
       x-stackql-method: describe_managed_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.endpoint
   /virtualclusters/{virtual_cluster_id}:
     delete:
       operationId: DeleteVirtualCluster
@@ -592,6 +607,7 @@ paths:
       x-stackql-resource: virtual_clusters
       x-stackql-method: describe_virtual_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.virtualCluster
   /securityconfigurations/{security_configuration_id}:
     get:
       operationId: DescribeSecurityConfiguration
@@ -616,6 +632,7 @@ paths:
       x-stackql-resource: security_configurations
       x-stackql-method: describe_security_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.securityConfiguration
   /virtualclusters/{virtual_cluster_id}/endpoints/{endpoint_id}/credentials:
     post:
       operationId: GetManagedEndpointSessionCredentials
@@ -722,6 +739,9 @@ paths:
       x-stackql-method: list_job_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobRuns
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartJobRun
       description: Starts a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query,
@@ -769,7 +789,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: job_run
+      x-stackql-resource: virtual_clusters
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -790,7 +810,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -827,7 +847,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -853,7 +873,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

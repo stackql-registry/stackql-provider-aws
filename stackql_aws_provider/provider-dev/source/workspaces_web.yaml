@@ -516,6 +516,9 @@ paths:
       x-stackql-method: list_data_protection_settings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataProtectionSettings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /identityProviders:
     post:
       operationId: CreateIdentityProvider
@@ -814,6 +817,9 @@ paths:
       x-stackql-method: list_session_loggers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessionLoggers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /trustStores:
     post:
       operationId: CreateTrustStore
@@ -1057,6 +1063,7 @@ paths:
       x-stackql-resource: browser_settings
       x-stackql-method: get_browser_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.browserSettings
     patch:
       operationId: UpdateBrowserSettings
       description: Updates browser settings.
@@ -1131,6 +1138,7 @@ paths:
       x-stackql-resource: data_protection_settings
       x-stackql-method: get_data_protection_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dataProtectionSettings
     patch:
       operationId: UpdateDataProtectionSettings
       description: Updates data protection settings.
@@ -1207,6 +1215,7 @@ paths:
       x-stackql-resource: identity_providers
       x-stackql-method: get_identity_provider
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.identityProvider
     patch:
       operationId: UpdateIdentityProvider
       description: Updates the identity provider.
@@ -1283,6 +1292,7 @@ paths:
       x-stackql-resource: ip_access_settings
       x-stackql-method: get_ip_access_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ipAccessSettings
     patch:
       operationId: UpdateIpAccessSettings
       description: Updates IP access settings.
@@ -1359,6 +1369,7 @@ paths:
       x-stackql-resource: network_settings
       x-stackql-method: get_network_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.networkSettings
     patch:
       operationId: UpdateNetworkSettings
       description: Updates network settings.
@@ -1435,6 +1446,7 @@ paths:
       x-stackql-resource: portals
       x-stackql-method: get_portal
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.portal
     put:
       operationId: UpdatePortal
       description: Updates a web portal.
@@ -1513,6 +1525,7 @@ paths:
       x-stackql-resource: session_loggers
       x-stackql-method: get_session_logger
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.sessionLogger
     post:
       operationId: UpdateSessionLogger
       description: Updates the details of a session logger.
@@ -1587,6 +1600,7 @@ paths:
       x-stackql-resource: trust_stores
       x-stackql-method: get_trust_store
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.trustStore
     patch:
       operationId: UpdateTrustStore
       description: Updates the trust store.
@@ -1661,6 +1675,7 @@ paths:
       x-stackql-resource: user_access_logging_settings
       x-stackql-method: get_user_access_logging_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.userAccessLoggingSettings
     patch:
       operationId: UpdateUserAccessLoggingSettings
       description: Updates the user access logging settings.
@@ -1733,6 +1748,7 @@ paths:
       x-stackql-resource: user_settings
       x-stackql-method: get_user_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.userSettings
     patch:
       operationId: UpdateUserSettings
       description: Updates the user settings.
@@ -1810,7 +1826,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExpireSessionResponse'
-      x-stackql-resource: expire_session
+      x-stackql-resource: sessions
       x-stackql-method: expire_session
       x-stackql-verb: EXEC
     get:
@@ -1839,6 +1855,7 @@ paths:
       x-stackql-resource: sessions
       x-stackql-method: get_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.session
   /portalIdp/{portal_arn}:
     get:
       operationId: GetPortalServiceProviderMetadata
@@ -1978,6 +1995,9 @@ paths:
       x-stackql-method: list_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1996,7 +2016,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2029,7 +2049,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2055,7 +2075,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /trustStores/{trust_store_arn}/certificates:

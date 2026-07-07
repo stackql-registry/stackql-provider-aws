@@ -470,7 +470,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListReplicationSetsOutput"
+                $ref: "#/components/schemas/ListReplicationSetsOutputDisplay"
   /listResponsePlans:
     post:
       operationId: ListResponsePlans
@@ -1828,21 +1828,19 @@ components:
       type: string
       minLength: 0
       maxLength: 200
-    ListReplicationSetsOutput:
+    ListReplicationSetsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
-        replicationSetArns:
-          $ref: "#/components/schemas/ReplicationSetArnList"
+        replication_set_arn:
+          type: string
           description: The Amazon Resource Name (ARN) of the list replication set.
-      required:
-        - replicationSetArns
-    ReplicationSetArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Arn"
+    ListReplicationSetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListReplicationSetsRowDisplay"
     ListResponsePlansOutput:
       type: object
       properties:
@@ -2082,6 +2080,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2121,6 +2126,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.replicationSet
           request:
             nativeCasing: pascal
         list_replication_sets:
@@ -2129,10 +2135,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.replicationSetArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListReplicationSetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "replicationSetArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"replication_set_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_replication_set:
@@ -2201,6 +2220,24 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_incident:
+          operation:
+            $ref: "#/paths/~1startIncident/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_response_plan:
@@ -2257,6 +2294,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.event
           request:
             nativeCasing: pascal
         list_timeline_events:
@@ -2269,6 +2307,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_timeline_event:
@@ -2314,6 +2359,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.incidentRecord
           request:
             nativeCasing: pascal
         list_incident_records:
@@ -2326,6 +2372,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_incident_record:
@@ -2374,6 +2427,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_resource_policy:
@@ -2411,6 +2471,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_related_items:
@@ -2431,10 +2498,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/related_items/methods/update_related_items"
         delete: []
-    tags_for_resources:
-      id: aws.ssm_incidents.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.ssm_incidents.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2442,17 +2509,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.ssm_incidents.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2473,11 +2529,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     deletion_protections:
       id: aws.ssm_incidents.deletion_protections

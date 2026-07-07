@@ -748,6 +748,9 @@ paths:
       x-stackql-method: list_capabilities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.capabilities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPartnerships:
     post:
       operationId: ListPartnerships
@@ -793,6 +796,9 @@ paths:
       x-stackql-method: list_partnerships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.partnerships
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListProfiles:
     post:
       operationId: ListProfiles
@@ -834,6 +840,9 @@ paths:
       x-stackql-method: list_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.profiles
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -869,7 +878,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTransformers:
@@ -914,6 +923,9 @@ paths:
       x-stackql-method: list_transformers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.transformers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /StartTransformerJob:
     post:
       operationId: StartTransformerJob
@@ -965,7 +977,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTransformerJobResponse'
-      x-stackql-resource: transformer_job
+      x-stackql-resource: transformers
       x-stackql-method: start_transformer_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -1004,7 +1016,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestConversion:
@@ -1184,7 +1196,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCapability:

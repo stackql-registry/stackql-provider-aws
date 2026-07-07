@@ -86,7 +86,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyClusterSnapshotOutput'
-      x-stackql-resource: cluster_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: copy_cluster_snapshot
       x-stackql-verb: EXEC
   /cluster:
@@ -220,6 +220,7 @@ paths:
       x-stackql-resource: clusters
       x-stackql-method: get_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.cluster
     put:
       operationId: UpdateCluster
       description: Modifies an elastic cluster. This includes updating admin-username/password, upgrading the API version,
@@ -311,6 +312,7 @@ paths:
       x-stackql-resource: cluster_snapshots
       x-stackql-method: get_cluster_snapshot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.snapshot
   /pending-action/{resource_arn}:
     get:
       operationId: GetPendingMaintenanceAction
@@ -332,6 +334,7 @@ paths:
       x-stackql-resource: pending_maintenance_actions
       x-stackql-method: get_pending_maintenance_action
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.resourcePendingMaintenanceAction
   /cluster-snapshots:
     get:
       operationId: ListClusterSnapshots
@@ -376,6 +379,9 @@ paths:
       x-stackql-method: list_cluster_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.snapshots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters:
     get:
       operationId: ListClusters
@@ -406,6 +412,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.clusters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /pending-actions:
     get:
       operationId: ListPendingMaintenanceActions
@@ -436,6 +445,9 @@ paths:
       x-stackql-method: list_pending_maintenance_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourcePendingMaintenanceActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -454,7 +466,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -485,7 +497,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -511,7 +523,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /cluster-snapshot/{snapshot_arn}/restore:
@@ -555,7 +567,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreClusterFromSnapshotOutput'
-      x-stackql-resource: cluster_from_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: restore_cluster_from_snapshot
       x-stackql-verb: EXEC
   /cluster/{cluster_arn}/start:
@@ -576,7 +588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartClusterOutput'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: start_cluster
       x-stackql-verb: EXEC
   /cluster/{cluster_arn}/stop:
@@ -598,7 +610,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopClusterOutput'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: stop_cluster
       x-stackql-verb: EXEC
 components:

@@ -53,7 +53,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelResourceRequestOutput'
-      x-stackql-resource: resource_request
+      x-stackql-resource: resources
       x-stackql-method: cancel_resource_request
       x-stackql-verb: EXEC
   /CreateResource:
@@ -340,6 +340,9 @@ paths:
       x-stackql-method: list_resource_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceRequestStatusSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResources:
     post:
       operationId: ListResources
@@ -403,6 +406,9 @@ paths:
       x-stackql-method: list_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceDescriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /UpdateResource:
     post:
       operationId: UpdateResource

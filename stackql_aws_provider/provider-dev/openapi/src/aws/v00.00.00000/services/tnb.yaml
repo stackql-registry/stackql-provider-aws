@@ -2208,6 +2208,14 @@ components:
             objectKey: $.functionPackages
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextpage_opaque_marker
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_sol_function_package:
           operation:
             $ref: "#/paths/~1sol~1vnfpkgm~1v1~1vnf_packages~1{vnf_pkg_id}/delete"
@@ -2224,6 +2232,17 @@ components:
             $ref: "#/paths/~1sol~1vnfpkgm~1v1~1vnf_packages~1{vnf_pkg_id}/patch"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_sol_function_package_content:
+          operation:
+            $ref: "#/paths/~1sol~1vnfpkgm~1v1~1vnf_packages~1{vnf_pkg_id}~1package_content~1validate/put"
+          response:
+            openAPIDocKey: "202"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -2265,6 +2284,14 @@ components:
             objectKey: $.networkInstances
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextpage_opaque_marker
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_sol_network_instance:
           operation:
             $ref: "#/paths/~1sol~1nslcm~1v1~1ns_instances~1{ns_instance_id}/delete"
@@ -2333,6 +2360,14 @@ components:
             objectKey: $.networkPackages
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextpage_opaque_marker
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_sol_network_package:
           operation:
             $ref: "#/paths/~1sol~1nsd~1v1~1ns_descriptors~1{nsd_info_id}/delete"
@@ -2347,6 +2382,17 @@ components:
         update_sol_network_package:
           operation:
             $ref: "#/paths/~1sol~1nsd~1v1~1ns_descriptors~1{nsd_info_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_sol_network_package_content:
+          operation:
+            $ref: "#/paths/~1sol~1nsd~1v1~1ns_descriptors~1{nsd_info_id}~1nsd_content~1validate/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2385,6 +2431,14 @@ components:
             objectKey: $.functionInstances
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextpage_opaque_marker
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sol_function_instances/methods/get_sol_function_instance"
@@ -2459,6 +2513,14 @@ components:
             objectKey: $.networkOperations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextpage_opaque_marker
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sol_network_operations/methods/get_sol_network_operation"
@@ -2513,10 +2575,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.tnb.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.tnb.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2524,17 +2586,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.tnb.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2555,9 +2606,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

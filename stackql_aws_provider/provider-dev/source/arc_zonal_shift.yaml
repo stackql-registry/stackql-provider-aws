@@ -348,6 +348,9 @@ paths:
       x-stackql-method: list_autoshifts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /managedresources:
     get:
       operationId: ListManagedResources
@@ -381,6 +384,9 @@ paths:
       x-stackql-method: list_managed_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /zonalshifts:
     get:
       operationId: ListZonalShifts
@@ -429,6 +435,9 @@ paths:
       x-stackql-method: list_zonal_shifts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartZonalShift
       description: 'You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in an

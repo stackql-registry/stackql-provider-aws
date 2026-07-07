@@ -64,7 +64,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddAttachmentsToSetResponse'
-      x-stackql-resource: attachments_to_sets
+      x-stackql-resource: attachments
       x-stackql-method: add_attachments_to_set
       x-stackql-verb: UPDATE
   /AddCommunicationToCase:
@@ -117,7 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddCommunicationToCaseResponse'
-      x-stackql-resource: communication_to_cases
+      x-stackql-resource: cases
       x-stackql-method: add_communication_to_case
       x-stackql-verb: UPDATE
   /CreateCase:
@@ -250,6 +250,7 @@ paths:
       x-stackql-resource: attachments
       x-stackql-method: describe_attachment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.attachment
   /DescribeCases:
     post:
       operationId: DescribeCases
@@ -324,6 +325,9 @@ paths:
       x-stackql-method: describe_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cases
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeCommunications:
     post:
       operationId: DescribeCommunications
@@ -384,6 +388,9 @@ paths:
       x-stackql-method: describe_communications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.communications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeCreateCaseOptions:
     post:
       operationId: DescribeCreateCaseOptions
@@ -683,6 +690,7 @@ paths:
       x-stackql-resource: trusted_advisor_check_results
       x-stackql-method: describe_trusted_advisor_check_result
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.result
   /DescribeTrustedAdvisorCheckSummaries:
     post:
       operationId: DescribeTrustedAdvisorCheckSummaries

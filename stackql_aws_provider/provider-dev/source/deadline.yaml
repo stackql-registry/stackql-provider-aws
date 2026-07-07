@@ -57,7 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMemberToFarmResponse'
-      x-stackql-resource: member_to_farms
+      x-stackql-resource: farms
       x-stackql-method: associate_member_to_farm
       x-stackql-verb: UPDATE
     delete:
@@ -83,7 +83,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMemberFromFarmResponse'
-      x-stackql-resource: member_from_farms
+      x-stackql-resource: farms
       x-stackql-method: disassociate_member_from_farm
       x-stackql-verb: UPDATE
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/members/{principal_id}:
@@ -133,7 +133,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMemberToFleetResponse'
-      x-stackql-resource: member_to_fleets
+      x-stackql-resource: fleets
       x-stackql-method: associate_member_to_fleet
       x-stackql-verb: UPDATE
     delete:
@@ -165,7 +165,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMemberFromFleetResponse'
-      x-stackql-resource: member_from_fleets
+      x-stackql-resource: fleets
       x-stackql-method: disassociate_member_from_fleet
       x-stackql-verb: UPDATE
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/members/{principal_id}:
@@ -221,7 +221,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMemberToJobResponse'
-      x-stackql-resource: member_to_jobs
+      x-stackql-resource: jobs
       x-stackql-method: associate_member_to_job
       x-stackql-verb: UPDATE
     delete:
@@ -259,7 +259,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMemberFromJobResponse'
-      x-stackql-resource: member_from_jobs
+      x-stackql-resource: jobs
       x-stackql-method: disassociate_member_from_job
       x-stackql-verb: UPDATE
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/members/{principal_id}:
@@ -309,7 +309,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMemberToQueueResponse'
-      x-stackql-resource: member_to_queues
+      x-stackql-resource: queues
       x-stackql-method: associate_member_to_queue
       x-stackql-verb: UPDATE
     delete:
@@ -341,7 +341,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMemberFromQueueResponse'
-      x-stackql-resource: member_from_queues
+      x-stackql-resource: queues
       x-stackql-method: disassociate_member_from_queue
       x-stackql-verb: UPDATE
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/read-roles:
@@ -369,7 +369,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeFleetRoleForReadResponse'
-      x-stackql-resource: assume_fleet_role_for_read
+      x-stackql-resource: fleets
       x-stackql-method: assume_fleet_role_for_read
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/workers/{worker_id}/fleet-roles:
@@ -402,7 +402,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeFleetRoleForWorkerResponse'
-      x-stackql-resource: assume_fleet_role_for_worker
+      x-stackql-resource: workers
       x-stackql-method: assume_fleet_role_for_worker
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/read-roles:
@@ -430,7 +430,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeQueueRoleForReadResponse'
-      x-stackql-resource: assume_queue_role_for_read
+      x-stackql-resource: queues
       x-stackql-method: assume_queue_role_for_read
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/user-roles:
@@ -457,7 +457,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeQueueRoleForUserResponse'
-      x-stackql-resource: assume_queue_role_for_user
+      x-stackql-resource: queues
       x-stackql-method: assume_queue_role_for_user
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/workers/{worker_id}/queue-roles:
@@ -496,7 +496,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeQueueRoleForWorkerResponse'
-      x-stackql-resource: assume_queue_role_for_worker
+      x-stackql-resource: workers
       x-stackql-method: assume_queue_role_for_worker
       x-stackql-verb: EXEC
   /2023-10-12/batch-get-job:
@@ -830,7 +830,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyJobTemplateResponse'
-      x-stackql-resource: job_template
+      x-stackql-resource: jobs
       x-stackql-method: copy_job_template
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/budgets:
@@ -927,6 +927,9 @@ paths:
       x-stackql-method: list_budgets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.budgets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms:
     post:
       operationId: CreateFarm
@@ -1003,6 +1006,9 @@ paths:
       x-stackql-method: list_farms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.farms
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/fleets:
     post:
       operationId: CreateFleet
@@ -1112,6 +1118,9 @@ paths:
       x-stackql-method: list_fleets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.fleets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs:
     post:
       operationId: CreateJob
@@ -1229,6 +1238,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/license-endpoints:
     post:
       operationId: CreateLicenseEndpoint
@@ -1297,6 +1309,9 @@ paths:
       x-stackql-method: list_license_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.licenseEndpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/limits:
     post:
       operationId: CreateLimit
@@ -1379,6 +1394,9 @@ paths:
       x-stackql-method: list_limits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.limits
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/monitors:
     post:
       operationId: CreateMonitor
@@ -1454,6 +1472,9 @@ paths:
       x-stackql-method: list_monitors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.monitors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues:
     post:
       operationId: CreateQueue
@@ -1558,6 +1579,9 @@ paths:
       x-stackql-method: list_queues
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.queues
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/environments:
     post:
       operationId: CreateQueueEnvironment
@@ -1648,6 +1672,9 @@ paths:
       x-stackql-method: list_queue_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queue-fleet-associations:
     put:
       operationId: CreateQueueFleetAssociation
@@ -1729,6 +1756,9 @@ paths:
       x-stackql-method: list_queue_fleet_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.queueFleetAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queue-limit-associations:
     put:
       operationId: CreateQueueLimitAssociation
@@ -1813,6 +1843,9 @@ paths:
       x-stackql-method: list_queue_limit_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.queueLimitAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/storage-profiles:
     post:
       operationId: CreateStorageProfile
@@ -1891,6 +1924,9 @@ paths:
       x-stackql-method: list_storage_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.storageProfiles
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/workers:
     post:
       operationId: CreateWorker
@@ -1981,6 +2017,9 @@ paths:
       x-stackql-method: list_workers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/budgets/{budget_id}:
     delete:
       operationId: DeleteBudget
@@ -3525,6 +3564,9 @@ paths:
       x-stackql-method: get_sessions_statistics_aggregation
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.statistics
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartSessionsStatisticsAggregation
       description: Starts an asynchronous request for getting aggregated statistics about queues and farms. Get the statistics
@@ -3572,7 +3614,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionsStatisticsAggregationResponse'
-      x-stackql-resource: sessions_statistics_aggregation
+      x-stackql-resource: sessions
       x-stackql-method: start_sessions_statistics_aggregation
       x-stackql-verb: EXEC
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps/{step_id}:
@@ -3837,6 +3879,9 @@ paths:
       x-stackql-method: list_available_metered_products
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.meteredProducts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/members:
     get:
       operationId: ListFarmMembers
@@ -3872,6 +3917,9 @@ paths:
       x-stackql-method: list_farm_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/members:
     get:
       operationId: ListFleetMembers
@@ -3913,6 +3961,9 @@ paths:
       x-stackql-method: list_fleet_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/members:
     get:
       operationId: ListJobMembers
@@ -3960,6 +4011,9 @@ paths:
       x-stackql-method: list_job_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/parameter-definitions:
     get:
       operationId: ListJobParameterDefinitions
@@ -4002,11 +4056,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListJobParameterDefinitionsResponse'
+                $ref: '#/components/schemas/ListJobParameterDefinitionsOutputDisplay'
       x-stackql-resource: job_parameter_definitions
       x-stackql-method: list_job_parameter_definitions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.jobParameterDefinitions
+      x-stackql-responseEnvelope: ListJobParameterDefinitionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "jobParameterDefinitions" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"job_parameter_definition":
+        {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/license-endpoints/{license_endpoint_id}/metered-products:
     get:
       operationId: ListMeteredProducts
@@ -4042,6 +4104,9 @@ paths:
       x-stackql-method: list_metered_products
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.meteredProducts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/members:
     get:
       operationId: ListQueueMembers
@@ -4083,6 +4148,9 @@ paths:
       x-stackql-method: list_queue_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/session-actions:
     get:
       operationId: ListSessionActions
@@ -4142,6 +4210,9 @@ paths:
       x-stackql-method: list_session_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessionActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/sessions:
     get:
       operationId: ListSessions
@@ -4189,6 +4260,9 @@ paths:
       x-stackql-method: list_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/fleets/{fleet_id}/workers/{worker_id}/sessions:
     get:
       operationId: ListSessionsForWorker
@@ -4236,6 +4310,9 @@ paths:
       x-stackql-method: list_sessions_for_worker
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps/{step_id}/consumers:
     get:
       operationId: ListStepConsumers
@@ -4289,6 +4366,9 @@ paths:
       x-stackql-method: list_step_consumers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.consumers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps/{step_id}/dependencies:
     get:
       operationId: ListStepDependencies
@@ -4342,6 +4422,9 @@ paths:
       x-stackql-method: list_step_dependencies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dependencies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps:
     get:
       operationId: ListSteps
@@ -4389,6 +4472,9 @@ paths:
       x-stackql-method: list_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.steps
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/storage-profiles:
     get:
       operationId: ListStorageProfilesForQueue
@@ -4430,6 +4516,9 @@ paths:
       x-stackql-method: list_storage_profiles_for_queue
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.storageProfiles
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -4448,7 +4537,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -4477,7 +4566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -4503,7 +4592,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /2023-10-12/farms/{farm_id}/queues/{queue_id}/jobs/{job_id}/steps/{step_id}/tasks:
@@ -4559,6 +4648,9 @@ paths:
       x-stackql-method: list_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2023-10-12/farms/{farm_id}/search/jobs:
     post:
       operationId: SearchJobs
@@ -4766,7 +4858,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateWorkerScheduleResponse'
-      x-stackql-resource: worker_schedules
+      x-stackql-resource: workers
       x-stackql-method: update_worker_schedule
       x-stackql-verb: UPDATE
 components:
@@ -9523,28 +9615,19 @@ components:
       - principalType
       - identityStoreId
       - membershipLevel
-    ListJobParameterDefinitionsResponse:
-      description: Shared pagination field for List operation outputs (nextToken).
+    ListJobParameterDefinitionsRowDisplay:
       type: object
       properties:
-        jobParameterDefinitions:
-          $ref: '#/components/schemas/JobParameterDefinitions'
+        job_parameter_definition:
+          type: object
           description: Lists parameter definitions of a job.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If Deadline Cloud returns nextToken, then there are more results available. The value of nextToken
-            is a unique pagination token for each page. To retrieve the next page, call the operation again using the returned
-            token. Keep all other arguments unchanged. If no results remain, then nextToken is set to null. Each pagination
-            token expires after 24 hours. If you provide a token that isn't valid, then you receive an HTTP 400 ValidationException
-            error.
-      required:
-      - jobParameterDefinitions
-    JobParameterDefinitions:
-      type: array
-      items:
-        $ref: '#/components/schemas/JobParameterDefinition'
-    JobParameterDefinition:
+    ListJobParameterDefinitionsOutputDisplay:
       type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListJobParameterDefinitionsRowDisplay'
     ListJobsResponse:
       description: Shared pagination field for List operation outputs (nextToken).
       type: object

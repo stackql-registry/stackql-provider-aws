@@ -4364,6 +4364,109 @@ components:
           $ref: "#/components/schemas/FlowStatus"
           description: Indicates the current status of the flow.
   x-stackQL-resources:
+    flows:
+      id: aws.appflow.flows
+      name: flows
+      title: flows
+      methods:
+        cancel_flow_executions:
+          operation:
+            $ref: "#/paths/~1cancel-flow-executions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_flow:
+          operation:
+            $ref: "#/paths/~1create-flow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_flow:
+          operation:
+            $ref: "#/paths/~1delete-flow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_flow:
+          operation:
+            $ref: "#/paths/~1describe-flow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_flows:
+          operation:
+            $ref: "#/paths/~1list-flows/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_flow:
+          operation:
+            $ref: "#/paths/~1start-flow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_flow:
+          operation:
+            $ref: "#/paths/~1stop-flow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_flow:
+          operation:
+            $ref: "#/paths/~1update-flow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/flows/methods/describe_flow"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/list_flows"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/flows/methods/create_flow"
+        update:
+          - $ref: "#/components/x-stackQL-resources/flows/methods/update_flow"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/flows/methods/delete_flow"
     connector_profiles:
       id: aws.appflow.connector_profiles
       name: connector_profiles
@@ -4422,76 +4525,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/connector_profiles/methods/update_connector_profile"
         delete:
           - $ref: "#/components/x-stackQL-resources/connector_profiles/methods/delete_connector_profile"
-    flows:
-      id: aws.appflow.flows
-      name: flows
-      title: flows
-      methods:
-        create_flow:
-          operation:
-            $ref: "#/paths/~1create-flow/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_flow:
-          operation:
-            $ref: "#/paths/~1delete-flow/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_flow:
-          operation:
-            $ref: "#/paths/~1describe-flow/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_flows:
-          operation:
-            $ref: "#/paths/~1list-flows/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_flow:
-          operation:
-            $ref: "#/paths/~1update-flow/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/describe_flow"
-          - $ref: "#/components/x-stackQL-resources/flows/methods/list_flows"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/create_flow"
-        update:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/update_flow"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/delete_flow"
     connectors:
       id: aws.appflow.connectors
       name: connectors
@@ -4503,6 +4536,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.connectorConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -4541,13 +4575,36 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        reset_connector_metadata_cache:
+          operation:
+            $ref: "#/paths/~1reset-connector-metadata-cache/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_connector_registration:
+          operation:
+            $ref: "#/paths/~1update-connector-registration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connectors/methods/describe_connector"
           - $ref: "#/components/x-stackQL-resources/connectors/methods/describe_connectors"
         insert:
           - $ref: "#/components/x-stackQL-resources/connectors/methods/register_connector"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/connectors/methods/update_connector_registration"
         delete: []
     connector_entities:
       id: aws.appflow.connector_entities
@@ -4605,10 +4662,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.appflow.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.appflow.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4616,17 +4673,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.appflow.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -4647,31 +4693,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    connector_registrations:
-      id: aws.appflow.connector_registrations
-      name: connector_registrations
-      title: connector_registrations
-      methods:
-        update_connector_registration:
-          operation:
-            $ref: "#/paths/~1update-connector-registration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/connector_registrations/methods/update_connector_registration"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

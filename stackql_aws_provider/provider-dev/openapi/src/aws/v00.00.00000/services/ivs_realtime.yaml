@@ -2788,6 +2788,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.encoderConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -2846,6 +2847,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ingestConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -2861,6 +2863,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_ingest_configuration:
@@ -2884,10 +2893,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/ingest_configurations/methods/update_ingest_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/ingest_configurations/methods/delete_ingest_configuration"
-    participant_tokens:
-      id: aws.ivs_realtime.participant_tokens
-      name: participant_tokens
-      title: participant_tokens
+    participants:
+      id: aws.ivs_realtime.participants
+      name: participants
+      title: participants
       methods:
         create_participant_token:
           operation:
@@ -2900,10 +2909,68 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disconnect_participant:
+          operation:
+            $ref: "#/paths/~1DisconnectParticipant/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_participant:
+          operation:
+            $ref: "#/paths/~1GetParticipant/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.participant
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_participants:
+          operation:
+            $ref: "#/paths/~1ListParticipants/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_participant_replication:
+          operation:
+            $ref: "#/paths/~1StartParticipantReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_participant_replication:
+          operation:
+            $ref: "#/paths/~1StopParticipantReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/participants/methods/get_participant"
+          - $ref: "#/components/x-stackQL-resources/participants/methods/list_participants"
         insert:
-          - $ref: "#/components/x-stackQL-resources/participant_tokens/methods/create_participant_token"
+          - $ref: "#/components/x-stackQL-resources/participants/methods/create_participant_token"
         update: []
         delete: []
     stages:
@@ -2939,6 +3006,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.stage
           request:
             nativeCasing: pascal
           config:
@@ -3009,6 +3077,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.storageConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -3056,6 +3125,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.publicKey
           request:
             nativeCasing: pascal
           config:
@@ -3071,6 +3141,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3092,6 +3169,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.composition
           request:
             nativeCasing: pascal
           config:
@@ -3115,40 +3193,6 @@ components:
         insert: []
         update: []
         delete: []
-    participants:
-      id: aws.ivs_realtime.participants
-      name: participants
-      title: participants
-      methods:
-        get_participant:
-          operation:
-            $ref: "#/paths/~1GetParticipant/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_participants:
-          operation:
-            $ref: "#/paths/~1ListParticipants/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/participants/methods/get_participant"
-          - $ref: "#/components/x-stackQL-resources/participants/methods/list_participants"
-        insert: []
-        update: []
-        delete: []
     stage_sessions:
       id: aws.ivs_realtime.stage_sessions
       name: stage_sessions
@@ -3160,6 +3204,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.stageSession
           request:
             nativeCasing: pascal
           config:
@@ -3220,6 +3265,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3228,10 +3280,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.ivs_realtime.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.ivs_realtime.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3239,17 +3291,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.ivs_realtime.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3270,9 +3311,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

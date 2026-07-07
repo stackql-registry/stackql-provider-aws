@@ -53,7 +53,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateRuleResponse'
-      x-stackql-resource: batch_update_rule
+      x-stackql-resource: listeners
       x-stackql-method: batch_update_rule
       x-stackql-verb: EXEC
     post:
@@ -147,6 +147,9 @@ paths:
       x-stackql-method: list_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /accesslogsubscriptions:
     post:
       operationId: CreateAccessLogSubscription
@@ -219,6 +222,9 @@ paths:
       x-stackql-method: list_access_log_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /services/{service_identifier}/listeners:
     post:
       operationId: CreateListener
@@ -298,6 +304,9 @@ paths:
       x-stackql-method: list_listeners
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /resourceconfigurations:
     post:
       operationId: CreateResourceConfiguration
@@ -395,6 +404,9 @@ paths:
       x-stackql-method: list_resource_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /resourcegateways:
     post:
       operationId: CreateResourceGateway
@@ -466,6 +478,9 @@ paths:
       x-stackql-method: list_resource_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /services:
     post:
       operationId: CreateService
@@ -531,6 +546,9 @@ paths:
       x-stackql-method: list_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /servicenetworks:
     post:
       operationId: CreateServiceNetwork
@@ -595,6 +613,9 @@ paths:
       x-stackql-method: list_service_networks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /servicenetworkresourceassociations:
     post:
       operationId: CreateServiceNetworkResourceAssociation
@@ -677,6 +698,9 @@ paths:
       x-stackql-method: list_service_network_resource_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /servicenetworkserviceassociations:
     post:
       operationId: CreateServiceNetworkServiceAssociation
@@ -758,6 +782,9 @@ paths:
       x-stackql-method: list_service_network_service_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /servicenetworkvpcassociations:
     post:
       operationId: CreateServiceNetworkVpcAssociation
@@ -844,6 +871,9 @@ paths:
       x-stackql-method: list_service_network_vpc_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /targetgroups:
     post:
       operationId: CreateTargetGroup
@@ -920,6 +950,9 @@ paths:
       x-stackql-method: list_target_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /accesslogsubscriptions/{access_log_subscription_identifier}:
     delete:
       operationId: DeleteAccessLogSubscription
@@ -1995,6 +2028,9 @@ paths:
       x-stackql-method: list_domain_verifications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartDomainVerification
       description: Starts the domain verification process for a custom domain name.
@@ -2076,6 +2112,9 @@ paths:
       x-stackql-method: list_resource_endpoint_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /servicenetworkvpcendpointassociations:
     get:
       operationId: ListServiceNetworkVpcEndpointAssociations
@@ -2110,6 +2149,9 @@ paths:
       x-stackql-method: list_service_network_vpc_endpoint_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2128,7 +2170,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2159,7 +2201,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2185,7 +2227,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /targetgroups/{target_group_identifier}/listtargets:
@@ -2232,6 +2274,9 @@ paths:
       x-stackql-method: list_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /targetgroups/{target_group_identifier}/registertargets:
     post:
       operationId: RegisterTargets

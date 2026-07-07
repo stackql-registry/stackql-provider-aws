@@ -57,7 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateGatewayToServerOutput'
-      x-stackql-resource: gateway_to_servers
+      x-stackql-resource: gateways
       x-stackql-method: associate_gateway_to_server
       x-stackql-verb: UPDATE
   /CreateGateway:
@@ -214,7 +214,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateGatewayFromServerOutput'
-      x-stackql-resource: gateway_from_servers
+      x-stackql-resource: gateways
       x-stackql-method: disassociate_gateway_from_server
       x-stackql-verb: UPDATE
   /GetBandwidthRateLimitSchedule:
@@ -292,6 +292,7 @@ paths:
       x-stackql-resource: gateways
       x-stackql-method: get_gateway
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Gateway
   /GetHypervisor:
     post:
       operationId: GetHypervisor
@@ -329,6 +330,7 @@ paths:
       x-stackql-resource: hypervisors
       x-stackql-method: get_hypervisor
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Hypervisor
   /GetHypervisorPropertyMappings:
     post:
       operationId: GetHypervisorPropertyMappings
@@ -403,6 +405,7 @@ paths:
       x-stackql-resource: virtual_machines
       x-stackql-method: get_virtual_machine
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VirtualMachine
   /ImportHypervisorConfiguration:
     post:
       operationId: ImportHypervisorConfiguration
@@ -453,7 +456,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportHypervisorConfigurationOutput'
-      x-stackql-resource: hypervisor_configuration
+      x-stackql-resource: hypervisors
       x-stackql-method: import_hypervisor_configuration
       x-stackql-verb: EXEC
   /ListGateways:
@@ -497,6 +500,9 @@ paths:
       x-stackql-method: list_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Gateways
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHypervisors:
     post:
       operationId: ListHypervisors
@@ -537,6 +543,9 @@ paths:
       x-stackql-method: list_hypervisors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Hypervisors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -570,7 +579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListVirtualMachines:
@@ -616,6 +625,9 @@ paths:
       x-stackql-method: list_virtual_machines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VirtualMachines
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutBandwidthRateLimitSchedule:
     post:
       operationId: PutBandwidthRateLimitSchedule
@@ -752,7 +764,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutMaintenanceStartTimeOutput'
-      x-stackql-resource: maintenance_start_times
+      x-stackql-resource: gateways
       x-stackql-method: put_maintenance_start_time
       x-stackql-verb: REPLACE
   /StartVirtualMachinesMetadataSync:
@@ -788,7 +800,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartVirtualMachinesMetadataSyncOutput'
-      x-stackql-resource: virtual_machines_metadata_sync
+      x-stackql-resource: virtual_machines
       x-stackql-method: start_virtual_machines_metadata_sync
       x-stackql-verb: EXEC
   /TagResource:
@@ -828,7 +840,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestHypervisorConfiguration:
@@ -876,7 +888,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestHypervisorConfigurationOutput'
-      x-stackql-resource: hypervisor_configuration
+      x-stackql-resource: hypervisors
       x-stackql-method: test_hypervisor_configuration
       x-stackql-verb: EXEC
   /UntagResource:
@@ -916,7 +928,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateGatewayInformation:
@@ -956,7 +968,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateGatewayInformationOutput'
-      x-stackql-resource: gateway_informations
+      x-stackql-resource: gateways
       x-stackql-method: update_gateway_information
       x-stackql-verb: UPDATE
   /UpdateGatewaySoftwareNow:
@@ -994,7 +1006,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateGatewaySoftwareNowOutput'
-      x-stackql-resource: gateway_software_nows
+      x-stackql-resource: gateways
       x-stackql-method: update_gateway_software_now
       x-stackql-verb: UPDATE
   /UpdateHypervisor:

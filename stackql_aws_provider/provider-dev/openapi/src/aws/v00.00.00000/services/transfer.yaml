@@ -373,7 +373,6 @@ paths:
                   $ref: "#/components/schemas/UserName"
                   description: "A unique string that identifies a user and is associated with a ServerId. This user name must be a minimum of 3 and a maximum of 100 characters long. The following are valid characters: a-z, A-Z, 0-9, underscore '_', hyphen '-', period '.', and at sign '@'. The user name can't start with a hyphen, period, or at sign."
               required:
-                - Role
                 - ServerId
                 - UserName
       responses:
@@ -1770,7 +1769,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSecurityPoliciesResponse"
+                $ref: "#/components/schemas/ListSecurityPoliciesOutputDisplay"
   /ListServers:
     post:
       operationId: ListServers
@@ -5239,21 +5238,19 @@ components:
         ProfileType:
           $ref: "#/components/schemas/ProfileType"
           description: Indicates whether to list only LOCAL type profiles or only PARTNER type profiles. If not supplied in the request, the command lists all types of profiles.
-    ListSecurityPoliciesResponse:
+    ListSecurityPoliciesRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: When you can get additional results from the ListSecurityPolicies operation, a NextToken parameter is returned in the output. In a following command, you can pass in the NextToken parameter to continue listing security policies.
-        SecurityPolicyNames:
-          $ref: "#/components/schemas/SecurityPolicyNames"
+        security_policy_name:
+          type: string
           description: An array of security policies that were listed.
-      required:
-        - SecurityPolicyNames
-    SecurityPolicyNames:
-      type: array
-      items:
-        $ref: "#/components/schemas/SecurityPolicyName"
+    ListSecurityPoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListSecurityPoliciesRowDisplay"
     ListServersResponse:
       type: object
       properties:
@@ -5826,6 +5823,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Agreement
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5845,6 +5843,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_agreement:
@@ -5906,6 +5911,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Connector
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5920,6 +5926,78 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Connectors
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_directory_listing:
+          operation:
+            $ref: "#/paths/~1StartDirectoryListing/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_file_transfer:
+          operation:
+            $ref: "#/paths/~1StartFileTransfer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_remote_delete:
+          operation:
+            $ref: "#/paths/~1StartRemoteDelete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_remote_move:
+          operation:
+            $ref: "#/paths/~1StartRemoteMove/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        test_connection:
+          operation:
+            $ref: "#/paths/~1TestConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5986,6 +6064,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Profile
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6005,6 +6084,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_profile:
@@ -6060,9 +6146,48 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_ssh_public_key:
+          operation:
+            $ref: "#/paths/~1DeleteSshPublicKey/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         describe_server:
           operation:
             $ref: "#/paths/~1DescribeServer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Server
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_host_key:
+          operation:
+            $ref: "#/paths/~1ImportHostKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_ssh_public_key:
+          operation:
+            $ref: "#/paths/~1ImportSshPublicKey/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6080,6 +6205,50 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Servers
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_server:
+          operation:
+            $ref: "#/paths/~1StartServer/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_server:
+          operation:
+            $ref: "#/paths/~1StopServer/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        test_identity_provider:
+          operation:
+            $ref: "#/paths/~1TestIdentityProvider/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6109,6 +6278,7 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/servers/methods/update_server"
         delete:
+          - $ref: "#/components/x-stackQL-resources/servers/methods/delete_ssh_public_key"
           - $ref: "#/components/x-stackQL-resources/servers/methods/delete_server"
     users:
       id: aws.transfer.users
@@ -6165,6 +6335,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_user:
@@ -6226,6 +6403,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.WebApp
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6245,6 +6423,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_web_app:
@@ -6306,6 +6491,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Workflow
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6320,6 +6506,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Workflows
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        send_workflow_step_state:
+          operation:
+            $ref: "#/paths/~1SendWorkflowStepState/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6359,6 +6565,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Certificate
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6378,6 +6585,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_certificate:
@@ -6425,6 +6639,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.HostKey
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6467,29 +6682,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/host_keys/methods/update_host_key"
         delete:
           - $ref: "#/components/x-stackQL-resources/host_keys/methods/delete_host_key"
-    ssh_public_keys:
-      id: aws.transfer.ssh_public_keys
-      name: ssh_public_keys
-      title: ssh_public_keys
-      methods:
-        delete_ssh_public_key:
-          operation:
-            $ref: "#/paths/~1DeleteSshPublicKey/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/ssh_public_keys/methods/delete_ssh_public_key"
     web_app_customizations:
       id: aws.transfer.web_app_customizations
       name: web_app_customizations
@@ -6513,6 +6705,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.WebAppCustomization
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6571,6 +6764,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6591,6 +6791,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SecurityPolicy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6604,12 +6805,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.SecurityPolicyNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSecurityPoliciesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SecurityPolicyNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"security_policy_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6636,6 +6850,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6661,6 +6882,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6669,10 +6897,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.transfer.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.transfer.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6686,19 +6914,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.transfer.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -6724,9 +6948,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -1102,7 +1102,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFirewallDomainsOutput"
+                $ref: "#/components/schemas/ListFirewallDomainsOutputDisplay"
     patch:
       operationId: UpdateFirewallDomains
       description: Updates a DNS Firewall domain list from an array of specified domains. Route 53 Global Resolver is a global service that supports resolvers in multiple Amazon Web Services Regions but you must specify the US East (Ohio) Region to create, update, or otherwise work with Route 53 Global Resolver resources. That is, for example, specify --region us-east-2 on Amazon Web Services CLI commands.
@@ -3171,21 +3171,19 @@ components:
         - name
         - status
         - updatedAt
-    ListFirewallDomainsOutput:
+    ListFirewallDomainsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: A pagination token used for large sets of results that can't be returned in a single response. Provide this token in the next call to get the results not returned in this call.
-        domains:
-          $ref: "#/components/schemas/Domains"
+        domain:
+          type: string
           description: List of domains in the specified domain list.
-      required:
-        - domains
-    Domains:
-      type: array
-      items:
-        $ref: "#/components/schemas/Domain"
+    ListFirewallDomainsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFirewallDomainsRowDisplay"
     ListFirewallRulesOutput:
       type: object
       properties:
@@ -3549,6 +3547,10 @@ components:
         - createdAt
         - updatedAt
         - status
+    Domains:
+      type: array
+      items:
+        $ref: "#/components/schemas/Domain"
     UpdateFirewallDomainsOutput:
       type: object
       properties:
@@ -3775,6 +3777,14 @@ components:
             objectKey: $.accessSources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_access_source:
           operation:
             $ref: "#/paths/~1access-sources~1{access_source_id}/delete"
@@ -3856,6 +3866,14 @@ components:
             objectKey: $.accessTokens
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/access_tokens/methods/get_access_token"
@@ -3905,6 +3923,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disable_dns_view:
+          operation:
+            $ref: "#/paths/~1dns-views~1{dns_view_id}~1disable/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        enable_dns_view:
+          operation:
+            $ref: "#/paths/~1dns-views~1{dns_view_id}~1enable/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         list_dns_views:
           operation:
             $ref: "#/paths/~1dns-views~1resolver~1{global_resolver_id}/get"
@@ -3914,6 +3944,14 @@ components:
             objectKey: $.dnsViews
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dns_views/methods/get_dns_view"
@@ -3961,6 +3999,14 @@ components:
             objectKey: $.firewallDomainLists
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/firewall_domain_lists/methods/get_firewall_domain_list"
@@ -3995,6 +4041,14 @@ components:
             objectKey: $.firewallRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_firewall_rule:
           operation:
             $ref: "#/paths/~1firewall-rules~1{firewall_rule_id}/delete"
@@ -4053,6 +4107,14 @@ components:
             objectKey: $.globalResolvers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_global_resolver:
           operation:
             $ref: "#/paths/~1global-resolver~1{global_resolver_id}/delete"
@@ -4117,6 +4179,14 @@ components:
             objectKey: $.hostedZoneAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/hosted_zone_associations/methods/get_hosted_zone_association"
@@ -4145,6 +4215,14 @@ components:
             objectKey: $.managedFirewallDomainLists
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_firewall_domain_lists/methods/get_managed_firewall_domain_list"
@@ -4174,9 +4252,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.domains
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFirewallDomainsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "domains" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"domain": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_firewall_domains:
           operation:
             $ref: "#/paths/~1firewall-domain-lists~1{firewall_domain_list_id}~1domains/patch"
@@ -4195,10 +4287,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/firewall_domains/methods/update_firewall_domains"
         delete: []
-    tags_for_resources:
-      id: aws.route53globalresolver.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.route53globalresolver.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4211,17 +4303,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.route53globalresolver.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tag-resource/post"
@@ -4245,9 +4326,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -63,7 +63,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateDelegateToResourceResponse'
-      x-stackql-resource: delegate_to_resources
+      x-stackql-resource: resources
       x-stackql-method: associate_delegate_to_resource
       x-stackql-verb: UPDATE
   /AssociateMemberToGroup:
@@ -111,7 +111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMemberToGroupResponse'
-      x-stackql-resource: member_to_groups
+      x-stackql-resource: groups
       x-stackql-method: associate_member_to_group
       x-stackql-verb: UPDATE
   /AssumeImpersonationRole:
@@ -152,7 +152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssumeImpersonationRoleResponse'
-      x-stackql-resource: assume_impersonation_role
+      x-stackql-resource: impersonation_roles
       x-stackql-method: assume_impersonation_role
       x-stackql-verb: EXEC
   /CancelMailboxExportJob:
@@ -197,7 +197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMailboxExportJobResponse'
-      x-stackql-resource: mailbox_export_job
+      x-stackql-resource: organizations
       x-stackql-method: cancel_mailbox_export_job
       x-stackql-verb: EXEC
   /CreateAlias:
@@ -241,7 +241,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAliasResponse'
-      x-stackql-resource: alias
+      x-stackql-resource: organizations
       x-stackql-method: create_alias
       x-stackql-verb: INSERT
   /CreateAvailabilityConfiguration:
@@ -772,7 +772,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAliasResponse'
-      x-stackql-resource: alias
+      x-stackql-resource: organizations
       x-stackql-method: delete_alias
       x-stackql-verb: DELETE
   /DeleteAvailabilityConfiguration:
@@ -1317,7 +1317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteRetentionPolicyResponse'
-      x-stackql-resource: retention_policies
+      x-stackql-resource: organizations
       x-stackql-method: delete_retention_policy
       x-stackql-verb: DELETE
   /DeleteUser:
@@ -1406,7 +1406,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterFromWorkMailResponse'
-      x-stackql-resource: from_work_mails
+      x-stackql-resource: organizations
       x-stackql-method: deregister_from_work_mail
       x-stackql-verb: DELETE
   /DeregisterMailDomain:
@@ -1846,7 +1846,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateDelegateFromResourceResponse'
-      x-stackql-resource: delegate_from_resources
+      x-stackql-resource: resources
       x-stackql-method: disassociate_delegate_from_resource
       x-stackql-verb: UPDATE
   /DisassociateMemberFromGroup:
@@ -1894,7 +1894,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMemberFromGroupResponse'
-      x-stackql-resource: member_from_groups
+      x-stackql-resource: groups
       x-stackql-method: disassociate_member_from_group
       x-stackql-verb: UPDATE
   /GetAccessControlEffect:
@@ -2371,11 +2371,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAliasesResponse'
+                $ref: '#/components/schemas/ListAliasesOutputDisplay'
       x-stackql-resource: aliases
       x-stackql-method: list_aliases
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Aliases
+      x-stackql-responseEnvelope: ListAliasesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Aliases" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"alias": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAvailabilityConfigurations:
     post:
       operationId: ListAvailabilityConfigurations
@@ -2419,6 +2427,9 @@ paths:
       x-stackql-method: list_availability_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AvailabilityConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListGroupMembers:
     post:
       operationId: ListGroupMembers
@@ -2469,6 +2480,9 @@ paths:
       x-stackql-method: list_group_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Members
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListGroups:
     post:
       operationId: ListGroups
@@ -2516,6 +2530,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListGroupsForEntity:
     post:
       operationId: ListGroupsForEntity
@@ -2744,6 +2761,9 @@ paths:
       x-stackql-method: list_mailbox_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Permissions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMobileDeviceAccessOverrides:
     post:
       operationId: ListMobileDeviceAccessOverrides
@@ -2870,6 +2890,9 @@ paths:
       x-stackql-method: list_organizations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPersonalAccessTokens:
     post:
       operationId: ListPersonalAccessTokens
@@ -2916,6 +2939,9 @@ paths:
       x-stackql-method: list_personal_access_tokens
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PersonalAccessTokenSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceDelegates:
     post:
       operationId: ListResourceDelegates
@@ -2966,6 +2992,9 @@ paths:
       x-stackql-method: list_resource_delegates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Delegates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResources:
     post:
       operationId: ListResources
@@ -3014,6 +3043,9 @@ paths:
       x-stackql-method: list_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Resources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -3047,7 +3079,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListUsers:
@@ -3098,6 +3130,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutAccessControlRule:
     post:
       operationId: PutAccessControlRule
@@ -3468,7 +3503,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutRetentionPolicyResponse'
-      x-stackql-resource: retention_policies
+      x-stackql-resource: organizations
       x-stackql-method: put_retention_policy
       x-stackql-verb: REPLACE
   /RegisterMailDomain:
@@ -3564,7 +3599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterToWorkMailResponse'
-      x-stackql-resource: to_work_mails
+      x-stackql-resource: organizations
       x-stackql-method: register_to_work_mail
       x-stackql-verb: INSERT
   /ResetPassword:
@@ -3608,7 +3643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetPasswordResponse'
-      x-stackql-resource: password
+      x-stackql-resource: organizations
       x-stackql-method: reset_password
       x-stackql-verb: EXEC
   /StartMailboxExportJob:
@@ -3678,7 +3713,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMailboxExportJobResponse'
-      x-stackql-resource: mailbox_export_job
+      x-stackql-resource: organizations
       x-stackql-method: start_mailbox_export_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -3718,7 +3753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestAvailabilityConfiguration:
@@ -3767,7 +3802,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestAvailabilityConfigurationResponse'
-      x-stackql-resource: availability_configuration
+      x-stackql-resource: organizations
       x-stackql-method: test_availability_configuration
       x-stackql-verb: EXEC
   /UntagResource:
@@ -3807,7 +3842,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAvailabilityConfiguration:
@@ -3897,7 +3932,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDefaultMailDomainResponse'
-      x-stackql-resource: default_mail_domains
+      x-stackql-resource: mail_domains
       x-stackql-method: update_default_mail_domain
       x-stackql-verb: UPDATE
   /UpdateGroup:
@@ -4043,7 +4078,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateMailboxQuotaResponse'
-      x-stackql-resource: mailbox_quotas
+      x-stackql-resource: organizations
       x-stackql-method: update_mailbox_quota
       x-stackql-verb: UPDATE
   /UpdateMobileDeviceAccessRule:
@@ -4168,7 +4203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePrimaryEmailAddressResponse'
-      x-stackql-resource: primary_email_address
+      x-stackql-resource: organizations
       x-stackql-method: update_primary_email_address
       x-stackql-verb: UPDATE
   /UpdateResource:
@@ -5566,20 +5601,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListAliasesResponse:
+    ListAliasesRowDisplay:
       type: object
       properties:
-        Aliases:
-          $ref: '#/components/schemas/Aliases'
+        alias:
+          type: string
           description: The entity's paginated aliases.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to retrieve the next page of results. The value is "null" when there are no more results
-            to return.
-    Aliases:
-      type: array
-      items:
-        $ref: '#/components/schemas/EmailAddress'
+    ListAliasesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAliasesRowDisplay'
     ListAvailabilityConfigurationsResponse:
       type: object
       properties:

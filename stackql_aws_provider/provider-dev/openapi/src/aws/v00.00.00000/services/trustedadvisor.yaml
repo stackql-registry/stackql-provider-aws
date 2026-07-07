@@ -1382,6 +1382,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.organizationRecommendation
         list_organization_recommendations:
           operation:
             $ref: "#/paths/~1v1~1organization-recommendations/get"
@@ -1391,12 +1392,31 @@ components:
             objectKey: $.organizationRecommendationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        update_organization_recommendation_lifecycle:
+          operation:
+            $ref: "#/paths/~1v1~1organization-recommendations~1{organization_recommendation_identifier}~1lifecycle/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_recommendations/methods/get_organization_recommendation"
           - $ref: "#/components/x-stackQL-resources/organization_recommendations/methods/list_organization_recommendations"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/organization_recommendations/methods/update_organization_recommendation_lifecycle"
         delete: []
     recommendations:
       id: aws.trustedadvisor.recommendations
@@ -1409,6 +1429,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.recommendation
           request:
             nativeCasing: pascal
         list_recommendations:
@@ -1420,12 +1441,31 @@ components:
             objectKey: $.recommendationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        update_recommendation_lifecycle:
+          operation:
+            $ref: "#/paths/~1v1~1recommendations~1{recommendation_identifier}~1lifecycle/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendation"
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/list_recommendations"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/recommendations/methods/update_recommendation_lifecycle"
         delete: []
     checks:
       id: aws.trustedadvisor.checks
@@ -1441,6 +1481,14 @@ components:
             objectKey: $.checkSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/checks/methods/list_checks"
@@ -1461,6 +1509,14 @@ components:
             objectKey: $.accountRecommendationLifecycleSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_recommendation_accounts/methods/list_organization_recommendation_accounts"
@@ -1481,6 +1537,14 @@ components:
             objectKey: $.organizationRecommendationResourceSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_recommendation_resources/methods/list_organization_recommendation_resources"
@@ -1501,51 +1565,17 @@ components:
             objectKey: $.recommendationResourceSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendation_resources/methods/list_recommendation_resources"
         insert: []
         update: []
-        delete: []
-    organization_recommendation_lifecycles:
-      id: aws.trustedadvisor.organization_recommendation_lifecycles
-      name: organization_recommendation_lifecycles
-      title: organization_recommendation_lifecycles
-      methods:
-        update_organization_recommendation_lifecycle:
-          operation:
-            $ref: "#/paths/~1v1~1organization-recommendations~1{organization_recommendation_identifier}~1lifecycle/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/organization_recommendation_lifecycles/methods/update_organization_recommendation_lifecycle"
-        delete: []
-    recommendation_lifecycles:
-      id: aws.trustedadvisor.recommendation_lifecycles
-      name: recommendation_lifecycles
-      title: recommendation_lifecycles
-      methods:
-        update_recommendation_lifecycle:
-          operation:
-            $ref: "#/paths/~1v1~1recommendations~1{recommendation_identifier}~1lifecycle/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/recommendation_lifecycles/methods/update_recommendation_lifecycle"
         delete: []

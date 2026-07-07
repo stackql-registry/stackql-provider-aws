@@ -1,0 +1,4 @@
+-- rest-json UPDATE: JSON body field + path-param routing key.
+UPDATE aws.appconfig.applications
+SET Description = 'stackql-smoke-updated'
+WHERE region = '{{ region }}' AND application_id = '{{ appconfig_app_create.app_id }}'

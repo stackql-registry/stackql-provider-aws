@@ -108,6 +108,7 @@ paths:
       x-stackql-resource: deployments
       x-stackql-method: get_deployment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deployment
   /getDeploymentPatternVersion:
     post:
       operationId: GetDeploymentPatternVersion
@@ -140,6 +141,7 @@ paths:
       x-stackql-resource: deployment_pattern_versions
       x-stackql-method: get_deployment_pattern_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deploymentPatternVersion
   /getWorkload:
     post:
       operationId: GetWorkload
@@ -166,6 +168,7 @@ paths:
       x-stackql-resource: workloads
       x-stackql-method: get_workload
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.workload
   /getWorkloadDeploymentPattern:
     post:
       operationId: GetWorkloadDeploymentPattern
@@ -197,6 +200,7 @@ paths:
       x-stackql-resource: workload_deployment_patterns
       x-stackql-method: get_workload_deployment_pattern
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.workloadDeploymentPattern
   /listDeploymentEvents:
     post:
       operationId: ListDeploymentEvents
@@ -228,6 +232,9 @@ paths:
       x-stackql-method: list_deployment_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deploymentEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listDeploymentPatternVersions:
     post:
       operationId: ListDeploymentPatternVersions
@@ -264,6 +271,9 @@ paths:
       x-stackql-method: list_deployment_pattern_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deploymentPatternVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listDeployments:
     post:
       operationId: ListDeployments
@@ -293,6 +303,9 @@ paths:
       x-stackql-method: list_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deployments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -311,7 +324,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -342,7 +355,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -368,7 +381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /listWorkloadDeploymentPatterns:
@@ -403,6 +416,9 @@ paths:
       x-stackql-method: list_workload_deployment_patterns
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workloadDeploymentPatterns
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listWorkloads:
     post:
       operationId: ListWorkloads
@@ -431,6 +447,9 @@ paths:
       x-stackql-method: list_workloads
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workloads
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /updateDeployment:
     post:
       operationId: UpdateDeployment

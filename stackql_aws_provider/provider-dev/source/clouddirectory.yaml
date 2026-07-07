@@ -51,7 +51,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddFacetToObjectResponse'
-      x-stackql-resource: facet_to_objects
+      x-stackql-resource: facets
       x-stackql-method: add_facet_to_object
       x-stackql-verb: UPDATE
   /amazonclouddirectory/2017-01-11/schema/apply:
@@ -196,7 +196,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AttachToIndexResponse'
-      x-stackql-resource: to_indexes
+      x-stackql-resource: indexes
       x-stackql-method: attach_to_index
       x-stackql-verb: UPDATE
   /amazonclouddirectory/2017-01-11/typedlink/attach:
@@ -523,7 +523,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateTypedLinkFacetResponse'
-      x-stackql-resource: typed_link_facets
+      x-stackql-resource: facets
       x-stackql-method: create_typed_link_facet
       x-stackql-verb: INSERT
   /amazonclouddirectory/2017-01-11/directory:
@@ -666,7 +666,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteTypedLinkFacetResponse'
-      x-stackql-resource: typed_link_facets
+      x-stackql-resource: facets
       x-stackql-method: delete_typed_link_facet
       x-stackql-verb: DELETE
   /amazonclouddirectory/2017-01-11/index/detach:
@@ -701,7 +701,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetachFromIndexResponse'
-      x-stackql-resource: from_indexes
+      x-stackql-resource: indexes
       x-stackql-method: detach_from_index
       x-stackql-verb: UPDATE
   /amazonclouddirectory/2017-01-11/object/detach:
@@ -896,6 +896,7 @@ paths:
       x-stackql-resource: directories
       x-stackql-method: get_directory
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Directory
   /amazonclouddirectory/2017-01-11/facet:
     post:
       operationId: GetFacet
@@ -929,6 +930,7 @@ paths:
       x-stackql-resource: facets
       x-stackql-method: get_facet
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Facet
     put:
       operationId: UpdateFacet
       description: 'Does the following: Adds new Attributes, Rules, or ObjectTypes. Updates existing Attributes, Rules, or
@@ -1166,10 +1168,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetTypedLinkFacetInformationResponse'
+                $ref: '#/components/schemas/GetTypedLinkFacetInformationOutputDisplay'
       x-stackql-resource: typed_link_facet_informations
       x-stackql-method: get_typed_link_facet_information
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetTypedLinkFacetInformationOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "IdentityAttributeOrder" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"identity_attribute_order": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]}'
   /amazonclouddirectory/2017-01-11/schema/applied:
     post:
       operationId: ListAppliedSchemaArns
@@ -1198,11 +1206,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAppliedSchemaArnsResponse'
+                $ref: '#/components/schemas/ListAppliedSchemaArnsOutputDisplay'
       x-stackql-resource: applied_schema_arns
       x-stackql-method: list_applied_schema_arns
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.SchemaArns
+      x-stackql-responseEnvelope: ListAppliedSchemaArnsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/object/indices:
     post:
       operationId: ListAttachedIndices
@@ -1246,6 +1262,9 @@ paths:
       x-stackql-method: list_attached_indices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IndexAttachments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/schema/development:
     post:
       operationId: ListDevelopmentSchemaArns
@@ -1268,11 +1287,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDevelopmentSchemaArnsResponse'
+                $ref: '#/components/schemas/ListDevelopmentSchemaArnsOutputDisplay'
       x-stackql-resource: development_schema_arns
       x-stackql-method: list_development_schema_arns
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.SchemaArns
+      x-stackql-responseEnvelope: ListDevelopmentSchemaArnsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/directory/list:
     post:
       operationId: ListDirectories
@@ -1302,6 +1329,9 @@ paths:
       x-stackql-method: list_directories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Directories
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/facet/attributes:
     post:
       operationId: ListFacetAttributes
@@ -1339,6 +1369,9 @@ paths:
       x-stackql-method: list_facet_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Attributes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/facet/list:
     post:
       operationId: ListFacetNames
@@ -1367,11 +1400,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFacetNamesResponse'
+                $ref: '#/components/schemas/ListFacetNamesOutputDisplay'
       x-stackql-resource: facet_names
       x-stackql-method: list_facet_names
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.FacetNames
+      x-stackql-responseEnvelope: ListFacetNamesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "FacetNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"facet_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/typedlink/incoming:
     post:
       operationId: ListIncomingTypedLinks
@@ -1416,6 +1457,9 @@ paths:
       x-stackql-method: list_incoming_typed_links
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LinkSpecifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/index/targets:
     post:
       operationId: ListIndex
@@ -1461,6 +1505,9 @@ paths:
       x-stackql-method: list_index
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IndexAttachments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/schema/managed:
     post:
       operationId: ListManagedSchemaArns
@@ -1486,11 +1533,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListManagedSchemaArnsResponse'
+                $ref: '#/components/schemas/ListManagedSchemaArnsOutputDisplay'
       x-stackql-resource: managed_schema_arns
       x-stackql-method: list_managed_schema_arns
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.SchemaArns
+      x-stackql-responseEnvelope: ListManagedSchemaArnsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/object/attributes:
     post:
       operationId: ListObjectAttributes
@@ -1538,6 +1593,9 @@ paths:
       x-stackql-method: list_object_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Attributes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/object/children:
     post:
       operationId: ListObjectChildren
@@ -1624,6 +1682,9 @@ paths:
       x-stackql-method: list_object_parent_paths
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PathToObjectIdentifiersList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/object/parent:
     post:
       operationId: ListObjectParents
@@ -1710,11 +1771,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListObjectPoliciesResponse'
+                $ref: '#/components/schemas/ListObjectPoliciesOutputDisplay'
       x-stackql-resource: object_policies
       x-stackql-method: list_object_policies
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.AttachedPolicyIds
+      x-stackql-responseEnvelope: ListObjectPoliciesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "AttachedPolicyIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"attached_policy_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/typedlink/outgoing:
     post:
       operationId: ListOutgoingTypedLinks
@@ -1759,6 +1828,9 @@ paths:
       x-stackql-method: list_outgoing_typed_links
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TypedLinkSpecifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/policy/attachment:
     post:
       operationId: ListPolicyAttachments
@@ -1799,11 +1871,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPolicyAttachmentsResponse'
+                $ref: '#/components/schemas/ListPolicyAttachmentsOutputDisplay'
       x-stackql-resource: policy_attachments
       x-stackql-method: list_policy_attachments
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ObjectIdentifiers
+      x-stackql-responseEnvelope: ListPolicyAttachmentsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ObjectIdentifiers" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"object_identifier": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/schema/published:
     post:
       operationId: ListPublishedSchemaArns
@@ -1829,11 +1909,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPublishedSchemaArnsResponse'
+                $ref: '#/components/schemas/ListPublishedSchemaArnsOutputDisplay'
       x-stackql-resource: published_schema_arns
       x-stackql-method: list_published_schema_arns
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.SchemaArns
+      x-stackql-responseEnvelope: ListPublishedSchemaArnsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/tags:
     post:
       operationId: ListTagsForResource
@@ -1862,10 +1950,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/typedlink/facet/attributes:
     post:
       operationId: ListTypedLinkFacetAttributes
@@ -1904,6 +1995,9 @@ paths:
       x-stackql-method: list_typed_link_facet_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Attributes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/typedlink/facet/list:
     post:
       operationId: ListTypedLinkFacetNames
@@ -1933,11 +2027,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTypedLinkFacetNamesResponse'
+                $ref: '#/components/schemas/ListTypedLinkFacetNamesOutputDisplay'
       x-stackql-resource: typed_link_facet_names
       x-stackql-method: list_typed_link_facet_names
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.FacetNames
+      x-stackql-responseEnvelope: ListTypedLinkFacetNamesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "FacetNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"facet_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/policy/lookup:
     post:
       operationId: LookupPolicy
@@ -1978,6 +2080,9 @@ paths:
       x-stackql-method: lookup_policy
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PolicyToPathList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /amazonclouddirectory/2017-01-11/schema/publish:
     put:
       operationId: PublishSchema
@@ -2047,7 +2152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveFacetFromObjectResponse'
-      x-stackql-resource: facet_from_objects
+      x-stackql-resource: facets
       x-stackql-method: remove_facet_from_object
       x-stackql-verb: UPDATE
   /amazonclouddirectory/2017-01-11/tags/add:
@@ -2076,7 +2181,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /amazonclouddirectory/2017-01-11/tags/remove:
@@ -2105,7 +2210,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /amazonclouddirectory/2017-01-11/typedlink/attributes/update:
@@ -2248,7 +2353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateTypedLinkFacetResponse'
-      x-stackql-resource: typed_link_facets
+      x-stackql-resource: facets
       x-stackql-method: update_typed_link_facet
       x-stackql-verb: UPDATE
   /amazonclouddirectory/2017-01-11/schema/upgradeapplied:
@@ -2282,7 +2387,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpgradeAppliedSchemaResponse'
-      x-stackql-resource: upgrade_applied_schema
+      x-stackql-resource: directories
       x-stackql-method: upgrade_applied_schema
       x-stackql-verb: EXEC
   /amazonclouddirectory/2017-01-11/schema/upgradepublished:
@@ -4080,30 +4185,37 @@ components:
           description: The JSON representation of the schema document.
     SchemaJsonDocument:
       type: string
-    GetTypedLinkFacetInformationResponse:
+    GetTypedLinkFacetInformationRowDisplay:
       type: object
       properties:
-        IdentityAttributeOrder:
-          $ref: '#/components/schemas/AttributeNameList'
+        identity_attribute_order:
+          type: string
           description: The order of identity attributes for the facet, from most significant to least significant. The ability
             to filter typed links considers the order that the attributes are defined on the typed link facet. When providing
             ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have
             a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes
             on the typed link facet, not the order in which they are supplied to any API calls. For more information about
             identity attributes, see Typed Links.
-    ListAppliedSchemaArnsResponse:
+    GetTypedLinkFacetInformationOutputDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: '#/components/schemas/Arns'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTypedLinkFacetInformationRowDisplay'
+    ListAppliedSchemaArnsRowDisplay:
+      type: object
+      properties:
+        schema_arn:
+          type: string
           description: The ARNs of schemas that are applied to the directory.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
-    Arns:
-      type: array
-      items:
-        $ref: '#/components/schemas/Arn'
+    ListAppliedSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAppliedSchemaArnsRowDisplay'
     ListAttachedIndicesResponse:
       type: object
       properties:
@@ -4113,15 +4225,19 @@ components:
         NextToken:
           $ref: '#/components/schemas/NextToken'
           description: The pagination token.
-    ListDevelopmentSchemaArnsResponse:
+    ListDevelopmentSchemaArnsRowDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: '#/components/schemas/Arns'
+        schema_arn:
+          type: string
           description: The ARNs of retrieved development schemas.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
+    ListDevelopmentSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDevelopmentSchemaArnsRowDisplay'
     ListDirectoriesResponse:
       type: object
       properties:
@@ -4146,19 +4262,19 @@ components:
         NextToken:
           $ref: '#/components/schemas/NextToken'
           description: The pagination token.
-    ListFacetNamesResponse:
+    ListFacetNamesRowDisplay:
       type: object
       properties:
-        FacetNames:
-          $ref: '#/components/schemas/FacetNameList'
+        facet_name:
+          type: string
           description: The names of facets that exist within the schema.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
-    FacetNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FacetName'
+    ListFacetNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFacetNamesRowDisplay'
     ListIncomingTypedLinksResponse:
       type: object
       properties:
@@ -4177,15 +4293,19 @@ components:
         NextToken:
           $ref: '#/components/schemas/NextToken'
           description: The pagination token.
-    ListManagedSchemaArnsResponse:
+    ListManagedSchemaArnsRowDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: '#/components/schemas/Arns'
+        schema_arn:
+          type: string
           description: The ARNs for all AWS managed schemas.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
+    ListManagedSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListManagedSchemaArnsRowDisplay'
     ListObjectAttributesResponse:
       type: object
       properties:
@@ -4228,15 +4348,19 @@ components:
         ParentLinks:
           $ref: '#/components/schemas/ObjectIdentifierAndLinkNameList'
           description: Returns a list of parent reference and LinkName Tuples.
-    ListObjectPoliciesResponse:
+    ListObjectPoliciesRowDisplay:
       type: object
       properties:
-        AttachedPolicyIds:
-          $ref: '#/components/schemas/ObjectIdentifierList'
+        attached_policy_id:
+          type: string
           description: A list of policy ObjectIdentifiers, that are attached to the object.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
+    ListObjectPoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListObjectPoliciesRowDisplay'
     ListOutgoingTypedLinksResponse:
       type: object
       properties:
@@ -4246,24 +4370,32 @@ components:
         NextToken:
           $ref: '#/components/schemas/NextToken'
           description: The pagination token.
-    ListPolicyAttachmentsResponse:
+    ListPolicyAttachmentsRowDisplay:
       type: object
       properties:
-        ObjectIdentifiers:
-          $ref: '#/components/schemas/ObjectIdentifierList'
+        object_identifier:
+          type: string
           description: A list of ObjectIdentifiers to which the policy is attached.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
-    ListPublishedSchemaArnsResponse:
+    ListPolicyAttachmentsOutputDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: '#/components/schemas/Arns'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPolicyAttachmentsRowDisplay'
+    ListPublishedSchemaArnsRowDisplay:
+      type: object
+      properties:
+        schema_arn:
+          type: string
           description: The ARNs of published schemas.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
+    ListPublishedSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPublishedSchemaArnsRowDisplay'
     TagsNumberResults:
       type: integer
       minimum: 50
@@ -4304,19 +4436,19 @@ components:
         NextToken:
           $ref: '#/components/schemas/NextToken'
           description: The pagination token.
-    ListTypedLinkFacetNamesResponse:
+    ListTypedLinkFacetNamesRowDisplay:
       type: object
       properties:
-        FacetNames:
-          $ref: '#/components/schemas/TypedLinkNameList'
+        facet_name:
+          type: string
           description: The names of typed link facets that exist within the schema.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token.
-    TypedLinkNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TypedLinkName'
+    ListTypedLinkFacetNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTypedLinkFacetNamesRowDisplay'
     LookupPolicyResponse:
       type: object
       properties:

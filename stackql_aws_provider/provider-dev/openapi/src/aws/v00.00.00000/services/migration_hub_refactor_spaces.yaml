@@ -48,7 +48,6 @@ paths:
                 VpcId:
                   $ref: "#/components/schemas/VpcId"
               required:
-                - Name
                 - ProxyType
                 - VpcId
       responses:
@@ -110,7 +109,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - NetworkFabricType
       responses:
         "200":
@@ -265,7 +263,6 @@ paths:
                   $ref: "#/components/schemas/VpcId"
               required:
                 - EndpointType
-                - Name
       responses:
         "200":
           description: Success
@@ -650,8 +647,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -699,7 +694,6 @@ paths:
                 ResourceArn:
                   $ref: "#/components/schemas/ResourceArn"
               required:
-                - Policy
                 - ResourceArn
       responses:
         "200":
@@ -2006,6 +2000,14 @@ components:
             objectKey: $.ApplicationSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_application:
           operation:
             $ref: "#/paths/~1environments~1{environment_identifier}~1applications~1{application_identifier}/delete"
@@ -2052,6 +2054,14 @@ components:
             objectKey: $.EnvironmentSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_environment:
           operation:
             $ref: "#/paths/~1environments~1{environment_identifier}/delete"
@@ -2098,6 +2108,14 @@ components:
             objectKey: $.RouteSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_route:
           operation:
             $ref: "#/paths/~1environments~1{environment_identifier}~1applications~1{application_identifier}~1routes~1{route_identifier}/delete"
@@ -2156,6 +2174,14 @@ components:
             objectKey: $.ServiceSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_service:
           operation:
             $ref: "#/paths/~1environments~1{environment_identifier}~1applications~1{application_identifier}~1services~1{service_identifier}/delete"
@@ -2228,16 +2254,24 @@ components:
             objectKey: $.EnvironmentVpcList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/environment_vpcs/methods/list_environment_vpcs"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.migration_hub_refactor_spaces.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.migration_hub_refactor_spaces.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2245,17 +2279,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.migration_hub_refactor_spaces.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2276,9 +2299,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

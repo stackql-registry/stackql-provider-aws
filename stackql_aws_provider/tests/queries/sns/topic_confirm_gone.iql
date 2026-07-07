@@ -1,0 +1,1 @@
+SELECT topic_arn FROM aws.sns.topics WHERE region = '{{ region }}'

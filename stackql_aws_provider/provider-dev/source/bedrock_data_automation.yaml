@@ -50,7 +50,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyBlueprintStageResponse'
-      x-stackql-resource: blueprint_stage
+      x-stackql-resource: blueprints
       x-stackql-method: copy_blueprint_stage
       x-stackql-verb: EXEC
   /blueprints/:
@@ -127,6 +127,9 @@ paths:
       x-stackql-method: list_blueprints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.blueprints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /blueprints/{blueprint_arn}/versions/:
     post:
       operationId: CreateBlueprintVersion
@@ -154,7 +157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateBlueprintVersionResponse'
-      x-stackql-resource: blueprint_versions
+      x-stackql-resource: blueprints
       x-stackql-method: create_blueprint_version
       x-stackql-verb: INSERT
   /data-automation-libraries/:
@@ -219,6 +222,9 @@ paths:
       x-stackql-method: list_data_automation_libraries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.libraries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /data-automation-projects/:
     put:
       operationId: CreateDataAutomationProject
@@ -300,6 +306,9 @@ paths:
       x-stackql-method: list_data_automation_projects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.projects
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /blueprints/{blueprint_arn}/:
     delete:
       operationId: DeleteBlueprint
@@ -358,6 +367,7 @@ paths:
       x-stackql-resource: blueprints
       x-stackql-method: get_blueprint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.blueprint
     put:
       operationId: UpdateBlueprint
       description: Updates an existing Amazon Bedrock Data Automation Blueprint
@@ -434,6 +444,7 @@ paths:
       x-stackql-resource: data_automation_libraries
       x-stackql-method: get_data_automation_library
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.library
     put:
       operationId: UpdateDataAutomationLibrary
       description: Updates an existing Amazon Bedrock Data Automation Library
@@ -515,6 +526,7 @@ paths:
       x-stackql-resource: data_automation_projects
       x-stackql-method: get_data_automation_project
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.project
     put:
       operationId: UpdateDataAutomationProject
       description: Updates an existing Amazon Bedrock Data Automation Project
@@ -612,6 +624,7 @@ paths:
       x-stackql-resource: data_automation_library_entities
       x-stackql-method: get_data_automation_library_entity
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.entity
   /data-automation-libraries/{library_arn}/library-ingestion-jobs/{job_arn}:
     post:
       operationId: GetDataAutomationLibraryIngestionJob
@@ -639,6 +652,7 @@ paths:
       x-stackql-resource: data_automation_library_ingestion_jobs
       x-stackql-method: get_data_automation_library_ingestion_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.job
   /invokeBlueprintOptimizationAsync:
     post:
       operationId: InvokeBlueprintOptimizationAsync
@@ -675,7 +689,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeBlueprintOptimizationAsyncResponse'
-      x-stackql-resource: blueprint_optimization_async
+      x-stackql-resource: blueprints
       x-stackql-method: invoke_blueprint_optimization_async
       x-stackql-verb: EXEC
   /data-automation-libraries/{library_arn}/library-ingestion-jobs/:
@@ -722,7 +736,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeDataAutomationLibraryIngestionJobResponse'
-      x-stackql-resource: data_automation_library_ingestion_job
+      x-stackql-resource: data_automation_libraries
       x-stackql-method: invoke_data_automation_library_ingestion_job
       x-stackql-verb: EXEC
     post:
@@ -757,6 +771,9 @@ paths:
       x-stackql-method: list_data_automation_library_ingestion_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /data-automation-libraries/{library_arn}/entityType/{entity_type}/entities/:
     post:
       operationId: ListDataAutomationLibraryEntities
@@ -796,6 +813,9 @@ paths:
       x-stackql-method: list_data_automation_library_entities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -819,7 +839,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /tagResource:
@@ -848,7 +868,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /untagResource:
@@ -877,7 +897,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

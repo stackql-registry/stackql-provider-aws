@@ -1376,6 +1376,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1429,6 +1436,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1482,6 +1496,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1535,6 +1556,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1575,6 +1603,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1592,6 +1627,20 @@ components:
         describe_migration_task:
           operation:
             $ref: "#/paths/~1DescribeMigrationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.MigrationTask
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_migration_task:
+          operation:
+            $ref: "#/paths/~1ImportMigrationTask/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1614,6 +1663,39 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        notify_migration_task_state:
+          operation:
+            $ref: "#/paths/~1NotifyMigrationTaskState/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_resource_attributes:
+          operation:
+            $ref: "#/paths/~1PutResourceAttributes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1622,6 +1704,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/migration_tasks/methods/list_migration_tasks"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/migration_tasks/methods/put_resource_attributes"
         delete: []
     migration_task_updates:
       id: aws.mgh.migration_task_updates
@@ -1640,6 +1724,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1647,29 +1738,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/migration_task_updates/methods/list_migration_task_updates"
         insert: []
         update: []
-        delete: []
-    resource_attributes:
-      id: aws.mgh.resource_attributes
-      name: resource_attributes
-      title: resource_attributes
-      methods:
-        put_resource_attributes:
-          operation:
-            $ref: "#/paths/~1PutResourceAttributes/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/resource_attributes/methods/put_resource_attributes"
         delete: []

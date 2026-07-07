@@ -110,6 +110,9 @@ paths:
       x-stackql-method: list_monitors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Monitors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v20210603/Monitors/{monitor_name}:
     delete:
       operationId: DeleteMonitor
@@ -409,6 +412,9 @@ paths:
       x-stackql-method: list_health_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HealthEvents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v20210603/InternetEvents:
     get:
       operationId: ListInternetEvents
@@ -467,6 +473,9 @@ paths:
       x-stackql-method: list_internet_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InternetEvents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -485,7 +494,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -519,7 +528,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -545,7 +554,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v20210603/Monitors/{monitor_name}/Queries:
@@ -591,7 +600,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQueryOutput'
-      x-stackql-resource: query
+      x-stackql-resource: monitors
       x-stackql-method: start_query
       x-stackql-verb: EXEC
   /v20210603/Monitors/{monitor_name}/Queries/{query_id}:
@@ -619,7 +628,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopQueryOutput'
-      x-stackql-resource: query
+      x-stackql-resource: monitors
       x-stackql-method: stop_query
       x-stackql-verb: EXEC
 components:

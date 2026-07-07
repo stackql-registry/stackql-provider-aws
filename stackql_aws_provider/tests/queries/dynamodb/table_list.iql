@@ -1,0 +1,5 @@
+-- aws-json list smoke: ListTables returns a bare name list on the wire;
+-- the scalar-explode transform (golang_template_json_v0.3.0) reshapes it
+-- into rows under the faux `table_name` column. Also exercises the
+-- list-path DDL (NOCASE collision surface).
+SELECT table_name FROM aws.dynamodb.tables WHERE region = '{{ region }}'

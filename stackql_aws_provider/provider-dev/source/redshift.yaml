@@ -50,7 +50,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AcceptReservedNodeExchangeOutputDisplay'
-      x-stackql-resource: reserved_node_exchange
+      x-stackql-resource: reserved_nodes
       x-stackql-method: accept_reserved_node_exchange
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AcceptReservedNodeExchangeOutputDisplay
@@ -72,7 +72,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AcceptReservedNodeExchangeInputMessage'
-      x-stackql-resource: reserved_node_exchange
+      x-stackql-resource: reserved_nodes
       x-stackql-method: accept_reserved_node_exchange
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: AcceptReservedNodeExchangeOutputDisplay
@@ -201,7 +201,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AssociateDataShareConsumerOutputDisplay'
-      x-stackql-resource: data_share_consumers
+      x-stackql-resource: data_shares
       x-stackql-method: associate_data_share_consumer
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AssociateDataShareConsumerOutputDisplay
@@ -223,7 +223,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AssociateDataShareConsumerMessage'
-      x-stackql-resource: data_share_consumers
+      x-stackql-resource: data_shares
       x-stackql-method: associate_data_share_consumer
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AssociateDataShareConsumerOutputDisplay
@@ -282,7 +282,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AuthorizeClusterSecurityGroupIngressOutputDisplay'
-      x-stackql-resource: cluster_security_group_ingress
+      x-stackql-resource: cluster_security_groups
       x-stackql-method: authorize_cluster_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeClusterSecurityGroupIngressOutputDisplay
@@ -312,7 +312,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AuthorizeClusterSecurityGroupIngressMessage'
-      x-stackql-resource: cluster_security_group_ingress
+      x-stackql-resource: cluster_security_groups
       x-stackql-method: authorize_cluster_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeClusterSecurityGroupIngressOutputDisplay
@@ -552,7 +552,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchDeleteClusterSnapshotsOutputDisplay'
-      x-stackql-resource: batch_delete_cluster_snapshots
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: batch_delete_cluster_snapshots
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchDeleteClusterSnapshotsOutputDisplay
@@ -573,7 +573,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchDeleteClusterSnapshotsRequest'
-      x-stackql-resource: batch_delete_cluster_snapshots
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: batch_delete_cluster_snapshots
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchDeleteClusterSnapshotsOutputDisplay
@@ -619,7 +619,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchModifyClusterSnapshotsOutputDisplay'
-      x-stackql-resource: batch_modify_cluster_snapshots
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: batch_modify_cluster_snapshots
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchModifyClusterSnapshotsOutputDisplay
@@ -640,7 +640,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchModifyClusterSnapshotsMessage'
-      x-stackql-resource: batch_modify_cluster_snapshots
+      x-stackql-resource: cluster_snapshots
       x-stackql-method: batch_modify_cluster_snapshots
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchModifyClusterSnapshotsOutputDisplay
@@ -671,7 +671,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CancelResizeOutputDisplay'
-      x-stackql-resource: resize
+      x-stackql-resource: clusters
       x-stackql-method: cancel_resize
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelResizeOutputDisplay
@@ -692,7 +692,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CancelResizeMessage'
-      x-stackql-resource: resize
+      x-stackql-resource: clusters
       x-stackql-method: cancel_resize
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelResizeOutputDisplay
@@ -752,7 +752,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyClusterSnapshotOutputDisplay'
-      x-stackql-resource: cluster_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: copy_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyClusterSnapshotOutputDisplay
@@ -778,7 +778,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyClusterSnapshotMessage'
-      x-stackql-resource: cluster_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: copy_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyClusterSnapshotOutputDisplay
@@ -2615,7 +2615,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeauthorizeDataShareOutputDisplay'
-      x-stackql-resource: deauthorize_data_share
+      x-stackql-resource: data_shares
       x-stackql-method: deauthorize_data_share
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DeauthorizeDataShareOutputDisplay
@@ -2636,7 +2636,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeauthorizeDataShareMessage'
-      x-stackql-resource: deauthorize_data_share
+      x-stackql-resource: data_shares
       x-stackql-method: deauthorize_data_share
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DeauthorizeDataShareOutputDisplay
@@ -5912,7 +5912,7 @@ paths:
           snapshot you do not own, optional if you own the snapshot.
         schema:
           $ref: '#/components/schemas/String'
-      - name: Filters
+      - name: Filter
         in: query
         required: false
         description: A set of name, operator, and value items to filter the results.
@@ -6461,6 +6461,19 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeResizeOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "DescribeResizeResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "DescribeResizeResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n) "map" -}}"target_node_type":
+        {{ toJson (index $n "TargetNodeType") }}, "target_number_of_nodes": {{ toJson (index $n "TargetNumberOfNodes") }},
+        "target_cluster_type": {{ toJson (index $n "TargetClusterType") }}, "status": {{ toJson (index $n "Status") }}, "import_tables_completed":
+        {{ toJson (index $n "ImportTablesCompleted") }}, "import_tables_in_progress": {{ toJson (index $n "ImportTablesInProgress")
+        }}, "import_tables_not_started": {{ toJson (index $n "ImportTablesNotStarted") }}, "avg_resize_rate_in_mega_bytes_per_second":
+        {{ toJson (index $n "AvgResizeRateInMegaBytesPerSecond") }}, "total_resize_data_in_mega_bytes": {{ toJson (index $n
+        "TotalResizeDataInMegaBytes") }}, "progress_in_mega_bytes": {{ toJson (index $n "ProgressInMegaBytes") }}, "elapsed_time_in_seconds":
+        {{ toJson (index $n "ElapsedTimeInSeconds") }}, "estimated_time_to_completion_in_seconds": {{ toJson (index $n "EstimatedTimeToCompletionInSeconds")
+        }}, "resize_type": {{ toJson (index $n "ResizeType") }}, "message": {{ toJson (index $n "Message") }}, "target_encryption_type":
+        {{ toJson (index $n "TargetEncryptionType") }}, "data_transfer_progress_percent": {{ toJson (index $n "DataTransferProgressPercent")
+        }}{{- end -}}}]}'
     post:
       operationId: POST_DescribeResize
       description: Returns information about the last resize operation for the specified cluster. If no resize operation has
@@ -6485,6 +6498,19 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeResizeOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "DescribeResizeResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "DescribeResizeResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n) "map" -}}"target_node_type":
+        {{ toJson (index $n "TargetNodeType") }}, "target_number_of_nodes": {{ toJson (index $n "TargetNumberOfNodes") }},
+        "target_cluster_type": {{ toJson (index $n "TargetClusterType") }}, "status": {{ toJson (index $n "Status") }}, "import_tables_completed":
+        {{ toJson (index $n "ImportTablesCompleted") }}, "import_tables_in_progress": {{ toJson (index $n "ImportTablesInProgress")
+        }}, "import_tables_not_started": {{ toJson (index $n "ImportTablesNotStarted") }}, "avg_resize_rate_in_mega_bytes_per_second":
+        {{ toJson (index $n "AvgResizeRateInMegaBytesPerSecond") }}, "total_resize_data_in_mega_bytes": {{ toJson (index $n
+        "TotalResizeDataInMegaBytes") }}, "progress_in_mega_bytes": {{ toJson (index $n "ProgressInMegaBytes") }}, "elapsed_time_in_seconds":
+        {{ toJson (index $n "ElapsedTimeInSeconds") }}, "estimated_time_to_completion_in_seconds": {{ toJson (index $n "EstimatedTimeToCompletionInSeconds")
+        }}, "resize_type": {{ toJson (index $n "ResizeType") }}, "message": {{ toJson (index $n "Message") }}, "target_encryption_type":
+        {{ toJson (index $n "TargetEncryptionType") }}, "data_transfer_progress_percent": {{ toJson (index $n "DataTransferProgressPercent")
+        }}{{- end -}}}]}'
   /?Action=DescribeScheduledActions&Version=2012-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -7138,7 +7164,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DisableLoggingOutputDisplay'
-      x-stackql-resource: logging
+      x-stackql-resource: clusters
       x-stackql-method: disable_logging
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableLoggingOutputDisplay
@@ -7159,7 +7185,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DisableLoggingMessage'
-      x-stackql-resource: logging
+      x-stackql-resource: clusters
       x-stackql-method: disable_logging
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableLoggingOutputDisplay
@@ -7193,7 +7219,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DisableSnapshotCopyOutputDisplay'
-      x-stackql-resource: snapshot_copy
+      x-stackql-resource: clusters
       x-stackql-method: disable_snapshot_copy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableSnapshotCopyOutputDisplay
@@ -7216,7 +7242,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DisableSnapshotCopyMessage'
-      x-stackql-resource: snapshot_copy
+      x-stackql-resource: clusters
       x-stackql-method: disable_snapshot_copy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableSnapshotCopyOutputDisplay
@@ -7267,7 +7293,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DisassociateDataShareConsumerOutputDisplay'
-      x-stackql-resource: data_share_consumers
+      x-stackql-resource: data_shares
       x-stackql-method: disassociate_data_share_consumer
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DisassociateDataShareConsumerOutputDisplay
@@ -7288,7 +7314,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DisassociateDataShareConsumerMessage'
-      x-stackql-resource: data_share_consumers
+      x-stackql-resource: data_shares
       x-stackql-method: disassociate_data_share_consumer
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DisassociateDataShareConsumerOutputDisplay
@@ -7347,7 +7373,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/EnableLoggingOutputDisplay'
-      x-stackql-resource: logging
+      x-stackql-resource: clusters
       x-stackql-method: enable_logging
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableLoggingOutputDisplay
@@ -7369,7 +7395,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/EnableLoggingMessage'
-      x-stackql-resource: logging
+      x-stackql-resource: clusters
       x-stackql-method: enable_logging
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableLoggingOutputDisplay
@@ -7431,7 +7457,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/EnableSnapshotCopyOutputDisplay'
-      x-stackql-resource: snapshot_copy
+      x-stackql-resource: clusters
       x-stackql-method: enable_snapshot_copy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableSnapshotCopyOutputDisplay
@@ -7452,7 +7478,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/EnableSnapshotCopyMessage'
-      x-stackql-resource: snapshot_copy
+      x-stackql-resource: clusters
       x-stackql-method: enable_snapshot_copy
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableSnapshotCopyOutputDisplay
@@ -7484,7 +7510,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/FailoverPrimaryComputeOutputDisplay'
-      x-stackql-resource: failover_primary_compute
+      x-stackql-resource: clusters
       x-stackql-method: failover_primary_compute
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverPrimaryComputeOutputDisplay
@@ -7505,7 +7531,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/FailoverPrimaryComputeInputMessage'
-      x-stackql-resource: failover_primary_compute
+      x-stackql-resource: clusters
       x-stackql-method: failover_primary_compute
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverPrimaryComputeOutputDisplay
@@ -8110,7 +8136,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyAquaConfigurationOutputDisplay'
-      x-stackql-resource: aqua_configurations
+      x-stackql-resource: clusters
       x-stackql-method: modify_aqua_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyAquaConfigurationOutputDisplay
@@ -8132,7 +8158,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyAquaInputMessage'
-      x-stackql-resource: aqua_configurations
+      x-stackql-resource: clusters
       x-stackql-method: modify_aqua_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyAquaConfigurationOutputDisplay
@@ -8617,7 +8643,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyClusterIamRolesOutputDisplay'
-      x-stackql-resource: cluster_iam_roles
+      x-stackql-resource: clusters
       x-stackql-method: modify_cluster_iam_roles
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyClusterIamRolesOutputDisplay
@@ -8640,7 +8666,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyClusterIamRolesMessage'
-      x-stackql-resource: cluster_iam_roles
+      x-stackql-resource: clusters
       x-stackql-method: modify_cluster_iam_roles
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyClusterIamRolesOutputDisplay
@@ -8703,7 +8729,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyClusterMaintenanceOutputDisplay'
-      x-stackql-resource: cluster_maintenances
+      x-stackql-resource: clusters
       x-stackql-method: modify_cluster_maintenance
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyClusterMaintenanceOutputDisplay
@@ -8724,7 +8750,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyClusterMaintenanceMessage'
-      x-stackql-resource: cluster_maintenances
+      x-stackql-resource: clusters
       x-stackql-method: modify_cluster_maintenance
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyClusterMaintenanceOutputDisplay
@@ -8896,7 +8922,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: cluster_snapshot_schedules
+      x-stackql-resource: snapshot_schedules
       x-stackql-method: modify_cluster_snapshot_schedule
       x-stackql-verb: UPDATE
     post:
@@ -8911,7 +8937,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyClusterSnapshotScheduleMessage'
-      x-stackql-resource: cluster_snapshot_schedules
+      x-stackql-resource: snapshot_schedules
       x-stackql-method: modify_cluster_snapshot_schedule
       x-stackql-verb: UPDATE
   /?Action=ModifyClusterSubnetGroup&Version=2012-12-01:
@@ -9338,7 +9364,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyLakehouseConfigurationOutputDisplay'
-      x-stackql-resource: lakehouse_configurations
+      x-stackql-resource: clusters
       x-stackql-method: modify_lakehouse_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyLakehouseConfigurationOutputDisplay
@@ -9360,7 +9386,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyLakehouseConfigurationMessage'
-      x-stackql-resource: lakehouse_configurations
+      x-stackql-resource: clusters
       x-stackql-method: modify_lakehouse_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyLakehouseConfigurationOutputDisplay
@@ -9599,7 +9625,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifySnapshotCopyRetentionPeriodOutputDisplay'
-      x-stackql-resource: snapshot_copy_retention_periods
+      x-stackql-resource: clusters
       x-stackql-method: modify_snapshot_copy_retention_period
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifySnapshotCopyRetentionPeriodOutputDisplay
@@ -9624,7 +9650,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifySnapshotCopyRetentionPeriodMessage'
-      x-stackql-resource: snapshot_copy_retention_periods
+      x-stackql-resource: clusters
       x-stackql-method: modify_snapshot_copy_retention_period
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifySnapshotCopyRetentionPeriodOutputDisplay
@@ -9779,7 +9805,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PauseClusterOutputDisplay'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: pause_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PauseClusterOutputDisplay
@@ -9800,7 +9826,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PauseClusterMessage'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: pause_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PauseClusterOutputDisplay
@@ -9841,7 +9867,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PurchaseReservedNodeOfferingOutputDisplay'
-      x-stackql-resource: purchase_reserved_node_offering
+      x-stackql-resource: reserved_node_offerings
       x-stackql-method: purchase_reserved_node_offering
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PurchaseReservedNodeOfferingOutputDisplay
@@ -9866,7 +9892,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PurchaseReservedNodeOfferingMessage'
-      x-stackql-resource: purchase_reserved_node_offering
+      x-stackql-resource: reserved_node_offerings
       x-stackql-method: purchase_reserved_node_offering
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PurchaseReservedNodeOfferingOutputDisplay
@@ -9958,7 +9984,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RebootClusterOutputDisplay'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: reboot_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootClusterOutputDisplay
@@ -9982,7 +10008,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RebootClusterMessage'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: reboot_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootClusterOutputDisplay
@@ -10071,7 +10097,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RejectDataShareOutputDisplay'
-      x-stackql-resource: data_share
+      x-stackql-resource: data_shares
       x-stackql-method: reject_data_share
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RejectDataShareOutputDisplay
@@ -10092,7 +10118,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RejectDataShareMessage'
-      x-stackql-resource: data_share
+      x-stackql-resource: data_shares
       x-stackql-method: reject_data_share
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RejectDataShareOutputDisplay
@@ -10139,7 +10165,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetClusterParameterGroupOutputDisplay'
-      x-stackql-resource: cluster_parameter_group
+      x-stackql-resource: cluster_parameters
       x-stackql-method: reset_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetClusterParameterGroupOutputDisplay
@@ -10162,7 +10188,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetClusterParameterGroupMessage'
-      x-stackql-resource: cluster_parameter_group
+      x-stackql-resource: cluster_parameters
       x-stackql-method: reset_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetClusterParameterGroupOutputDisplay
@@ -10235,7 +10261,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResizeClusterOutputDisplay'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: resize_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResizeClusterOutputDisplay
@@ -10260,7 +10286,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResizeClusterMessage'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: resize_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResizeClusterOutputDisplay
@@ -10587,7 +10613,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreFromClusterSnapshotOutputDisplay'
-      x-stackql-resource: from_cluster_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: restore_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreFromClusterSnapshotOutputDisplay
@@ -10620,7 +10646,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreFromClusterSnapshotMessage'
-      x-stackql-resource: from_cluster_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: restore_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreFromClusterSnapshotOutputDisplay
@@ -10709,7 +10735,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreTableFromClusterSnapshotOutputDisplay'
-      x-stackql-resource: table_from_cluster_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: restore_table_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreTableFromClusterSnapshotOutputDisplay
@@ -10737,7 +10763,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreTableFromClusterSnapshotMessage'
-      x-stackql-resource: table_from_cluster_snapshot
+      x-stackql-resource: clusters
       x-stackql-method: restore_table_from_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreTableFromClusterSnapshotOutputDisplay
@@ -10768,7 +10794,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResumeClusterOutputDisplay'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: resume_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResumeClusterOutputDisplay
@@ -10789,7 +10815,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResumeClusterMessage'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: resume_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResumeClusterOutputDisplay
@@ -10844,7 +10870,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RevokeClusterSecurityGroupIngressOutputDisplay'
-      x-stackql-resource: cluster_security_group_ingress
+      x-stackql-resource: cluster_security_groups
       x-stackql-method: revoke_cluster_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeClusterSecurityGroupIngressOutputDisplay
@@ -10867,7 +10893,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RevokeClusterSecurityGroupIngressMessage'
-      x-stackql-resource: cluster_security_group_ingress
+      x-stackql-resource: cluster_security_groups
       x-stackql-method: revoke_cluster_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeClusterSecurityGroupIngressOutputDisplay
@@ -11045,7 +11071,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RotateEncryptionKeyOutputDisplay'
-      x-stackql-resource: rotate_encryption_key
+      x-stackql-resource: clusters
       x-stackql-method: rotate_encryption_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RotateEncryptionKeyOutputDisplay
@@ -11066,7 +11092,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RotateEncryptionKeyMessage'
-      x-stackql-resource: rotate_encryption_key
+      x-stackql-resource: clusters
       x-stackql-method: rotate_encryption_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RotateEncryptionKeyOutputDisplay
@@ -11127,7 +11153,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UpdatePartnerStatusOutputDisplay'
-      x-stackql-resource: partner_status
+      x-stackql-resource: partners
       x-stackql-method: update_partner_status
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdatePartnerStatusOutputDisplay
@@ -11148,7 +11174,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdatePartnerStatusInputMessage'
-      x-stackql-resource: partner_status
+      x-stackql-resource: partners
       x-stackql-method: update_partner_status
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdatePartnerStatusOutputDisplay
@@ -14855,16 +14881,40 @@ components:
         Filters:
           $ref: '#/components/schemas/DescribeIntegrationsFilterList'
           description: A filter that specifies one or more resources to return.
-    StringDisplay:
+    LoggingStatusDisplay:
       type: object
-      properties: {}
+      properties:
+        LoggingEnabled:
+          type: boolean
+          description: true if logging is on, false if logging is off.
+        BucketName:
+          type: string
+          description: The name of the S3 bucket where the log files are stored.
+        S3KeyPrefix:
+          type: string
+          description: The prefix applied to the log file names.
+        LastSuccessfulDeliveryTime:
+          type: string
+          description: The last time that logs were delivered.
+        LastFailureTime:
+          type: string
+          description: The last time when logs failed to be delivered.
+        LastFailureMessage:
+          type: string
+          description: The message indicating that logs failed to be delivered.
+        LogDestinationType:
+          type: string
+          description: The log destination type. An enum with possible values of s3 and cloudwatch.
+        LogExports:
+          type: string
+          description: The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.
     DescribeLoggingStatusOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/StringDisplay'
+            $ref: '#/components/schemas/LoggingStatusDisplay'
     DescribeLoggingStatusMessage:
       type: object
       properties:
@@ -15236,13 +15286,16 @@ components:
             results of a DescribeReservedNodes request exceed the value specified in MaxRecords, Amazon Web Services returns
             a value in the Marker field of the response. You can retrieve the next set of response records by providing the
             returned marker value in the Marker parameter and retrying the request.
+    StringDisplay:
+      type: object
+      properties: {}
     DescribeResizeOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/StringDisplay'
+            $ref: '#/components/schemas/DescribeResizeRowDisplay'
     DescribeResizeMessage:
       type: object
       properties:
@@ -15252,6 +15305,65 @@ components:
             By default, resize operations for all clusters defined for an Amazon Web Services account are returned.
       required:
       - ClusterIdentifier
+    DescribeResizeRowDisplay:
+      type: object
+      properties:
+        target_node_type:
+          type: string
+          description: The node type that the cluster will have after the resize operation is complete.
+        target_number_of_nodes:
+          type: integer
+          description: The number of nodes that the cluster will have after the resize operation is complete.
+        target_cluster_type:
+          type: string
+          description: 'The cluster type after the resize operation is complete. Valid Values: multi-node | single-node'
+        status:
+          type: string
+          description: 'The status of the resize operation. Valid Values: NONE | IN_PROGRESS | FAILED | SUCCEEDED | CANCELLING'
+        import_tables_completed:
+          type: array
+          description: 'The names of tables that have been completely imported . Valid Values: List of table names.'
+        import_tables_in_progress:
+          type: array
+          description: 'The names of tables that are being currently imported. Valid Values: List of table names.'
+        import_tables_not_started:
+          type: array
+          description: 'The names of tables that have not been yet imported. Valid Values: List of table names'
+        avg_resize_rate_in_mega_bytes_per_second:
+          type: number
+          description: The average rate of the resize operation over the last few minutes, measured in megabytes per second.
+            After the resize operation completes, this value shows the average rate of the entire resize operation.
+        total_resize_data_in_mega_bytes:
+          type: integer
+          description: The estimated total amount of data, in megabytes, on the cluster before the resize operation began.
+        progress_in_mega_bytes:
+          type: integer
+          description: While the resize operation is in progress, this value shows the current amount of data, in megabytes,
+            that has been processed so far. When the resize operation is complete, this value shows the total amount of data,
+            in megabytes, on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the estimated total amount
+            of data before resize).
+        elapsed_time_in_seconds:
+          type: integer
+          description: The amount of seconds that have elapsed since the resize operation began. After the resize operation
+            completes, this value shows the total actual time, in seconds, for the resize operation.
+        estimated_time_to_completion_in_seconds:
+          type: integer
+          description: The estimated time remaining, in seconds, until the resize operation is complete. This value is calculated
+            based on the average resize rate and the estimated amount of data remaining to be processed. Once the resize operation
+            is complete, this value will be 0.
+        resize_type:
+          type: string
+          description: An enum with possible values of ClassicResize and ElasticResize. These values describe the type of
+            resize operation being performed.
+        message:
+          type: string
+          description: An optional string to provide additional details about the resize action.
+        target_encryption_type:
+          type: string
+          description: The type of encryption for the cluster after the resize is complete. Possible values are KMS and None.
+        data_transfer_progress_percent:
+          type: number
+          description: The percent of data transferred from source cluster to target cluster.
     ScheduledActionTypeValues:
       type: string
       enum:
@@ -15587,33 +15699,6 @@ components:
             with the specified tag value or values. For example, suppose that you have parameter groups that are tagged with
             values called admin and test. If you specify both of these tag values in the request, Amazon Redshift returns
             a response with the usage limit objects that have either or both of these tag values associated with them.
-    LoggingStatusDisplay:
-      type: object
-      properties:
-        LoggingEnabled:
-          type: boolean
-          description: true if logging is on, false if logging is off.
-        BucketName:
-          type: string
-          description: The name of the S3 bucket where the log files are stored.
-        S3KeyPrefix:
-          type: string
-          description: The prefix applied to the log file names.
-        LastSuccessfulDeliveryTime:
-          type: string
-          description: The last time that logs were delivered.
-        LastFailureTime:
-          type: string
-          description: The last time when logs failed to be delivered.
-        LastFailureMessage:
-          type: string
-          description: The message indicating that logs failed to be delivered.
-        LogDestinationType:
-          type: string
-          description: The log destination type. An enum with possible values of s3 and cloudwatch.
-        LogExports:
-          type: string
-          description: The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.
     DisableLoggingOutputDisplay:
       type: object
       properties:

@@ -100,6 +100,9 @@ paths:
       x-stackql-method: list_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /app/{app_id}/environment/{environment_name}/forms:
     post:
       operationId: CreateForm
@@ -183,6 +186,9 @@ paths:
       x-stackql-method: list_forms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /app/{app_id}/environment/{environment_name}/themes:
     post:
       operationId: CreateTheme
@@ -266,6 +272,9 @@ paths:
       x-stackql-method: list_themes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /app/{app_id}/environment/{environment_name}/components/{id}:
     delete:
       operationId: DeleteComponent
@@ -327,6 +336,7 @@ paths:
       x-stackql-resource: components
       x-stackql-method: get_component
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.component
     patch:
       operationId: UpdateComponent
       description: Updates an existing component.
@@ -437,6 +447,7 @@ paths:
       x-stackql-resource: forms
       x-stackql-method: get_form
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.form
     patch:
       operationId: UpdateForm
       description: Updates an existing form.
@@ -547,6 +558,7 @@ paths:
       x-stackql-resource: themes
       x-stackql-method: get_theme
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.theme
     patch:
       operationId: UpdateTheme
       description: Updates an existing theme.
@@ -661,6 +673,9 @@ paths:
       x-stackql-resource: components
       x-stackql-method: export_components
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /export/app/{app_id}/environment/{environment_name}/forms:
     get:
       operationId: ExportForms
@@ -694,6 +709,9 @@ paths:
       x-stackql-resource: forms
       x-stackql-method: export_forms
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /export/app/{app_id}/environment/{environment_name}/themes:
     get:
       operationId: ExportThemes
@@ -727,6 +745,9 @@ paths:
       x-stackql-resource: themes
       x-stackql-method: export_themes
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /app/{app_id}/environment/{environment_name}/codegen-jobs/{id}:
     get:
       operationId: GetCodegenJob
@@ -761,6 +782,7 @@ paths:
       x-stackql-resource: codegen_jobs
       x-stackql-method: get_codegen_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.job
   /app/{app_id}/environment/{environment_name}/metadata:
     get:
       operationId: GetMetadata
@@ -828,6 +850,9 @@ paths:
       x-stackql-method: list_codegen_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartCodegenJob
       description: Starts a code generation job for a specified Amplify app and backend environment.
@@ -889,7 +914,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -920,7 +945,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -946,7 +971,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /app/{app_id}/environment/{environment_name}/metadata/features/{feature_name}:
@@ -986,7 +1011,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: metadata_flags
+      x-stackql-resource: metadatas
       x-stackql-method: put_metadata_flag
       x-stackql-verb: REPLACE
   /tokens/{provider}/refresh:

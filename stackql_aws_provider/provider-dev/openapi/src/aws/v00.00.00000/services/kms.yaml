@@ -228,7 +228,6 @@ paths:
               required:
                 - KeyId
                 - GranteePrincipal
-                - Operations
       responses:
         "200":
           description: Success
@@ -766,7 +765,6 @@ paths:
                   description: Checks if your request will succeed. DryRun is an optional parameter. To learn more about how to use this parameter, see Testing your permissions in the Key Management Service Developer Guide.
               required:
                 - KeyId
-                - Plaintext
       responses:
         "200":
           description: Success
@@ -1407,7 +1405,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListKeyPoliciesResponse"
+                $ref: "#/components/schemas/ListKeyPoliciesOutputDisplay"
   /ListKeyRotations:
     post:
       operationId: ListKeyRotations
@@ -1597,7 +1595,6 @@ paths:
                   description: Skips ("bypasses") the key policy lockout safety check. The default value is false. Setting this value to true increases the risk that the KMS key becomes unmanageable. Do not set this value to true indiscriminately. For more information, see Default key policy in the Key Management Service Developer Guide. Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent PutKeyPolicy request on the KMS key.
               required:
                 - KeyId
-                - Policy
       responses:
         "200":
           description: Success
@@ -2171,7 +2168,6 @@ paths:
               required:
                 - KeyId
                 - Message
-                - Signature
                 - SigningAlgorithm
       responses:
         "200":
@@ -2223,7 +2219,6 @@ paths:
                 - Message
                 - KeyId
                 - MacAlgorithm
-                - Mac
       responses:
         "200":
           description: Success
@@ -3339,22 +3334,19 @@ components:
         Constraints:
           $ref: "#/components/schemas/GrantConstraints"
           description: A list of key-value pairs that must be present in the encryption context of certain subsequent operations that the grant allows.
-    ListKeyPoliciesResponse:
+    ListKeyPoliciesRowDisplay:
       type: object
       properties:
-        PolicyNames:
-          $ref: "#/components/schemas/PolicyNameList"
+        policy_name:
+          type: string
           description: A list of key policy names. The only valid value is default.
-        NextMarker:
-          $ref: "#/components/schemas/MarkerType"
-          description: When Truncated is true, this element is present and contains the value to use for the Marker parameter in a subsequent request.
-        Truncated:
-          $ref: "#/components/schemas/BooleanType"
-          description: A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the NextMarker element in this response to the Marker parameter in a subsequent request.
-    PolicyNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/PolicyNameType"
+    ListKeyPoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListKeyPoliciesRowDisplay"
     IncludeKeyMaterial:
       type: string
       enum:
@@ -3568,6 +3560,450 @@ components:
           $ref: "#/components/schemas/MacAlgorithmSpec"
           description: The MAC algorithm used in the verification.
   x-stackQL-resources:
+    keys:
+      id: aws.kms.keys
+      name: keys
+      title: keys
+      methods:
+        cancel_key_deletion:
+          operation:
+            $ref: "#/paths/~1CancelKeyDeletion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_key:
+          operation:
+            $ref: "#/paths/~1CreateKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_imported_key_material:
+          operation:
+            $ref: "#/paths/~1DeleteImportedKeyMaterial/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        derive_shared_secret:
+          operation:
+            $ref: "#/paths/~1DeriveSharedSecret/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_key:
+          operation:
+            $ref: "#/paths/~1DescribeKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.KeyMetadata
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_key:
+          operation:
+            $ref: "#/paths/~1DisableKey/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_key_rotation:
+          operation:
+            $ref: "#/paths/~1DisableKeyRotation/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_key:
+          operation:
+            $ref: "#/paths/~1EnableKey/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_key_rotation:
+          operation:
+            $ref: "#/paths/~1EnableKeyRotation/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        encrypt:
+          operation:
+            $ref: "#/paths/~1Encrypt/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        generate_data_key:
+          operation:
+            $ref: "#/paths/~1GenerateDataKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        generate_data_key_pair:
+          operation:
+            $ref: "#/paths/~1GenerateDataKeyPair/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        generate_data_key_pair_without_plaintext:
+          operation:
+            $ref: "#/paths/~1GenerateDataKeyPairWithoutPlaintext/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        generate_data_key_without_plaintext:
+          operation:
+            $ref: "#/paths/~1GenerateDataKeyWithoutPlaintext/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        generate_mac:
+          operation:
+            $ref: "#/paths/~1GenerateMac/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_key_material:
+          operation:
+            $ref: "#/paths/~1ImportKeyMaterial/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_keys:
+          operation:
+            $ref: "#/paths/~1ListKeys/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Keys
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        replicate_key:
+          operation:
+            $ref: "#/paths/~1ReplicateKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        rotate_key_on_demand:
+          operation:
+            $ref: "#/paths/~1RotateKeyOnDemand/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        schedule_key_deletion:
+          operation:
+            $ref: "#/paths/~1ScheduleKeyDeletion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        sign:
+          operation:
+            $ref: "#/paths/~1Sign/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_key_description:
+          operation:
+            $ref: "#/paths/~1UpdateKeyDescription/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_primary_region:
+          operation:
+            $ref: "#/paths/~1UpdatePrimaryRegion/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        verify:
+          operation:
+            $ref: "#/paths/~1Verify/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        verify_mac:
+          operation:
+            $ref: "#/paths/~1VerifyMac/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/keys/methods/describe_key"
+          - $ref: "#/components/x-stackQL-resources/keys/methods/list_keys"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/keys/methods/create_key"
+        update:
+          - $ref: "#/components/x-stackQL-resources/keys/methods/update_key_description"
+          - $ref: "#/components/x-stackQL-resources/keys/methods/update_primary_region"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/keys/methods/delete_imported_key_material"
+    custom_key_stores:
+      id: aws.kms.custom_key_stores
+      name: custom_key_stores
+      title: custom_key_stores
+      methods:
+        connect_custom_key_store:
+          operation:
+            $ref: "#/paths/~1ConnectCustomKeyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_custom_key_store:
+          operation:
+            $ref: "#/paths/~1CreateCustomKeyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_custom_key_store:
+          operation:
+            $ref: "#/paths/~1DeleteCustomKeyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_custom_key_stores:
+          operation:
+            $ref: "#/paths/~1DescribeCustomKeyStores/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.CustomKeyStores
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        disconnect_custom_key_store:
+          operation:
+            $ref: "#/paths/~1DisconnectCustomKeyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_custom_key_store:
+          operation:
+            $ref: "#/paths/~1UpdateCustomKeyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/describe_custom_key_stores"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/create_custom_key_store"
+        update:
+          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/update_custom_key_store"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/delete_custom_key_store"
     alias:
       id: aws.kms.alias
       name: alias
@@ -3617,73 +4053,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/alias/methods/update_alias"
         delete:
           - $ref: "#/components/x-stackQL-resources/alias/methods/delete_alias"
-    custom_key_stores:
-      id: aws.kms.custom_key_stores
-      name: custom_key_stores
-      title: custom_key_stores
-      methods:
-        create_custom_key_store:
-          operation:
-            $ref: "#/paths/~1CreateCustomKeyStore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_custom_key_store:
-          operation:
-            $ref: "#/paths/~1DeleteCustomKeyStore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_custom_key_stores:
-          operation:
-            $ref: "#/paths/~1DescribeCustomKeyStores/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.CustomKeyStores
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_custom_key_store:
-          operation:
-            $ref: "#/paths/~1UpdateCustomKeyStore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/describe_custom_key_stores"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/create_custom_key_store"
-        update:
-          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/update_custom_key_store"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/custom_key_stores/methods/delete_custom_key_store"
     grants:
       id: aws.kms.grants
       name: grants
@@ -3714,6 +4083,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         revoke_grant:
@@ -3736,83 +4112,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/grants/methods/revoke_grant"
         delete: []
-    keys:
-      id: aws.kms.keys
-      name: keys
-      title: keys
-      methods:
-        create_key:
-          operation:
-            $ref: "#/paths/~1CreateKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_key:
-          operation:
-            $ref: "#/paths/~1DescribeKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_keys:
-          operation:
-            $ref: "#/paths/~1ListKeys/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Keys
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/keys/methods/describe_key"
-          - $ref: "#/components/x-stackQL-resources/keys/methods/list_keys"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/keys/methods/create_key"
-        update: []
-        delete: []
-    imported_key_materials:
-      id: aws.kms.imported_key_materials
-      name: imported_key_materials
-      title: imported_key_materials
-      methods:
-        delete_imported_key_material:
-          operation:
-            $ref: "#/paths/~1DeleteImportedKeyMaterial/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/imported_key_materials/methods/delete_imported_key_material"
     key_last_usages:
       id: aws.kms.key_last_usages
       name: key_last_usages
@@ -3861,12 +4160,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.PolicyNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListKeyPoliciesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "PolicyNames" -}}{{- $tok := index . "NextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_key_policy:
@@ -3978,6 +4290,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4003,6 +4322,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4028,6 +4354,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4053,6 +4386,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4061,10 +4401,10 @@ components:
         insert: []
         update: []
         delete: []
-    resources:
-      id: aws.kms.resources
-      name: resources
-      title: resources
+    tags:
+      id: aws.kms.tags
+      name: tags
+      title: tags
       methods:
         tag_resource:
           operation:
@@ -4094,52 +4434,6 @@ components:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    key_descriptions:
-      id: aws.kms.key_descriptions
-      name: key_descriptions
-      title: key_descriptions
-      methods:
-        update_key_description:
-          operation:
-            $ref: "#/paths/~1UpdateKeyDescription/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/key_descriptions/methods/update_key_description"
-        delete: []
-    primary_regions:
-      id: aws.kms.primary_regions
-      name: primary_regions
-      title: primary_regions
-      methods:
-        update_primary_region:
-          operation:
-            $ref: "#/paths/~1UpdatePrimaryRegion/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/primary_regions/methods/update_primary_region"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -274,8 +274,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - AwsRegion
-                - Name
-                - Endpoints
       responses:
         "201":
           description: Success
@@ -365,7 +363,6 @@ paths:
                 TargetApplications:
                   $ref: "#/components/schemas/SipRuleTargetApplicationList"
               required:
-                - Name
                 - TriggerType
                 - TriggerValue
       responses:
@@ -869,8 +866,6 @@ paths:
                   $ref: "#/components/schemas/NullableBoolean"
                 TargetApplications:
                   $ref: "#/components/schemas/SipRuleTargetApplicationList"
-              required:
-                - Name
       responses:
         "202":
           description: Success
@@ -1170,8 +1165,6 @@ paths:
               properties:
                 Origination:
                   $ref: "#/components/schemas/Origination"
-              required:
-                - Origination
       responses:
         "200":
           description: Success
@@ -1354,8 +1347,6 @@ paths:
               properties:
                 Termination:
                   $ref: "#/components/schemas/Termination"
-              required:
-                - Termination
       responses:
         "200":
           description: Success
@@ -1857,7 +1848,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAvailableVoiceConnectorRegionsResponse"
+                $ref: "#/components/schemas/ListAvailableVoiceConnectorRegionsOutputDisplay"
   /phone-numbers:
     get:
       operationId: ListPhoneNumbers
@@ -1959,7 +1950,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListVoiceConnectorTerminationCredentialsResponse"
+                $ref: "#/components/schemas/ListVoiceConnectorTerminationCredentialsOutputDisplay"
   /voice-connectors/{voice_connector_id}/termination/credentials?operation=put:
     post:
       operationId: PutVoiceConnectorTerminationCredentials
@@ -2060,7 +2051,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SearchAvailablePhoneNumbersResponse"
+                $ref: "#/components/schemas/SearchAvailablePhoneNumbersOutputDisplay"
   /voice-connectors/{voice_connector_id}/speaker-search-tasks:
     post:
       operationId: StartSpeakerSearchTask
@@ -2189,7 +2180,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceARN
-                - Tags
       responses:
         "204":
           description: Success
@@ -3675,16 +3665,19 @@ components:
         StatusMessage:
           $ref: "#/components/schemas/String"
           description: The status of a voice tone analysis task.
-    ListAvailableVoiceConnectorRegionsResponse:
+    ListAvailableVoiceConnectorRegionsRowDisplay:
       type: object
       properties:
-        VoiceConnectorRegions:
-          $ref: "#/components/schemas/VoiceConnectorAwsRegionList"
+        voice_connector_region:
+          type: string
           description: The list of AWS Regions.
-    VoiceConnectorAwsRegionList:
-      type: array
-      items:
-        $ref: "#/components/schemas/VoiceConnectorAwsRegion"
+    ListAvailableVoiceConnectorRegionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAvailableVoiceConnectorRegionsRowDisplay"
     ResultMax:
       type: integer
       minimum: 1
@@ -3800,12 +3793,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/VoiceConnectorGroup"
-    ListVoiceConnectorTerminationCredentialsResponse:
+    ListVoiceConnectorTerminationCredentialsRowDisplay:
       type: object
       properties:
-        Usernames:
-          $ref: "#/components/schemas/SensitiveStringList"
+        username:
+          type: string
           description: A list of user names.
+    ListVoiceConnectorTerminationCredentialsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListVoiceConnectorTerminationCredentialsRowDisplay"
     ListVoiceConnectorsResponse:
       type: object
       properties:
@@ -3976,15 +3976,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    SearchAvailablePhoneNumbersResponse:
+    SearchAvailablePhoneNumbersRowDisplay:
       type: object
       properties:
-        E164PhoneNumbers:
-          $ref: "#/components/schemas/E164PhoneNumberList"
+        e164_phone_number:
+          type: string
           description: Confines a search to just the phone numbers in the E.164 format.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The token used to return the next page of results.
+    SearchAvailablePhoneNumbersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/SearchAvailablePhoneNumbersRowDisplay"
     CallLegType:
       type: string
       enum:
@@ -4150,10 +4154,10 @@ components:
           $ref: "#/components/schemas/SensitiveNonEmptyString"
           description: The country of the candidate address.
   x-stackQL-resources:
-    phone_numbers_with_voice_connectors:
-      id: aws.chime_sdk_voice.phone_numbers_with_voice_connectors
-      name: phone_numbers_with_voice_connectors
-      title: phone_numbers_with_voice_connectors
+    voice_connectors:
+      id: aws.chime_sdk_voice.voice_connectors
+      name: voice_connectors
+      title: voice_connectors
       methods:
         associate_phone_numbers_with_voice_connector:
           operation:
@@ -4166,16 +4170,106 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_voice_connector:
+          operation:
+            $ref: "#/paths/~1voice-connectors/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_voice_connectors:
+          operation:
+            $ref: "#/paths/~1voice-connectors/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_voice_connector:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_voice_connector:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.VoiceConnector
+        update_voice_connector:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_phone_numbers_from_voice_connector:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}?operation=disassociate-phone-numbers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_speaker_search_task:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1speaker-search-tasks/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_voice_tone_analysis_task:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1voice-tone-analysis-tasks/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_speaker_search_task:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1speaker-search-tasks~1{speaker_search_task_id}?operation=stop/post"
+          response:
+            openAPIDocKey: "204"
+        stop_voice_tone_analysis_task:
+          operation:
+            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1voice-tone-analysis-tasks~1{voice_tone_analysis_task_id}?operation=stop/post"
+          response:
+            openAPIDocKey: "204"
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/get_voice_connector"
+          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/list_voice_connectors"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/create_voice_connector"
         update:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers_with_voice_connectors/methods/associate_phone_numbers_with_voice_connector"
-        delete: []
-    phone_numbers_with_voice_connector_groups:
-      id: aws.chime_sdk_voice.phone_numbers_with_voice_connector_groups
-      name: phone_numbers_with_voice_connector_groups
-      title: phone_numbers_with_voice_connector_groups
+          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/update_voice_connector"
+          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/associate_phone_numbers_with_voice_connector"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/delete_voice_connector"
+    voice_connector_groups:
+      id: aws.chime_sdk_voice.voice_connector_groups
+      name: voice_connector_groups
+      title: voice_connector_groups
       methods:
         associate_phone_numbers_with_voice_connector_group:
           operation:
@@ -4188,12 +4282,132 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_voice_connector_group:
+          operation:
+            $ref: "#/paths/~1voice-connector-groups/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_voice_connector_groups:
+          operation:
+            $ref: "#/paths/~1voice-connector-groups/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_voice_connector_group:
+          operation:
+            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_voice_connector_group:
+          operation:
+            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.VoiceConnectorGroup
+        update_voice_connector_group:
+          operation:
+            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_phone_numbers_from_voice_connector_group:
+          operation:
+            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}?operation=disassociate-phone-numbers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/get_voice_connector_group"
+          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/list_voice_connector_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/create_voice_connector_group"
+        update:
+          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/update_voice_connector_group"
+          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/associate_phone_numbers_with_voice_connector_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/delete_voice_connector_group"
+    phone_numbers:
+      id: aws.chime_sdk_voice.phone_numbers
+      name: phone_numbers
+      title: phone_numbers
+      methods:
+        batch_delete_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers?operation=batch-delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.PhoneNumber
+        update_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_phone_numbers:
+          operation:
+            $ref: "#/paths/~1phone-numbers/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        restore_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}?operation=restore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/get_phone_number"
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/list_phone_numbers"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers_with_voice_connector_groups/methods/associate_phone_numbers_with_voice_connector_group"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/update_phone_number"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/delete_phone_number"
     phone_number_orders:
       id: aws.chime_sdk_voice.phone_number_orders
       name: phone_number_orders
@@ -4224,6 +4438,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PhoneNumberOrder
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/phone_number_orders/methods/get_phone_number_order"
@@ -4267,6 +4482,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ProxySession
         update_proxy_session:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1proxy-sessions~1{proxy_session_id}/post"
@@ -4313,6 +4529,25 @@ components:
             objectKey: $.SipMediaApplications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        create_sip_media_application_call:
+          operation:
+            $ref: "#/paths/~1sip-media-applications~1{sip_media_application_id}~1calls/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_sip_media_application:
           operation:
             $ref: "#/paths/~1sip-media-applications~1{sip_media_application_id}/delete"
@@ -4324,37 +4559,12 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SipMediaApplication
         update_sip_media_application:
           operation:
             $ref: "#/paths/~1sip-media-applications~1{sip_media_application_id}/put"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/get_sip_media_application"
-          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/list_sip_media_applications"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/create_sip_media_application"
-        update:
-          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/update_sip_media_application"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/delete_sip_media_application"
-    sip_media_application_calls:
-      id: aws.chime_sdk_voice.sip_media_application_calls
-      name: sip_media_application_calls
-      title: sip_media_application_calls
-      methods:
-        create_sip_media_application_call:
-          operation:
-            $ref: "#/paths/~1sip-media-applications~1{sip_media_application_id}~1calls/post"
-          response:
-            openAPIDocKey: "201"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -4373,12 +4583,17 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/get_sip_media_application"
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/list_sip_media_applications"
         insert:
-          - $ref: "#/components/x-stackQL-resources/sip_media_application_calls/methods/create_sip_media_application_call"
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/create_sip_media_application_call"
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/create_sip_media_application"
         update:
-          - $ref: "#/components/x-stackQL-resources/sip_media_application_calls/methods/update_sip_media_application_call"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/update_sip_media_application_call"
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/update_sip_media_application"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/sip_media_applications/methods/delete_sip_media_application"
     sip_rules:
       id: aws.chime_sdk_voice.sip_rules
       name: sip_rules
@@ -4404,6 +4619,14 @@ components:
             objectKey: $.SipRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_sip_rule:
           operation:
             $ref: "#/paths/~1sip-rules~1{sip_rule_id}/delete"
@@ -4415,6 +4638,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SipRule
         update_sip_rule:
           operation:
             $ref: "#/paths/~1sip-rules~1{sip_rule_id}/put"
@@ -4436,118 +4660,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/sip_rules/methods/update_sip_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/sip_rules/methods/delete_sip_rule"
-    voice_connectors:
-      id: aws.chime_sdk_voice.voice_connectors
-      name: voice_connectors
-      title: voice_connectors
-      methods:
-        create_voice_connector:
-          operation:
-            $ref: "#/paths/~1voice-connectors/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_voice_connectors:
-          operation:
-            $ref: "#/paths/~1voice-connectors/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        delete_voice_connector:
-          operation:
-            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_voice_connector:
-          operation:
-            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_voice_connector:
-          operation:
-            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/get_voice_connector"
-          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/list_voice_connectors"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/create_voice_connector"
-        update:
-          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/update_voice_connector"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/voice_connectors/methods/delete_voice_connector"
-    voice_connector_groups:
-      id: aws.chime_sdk_voice.voice_connector_groups
-      name: voice_connector_groups
-      title: voice_connector_groups
-      methods:
-        create_voice_connector_group:
-          operation:
-            $ref: "#/paths/~1voice-connector-groups/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_voice_connector_groups:
-          operation:
-            $ref: "#/paths/~1voice-connector-groups/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        delete_voice_connector_group:
-          operation:
-            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_voice_connector_group:
-          operation:
-            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_voice_connector_group:
-          operation:
-            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}/put"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/get_voice_connector_group"
-          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/list_voice_connector_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/create_voice_connector_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/update_voice_connector_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/voice_connector_groups/methods/delete_voice_connector_group"
     voice_profiles:
       id: aws.chime_sdk_voice.voice_profiles
       name: voice_profiles
@@ -4583,6 +4695,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VoiceProfile
         update_voice_profile:
           operation:
             $ref: "#/paths/~1voice-profiles~1{voice_profile_id}/put"
@@ -4639,6 +4752,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VoiceProfileDomain
         update_voice_profile_domain:
           operation:
             $ref: "#/paths/~1voice-profile-domains~1{voice_profile_domain_id}/put"
@@ -4660,50 +4774,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/voice_profile_domains/methods/update_voice_profile_domain"
         delete:
           - $ref: "#/components/x-stackQL-resources/voice_profile_domains/methods/delete_voice_profile_domain"
-    phone_numbers:
-      id: aws.chime_sdk_voice.phone_numbers
-      name: phone_numbers
-      title: phone_numbers
-      methods:
-        delete_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_phone_numbers:
-          operation:
-            $ref: "#/paths/~1phone-numbers/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/get_phone_number"
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/list_phone_numbers"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/update_phone_number"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/delete_phone_number"
     voice_connector_emergency_calling_configurations:
       id: aws.chime_sdk_voice.voice_connector_emergency_calling_configurations
       name: voice_connector_emergency_calling_configurations
@@ -4720,6 +4790,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EmergencyCallingConfiguration
         put_voice_connector_emergency_calling_configuration:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1emergency-calling-configuration/put"
@@ -4756,6 +4827,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ExternalSystemsConfiguration
         put_voice_connector_external_systems_configuration:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1external-systems-configuration/put"
@@ -4792,6 +4864,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Origination
         put_voice_connector_origination:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1origination/put"
@@ -4828,6 +4901,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Proxy
         put_voice_connector_proxy:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1programmable-numbers~1proxy/put"
@@ -4864,6 +4938,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.StreamingConfiguration
         put_voice_connector_streaming_configuration:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1streaming-configuration/put"
@@ -4900,6 +4975,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Termination
         put_voice_connector_termination:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1termination/put"
@@ -4941,6 +5017,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListVoiceConnectorTerminationCredentialsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Usernames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"username": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
         put_voice_connector_termination_credentials:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1termination~1credentials?operation=put/post"
@@ -4960,50 +5043,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/voice_connector_termination_credentials/methods/put_voice_connector_termination_credentials"
         delete:
           - $ref: "#/components/x-stackQL-resources/voice_connector_termination_credentials/methods/delete_voice_connector_termination_credentials"
-    phone_numbers_from_voice_connectors:
-      id: aws.chime_sdk_voice.phone_numbers_from_voice_connectors
-      name: phone_numbers_from_voice_connectors
-      title: phone_numbers_from_voice_connectors
-      methods:
-        disassociate_phone_numbers_from_voice_connector:
-          operation:
-            $ref: "#/paths/~1voice-connectors~1{voice_connector_id}?operation=disassociate-phone-numbers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers_from_voice_connectors/methods/disassociate_phone_numbers_from_voice_connector"
-        delete: []
-    phone_numbers_from_voice_connector_groups:
-      id: aws.chime_sdk_voice.phone_numbers_from_voice_connector_groups
-      name: phone_numbers_from_voice_connector_groups
-      title: phone_numbers_from_voice_connector_groups
-      methods:
-        disassociate_phone_numbers_from_voice_connector_group:
-          operation:
-            $ref: "#/paths/~1voice-connector-groups~1{voice_connector_group_id}?operation=disassociate-phone-numbers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers_from_voice_connector_groups/methods/disassociate_phone_numbers_from_voice_connector_group"
-        delete: []
     global_settings:
       id: aws.chime_sdk_voice.global_settings
       name: global_settings
@@ -5015,6 +5054,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VoiceConnector
         update_global_settings:
           operation:
             $ref: "#/paths/~1settings/put"
@@ -5071,6 +5111,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SipMediaApplicationAlexaSkillConfiguration
         put_sip_media_application_alexa_skill_configuration:
           operation:
             $ref: "#/paths/~1sip-media-applications~1{sip_media_application_id}~1alexa-skill-configuration/put"
@@ -5101,6 +5142,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SipMediaApplicationLoggingConfiguration
         put_sip_media_application_logging_configuration:
           operation:
             $ref: "#/paths/~1sip-media-applications~1{sip_media_application_id}~1logging-configuration/put"
@@ -5131,6 +5173,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SpeakerSearchTask
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/speaker_search_tasks/methods/get_speaker_search_task"
@@ -5148,6 +5191,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.LoggingConfiguration
         put_voice_connector_logging_configuration:
           operation:
             $ref: "#/paths/~1voice-connectors~1{voice_connector_id}~1logging-configuration/put"
@@ -5178,6 +5222,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TerminationHealth
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/voice_connector_termination_healths/methods/get_voice_connector_termination_health"
@@ -5195,6 +5240,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VoiceToneAnalysisTask
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -5214,6 +5260,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAvailableVoiceConnectorRegionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "VoiceConnectorRegions" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"voice_connector_region": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/available_voice_connector_regions/methods/list_available_voice_connector_regions"
@@ -5239,10 +5292,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.chime_sdk_voice.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.chime_sdk_voice.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5252,36 +5305,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    available_phone_numbers:
-      id: aws.chime_sdk_voice.available_phone_numbers
-      name: available_phone_numbers
-      title: available_phone_numbers
-      methods:
-        search_available_phone_numbers:
-          operation:
-            $ref: "#/paths/~1search?type=phone-numbers/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/available_phone_numbers/methods/search_available_phone_numbers"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.chime_sdk_voice.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
@@ -5303,9 +5326,36 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    available_phone_numbers:
+      id: aws.chime_sdk_voice.available_phone_numbers
+      name: available_phone_numbers
+      title: available_phone_numbers
+      methods:
+        search_available_phone_numbers:
+          operation:
+            $ref: "#/paths/~1search?type=phone-numbers/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SearchAvailablePhoneNumbersOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "E164PhoneNumbers" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"e164_phone_number": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/available_phone_numbers/methods/search_available_phone_numbers"
+        insert: []
+        update: []
         delete: []

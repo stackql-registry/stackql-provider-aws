@@ -1823,6 +1823,78 @@ components:
     UntagResourceResponse:
       type: object
   x-stackQL-resources:
+    virtual_clusters:
+      id: aws.emr_containers.virtual_clusters
+      name: virtual_clusters
+      title: virtual_clusters
+      methods:
+        cancel_job_run:
+          operation:
+            $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}~1jobruns~1{job_run_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_virtual_cluster:
+          operation:
+            $ref: "#/paths/~1virtualclusters/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_virtual_clusters:
+          operation:
+            $ref: "#/paths/~1virtualclusters/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.virtualClusters
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_virtual_cluster:
+          operation:
+            $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_virtual_cluster:
+          operation:
+            $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.virtualCluster
+        start_job_run:
+          operation:
+            $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}~1jobruns/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/describe_virtual_cluster"
+          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/list_virtual_clusters"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/create_virtual_cluster"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/delete_virtual_cluster"
     job_runs:
       id: aws.emr_containers.job_runs
       name: job_runs
@@ -1834,6 +1906,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.jobRun
         list_job_runs:
           operation:
             $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}~1jobruns/get"
@@ -1843,6 +1916,14 @@ components:
             objectKey: $.jobRuns
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_runs/methods/describe_job_run"
@@ -1875,6 +1956,14 @@ components:
             objectKey: $.templates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_job_template:
           operation:
             $ref: "#/paths/~1jobtemplates~1{template_id}/delete"
@@ -1887,6 +1976,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.jobTemplate
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_templates/methods/describe_job_template"
@@ -1921,6 +2011,14 @@ components:
             objectKey: $.endpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_managed_endpoint:
           operation:
             $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}~1endpoints~1{endpoint_id}/delete"
@@ -1933,6 +2031,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.endpoint
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_endpoints/methods/describe_managed_endpoint"
@@ -1967,12 +2066,21 @@ components:
             objectKey: $.securityConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         describe_security_configuration:
           operation:
             $ref: "#/paths/~1securityconfigurations~1{security_configuration_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.securityConfiguration
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_configurations/methods/describe_security_configuration"
@@ -1981,52 +2089,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/security_configurations/methods/create_security_configuration"
         update: []
         delete: []
-    virtual_clusters:
-      id: aws.emr_containers.virtual_clusters
-      name: virtual_clusters
-      title: virtual_clusters
-      methods:
-        create_virtual_cluster:
-          operation:
-            $ref: "#/paths/~1virtualclusters/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_virtual_clusters:
-          operation:
-            $ref: "#/paths/~1virtualclusters/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.virtualClusters
-          request:
-            nativeCasing: pascal
-        delete_virtual_cluster:
-          operation:
-            $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_virtual_cluster:
-          operation:
-            $ref: "#/paths/~1virtualclusters~1{virtual_cluster_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/describe_virtual_cluster"
-          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/list_virtual_clusters"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/create_virtual_cluster"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/virtual_clusters/methods/delete_virtual_cluster"
     managed_endpoint_session_credentials:
       id: aws.emr_containers.managed_endpoint_session_credentials
       name: managed_endpoint_session_credentials
@@ -2049,10 +2111,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.emr_containers.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.emr_containers.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2060,17 +2122,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.emr_containers.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2091,9 +2142,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

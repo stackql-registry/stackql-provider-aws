@@ -336,7 +336,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListEnvironmentsResult"
+                $ref: "#/components/schemas/ListEnvironmentsOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -399,7 +399,6 @@ paths:
                   description: The list of tags to add to the given Cloud9 development environment.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -827,19 +826,19 @@ components:
         - PENDING_START_REMOVAL_BY_OWNER
         - FAILED_REMOVAL_BY_COLLABORATOR
         - FAILED_REMOVAL_BY_OWNER
-    ListEnvironmentsResult:
+    ListEnvironmentsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If there are more than 25 items in the list, only the first 25 items are returned, along with a unique string called a next token. To get the next batch of items in the list, call this operation again, adding the next token to the call.
-        environmentIds:
-          $ref: "#/components/schemas/EnvironmentIdList"
+        environment_id:
+          type: string
           description: The list of environment identifiers.
-    EnvironmentIdList:
-      type: array
-      items:
-        $ref: "#/components/schemas/EnvironmentId"
+    ListEnvironmentsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListEnvironmentsRowDisplay"
     EnvironmentArn:
       type: string
       pattern: arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):cloud9:([a-z]{2}-[a-z]+-\d{1}):[0-9]{12}:environment:[a-zA-Z0-9]{8,32}
@@ -871,10 +870,10 @@ components:
           $ref: "#/components/schemas/EnvironmentMember"
           description: Information about the environment member whose settings were changed.
   x-stackQL-resources:
-    environment_ec2s:
-      id: aws.cloud9.environment_ec2s
-      name: environment_ec2s
-      title: environment_ec2s
+    environments:
+      id: aws.cloud9.environments
+      name: environments
+      title: environments
       methods:
         create_environment_ec2:
           operation:
@@ -889,12 +888,82 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_environment:
+          operation:
+            $ref: "#/paths/~1DeleteEnvironment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_environments:
+          operation:
+            $ref: "#/paths/~1DescribeEnvironments/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_environments:
+          operation:
+            $ref: "#/paths/~1ListEnvironments/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListEnvironmentsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "environmentIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"environment_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_environment:
+          operation:
+            $ref: "#/paths/~1UpdateEnvironment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/describe_environments"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/list_environments"
         insert:
-          - $ref: "#/components/x-stackQL-resources/environment_ec2s/methods/create_environment_ec2"
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/environments/methods/create_environment_ec2"
+        update:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
     environment_memberships:
       id: aws.cloud9.environment_memberships
       name: environment_memberships
@@ -938,6 +1007,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_environment_membership:
@@ -962,73 +1038,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/environment_memberships/methods/update_environment_membership"
         delete:
           - $ref: "#/components/x-stackQL-resources/environment_memberships/methods/delete_environment_membership"
-    environments:
-      id: aws.cloud9.environments
-      name: environments
-      title: environments
-      methods:
-        delete_environment:
-          operation:
-            $ref: "#/paths/~1DeleteEnvironment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_environments:
-          operation:
-            $ref: "#/paths/~1DescribeEnvironments/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_environments:
-          operation:
-            $ref: "#/paths/~1ListEnvironments/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.environmentIds
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_environment:
-          operation:
-            $ref: "#/paths/~1UpdateEnvironment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/describe_environments"
-          - $ref: "#/components/x-stackQL-resources/environments/methods/list_environments"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
     environment_status:
       id: aws.cloud9.environment_status
       name: environment_status
@@ -1053,10 +1062,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.cloud9.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.cloud9.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1071,17 +1080,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.cloud9.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1109,9 +1107,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

@@ -1034,10 +1034,10 @@ components:
           $ref: "#/components/schemas/LoggingConfigurationIdentifierList"
           description: Array of logging configurations attached to the room, from the request (if specified).
   x-stackQL-resources:
-    chat_tokens:
-      id: aws.ivschat.chat_tokens
-      name: chat_tokens
-      title: chat_tokens
+    rooms:
+      id: aws.ivschat.rooms
+      name: rooms
+      title: rooms
       methods:
         create_chat_token:
           operation:
@@ -1050,12 +1050,105 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_room:
+          operation:
+            $ref: "#/paths/~1CreateRoom/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_message:
+          operation:
+            $ref: "#/paths/~1DeleteMessage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_room:
+          operation:
+            $ref: "#/paths/~1DeleteRoom/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disconnect_user:
+          operation:
+            $ref: "#/paths/~1DisconnectUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_room:
+          operation:
+            $ref: "#/paths/~1GetRoom/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_rooms:
+          operation:
+            $ref: "#/paths/~1ListRooms/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_event:
+          operation:
+            $ref: "#/paths/~1SendEvent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_room:
+          operation:
+            $ref: "#/paths/~1UpdateRoom/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/rooms/methods/get_room"
+          - $ref: "#/components/x-stackQL-resources/rooms/methods/list_rooms"
         insert:
-          - $ref: "#/components/x-stackQL-resources/chat_tokens/methods/create_chat_token"
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/rooms/methods/create_chat_token"
+          - $ref: "#/components/x-stackQL-resources/rooms/methods/create_room"
+        update:
+          - $ref: "#/components/x-stackQL-resources/rooms/methods/update_room"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/rooms/methods/delete_message"
+          - $ref: "#/components/x-stackQL-resources/rooms/methods/delete_room"
     logging_configurations:
       id: aws.ivschat.logging_configurations
       name: logging_configurations
@@ -1125,101 +1218,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/logging_configurations/methods/update_logging_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/logging_configurations/methods/delete_logging_configuration"
-    rooms:
-      id: aws.ivschat.rooms
-      name: rooms
-      title: rooms
-      methods:
-        create_room:
-          operation:
-            $ref: "#/paths/~1CreateRoom/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_room:
-          operation:
-            $ref: "#/paths/~1DeleteRoom/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_room:
-          operation:
-            $ref: "#/paths/~1GetRoom/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_rooms:
-          operation:
-            $ref: "#/paths/~1ListRooms/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_room:
-          operation:
-            $ref: "#/paths/~1UpdateRoom/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/rooms/methods/get_room"
-          - $ref: "#/components/x-stackQL-resources/rooms/methods/list_rooms"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/rooms/methods/create_room"
-        update:
-          - $ref: "#/components/x-stackQL-resources/rooms/methods/update_room"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/rooms/methods/delete_room"
-    messages:
-      id: aws.ivschat.messages
-      name: messages
-      title: messages
-      methods:
-        delete_message:
-          operation:
-            $ref: "#/paths/~1DeleteMessage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/messages/methods/delete_message"
-    tags_for_resources:
-      id: aws.ivschat.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.ivschat.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1227,17 +1229,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.ivschat.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1258,9 +1249,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

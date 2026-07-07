@@ -51,7 +51,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_to_db_clusters
+      x-stackql-resource: db_clusters
       x-stackql-method: add_role_to_db_cluster
       x-stackql-verb: UPDATE
     post:
@@ -66,7 +66,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddRoleToDBClusterMessage'
-      x-stackql-resource: role_to_db_clusters
+      x-stackql-resource: db_clusters
       x-stackql-method: add_role_to_db_cluster
       x-stackql-verb: UPDATE
   /?Action=AddRoleToDBInstance&Version=2014-10-31:
@@ -105,7 +105,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_to_db_instances
+      x-stackql-resource: db_instances
       x-stackql-method: add_role_to_db_instance
       x-stackql-verb: UPDATE
     post:
@@ -121,7 +121,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddRoleToDBInstanceMessage'
-      x-stackql-resource: role_to_db_instances
+      x-stackql-resource: db_instances
       x-stackql-method: add_role_to_db_instance
       x-stackql-verb: UPDATE
   /?Action=AddSourceIdentifierToSubscription&Version=2014-10-31:
@@ -219,7 +219,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
     post:
@@ -237,7 +237,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddTagsToResourceMessage'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
   /?Action=ApplyPendingMaintenanceAction&Version=2014-10-31:
@@ -375,7 +375,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AuthorizeDBSecurityGroupIngressOutputDisplay'
-      x-stackql-resource: db_security_group_ingress
+      x-stackql-resource: db_security_groups
       x-stackql-method: authorize_db_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeDBSecurityGroupIngressOutputDisplay
@@ -406,7 +406,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AuthorizeDBSecurityGroupIngressMessage'
-      x-stackql-resource: db_security_group_ingress
+      x-stackql-resource: db_security_groups
       x-stackql-method: authorize_db_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeDBSecurityGroupIngressOutputDisplay
@@ -465,7 +465,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BacktrackDBClusterOutputDisplay'
-      x-stackql-resource: backtrack_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: backtrack_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BacktrackDBClusterOutputDisplay
@@ -488,7 +488,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BacktrackDBClusterMessage'
-      x-stackql-resource: backtrack_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: backtrack_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BacktrackDBClusterOutputDisplay
@@ -520,7 +520,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CancelExportTaskOutputDisplay'
-      x-stackql-resource: export_task
+      x-stackql-resource: export_tasks
       x-stackql-method: cancel_export_task
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelExportTaskOutputDisplay
@@ -542,7 +542,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CancelExportTaskMessage'
-      x-stackql-resource: export_task
+      x-stackql-resource: export_tasks
       x-stackql-method: cancel_export_task
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelExportTaskOutputDisplay
@@ -596,7 +596,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBClusterParameterGroupOutputDisplay'
-      x-stackql-resource: db_cluster_parameter_group
+      x-stackql-resource: db_cluster_parameters
       x-stackql-method: copy_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterParameterGroupOutputDisplay
@@ -619,7 +619,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBClusterParameterGroupMessage'
-      x-stackql-resource: db_cluster_parameter_group
+      x-stackql-resource: db_cluster_parameters
       x-stackql-method: copy_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterParameterGroupOutputDisplay
@@ -732,7 +732,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBClusterSnapshotOutputDisplay'
-      x-stackql-resource: db_cluster_snapshot
+      x-stackql-resource: db_clusters
       x-stackql-method: copy_db_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterSnapshotOutputDisplay
@@ -768,7 +768,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBClusterSnapshotMessage'
-      x-stackql-resource: db_cluster_snapshot
+      x-stackql-resource: db_clusters
       x-stackql-method: copy_db_cluster_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBClusterSnapshotOutputDisplay
@@ -822,7 +822,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyDBParameterGroupOutputDisplay'
-      x-stackql-resource: db_parameter_group
+      x-stackql-resource: db_parameters
       x-stackql-method: copy_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBParameterGroupOutputDisplay
@@ -845,7 +845,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyDBParameterGroupMessage'
-      x-stackql-resource: db_parameter_group
+      x-stackql-resource: db_parameters
       x-stackql-method: copy_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyDBParameterGroupOutputDisplay
@@ -1362,7 +1362,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateCustomDBEngineVersionOutputDisplay'
-      x-stackql-resource: custom_db_engine_versions
+      x-stackql-resource: db_engine_versions
       x-stackql-method: create_custom_db_engine_version
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateCustomDBEngineVersionOutputDisplay
@@ -1383,7 +1383,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateCustomDBEngineVersionMessage'
-      x-stackql-resource: custom_db_engine_versions
+      x-stackql-resource: db_engine_versions
       x-stackql-method: create_custom_db_engine_version
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateCustomDBEngineVersionOutputDisplay
@@ -3471,7 +3471,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateDBInstanceReadReplicaOutputDisplay'
-      x-stackql-resource: db_instance_read_replicas
+      x-stackql-resource: db_instances
       x-stackql-method: create_db_instance_read_replica
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateDBInstanceReadReplicaOutputDisplay
@@ -3499,7 +3499,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateDBInstanceReadReplicaMessage'
-      x-stackql-resource: db_instance_read_replicas
+      x-stackql-resource: db_instances
       x-stackql-method: create_db_instance_read_replica
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateDBInstanceReadReplicaOutputDisplay
@@ -4817,7 +4817,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeleteCustomDBEngineVersionOutputDisplay'
-      x-stackql-resource: custom_db_engine_versions
+      x-stackql-resource: db_engine_versions
       x-stackql-method: delete_custom_db_engine_version
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteCustomDBEngineVersionOutputDisplay
@@ -4845,7 +4845,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteCustomDBEngineVersionMessage'
-      x-stackql-resource: custom_db_engine_versions
+      x-stackql-resource: db_engine_versions
       x-stackql-method: delete_custom_db_engine_version
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteCustomDBEngineVersionOutputDisplay
@@ -10215,7 +10215,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DownloadDBLogFilePortionOutputDisplay'
-      x-stackql-resource: download_db_log_file_portion
+      x-stackql-resource: db_instances
       x-stackql-method: download_db_log_file_portion
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DownloadDBLogFilePortionOutputDisplay
@@ -10239,7 +10239,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DownloadDBLogFilePortionMessage'
-      x-stackql-resource: download_db_log_file_portion
+      x-stackql-resource: db_instances
       x-stackql-method: download_db_log_file_portion
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DownloadDBLogFilePortionOutputDisplay
@@ -10352,7 +10352,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/FailoverDBClusterOutputDisplay'
-      x-stackql-resource: failover_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: failover_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverDBClusterOutputDisplay
@@ -10384,7 +10384,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/FailoverDBClusterMessage'
-      x-stackql-resource: failover_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: failover_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverDBClusterOutputDisplay
@@ -10458,7 +10458,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/FailoverGlobalClusterOutputDisplay'
-      x-stackql-resource: failover_global_cluster
+      x-stackql-resource: global_clusters
       x-stackql-method: failover_global_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverGlobalClusterOutputDisplay
@@ -10496,7 +10496,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/FailoverGlobalClusterMessage'
-      x-stackql-resource: failover_global_cluster
+      x-stackql-resource: global_clusters
       x-stackql-method: failover_global_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverGlobalClusterOutputDisplay
@@ -10536,7 +10536,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -10559,7 +10559,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListTagsForResourceMessage'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -10772,7 +10772,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyCurrentDBClusterCapacityOutputDisplay'
-      x-stackql-resource: current_db_cluster_capacities
+      x-stackql-resource: db_clusters
       x-stackql-method: modify_current_db_cluster_capacity
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyCurrentDBClusterCapacityOutputDisplay
@@ -10801,7 +10801,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyCurrentDBClusterCapacityMessage'
-      x-stackql-resource: current_db_cluster_capacities
+      x-stackql-resource: db_clusters
       x-stackql-method: modify_current_db_cluster_capacity
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyCurrentDBClusterCapacityOutputDisplay
@@ -10865,7 +10865,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyCustomDBEngineVersionOutputDisplay'
-      x-stackql-resource: custom_db_engine_versions
+      x-stackql-resource: db_engine_versions
       x-stackql-method: modify_custom_db_engine_version
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyCustomDBEngineVersionOutputDisplay
@@ -10891,7 +10891,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyCustomDBEngineVersionMessage'
-      x-stackql-resource: custom_db_engine_versions
+      x-stackql-resource: db_engine_versions
       x-stackql-method: modify_custom_db_engine_version
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyCustomDBEngineVersionOutputDisplay
@@ -13562,7 +13562,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PromoteReadReplicaOutputDisplay'
-      x-stackql-resource: read_replica
+      x-stackql-resource: db_instances
       x-stackql-method: promote_read_replica
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PromoteReadReplicaOutputDisplay
@@ -13588,7 +13588,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PromoteReadReplicaMessage'
-      x-stackql-resource: read_replica
+      x-stackql-resource: db_instances
       x-stackql-method: promote_read_replica
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PromoteReadReplicaOutputDisplay
@@ -13620,7 +13620,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PromoteReadReplicaDBClusterOutputDisplay'
-      x-stackql-resource: read_replica_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: promote_read_replica_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PromoteReadReplicaDBClusterOutputDisplay
@@ -13641,7 +13641,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PromoteReadReplicaDBClusterMessage'
-      x-stackql-resource: read_replica_db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: promote_read_replica_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PromoteReadReplicaDBClusterOutputDisplay
@@ -13689,7 +13689,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PurchaseReservedDBInstancesOfferingOutputDisplay'
-      x-stackql-resource: purchase_reserved_db_instances_offering
+      x-stackql-resource: reserved_db_instances_offerings
       x-stackql-method: purchase_reserved_db_instances_offering
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PurchaseReservedDBInstancesOfferingOutputDisplay
@@ -13710,7 +13710,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PurchaseReservedDBInstancesOfferingMessage'
-      x-stackql-resource: purchase_reserved_db_instances_offering
+      x-stackql-resource: reserved_db_instances_offerings
       x-stackql-method: purchase_reserved_db_instances_offering
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PurchaseReservedDBInstancesOfferingOutputDisplay
@@ -13747,7 +13747,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RebootDBClusterOutputDisplay'
-      x-stackql-resource: db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: reboot_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootDBClusterOutputDisplay
@@ -13773,7 +13773,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RebootDBClusterMessage'
-      x-stackql-resource: db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: reboot_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootDBClusterOutputDisplay
@@ -13817,7 +13817,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RebootDBInstanceOutputDisplay'
-      x-stackql-resource: db_instance
+      x-stackql-resource: db_instances
       x-stackql-method: reboot_db_instance
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootDBInstanceOutputDisplay
@@ -13843,7 +13843,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RebootDBInstanceMessage'
-      x-stackql-resource: db_instance
+      x-stackql-resource: db_instances
       x-stackql-method: reboot_db_instance
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootDBInstanceOutputDisplay
@@ -13876,7 +13876,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RebootDBShardGroupOutputDisplay'
-      x-stackql-resource: db_shard_group
+      x-stackql-resource: db_shard_groups
       x-stackql-method: reboot_db_shard_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootDBShardGroupOutputDisplay
@@ -13899,7 +13899,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RebootDBShardGroupMessage'
-      x-stackql-resource: db_shard_group
+      x-stackql-resource: db_shard_groups
       x-stackql-method: reboot_db_shard_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootDBShardGroupOutputDisplay
@@ -13953,6 +13953,13 @@ paths:
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: RegisterDBProxyTargetsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $s := separator ", " -}}{{- $n := index . "RegisterDBProxyTargetsResponse" -}}{{- if
+        eq (kindOf $n) "map" }}{{ $n = index $n "RegisterDBProxyTargetsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq
+        (kindOf $n) "map" }}{{ $n = index $n "DBProxyTargets" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{-
+        range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson
+        $n }}{{- end -}}]}'
     post:
       operationId: POST_RegisterDBProxyTargets
       description: Associate one or more DBProxyTarget data structures with a DBProxyTargetGroup.
@@ -13974,6 +13981,13 @@ paths:
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: RegisterDBProxyTargetsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $s := separator ", " -}}{{- $n := index . "RegisterDBProxyTargetsResponse" -}}{{- if
+        eq (kindOf $n) "map" }}{{ $n = index $n "RegisterDBProxyTargetsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq
+        (kindOf $n) "map" }}{{ $n = index $n "DBProxyTargets" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{-
+        range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson
+        $n }}{{- end -}}]}'
   /?Action=RemoveFromGlobalCluster&Version=2014-10-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -14009,7 +14023,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RemoveFromGlobalClusterOutputDisplay'
-      x-stackql-resource: from_global_clusters
+      x-stackql-resource: global_clusters
       x-stackql-method: remove_from_global_cluster
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RemoveFromGlobalClusterOutputDisplay
@@ -14032,7 +14046,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveFromGlobalClusterMessage'
-      x-stackql-resource: from_global_clusters
+      x-stackql-resource: global_clusters
       x-stackql-method: remove_from_global_cluster
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RemoveFromGlobalClusterOutputDisplay
@@ -14075,7 +14089,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_from_db_clusters
+      x-stackql-resource: db_clusters
       x-stackql-method: remove_role_from_db_cluster
       x-stackql-verb: UPDATE
     post:
@@ -14092,7 +14106,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveRoleFromDBClusterMessage'
-      x-stackql-resource: role_from_db_clusters
+      x-stackql-resource: db_clusters
       x-stackql-method: remove_role_from_db_cluster
       x-stackql-verb: UPDATE
   /?Action=RemoveRoleFromDBInstance&Version=2014-10-31:
@@ -14130,7 +14144,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_from_db_instances
+      x-stackql-resource: db_instances
       x-stackql-method: remove_role_from_db_instance
       x-stackql-verb: UPDATE
     post:
@@ -14145,7 +14159,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveRoleFromDBInstanceMessage'
-      x-stackql-resource: role_from_db_instances
+      x-stackql-resource: db_instances
       x-stackql-method: remove_role_from_db_instance
       x-stackql-verb: UPDATE
   /?Action=RemoveSourceIdentifierFromSubscription&Version=2014-10-31:
@@ -14238,7 +14252,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
     post:
@@ -14255,7 +14269,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveTagsFromResourceMessage'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
   /?Action=ResetDBClusterParameterGroup&Version=2014-10-31:
@@ -14305,7 +14319,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetDBClusterParameterGroupOutputDisplay'
-      x-stackql-resource: db_cluster_parameter_group
+      x-stackql-resource: db_cluster_parameters
       x-stackql-method: reset_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBClusterParameterGroupOutputDisplay
@@ -14333,7 +14347,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetDBClusterParameterGroupMessage'
-      x-stackql-resource: db_cluster_parameter_group
+      x-stackql-resource: db_cluster_parameters
       x-stackql-method: reset_db_cluster_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBClusterParameterGroupOutputDisplay
@@ -14388,7 +14402,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetDBParameterGroupOutputDisplay'
-      x-stackql-resource: db_parameter_group
+      x-stackql-resource: db_parameters
       x-stackql-method: reset_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBParameterGroupOutputDisplay
@@ -14413,7 +14427,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetDBParameterGroupMessage'
-      x-stackql-resource: db_parameter_group
+      x-stackql-resource: db_parameters
       x-stackql-method: reset_db_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetDBParameterGroupOutputDisplay
@@ -14740,7 +14754,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreDBClusterFromS3OutputDisplay'
-      x-stackql-resource: db_cluster_from_s3
+      x-stackql-resource: db_clusters
       x-stackql-method: restore_db_cluster_from_s3
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBClusterFromS3OutputDisplay
@@ -14768,7 +14782,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreDBClusterFromS3Message'
-      x-stackql-resource: db_cluster_from_s3
+      x-stackql-resource: db_clusters
       x-stackql-method: restore_db_cluster_from_s3
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBClusterFromS3OutputDisplay
@@ -15156,7 +15170,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreDBClusterFromSnapshotOutputDisplay'
-      x-stackql-resource: db_cluster_from_snapshot
+      x-stackql-resource: db_clusters
       x-stackql-method: restore_db_cluster_from_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBClusterFromSnapshotOutputDisplay
@@ -15189,7 +15203,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreDBClusterFromSnapshotMessage'
-      x-stackql-resource: db_cluster_from_snapshot
+      x-stackql-resource: db_clusters
       x-stackql-method: restore_db_cluster_from_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBClusterFromSnapshotOutputDisplay
@@ -15577,7 +15591,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreDBClusterToPointInTimeOutputDisplay'
-      x-stackql-resource: db_cluster_to_point_in_time
+      x-stackql-resource: db_clusters
       x-stackql-method: restore_db_cluster_to_point_in_time
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBClusterToPointInTimeOutputDisplay
@@ -15613,7 +15627,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreDBClusterToPointInTimeMessage'
-      x-stackql-resource: db_cluster_to_point_in_time
+      x-stackql-resource: db_clusters
       x-stackql-method: restore_db_cluster_to_point_in_time
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBClusterToPointInTimeOutputDisplay
@@ -16068,7 +16082,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreDBInstanceFromDBSnapshotOutputDisplay'
-      x-stackql-resource: db_instance_from_db_snapshot
+      x-stackql-resource: db_instances
       x-stackql-method: restore_db_instance_from_db_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceFromDBSnapshotOutputDisplay
@@ -16103,7 +16117,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreDBInstanceFromDBSnapshotMessage'
-      x-stackql-resource: db_instance_from_db_snapshot
+      x-stackql-resource: db_instances
       x-stackql-method: restore_db_instance_from_db_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceFromDBSnapshotOutputDisplay
@@ -16558,7 +16572,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreDBInstanceFromS3OutputDisplay'
-      x-stackql-resource: db_instance_from_s3
+      x-stackql-resource: db_instances
       x-stackql-method: restore_db_instance_from_s3
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceFromS3OutputDisplay
@@ -16582,7 +16596,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreDBInstanceFromS3Message'
-      x-stackql-resource: db_instance_from_s3
+      x-stackql-resource: db_instances
       x-stackql-method: restore_db_instance_from_s3
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceFromS3OutputDisplay
@@ -17046,7 +17060,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RestoreDBInstanceToPointInTimeOutputDisplay'
-      x-stackql-resource: db_instance_to_point_in_time
+      x-stackql-resource: db_instances
       x-stackql-method: restore_db_instance_to_point_in_time
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceToPointInTimeOutputDisplay
@@ -17074,7 +17088,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RestoreDBInstanceToPointInTimeMessage'
-      x-stackql-resource: db_instance_to_point_in_time
+      x-stackql-resource: db_instances
       x-stackql-method: restore_db_instance_to_point_in_time
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RestoreDBInstanceToPointInTimeOutputDisplay
@@ -17142,7 +17156,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RevokeDBSecurityGroupIngressOutputDisplay'
-      x-stackql-resource: db_security_group_ingress
+      x-stackql-resource: db_security_groups
       x-stackql-method: revoke_db_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeDBSecurityGroupIngressOutputDisplay
@@ -17168,7 +17182,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RevokeDBSecurityGroupIngressMessage'
-      x-stackql-resource: db_security_group_ingress
+      x-stackql-resource: db_security_groups
       x-stackql-method: revoke_db_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeDBSecurityGroupIngressOutputDisplay
@@ -17286,7 +17300,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartDBClusterOutputDisplay'
-      x-stackql-resource: db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: start_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartDBClusterOutputDisplay
@@ -17309,7 +17323,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartDBClusterMessage'
-      x-stackql-resource: db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: start_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartDBClusterOutputDisplay
@@ -17343,7 +17357,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartDBInstanceOutputDisplay'
-      x-stackql-resource: db_instance
+      x-stackql-resource: db_instances
       x-stackql-method: start_db_instance
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartDBInstanceOutputDisplay
@@ -17367,7 +17381,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartDBInstanceMessage'
-      x-stackql-resource: db_instance
+      x-stackql-resource: db_instances
       x-stackql-method: start_db_instance
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartDBInstanceOutputDisplay
@@ -17436,7 +17450,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartDBInstanceAutomatedBackupsReplicationOutputDisplay'
-      x-stackql-resource: db_instance_automated_backups_replication
+      x-stackql-resource: db_instance_automated_backups
       x-stackql-method: start_db_instance_automated_backups_replication
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartDBInstanceAutomatedBackupsReplicationOutputDisplay
@@ -17459,7 +17473,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartDBInstanceAutomatedBackupsReplicationMessage'
-      x-stackql-resource: db_instance_automated_backups_replication
+      x-stackql-resource: db_instance_automated_backups
       x-stackql-method: start_db_instance_automated_backups_replication
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartDBInstanceAutomatedBackupsReplicationOutputDisplay
@@ -17544,7 +17558,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartExportTaskOutputDisplay'
-      x-stackql-resource: export_task
+      x-stackql-resource: export_tasks
       x-stackql-method: start_export_task
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartExportTaskOutputDisplay
@@ -17570,7 +17584,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartExportTaskMessage'
-      x-stackql-resource: export_task
+      x-stackql-resource: export_tasks
       x-stackql-method: start_export_task
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartExportTaskOutputDisplay
@@ -17670,7 +17684,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StopDBClusterOutputDisplay'
-      x-stackql-resource: db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: stop_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopDBClusterOutputDisplay
@@ -17694,7 +17708,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StopDBClusterMessage'
-      x-stackql-resource: db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: stop_db_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopDBClusterOutputDisplay
@@ -17736,7 +17750,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StopDBInstanceOutputDisplay'
-      x-stackql-resource: db_instance
+      x-stackql-resource: db_instances
       x-stackql-method: stop_db_instance
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopDBInstanceOutputDisplay
@@ -17761,7 +17775,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StopDBInstanceMessage'
-      x-stackql-resource: db_instance
+      x-stackql-resource: db_instances
       x-stackql-method: stop_db_instance
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopDBInstanceOutputDisplay
@@ -17795,7 +17809,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StopDBInstanceAutomatedBackupsReplicationOutputDisplay'
-      x-stackql-resource: db_instance_automated_backups_replication
+      x-stackql-resource: db_instance_automated_backups
       x-stackql-method: stop_db_instance_automated_backups_replication
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopDBInstanceAutomatedBackupsReplicationOutputDisplay
@@ -17818,7 +17832,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StopDBInstanceAutomatedBackupsReplicationMessage'
-      x-stackql-resource: db_instance_automated_backups_replication
+      x-stackql-resource: db_instance_automated_backups
       x-stackql-method: stop_db_instance_automated_backups_replication
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopDBInstanceAutomatedBackupsReplicationOutputDisplay
@@ -17860,7 +17874,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SwitchoverBlueGreenDeploymentOutputDisplay'
-      x-stackql-resource: switchover_blue_green_deployment
+      x-stackql-resource: blue_green_deployments
       x-stackql-method: switchover_blue_green_deployment
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SwitchoverBlueGreenDeploymentOutputDisplay
@@ -17884,7 +17898,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SwitchoverBlueGreenDeploymentRequest'
-      x-stackql-resource: switchover_blue_green_deployment
+      x-stackql-resource: blue_green_deployments
       x-stackql-method: switchover_blue_green_deployment
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SwitchoverBlueGreenDeploymentOutputDisplay
@@ -17932,7 +17946,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SwitchoverGlobalClusterOutputDisplay'
-      x-stackql-resource: switchover_global_cluster
+      x-stackql-resource: global_clusters
       x-stackql-method: switchover_global_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SwitchoverGlobalClusterOutputDisplay
@@ -17961,7 +17975,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SwitchoverGlobalClusterMessage'
-      x-stackql-resource: switchover_global_cluster
+      x-stackql-resource: global_clusters
       x-stackql-method: switchover_global_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SwitchoverGlobalClusterOutputDisplay
@@ -17994,7 +18008,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SwitchoverReadReplicaOutputDisplay'
-      x-stackql-resource: switchover_read_replica
+      x-stackql-resource: db_instances
       x-stackql-method: switchover_read_replica
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SwitchoverReadReplicaOutputDisplay
@@ -18016,7 +18030,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SwitchoverReadReplicaMessage'
-      x-stackql-resource: switchover_read_replica
+      x-stackql-resource: db_instances
       x-stackql-method: switchover_read_replica
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SwitchoverReadReplicaOutputDisplay
@@ -27619,19 +27633,13 @@ components:
           description: The name of the DB shard group to reboot.
       required:
       - DBShardGroupIdentifier
-    RegisterDBProxyTargetsResponseDisplay:
-      type: object
-      properties:
-        DBProxyTargets:
-          type: string
-          description: One or more DBProxyTarget objects that are created when you register targets with a target group.
     RegisterDBProxyTargetsOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/RegisterDBProxyTargetsResponseDisplay'
+            $ref: '#/components/schemas/DBProxyTargetDisplay'
     RegisterDBProxyTargetsRequest:
       type: object
       properties:

@@ -1433,7 +1433,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPullTimeUpdateExclusionsResponse"
+                $ref: "#/components/schemas/ListPullTimeUpdateExclusionsOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -4289,19 +4289,19 @@ components:
         nextToken:
           $ref: "#/components/schemas/NextToken"
           description: The nextToken value to include in a future ListImages request. When the results of a ListImages request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
-    ListPullTimeUpdateExclusionsResponse:
+    ListPullTimeUpdateExclusionsRowDisplay:
       type: object
       properties:
-        pullTimeUpdateExclusions:
-          $ref: "#/components/schemas/PullTimeUpdateExclusionList"
+        pull_time_update_exclusion:
+          type: string
           description: The list of IAM principal ARNs that are excluded from having their image pull times recorded.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The nextToken value to include in a future ListPullTimeUpdateExclusions request. When the results of a ListPullTimeUpdateExclusions request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
-    PullTimeUpdateExclusionList:
-      type: array
-      items:
-        $ref: "#/components/schemas/PrincipalArn"
+    ListPullTimeUpdateExclusionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPullTimeUpdateExclusionsRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -4550,6 +4550,131 @@ components:
     PTCValidateFailure:
       type: string
   x-stackQL-resources:
+    repositories:
+      id: aws.ecr.repositories
+      name: repositories
+      title: repositories
+      methods:
+        batch_check_layer_availability:
+          operation:
+            $ref: "#/paths/~1BatchCheckLayerAvailability/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_image:
+          operation:
+            $ref: "#/paths/~1BatchDeleteImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        complete_layer_upload:
+          operation:
+            $ref: "#/paths/~1CompleteLayerUpload/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_repository:
+          operation:
+            $ref: "#/paths/~1CreateRepository/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_repository:
+          operation:
+            $ref: "#/paths/~1DeleteRepository/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_repositories:
+          operation:
+            $ref: "#/paths/~1DescribeRepositories/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.repositories
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        initiate_layer_upload:
+          operation:
+            $ref: "#/paths/~1InitiateLayerUpload/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        upload_layer_part:
+          operation:
+            $ref: "#/paths/~1UploadLayerPart/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/describe_repositories"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/create_repository"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/delete_repository"
     images:
       id: aws.ecr.images
       name: images
@@ -4580,6 +4705,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         list_images:
@@ -4594,6 +4726,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_image:
@@ -4609,14 +4748,69 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        put_image_scanning_configuration:
+          operation:
+            $ref: "#/paths/~1PutImageScanningConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_image_tag_mutability:
+          operation:
+            $ref: "#/paths/~1PutImageTagMutability/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_image_scan:
+          operation:
+            $ref: "#/paths/~1StartImageScan/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_image_storage_class:
+          operation:
+            $ref: "#/paths/~1UpdateImageStorageClass/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/images/methods/batch_get_image"
           - $ref: "#/components/x-stackQL-resources/images/methods/describe_images"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/images/methods/update_image_storage_class"
         replace:
           - $ref: "#/components/x-stackQL-resources/images/methods/put_image"
+          - $ref: "#/components/x-stackQL-resources/images/methods/put_image_scanning_configuration"
+          - $ref: "#/components/x-stackQL-resources/images/methods/put_image_tag_mutability"
         delete: []
     repository_scanning_configurations:
       id: aws.ecr.repository_scanning_configurations
@@ -4685,6 +4879,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_pull_through_cache_rule:
@@ -4709,59 +4910,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/pull_through_cache_rules/methods/update_pull_through_cache_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/pull_through_cache_rules/methods/delete_pull_through_cache_rule"
-    repositories:
-      id: aws.ecr.repositories
-      name: repositories
-      title: repositories
-      methods:
-        create_repository:
-          operation:
-            $ref: "#/paths/~1CreateRepository/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_repository:
-          operation:
-            $ref: "#/paths/~1DeleteRepository/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_repositories:
-          operation:
-            $ref: "#/paths/~1DescribeRepositories/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.repositories
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/repositories/methods/describe_repositories"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/repositories/methods/create_repository"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/repositories/methods/delete_repository"
     repository_creation_templates:
       id: aws.ecr.repository_creation_templates
       name: repository_creation_templates
@@ -4805,6 +4953,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_repository_creation_template:
@@ -4863,6 +5018,19 @@ components:
         put_lifecycle_policy:
           operation:
             $ref: "#/paths/~1PutLifecyclePolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_lifecycle_policy_preview:
+          operation:
+            $ref: "#/paths/~1StartLifecyclePolicyPreview/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5064,6 +5232,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPullTimeUpdateExclusionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "pullTimeUpdateExclusions" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pull_time_update_exclusion": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5132,6 +5307,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5292,6 +5474,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5363,10 +5552,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.ecr.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.ecr.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5381,92 +5570,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    image_scanning_configurations:
-      id: aws.ecr.image_scanning_configurations
-      name: image_scanning_configurations
-      title: image_scanning_configurations
-      methods:
-        put_image_scanning_configuration:
-          operation:
-            $ref: "#/paths/~1PutImageScanningConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/image_scanning_configurations/methods/put_image_scanning_configuration"
-        delete: []
-    image_tag_mutabilities:
-      id: aws.ecr.image_tag_mutabilities
-      name: image_tag_mutabilities
-      title: image_tag_mutabilities
-      methods:
-        put_image_tag_mutability:
-          operation:
-            $ref: "#/paths/~1PutImageTagMutability/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/image_tag_mutabilities/methods/put_image_tag_mutability"
-        delete: []
-    replication_configurations:
-      id: aws.ecr.replication_configurations
-      name: replication_configurations
-      title: replication_configurations
-      methods:
-        put_replication_configuration:
-          operation:
-            $ref: "#/paths/~1PutReplicationConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/replication_configurations/methods/put_replication_configuration"
-        delete: []
-    resources:
-      id: aws.ecr.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -5494,20 +5597,21 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
-    image_storage_class:
-      id: aws.ecr.image_storage_class
-      name: image_storage_class
-      title: image_storage_class
+    replication_configurations:
+      id: aws.ecr.replication_configurations
+      name: replication_configurations
+      title: replication_configurations
       methods:
-        update_image_storage_class:
+        put_replication_configuration:
           operation:
-            $ref: "#/paths/~1UpdateImageStorageClass/post"
+            $ref: "#/paths/~1PutReplicationConfiguration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5521,6 +5625,7 @@ components:
       sqlVerbs:
         select: []
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/image_storage_class/methods/update_image_storage_class"
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/replication_configurations/methods/put_replication_configuration"
         delete: []

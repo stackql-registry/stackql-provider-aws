@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMembershipResponse'
-      x-stackql-resource: membership
+      x-stackql-resource: memberships
       x-stackql-method: cancel_membership
       x-stackql-verb: EXEC
     get:
@@ -110,7 +110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CloseCaseResponse'
-      x-stackql-resource: close_case
+      x-stackql-resource: cases
       x-stackql-method: close_case
       x-stackql-verb: EXEC
   /v1/create-case:
@@ -198,7 +198,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCaseCommentResponse'
-      x-stackql-resource: case_comments
+      x-stackql-resource: comments
       x-stackql-method: create_case_comment
       x-stackql-verb: INSERT
   /v1/membership:
@@ -357,6 +357,9 @@ paths:
       x-stackql-method: list_case_edits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/list-cases:
     post:
       operationId: ListCases
@@ -384,6 +387,9 @@ paths:
       x-stackql-method: list_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/cases/{case_id}/list-comments:
     post:
       operationId: ListComments
@@ -417,6 +423,9 @@ paths:
       x-stackql-method: list_comments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/cases/{case_id}/list-investigations:
     get:
       operationId: ListInvestigations
@@ -451,6 +460,9 @@ paths:
       x-stackql-method: list_investigations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.investigationActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/memberships:
     post:
       operationId: ListMemberships
@@ -478,6 +490,9 @@ paths:
       x-stackql-method: list_memberships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -496,7 +511,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -527,7 +542,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -553,7 +568,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/cases/{case_id}/feedback/{result_id}/send-feedback:
@@ -593,7 +608,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendFeedbackResponse'
-      x-stackql-resource: feedback
+      x-stackql-resource: cases
       x-stackql-method: send_feedback
       x-stackql-verb: EXEC
   /v1/cases/{case_id}/update-case:
@@ -691,7 +706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateCaseCommentResponse'
-      x-stackql-resource: case_comments
+      x-stackql-resource: comments
       x-stackql-method: update_case_comment
       x-stackql-verb: UPDATE
   /v1/cases/{case_id}/update-case-status:
@@ -728,7 +743,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateCaseStatusResponse'
-      x-stackql-resource: case_status
+      x-stackql-resource: cases
       x-stackql-method: update_case_status
       x-stackql-verb: UPDATE
   /v1/membership/{membership_id}/update-membership:
@@ -798,7 +813,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateResolverTypeResponse'
-      x-stackql-resource: resolver_types
+      x-stackql-resource: cases
       x-stackql-method: update_resolver_type
       x-stackql-verb: UPDATE
 components:

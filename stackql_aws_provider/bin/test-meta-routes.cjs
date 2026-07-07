@@ -3,6 +3,8 @@
 const { runQuery } = require('@stackql/pgwire-lite');
 const fs = require('fs');
 const path = require('path');
+const net = require('net');
+const { spawn, execSync } = require('child_process');
 
 // Get current directory
 const baseDir = path.resolve(path.dirname(process.argv[1]), '..');
@@ -19,14 +21,19 @@ const defaultOptions = {
 // Parse command line arguments
 const args = process.argv.slice(2);
 let provider = null;
+let host = 'localhost';
 let port = 5444;
 let verbose = false;
 let outputFormat = 'json';
 let timeoutMs = 60000; // Default timeout: 60 seconds
+let noServer = false;
 
 for (let i = 0; i < args.length; i++) {
   if (args[i].startsWith('--')) {
     switch (args[i]) {
+      case '--host':
+        host = args[++i];
+        break;
       case '--port':
         port = parseInt(args[++i], 10);
         break;
@@ -43,6 +50,9 @@ for (let i = 0; i < args.length; i++) {
       case '--timeout':
         timeoutMs = parseInt(args[++i], 10);
         break;
+      case '--no-server':
+        noServer = true;
+        break;
       case '--help':
         console.log(`
 Usage: test-meta-routes.js <provider> [OPTIONS]
@@ -53,11 +63,19 @@ Arguments:
   provider                  Name of the provider to test
 
 Options:
+  --host HOST               Server host (default: localhost). A non-local
+                            host implies --no-server.
   --port PORT               Server port (default: 5444)
   --verbose                 Enable verbose output
   --format FORMAT           Output format: json, csv, markdown (default: json)
   --timeout MILLISECONDS    Query timeout in milliseconds (default: 60000)
+  --no-server               Do not manage the server lifecycle; expect a
+                            server already listening on host:port
   --help                    Display this help message
+
+By default this harness owns the full server lifecycle: it kills any
+stackql server on the port, starts a FRESH one (so provider specs are
+never cached between runs), runs the walk, and stops the server on exit.
         `);
         process.exit(0);
         break;
@@ -80,10 +98,129 @@ if (!provider) {
 // Set up connection options
 const connectionOptions = {
   ...defaultOptions,
+  host,
   port,
   // Set query timeout
   statement_timeout: timeoutMs,
 };
+
+// ----- server lifecycle -----------------------------------------------------
+// By default the harness owns the server: kill anything on the port, start
+// fresh (provider specs are cached in-process by the server, so a stale
+// server yields stale results), walk, stop. Skipped for non-local hosts
+// (can't manage a remote process) and on win32 (the pinned binary is a
+// Linux ELF; run the harness under WSL for managed mode).
+const isLocalHost = ['localhost', '127.0.0.1'].includes(host);
+const manageServer = !noServer && isLocalHost && process.platform !== 'win32';
+
+let serverChild = null;
+let serverShuttingDown = false;
+
+function slog(msg) {
+  console.log(`[server] ${msg}`);
+}
+
+function probePort() {
+  return new Promise((resolve) => {
+    const sock = net.connect(port, host);
+    const done = (up) => {
+      sock.destroy();
+      resolve(up);
+    };
+    sock.on('connect', () => done(true));
+    sock.on('error', () => done(false));
+    setTimeout(() => done(false), 1500);
+  });
+}
+
+async function waitUntil(cond, timeoutTotalMs, intervalMs = 500) {
+  const t0 = Date.now();
+  for (;;) {
+    if (await cond()) return true;
+    if (Date.now() - t0 > timeoutTotalMs) return false;
+    await new Promise((res) => setTimeout(res, intervalMs));
+  }
+}
+
+async function stopExistingServer() {
+  slog(`checking for an existing server on ${host}:${port}...`);
+  if (!(await probePort())) {
+    slog('no existing server found');
+    return;
+  }
+  slog('existing server found - stopping it (fresh registry load required)');
+  try {
+    execSync(`pkill -f -- "--pgsrv.port=${port}"`, { stdio: 'ignore' });
+  } catch (e) {
+    // pkill exits 1 when nothing matched; the port re-probe below decides.
+  }
+  if (await waitUntil(async () => !(await probePort()), 10000)) {
+    slog('existing server stopped');
+    return;
+  }
+  slog('still listening after SIGTERM - escalating to SIGKILL');
+  try {
+    execSync(`pkill -9 -f -- "--pgsrv.port=${port}"`, { stdio: 'ignore' });
+  } catch (e) { /* see above */ }
+  if (await waitUntil(async () => !(await probePort()), 8000)) {
+    slog('existing server stopped');
+    return;
+  }
+  console.error(`[server] ERROR: port ${port} is still occupied and could not be freed`);
+  process.exit(1);
+}
+
+async function startServer() {
+  const bin = process.env.STACKQL || path.join(baseDir, 'stackql');
+  if (!fs.existsSync(bin)) {
+    console.error(`[server] ERROR: stackql binary not found at ${bin} (set STACKQL to override)`);
+    process.exit(1);
+  }
+  const regPath = path.join(baseDir, 'provider-dev', 'openapi');
+  const reg = JSON.stringify({
+    url: `file://${regPath}`,
+    localDocRoot: regPath,
+    verifyConfig: { nopVerify: true },
+  });
+  const serverLogPath = path.join(baseDir, 'stackql-server.log');
+  const out = fs.openSync(serverLogPath, 'w');
+  slog(`starting ${bin}`);
+  slog(`registry: ${regPath}`);
+  slog(`server log: ${serverLogPath}`);
+  serverChild = spawn(bin, [`--registry=${reg}`, `--pgsrv.port=${port}`, 'srv'], {
+    stdio: ['ignore', out, out],
+  });
+  serverChild.on('exit', (code, signal) => {
+    if (!serverShuttingDown) {
+      console.error(`[server] ERROR: server exited unexpectedly (code=${code} signal=${signal}) - see ${serverLogPath}`);
+    }
+  });
+  const t0 = Date.now();
+  if (!(await waitUntil(probePort, 45000))) {
+    console.error('[server] ERROR: server did not accept connections within 45s; log tail:');
+    try {
+      console.error(fs.readFileSync(serverLogPath, 'utf8').slice(-2000));
+    } catch (e) { /* no log to show */ }
+    process.exit(1);
+  }
+  slog(`ready in ${Date.now() - t0}ms (pid ${serverChild.pid})`);
+}
+
+function stopServer() {
+  if (!serverChild || serverShuttingDown) return;
+  serverShuttingDown = true;
+  slog(`stopping server (pid ${serverChild.pid})`);
+  try {
+    serverChild.kill('SIGTERM');
+  } catch (e) { /* already gone */ }
+  slog('server stopped');
+}
+
+// Runs on EVERY exit path (summary exit, hard failures, uncaught errors),
+// so a managed server can never outlive the harness.
+process.on('exit', stopServer);
+process.on('SIGINT', () => process.exit(130));
+process.on('SIGTERM', () => process.exit(143));
 
 // Get start time
 const startTime = new Date();
@@ -96,6 +233,8 @@ const results = {
   selectableMethods: 0,
   nonSelectableResourceCount: 0,
   nonSelectableResources: [],
+  errors: [],
+  summary: { errors: 0 },
 };
 
 /**
@@ -110,9 +249,47 @@ async function executeQuery(query, description) {
   } else {
     process.stdout.write(`${description}... `);
   }
-  
+
   try {
-    const result = await runQuery(connectionOptions, query);
+    // Client-side watchdog: statement_timeout in connection options is not
+    // enforced by pgwire-lite, so a wedged connection would hang the whole
+    // run silently. Racing the query against a timer turns that into a
+    // loud, attributable failure. Timeouts get retried - every query runs
+    // on a fresh connection and a ~25k-connection walk occasionally hits a
+    // transient stall (the same query answers in milliseconds on re-probe).
+    let result;
+    for (let attempt = 1; ; attempt++) {
+      // The watchdog timer MUST be cleared when the query wins the race -
+      // dangling timers keep the node event loop alive for up to
+      // timeoutMs after the walk finishes (observed as a ~2 minute hang
+      // between the summary printing and the process exiting).
+      let watchdog;
+      try {
+        result = await Promise.race([
+          runQuery(connectionOptions, query),
+          new Promise((_, reject) => {
+            watchdog = setTimeout(
+              () => reject(new Error(`client-side timeout after ${timeoutMs}ms: ${query}`)),
+              timeoutMs,
+            );
+          }),
+        ]);
+        clearTimeout(watchdog);
+        break;
+      } catch (raceErr) {
+        clearTimeout(watchdog);
+        if (attempt < 4 && /client-side timeout/.test(raceErr.message)) {
+          // Stall windows last minutes (ephemeral-port exhaustion under
+          // ~25k short-lived connections) - back off so the retry lands
+          // after the window drains, not inside it.
+          const backoffMs = 30000 * attempt;
+          console.warn(`  retry ${attempt}/3 in ${backoffMs / 1000}s after timeout: ${query}`);
+          await new Promise((res) => setTimeout(res, backoffMs));
+          continue;
+        }
+        throw raceErr;
+      }
+    }
     
     if (!verbose) {
       if (result.data && result.data.length) {
@@ -317,6 +494,11 @@ async function testMetaRoutes() {
     console.log("\n📋 Test Summary:");
     console.info(results);
 
+    // Exit explicitly: pgwire-lite sockets or any stray timer would
+    // otherwise keep the event loop (and the terminal) hanging after the
+    // walk is done.
+    process.exit(0);
+
     // Save results to file
     // const resultsDir = path.join(baseDir, 'test-results');
     // if (!fs.existsSync(resultsDir)) {
@@ -427,5 +609,18 @@ async function testMetaRoutes() {
   }
 }
 
-// Run the tests
-testMetaRoutes();
+// Run: manage the server lifecycle (default), then walk the provider.
+(async () => {
+  if (manageServer) {
+    await stopExistingServer();
+    await startServer();
+  } else {
+    const why = noServer
+      ? '--no-server'
+      : !isLocalHost
+        ? `non-local host ${host}`
+        : 'win32 host (Linux binary; run under WSL for managed mode)';
+    slog(`external-server mode (${why}) - expecting a server on ${host}:${port}`);
+  }
+  await testMetaRoutes();
+})();

@@ -125,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateResolverEndpointIpAddressResponse'
-      x-stackql-resource: resolver_endpoint_ip_address
+      x-stackql-resource: resolver_endpoints
       x-stackql-method: associate_resolver_endpoint_ip_address
       x-stackql-verb: UPDATE
   /AssociateResolverQueryLogConfig:
@@ -1095,7 +1095,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateResolverEndpointIpAddressResponse'
-      x-stackql-resource: resolver_endpoint_ip_address
+      x-stackql-resource: resolver_endpoints
       x-stackql-method: disassociate_resolver_endpoint_ip_address
       x-stackql-verb: UPDATE
   /DisassociateResolverQueryLogConfig:
@@ -1220,6 +1220,7 @@ paths:
       x-stackql-resource: firewall_configs
       x-stackql-method: get_firewall_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.FirewallConfig
   /GetFirewallDomainList:
     post:
       operationId: GetFirewallDomainList
@@ -1256,6 +1257,7 @@ paths:
       x-stackql-resource: firewall_domain_lists
       x-stackql-method: get_firewall_domain_list
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.FirewallDomainList
   /GetFirewallRuleGroup:
     post:
       operationId: GetFirewallRuleGroup
@@ -1292,6 +1294,7 @@ paths:
       x-stackql-resource: firewall_rule_groups
       x-stackql-method: get_firewall_rule_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.FirewallRuleGroup
   /GetFirewallRuleGroupAssociation:
     post:
       operationId: GetFirewallRuleGroupAssociation
@@ -1330,6 +1333,7 @@ paths:
       x-stackql-resource: firewall_rule_group_associations
       x-stackql-method: get_firewall_rule_group_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.FirewallRuleGroupAssociation
   /GetFirewallRuleGroupPolicy:
     post:
       operationId: GetFirewallRuleGroupPolicy
@@ -1404,6 +1408,7 @@ paths:
       x-stackql-resource: outpost_resolvers
       x-stackql-method: get_outpost_resolver
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.OutpostResolver
   /GetResolverConfig:
     post:
       operationId: GetResolverConfig
@@ -1441,6 +1446,7 @@ paths:
       x-stackql-resource: resolver_configs
       x-stackql-method: get_resolver_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResolverConfig
   /GetResolverDnssecConfig:
     post:
       operationId: GetResolverDnssecConfig
@@ -1477,6 +1483,7 @@ paths:
       x-stackql-resource: resolver_dnssec_configs
       x-stackql-method: get_resolver_dnssec_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResolverDNSSECConfig
   /GetResolverEndpoint:
     post:
       operationId: GetResolverEndpoint
@@ -1514,6 +1521,7 @@ paths:
       x-stackql-resource: resolver_endpoints
       x-stackql-method: get_resolver_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResolverEndpoint
   /GetResolverQueryLogConfig:
     post:
       operationId: GetResolverQueryLogConfig
@@ -1551,6 +1559,7 @@ paths:
       x-stackql-resource: resolver_query_log_configs
       x-stackql-method: get_resolver_query_log_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResolverQueryLogConfig
   /GetResolverQueryLogConfigAssociation:
     post:
       operationId: GetResolverQueryLogConfigAssociation
@@ -1590,6 +1599,7 @@ paths:
       x-stackql-resource: resolver_query_log_config_associations
       x-stackql-method: get_resolver_query_log_config_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResolverQueryLogConfigAssociation
   /GetResolverQueryLogConfigPolicy:
     post:
       operationId: GetResolverQueryLogConfigPolicy
@@ -1664,6 +1674,7 @@ paths:
       x-stackql-resource: resolver_rules
       x-stackql-method: get_resolver_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResolverRule
   /GetResolverRuleAssociation:
     post:
       operationId: GetResolverRuleAssociation
@@ -1701,6 +1712,7 @@ paths:
       x-stackql-resource: resolver_rule_associations
       x-stackql-method: get_resolver_rule_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResolverRuleAssociation
   /GetResolverRulePolicy:
     post:
       operationId: GetResolverRulePolicy
@@ -1835,6 +1847,9 @@ paths:
       x-stackql-method: list_firewall_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FirewallConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFirewallDomainLists:
     post:
       operationId: ListFirewallDomainLists
@@ -1881,6 +1896,9 @@ paths:
       x-stackql-method: list_firewall_domain_lists
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FirewallDomainLists
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFirewallDomains:
     post:
       operationId: ListFirewallDomains
@@ -1926,11 +1944,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFirewallDomainsResponse'
+                $ref: '#/components/schemas/ListFirewallDomainsOutputDisplay'
       x-stackql-resource: firewall_domains
       x-stackql-method: list_firewall_domains
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Domains
+      x-stackql-responseEnvelope: ListFirewallDomainsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Domains" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"domain": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFirewallRuleGroupAssociations:
     post:
       operationId: ListFirewallRuleGroupAssociations
@@ -1994,6 +2020,9 @@ paths:
       x-stackql-method: list_firewall_rule_group_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FirewallRuleGroupAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFirewallRuleGroups:
     post:
       operationId: ListFirewallRuleGroups
@@ -2039,6 +2068,9 @@ paths:
       x-stackql-method: list_firewall_rule_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FirewallRuleGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFirewallRules:
     post:
       operationId: ListFirewallRules
@@ -2102,6 +2134,9 @@ paths:
       x-stackql-method: list_firewall_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FirewallRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOutpostResolvers:
     post:
       operationId: ListOutpostResolvers
@@ -2145,6 +2180,9 @@ paths:
       x-stackql-method: list_outpost_resolvers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OutpostResolvers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverConfigs:
     post:
       operationId: ListResolverConfigs
@@ -2189,6 +2227,9 @@ paths:
       x-stackql-method: list_resolver_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResolverConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverDnssecConfigs:
     post:
       operationId: ListResolverDnssecConfigs
@@ -2236,6 +2277,9 @@ paths:
       x-stackql-method: list_resolver_dnssec_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResolverDnssecConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverEndpointIpAddresses:
     post:
       operationId: ListResolverEndpointIpAddresses
@@ -2283,6 +2327,9 @@ paths:
       x-stackql-method: list_resolver_endpoint_ip_addresses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IpAddresses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverEndpoints:
     post:
       operationId: ListResolverEndpoints
@@ -2329,6 +2376,9 @@ paths:
       x-stackql-method: list_resolver_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResolverEndpoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverQueryLogConfigAssociations:
     post:
       operationId: ListResolverQueryLogConfigAssociations
@@ -2400,6 +2450,9 @@ paths:
       x-stackql-method: list_resolver_query_log_config_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResolverQueryLogConfigAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverQueryLogConfigs:
     post:
       operationId: ListResolverQueryLogConfigs
@@ -2473,6 +2526,9 @@ paths:
       x-stackql-method: list_resolver_query_log_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResolverQueryLogConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverRuleAssociations:
     post:
       operationId: ListResolverRuleAssociations
@@ -2521,6 +2577,9 @@ paths:
       x-stackql-method: list_resolver_rule_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResolverRuleAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResolverRules:
     post:
       operationId: ListResolverRules
@@ -2568,6 +2627,9 @@ paths:
       x-stackql-method: list_resolver_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResolverRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2610,10 +2672,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutFirewallRuleGroupPolicy:
     post:
       operationId: PutFirewallRuleGroupPolicy
@@ -2787,7 +2852,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2829,7 +2894,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateFirewallConfig:
@@ -4704,25 +4769,20 @@ components:
       type: integer
       minimum: 1
       maximum: 5000
-    ListFirewallDomainsResponse:
+    ListFirewallDomainsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If objects are still available for retrieval, Resolver returns this token in the response. To retrieve
-            the next batch of objects, provide this token in your next request.
-        Domains:
-          $ref: '#/components/schemas/FirewallDomains'
+        domain:
+          type: string
           description: A list of the domains in the firewall domain list. This might be a partial list of the domains that
             you've defined in the domain list. For information, see MaxResults.
-    FirewallDomains:
-      type: array
-      items:
-        $ref: '#/components/schemas/FirewallDomainName'
-    FirewallDomainName:
-      type: string
-      minLength: 1
-      maxLength: 255
+    ListFirewallDomainsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFirewallDomainsRowDisplay'
     ListFirewallRuleGroupAssociationsResponse:
       type: object
       properties:
@@ -5165,6 +5225,14 @@ components:
       - ADD
       - REMOVE
       - REPLACE
+    FirewallDomains:
+      type: array
+      items:
+        $ref: '#/components/schemas/FirewallDomainName'
+    FirewallDomainName:
+      type: string
+      minLength: 1
+      maxLength: 255
     UpdateFirewallDomainsResponse:
       type: object
       properties:

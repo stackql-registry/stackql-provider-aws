@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateUserResponse'
-      x-stackql-resource: batch_create_user
+      x-stackql-resource: networks
       x-stackql-method: batch_create_user
       x-stackql-verb: EXEC
     get:
@@ -136,6 +136,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.users
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     patch:
       operationId: UpdateUser
       description: Updates the properties of an existing user in a Wickr network. This operation allows you to modify the
@@ -208,7 +211,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteUserResponse'
-      x-stackql-resource: batch_delete_user
+      x-stackql-resource: networks
       x-stackql-method: batch_delete_user
       x-stackql-verb: EXEC
   /networks/{network_id}/users/uname-lookup:
@@ -247,7 +250,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchLookupUserUnameResponse'
-      x-stackql-resource: batch_lookup_user_uname
+      x-stackql-resource: networks
       x-stackql-method: batch_lookup_user_uname
       x-stackql-verb: EXEC
   /networks/{network_id}/users/re-invite:
@@ -286,7 +289,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchReinviteUserResponse'
-      x-stackql-resource: batch_reinvite_user
+      x-stackql-resource: networks
       x-stackql-method: batch_reinvite_user
       x-stackql-verb: EXEC
   /networks/{network_id}/users/{user_id}/devices:
@@ -332,7 +335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchResetDevicesForUserResponse'
-      x-stackql-resource: batch_reset_devices_for_user
+      x-stackql-resource: networks
       x-stackql-method: batch_reset_devices_for_user
       x-stackql-verb: EXEC
     get:
@@ -390,6 +393,9 @@ paths:
       x-stackql-method: list_devices_for_user
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.devices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /networks/{network_id}/users/toggleSuspend:
     patch:
       operationId: BatchToggleUserSuspendStatus
@@ -432,7 +438,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchToggleUserSuspendStatusResponse'
-      x-stackql-resource: batch_toggle_user_suspend_status
+      x-stackql-resource: networks
       x-stackql-method: batch_toggle_user_suspend_status
       x-stackql-verb: EXEC
   /networks/{network_id}/bots:
@@ -549,6 +555,9 @@ paths:
       x-stackql-method: list_bots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.bots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /networks/{network_id}/data-retention-bots:
     post:
       operationId: CreateDataRetentionBot
@@ -642,7 +651,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDataRetentionResponse'
-      x-stackql-resource: data_retentions
+      x-stackql-resource: networks
       x-stackql-method: update_data_retention
       x-stackql-verb: UPDATE
   /networks/{network_id}/data-retention-bots/challenge:
@@ -664,7 +673,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDataRetentionBotChallengeResponse'
-      x-stackql-resource: data_retention_bot_challenges
+      x-stackql-resource: data_retention_bots
       x-stackql-method: create_data_retention_bot_challenge
       x-stackql-verb: INSERT
   /networks:
@@ -743,6 +752,9 @@ paths:
       x-stackql-method: list_networks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.networks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /networks/{network_id}/security-groups:
     post:
       operationId: CreateSecurityGroup
@@ -833,6 +845,9 @@ paths:
       x-stackql-method: list_security_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.securityGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /networks/{network_id}/bots/{bot_id}:
     delete:
       operationId: DeleteBot
@@ -1074,6 +1089,7 @@ paths:
       x-stackql-resource: security_groups
       x-stackql-method: get_security_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.securityGroup
     patch:
       operationId: UpdateSecurityGroup
       description: Updates the properties of an existing security group in a Wickr network, such as its name or settings.
@@ -1472,6 +1488,9 @@ paths:
       x-stackql-method: list_blocked_guest_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.blocklist
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /networks/{network_id}/guest-users:
     get:
       operationId: ListGuestUsers
@@ -1533,6 +1552,9 @@ paths:
       x-stackql-method: list_guest_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.guestlist
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /networks/{network_id}/security-groups/{group_id}/users:
     get:
       operationId: ListSecurityGroupUsers
@@ -1588,6 +1610,9 @@ paths:
       x-stackql-method: list_security_group_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.users
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /networks/{network_id}/oidc/save:
     post:
       operationId: RegisterOidcConfig
@@ -1634,7 +1659,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterOidcConfigResponse'
-      x-stackql-resource: oidc_configs
+      x-stackql-resource: networks
       x-stackql-method: register_oidc_config
       x-stackql-verb: INSERT
   /networks/{network_id}/oidc/test:
@@ -1674,7 +1699,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterOidcConfigTestResponse'
-      x-stackql-resource: oidc_config_tests
+      x-stackql-resource: networks
       x-stackql-method: register_oidc_config_test
       x-stackql-verb: INSERT
   /networks/{network_id}/guest-users/{username_hash}:

@@ -249,7 +249,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DecreaseReplicationFactorResponse'
-      x-stackql-resource: decrease_replication_factor
+      x-stackql-resource: clusters
       x-stackql-method: decrease_replication_factor
       x-stackql-verb: EXEC
   /DeleteCluster:
@@ -414,6 +414,9 @@ paths:
       x-stackql-method: describe_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Clusters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeDefaultParameters:
     post:
       operationId: DescribeDefaultParameters
@@ -456,6 +459,9 @@ paths:
       x-stackql-method: describe_default_parameters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parameters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeEvents:
     post:
       operationId: DescribeEvents
@@ -516,6 +522,9 @@ paths:
       x-stackql-method: describe_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeParameterGroups:
     post:
       operationId: DescribeParameterGroups
@@ -562,6 +571,9 @@ paths:
       x-stackql-method: describe_parameter_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ParameterGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeParameters:
     post:
       operationId: DescribeParameters
@@ -612,6 +624,9 @@ paths:
       x-stackql-method: describe_parameters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parameters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSubnetGroups:
     post:
       operationId: DescribeSubnetGroups
@@ -658,6 +673,9 @@ paths:
       x-stackql-method: describe_subnet_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SubnetGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /IncreaseReplicationFactor:
     post:
       operationId: IncreaseReplicationFactor
@@ -700,7 +718,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IncreaseReplicationFactorResponse'
-      x-stackql-resource: increase_replication_factor
+      x-stackql-resource: clusters
       x-stackql-method: increase_replication_factor
       x-stackql-verb: EXEC
   /ListTags:
@@ -744,6 +762,9 @@ paths:
       x-stackql-method: list_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /RebootNode:
     post:
       operationId: RebootNode
@@ -783,7 +804,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootNodeResponse'
-      x-stackql-resource: node
+      x-stackql-resource: clusters
       x-stackql-method: reboot_node
       x-stackql-verb: EXEC
   /TagResource:
@@ -823,7 +844,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -865,7 +886,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCluster:

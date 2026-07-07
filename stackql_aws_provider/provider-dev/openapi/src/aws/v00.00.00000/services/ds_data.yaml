@@ -1129,6 +1129,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         remove_group_member:
@@ -1197,6 +1204,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         search_groups:
@@ -1209,6 +1223,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_group:
@@ -1281,6 +1302,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         search_users:
@@ -1293,6 +1321,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_user:
@@ -1332,6 +1367,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

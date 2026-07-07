@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateCustomVocabularyItemResponse'
-      x-stackql-resource: batch_create_custom_vocabulary_item
+      x-stackql-resource: bots
       x-stackql-method: batch_create_custom_vocabulary_item
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/customvocabulary/DEFAULT/batchdelete:
@@ -104,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteCustomVocabularyItemResponse'
-      x-stackql-resource: batch_delete_custom_vocabulary_item
+      x-stackql-resource: bots
       x-stackql-method: batch_delete_custom_vocabulary_item
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/customvocabulary/DEFAULT/batchupdate:
@@ -149,7 +149,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateCustomVocabularyItemResponse'
-      x-stackql-resource: batch_update_custom_vocabulary_item
+      x-stackql-resource: bots
       x-stackql-method: batch_update_custom_vocabulary_item
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/:
@@ -185,7 +185,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BuildBotLocaleResponse'
-      x-stackql-resource: build_bot_locale
+      x-stackql-resource: bots
       x-stackql-method: build_bot_locale
       x-stackql-verb: EXEC
     delete:
@@ -1060,7 +1060,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateResourcePolicyStatementResponse'
-      x-stackql-resource: resource_policy_statements
+      x-stackql-resource: resource_policies
       x-stackql-method: create_resource_policy_statement
       x-stackql-verb: INSERT
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/intents/{intent_id}/slots/:
@@ -1722,7 +1722,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteCustomVocabularyResponse'
-      x-stackql-resource: custom_vocabularies
+      x-stackql-resource: bots
       x-stackql-method: delete_custom_vocabulary
       x-stackql-verb: DELETE
   /exports/{export_id}/:
@@ -2028,7 +2028,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteResourcePolicyStatementResponse'
-      x-stackql-resource: resource_policy_statements
+      x-stackql-resource: resource_policies
       x-stackql-method: delete_resource_policy_statement
       x-stackql-verb: DELETE
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/intents/{intent_id}/slots/{slot_id}/:
@@ -2440,7 +2440,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteUtterancesResponse'
-      x-stackql-resource: utterances
+      x-stackql-resource: bots
       x-stackql-method: delete_utterances
       x-stackql-verb: DELETE
   /bots/{bot_id}/botanalyzer/describe/{bot_analyzer_request_id}/:
@@ -2484,6 +2484,9 @@ paths:
       x-stackql-method: describe_bot_analyzer_recommendation
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.botAnalyzerRecommendationList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/botrecommendations/{bot_recommendation_id}/:
     get:
       operationId: DescribeBotRecommendation
@@ -2754,7 +2757,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateBotElementResponse'
-      x-stackql-resource: bot_element
+      x-stackql-resource: bots
       x-stackql-method: generate_bot_element
       x-stackql-verb: EXEC
   /testexecutions/{test_execution_id}/artifacturl:
@@ -2909,6 +2912,9 @@ paths:
       x-stackql-method: list_bot_analyzer_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.botAnalyzerHistoryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/botrecommendations/:
     post:
       operationId: ListBotRecommendations
@@ -2996,7 +3002,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBotRecommendationResponse'
-      x-stackql-resource: bot_recommendation
+      x-stackql-resource: bots
       x-stackql-method: start_bot_recommendation
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/generations:
@@ -3269,7 +3275,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportResponse'
-      x-stackql-resource: import
+      x-stackql-resource: imports
       x-stackql-method: start_import
       x-stackql-verb: EXEC
   /bots/{bot_id}/analytics/intentmetrics:
@@ -3605,7 +3611,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -3637,7 +3643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3663,7 +3669,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /testexecutions/{test_execution_id}/results:
@@ -3702,6 +3708,7 @@ paths:
       x-stackql-resource: test_execution_result_items
       x-stackql-method: list_test_execution_result_items
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.testExecutionResults
   /testexecutions:
     post:
       operationId: ListTestExecutions
@@ -3993,7 +4000,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBotAnalyzerResponse'
-      x-stackql-resource: bot_analyzer
+      x-stackql-resource: bots
       x-stackql-method: start_bot_analyzer
       x-stackql-verb: EXEC
   /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/startgeneration:
@@ -4040,7 +4047,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBotResourceGenerationResponse'
-      x-stackql-resource: bot_resource_generation
+      x-stackql-resource: bots
       x-stackql-method: start_bot_resource_generation
       x-stackql-verb: EXEC
   /testsets/{test_set_id}/testexecutions:
@@ -4077,7 +4084,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTestExecutionResponse'
-      x-stackql-resource: test_execution
+      x-stackql-resource: test_sets
       x-stackql-method: start_test_execution
       x-stackql-verb: EXEC
   /testsetgenerations:
@@ -4116,7 +4123,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTestSetGenerationResponse'
-      x-stackql-resource: test_set_generation
+      x-stackql-resource: test_sets
       x-stackql-method: start_test_set_generation
       x-stackql-verb: EXEC
   /bots/{bot_id}/botanalyzer/{bot_analyzer_request_id}/stop/:
@@ -4144,7 +4151,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBotAnalyzerResponse'
-      x-stackql-resource: bot_analyzer
+      x-stackql-resource: bots
       x-stackql-method: stop_bot_analyzer
       x-stackql-verb: EXEC
   ? /bots/{bot_id}/botversions/{bot_version}/botlocales/{locale_id}/botrecommendations/{bot_recommendation_id}/stopbotrecommendation
@@ -4184,7 +4191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBotRecommendationResponse'
-      x-stackql-resource: bot_recommendation
+      x-stackql-resource: bots
       x-stackql-method: stop_bot_recommendation
       x-stackql-verb: EXEC
 components:

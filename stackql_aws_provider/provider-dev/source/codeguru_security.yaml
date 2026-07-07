@@ -110,6 +110,9 @@ paths:
       x-stackql-method: list_scans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /uploadUrl:
     post:
       operationId: CreateUploadUrl
@@ -134,7 +137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateUploadUrlResponse'
-      x-stackql-resource: upload_urls
+      x-stackql-resource: scans
       x-stackql-method: create_upload_url
       x-stackql-verb: INSERT
   /accountConfiguration/get:
@@ -152,6 +155,7 @@ paths:
       x-stackql-resource: account_configurations
       x-stackql-method: get_account_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.encryptionConfig
   /findings/{scan_name}:
     get:
       operationId: GetFindings
@@ -196,6 +200,9 @@ paths:
       x-stackql-method: get_findings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /metrics/summary:
     get:
       operationId: GetMetricsSummary
@@ -219,6 +226,7 @@ paths:
       x-stackql-resource: metrics_summaries
       x-stackql-method: get_metrics_summary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.metricsSummary
   /scans/{scan_name}:
     get:
       operationId: GetScan
@@ -291,6 +299,9 @@ paths:
       x-stackql-method: list_findings_metrics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findingsMetrics
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -309,7 +320,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -340,7 +351,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -366,7 +377,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /updateAccountConfiguration:

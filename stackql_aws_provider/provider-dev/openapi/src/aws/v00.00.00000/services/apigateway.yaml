@@ -5276,6 +5276,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_api_key:
           operation:
             $ref: "#/paths/~1apikeys~1{api__key}/delete"
@@ -5346,6 +5354,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_authorizer:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1authorizers~1{authorizer_id}/delete"
@@ -5357,6 +5373,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        test_invoke_authorizer:
+          operation:
+            $ref: "#/paths/~1restapis~1{restapi_id}~1authorizers~1{authorizer_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_authorizer:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1authorizers~1{authorizer_id}/patch"
@@ -5403,6 +5430,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_base_path_mapping:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}~1basepathmappings~1{base_path}/delete"
@@ -5464,6 +5499,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_deployment:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1deployments~1{deployment_id}/delete"
@@ -5523,6 +5566,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         import_documentation_parts:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1documentation~1parts/put"
@@ -5591,6 +5642,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_documentation_version:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1documentation~1versions~1{doc_version}/delete"
@@ -5648,6 +5707,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_domain_name:
           operation:
             $ref: "#/paths/~1domainnames~1{domain_name}/delete"
@@ -5674,6 +5741,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        reject_domain_name_access_association:
+          operation:
+            $ref: "#/paths/~1rejectdomainnameaccessassociations/post"
+          response:
+            openAPIDocKey: "202"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_names/methods/get_domain_name"
@@ -5746,6 +5818,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_model:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1models~1{model_name}/delete"
@@ -5805,6 +5885,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_request_validator:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1requestvalidators~1{requestvalidator_id}/delete"
@@ -5853,6 +5941,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        test_invoke_method:
+          operation:
+            $ref: "#/paths/~1restapis~1{restapi_id}~1resources~1{resource_id}~1methods~1{http_method}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_resource:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}~1resources~1{resource_id}/delete"
@@ -5886,23 +5985,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/put"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
           config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/delete"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resources/methods/get_resource"
@@ -5911,8 +6001,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/resources/methods/create_resource"
         update:
           - $ref: "#/components/x-stackQL-resources/resources/methods/update_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
         delete:
           - $ref: "#/components/x-stackQL-resources/resources/methods/delete_resource"
     rest_apis:
@@ -5940,6 +6028,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_rest_api:
           operation:
             $ref: "#/paths/~1restapis~1{restapi_id}/delete"
@@ -6031,6 +6127,16 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        flush_stage_authorizers_cache:
+          operation:
+            $ref: "#/paths/~1restapis~1{restapi_id}~1stages~1{stage_name}~1cache~1authorizers/delete"
+          response:
+            openAPIDocKey: "202"
+        flush_stage_cache:
+          operation:
+            $ref: "#/paths/~1restapis~1{restapi_id}~1stages~1{stage_name}~1cache~1data/delete"
+          response:
+            openAPIDocKey: "202"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/stages/methods/get_stage"
@@ -6066,6 +6172,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_usage_plan:
           operation:
             $ref: "#/paths/~1usageplans~1{usageplan_id}/delete"
@@ -6123,6 +6237,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_usage_plan_key:
           operation:
             $ref: "#/paths/~1usageplans~1{usageplan_id}~1keys~1{key_id}/delete"
@@ -6168,6 +6290,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         delete_vpc_link:
           operation:
             $ref: "#/paths/~1vpclinks~1{vpclink_id}/delete"
@@ -6236,6 +6366,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/client_certificates/methods/get_client_certificate"
@@ -6292,6 +6430,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/gateway_responses/methods/get_gateway_response"
@@ -6599,6 +6745,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sdk_types/methods/get_sdk_type"
@@ -6619,11 +6773,30 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/put"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/delete"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/get_tags"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     usages:
       id: aws.apigateway.usages
@@ -6638,6 +6811,14 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: position
+                location: query
+              responseToken:
+                key: $.position
+                location: body
         update_usage:
           operation:
             $ref: "#/paths/~1usageplans~1{usageplan_id}~1keys~1{key_id}~1usage/patch"

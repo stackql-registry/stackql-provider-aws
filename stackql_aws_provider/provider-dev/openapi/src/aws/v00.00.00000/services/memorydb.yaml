@@ -342,7 +342,6 @@ paths:
                   description: A list of tags to be added to this resource. A tag is a key-value pair. A tag key must be accompanied by a tag value, although null is accepted.
               required:
                 - ParameterGroupName
-                - Family
       responses:
         "200":
           description: Success
@@ -3308,6 +3307,106 @@ components:
           $ref: "#/components/schemas/User"
           description: The updated user
   x-stackQL-resources:
+    clusters:
+      id: aws.memorydb.clusters
+      name: clusters
+      title: clusters
+      methods:
+        batch_update_cluster:
+          operation:
+            $ref: "#/paths/~1BatchUpdateCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_cluster:
+          operation:
+            $ref: "#/paths/~1CreateCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_cluster:
+          operation:
+            $ref: "#/paths/~1DeleteCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_clusters:
+          operation:
+            $ref: "#/paths/~1DescribeClusters/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Clusters
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        failover_shard:
+          operation:
+            $ref: "#/paths/~1FailoverShard/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_cluster:
+          operation:
+            $ref: "#/paths/~1UpdateCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_clusters"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
+        update:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_cluster"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
     acls:
       id: aws.memorydb.acls
       name: acls
@@ -3360,73 +3459,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/acls/methods/update_acl"
         delete:
           - $ref: "#/components/x-stackQL-resources/acls/methods/delete_acl"
-    clusters:
-      id: aws.memorydb.clusters
-      name: clusters
-      title: clusters
-      methods:
-        create_cluster:
-          operation:
-            $ref: "#/paths/~1CreateCluster/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_cluster:
-          operation:
-            $ref: "#/paths/~1DeleteCluster/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_clusters:
-          operation:
-            $ref: "#/paths/~1DescribeClusters/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Clusters
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_cluster:
-          operation:
-            $ref: "#/paths/~1UpdateCluster/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_clusters"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
-        update:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_cluster"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
     multi_region_clusters:
       id: aws.memorydb.multi_region_clusters
       name: multi_region_clusters
@@ -3470,6 +3502,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_multi_region_cluster:
@@ -3537,6 +3576,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_parameter_group:
@@ -3604,6 +3650,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3657,6 +3710,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_subnet_group:
@@ -3724,6 +3784,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_user:
@@ -3765,6 +3832,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3790,6 +3864,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3815,6 +3896,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3888,6 +3976,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reset_parameter_group:
+          operation:
+            $ref: "#/paths/~1ResetParameterGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3913,6 +4021,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3933,6 +4048,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ReservedNodesOfferings
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        purchase_reserved_nodes_offering:
+          operation:
+            $ref: "#/paths/~1PurchaseReservedNodesOffering/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3963,6 +4098,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4037,17 +4179,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.memorydb.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -4075,9 +4206,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -1,0 +1,3 @@
+REPLACE aws.dynamodb.items
+SET Item = '{"pk":{"S":"smoke-2"},"payload":{"S":"beta-payload"}}'
+WHERE region = '{{ region }}' AND TableName = '{{ table_name }}'

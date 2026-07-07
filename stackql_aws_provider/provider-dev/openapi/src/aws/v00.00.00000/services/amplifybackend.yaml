@@ -2293,6 +2293,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_backend_config:
+          operation:
+            $ref: "#/paths/~1backend~1{app_id}~1config/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_backend:
           operation:
             $ref: "#/paths/~1backend~1{app_id}~1environments~1{backend_environment_name}~1remove/post"
@@ -2310,12 +2321,64 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        import_backend_auth:
+          operation:
+            $ref: "#/paths/~1backend~1{app_id}~1auth~1{backend_environment_name}~1import/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_backend_storage:
+          operation:
+            $ref: "#/paths/~1backend~1{app_id}~1storage~1{backend_environment_name}~1import/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_all_backends:
+          operation:
+            $ref: "#/paths/~1backend~1{app_id}~1remove/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_backend_config:
+          operation:
+            $ref: "#/paths/~1backend~1{app_id}~1config~1remove/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_backend_config:
+          operation:
+            $ref: "#/paths/~1backend~1{app_id}~1config~1update/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backends/methods/get_backend"
         insert:
           - $ref: "#/components/x-stackQL-resources/backends/methods/create_backend"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/backends/methods/create_backend_config"
+        update:
+          - $ref: "#/components/x-stackQL-resources/backends/methods/remove_all_backends"
         delete:
           - $ref: "#/components/x-stackQL-resources/backends/methods/delete_backend"
     backend_apis:
@@ -2434,46 +2497,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/backend_auths/methods/update_backend_auth"
         delete:
           - $ref: "#/components/x-stackQL-resources/backend_auths/methods/delete_backend_auth"
-    backend_configs:
-      id: aws.amplifybackend.backend_configs
-      name: backend_configs
-      title: backend_configs
-      methods:
-        create_backend_config:
-          operation:
-            $ref: "#/paths/~1backend~1{app_id}~1config/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        remove_backend_config:
-          operation:
-            $ref: "#/paths/~1backend~1{app_id}~1config~1remove/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_backend_config:
-          operation:
-            $ref: "#/paths/~1backend~1{app_id}~1config~1update/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/backend_configs/methods/create_backend_config"
-        update:
-          - $ref: "#/components/x-stackQL-resources/backend_configs/methods/remove_backend_config"
-        delete: []
     backend_storages:
       id: aws.amplifybackend.backend_storages
       name: backend_storages
@@ -2628,6 +2651,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2659,26 +2689,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/s3_buckets/methods/list_s3_buckets"
         insert: []
         update: []
-        delete: []
-    all_backends:
-      id: aws.amplifybackend.all_backends
-      name: all_backends
-      title: all_backends
-      methods:
-        remove_all_backends:
-          operation:
-            $ref: "#/paths/~1backend~1{app_id}~1remove/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/all_backends/methods/remove_all_backends"
         delete: []

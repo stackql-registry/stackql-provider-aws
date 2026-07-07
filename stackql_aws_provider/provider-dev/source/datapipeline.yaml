@@ -61,7 +61,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivatePipelineOutput'
-      x-stackql-resource: pipeline
+      x-stackql-resource: pipelines
       x-stackql-method: activate_pipeline
       x-stackql-verb: EXEC
   /AddTags:
@@ -199,7 +199,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivatePipelineOutput'
-      x-stackql-resource: pipeline
+      x-stackql-resource: pipelines
       x-stackql-method: deactivate_pipeline
       x-stackql-verb: EXEC
   /DeletePipeline:
@@ -290,6 +290,9 @@ paths:
       x-stackql-method: describe_objects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pipelineObjects
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.marker
   /DescribePipelines:
     post:
       operationId: DescribePipelines
@@ -373,7 +376,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvaluateExpressionOutput'
-      x-stackql-resource: evaluate_expression
+      x-stackql-resource: pipelines
       x-stackql-method: evaluate_expression
       x-stackql-verb: EXEC
   /GetPipelineDefinition:
@@ -454,6 +457,9 @@ paths:
       x-stackql-method: list_pipelines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pipelineIdList
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.marker
   /PollForTask:
     post:
       operationId: PollForTask
@@ -613,9 +619,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryObjectsOutput'
-      x-stackql-resource: query_objects
+      x-stackql-resource: objects
       x-stackql-method: query_objects
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.marker
   /RemoveTags:
     post:
       operationId: RemoveTags
@@ -793,7 +802,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: status
+      x-stackql-resource: pipelines
       x-stackql-method: set_status
       x-stackql-verb: UPDATE
   /SetTaskStatus:
@@ -898,7 +907,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidatePipelineDefinitionOutput'
-      x-stackql-resource: pipeline_definition
+      x-stackql-resource: pipelines
       x-stackql-method: validate_pipeline_definition
       x-stackql-verb: EXEC
 components:

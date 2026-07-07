@@ -195,7 +195,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateBackendConfigResponse'
-      x-stackql-resource: backend_configs
+      x-stackql-resource: backends
       x-stackql-method: create_backend_config
       x-stackql-verb: INSERT
   /backend/{app_id}/storage:
@@ -798,7 +798,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportBackendAuthResponse'
-      x-stackql-resource: backend_auth
+      x-stackql-resource: backends
       x-stackql-method: import_backend_auth
       x-stackql-verb: EXEC
   /backend/{app_id}/storage/{backend_environment_name}/import:
@@ -838,7 +838,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportBackendStorageResponse'
-      x-stackql-resource: backend_storage
+      x-stackql-resource: backends
       x-stackql-method: import_backend_storage
       x-stackql-verb: EXEC
   /backend/{app_id}/job/{backend_environment_name}:
@@ -886,6 +886,9 @@ paths:
       x-stackql-method: list_backend_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Jobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /s3Buckets:
     post:
       operationId: ListS3Buckets
@@ -937,7 +940,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveAllBackendsResponse'
-      x-stackql-resource: all_backends
+      x-stackql-resource: backends
       x-stackql-method: remove_all_backends
       x-stackql-verb: UPDATE
   /backend/{app_id}/config/remove:
@@ -958,7 +961,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveBackendConfigResponse'
-      x-stackql-resource: backend_configs
+      x-stackql-resource: backends
       x-stackql-method: remove_backend_config
       x-stackql-verb: UPDATE
   /backend/{app_id}/api/{backend_environment_name}:
@@ -1069,7 +1072,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBackendConfigResponse'
-      x-stackql-resource: backend_configs
+      x-stackql-resource: backends
       x-stackql-method: update_backend_config
       x-stackql-verb: UPDATE
   /backend/{app_id}/storage/{backend_environment_name}:

@@ -38,7 +38,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: invitation
+      x-stackql-resource: graphs
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
   /graph/datasources/get:
@@ -296,7 +296,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: memberships
+      x-stackql-resource: graphs
       x-stackql-method: disassociate_membership
       x-stackql-verb: UPDATE
   /orgs/enableAdminAccount:
@@ -626,7 +626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -657,7 +657,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -683,7 +683,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /invitation/removal:
@@ -707,7 +707,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: invitation
+      x-stackql-resource: graphs
       x-stackql-method: reject_invitation
       x-stackql-verb: EXEC
   /investigations/startInvestigation:
@@ -745,7 +745,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInvestigationResponse'
-      x-stackql-resource: investigation
+      x-stackql-resource: graphs
       x-stackql-method: start_investigation
       x-stackql-verb: EXEC
   /graph/member/monitoringstate:
@@ -772,7 +772,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: monitoring_member
+      x-stackql-resource: graphs
       x-stackql-method: start_monitoring_member
       x-stackql-verb: EXEC
   /graph/datasources/update:
@@ -825,7 +825,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: investigation_states
+      x-stackql-resource: investigations
       x-stackql-method: update_investigation_state
       x-stackql-verb: UPDATE
   /orgs/updateOrganizationConfiguration:

@@ -41,7 +41,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application'
-      x-stackql-resource: archive_application
+      x-stackql-resource: applications
       x-stackql-method: archive_application
       x-stackql-verb: EXEC
   /ArchiveWave:
@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Wave'
-      x-stackql-resource: archive_wave
+      x-stackql-resource: waves
       x-stackql-method: archive_wave
       x-stackql-verb: EXEC
   /AssociateApplications:
@@ -164,7 +164,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: change_server_life_cycle_state
+      x-stackql-resource: source_servers
       x-stackql-method: change_server_life_cycle_state
       x-stackql-verb: EXEC
   /CreateApplication:
@@ -695,6 +695,9 @@ paths:
       x-stackql-method: describe_job_log_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeJobs:
     post:
       operationId: DescribeJobs
@@ -729,6 +732,9 @@ paths:
       x-stackql-method: describe_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeLaunchConfigurationTemplates:
     post:
       operationId: DescribeLaunchConfigurationTemplates
@@ -758,6 +764,9 @@ paths:
       x-stackql-method: describe_launch_configuration_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeReplicationConfigurationTemplates:
     post:
       operationId: DescribeReplicationConfigurationTemplates
@@ -787,6 +796,9 @@ paths:
       x-stackql-method: describe_replication_configuration_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeSourceServers:
     post:
       operationId: DescribeSourceServers
@@ -818,6 +830,9 @@ paths:
       x-stackql-method: describe_source_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeVcenterClients:
     get:
       operationId: DescribeVcenterClients
@@ -846,6 +861,9 @@ paths:
       x-stackql-method: describe_vcenter_clients
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /DisassociateApplications:
     post:
       operationId: DisassociateApplications
@@ -940,7 +958,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: disconnect_from_service
+      x-stackql-resource: source_servers
       x-stackql-method: disconnect_from_service
       x-stackql-verb: EXEC
   /FinalizeCutover:
@@ -974,7 +992,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: finalize_cutover
+      x-stackql-resource: source_servers
       x-stackql-method: finalize_cutover
       x-stackql-verb: EXEC
   /GetLaunchConfiguration:
@@ -1067,6 +1085,7 @@ paths:
       x-stackql-resource: network_migration_mapper_segment_constructs
       x-stackql-method: get_network_migration_mapper_segment_construct
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.construct
   /GetReplicationConfiguration:
     post:
       operationId: GetReplicationConfiguration
@@ -1141,6 +1160,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListConnectors:
     post:
       operationId: ListConnectors
@@ -1170,6 +1192,9 @@ paths:
       x-stackql-method: list_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListExportErrors:
     post:
       operationId: ListExportErrors
@@ -1201,6 +1226,9 @@ paths:
       x-stackql-method: list_export_errors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListExports:
     post:
       operationId: ListExports
@@ -1230,6 +1258,9 @@ paths:
       x-stackql-method: list_exports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImportErrors:
     post:
       operationId: ListImportErrors
@@ -1261,6 +1292,9 @@ paths:
       x-stackql-method: list_import_errors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListImportFileEnrichments:
     post:
       operationId: ListImportFileEnrichments
@@ -1290,6 +1324,9 @@ paths:
       x-stackql-method: list_import_file_enrichments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImports:
     post:
       operationId: ListImports
@@ -1319,6 +1356,9 @@ paths:
       x-stackql-method: list_imports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListManagedAccounts:
     post:
       operationId: ListManagedAccounts
@@ -1346,6 +1386,9 @@ paths:
       x-stackql-method: list_managed_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationAnalyses:
     post:
       operationId: ListNetworkMigrationAnalyses
@@ -1383,6 +1426,9 @@ paths:
       x-stackql-method: list_network_migration_analyses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationAnalysisResults:
     post:
       operationId: ListNetworkMigrationAnalysisResults
@@ -1420,6 +1466,9 @@ paths:
       x-stackql-method: list_network_migration_analysis_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationCodeGenerationSegments:
     post:
       operationId: ListNetworkMigrationCodeGenerationSegments
@@ -1457,6 +1506,9 @@ paths:
       x-stackql-method: list_network_migration_code_generation_segments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationCodeGenerations:
     post:
       operationId: ListNetworkMigrationCodeGenerations
@@ -1494,6 +1546,9 @@ paths:
       x-stackql-method: list_network_migration_code_generations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationDefinitions:
     post:
       operationId: ListNetworkMigrationDefinitions
@@ -1523,6 +1578,9 @@ paths:
       x-stackql-method: list_network_migration_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationDeployedStacks:
     post:
       operationId: ListNetworkMigrationDeployedStacks
@@ -1557,6 +1615,9 @@ paths:
       x-stackql-method: list_network_migration_deployed_stacks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationDeployments:
     post:
       operationId: ListNetworkMigrationDeployments
@@ -1593,6 +1654,9 @@ paths:
       x-stackql-method: list_network_migration_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationExecutions:
     post:
       operationId: ListNetworkMigrationExecutions
@@ -1627,6 +1691,9 @@ paths:
       x-stackql-method: list_network_migration_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationMapperSegmentConstructs:
     post:
       operationId: ListNetworkMigrationMapperSegmentConstructs
@@ -1667,6 +1734,9 @@ paths:
       x-stackql-method: list_network_migration_mapper_segment_constructs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationMapperSegments:
     post:
       operationId: ListNetworkMigrationMapperSegments
@@ -1703,6 +1773,9 @@ paths:
       x-stackql-method: list_network_migration_mapper_segments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationMappingUpdates:
     post:
       operationId: ListNetworkMigrationMappingUpdates
@@ -1739,6 +1812,9 @@ paths:
       x-stackql-method: list_network_migration_mapping_updates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /network-migration/ListNetworkMigrationMappings:
     post:
       operationId: ListNetworkMigrationMappings
@@ -1776,6 +1852,9 @@ paths:
       x-stackql-method: list_network_migration_mappings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSourceServerActions:
     post:
       operationId: ListSourceServerActions
@@ -1811,6 +1890,9 @@ paths:
       x-stackql-method: list_source_server_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1829,7 +1911,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1858,7 +1940,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1880,7 +1962,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /ListTemplateActions:
@@ -1916,6 +1998,9 @@ paths:
       x-stackql-method: list_template_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWaves:
     post:
       operationId: ListWaves
@@ -1947,6 +2032,9 @@ paths:
       x-stackql-method: list_waves
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /MarkAsArchived:
     post:
       operationId: MarkAsArchived
@@ -1974,7 +2062,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: mark_as_archived
+      x-stackql-resource: source_servers
       x-stackql-method: mark_as_archived
       x-stackql-verb: EXEC
   /PauseReplication:
@@ -2002,7 +2090,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: replication
+      x-stackql-resource: source_servers
       x-stackql-method: pause_replication
       x-stackql-verb: EXEC
   /PutSourceServerAction:
@@ -2202,7 +2290,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: replication
+      x-stackql-resource: source_servers
       x-stackql-method: resume_replication
       x-stackql-verb: EXEC
   /RetryDataReplication:
@@ -2232,7 +2320,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: retry_data_replication
+      x-stackql-resource: source_servers
       x-stackql-method: retry_data_replication
       x-stackql-verb: EXEC
   /StartCutover:
@@ -2360,7 +2448,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportFileEnrichmentResponse'
-      x-stackql-resource: import_file_enrichment
+      x-stackql-resource: imports
       x-stackql-method: start_import_file_enrichment
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationAnalysis:
@@ -2389,7 +2477,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationAnalysisResponse'
-      x-stackql-resource: network_migration_analysis
+      x-stackql-resource: network_migration_definitions
       x-stackql-method: start_network_migration_analysis
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationCodeGeneration:
@@ -2420,7 +2508,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationCodeGenerationResponse'
-      x-stackql-resource: network_migration_code_generation
+      x-stackql-resource: network_migration_definitions
       x-stackql-method: start_network_migration_code_generation
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationDeployment:
@@ -2449,7 +2537,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationDeployerJobResponse'
-      x-stackql-resource: network_migration_deployment
+      x-stackql-resource: network_migration_definitions
       x-stackql-method: start_network_migration_deployment
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationMapping:
@@ -2480,7 +2568,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationMappingResponse'
-      x-stackql-resource: network_migration_mapping
+      x-stackql-resource: network_migration_definitions
       x-stackql-method: start_network_migration_mapping
       x-stackql-verb: EXEC
   /network-migration/StartNetworkMigrationMappingUpdate:
@@ -2513,7 +2601,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNetworkMigrationMappingUpdateResponse'
-      x-stackql-resource: network_migration_mapping_update
+      x-stackql-resource: network_migration_mappings
       x-stackql-method: start_network_migration_mapping_update
       x-stackql-verb: EXEC
   /StartReplication:
@@ -2541,7 +2629,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: replication
+      x-stackql-resource: source_servers
       x-stackql-method: start_replication
       x-stackql-verb: EXEC
   /StartTest:
@@ -2600,7 +2688,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: replication
+      x-stackql-resource: source_servers
       x-stackql-method: stop_replication
       x-stackql-verb: EXEC
   /TerminateTargetInstances:
@@ -2659,7 +2747,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Application'
-      x-stackql-resource: unarchive_application
+      x-stackql-resource: applications
       x-stackql-method: unarchive_application
       x-stackql-verb: EXEC
   /UnarchiveWave:
@@ -2687,7 +2775,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Wave'
-      x-stackql-resource: unarchive_wave
+      x-stackql-resource: waves
       x-stackql-method: unarchive_wave
       x-stackql-verb: EXEC
   /UpdateApplication:
@@ -3109,7 +3197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: source_server_replication_types
+      x-stackql-resource: source_servers
       x-stackql-method: update_source_server_replication_type
       x-stackql-verb: UPDATE
   /UpdateWave:

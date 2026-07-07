@@ -3400,6 +3400,299 @@ components:
       required:
         - id
   x-stackQL-resources:
+    bill_scenarios:
+      id: aws.bcm_pricing_calculator.bill_scenarios
+      name: bill_scenarios
+      title: bill_scenarios
+      methods:
+        batch_create_bill_scenario_commitment_modification:
+          operation:
+            $ref: "#/paths/~1BatchCreateBillScenarioCommitmentModification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_create_bill_scenario_usage_modification:
+          operation:
+            $ref: "#/paths/~1BatchCreateBillScenarioUsageModification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_bill_scenario_commitment_modification:
+          operation:
+            $ref: "#/paths/~1BatchDeleteBillScenarioCommitmentModification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_bill_scenario_usage_modification:
+          operation:
+            $ref: "#/paths/~1BatchDeleteBillScenarioUsageModification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_bill_scenario_commitment_modification:
+          operation:
+            $ref: "#/paths/~1BatchUpdateBillScenarioCommitmentModification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_bill_scenario_usage_modification:
+          operation:
+            $ref: "#/paths/~1BatchUpdateBillScenarioUsageModification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_bill_scenario:
+          operation:
+            $ref: "#/paths/~1CreateBillScenario/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_bill_scenario:
+          operation:
+            $ref: "#/paths/~1DeleteBillScenario/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_bill_scenario:
+          operation:
+            $ref: "#/paths/~1GetBillScenario/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_bill_scenarios:
+          operation:
+            $ref: "#/paths/~1ListBillScenarios/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_bill_scenario:
+          operation:
+            $ref: "#/paths/~1UpdateBillScenario/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/get_bill_scenario"
+          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/list_bill_scenarios"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/create_bill_scenario"
+        update:
+          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/update_bill_scenario"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/delete_bill_scenario"
+    workload_estimates:
+      id: aws.bcm_pricing_calculator.workload_estimates
+      name: workload_estimates
+      title: workload_estimates
+      methods:
+        batch_create_workload_estimate_usage:
+          operation:
+            $ref: "#/paths/~1BatchCreateWorkloadEstimateUsage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_workload_estimate_usage:
+          operation:
+            $ref: "#/paths/~1BatchDeleteWorkloadEstimateUsage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_workload_estimate_usage:
+          operation:
+            $ref: "#/paths/~1BatchUpdateWorkloadEstimateUsage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_workload_estimate:
+          operation:
+            $ref: "#/paths/~1CreateWorkloadEstimate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_workload_estimate:
+          operation:
+            $ref: "#/paths/~1DeleteWorkloadEstimate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_workload_estimate:
+          operation:
+            $ref: "#/paths/~1GetWorkloadEstimate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_workload_estimates:
+          operation:
+            $ref: "#/paths/~1ListWorkloadEstimates/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_workload_estimate:
+          operation:
+            $ref: "#/paths/~1UpdateWorkloadEstimate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/get_workload_estimate"
+          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/list_workload_estimates"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/create_workload_estimate"
+        update:
+          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/update_workload_estimate"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/delete_workload_estimate"
     bill_estimates:
       id: aws.bcm_pricing_calculator.bill_estimates
       name: bill_estimates
@@ -3456,6 +3749,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_bill_estimate:
@@ -3481,168 +3781,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/bill_estimates/methods/update_bill_estimate"
         delete:
           - $ref: "#/components/x-stackQL-resources/bill_estimates/methods/delete_bill_estimate"
-    bill_scenarios:
-      id: aws.bcm_pricing_calculator.bill_scenarios
-      name: bill_scenarios
-      title: bill_scenarios
-      methods:
-        create_bill_scenario:
-          operation:
-            $ref: "#/paths/~1CreateBillScenario/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_bill_scenario:
-          operation:
-            $ref: "#/paths/~1DeleteBillScenario/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_bill_scenario:
-          operation:
-            $ref: "#/paths/~1GetBillScenario/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_bill_scenarios:
-          operation:
-            $ref: "#/paths/~1ListBillScenarios/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_bill_scenario:
-          operation:
-            $ref: "#/paths/~1UpdateBillScenario/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/get_bill_scenario"
-          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/list_bill_scenarios"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/create_bill_scenario"
-        update:
-          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/update_bill_scenario"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/bill_scenarios/methods/delete_bill_scenario"
-    workload_estimates:
-      id: aws.bcm_pricing_calculator.workload_estimates
-      name: workload_estimates
-      title: workload_estimates
-      methods:
-        create_workload_estimate:
-          operation:
-            $ref: "#/paths/~1CreateWorkloadEstimate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_workload_estimate:
-          operation:
-            $ref: "#/paths/~1DeleteWorkloadEstimate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_workload_estimate:
-          operation:
-            $ref: "#/paths/~1GetWorkloadEstimate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_workload_estimates:
-          operation:
-            $ref: "#/paths/~1ListWorkloadEstimates/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_workload_estimate:
-          operation:
-            $ref: "#/paths/~1UpdateWorkloadEstimate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/get_workload_estimate"
-          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/list_workload_estimates"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/create_workload_estimate"
-        update:
-          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/update_workload_estimate"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/workload_estimates/methods/delete_workload_estimate"
     preferences:
       id: aws.bcm_pricing_calculator.preferences
       name: preferences
@@ -3698,6 +3836,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3723,6 +3868,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3748,6 +3900,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3773,6 +3932,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3798,6 +3964,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3823,6 +3996,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3831,10 +4011,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.bcm_pricing_calculator.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.bcm_pricing_calculator.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3849,42 +4029,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    workload_estimate_usages:
-      id: aws.bcm_pricing_calculator.workload_estimate_usages
-      name: workload_estimate_usages
-      title: workload_estimate_usages
-      methods:
-        list_workload_estimate_usage:
-          operation:
-            $ref: "#/paths/~1ListWorkloadEstimateUsage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workload_estimate_usages/methods/list_workload_estimate_usage"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.bcm_pricing_calculator.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -3912,9 +4056,42 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    workload_estimate_usages:
+      id: aws.bcm_pricing_calculator.workload_estimate_usages
+      name: workload_estimate_usages
+      title: workload_estimate_usages
+      methods:
+        list_workload_estimate_usage:
+          operation:
+            $ref: "#/paths/~1ListWorkloadEstimateUsage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/workload_estimate_usages/methods/list_workload_estimate_usage"
+        insert: []
+        update: []
         delete: []

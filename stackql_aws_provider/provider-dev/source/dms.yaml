@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddTagsToResourceResponse'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
   /ApplyPendingMaintenanceAction:
@@ -108,7 +108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApplyPendingMaintenanceActionResponse'
-      x-stackql-resource: apply_pending_maintenance_action
+      x-stackql-resource: replication_instances
       x-stackql-method: apply_pending_maintenance_action
       x-stackql-verb: EXEC
   /BatchStartRecommendations:
@@ -149,7 +149,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchStartRecommendationsResponse'
-      x-stackql-resource: batch_start_recommendations
+      x-stackql-resource: recommendations
       x-stackql-method: batch_start_recommendations
       x-stackql-verb: EXEC
   /CancelMetadataModelConversion:
@@ -190,7 +190,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMetadataModelConversionResponse'
-      x-stackql-resource: metadata_model_conversion
+      x-stackql-resource: metadata_models
       x-stackql-method: cancel_metadata_model_conversion
       x-stackql-verb: EXEC
   /CancelMetadataModelCreation:
@@ -231,7 +231,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMetadataModelCreationResponse'
-      x-stackql-resource: metadata_model_creation
+      x-stackql-resource: metadata_models
       x-stackql-method: cancel_metadata_model_creation
       x-stackql-verb: EXEC
   /CancelReplicationTaskAssessmentRun:
@@ -268,7 +268,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelReplicationTaskAssessmentRunResponse'
-      x-stackql-resource: replication_task_assessment_run
+      x-stackql-resource: replication_tasks
       x-stackql-method: cancel_replication_task_assessment_run
       x-stackql-verb: EXEC
   /CreateDataMigration:
@@ -1854,10 +1854,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DescribeApplicableIndividualAssessmentsResponse'
+                $ref: '#/components/schemas/DescribeApplicableIndividualAssessmentsOutputDisplay'
       x-stackql-resource: applicable_individual_assessments
       x-stackql-method: describe_applicable_individual_assessments
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeApplicableIndividualAssessmentsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "IndividualAssessmentNames" -}}{"line_items": [{{- if eq (kindOf $lst)
+        "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"individual_assessment_name": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]}'
   /DescribeCertificates:
     post:
       operationId: DescribeCertificates
@@ -1903,6 +1909,9 @@ paths:
       x-stackql-method: describe_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Certificates
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeConnections:
     post:
       operationId: DescribeConnections
@@ -1948,6 +1957,9 @@ paths:
       x-stackql-method: describe_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Connections
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeConversionConfiguration:
     post:
       operationId: DescribeConversionConfiguration
@@ -2037,6 +2049,9 @@ paths:
       x-stackql-method: describe_data_migrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataMigrations
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeDataProviders:
     post:
       operationId: DescribeDataProviders
@@ -2174,6 +2189,9 @@ paths:
       x-stackql-method: describe_endpoint_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SupportedEndpointTypes
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeEndpoints:
     post:
       operationId: DescribeEndpoints
@@ -2219,6 +2237,9 @@ paths:
       x-stackql-method: describe_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Endpoints
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeEngineVersions:
     post:
       operationId: DescribeEngineVersions
@@ -2347,6 +2368,9 @@ paths:
       x-stackql-method: describe_event_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventSubscriptionsList
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeEvents:
     post:
       operationId: DescribeEvents
@@ -2411,6 +2435,9 @@ paths:
       x-stackql-method: describe_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeExtensionPackAssociations:
     post:
       operationId: DescribeExtensionPackAssociations
@@ -2909,6 +2936,9 @@ paths:
       x-stackql-method: describe_metadata_model_children
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MetadataModelChildren
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeMetadataModelConversions:
     post:
       operationId: DescribeMetadataModelConversions
@@ -3011,6 +3041,9 @@ paths:
       x-stackql-method: describe_metadata_model_creations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Requests
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeMetadataModelExportsAsScript:
     post:
       operationId: DescribeMetadataModelExportsAsScript
@@ -3251,6 +3284,9 @@ paths:
       x-stackql-method: describe_orderable_replication_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrderableReplicationInstances
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribePendingMaintenanceActions:
     post:
       operationId: DescribePendingMaintenanceActions
@@ -3434,6 +3470,7 @@ paths:
       x-stackql-resource: refresh_schemas_status
       x-stackql-method: describe_refresh_schemas_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RefreshSchemasStatus
   /DescribeReplicationConfigs:
     post:
       operationId: DescribeReplicationConfigs
@@ -3567,6 +3604,9 @@ paths:
       x-stackql-method: describe_replication_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReplicationInstances
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeReplicationSubnetGroups:
     post:
       operationId: DescribeReplicationSubnetGroups
@@ -3611,6 +3651,9 @@ paths:
       x-stackql-method: describe_replication_subnet_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReplicationSubnetGroups
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeReplicationTableStatistics:
     post:
       operationId: DescribeReplicationTableStatistics
@@ -3707,6 +3750,9 @@ paths:
       x-stackql-method: describe_replication_task_assessment_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReplicationTaskAssessmentResults
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeReplicationTaskAssessmentRuns:
     post:
       operationId: DescribeReplicationTaskAssessmentRuns
@@ -3849,6 +3895,9 @@ paths:
       x-stackql-method: describe_replication_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReplicationTasks
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeReplications:
     post:
       operationId: DescribeReplications
@@ -3934,11 +3983,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DescribeSchemasResponse'
+                $ref: '#/components/schemas/DescribeSchemasOutputDisplay'
       x-stackql-resource: schemas
       x-stackql-method: describe_schemas
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Schemas
+      x-stackql-responseEnvelope: DescribeSchemasOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Schemas" -}}{{- $tok := index . "Marker" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "Marker": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeTableStatistics:
     post:
       operationId: DescribeTableStatistics
@@ -3991,6 +4048,9 @@ paths:
       x-stackql-method: describe_table_statistics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableStatistics
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ExportMetadataModelAssessment:
     post:
       operationId: ExportMetadataModelAssessment
@@ -4035,7 +4095,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportMetadataModelAssessmentResponse'
-      x-stackql-resource: metadata_model_assessment
+      x-stackql-resource: metadata_models
       x-stackql-method: export_metadata_model_assessment
       x-stackql-verb: EXEC
   /GetTargetSelectionRules:
@@ -4131,7 +4191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportCertificateResponse'
-      x-stackql-resource: certificate
+      x-stackql-resource: certificates
       x-stackql-method: import_certificate
       x-stackql-verb: EXEC
   /ListTagsForResource:
@@ -4172,7 +4232,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ModifyConversionConfiguration:
@@ -5029,7 +5089,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MoveReplicationTaskResponse'
-      x-stackql-resource: replication_task
+      x-stackql-resource: replications
       x-stackql-method: move_replication_task
       x-stackql-verb: EXEC
   /RebootReplicationInstance:
@@ -5077,7 +5137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootReplicationInstanceResponse'
-      x-stackql-resource: replication_instance
+      x-stackql-resource: replications
       x-stackql-method: reboot_replication_instance
       x-stackql-verb: EXEC
   /RefreshSchemas:
@@ -5165,7 +5225,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReloadReplicationTablesResponse'
-      x-stackql-resource: reload_replication_tables
+      x-stackql-resource: replication_configs
       x-stackql-method: reload_replication_tables
       x-stackql-verb: EXEC
   /ReloadTables:
@@ -5211,7 +5271,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReloadTablesResponse'
-      x-stackql-resource: reload_tables
+      x-stackql-resource: replication_tasks
       x-stackql-method: reload_tables
       x-stackql-verb: EXEC
   /RemoveTagsFromResource:
@@ -5253,7 +5313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveTagsFromResourceResponse'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
   /RunFleetAdvisorLsaAnalysis:
@@ -5321,7 +5381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataMigrationResponse'
-      x-stackql-resource: data_migration
+      x-stackql-resource: data_migrations
       x-stackql-method: start_data_migration
       x-stackql-verb: EXEC
   /StartExtensionPackAssociation:
@@ -5358,7 +5418,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExtensionPackAssociationResponse'
-      x-stackql-resource: extension_pack_association
+      x-stackql-resource: migration_projects
       x-stackql-method: start_extension_pack_association
       x-stackql-verb: EXEC
   /StartMetadataModelAssessment:
@@ -5400,7 +5460,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelAssessmentResponse'
-      x-stackql-resource: metadata_model_assessment
+      x-stackql-resource: metadata_models
       x-stackql-method: start_metadata_model_assessment
       x-stackql-verb: EXEC
   /StartMetadataModelConversion:
@@ -5440,7 +5500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelConversionResponse'
-      x-stackql-resource: metadata_model_conversion
+      x-stackql-resource: metadata_models
       x-stackql-method: start_metadata_model_conversion
       x-stackql-verb: EXEC
   /StartMetadataModelCreation:
@@ -5491,7 +5551,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelCreationResponse'
-      x-stackql-resource: metadata_model_creation
+      x-stackql-resource: metadata_models
       x-stackql-method: start_metadata_model_creation
       x-stackql-verb: EXEC
   /StartMetadataModelExportAsScript:
@@ -5538,7 +5598,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelExportAsScriptResponse'
-      x-stackql-resource: metadata_model_export_as_script
+      x-stackql-resource: metadata_models
       x-stackql-method: start_metadata_model_export_as_script
       x-stackql-verb: EXEC
   /StartMetadataModelExportToTarget:
@@ -5583,7 +5643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelExportToTargetResponse'
-      x-stackql-resource: metadata_model_export_to_target
+      x-stackql-resource: metadata_models
       x-stackql-method: start_metadata_model_export_to_target
       x-stackql-verb: EXEC
   /StartMetadataModelImport:
@@ -5631,7 +5691,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataModelImportResponse'
-      x-stackql-resource: metadata_model_import
+      x-stackql-resource: metadata_models
       x-stackql-method: start_metadata_model_import
       x-stackql-verb: EXEC
   /StartRecommendations:
@@ -5754,7 +5814,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationResponse'
-      x-stackql-resource: replication
+      x-stackql-resource: replication_configs
       x-stackql-method: start_replication
       x-stackql-verb: EXEC
   /StartReplicationTask:
@@ -5827,7 +5887,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationTaskResponse'
-      x-stackql-resource: replication_task
+      x-stackql-resource: replications
       x-stackql-method: start_replication_task
       x-stackql-verb: EXEC
   /StartReplicationTaskAssessment:
@@ -5867,7 +5927,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationTaskAssessmentResponse'
-      x-stackql-resource: replication_task_assessment
+      x-stackql-resource: replication_tasks
       x-stackql-method: start_replication_task_assessment
       x-stackql-verb: EXEC
   /StartReplicationTaskAssessmentRun:
@@ -5954,7 +6014,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationTaskAssessmentRunResponse'
-      x-stackql-resource: replication_task_assessment_run
+      x-stackql-resource: replication_tasks
       x-stackql-method: start_replication_task_assessment_run
       x-stackql-verb: EXEC
   /StopDataMigration:
@@ -5990,7 +6050,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDataMigrationResponse'
-      x-stackql-resource: data_migration
+      x-stackql-resource: data_migrations
       x-stackql-method: stop_data_migration
       x-stackql-verb: EXEC
   /StopReplication:
@@ -6027,7 +6087,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopReplicationResponse'
-      x-stackql-resource: replication
+      x-stackql-resource: replication_configs
       x-stackql-method: stop_replication
       x-stackql-verb: EXEC
   /StopReplicationTask:
@@ -6063,7 +6123,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopReplicationTaskResponse'
-      x-stackql-resource: replication_task
+      x-stackql-resource: replications
       x-stackql-method: stop_replication_task
       x-stackql-verb: EXEC
   /TestConnection:
@@ -6103,7 +6163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestConnectionResponse'
-      x-stackql-resource: connection
+      x-stackql-resource: replication_instances
       x-stackql-method: test_connection
       x-stackql-verb: EXEC
   /UpdateSubscriptionsToEventBridge:
@@ -9793,24 +9853,22 @@ components:
         Max:
           $ref: '#/components/schemas/Long'
           description: The maximum allowed value for the quota.
-    DescribeApplicableIndividualAssessmentsResponse:
+    DescribeApplicableIndividualAssessmentsRowDisplay:
       type: object
       properties:
-        IndividualAssessmentNames:
-          $ref: '#/components/schemas/IndividualAssessmentNameList'
+        individual_assessment_name:
+          type: string
           description: List of names for the individual assessments supported by the premigration assessment run that you
             start based on the specified request parameters. For more information on the available individual assessments,
             including compatibility with different migration task configurations, see Working with premigration assessment
             runs in the Database Migration Service User Guide.
-        Marker:
-          $ref: '#/components/schemas/String'
-          description: Pagination token returned for you to pass to a subsequent request. If you pass this token as the Marker
-            value in a subsequent request, the response includes only records beyond the marker, up to the value specified
-            in the request by MaxRecords.
-    IndividualAssessmentNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    DescribeApplicableIndividualAssessmentsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DescribeApplicableIndividualAssessmentsRowDisplay'
     FilterList:
       type: array
       items:
@@ -11432,20 +11490,19 @@ components:
         FullLoadFinishDate:
           $ref: '#/components/schemas/TStamp'
           description: The date the replication full load was finished.
-    DescribeSchemasResponse:
+    DescribeSchemasRowDisplay:
       type: object
       properties:
-        Marker:
-          $ref: '#/components/schemas/String'
-          description: An optional pagination token provided by a previous request. If this parameter is specified, the response
-            includes only records beyond the marker, up to the value specified by MaxRecords.
-        Schemas:
-          $ref: '#/components/schemas/SchemaList'
+        schema:
+          type: string
           description: The described schema.
-    SchemaList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    DescribeSchemasOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DescribeSchemasRowDisplay'
     DescribeTableStatisticsResponse:
       type: object
       properties:

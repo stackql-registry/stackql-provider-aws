@@ -683,8 +683,6 @@ paths:
                   $ref: "#/components/schemas/__string"
                 tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -4267,10 +4265,10 @@ components:
     UpdateThingRuntimeConfigurationResponse:
       type: object
   x-stackQL-resources:
-    role_to_groups:
-      id: aws.greengrass.role_to_groups
-      name: role_to_groups
-      title: role_to_groups
+    groups:
+      id: aws.greengrass.groups
+      name: groups
+      title: groups
       methods:
         associate_role_to_group:
           operation:
@@ -4283,29 +4281,74 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/role_to_groups/methods/associate_role_to_group"
-        delete: []
-    role_from_groups:
-      id: aws.greengrass.role_from_groups
-      name: role_from_groups
-      title: role_from_groups
-      methods:
         disassociate_role_from_group:
           operation:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}~1role/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        create_group:
+          operation:
+            $ref: "#/paths/~1greengrass~1groups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_groups:
+          operation:
+            $ref: "#/paths/~1greengrass~1groups/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Groups
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_group:
+          operation:
+            $ref: "#/paths/~1greengrass~1groups~1{group_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_group:
+          operation:
+            $ref: "#/paths/~1greengrass~1groups~1{group_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_group:
+          operation:
+            $ref: "#/paths/~1greengrass~1groups~1{group_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/groups/methods/get_group"
+          - $ref: "#/components/x-stackQL-resources/groups/methods/list_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/groups/methods/create_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/role_from_groups/methods/disassociate_role_from_group"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/groups/methods/associate_role_to_group"
+          - $ref: "#/components/x-stackQL-resources/groups/methods/update_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/groups/methods/delete_group"
     associated_roles:
       id: aws.greengrass.associated_roles
       name: associated_roles
@@ -4404,6 +4447,14 @@ components:
             objectKey: $.Definitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_connector_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1connectors~1{connector_definition_id}/delete"
@@ -4462,6 +4513,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_connector_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1connectors~1{connector_definition_id}~1versions~1{connector_definition_version_id}/get"
@@ -4503,6 +4562,14 @@ components:
             objectKey: $.Definitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_core_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1cores~1{core_definition_id}/delete"
@@ -4561,6 +4628,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_core_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1cores~1{core_definition_id}~1versions~1{core_definition_version_id}/get"
@@ -4600,6 +4675,14 @@ components:
             objectKey: $.Deployments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         reset_deployments:
           operation:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}~1deployments~1$reset/post"
@@ -4643,6 +4726,14 @@ components:
             objectKey: $.Definitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_device_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1devices~1{device_definition_id}/delete"
@@ -4701,6 +4792,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_device_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1devices~1{device_definition_id}~1versions~1{device_definition_version_id}/get"
@@ -4742,6 +4841,14 @@ components:
             objectKey: $.Definitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_function_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1functions~1{function_definition_id}/delete"
@@ -4800,6 +4907,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_function_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1functions~1{function_definition_id}~1versions~1{function_definition_version_id}/get"
@@ -4816,64 +4931,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/function_definition_versions/methods/create_function_definition_version"
         update: []
         delete: []
-    groups:
-      id: aws.greengrass.groups
-      name: groups
-      title: groups
-      methods:
-        create_group:
-          operation:
-            $ref: "#/paths/~1greengrass~1groups/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_groups:
-          operation:
-            $ref: "#/paths/~1greengrass~1groups/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Groups
-          request:
-            nativeCasing: pascal
-        delete_group:
-          operation:
-            $ref: "#/paths/~1greengrass~1groups~1{group_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_group:
-          operation:
-            $ref: "#/paths/~1greengrass~1groups~1{group_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_group:
-          operation:
-            $ref: "#/paths/~1greengrass~1groups~1{group_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/groups/methods/get_group"
-          - $ref: "#/components/x-stackQL-resources/groups/methods/list_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/groups/methods/create_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/groups/methods/update_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/groups/methods/delete_group"
     group_certificate_authorities:
       id: aws.greengrass.group_certificate_authorities
       name: group_certificate_authorities
@@ -4930,6 +4987,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_group_version:
           operation:
             $ref: "#/paths/~1greengrass~1groups~1{group_id}~1versions~1{group_version_id}/get"
@@ -4969,6 +5034,14 @@ components:
             objectKey: $.Definitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_logger_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1loggers~1{logger_definition_id}/delete"
@@ -5027,6 +5100,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_logger_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1loggers~1{logger_definition_id}~1versions~1{logger_definition_version_id}/get"
@@ -5068,6 +5149,14 @@ components:
             objectKey: $.Definitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_resource_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1resources~1{resource_definition_id}/delete"
@@ -5126,6 +5215,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_resource_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1resources~1{resource_definition_id}~1versions~1{resource_definition_version_id}/get"
@@ -5187,6 +5284,14 @@ components:
             objectKey: $.Definitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_subscription_definition:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1subscriptions~1{subscription_definition_id}/delete"
@@ -5245,6 +5350,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_subscription_definition_version:
           operation:
             $ref: "#/paths/~1greengrass~1definition~1subscriptions~1{subscription_definition_id}~1versions~1{subscription_definition_version_id}/get"
@@ -5364,6 +5477,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RuntimeConfiguration
         update_thing_runtime_configuration:
           operation:
             $ref: "#/paths/~1greengrass~1things~1{thing_name}~1runtimeconfig/put"
@@ -5396,6 +5510,14 @@ components:
             objectKey: $.Deployments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bulk_deployment_detailed_reports/methods/list_bulk_deployment_detailed_reports"
@@ -5416,16 +5538,24 @@ components:
             objectKey: $.BulkDeployments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bulk_deployments/methods/list_bulk_deployments"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.greengrass.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.greengrass.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5433,17 +5563,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.greengrass.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
@@ -5462,9 +5581,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

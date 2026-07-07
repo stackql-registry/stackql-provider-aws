@@ -1,0 +1,1 @@
+DELETE FROM aws.ec2.subnets WHERE region = '{{ region }}' AND subnet_id = '{{ subnet_create.subnet_id }}'

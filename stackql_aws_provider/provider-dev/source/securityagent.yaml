@@ -78,7 +78,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteCodeReviewsOutput'
-      x-stackql-resource: batch_delete_code_reviews
+      x-stackql-resource: code_reviews
       x-stackql-method: batch_delete_code_reviews
       x-stackql-verb: EXEC
   /BatchDeletePentests:
@@ -107,7 +107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeletePentestsOutput'
-      x-stackql-resource: batch_delete_pentests
+      x-stackql-resource: pentests
       x-stackql-method: batch_delete_pentests
       x-stackql-verb: EXEC
   /BatchGetAgentSpaces:
@@ -950,6 +950,9 @@ paths:
       x-stackql-method: list_agent_spaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentSpaceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListApplications:
     post:
       operationId: ListApplications
@@ -977,6 +980,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.applicationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListArtifacts:
     post:
       operationId: ListArtifacts
@@ -1008,6 +1014,9 @@ paths:
       x-stackql-method: list_artifacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.artifactSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCodeReviewJobTasks:
     post:
       operationId: ListCodeReviewJobTasks
@@ -1046,6 +1055,9 @@ paths:
       x-stackql-method: list_code_review_job_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.codeReviewJobTaskSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCodeReviewJobsForCodeReview:
     post:
       operationId: ListCodeReviewJobsForCodeReview
@@ -1080,6 +1092,9 @@ paths:
       x-stackql-method: list_code_review_jobs_for_code_review
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.codeReviewJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCodeReviews:
     post:
       operationId: ListCodeReviews
@@ -1111,6 +1126,9 @@ paths:
       x-stackql-method: list_code_reviews
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.codeReviewSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDiscoveredEndpoints:
     post:
       operationId: ListDiscoveredEndpoints
@@ -1147,6 +1165,9 @@ paths:
       x-stackql-method: list_discovered_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.discoveredEndpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListFindings:
     post:
       operationId: ListFindings
@@ -1192,6 +1213,9 @@ paths:
       x-stackql-method: list_findings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findingsSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListIntegratedResources:
     post:
       operationId: ListIntegratedResources
@@ -1227,6 +1251,9 @@ paths:
       x-stackql-method: list_integrated_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.integratedResourceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListIntegrations:
     post:
       operationId: ListIntegrations
@@ -1256,6 +1283,9 @@ paths:
       x-stackql-method: list_integrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.integrationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListMemberships:
     post:
       operationId: ListMemberships
@@ -1292,6 +1322,9 @@ paths:
       x-stackql-method: list_memberships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.membershipSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPentestJobTasks:
     post:
       operationId: ListPentestJobTasks
@@ -1330,6 +1363,9 @@ paths:
       x-stackql-method: list_pentest_job_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.taskSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPentestJobsForPentest:
     post:
       operationId: ListPentestJobsForPentest
@@ -1364,6 +1400,9 @@ paths:
       x-stackql-method: list_pentest_jobs_for_pentest
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pentestJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPentests:
     post:
       operationId: ListPentests
@@ -1395,6 +1434,9 @@ paths:
       x-stackql-method: list_pentests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pentestSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1413,7 +1455,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1444,7 +1486,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1470,7 +1512,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /ListTargetDomains:
@@ -1500,6 +1542,9 @@ paths:
       x-stackql-method: list_target_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.targetDomainSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /StartCodeRemediation:
     post:
       operationId: StartCodeRemediation
@@ -1531,7 +1576,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCodeRemediationOutput'
-      x-stackql-resource: code_remediation
+      x-stackql-resource: agent_spaces
       x-stackql-method: start_code_remediation
       x-stackql-verb: EXEC
   /StartCodeReviewJob:
@@ -1561,7 +1606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCodeReviewJobOutput'
-      x-stackql-resource: code_review_job
+      x-stackql-resource: code_reviews
       x-stackql-method: start_code_review_job
       x-stackql-verb: EXEC
   /StartPentestJob:
@@ -1591,7 +1636,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPentestJobOutput'
-      x-stackql-resource: pentest_job
+      x-stackql-resource: pentests
       x-stackql-method: start_pentest_job
       x-stackql-verb: EXEC
   /StopCodeReviewJob:
@@ -1621,7 +1666,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopCodeReviewJobOutput'
-      x-stackql-resource: code_review_job
+      x-stackql-resource: code_reviews
       x-stackql-method: stop_code_review_job
       x-stackql-verb: EXEC
   /StopPentestJob:
@@ -1651,7 +1696,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPentestJobOutput'
-      x-stackql-resource: pentest_job
+      x-stackql-resource: pentests
       x-stackql-method: stop_pentest_job
       x-stackql-verb: EXEC
   /UpdateAgentSpace:
@@ -1923,7 +1968,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyTargetDomainOutput'
-      x-stackql-resource: target_domain
+      x-stackql-resource: target_domains
       x-stackql-method: verify_target_domain
       x-stackql-verb: EXEC
 components:

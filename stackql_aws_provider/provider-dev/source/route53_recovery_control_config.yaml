@@ -79,6 +79,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Clusters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     put:
       operationId: UpdateCluster
       description: Updates an existing cluster. You can only update the network type of a cluster.
@@ -343,6 +346,7 @@ paths:
       x-stackql-resource: clusters
       x-stackql-method: describe_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Cluster
   /controlpanel/{control_panel_arn}:
     delete:
       operationId: DeleteControlPanel
@@ -384,6 +388,7 @@ paths:
       x-stackql-resource: control_panels
       x-stackql-method: describe_control_panel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ControlPanel
   /routingcontrol/{routing_control_arn}:
     delete:
       operationId: DeleteRoutingControl
@@ -428,6 +433,7 @@ paths:
       x-stackql-resource: routing_controls
       x-stackql-method: describe_routing_control
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RoutingControl
   /safetyrule/{safety_rule_arn}:
     delete:
       operationId: DeleteSafetyRule
@@ -519,11 +525,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssociatedRoute53HealthChecksResponse'
+                $ref: '#/components/schemas/ListAssociatedRoute53HealthChecksOutputDisplay'
       x-stackql-resource: associated_route53_health_checks
       x-stackql-method: list_associated_route53_health_checks
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.HealthCheckIds
+      x-stackql-responseEnvelope: ListAssociatedRoute53HealthChecksOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "HealthCheckIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"health_check_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /controlpanels:
     get:
       operationId: ListControlPanels
@@ -558,6 +572,9 @@ paths:
       x-stackql-method: list_control_panels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ControlPanels
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /controlpanel/{control_panel_arn}/routingcontrols:
     get:
       operationId: ListRoutingControls
@@ -594,6 +611,9 @@ paths:
       x-stackql-method: list_routing_controls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RoutingControls
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /controlpanel/{control_panel_arn}/safetyrules:
     get:
       operationId: ListSafetyRules
@@ -629,6 +649,9 @@ paths:
       x-stackql-method: list_safety_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SafetyRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -647,7 +670,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -678,7 +701,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -704,7 +727,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:
@@ -1174,28 +1197,19 @@ components:
       type: integer
       minimum: 1
       maximum: 1000
-    ListAssociatedRoute53HealthChecksResponse:
+    ListAssociatedRoute53HealthChecksRowDisplay:
       type: object
       properties:
-        HealthCheckIds:
-          $ref: '#/components/schemas/__listOf__stringMax36PatternS'
+        health_check_id:
+          type: string
           description: Identifiers for the health checks.
-        NextToken:
-          $ref: '#/components/schemas/__stringMin1Max8096PatternS'
-          description: Next token for listing health checks.
-    __listOf__stringMax36PatternS:
-      type: array
-      items:
-        $ref: '#/components/schemas/__stringMax36PatternS'
-    __stringMax36PatternS:
-      type: string
-      maxLength: 36
-      pattern: ^\S+$
-    __stringMin1Max8096PatternS:
-      type: string
-      minLength: 1
-      maxLength: 8096
-      pattern: '[\S]*'
+    ListAssociatedRoute53HealthChecksOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssociatedRoute53HealthChecksRowDisplay'
     ListClustersResponse:
       type: object
       properties:
@@ -1209,6 +1223,11 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Cluster'
+    __stringMin1Max8096PatternS:
+      type: string
+      minLength: 1
+      maxLength: 8096
+      pattern: '[\S]*'
     ListControlPanelsResponse:
       type: object
       properties:

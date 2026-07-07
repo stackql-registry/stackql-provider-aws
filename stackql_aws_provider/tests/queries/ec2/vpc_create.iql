@@ -1,0 +1,9 @@
+-- ec2 protocol INSERT with eager id capture via RETURNING. Tagged so
+-- test-created resources are identifiable (key stackql-provider-test).
+-- Wire names throughout: the param is TagSpecification (locationName,
+-- singular) and the inner list member is Tag - AWSCanonical fans this out
+-- to TagSpecification.1.Tag.1.Key on the wire.
+INSERT INTO aws.ec2.vpcs(region, CidrBlock, TagSpecification)
+SELECT '{{ region }}', '{{ cidr_block }}',
+       JSON('[{"ResourceType":"vpc","Tag":[{"Key":"stackql-provider-test","Value":"vpc_create"}]}]')
+RETURNING vpc_id, state, cidr_block, owner_id, is_default

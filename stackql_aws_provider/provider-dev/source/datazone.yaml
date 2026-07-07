@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptPredictionsOutput'
-      x-stackql-resource: predictions
+      x-stackql-resource: domains
       x-stackql-method: accept_predictions
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/subscription-requests/{identifier}/accept:
@@ -99,7 +99,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptSubscriptionRequestOutput'
-      x-stackql-resource: subscription_request
+      x-stackql-resource: subscriptions
       x-stackql-method: accept_subscription_request
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/addOwner:
@@ -231,7 +231,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateEnvironmentRoleOutput'
-      x-stackql-resource: environment_roles
+      x-stackql-resource: environments
       x-stackql-method: associate_environment_role
       x-stackql-verb: UPDATE
     delete:
@@ -263,7 +263,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateEnvironmentRoleOutput'
-      x-stackql-resource: environment_roles
+      x-stackql-resource: environments
       x-stackql-method: disassociate_environment_role
       x-stackql-verb: UPDATE
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/associate-governed-terms:
@@ -307,7 +307,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateGovernedTermsOutput'
-      x-stackql-resource: governed_terms
+      x-stackql-resource: domains
       x-stackql-method: associate_governed_terms
       x-stackql-verb: UPDATE
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/attributes-metadata:
@@ -397,7 +397,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutAttributesMetadataOutput'
-      x-stackql-resource: batch_put_attributes_metadata
+      x-stackql-resource: domains
       x-stackql-method: batch_put_attributes_metadata
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/metadata-generation-runs/{identifier}/cancel:
@@ -426,7 +426,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMetadataGenerationRunOutput'
-      x-stackql-resource: metadata_generation_run
+      x-stackql-resource: domains
       x-stackql-method: cancel_metadata_generation_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/subscriptions/{identifier}/cancel:
@@ -453,7 +453,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelSubscriptionOutput'
-      x-stackql-resource: subscription
+      x-stackql-resource: domains
       x-stackql-method: cancel_subscription
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/account-pools:
@@ -552,6 +552,9 @@ paths:
       x-stackql-method: list_account_pools
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/assets:
     post:
       operationId: CreateAsset
@@ -713,6 +716,9 @@ paths:
       x-stackql-method: list_asset_filters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/assets/{identifier}/revisions:
     post:
       operationId: CreateAssetRevision
@@ -816,6 +822,9 @@ paths:
       x-stackql-method: list_asset_revisions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/asset-types:
     post:
       operationId: CreateAssetType
@@ -989,6 +998,9 @@ paths:
       x-stackql-method: list_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/data-products:
     post:
       operationId: CreateDataProduct
@@ -1135,6 +1147,9 @@ paths:
       x-stackql-method: list_data_product_revisions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/data-sources:
     post:
       operationId: CreateDataSource
@@ -1267,6 +1282,9 @@ paths:
       x-stackql-method: list_data_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains:
     post:
       operationId: CreateDomain
@@ -1347,6 +1365,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/domain-units:
     post:
       operationId: CreateDomainUnit
@@ -1430,6 +1451,9 @@ paths:
       x-stackql-method: list_domain_units_for_parent
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/environments:
     post:
       operationId: CreateEnvironment
@@ -1571,6 +1595,9 @@ paths:
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/environments/{environment_identifier}/actions:
     post:
       operationId: CreateEnvironmentAction
@@ -1660,6 +1687,9 @@ paths:
       x-stackql-method: list_environment_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/environment-blueprints:
     post:
       operationId: CreateEnvironmentBlueprint
@@ -1749,6 +1779,9 @@ paths:
       x-stackql-method: list_environment_blueprints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/environment-profiles:
     post:
       operationId: CreateEnvironmentProfile
@@ -1863,6 +1896,9 @@ paths:
       x-stackql-method: list_environment_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/form-types:
     post:
       operationId: CreateFormType
@@ -2089,7 +2125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateListingChangeSetOutput'
-      x-stackql-resource: listing_change_sets
+      x-stackql-resource: listings
       x-stackql-method: create_listing_change_set
       x-stackql-verb: INSERT
   /v2/domains/{domain_identifier}/notebooks:
@@ -2197,6 +2233,9 @@ paths:
       x-stackql-method: list_notebooks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/projects:
     post:
       operationId: CreateProject
@@ -2309,6 +2348,9 @@ paths:
       x-stackql-method: list_projects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/projects/{project_identifier}/createMembership:
     post:
       operationId: CreateProjectMembership
@@ -2452,6 +2494,9 @@ paths:
       x-stackql-method: list_project_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/rules:
     post:
       operationId: CreateRule
@@ -2644,6 +2689,9 @@ paths:
       x-stackql-method: list_subscription_grants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/subscription-requests:
     post:
       operationId: CreateSubscriptionRequest
@@ -2784,6 +2832,9 @@ paths:
       x-stackql-method: list_subscription_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/environments/{environment_identifier}/subscription-targets:
     post:
       operationId: CreateSubscriptionTarget
@@ -2900,6 +2951,9 @@ paths:
       x-stackql-method: list_subscription_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/user-profiles:
     post:
       operationId: CreateUserProfile
@@ -5483,6 +5537,9 @@ paths:
       x-stackql-method: list_time_series_data_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: PostTimeSeriesDataPoints
       description: Posts time series data points to Amazon DataZone for the specified asset.
@@ -5525,7 +5582,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostTimeSeriesDataPointsOutput'
-      x-stackql-resource: post_time_series_data_points
+      x-stackql-resource: time_series_data_points
       x-stackql-method: post_time_series_data_points
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/disassociate-governed-terms:
@@ -5569,7 +5626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateGovernedTermsOutput'
-      x-stackql-resource: governed_terms
+      x-stackql-resource: domains
       x-stackql-method: disassociate_governed_terms
       x-stackql-verb: UPDATE
   /v2/domains/{domain_identifier}/data-source-runs/{identifier}:
@@ -6085,6 +6142,9 @@ paths:
       x-stackql-method: list_accounts_in_account_pool
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/data-source-runs/{identifier}/activities:
     get:
       operationId: ListDataSourceRunActivities
@@ -6136,6 +6196,9 @@ paths:
       x-stackql-method: list_data_source_run_activities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/data-sources/{data_source_identifier}/runs:
     get:
       operationId: ListDataSourceRuns
@@ -6187,6 +6250,9 @@ paths:
       x-stackql-method: list_data_source_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartDataSourceRun
       description: Start the run of the specified data source in Amazon DataZone.
@@ -6219,7 +6285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceRunOutput'
-      x-stackql-resource: data_source_run
+      x-stackql-resource: data_sources
       x-stackql-method: start_data_source_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/owners:
@@ -6273,6 +6339,9 @@ paths:
       x-stackql-method: list_entity_owners
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.owners
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/environment-blueprint-configurations:
     get:
       operationId: ListEnvironmentBlueprintConfigurations
@@ -6313,6 +6382,9 @@ paths:
       x-stackql-method: list_environment_blueprint_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/jobs/{job_identifier}/runs:
     get:
       operationId: ListJobRuns
@@ -6370,6 +6442,9 @@ paths:
       x-stackql-method: list_job_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/lineage/events:
     get:
       operationId: ListLineageEvents
@@ -6433,6 +6508,9 @@ paths:
       x-stackql-method: list_lineage_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: PostLineageEvent
       description: Posts a data lineage event.
@@ -6467,7 +6545,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostLineageEventOutput'
-      x-stackql-resource: post_lineage_event
+      x-stackql-resource: domains
       x-stackql-method: post_lineage_event
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/lineage/nodes/{identifier}/history:
@@ -6542,6 +6620,9 @@ paths:
       x-stackql-method: list_lineage_node_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.nodes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/metadata-generation-runs:
     get:
       operationId: ListMetadataGenerationRuns
@@ -6604,6 +6685,9 @@ paths:
       x-stackql-method: list_metadata_generation_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartMetadataGenerationRun
       description: 'Starts the metadata generation run. Prerequisites: Asset must be created and belong to the specified domain
@@ -6644,7 +6728,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetadataGenerationRunOutput'
-      x-stackql-resource: metadata_generation_run
+      x-stackql-resource: domains
       x-stackql-method: start_metadata_generation_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/notebook-runs:
@@ -6715,6 +6799,9 @@ paths:
       x-stackql-method: list_notebook_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartNotebookRun
       description: Starts a notebook run in Amazon SageMaker Unified Studio. A notebook run represents the execution of an
@@ -6764,7 +6851,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNotebookRunOutput'
-      x-stackql-resource: notebook_run
+      x-stackql-resource: notebooks
       x-stackql-method: start_notebook_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/notifications:
@@ -6836,6 +6923,9 @@ paths:
       x-stackql-method: list_notifications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.notifications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/policies/managed/{entity_type}/{entity_identifier}/grants:
     get:
       operationId: ListPolicyGrants
@@ -6893,6 +6983,9 @@ paths:
       x-stackql-method: list_policy_grants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.grantList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/projects/{project_identifier}/memberships:
     get:
       operationId: ListProjectMemberships
@@ -6950,6 +7043,9 @@ paths:
       x-stackql-method: list_project_memberships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/list-rules/{target_type}/{target_identifier}:
     get:
       operationId: ListRules
@@ -7040,6 +7136,9 @@ paths:
       x-stackql-method: list_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/subscriptions:
     get:
       operationId: ListSubscriptions
@@ -7140,6 +7239,9 @@ paths:
       x-stackql-method: list_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -7158,7 +7260,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -7189,7 +7291,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -7215,7 +7317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v2/domains/{domain_identifier}/graph/query:
@@ -7266,9 +7368,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryGraphOutput'
-      x-stackql-resource: query_graph
+      x-stackql-resource: domains
       x-stackql-method: query_graph
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/assets/{identifier}/reject-predictions:
     put:
       operationId: RejectPredictions
@@ -7312,7 +7417,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectPredictionsOutput'
-      x-stackql-resource: predictions
+      x-stackql-resource: domains
       x-stackql-method: reject_predictions
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/subscription-requests/{identifier}/reject:
@@ -7348,7 +7453,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectSubscriptionRequestOutput'
-      x-stackql-resource: subscription_request
+      x-stackql-resource: subscriptions
       x-stackql-method: reject_subscription_request
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/entities/{entity_type}/{entity_identifier}/removeOwner:
@@ -7553,9 +7658,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchOutput'
-      x-stackql-resource: search
+      x-stackql-resource: domains
       x-stackql-method: search
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/search-group-profiles:
     post:
       operationId: SearchGroupProfiles
@@ -7595,6 +7703,9 @@ paths:
       x-stackql-method: search_group_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/listings/search:
     post:
       operationId: SearchListings
@@ -7660,6 +7771,9 @@ paths:
       x-stackql-method: search_listings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/types-search:
     post:
       operationId: SearchTypes
@@ -7712,6 +7826,9 @@ paths:
       x-stackql-method: search_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/search-user-profiles:
     post:
       operationId: SearchUserProfiles
@@ -7751,6 +7868,9 @@ paths:
       x-stackql-method: search_user_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/domains/{domain_identifier}/notebook-exports:
     post:
       operationId: StartNotebookExport
@@ -7789,7 +7909,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNotebookExportOutput'
-      x-stackql-resource: notebook_export
+      x-stackql-resource: notebooks
       x-stackql-method: start_notebook_export
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/notebook-imports:
@@ -7832,7 +7952,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartNotebookImportOutput'
-      x-stackql-resource: notebook_import
+      x-stackql-resource: notebooks
       x-stackql-method: start_notebook_import
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/notebook-runs/{identifier}/stop:
@@ -7868,7 +7988,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopNotebookRunOutput'
-      x-stackql-resource: notebook_run
+      x-stackql-resource: notebooks
       x-stackql-method: stop_notebook_run
       x-stackql-verb: EXEC
   /v2/domains/{domain_identifier}/root-domain-unit-owner:
@@ -7905,7 +8025,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRootDomainUnitOwnerOutput'
-      x-stackql-resource: root_domain_unit_owners
+      x-stackql-resource: domains
       x-stackql-method: update_root_domain_unit_owner
       x-stackql-verb: UPDATE
   /v2/domains/{domain_identifier}/subscription-grants/{identifier}/status/{asset_identifier}:
@@ -7953,7 +8073,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSubscriptionGrantStatusOutput'
-      x-stackql-resource: subscription_grant_status
+      x-stackql-resource: subscription_grants
       x-stackql-method: update_subscription_grant_status
       x-stackql-verb: UPDATE
 components:

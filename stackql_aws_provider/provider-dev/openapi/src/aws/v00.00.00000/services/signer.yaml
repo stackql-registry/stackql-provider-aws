@@ -213,7 +213,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetRevocationStatusResponse"
+                $ref: "#/components/schemas/GetRevocationStatusOutputDisplay"
   /signing-platforms/{platform_id}:
     get:
       operationId: GetSigningPlatform
@@ -866,16 +866,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    GetRevocationStatusResponse:
+    GetRevocationStatusRowDisplay:
       type: object
       properties:
-        revokedEntities:
-          $ref: "#/components/schemas/RevokedEntities"
+        revoked_entity:
+          type: string
           description: A list of revoked entities (including zero or more of the signing profile ARN, signing job ARN, and certificate hashes) supplied as input to the API.
-    RevokedEntities:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    GetRevocationStatusOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetRevocationStatusRowDisplay"
     GetSigningPlatformResponse:
       type: object
       properties:
@@ -1439,6 +1442,14 @@ components:
             objectKey: $.profiles
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         revoke_signing_profile:
           operation:
             $ref: "#/paths/~1signing-profiles~1{profile_name}~1revoke/put"
@@ -1479,6 +1490,14 @@ components:
             objectKey: $.jobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/signing_jobs/methods/describe_signing_job"
@@ -1497,6 +1516,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetRevocationStatusOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "revokedEntities" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"revoked_entity": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -1525,6 +1551,14 @@ components:
             objectKey: $.platforms
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/signing_platforms/methods/get_signing_platform"
@@ -1532,10 +1566,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.signer.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.signer.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1543,17 +1577,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.signer.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1574,11 +1597,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     signatures:
       id: aws.signer.signatures

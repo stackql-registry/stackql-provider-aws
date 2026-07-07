@@ -44,7 +44,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: trained_model
+      x-stackql-resource: trained_models
       x-stackql-method: cancel_trained_model
       x-stackql-verb: EXEC
     delete:
@@ -73,7 +73,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: trained_model_outputs
+      x-stackql-resource: trained_models
       x-stackql-method: delete_trained_model_output
       x-stackql-verb: DELETE
     get:
@@ -129,7 +129,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: trained_model_inference_job
+      x-stackql-resource: trained_models
       x-stackql-method: cancel_trained_model_inference_job
       x-stackql-verb: EXEC
     get:
@@ -227,6 +227,9 @@ paths:
       x-stackql-method: list_audience_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.audienceModels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /configured-audience-model:
     post:
       operationId: CreateConfiguredAudienceModel
@@ -299,6 +302,9 @@ paths:
       x-stackql-method: list_configured_audience_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configuredAudienceModels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /configured-model-algorithms:
     post:
       operationId: CreateConfiguredModelAlgorithm
@@ -365,6 +371,9 @@ paths:
       x-stackql-method: list_configured_model_algorithms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configuredModelAlgorithms
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/configured-model-algorithm-associations:
     post:
       operationId: CreateConfiguredModelAlgorithmAssociation
@@ -440,6 +449,9 @@ paths:
       x-stackql-method: list_configured_model_algorithm_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configuredModelAlgorithmAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/ml-input-channels:
     post:
       operationId: CreateMLInputChannel
@@ -521,6 +533,9 @@ paths:
       x-stackql-method: list_ml_input_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.mlInputChannelsList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/trained-models:
     post:
       operationId: CreateTrainedModel
@@ -612,6 +627,9 @@ paths:
       x-stackql-method: list_trained_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.trainedModels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /training-dataset:
     post:
       operationId: CreateTrainingDataset
@@ -676,6 +694,9 @@ paths:
       x-stackql-method: list_training_datasets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.trainingDatasets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /audience-generation-job/{audience_generation_job_arn}:
     delete:
       operationId: DeleteAudienceGenerationJob
@@ -1074,7 +1095,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: ml_input_channel_datas
+      x-stackql-resource: ml_input_channels
       x-stackql-method: delete_ml_input_channel_data
       x-stackql-verb: DELETE
     get:
@@ -1266,6 +1287,9 @@ paths:
       x-stackql-method: list_audience_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.audienceExportJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartAudienceExportJob
       description: Export an audience of a specified size after you have generated an audience.
@@ -1292,7 +1316,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: audience_export_job
+      x-stackql-resource: audience_generation_jobs
       x-stackql-method: start_audience_export_job
       x-stackql-verb: EXEC
   /audience-generation-job:
@@ -1337,6 +1361,9 @@ paths:
       x-stackql-method: list_audience_generation_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.audienceGenerationJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartAudienceGenerationJob
       description: Information necessary to start the audience generation job.
@@ -1373,7 +1400,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAudienceGenerationJobResponse'
-      x-stackql-resource: audience_generation_job
+      x-stackql-resource: configured_audience_models
       x-stackql-method: start_audience_generation_job
       x-stackql-verb: EXEC
   /collaborations/{collaboration_identifier}/configured-model-algorithm-associations:
@@ -1411,6 +1438,9 @@ paths:
       x-stackql-method: list_collaboration_configured_model_algorithm_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationConfiguredModelAlgorithmAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/ml-input-channels:
     get:
       operationId: ListCollaborationMLInputChannels
@@ -1445,6 +1475,9 @@ paths:
       x-stackql-method: list_collaboration_ml_input_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationMLInputChannelsList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/trained-models/{trained_model_arn}/export-jobs:
     get:
       operationId: ListCollaborationTrainedModelExportJobs
@@ -1494,6 +1527,9 @@ paths:
       x-stackql-method: list_collaboration_trained_model_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationTrainedModelExportJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/trained-model-inference-jobs:
     get:
       operationId: ListCollaborationTrainedModelInferenceJobs
@@ -1543,6 +1579,9 @@ paths:
       x-stackql-method: list_collaboration_trained_model_inference_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationTrainedModelInferenceJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/trained-models:
     get:
       operationId: ListCollaborationTrainedModels
@@ -1577,6 +1616,9 @@ paths:
       x-stackql-method: list_collaboration_trained_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationTrainedModels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1595,7 +1637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1626,7 +1668,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1652,7 +1694,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /memberships/{membership_identifier}/trained-model-inference-jobs:
@@ -1703,6 +1745,9 @@ paths:
       x-stackql-method: list_trained_model_inference_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.trainedModelInferenceJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartTrainedModelInferenceJob
       description: Defines the information necessary to begin a trained model inference job.
@@ -1757,7 +1802,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTrainedModelInferenceJobResponse'
-      x-stackql-resource: trained_model_inference_job
+      x-stackql-resource: trained_models
       x-stackql-method: start_trained_model_inference_job
       x-stackql-verb: EXEC
   /memberships/{membership_identifier}/trained-models/{trained_model_arn}/versions:
@@ -1811,6 +1856,9 @@ paths:
       x-stackql-method: list_trained_model_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.trainedModels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/trained-models/{trained_model_arn}/export-jobs:
     post:
       operationId: StartTrainedModelExportJob
@@ -1849,7 +1897,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: trained_model_export_job
+      x-stackql-resource: trained_models
       x-stackql-method: start_trained_model_export_job
       x-stackql-verb: EXEC
 components:

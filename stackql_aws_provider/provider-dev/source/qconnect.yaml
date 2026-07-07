@@ -53,7 +53,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateMessageTemplateResponse'
-      x-stackql-resource: message_template
+      x-stackql-resource: messages
       x-stackql-method: activate_message_template
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/aiagents:
@@ -146,6 +146,9 @@ paths:
       x-stackql-method: list_ai_agents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aiAgentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/aiagents/{ai_agent_id}/versions:
     post:
       operationId: CreateAIAgentVersion
@@ -233,6 +236,9 @@ paths:
       x-stackql-method: list_ai_agent_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aiAgentVersionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/aiguardrails:
     post:
       operationId: CreateAIGuardrail
@@ -326,6 +332,9 @@ paths:
       x-stackql-method: list_ai_guardrails
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aiGuardrailSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/aiguardrails/{ai_guardrail_id}/versions:
     post:
       operationId: CreateAIGuardrailVersion
@@ -406,6 +415,9 @@ paths:
       x-stackql-method: list_ai_guardrail_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aiGuardrailVersionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/aiprompts:
     post:
       operationId: CreateAIPrompt
@@ -507,6 +519,9 @@ paths:
       x-stackql-method: list_ai_prompts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aiPromptSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/aiprompts/{ai_prompt_id}/versions:
     post:
       operationId: CreateAIPromptVersion
@@ -594,6 +609,9 @@ paths:
       x-stackql-method: list_ai_prompt_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aiPromptVersionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants:
     post:
       operationId: CreateAssistant
@@ -659,6 +677,9 @@ paths:
       x-stackql-method: list_assistants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assistantSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/associations:
     post:
       operationId: CreateAssistantAssociation
@@ -735,6 +756,9 @@ paths:
       x-stackql-method: list_assistant_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assistantAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/contents:
     post:
       operationId: CreateContent
@@ -816,6 +840,9 @@ paths:
       x-stackql-method: list_contents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/contents/{content_id}/associations:
     post:
       operationId: CreateContentAssociation
@@ -909,6 +936,9 @@ paths:
       x-stackql-method: list_content_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contentAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases:
     post:
       operationId: CreateKnowledgeBase
@@ -984,6 +1014,9 @@ paths:
       x-stackql-method: list_knowledge_bases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.knowledgeBaseSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/messageTemplates:
     post:
       operationId: CreateMessageTemplate
@@ -1070,6 +1103,9 @@ paths:
       x-stackql-method: list_message_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.messageTemplateSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/messageTemplates/{message_template_id}/attachments:
     post:
       operationId: CreateMessageTemplateAttachment
@@ -1116,7 +1152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateMessageTemplateAttachmentResponse'
-      x-stackql-resource: message_template_attachments
+      x-stackql-resource: message_templates
       x-stackql-method: create_message_template_attachment
       x-stackql-verb: INSERT
   /knowledgeBases/{knowledge_base_id}/messageTemplates/{message_template_id}/versions:
@@ -1201,6 +1237,9 @@ paths:
       x-stackql-method: list_message_template_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.messageTemplateVersionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/quickResponses:
     post:
       operationId: CreateQuickResponse
@@ -1288,6 +1327,9 @@ paths:
       x-stackql-method: list_quick_responses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.quickResponseSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/sessions:
     post:
       operationId: CreateSession
@@ -1374,7 +1416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateMessageTemplateResponse'
-      x-stackql-resource: message_template
+      x-stackql-resource: messages
       x-stackql-method: deactivate_message_template
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/aiagents/{ai_agent_id}:
@@ -1842,6 +1884,7 @@ paths:
       x-stackql-resource: assistants
       x-stackql-method: get_assistant
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.assistant
   /assistants/{assistant_id}/associations/{assistant_association_id}:
     delete:
       operationId: DeleteAssistantAssociation
@@ -1899,6 +1942,7 @@ paths:
       x-stackql-resource: assistant_associations
       x-stackql-method: get_assistant_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.assistantAssociation
   /knowledgeBases/{knowledge_base_id}/contents/{content_id}:
     delete:
       operationId: DeleteContent
@@ -1953,6 +1997,7 @@ paths:
       x-stackql-resource: contents
       x-stackql-method: get_content
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.content
     post:
       operationId: UpdateContent
       description: Updates information about the content.
@@ -2066,6 +2111,7 @@ paths:
       x-stackql-resource: content_associations
       x-stackql-method: get_content_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.contentAssociation
   /knowledgeBases/{knowledge_base_id}/importJobs/{import_job_id}:
     delete:
       operationId: DeleteImportJob
@@ -2119,6 +2165,7 @@ paths:
       x-stackql-resource: import_jobs
       x-stackql-method: get_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.importJob
   /knowledgeBases/{knowledge_base_id}:
     delete:
       operationId: DeleteKnowledgeBase
@@ -2163,6 +2210,7 @@ paths:
       x-stackql-resource: knowledge_bases
       x-stackql-method: get_knowledge_base
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.knowledgeBase
   /knowledgeBases/{knowledge_base_id}/messageTemplates/{message_template_id}:
     delete:
       operationId: DeleteMessageTemplate
@@ -2221,6 +2269,7 @@ paths:
       x-stackql-resource: message_templates
       x-stackql-method: get_message_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.messageTemplate
     post:
       operationId: UpdateMessageTemplate
       description: Updates the Amazon Q in Connect message template. Partial update is supported. If any field is not supplied,
@@ -2296,7 +2345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteMessageTemplateAttachmentResponse'
-      x-stackql-resource: message_template_attachments
+      x-stackql-resource: message_templates
       x-stackql-method: delete_message_template_attachment
       x-stackql-verb: DELETE
   /knowledgeBases/{knowledge_base_id}/quickResponses/{quick_response_id}:
@@ -2352,6 +2401,7 @@ paths:
       x-stackql-resource: quick_responses
       x-stackql-method: get_quick_response
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.quickResponse
     post:
       operationId: UpdateQuickResponse
       description: Updates an existing Amazon Q in Connect quick response.
@@ -2436,6 +2486,7 @@ paths:
       x-stackql-resource: content_summaries
       x-stackql-method: get_content_summary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.contentSummary
   /assistants/{assistant_id}/sessions/{session_id}/messages/next:
     get:
       operationId: GetNextMessage
@@ -2558,6 +2609,7 @@ paths:
       x-stackql-resource: sessions
       x-stackql-method: get_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.session
     post:
       operationId: UpdateSession
       description: Updates a session. A session is a contextual container used for generating recommendations. Amazon Connect
@@ -2638,6 +2690,9 @@ paths:
       x-stackql-method: list_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.importJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartImportJob
       description: Start an asynchronous job to import Amazon Q in Connect resources from an uploaded source file. Before
@@ -2679,7 +2734,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportJobResponse'
-      x-stackql-resource: import_job
+      x-stackql-resource: knowledge_bases
       x-stackql-method: start_import_job
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/sessions/{session_id}/messages:
@@ -2729,6 +2784,9 @@ paths:
       x-stackql-method: list_messages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.messages
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/models:
     get:
       operationId: ListModels
@@ -2780,6 +2838,9 @@ paths:
       x-stackql-method: list_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.modelSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/sessions/{session_id}/spans:
     get:
       operationId: ListSpans
@@ -2821,6 +2882,9 @@ paths:
       x-stackql-method: list_spans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.spans
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2839,7 +2903,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2870,7 +2934,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2896,7 +2960,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /assistants/{assistant_id}/sessions/{session_id}/recommendations/notify:
@@ -2937,7 +3001,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyRecommendationsReceivedResponse'
-      x-stackql-resource: recommendations_received
+      x-stackql-resource: recommendations
       x-stackql-method: notify_recommendations_received
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/feedback:
@@ -2976,7 +3040,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutFeedbackResponse'
-      x-stackql-resource: feedbacks
+      x-stackql-resource: assistants
       x-stackql-method: put_feedback
       x-stackql-verb: REPLACE
   /assistants/{assistant_id}/query:
@@ -3022,9 +3086,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryAssistantResponse'
-      x-stackql-resource: query_assistant
+      x-stackql-resource: assistants
       x-stackql-method: query_assistant
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/aiagentConfiguration:
     delete:
       operationId: RemoveAssistantAIAgent
@@ -3056,7 +3123,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveAssistantAIAgentResponse'
-      x-stackql-resource: assistant_ai_agents
+      x-stackql-resource: ai_agents
       x-stackql-method: remove_assistant_ai_agent
       x-stackql-verb: UPDATE
     post:
@@ -3093,7 +3160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAssistantAIAgentResponse'
-      x-stackql-resource: assistant_ai_agents
+      x-stackql-resource: ai_agents
       x-stackql-method: update_assistant_ai_agent
       x-stackql-verb: UPDATE
   /knowledgeBases/{knowledge_base_id}/templateUri:
@@ -3114,7 +3181,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveKnowledgeBaseTemplateUriResponse'
-      x-stackql-resource: knowledge_base_template_uris
+      x-stackql-resource: knowledge_bases
       x-stackql-method: remove_knowledge_base_template_uri
       x-stackql-verb: UPDATE
     post:
@@ -3148,7 +3215,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateKnowledgeBaseTemplateUriResponse'
-      x-stackql-resource: knowledge_base_template_uris
+      x-stackql-resource: knowledge_bases
       x-stackql-method: update_knowledge_base_template_uri
       x-stackql-verb: UPDATE
   /knowledgeBases/{knowledge_base_id}/messageTemplates/{message_template_id}/render:
@@ -3189,7 +3256,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RenderMessageTemplateResponse'
-      x-stackql-resource: render_message_template
+      x-stackql-resource: message_templates
       x-stackql-method: render_message_template
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/retrieve:
@@ -3224,7 +3291,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveResponse'
-      x-stackql-resource: retrieve
+      x-stackql-resource: assistants
       x-stackql-method: retrieve
       x-stackql-verb: EXEC
   /knowledgeBases/{knowledge_base_id}/search:
@@ -3275,6 +3342,9 @@ paths:
       x-stackql-method: search_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/search/messageTemplates:
     post:
       operationId: SearchMessageTemplates
@@ -3321,6 +3391,9 @@ paths:
       x-stackql-method: search_message_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.results
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/search/quickResponses:
     post:
       operationId: SearchQuickResponses
@@ -3370,6 +3443,9 @@ paths:
       x-stackql-method: search_quick_responses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.results
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/searchSessions:
     post:
       operationId: SearchSessions
@@ -3417,6 +3493,9 @@ paths:
       x-stackql-method: search_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/sessions/{session_id}/message:
     post:
       operationId: SendMessage
@@ -3469,7 +3548,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMessageResponse'
-      x-stackql-resource: message
+      x-stackql-resource: assistants
       x-stackql-method: send_message
       x-stackql-verb: EXEC
   /knowledgeBases/{knowledge_base_id}/upload:
@@ -3505,7 +3584,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContentUploadResponse'
-      x-stackql-resource: content_upload
+      x-stackql-resource: contents
       x-stackql-method: start_content_upload
       x-stackql-verb: EXEC
   /knowledgeBases/{knowledge_base_id}/messageTemplates/{message_template_id}/metadata:
@@ -3548,7 +3627,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateMessageTemplateMetadataResponse'
-      x-stackql-resource: message_template_metadatas
+      x-stackql-resource: message_templates
       x-stackql-method: update_message_template_metadata
       x-stackql-verb: UPDATE
   /assistants/{assistant_id}/sessions/{session_id}/data:
@@ -3589,7 +3668,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSessionDataResponse'
-      x-stackql-resource: session_datas
+      x-stackql-resource: sessions
       x-stackql-method: update_session_data
       x-stackql-verb: UPDATE
 components:

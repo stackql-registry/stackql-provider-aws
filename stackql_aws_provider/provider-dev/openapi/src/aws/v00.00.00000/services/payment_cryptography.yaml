@@ -174,7 +174,6 @@ paths:
                   $ref: "#/components/schemas/Regions"
               required:
                 - KeyAttributes
-                - Exportable
       responses:
         "200":
           description: Success
@@ -526,7 +525,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetDefaultKeyReplicationRegionsOutput"
+                $ref: "#/components/schemas/GetDefaultKeyReplicationRegionsOutputDisplay"
   /GetKey:
     post:
       operationId: GetKey
@@ -928,7 +927,6 @@ paths:
                   description: The resource-based policy to attach to the key, in JSON format.
               required:
                 - ResourceArn
-                - Policy
       responses:
         "200":
           description: Success
@@ -2051,15 +2049,19 @@ components:
       minLength: 1
       maxLength: 32768
       pattern: "[^\\[;\\]<>]+"
-    GetDefaultKeyReplicationRegionsOutput:
-      description: Output containing the account's current default key replication configuration.
+    GetDefaultKeyReplicationRegionsRowDisplay:
       type: object
       properties:
-        EnabledReplicationRegions:
-          $ref: "#/components/schemas/Regions"
+        enabled_replication_region:
+          type: string
           description: The list of regions where default key replication is currently enabled for the account. New keys created in this account will automatically be replicated to these regions unless explicitly configured otherwise during key creation.
-      required:
-        - EnabledReplicationRegions
+    GetDefaultKeyReplicationRegionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetDefaultKeyReplicationRegionsRowDisplay"
     GetKeyOutput:
       type: object
       properties:
@@ -2520,10 +2522,10 @@ components:
       required:
         - Alias
   x-stackQL-resources:
-    key_replication_regions:
-      id: aws.payment_cryptography.key_replication_regions
-      name: key_replication_regions
-      title: key_replication_regions
+    keys:
+      id: aws.payment_cryptography.keys
+      name: keys
+      title: keys
       methods:
         add_key_replication_regions:
           operation:
@@ -2536,6 +2538,67 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_key:
+          operation:
+            $ref: "#/paths/~1CreateKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_key:
+          operation:
+            $ref: "#/paths/~1DeleteKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_key:
+          operation:
+            $ref: "#/paths/~1GetKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Key
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_keys:
+          operation:
+            $ref: "#/paths/~1ListKeys/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Keys
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         remove_key_replication_regions:
@@ -2551,12 +2614,42 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_key_usage:
+          operation:
+            $ref: "#/paths/~1StartKeyUsage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_key_usage:
+          operation:
+            $ref: "#/paths/~1StopKeyUsage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/keys/methods/get_key"
+          - $ref: "#/components/x-stackQL-resources/keys/methods/list_keys"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/keys/methods/create_key"
         update:
-          - $ref: "#/components/x-stackQL-resources/key_replication_regions/methods/add_key_replication_regions"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/keys/methods/add_key_replication_regions"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/keys/methods/delete_key"
     mpa_teams:
       id: aws.payment_cryptography.mpa_teams
       name: mpa_teams
@@ -2632,6 +2725,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Alias
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2661,73 +2755,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/alias/methods/update_alias"
         delete:
           - $ref: "#/components/x-stackQL-resources/alias/methods/delete_alias"
-    keys:
-      id: aws.payment_cryptography.keys
-      name: keys
-      title: keys
-      methods:
-        create_key:
-          operation:
-            $ref: "#/paths/~1CreateKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_key:
-          operation:
-            $ref: "#/paths/~1DeleteKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_key:
-          operation:
-            $ref: "#/paths/~1GetKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_keys:
-          operation:
-            $ref: "#/paths/~1ListKeys/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Keys
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/keys/methods/get_key"
-          - $ref: "#/components/x-stackQL-resources/keys/methods/list_keys"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/keys/methods/create_key"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/keys/methods/delete_key"
     resource_policies:
       id: aws.payment_cryptography.resource_policies
       name: resource_policies
@@ -2818,6 +2845,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetDefaultKeyReplicationRegionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "EnabledReplicationRegions" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"enabled_replication_region": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2866,6 +2900,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MpaTeamAssociation
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2968,6 +3003,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2976,10 +3018,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.payment_cryptography.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.payment_cryptography.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2993,19 +3035,15 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.payment_cryptography.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -3033,9 +3071,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

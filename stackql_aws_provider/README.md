@@ -79,11 +79,12 @@ The fastest sanity check is `stackql exec` against the local registry - no wire 
 REG_PATH="$(pwd)/provider-dev/openapi"
 REG="{\"url\":\"file://${REG_PATH}\",\"localDocRoot\":\"${REG_PATH}\",\"verifyConfig\":{\"nopVerify\":true}}"
 
-stackql --registry="$REG" exec "SHOW PROVIDERS"
-stackql --registry="$REG" exec "SHOW SERVICES IN aws"
-stackql --registry="$REG" exec "SHOW RESOURCES IN aws.ec2"
-stackql --registry="$REG" exec "SHOW METHODS IN aws.ec2.volumes"
-stackql --registry="$REG" exec "DESCRIBE EXTENDED aws.iam.access_keys"
+./stackql --registry="$REG" exec "SHOW PROVIDERS"
+./stackql --registry="$REG" exec "SHOW SERVICES IN aws"
+./stackql --registry="$REG" exec "SHOW RESOURCES IN aws.ec2"
+./stackql --registry="$REG" exec "SHOW METHODS IN aws.ec2.volumes"
+./stackql --registry="$REG" exec "DESCRIBE EXTENDED aws.iam.access_keys"
+./stackql --registry="$REG" shell
 ```
 
 `SHOW METHODS` should show non-empty `RequiredParams` columns for path-keyed operations and `AccessKeyId`/`UserName`/etc for the query-protocol services.
@@ -91,10 +92,12 @@ stackql --registry="$REG" exec "DESCRIBE EXTENDED aws.iam.access_keys"
 ## 4. Run the wire-server meta-route test suite
 
 ```bash
-npm run start-server
 npm run test-meta-routes -- aws --verbose
-npm run stop-server
 ```
+
+The harness owns the full server lifecycle (run under WSL / Linux - the pinned binary is a Linux ELF): it stops any stackql server already on the port, starts a fresh one so provider specs are never cached between runs, walks the provider, then stops the server and exits with the result. Every lifecycle step is logged with a `[server]` prefix.
+
+To run against a server you manage yourself, pass `--no-server` (or `--host <remote>`, which implies it); `npm run start-server` / `npm run stop-server` remain available for that mode.
 
 `test-meta-routes` walks every service, resource, and method in the provider and asserts:
 
@@ -142,14 +145,33 @@ npm run generate-docs -- \
   --provider-dir ./provider-dev/openapi/src/aws/v00.00.00000 \
   --output-dir ./website \
   --provider-data-dir ./provider-dev/docgen/provider-data
+node website/scripts/sanitize-docs.mjs
+node website/scripts/scrub-docs.mjs
 ```
+
+The sanitizer is REQUIRED after every docgen run (it is one-shot, not
+idempotent - always regenerate then sanitize once): AWS descriptions carry
+literal `<placeholders>`, unpaired HTML, regex patterns and bare URLs that
+MDX v3 parses as JSX / expressions / links / GFM autolinks, any of which
+fails the Docusaurus build. It escapes description table cells and
+method-description prose only; generated structure (tables, Tabs,
+CodeBlock examples) is untouched.
+
+The scrub pass (idempotent, safe to re-run) then removes `X-Amz-Target`
+from everything user-facing (it is the aws-json protocol discriminator -
+stackql defaults it from the spec, users never supply it) and
+backtick-quotes hyphenated identifiers (`` `x-amz-acl` ``) in SQL samples;
+EXEC `@param` lines keep their raw wire form.
 
 Then build / serve locally:
 
 ```bash
 cd website
+yarn
+yarn sanitize-docs   # if not already run from the repo root
+yarn scrub-docs
 yarn build
-yarn start
+yarn serve
 ```
 
 ## Repository layout
@@ -199,9 +221,30 @@ EXEC verbs are kept off the CRUD verb lists so the test-meta-routes signature-un
 AWS_RUN_DML_TESTS=1 STACKQL=./stackql bash bin/integration-tests.sh --select-only 2>&1 | tail -30
 ```
 
+## Pagination
+
+Stage 1 reads each service's `paginators-1.json` and, for simple paginators
+(single string `input_token` / `output_token`, both plain top-level members),
+stamps breadcrumbs that stage 2 folds into the method's
+`config.pagination.{requestToken,responseToken}` block. stackql then
+traverses pages transparently: the response token is extracted from the raw
+JSON body via JSONPath and re-injected into the next request (query param or
+re-marshalled body) until absent.
+
+Currently emitted for **rest-json and aws-json** list ops (~2,650 methods).
+The XML protocols (query / ec2 / rest-xml) are gated off: their responses
+pass through the `schema_driven_xml` walker, which drops the sibling
+response token from its output - tracked upstream as
+https://github.com/stackql/any-sdk/issues/117; once released, lift the
+protocol gate in `_pagination_breadcrumbs` (`openapi-generation/
+botocore_to_openapi.py`) and the response token key becomes `$.` + the
+output member's XML wire name.
+
 ## TODOs
 
-1. Add pagination block emission for list ops that botocore declares paginators for
+1. Lift the pagination protocol gate for query / ec2 / rest-xml once the
+   any-sdk `schema_driven_xml` token-passthrough fix is released
+   (https://github.com/stackql/any-sdk/issues/117).
 
 ## License
 

@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobRunResponse'
-      x-stackql-resource: job_run
+      x-stackql-resource: applications
       x-stackql-method: cancel_job_run
       x-stackql-verb: EXEC
     get:
@@ -82,6 +82,7 @@ paths:
       x-stackql-resource: job_runs
       x-stackql-method: get_job_run
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.jobRun
   /applications:
     post:
       operationId: CreateApplication
@@ -182,6 +183,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.applications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}:
     delete:
       operationId: DeleteApplication
@@ -223,6 +227,7 @@ paths:
       x-stackql-resource: applications
       x-stackql-method: get_application
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.application
     patch:
       operationId: UpdateApplication
       description: Updates a specified application. An application has to be in a stopped or created state in order to be
@@ -395,6 +400,7 @@ paths:
       x-stackql-resource: sessions
       x-stackql-method: get_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.session
     delete:
       operationId: TerminateSession
       description: Terminates the specified session. After you terminate a session, it enters the TERMINATING state and then
@@ -492,6 +498,9 @@ paths:
       x-stackql-method: list_job_run_attempts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobRunAttempts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/jobruns:
     get:
       operationId: ListJobRuns
@@ -551,6 +560,9 @@ paths:
       x-stackql-method: list_job_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobRuns
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartJobRun
       description: Starts a job run.
@@ -598,7 +610,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: job_run
+      x-stackql-resource: applications
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /applications/{application_id}/sessions:
@@ -654,6 +666,9 @@ paths:
       x-stackql-method: list_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartSession
       description: Creates and starts a new session on the specified application. The application must be in the STARTED state
@@ -695,7 +710,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: applications
       x-stackql-method: start_session
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -717,7 +732,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -752,7 +767,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -779,7 +794,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /applications/{application_id}/start:
@@ -800,7 +815,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartApplicationResponse'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: start_application
       x-stackql-verb: EXEC
   /applications/{application_id}/stop:
@@ -822,7 +837,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopApplicationResponse'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: stop_application
       x-stackql-verb: EXEC
 components:

@@ -57,7 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptLinkResponse'
-      x-stackql-resource: link
+      x-stackql-resource: links
       x-stackql-method: accept_link
       x-stackql-verb: EXEC
   /responder-gateway/{gateway_id}/certificate:
@@ -844,6 +844,9 @@ paths:
       x-stackql-method: list_certificate_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.certificateAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /responder-gateway/{gateway_id}/link/{link_id}/routing-rules:
     get:
       operationId: ListLinkRoutingRules
@@ -889,6 +892,9 @@ paths:
       x-stackql-method: list_link_routing_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.rules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /gateway/{gateway_id}/links/:
     get:
       operationId: ListLinks
@@ -929,6 +935,9 @@ paths:
       x-stackql-method: list_links
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.links
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /requester-gateways:
     get:
       operationId: ListRequesterGateways
@@ -957,11 +966,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRequesterGatewaysResponse'
+                $ref: '#/components/schemas/ListRequesterGatewaysOutputDisplay'
       x-stackql-resource: requester_gateways
       x-stackql-method: list_requester_gateways
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.gatewayIds
+      x-stackql-responseEnvelope: ListRequesterGatewaysOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "gatewayIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"gateway_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /responder-gateways:
     get:
       operationId: ListResponderGateways
@@ -990,11 +1007,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListResponderGatewaysResponse'
+                $ref: '#/components/schemas/ListResponderGatewaysOutputDisplay'
       x-stackql-resource: responder_gateways
       x-stackql-method: list_responder_gateways
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.gatewayIds
+      x-stackql-responseEnvelope: ListResponderGatewaysOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "gatewayIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"gateway_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1013,7 +1038,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1044,7 +1069,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1070,7 +1095,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /gateway/{gateway_id}/link/{link_id}/reject:
@@ -1098,7 +1123,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectLinkResponse'
-      x-stackql-resource: link
+      x-stackql-resource: links
       x-stackql-method: reject_link
       x-stackql-verb: EXEC
   /gateway/{gateway_id}/link/{link_id}/module-flow:
@@ -1139,7 +1164,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateLinkModuleFlowResponse'
-      x-stackql-resource: link_module_flows
+      x-stackql-resource: links
       x-stackql-method: update_link_module_flow
       x-stackql-verb: UPDATE
   /requester-gateway/{gateway_id}/update:
@@ -2797,38 +2822,36 @@ components:
       type: integer
       minimum: 1
       maximum: 10
-    ListRequesterGatewaysResponse:
+    ListRequesterGatewaysRowDisplay:
       type: object
       properties:
-        gatewayIds:
-          $ref: '#/components/schemas/GatewayIdList'
+        gateway_id:
+          type: string
           description: The unique identifier of the gateways.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If nextToken is returned, there are more results available. The value of nextToken is a unique pagination
-            token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments
-            unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP
-            400 InvalidToken error.
-    GatewayIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GatewayId'
+    ListRequesterGatewaysOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListRequesterGatewaysRowDisplay'
     ListResponderGatewaysRequestMaxResultsInteger:
       type: integer
       minimum: 1
       maximum: 10
-    ListResponderGatewaysResponse:
+    ListResponderGatewaysRowDisplay:
       type: object
       properties:
-        gatewayIds:
-          $ref: '#/components/schemas/GatewayIdList'
+        gateway_id:
+          type: string
           description: The unique identifier of the gateways.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If nextToken is returned, there are more results available. The value of nextToken is a unique pagination
-            token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments
-            unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP
-            400 InvalidToken error.
+    ListResponderGatewaysOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListResponderGatewaysRowDisplay'
     RtbTaggableResourceArn:
       type: string
       minLength: 1

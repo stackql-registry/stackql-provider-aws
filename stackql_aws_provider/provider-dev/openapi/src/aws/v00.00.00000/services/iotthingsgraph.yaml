@@ -2138,10 +2138,10 @@ components:
       required:
         - uploadId
   x-stackQL-resources:
-    entity_to_things:
-      id: aws.iotthingsgraph.entity_to_things
-      name: entity_to_things
-      title: entity_to_things
+    things:
+      id: aws.iotthingsgraph.things
+      name: things
+      title: things
       methods:
         associate_entity_to_thing:
           operation:
@@ -2156,11 +2156,46 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        dissociate_entity_from_thing:
+          operation:
+            $ref: "#/paths/~1DissociateEntityFromThing/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_things:
+          operation:
+            $ref: "#/paths/~1SearchThings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.things
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/things/methods/search_things"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/entity_to_things/methods/associate_entity_to_thing"
+          - $ref: "#/components/x-stackQL-resources/things/methods/associate_entity_to_thing"
         delete: []
     flow_templates:
       id: aws.iotthingsgraph.flow_templates
@@ -2199,6 +2234,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.description
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2218,6 +2254,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_flow_template:
@@ -2280,6 +2323,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.description
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2299,6 +2343,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2347,6 +2398,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.description
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2366,6 +2418,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_system_template:
@@ -2459,6 +2518,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2485,6 +2551,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2534,6 +2607,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2583,6 +2663,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2591,10 +2678,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.iotthingsgraph.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.iotthingsgraph.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2608,69 +2695,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    flow_executions:
-      id: aws.iotthingsgraph.flow_executions
-      name: flow_executions
-      title: flow_executions
-      methods:
-        search_flow_executions:
-          operation:
-            $ref: "#/paths/~1SearchFlowExecutions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.summaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/flow_executions/methods/search_flow_executions"
-        insert: []
-        update: []
-        delete: []
-    things:
-      id: aws.iotthingsgraph.things
-      name: things
-      title: things
-      methods:
-        search_things:
-          operation:
-            $ref: "#/paths/~1SearchThings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.things
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/things/methods/search_things"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.iotthingsgraph.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2698,9 +2731,42 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    flow_executions:
+      id: aws.iotthingsgraph.flow_executions
+      name: flow_executions
+      title: flow_executions
+      methods:
+        search_flow_executions:
+          operation:
+            $ref: "#/paths/~1SearchFlowExecutions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.summaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/flow_executions/methods/search_flow_executions"
+        insert: []
+        update: []
         delete: []

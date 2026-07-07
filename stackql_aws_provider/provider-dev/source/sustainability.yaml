@@ -58,6 +58,9 @@ paths:
       x-stackql-method: get_estimated_carbon_emissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/estimated-carbon-emissions-dimension-values:
     post:
       operationId: GetEstimatedCarbonEmissionsDimensionValues
@@ -93,6 +96,9 @@ paths:
       x-stackql-method: get_estimated_carbon_emissions_dimension_values
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

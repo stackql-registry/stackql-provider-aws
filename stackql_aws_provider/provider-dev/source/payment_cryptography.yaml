@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddKeyReplicationRegionsOutput'
-      x-stackql-resource: key_replication_regions
+      x-stackql-resource: keys
       x-stackql-method: add_key_replication_regions
       x-stackql-verb: UPDATE
   /AssociateMpaTeam:
@@ -676,6 +676,7 @@ paths:
       x-stackql-resource: alias
       x-stackql-method: get_alias
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Alias
   /GetCertificateSigningRequest:
     post:
       operationId: GetCertificateSigningRequest
@@ -750,10 +751,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetDefaultKeyReplicationRegionsOutput'
+                $ref: '#/components/schemas/GetDefaultKeyReplicationRegionsOutputDisplay'
       x-stackql-resource: default_key_replication_regions
       x-stackql-method: get_default_key_replication_regions
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetDefaultKeyReplicationRegionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "EnabledReplicationRegions" -}}{"line_items": [{{- if eq (kindOf $lst)
+        "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"enabled_replication_region": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]}'
   /GetKey:
     post:
       operationId: GetKey
@@ -794,6 +801,7 @@ paths:
       x-stackql-resource: keys
       x-stackql-method: get_key
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Key
   /GetMpaTeamAssociation:
     post:
       operationId: GetMpaTeamAssociation
@@ -833,6 +841,7 @@ paths:
       x-stackql-resource: mpa_team_associations
       x-stackql-method: get_mpa_team_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MpaTeamAssociation
   /GetParametersForExport:
     post:
       operationId: GetParametersForExport
@@ -1214,6 +1223,9 @@ paths:
       x-stackql-method: list_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Aliases
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListKeys:
     post:
       operationId: ListKeys
@@ -1264,6 +1276,9 @@ paths:
       x-stackql-method: list_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Keys
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1312,10 +1327,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutResourcePolicy:
     post:
       operationId: PutResourcePolicy
@@ -1407,7 +1425,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveKeyReplicationRegionsOutput'
-      x-stackql-resource: key_replication_regions
+      x-stackql-resource: keys
       x-stackql-method: remove_key_replication_regions
       x-stackql-verb: UPDATE
   /RestoreKey:
@@ -1487,7 +1505,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartKeyUsageOutput'
-      x-stackql-resource: key_usage
+      x-stackql-resource: keys
       x-stackql-method: start_key_usage
       x-stackql-verb: EXEC
   /StopKeyUsage:
@@ -1527,7 +1545,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopKeyUsageOutput'
-      x-stackql-resource: key_usage
+      x-stackql-resource: keys
       x-stackql-method: stop_key_usage
       x-stackql-verb: EXEC
   /TagResource:
@@ -1580,7 +1598,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1625,7 +1643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAlias:
@@ -2619,17 +2637,21 @@ components:
       minLength: 1
       maxLength: 32768
       pattern: '[^\[;\]<>]+'
-    GetDefaultKeyReplicationRegionsOutput:
-      description: Output containing the account's current default key replication configuration.
+    GetDefaultKeyReplicationRegionsRowDisplay:
       type: object
       properties:
-        EnabledReplicationRegions:
-          $ref: '#/components/schemas/Regions'
+        enabled_replication_region:
+          type: string
           description: The list of regions where default key replication is currently enabled for the account. New keys created
             in this account will automatically be replicated to these regions unless explicitly configured otherwise during
             key creation.
-      required:
-      - EnabledReplicationRegions
+    GetDefaultKeyReplicationRegionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetDefaultKeyReplicationRegionsRowDisplay'
     GetKeyOutput:
       type: object
       properties:

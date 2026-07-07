@@ -1801,6 +1801,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.landingZone
           request:
             nativeCasing: pascal
           config:
@@ -1813,6 +1814,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.landingZones
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reset_landing_zone:
+          operation:
+            $ref: "#/paths/~1reset-landingzone/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1865,6 +1884,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1885,6 +1911,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.baselineOperation
           request:
             nativeCasing: pascal
           config:
@@ -1907,6 +1934,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.controlOperation
           request:
             nativeCasing: pascal
           config:
@@ -1922,6 +1950,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1942,6 +1977,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.enabledBaselineDetails
           request:
             nativeCasing: pascal
           config:
@@ -1954,6 +1990,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.enabledBaselines
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reset_enabled_baseline:
+          operation:
+            $ref: "#/paths/~1reset-enabled-baseline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -1989,6 +2043,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.enabledControlDetails
           request:
             nativeCasing: pascal
           config:
@@ -2001,6 +2056,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.enabledControls
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reset_enabled_control:
+          operation:
+            $ref: "#/paths/~1reset-enabled-control/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2036,6 +2109,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.operationDetails
           request:
             nativeCasing: pascal
           config:
@@ -2051,6 +2125,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2060,10 +2141,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.controltower.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.controltower.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2071,17 +2152,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.controltower.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2102,9 +2172,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

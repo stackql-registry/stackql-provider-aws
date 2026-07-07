@@ -310,7 +310,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelDomainConfigChangeResponse'
-      x-stackql-resource: domain_config_change
+      x-stackql-resource: domain_configs
       x-stackql-method: cancel_domain_config_change
       x-stackql-verb: EXEC
   /2021-01-01/opensearch/serviceSoftwareUpdate/cancel:
@@ -338,7 +338,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelServiceSoftwareUpdateResponse'
-      x-stackql-resource: service_software_update
+      x-stackql-resource: domains
       x-stackql-method: cancel_service_software_update
       x-stackql-verb: EXEC
   /2021-01-01/opensearch/application:
@@ -908,6 +908,7 @@ paths:
       x-stackql-resource: domains
       x-stackql-method: describe_domain
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DomainStatus
   /2021-01-01/opensearch/cc/inboundConnection/{connection_id}:
     delete:
       operationId: DeleteInboundConnection
@@ -1178,6 +1179,7 @@ paths:
       x-stackql-resource: domain_change_progress
       x-stackql-method: describe_domain_change_progress
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChangeProgressStatus
   /2021-01-01/opensearch/domain/{domain_name}/config:
     get:
       operationId: DescribeDomainConfig
@@ -1199,6 +1201,7 @@ paths:
       x-stackql-resource: domain_configs
       x-stackql-method: describe_domain_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DomainConfig
     post:
       operationId: UpdateDomainConfig
       description: Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.
@@ -1656,7 +1659,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DissociatePackageResponse'
-      x-stackql-resource: dissociate_package
+      x-stackql-resource: packages
       x-stackql-method: dissociate_package
       x-stackql-verb: EXEC
   /2021-01-01/packages/dissociateMultiple:
@@ -1685,7 +1688,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DissociatePackagesResponse'
-      x-stackql-resource: dissociate_packages
+      x-stackql-resource: packages
       x-stackql-method: dissociate_packages
       x-stackql-verb: EXEC
   /2021-01-01/opensearch/application/{application_id}/capability/{capability_name}:
@@ -1841,7 +1844,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDomainMaintenanceResponse'
-      x-stackql-resource: domain_maintenance
+      x-stackql-resource: domains
       x-stackql-method: start_domain_maintenance
       x-stackql-verb: EXEC
   /2021-01-01/packages/{package_id}/history:
@@ -1971,6 +1974,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /2021-01-01/opensearch/domain/{domain_name}/domainMaintenances:
     get:
       operationId: ListDomainMaintenances
@@ -2283,10 +2289,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListVersionsResponse'
+                $ref: '#/components/schemas/ListVersionsOutputDisplay'
       x-stackql-resource: versions
       x-stackql-method: list_versions
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListVersionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Versions" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"version": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /2021-01-01/opensearch/domain/{domain_name}/listVpcEndpointAccess:
     get:
       operationId: ListVpcEndpointAccess
@@ -2372,7 +2383,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PurchaseReservedInstanceOfferingResponse'
-      x-stackql-resource: purchase_reserved_instance_offering
+      x-stackql-resource: reserved_instance_offerings
       x-stackql-method: purchase_reserved_instance_offering
       x-stackql-verb: EXEC
   /2021-01-01/opensearch/application/{application_id}/capability/register:
@@ -2518,7 +2529,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RollbackServiceSoftwareUpdateResponse'
-      x-stackql-resource: rollback_service_software_update
+      x-stackql-resource: domains
       x-stackql-method: rollback_service_software_update
       x-stackql-verb: EXEC
   /2021-01-01/opensearch/serviceSoftwareUpdate/start:
@@ -2549,7 +2560,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartServiceSoftwareUpdateResponse'
-      x-stackql-resource: service_software_update
+      x-stackql-resource: domains
       x-stackql-method: start_service_software_update
       x-stackql-verb: EXEC
   /2021-01-01/packages/update:
@@ -2619,7 +2630,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePackageScopeResponse'
-      x-stackql-resource: package_scopes
+      x-stackql-resource: packages
       x-stackql-method: update_package_scope
       x-stackql-verb: UPDATE
   /2021-01-01/opensearch/domain/{domain_name}/scheduledAction/update:
@@ -2723,7 +2734,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpgradeDomainResponse'
-      x-stackql-resource: upgrade_domain
+      x-stackql-resource: domains
       x-stackql-method: upgrade_domain
       x-stackql-verb: EXEC
 components:
@@ -7217,17 +7228,19 @@ components:
         TagList:
           $ref: '#/components/schemas/TagList'
           description: List of resource tags associated with the specified domain, data source, or application.
-    ListVersionsResponse:
-      description: Container for the parameters for response received from the ListVersions operation.
+    ListVersionsRowDisplay:
       type: object
       properties:
-        Versions:
-          $ref: '#/components/schemas/VersionList'
+        version:
+          type: string
           description: A list of all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: When nextToken is returned, there are more results available. The value of nextToken is a unique pagination
-            token for each page. Send the request again using the returned token to retrieve the next page.
+    ListVersionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListVersionsRowDisplay'
     ListVpcEndpointAccessResponse:
       type: object
       properties:

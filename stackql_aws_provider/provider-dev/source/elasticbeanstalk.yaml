@@ -158,7 +158,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: environment_operations_roles
+      x-stackql-resource: environments
       x-stackql-method: associate_environment_operations_role
       x-stackql-verb: UPDATE
     post:
@@ -175,7 +175,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AssociateEnvironmentOperationsRoleMessage'
-      x-stackql-resource: environment_operations_roles
+      x-stackql-resource: environments
       x-stackql-method: associate_environment_operations_role
       x-stackql-verb: UPDATE
   /?Action=CheckDNSAvailability&Version=2010-12-01:
@@ -275,7 +275,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ComposeEnvironmentsOutputDisplay'
-      x-stackql-resource: compose_environments
+      x-stackql-resource: environments
       x-stackql-method: compose_environments
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ComposeEnvironmentsOutputDisplay
@@ -299,7 +299,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ComposeEnvironmentsMessage'
-      x-stackql-resource: compose_environments
+      x-stackql-resource: environments
       x-stackql-method: compose_environments
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ComposeEnvironmentsOutputDisplay
@@ -592,7 +592,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateConfigurationTemplateOutputDisplay'
-      x-stackql-resource: configuration_templates
+      x-stackql-resource: applications
       x-stackql-method: create_configuration_template
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateConfigurationTemplateOutputDisplay
@@ -617,7 +617,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateConfigurationTemplateMessage'
-      x-stackql-resource: configuration_templates
+      x-stackql-resource: applications
       x-stackql-method: create_configuration_template
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateConfigurationTemplateOutputDisplay
@@ -1037,7 +1037,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: configuration_templates
+      x-stackql-resource: applications
       x-stackql-method: delete_configuration_template
       x-stackql-verb: DELETE
     post:
@@ -1054,7 +1054,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteConfigurationTemplateMessage'
-      x-stackql-resource: configuration_templates
+      x-stackql-resource: applications
       x-stackql-method: delete_configuration_template
       x-stackql-verb: DELETE
   /?Action=DeleteEnvironmentConfiguration&Version=2010-12-01:
@@ -1089,7 +1089,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: environment_configurations
+      x-stackql-resource: environments
       x-stackql-method: delete_environment_configuration
       x-stackql-verb: DELETE
     post:
@@ -1108,7 +1108,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteEnvironmentConfigurationMessage'
-      x-stackql-resource: environment_configurations
+      x-stackql-resource: environments
       x-stackql-method: delete_environment_configuration
       x-stackql-verb: DELETE
   /?Action=DeletePlatformVersion&Version=2010-12-01:
@@ -1540,6 +1540,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeEnvironmentHealthOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "DescribeEnvironmentHealthResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "DescribeEnvironmentHealthResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf
+        $n) "map" -}}"environment_name": {{ toJson (index $n "EnvironmentName") }}, "health_status": {{ toJson (index $n "HealthStatus")
+        }}, "status": {{ toJson (index $n "Status") }}, "color": {{ toJson (index $n "Color") }}, "causes": {{ toJson (index
+        $n "Causes") }}, "application_metrics": {{ toJson (index $n "ApplicationMetrics") }}, "instances_health": {{ toJson
+        (index $n "InstancesHealth") }}, "refreshed_at": {{ toJson (index $n "RefreshedAt") }}{{- end -}}}]}'
     post:
       operationId: POST_DescribeEnvironmentHealth
       description: Returns information about the overall health of the specified environment. The DescribeEnvironmentHealth
@@ -1562,6 +1569,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeEnvironmentHealthOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "DescribeEnvironmentHealthResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "DescribeEnvironmentHealthResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf
+        $n) "map" -}}"environment_name": {{ toJson (index $n "EnvironmentName") }}, "health_status": {{ toJson (index $n "HealthStatus")
+        }}, "status": {{ toJson (index $n "Status") }}, "color": {{ toJson (index $n "Color") }}, "causes": {{ toJson (index
+        $n "Causes") }}, "application_metrics": {{ toJson (index $n "ApplicationMetrics") }}, "instances_health": {{ toJson
+        (index $n "InstancesHealth") }}, "refreshed_at": {{ toJson (index $n "RefreshedAt") }}{{- end -}}}]}'
   /?Action=DescribeEnvironmentManagedActionHistory&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2143,7 +2157,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: environment_operations_roles
+      x-stackql-resource: environments
       x-stackql-method: disassociate_environment_operations_role
       x-stackql-verb: UPDATE
     post:
@@ -2160,7 +2174,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DisassociateEnvironmentOperationsRoleMessage'
-      x-stackql-resource: environment_operations_roles
+      x-stackql-resource: environments
       x-stackql-method: disassociate_environment_operations_role
       x-stackql-verb: UPDATE
   /?Action=ListAvailableSolutionStacks&Version=2010-12-01:
@@ -2383,7 +2397,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -2406,7 +2420,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListTagsForResourceMessage'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -2880,7 +2894,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UpdateApplicationResourceLifecycleOutputDisplay'
-      x-stackql-resource: application_resource_lifecycles
+      x-stackql-resource: applications
       x-stackql-method: update_application_resource_lifecycle
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateApplicationResourceLifecycleOutputDisplay
@@ -2901,7 +2915,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateApplicationResourceLifecycleMessage'
-      x-stackql-resource: application_resource_lifecycles
+      x-stackql-resource: applications
       x-stackql-method: update_application_resource_lifecycle
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateApplicationResourceLifecycleOutputDisplay
@@ -3029,7 +3043,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UpdateConfigurationTemplateOutputDisplay'
-      x-stackql-resource: configuration_templates
+      x-stackql-resource: applications
       x-stackql-method: update_configuration_template
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateConfigurationTemplateOutputDisplay
@@ -3052,7 +3066,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateConfigurationTemplateMessage'
-      x-stackql-resource: configuration_templates
+      x-stackql-resource: applications
       x-stackql-method: update_configuration_template
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateConfigurationTemplateOutputDisplay
@@ -3238,7 +3252,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: update_tags_for_resource
       x-stackql-verb: UPDATE
     post:
@@ -3259,7 +3273,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateTagsForResourceMessage'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: update_tags_for_resource
       x-stackql-verb: UPDATE
   /?Action=ValidateConfigurationSettings&Version=2010-12-01:
@@ -4577,7 +4591,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/CauseDisplay'
+            $ref: '#/components/schemas/DescribeEnvironmentHealthRowDisplay'
     DescribeEnvironmentHealthRequest:
       description: See the example below to learn how to create a request body.
       type: object
@@ -4592,6 +4606,33 @@ components:
           $ref: '#/components/schemas/EnvironmentHealthAttributes'
           description: Specify the response elements to return. To retrieve all attributes, set to All. If no attribute names
             are specified, returns the name of the environment.
+    DescribeEnvironmentHealthRowDisplay:
+      type: object
+      properties:
+        environment_name:
+          type: string
+          description: The environment's name.
+        health_status:
+          type: string
+          description: The health status of the environment. For example, Ok.
+        status:
+          type: string
+          description: The environment's operational status. Ready, Launching, Updating, Terminating, or Terminated.
+        color:
+          type: string
+          description: The health color of the environment.
+        causes:
+          type: array
+          description: Descriptions of the data that contributed to the environment's current health status.
+        application_metrics:
+          type: object
+          description: Application request metrics for the environment.
+        instances_health:
+          type: object
+          description: Summary health information for the instances in the environment.
+        refreshed_at:
+          type: string
+          description: The date and time that the health information was retrieved.
     ManagedActionHistoryMaxItems:
       type: integer
       minimum: 1
@@ -5070,16 +5111,22 @@ components:
           description: The name of the environment from which to disassociate the operations role.
       required:
       - EnvironmentName
-    SolutionStackNameDisplay:
+    SolutionStackDescriptionDisplay:
       type: object
-      properties: {}
+      properties:
+        SolutionStackName:
+          type: string
+          description: The name of the solution stack.
+        PermittedFileTypes:
+          type: string
+          description: The permitted file types allowed for a solution stack.
     ListAvailableSolutionStacksOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/SolutionStackNameDisplay'
+            $ref: '#/components/schemas/SolutionStackDescriptionDisplay'
     SearchFilters:
       type: array
       items:

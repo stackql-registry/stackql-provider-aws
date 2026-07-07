@@ -11316,6 +11316,176 @@ components:
           $ref: "#/components/schemas/Timestamp"
           description: The date and time of the last update for the updated test set.
   x-stackQL-resources:
+    bots:
+      id: aws.lexv2_models.bots
+      name: bots
+      title: bots
+      methods:
+        batch_create_custom_vocabulary_item:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1customvocabulary~1DEFAULT~1batchcreate/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_custom_vocabulary_item:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1customvocabulary~1DEFAULT~1batchdelete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_custom_vocabulary_item:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1customvocabulary~1DEFAULT~1batchupdate/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        build_bot_locale:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        create_bot:
+          operation:
+            $ref: "#/paths/~1bots~1/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_bots:
+          operation:
+            $ref: "#/paths/~1bots~1/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_bot:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1/delete"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        describe_bot:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_bot:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_custom_vocabulary:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1customvocabulary/delete"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        delete_utterances:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1utterances~1/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        generate_bot_element:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1generate/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_bot_recommendation:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1botrecommendations~1/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_bot_analyzer:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botanalyzer~1/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_bot_resource_generation:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1startgeneration/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_bot_analyzer:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botanalyzer~1{bot_analyzer_request_id}~1stop~1/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_bot_recommendation:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1botrecommendations~1{bot_recommendation_id}~1stopbotrecommendation/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/bots/methods/describe_bot"
+          - $ref: "#/components/x-stackQL-resources/bots/methods/list_bots"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/bots/methods/create_bot"
+        update:
+          - $ref: "#/components/x-stackQL-resources/bots/methods/update_bot"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/bots/methods/delete_custom_vocabulary"
+          - $ref: "#/components/x-stackQL-resources/bots/methods/delete_bot"
     bot_locales:
       id: aws.lexv2_models.bot_locales
       name: bot_locales
@@ -11376,68 +11546,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/bot_locales/methods/update_bot_locale"
         delete:
           - $ref: "#/components/x-stackQL-resources/bot_locales/methods/delete_bot_locale"
-    bots:
-      id: aws.lexv2_models.bots
-      name: bots
-      title: bots
-      methods:
-        create_bot:
-          operation:
-            $ref: "#/paths/~1bots~1/put"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_bots:
-          operation:
-            $ref: "#/paths/~1bots~1/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_bot:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_id}~1/delete"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        describe_bot:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_id}~1/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_bot:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_id}~1/put"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/bots/methods/describe_bot"
-          - $ref: "#/components/x-stackQL-resources/bots/methods/list_bots"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/bots/methods/create_bot"
-        update:
-          - $ref: "#/components/x-stackQL-resources/bots/methods/update_bot"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/bots/methods/delete_bot"
     bot_alias:
       id: aws.lexv2_models.bot_alias
       name: bot_alias
@@ -11763,20 +11871,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/describe_resource_policy"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/create_resource_policy"
-        update:
-          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/update_resource_policy"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/delete_resource_policy"
-    resource_policy_statements:
-      id: aws.lexv2_models.resource_policy_statements
-      name: resource_policy_statements
-      title: resource_policy_statements
-      methods:
         create_resource_policy_statement:
           operation:
             $ref: "#/paths/~1policy~1{resource_arn}~1statements~1/post"
@@ -11797,12 +11891,16 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/describe_resource_policy"
         insert:
-          - $ref: "#/components/x-stackQL-resources/resource_policy_statements/methods/create_resource_policy_statement"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/create_resource_policy_statement"
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/create_resource_policy"
+        update:
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/update_resource_policy"
         delete:
-          - $ref: "#/components/x-stackQL-resources/resource_policy_statements/methods/delete_resource_policy_statement"
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/delete_resource_policy_statement"
+          - $ref: "#/components/x-stackQL-resources/resource_policies/methods/delete_resource_policy"
     slots:
       id: aws.lexv2_models.slots
       name: slots
@@ -11990,6 +12088,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11999,23 +12104,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/bot_analyzer_recommendations/methods/delete_bot_analyzer_recommendation"
-    custom_vocabularies:
-      id: aws.lexv2_models.custom_vocabularies
-      name: custom_vocabularies
-      title: custom_vocabularies
-      methods:
-        delete_custom_vocabulary:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_id}~1botversions~1{bot_version}~1botlocales~1{locale_id}~1customvocabulary/delete"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/custom_vocabularies/methods/delete_custom_vocabulary"
     imports:
       id: aws.lexv2_models.imports
       name: imports
@@ -12038,6 +12126,17 @@ components:
             $ref: "#/paths/~1imports~1/post"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_import:
+          operation:
+            $ref: "#/paths/~1imports~1/put"
+          response:
+            openAPIDocKey: "202"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -12090,6 +12189,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_test_execution:
+          operation:
+            $ref: "#/paths/~1testsets~1{test_set_id}~1testexecutions/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_test_set_generation:
+          operation:
+            $ref: "#/paths/~1testsetgenerations/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/test_sets/methods/describe_test_set"
@@ -12099,25 +12220,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/test_sets/methods/update_test_set"
         delete:
           - $ref: "#/components/x-stackQL-resources/test_sets/methods/delete_test_set"
-    utterances:
-      id: aws.lexv2_models.utterances
-      name: utterances
-      title: utterances
-      methods:
-        delete_utterances:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_id}~1utterances~1/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/utterances/methods/delete_utterances"
     bot_recommendations:
       id: aws.lexv2_models.bot_recommendations
       name: bot_recommendations
@@ -12327,6 +12429,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12555,10 +12664,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.lexv2_models.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.lexv2_models.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -12566,17 +12675,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.lexv2_models.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -12597,11 +12695,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     test_execution_result_items:
       id: aws.lexv2_models.test_execution_result_items
@@ -12614,6 +12713,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.testExecutionResults
           request:
             nativeCasing: pascal
           config:

@@ -703,7 +703,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateWebACLMigrationStackResponse'
-      x-stackql-resource: web_acl_migration_stacks
+      x-stackql-resource: web_acls
       x-stackql-method: create_web_acl_migration_stack
       x-stackql-verb: INSERT
   /CreateXssMatchSet:
@@ -1442,6 +1442,7 @@ paths:
       x-stackql-resource: byte_match_sets
       x-stackql-method: get_byte_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ByteMatchSet
   /GetChangeToken:
     post:
       operationId: GetChangeToken
@@ -1563,6 +1564,7 @@ paths:
       x-stackql-resource: geo_match_sets
       x-stackql-method: get_geo_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.GeoMatchSet
   /GetIPSet:
     post:
       operationId: GetIPSet
@@ -1601,6 +1603,7 @@ paths:
       x-stackql-resource: ip_sets
       x-stackql-method: get_ip_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.IPSet
   /GetLoggingConfiguration:
     post:
       operationId: GetLoggingConfiguration
@@ -1640,6 +1643,7 @@ paths:
       x-stackql-resource: logging_configurations
       x-stackql-method: get_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LoggingConfiguration
   /GetPermissionPolicy:
     post:
       operationId: GetPermissionPolicy
@@ -1718,6 +1722,7 @@ paths:
       x-stackql-resource: rate_based_rules
       x-stackql-method: get_rate_based_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Rule
   /GetRateBasedRuleManagedKeys:
     post:
       operationId: GetRateBasedRuleManagedKeys
@@ -1759,11 +1764,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetRateBasedRuleManagedKeysResponse'
+                $ref: '#/components/schemas/GetRateBasedRuleManagedKeysOutputDisplay'
       x-stackql-resource: rate_based_rule_managed_keys
       x-stackql-method: get_rate_based_rule_managed_keys
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ManagedKeys
+      x-stackql-responseEnvelope: GetRateBasedRuleManagedKeysOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ManagedKeys" -}}{{- $tok := index . "NextMarker" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"managed_key": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextMarker": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /GetRegexMatchSet:
     post:
       operationId: GetRegexMatchSet
@@ -1803,6 +1816,7 @@ paths:
       x-stackql-resource: regex_match_sets
       x-stackql-method: get_regex_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RegexMatchSet
   /GetRegexPatternSet:
     post:
       operationId: GetRegexPatternSet
@@ -1842,6 +1856,7 @@ paths:
       x-stackql-resource: regex_pattern_sets
       x-stackql-method: get_regex_pattern_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RegexPatternSet
   /GetRule:
     post:
       operationId: GetRule
@@ -1881,6 +1896,7 @@ paths:
       x-stackql-resource: rules
       x-stackql-method: get_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Rule
   /GetRuleGroup:
     post:
       operationId: GetRuleGroup
@@ -1921,6 +1937,7 @@ paths:
       x-stackql-resource: rule_groups
       x-stackql-method: get_rule_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RuleGroup
   /GetSampledRequests:
     post:
       operationId: GetSampledRequests
@@ -2023,6 +2040,7 @@ paths:
       x-stackql-resource: size_constraint_sets
       x-stackql-method: get_size_constraint_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SizeConstraintSet
   /GetSqlInjectionMatchSet:
     post:
       operationId: GetSqlInjectionMatchSet
@@ -2063,6 +2081,7 @@ paths:
       x-stackql-resource: sql_injection_match_sets
       x-stackql-method: get_sql_injection_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SqlInjectionMatchSet
   /GetWebACL:
     post:
       operationId: GetWebACL
@@ -2102,6 +2121,7 @@ paths:
       x-stackql-resource: web_acls
       x-stackql-method: get_web_acl
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.WebACL
   /GetXssMatchSet:
     post:
       operationId: GetXssMatchSet
@@ -2141,6 +2161,7 @@ paths:
       x-stackql-resource: xss_match_sets
       x-stackql-method: get_xss_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.XssMatchSet
   /ListActivatedRulesInRuleGroup:
     post:
       operationId: ListActivatedRulesInRuleGroup
@@ -2189,6 +2210,9 @@ paths:
       x-stackql-method: list_activated_rules_in_rule_group
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActivatedRules
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListByteMatchSets:
     post:
       operationId: ListByteMatchSets
@@ -2234,6 +2258,9 @@ paths:
       x-stackql-method: list_byte_match_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ByteMatchSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListGeoMatchSets:
     post:
       operationId: ListGeoMatchSets
@@ -2280,6 +2307,9 @@ paths:
       x-stackql-method: list_geo_match_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GeoMatchSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListIPSets:
     post:
       operationId: ListIPSets
@@ -2325,6 +2355,9 @@ paths:
       x-stackql-method: list_ip_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IPSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListLoggingConfigurations:
     post:
       operationId: ListLoggingConfigurations
@@ -2370,6 +2403,9 @@ paths:
       x-stackql-method: list_logging_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LoggingConfigurations
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListRateBasedRules:
     post:
       operationId: ListRateBasedRules
@@ -2415,6 +2451,9 @@ paths:
       x-stackql-method: list_rate_based_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rules
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListRegexMatchSets:
     post:
       operationId: ListRegexMatchSets
@@ -2460,6 +2499,9 @@ paths:
       x-stackql-method: list_regex_match_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegexMatchSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListRegexPatternSets:
     post:
       operationId: ListRegexPatternSets
@@ -2505,6 +2547,9 @@ paths:
       x-stackql-method: list_regex_pattern_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegexPatternSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListRuleGroups:
     post:
       operationId: ListRuleGroups
@@ -2550,6 +2595,9 @@ paths:
       x-stackql-method: list_rule_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RuleGroups
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListRules:
     post:
       operationId: ListRules
@@ -2595,6 +2643,9 @@ paths:
       x-stackql-method: list_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rules
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListSizeConstraintSets:
     post:
       operationId: ListSizeConstraintSets
@@ -2640,6 +2691,9 @@ paths:
       x-stackql-method: list_size_constraint_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SizeConstraintSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListSqlInjectionMatchSets:
     post:
       operationId: ListSqlInjectionMatchSets
@@ -2685,6 +2739,9 @@ paths:
       x-stackql-method: list_sql_injection_match_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SqlInjectionMatchSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListSubscribedRuleGroups:
     post:
       operationId: ListSubscribedRuleGroups
@@ -2732,6 +2789,9 @@ paths:
       x-stackql-method: list_subscribed_rule_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RuleGroups
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2775,9 +2835,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TagInfoForResource
   /ListWebACLs:
     post:
       operationId: ListWebACLs
@@ -2824,6 +2885,9 @@ paths:
       x-stackql-method: list_web_ac_ls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WebACLs
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListXssMatchSets:
     post:
       operationId: ListXssMatchSets
@@ -2869,6 +2933,9 @@ paths:
       x-stackql-method: list_xss_match_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.XssMatchSets
+      x-stackql-pagination-request-token-key: NextMarker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /PutLoggingConfiguration:
     post:
       operationId: PutLoggingConfiguration
@@ -3008,7 +3075,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3048,7 +3115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateByteMatchSet:
@@ -5437,21 +5504,19 @@ components:
       minLength: 1
       maxLength: 1224
       pattern: .*\S.*
-    GetRateBasedRuleManagedKeysResponse:
+    GetRateBasedRuleManagedKeysRowDisplay:
       type: object
       properties:
-        ManagedKeys:
-          $ref: '#/components/schemas/ManagedKeys'
+        managed_key:
+          type: string
           description: An array of IP addresses that currently are blocked by the specified RateBasedRule.
-        NextMarker:
-          $ref: '#/components/schemas/NextMarker'
-          description: A null value and not currently used.
-    ManagedKeys:
-      type: array
-      items:
-        $ref: '#/components/schemas/ManagedKey'
-    ManagedKey:
-      type: string
+    GetRateBasedRuleManagedKeysOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetRateBasedRuleManagedKeysRowDisplay'
     GetRegexMatchSetResponse:
       type: object
       properties:

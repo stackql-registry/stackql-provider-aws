@@ -59,6 +59,9 @@ paths:
       x-stackql-method: list_recommended_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendedActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

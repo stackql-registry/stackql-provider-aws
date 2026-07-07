@@ -204,6 +204,9 @@ paths:
       x-stackql-method: list_identity_providers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IdentityProviderSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/ListInstances:
     post:
       operationId: ListInstances
@@ -233,6 +236,9 @@ paths:
       x-stackql-method: list_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /license-server/ListLicenseServerEndpoints:
     post:
       operationId: ListLicenseServerEndpoints
@@ -262,6 +268,9 @@ paths:
       x-stackql-method: list_license_server_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseServerEndpoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /user/ListProductSubscriptions:
     post:
       operationId: ListProductSubscriptions
@@ -297,6 +306,9 @@ paths:
       x-stackql-method: list_product_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProductUserSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -315,7 +327,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     put:
@@ -346,7 +358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -372,7 +384,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /user/ListUserAssociations:
@@ -411,6 +423,9 @@ paths:
       x-stackql-method: list_user_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceUserSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /identity-provider/RegisterIdentityProvider:
     post:
       operationId: RegisterIdentityProvider
@@ -544,7 +559,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateIdentityProviderSettingsResponse'
-      x-stackql-resource: identity_provider_settings
+      x-stackql-resource: identity_providers
       x-stackql-method: update_identity_provider_settings
       x-stackql-verb: UPDATE
 components:

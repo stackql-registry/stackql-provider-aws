@@ -53,7 +53,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateTopicReviewedAnswerResponse'
-      x-stackql-resource: batch_create_topic_reviewed_answer
+      x-stackql-resource: topics
       x-stackql-method: batch_create_topic_reviewed_answer
       x-stackql-verb: EXEC
   /accounts/{aws_account_id}/topics/{topic_id}/batch-delete-reviewed-answers:
@@ -90,7 +90,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteTopicReviewedAnswerResponse'
-      x-stackql-resource: batch_delete_topic_reviewed_answer
+      x-stackql-resource: topics
       x-stackql-method: batch_delete_topic_reviewed_answer
       x-stackql-verb: EXEC
   /accounts/{aws_account_id}/data-sets/{data_set_id}/ingestions/{ingestion_id}:
@@ -123,7 +123,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelIngestionResponse'
-      x-stackql-resource: ingestion
+      x-stackql-resource: ingestions
       x-stackql-method: cancel_ingestion
       x-stackql-verb: EXEC
     put:
@@ -597,6 +597,9 @@ paths:
       x-stackql-method: list_action_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActionConnectorSummaries
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/analyses/{analysis_id}:
     post:
       operationId: CreateAnalysis
@@ -977,6 +980,9 @@ paths:
       x-stackql-method: list_custom_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CustomPermissionsList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/dashboards/{dashboard_id}:
     post:
       operationId: CreateDashboard
@@ -1273,6 +1279,9 @@ paths:
       x-stackql-method: list_data_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataSetSummaries
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/data-sources:
     post:
       operationId: CreateDataSource
@@ -1358,6 +1367,9 @@ paths:
       x-stackql-method: list_data_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataSources
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/folders/{folder_id}:
     post:
       operationId: CreateFolder
@@ -1529,7 +1541,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateFolderMembershipResponse'
-      x-stackql-resource: folder_memberships
+      x-stackql-resource: folders
       x-stackql-method: create_folder_membership
       x-stackql-verb: INSERT
     delete:
@@ -1567,7 +1579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteFolderMembershipResponse'
-      x-stackql-resource: folder_memberships
+      x-stackql-resource: folders
       x-stackql-method: delete_folder_membership
       x-stackql-verb: DELETE
   /accounts/{aws_account_id}/namespaces/{namespace}/groups:
@@ -1654,6 +1666,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/groups/{group_name}/members/{member_name}:
     put:
       operationId: CreateGroupMembership
@@ -4474,7 +4489,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteUserByPrincipalIdResponse'
-      x-stackql-resource: user_by_principal_ids
+      x-stackql-resource: users
       x-stackql-method: delete_user_by_principal_id
       x-stackql-verb: DELETE
   /accounts/{aws_account_id}/namespaces/{namespace}/users/{user_name}/custom-permission:
@@ -4508,7 +4523,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteUserCustomPermissionResponse'
-      x-stackql-resource: user_custom_permissions
+      x-stackql-resource: custom_permissions
       x-stackql-method: delete_user_custom_permission
       x-stackql-verb: DELETE
     put:
@@ -4552,7 +4567,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateUserCustomPermissionResponse'
-      x-stackql-resource: user_custom_permissions
+      x-stackql-resource: custom_permissions
       x-stackql-method: update_user_custom_permission
       x-stackql-verb: UPDATE
   /accounts/{aws_account_id}/vpc-connections/{vpc_connection_id}:
@@ -5482,6 +5497,9 @@ paths:
       x-stackql-method: describe_folder_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Permissions
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     put:
       operationId: UpdateFolderPermissions
       description: Updates permissions of a folder.
@@ -5566,6 +5584,9 @@ paths:
       x-stackql-method: describe_folder_resolved_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Permissions
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/iam-policy-assignments/{assignment_name}:
     get:
       operationId: DescribeIAMPolicyAssignment
@@ -6314,7 +6335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateEmbedUrlForRegisteredUserResponse'
-      x-stackql-resource: embed_url_for_registered_user
+      x-stackql-resource: users
       x-stackql-method: generate_embed_url_for_registered_user
       x-stackql-verb: EXEC
   /accounts/{aws_account_id}/embed-url/registered-user-with-identity:
@@ -6689,6 +6710,9 @@ paths:
       x-stackql-method: list_analyses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnalysisSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/asset-bundle-export-jobs:
     get:
       operationId: ListAssetBundleExportJobs
@@ -6725,6 +6749,9 @@ paths:
       x-stackql-method: list_asset_bundle_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssetBundleExportJobSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/asset-bundle-import-jobs:
     get:
       operationId: ListAssetBundleImportJobs
@@ -6761,6 +6788,9 @@ paths:
       x-stackql-method: list_asset_bundle_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssetBundleImportJobSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/brands:
     get:
       operationId: ListBrands
@@ -6795,6 +6825,9 @@ paths:
       x-stackql-method: list_brands
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Brands
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/dashboards/{dashboard_id}/versions:
     get:
       operationId: ListDashboardVersions
@@ -6835,6 +6868,9 @@ paths:
       x-stackql-method: list_dashboard_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DashboardVersionSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/dashboards:
     get:
       operationId: ListDashboards
@@ -6869,6 +6905,9 @@ paths:
       x-stackql-method: list_dashboards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DashboardSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/flows:
     get:
       operationId: ListFlows
@@ -6903,6 +6942,9 @@ paths:
       x-stackql-method: list_flows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FlowSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/folders/{folder_id}/members:
     get:
       operationId: ListFolderMembers
@@ -6943,6 +6985,9 @@ paths:
       x-stackql-method: list_folder_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FolderMemberList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/folders:
     get:
       operationId: ListFolders
@@ -6977,6 +7022,9 @@ paths:
       x-stackql-method: list_folders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FolderSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/resource/{resource_arn}/folders:
     get:
       operationId: ListFoldersForResource
@@ -7012,11 +7060,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFoldersForResourceResponse'
+                $ref: '#/components/schemas/ListFoldersForResourceOutputDisplay'
       x-stackql-resource: folders_for_resources
       x-stackql-method: list_folders_for_resource
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Folders
+      x-stackql-responseEnvelope: ListFoldersForResourceOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Folders" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"folder": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/groups/{group_name}/members:
     get:
       operationId: ListGroupMemberships
@@ -7064,6 +7120,9 @@ paths:
       x-stackql-method: list_group_memberships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupMemberList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/v2/iam-policy-assignments:
     get:
       operationId: ListIAMPolicyAssignments
@@ -7110,6 +7169,9 @@ paths:
       x-stackql-method: list_iam_policy_assignments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IAMPolicyAssignments
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/users/{user_name}/iam-policy-assignments:
     get:
       operationId: ListIAMPolicyAssignmentsForUser
@@ -7157,6 +7219,9 @@ paths:
       x-stackql-method: list_iam_policy_assignments_for_user
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActiveAssignments
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/identity-propagation-config:
     get:
       operationId: ListIdentityPropagationConfigs
@@ -7231,6 +7296,9 @@ paths:
       x-stackql-method: list_ingestions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Ingestions
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces:
     get:
       operationId: ListNamespaces
@@ -7271,6 +7339,9 @@ paths:
       x-stackql-method: list_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Namespaces
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/roles/{role}/members:
     get:
       operationId: ListRoleMemberships
@@ -7313,11 +7384,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRoleMembershipsResponse'
+                $ref: '#/components/schemas/ListRoleMembershipsOutputDisplay'
       x-stackql-resource: role_memberships
       x-stackql-method: list_role_memberships
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.MembersList
+      x-stackql-responseEnvelope: ListRoleMembershipsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "MembersList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"members": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/self-upgrade-requests:
     get:
       operationId: ListSelfUpgrades
@@ -7375,7 +7454,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -7416,7 +7495,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -7442,7 +7521,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /accounts/{aws_account_id}/templates/{template_id}/aliases:
@@ -7485,6 +7564,9 @@ paths:
       x-stackql-method: list_template_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TemplateAliasList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/templates/{template_id}/versions:
     get:
       operationId: ListTemplateVersions
@@ -7525,6 +7607,9 @@ paths:
       x-stackql-method: list_template_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TemplateVersionSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/templates:
     get:
       operationId: ListTemplates
@@ -7559,6 +7644,9 @@ paths:
       x-stackql-method: list_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TemplateSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/themes/{theme_id}/aliases:
     get:
       operationId: ListThemeAliases
@@ -7638,6 +7726,9 @@ paths:
       x-stackql-method: list_theme_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ThemeVersionSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/themes:
     get:
       operationId: ListThemes
@@ -7680,6 +7771,9 @@ paths:
       x-stackql-method: list_themes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ThemeSummaryList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/topics/{topic_id}/reviewed-answers:
     get:
       operationId: ListTopicReviewedAnswers
@@ -7755,6 +7849,9 @@ paths:
       x-stackql-method: list_user_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/users:
     get:
       operationId: ListUsers
@@ -7796,6 +7893,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: RegisterUser
       description: Creates an Amazon Quick Sight user whose identity is associated with the Identity and Access Management
@@ -7989,6 +8089,9 @@ paths:
       x-stackql-method: search_action_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActionConnectorSummaries
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/search/analyses:
     post:
       operationId: SearchAnalyses
@@ -8027,6 +8130,9 @@ paths:
       x-stackql-method: search_analyses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnalysisSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/search/dashboards:
     post:
       operationId: SearchDashboards
@@ -8065,6 +8171,9 @@ paths:
       x-stackql-method: search_dashboards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DashboardSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/search/data-sets:
     post:
       operationId: SearchDataSets
@@ -8102,6 +8211,9 @@ paths:
       x-stackql-method: search_data_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataSetSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/search/data-sources:
     post:
       operationId: SearchDataSources
@@ -8139,6 +8251,9 @@ paths:
       x-stackql-method: search_data_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataSourceSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/flows/searchFlows:
     post:
       operationId: SearchFlows
@@ -8176,6 +8291,9 @@ paths:
       x-stackql-method: search_flows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FlowSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/search/folders:
     post:
       operationId: SearchFolders
@@ -8213,6 +8331,9 @@ paths:
       x-stackql-method: search_folders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FolderSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/namespaces/{namespace}/groups-search:
     post:
       operationId: SearchGroups
@@ -8266,6 +8387,9 @@ paths:
       x-stackql-method: search_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupList
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/search/topics:
     post:
       operationId: SearchTopics
@@ -8303,6 +8427,9 @@ paths:
       x-stackql-method: search_topics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TopicSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{aws_account_id}/asset-bundle-export-jobs/export:
     post:
       operationId: StartAssetBundleExportJob
@@ -8357,7 +8484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAssetBundleExportJobResponse'
-      x-stackql-resource: asset_bundle_export_job
+      x-stackql-resource: asset_bundle_export_jobs
       x-stackql-method: start_asset_bundle_export_job
       x-stackql-verb: EXEC
   /accounts/{aws_account_id}/asset-bundle-import-jobs/import:
@@ -8407,7 +8534,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAssetBundleImportJobResponse'
-      x-stackql-resource: asset_bundle_import_job
+      x-stackql-resource: asset_bundle_import_jobs
       x-stackql-method: start_asset_bundle_import_job
       x-stackql-verb: EXEC
   /accounts/{aws_account_id}/automation-groups/{automation_group_id}/automations/{automation_id}/jobs:
@@ -8547,7 +8674,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDashboardSnapshotJobResponse'
-      x-stackql-resource: dashboard_snapshot_job
+      x-stackql-resource: dashboards
       x-stackql-method: start_dashboard_snapshot_job
       x-stackql-verb: EXEC
   /accounts/{aws_account_id}/dashboards/{dashboard_id}/schedules/{schedule_id}:
@@ -8584,7 +8711,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDashboardSnapshotJobScheduleResponse'
-      x-stackql-resource: dashboard_snapshot_job_schedule
+      x-stackql-resource: dashboard_snapshot_jobs
       x-stackql-method: start_dashboard_snapshot_job_schedule
       x-stackql-verb: EXEC
   /accounts/{aws_account_id}/application-with-token-exchange-grant:
@@ -8650,7 +8777,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDashboardLinksResponse'
-      x-stackql-resource: dashboard_links
+      x-stackql-resource: dashboards
       x-stackql-method: update_dashboard_links
       x-stackql-verb: UPDATE
   /accounts/{aws_account_id}/dashboards/{dashboard_id}/versions/{version_number}:
@@ -8683,7 +8810,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDashboardPublishedVersionResponse'
-      x-stackql-resource: dashboard_published_versions
+      x-stackql-resource: dashboards
       x-stackql-method: update_dashboard_published_version
       x-stackql-verb: UPDATE
   /accounts/{aws_account_id}/public-sharing-settings:
@@ -30654,26 +30781,20 @@ components:
         SharingModel:
           $ref: '#/components/schemas/SharingModel'
           description: The sharing scope of the folder.
-    ListFoldersForResourceResponse:
+    ListFoldersForResourceRowDisplay:
       type: object
       properties:
-        Status:
-          $ref: '#/components/schemas/StatusCode'
-          description: The HTTP status of the request.
-        Folders:
-          $ref: '#/components/schemas/FoldersForResourceArnList'
+        folder:
+          type: string
           description: A list that contains the Amazon Resource Names (ARNs) of all folders that the resource is a member
             of.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The token for the next set of results, or null if there are no more results.
-        RequestId:
-          $ref: '#/components/schemas/String'
-          description: The Amazon Web Services request ID for this operation.
-    FoldersForResourceArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Arn'
+    ListFoldersForResourceOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFoldersForResourceRowDisplay'
     ListGroupMembershipsResponse:
       type: object
       properties:
@@ -30870,21 +30991,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/RefreshSchedule'
-    ListRoleMembershipsResponse:
+    ListRoleMembershipsRowDisplay:
       type: object
       properties:
-        MembersList:
-          $ref: '#/components/schemas/GroupsList'
+        members:
+          type: string
           description: The list of groups associated with a role
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: A pagination token that can be used in a subsequent request.
-        RequestId:
-          $ref: '#/components/schemas/String'
-          description: The Amazon Web Services request ID for this operation.
-        Status:
-          $ref: '#/components/schemas/StatusCode'
-          description: The HTTP status of the request.
+    ListRoleMembershipsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListRoleMembershipsRowDisplay'
     ListSelfUpgradesResponse:
       type: object
       properties:

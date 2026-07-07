@@ -43,7 +43,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateSourceNetworkStackResponse'
-      x-stackql-resource: source_network_stacks
+      x-stackql-resource: source_networks
       x-stackql-method: associate_source_network_stack
       x-stackql-verb: UPDATE
   /CreateExtendedSourceServer:
@@ -71,7 +71,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateExtendedSourceServerResponse'
-      x-stackql-resource: extended_source_servers
+      x-stackql-resource: source_servers
       x-stackql-method: create_extended_source_server
       x-stackql-verb: INSERT
   /CreateLaunchConfigurationTemplate:
@@ -422,6 +422,9 @@ paths:
       x-stackql-method: describe_job_log_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeJobs:
     post:
       operationId: DescribeJobs
@@ -454,6 +457,9 @@ paths:
       x-stackql-method: describe_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeLaunchConfigurationTemplates:
     post:
       operationId: DescribeLaunchConfigurationTemplates
@@ -483,6 +489,9 @@ paths:
       x-stackql-method: describe_launch_configuration_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeRecoveryInstances:
     post:
       operationId: DescribeRecoveryInstances
@@ -512,6 +521,9 @@ paths:
       x-stackql-method: describe_recovery_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeRecoverySnapshots:
     post:
       operationId: DescribeRecoverySnapshots
@@ -547,6 +559,9 @@ paths:
       x-stackql-method: describe_recovery_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeReplicationConfigurationTemplates:
     post:
       operationId: DescribeReplicationConfigurationTemplates
@@ -576,6 +591,9 @@ paths:
       x-stackql-method: describe_replication_configuration_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeSourceNetworks:
     post:
       operationId: DescribeSourceNetworks
@@ -605,6 +623,9 @@ paths:
       x-stackql-method: describe_source_networks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeSourceServers:
     post:
       operationId: DescribeSourceServers
@@ -634,6 +655,9 @@ paths:
       x-stackql-method: describe_source_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DisconnectRecoveryInstance:
     post:
       operationId: DisconnectRecoveryInstance
@@ -659,7 +683,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: disconnect_recovery_instance
+      x-stackql-resource: recovery_instances
       x-stackql-method: disconnect_recovery_instance
       x-stackql-verb: EXEC
   /DisconnectSourceServer:
@@ -692,7 +716,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: disconnect_source_server
+      x-stackql-resource: source_servers
       x-stackql-method: disconnect_source_server
       x-stackql-verb: EXEC
   /ExportSourceNetworkCfnTemplate:
@@ -718,7 +742,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportSourceNetworkCfnTemplateResponse'
-      x-stackql-resource: source_network_cfn_template
+      x-stackql-resource: source_networks
       x-stackql-method: export_source_network_cfn_template
       x-stackql-verb: EXEC
   /GetFailbackReplicationConfiguration:
@@ -847,6 +871,9 @@ paths:
       x-stackql-method: list_extensible_source_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListLaunchActions:
     post:
       operationId: ListLaunchActions
@@ -880,6 +907,9 @@ paths:
       x-stackql-method: list_launch_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListStagingAccounts:
     get:
       operationId: ListStagingAccounts
@@ -908,6 +938,9 @@ paths:
       x-stackql-method: list_staging_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -926,7 +959,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -955,7 +988,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -977,7 +1010,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /PutLaunchAction:
@@ -1060,7 +1093,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SourceServer'
-      x-stackql-resource: retry_data_replication
+      x-stackql-resource: source_servers
       x-stackql-method: retry_data_replication
       x-stackql-verb: EXEC
   /ReverseReplication:
@@ -1088,7 +1121,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReverseReplicationResponse'
-      x-stackql-resource: reverse_replication
+      x-stackql-resource: recovery_instances
       x-stackql-method: reverse_replication
       x-stackql-verb: EXEC
   /StartFailbackLaunch:
@@ -1175,7 +1208,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplicationResponse'
-      x-stackql-resource: replication
+      x-stackql-resource: source_servers
       x-stackql-method: start_replication
       x-stackql-verb: EXEC
   /StartSourceNetworkRecovery:
@@ -1206,7 +1239,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSourceNetworkRecoveryResponse'
-      x-stackql-resource: source_network_recovery
+      x-stackql-resource: source_networks
       x-stackql-method: start_source_network_recovery
       x-stackql-verb: EXEC
   /StartSourceNetworkReplication:
@@ -1232,7 +1265,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSourceNetworkReplicationResponse'
-      x-stackql-resource: source_network_replication
+      x-stackql-resource: source_networks
       x-stackql-method: start_source_network_replication
       x-stackql-verb: EXEC
   /StopFailback:
@@ -1255,7 +1288,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: failback
+      x-stackql-resource: recovery_instances
       x-stackql-method: stop_failback
       x-stackql-verb: EXEC
   /StopReplication:
@@ -1282,7 +1315,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopReplicationResponse'
-      x-stackql-resource: replication
+      x-stackql-resource: source_servers
       x-stackql-method: stop_replication
       x-stackql-verb: EXEC
   /StopSourceNetworkReplication:
@@ -1308,7 +1341,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopSourceNetworkReplicationResponse'
-      x-stackql-resource: source_network_replication
+      x-stackql-resource: source_networks
       x-stackql-method: stop_source_network_replication
       x-stackql-verb: EXEC
   /TerminateRecoveryInstances:

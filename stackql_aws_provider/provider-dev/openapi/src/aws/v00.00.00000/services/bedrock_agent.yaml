@@ -8421,6 +8421,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         disassociate_agent_collaborator:
@@ -8435,6 +8442,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.agentCollaborator
         update_agent_collaborator:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1agentcollaborators~1{collaborator_id}~1/put"
@@ -8482,6 +8490,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         disassociate_agent_knowledge_base:
@@ -8496,6 +8511,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.agentKnowledgeBase
         update_agent_knowledge_base:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1knowledgebases~1{knowledge_base_id}~1/put"
@@ -8542,6 +8558,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_agent:
@@ -8557,6 +8580,13 @@ components:
             $ref: "#/paths/~1agents~1{agent_id}~1/get"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.agent
+        prepare_agent:
+          operation:
+            $ref: "#/paths/~1agents~1{agent_id}~1/post"
+          response:
+            openAPIDocKey: "202"
             mediaType: application/json
         update_agent:
           operation:
@@ -8605,6 +8635,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_agent_action_group:
@@ -8621,6 +8658,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.agentActionGroup
         update_agent_action_group:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1{agent_version}~1actiongroups~1{action_group_id}~1/put"
@@ -8670,6 +8708,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.agentAlias
         update_agent_alias:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentaliases~1{agent_alias_id}~1/put"
@@ -8705,6 +8744,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8739,6 +8785,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_data_source:
@@ -8753,6 +8806,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.dataSource
         update_data_source:
           operation:
             $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}/put"
@@ -8799,6 +8853,14 @@ components:
             objectKey: $.flowSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_flow:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1/delete"
@@ -8813,9 +8875,26 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        prepare_flow:
+          operation:
+            $ref: "#/paths/~1flows~1{flow_identifier}~1/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
         update_flow:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_flow_definition:
+          operation:
+            $ref: "#/paths/~1flows~1validate-definition/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -8896,6 +8975,14 @@ components:
             objectKey: $.flowAliasSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_aliases/methods/list_flow_aliases"
@@ -8927,6 +9014,14 @@ components:
             objectKey: $.flowVersionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_flow_version:
           operation:
             $ref: "#/paths/~1flows~1{flow_identifier}~1versions~1{flow_version}~1/delete"
@@ -8976,6 +9071,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_knowledge_base:
@@ -8990,6 +9092,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.knowledgeBase
         update_knowledge_base:
           operation:
             $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}/put"
@@ -9001,6 +9104,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_ingestion_job:
+          operation:
+            $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1ingestionjobs~1/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_ingestion_job:
+          operation:
+            $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1ingestionjobs~1{ingestion_job_id}~1stop/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/get_knowledge_base"
@@ -9036,6 +9156,25 @@ components:
             objectKey: $.promptSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        create_prompt_version:
+          operation:
+            $ref: "#/paths/~1prompts~1{prompt_identifier}~1versions/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_prompt:
           operation:
             $ref: "#/paths/~1prompts~1{prompt_identifier}~1/delete"
@@ -9069,32 +9208,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/list_prompts"
         insert:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/create_prompt"
+          - $ref: "#/components/x-stackQL-resources/prompts/methods/create_prompt_version"
         update:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/update_prompt"
         delete:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/delete_prompt"
-    prompt_versions:
-      id: aws.bedrock_agent.prompt_versions
-      name: prompt_versions
-      title: prompt_versions
-      methods:
-        create_prompt_version:
-          operation:
-            $ref: "#/paths/~1prompts~1{prompt_identifier}~1versions/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/prompt_versions/methods/create_prompt_version"
-        update: []
-        delete: []
     agent_versions:
       id: aws.bedrock_agent.agent_versions
       name: agent_versions
@@ -9114,6 +9232,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.agentVersion
         list_agent_versions:
           operation:
             $ref: "#/paths/~1agents~1{agent_id}~1agentversions~1/post"
@@ -9124,6 +9243,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9161,6 +9287,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        ingest_knowledge_base_documents:
+          operation:
+            $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1documents/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_knowledge_base_documents:
           operation:
             $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1documents/post"
@@ -9171,6 +9308,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9192,6 +9336,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ingestionJob
         list_ingestion_jobs:
           operation:
             $ref: "#/paths/~1knowledgebases~1{knowledge_base_id}~1datasources~1{data_source_id}~1ingestionjobs~1/post"
@@ -9202,6 +9347,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9211,10 +9363,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.bedrock_agent.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.bedrock_agent.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9222,17 +9374,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.bedrock_agent.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -9253,9 +9394,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

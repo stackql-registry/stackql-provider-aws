@@ -47,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociatePhoneNumbersWithVoiceConnectorResponse'
-      x-stackql-resource: phone_numbers_with_voice_connectors
+      x-stackql-resource: voice_connectors
       x-stackql-method: associate_phone_numbers_with_voice_connector
       x-stackql-verb: UPDATE
   /voice-connector-groups/{voice_connector_group_id}?operation=associate-phone-numbers:
@@ -81,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociatePhoneNumbersWithVoiceConnectorGroupResponse'
-      x-stackql-resource: phone_numbers_with_voice_connector_groups
+      x-stackql-resource: voice_connector_groups
       x-stackql-method: associate_phone_numbers_with_voice_connector_group
       x-stackql-verb: UPDATE
   /phone-numbers?operation=batch-delete:
@@ -109,7 +109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeletePhoneNumberResponse'
-      x-stackql-resource: batch_delete_phone_number
+      x-stackql-resource: phone_numbers
       x-stackql-method: batch_delete_phone_number
       x-stackql-verb: EXEC
   /phone-numbers?operation=batch-update:
@@ -344,6 +344,9 @@ paths:
       x-stackql-method: list_sip_media_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SipMediaApplications
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /sip-media-applications/{sip_media_application_id}/calls:
     post:
       operationId: CreateSipMediaApplicationCall
@@ -381,7 +384,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSipMediaApplicationCallResponse'
-      x-stackql-resource: sip_media_application_calls
+      x-stackql-resource: sip_media_applications
       x-stackql-method: create_sip_media_application_call
       x-stackql-verb: INSERT
   /sip-rules:
@@ -455,6 +458,9 @@ paths:
       x-stackql-method: list_sip_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SipRules
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /voice-connectors:
     post:
       operationId: CreateVoiceConnector
@@ -742,6 +748,7 @@ paths:
       x-stackql-resource: phone_numbers
       x-stackql-method: get_phone_number
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PhoneNumber
     post:
       operationId: UpdatePhoneNumber
       description: Updates phone number details, such as product type, calling name, or phone number name for the specified
@@ -828,6 +835,7 @@ paths:
       x-stackql-resource: proxy_sessions
       x-stackql-method: get_proxy_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ProxySession
     post:
       operationId: UpdateProxySession
       description: Updates the specified proxy session details, such as voice or SMS capabilities.
@@ -904,6 +912,7 @@ paths:
       x-stackql-resource: sip_media_applications
       x-stackql-method: get_sip_media_application
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SipMediaApplication
     put:
       operationId: UpdateSipMediaApplication
       description: Updates the details of the specified SIP media application.
@@ -972,6 +981,7 @@ paths:
       x-stackql-resource: sip_rules
       x-stackql-method: get_sip_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SipRule
     put:
       operationId: UpdateSipRule
       description: Updates the details of the specified SIP rule.
@@ -1046,6 +1056,7 @@ paths:
       x-stackql-resource: voice_connectors
       x-stackql-method: get_voice_connector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceConnector
     put:
       operationId: UpdateVoiceConnector
       description: Updates the details for the specified Amazon Chime SDK Voice Connector.
@@ -1117,6 +1128,7 @@ paths:
       x-stackql-resource: voice_connector_emergency_calling_configurations
       x-stackql-method: get_voice_connector_emergency_calling_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EmergencyCallingConfiguration
     put:
       operationId: PutVoiceConnectorEmergencyCallingConfiguration
       description: Updates a Voice Connector's emergency calling configuration.
@@ -1185,6 +1197,7 @@ paths:
       x-stackql-resource: voice_connector_external_systems_configurations
       x-stackql-method: get_voice_connector_external_systems_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExternalSystemsConfiguration
     put:
       operationId: PutVoiceConnectorExternalSystemsConfiguration
       description: Adds an external systems configuration to a Voice Connector.
@@ -1255,6 +1268,7 @@ paths:
       x-stackql-resource: voice_connector_groups
       x-stackql-method: get_voice_connector_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceConnectorGroup
     put:
       operationId: UpdateVoiceConnectorGroup
       description: Updates the settings for the specified Amazon Chime SDK Voice Connector group.
@@ -1327,6 +1341,7 @@ paths:
       x-stackql-resource: voice_connector_originations
       x-stackql-method: get_voice_connector_origination
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Origination
     put:
       operationId: PutVoiceConnectorOrigination
       description: Updates a Voice Connector's origination settings.
@@ -1395,6 +1410,7 @@ paths:
       x-stackql-resource: voice_connector_proxies
       x-stackql-method: get_voice_connector_proxy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Proxy
     put:
       operationId: PutVoiceConnectorProxy
       description: Puts the specified proxy configuration to the specified Amazon Chime SDK Voice Connector.
@@ -1472,6 +1488,7 @@ paths:
       x-stackql-resource: voice_connector_streaming_configurations
       x-stackql-method: get_voice_connector_streaming_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.StreamingConfiguration
     put:
       operationId: PutVoiceConnectorStreamingConfiguration
       description: Updates a Voice Connector's streaming configuration settings.
@@ -1541,6 +1558,7 @@ paths:
       x-stackql-resource: voice_connector_terminations
       x-stackql-method: get_voice_connector_termination
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Termination
     put:
       operationId: PutVoiceConnectorTermination
       description: Updates a Voice Connector's termination settings.
@@ -1637,6 +1655,7 @@ paths:
       x-stackql-resource: voice_profiles
       x-stackql-method: get_voice_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceProfile
     put:
       operationId: UpdateVoiceProfile
       description: Updates the specified voice profile’s voice print and refreshes its expiration timestamp. As a condition
@@ -1711,6 +1730,7 @@ paths:
       x-stackql-resource: voice_profile_domains
       x-stackql-method: get_voice_profile_domain
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceProfileDomain
     put:
       operationId: UpdateVoiceProfileDomain
       description: Updates the settings for the specified voice profile domain.
@@ -1771,7 +1791,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociatePhoneNumbersFromVoiceConnectorResponse'
-      x-stackql-resource: phone_numbers_from_voice_connectors
+      x-stackql-resource: voice_connectors
       x-stackql-method: disassociate_phone_numbers_from_voice_connector
       x-stackql-verb: UPDATE
   /voice-connector-groups/{voice_connector_group_id}?operation=disassociate-phone-numbers:
@@ -1803,7 +1823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociatePhoneNumbersFromVoiceConnectorGroupResponse'
-      x-stackql-resource: phone_numbers_from_voice_connector_groups
+      x-stackql-resource: voice_connector_groups
       x-stackql-method: disassociate_phone_numbers_from_voice_connector_group
       x-stackql-verb: UPDATE
   /settings:
@@ -1821,6 +1841,7 @@ paths:
       x-stackql-resource: global_settings
       x-stackql-method: get_global_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceConnector
     put:
       operationId: UpdateGlobalSettings
       description: Updates global settings for the Amazon Chime SDK Voice Connectors in an AWS account.
@@ -1862,6 +1883,7 @@ paths:
       x-stackql-resource: phone_number_orders
       x-stackql-method: get_phone_number_order
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PhoneNumberOrder
   /settings/phone-number:
     get:
       operationId: GetPhoneNumberSettings
@@ -1923,6 +1945,7 @@ paths:
       x-stackql-resource: sip_media_application_alexa_skill_configurations
       x-stackql-method: get_sip_media_application_alexa_skill_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SipMediaApplicationAlexaSkillConfiguration
     put:
       operationId: PutSipMediaApplicationAlexaSkillConfiguration
       description: Updates the Alexa Skill configuration for the SIP media application. Due to changes made by the Amazon
@@ -1975,6 +1998,7 @@ paths:
       x-stackql-resource: sip_media_application_logging_configurations
       x-stackql-method: get_sip_media_application_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SipMediaApplicationLoggingConfiguration
     put:
       operationId: PutSipMediaApplicationLoggingConfiguration
       description: Updates the logging configuration for the specified SIP media application.
@@ -2031,6 +2055,7 @@ paths:
       x-stackql-resource: speaker_search_tasks
       x-stackql-method: get_speaker_search_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SpeakerSearchTask
   /voice-connectors/{voice_connector_id}/logging-configuration:
     get:
       operationId: GetVoiceConnectorLoggingConfiguration
@@ -2053,6 +2078,7 @@ paths:
       x-stackql-resource: voice_connector_logging_configurations
       x-stackql-method: get_voice_connector_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LoggingConfiguration
     put:
       operationId: PutVoiceConnectorLoggingConfiguration
       description: Updates a Voice Connector's logging configuration.
@@ -2106,6 +2132,7 @@ paths:
       x-stackql-resource: voice_connector_termination_healths
       x-stackql-method: get_voice_connector_termination_health
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TerminationHealth
   /voice-connectors/{voice_connector_id}/voice-tone-analysis-tasks/{voice_tone_analysis_task_id}:
     get:
       operationId: GetVoiceToneAnalysisTask
@@ -2139,6 +2166,7 @@ paths:
       x-stackql-resource: voice_tone_analysis_tasks
       x-stackql-method: get_voice_tone_analysis_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceToneAnalysisTask
   /voice-connector-regions:
     get:
       operationId: ListAvailableVoiceConnectorRegions
@@ -2150,10 +2178,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAvailableVoiceConnectorRegionsResponse'
+                $ref: '#/components/schemas/ListAvailableVoiceConnectorRegionsOutputDisplay'
       x-stackql-resource: available_voice_connector_regions
       x-stackql-method: list_available_voice_connector_regions
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListAvailableVoiceConnectorRegionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "VoiceConnectorRegions" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"voice_connector_region": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]}'
   /phone-numbers:
     get:
       operationId: ListPhoneNumbers
@@ -2245,7 +2279,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /voice-connectors/{voice_connector_id}/termination/credentials:
@@ -2265,10 +2299,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListVoiceConnectorTerminationCredentialsResponse'
+                $ref: '#/components/schemas/ListVoiceConnectorTerminationCredentialsOutputDisplay'
       x-stackql-resource: voice_connector_termination_credentials
       x-stackql-method: list_voice_connector_termination_credentials
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListVoiceConnectorTerminationCredentialsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Usernames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"username": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /voice-connectors/{voice_connector_id}/termination/credentials?operation=put:
     post:
       operationId: PutVoiceConnectorTerminationCredentials
@@ -2313,7 +2352,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestorePhoneNumberResponse'
-      x-stackql-resource: phone_number
+      x-stackql-resource: phone_numbers
       x-stackql-method: restore_phone_number
       x-stackql-verb: EXEC
   /search?type=phone-numbers:
@@ -2376,10 +2415,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SearchAvailablePhoneNumbersResponse'
+                $ref: '#/components/schemas/SearchAvailablePhoneNumbersOutputDisplay'
       x-stackql-resource: available_phone_numbers
       x-stackql-method: search_available_phone_numbers
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: SearchAvailablePhoneNumbersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "E164PhoneNumbers" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"e164_phone_number": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /voice-connectors/{voice_connector_id}/speaker-search-tasks:
     post:
       operationId: StartSpeakerSearchTask
@@ -2418,7 +2462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeakerSearchTaskResponse'
-      x-stackql-resource: speaker_search_task
+      x-stackql-resource: voice_connectors
       x-stackql-method: start_speaker_search_task
       x-stackql-verb: EXEC
   /voice-connectors/{voice_connector_id}/voice-tone-analysis-tasks:
@@ -2458,7 +2502,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartVoiceToneAnalysisTaskResponse'
-      x-stackql-resource: voice_tone_analysis_task
+      x-stackql-resource: voice_connectors
       x-stackql-method: start_voice_tone_analysis_task
       x-stackql-verb: EXEC
   /voice-connectors/{voice_connector_id}/speaker-search-tasks/{speaker_search_task_id}?operation=stop:
@@ -2481,7 +2525,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: speaker_search_task
+      x-stackql-resource: voice_connectors
       x-stackql-method: stop_speaker_search_task
       x-stackql-verb: EXEC
   /voice-connectors/{voice_connector_id}/voice-tone-analysis-tasks/{voice_tone_analysis_task_id}?operation=stop:
@@ -2504,7 +2548,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: voice_tone_analysis_task
+      x-stackql-resource: voice_connectors
       x-stackql-method: stop_voice_tone_analysis_task
       x-stackql-verb: EXEC
   /tags?operation=tag-resource:
@@ -2529,7 +2573,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /tags?operation=untag-resource:
@@ -2554,7 +2598,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /sip-media-applications/{sip_media_application_id}/calls/{transaction_id}:
@@ -2593,7 +2637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSipMediaApplicationCallResponse'
-      x-stackql-resource: sip_media_application_calls
+      x-stackql-resource: sip_media_applications
       x-stackql-method: update_sip_media_application_call
       x-stackql-verb: UPDATE
   /emergency-calling/address:
@@ -4071,16 +4115,19 @@ components:
         StatusMessage:
           $ref: '#/components/schemas/String'
           description: The status of a voice tone analysis task.
-    ListAvailableVoiceConnectorRegionsResponse:
+    ListAvailableVoiceConnectorRegionsRowDisplay:
       type: object
       properties:
-        VoiceConnectorRegions:
-          $ref: '#/components/schemas/VoiceConnectorAwsRegionList'
+        voice_connector_region:
+          type: string
           description: The list of AWS Regions.
-    VoiceConnectorAwsRegionList:
-      type: array
-      items:
-        $ref: '#/components/schemas/VoiceConnectorAwsRegion'
+    ListAvailableVoiceConnectorRegionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAvailableVoiceConnectorRegionsRowDisplay'
     ResultMax:
       type: integer
       minimum: 1
@@ -4196,12 +4243,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/VoiceConnectorGroup'
-    ListVoiceConnectorTerminationCredentialsResponse:
+    ListVoiceConnectorTerminationCredentialsRowDisplay:
       type: object
       properties:
-        Usernames:
-          $ref: '#/components/schemas/SensitiveStringList'
+        username:
+          type: string
           description: A list of user names.
+    ListVoiceConnectorTerminationCredentialsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListVoiceConnectorTerminationCredentialsRowDisplay'
     ListVoiceConnectorsResponse:
       type: object
       properties:
@@ -4373,15 +4427,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    SearchAvailablePhoneNumbersResponse:
+    SearchAvailablePhoneNumbersRowDisplay:
       type: object
       properties:
-        E164PhoneNumbers:
-          $ref: '#/components/schemas/E164PhoneNumberList'
+        e164_phone_number:
+          type: string
           description: Confines a search to just the phone numbers in the E.164 format.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The token used to return the next page of results.
+    SearchAvailablePhoneNumbersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchAvailablePhoneNumbersRowDisplay'
     CallLegType:
       type: string
       enum:

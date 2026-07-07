@@ -2555,6 +2555,14 @@ components:
             objectKey: $.tasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/export_tasks/methods/get_export_task"
@@ -2573,6 +2581,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        create_graph_using_import_task:
+          operation:
+            $ref: "#/paths/~1importtasks/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_import_tasks:
           operation:
             $ref: "#/paths/~1importtasks/get"
@@ -2582,11 +2601,20 @@ components:
             objectKey: $.tasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_tasks/methods/get_import_task"
           - $ref: "#/components/x-stackQL-resources/import_tasks/methods/list_import_tasks"
-        insert: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/import_tasks/methods/create_graph_using_import_task"
         update: []
         delete: []
     queries:
@@ -2594,6 +2622,11 @@ components:
       name: queries
       title: queries
       methods:
+        cancel_query:
+          operation:
+            $ref: "#/paths/~1queries~1{query_id}/delete"
+          response:
+            openAPIDocKey: "200"
         get_query:
           operation:
             $ref: "#/paths/~1queries~1{query_id}/get"
@@ -2640,6 +2673,14 @@ components:
             objectKey: $.graphs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_graph:
           operation:
             $ref: "#/paths/~1graphs~1{graph_identifier}/delete"
@@ -2654,6 +2695,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        reset_graph:
+          operation:
+            $ref: "#/paths/~1graphs~1{graph_identifier}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_graph:
           operation:
             $ref: "#/paths/~1graphs~1{graph_identifier}/patch"
@@ -2665,6 +2717,40 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        execute_query:
+          operation:
+            $ref: "#/paths/~1queries/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        restore_graph_from_snapshot:
+          operation:
+            $ref: "#/paths/~1snapshots~1{snapshot_identifier}~1restore/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_graph:
+          operation:
+            $ref: "#/paths/~1graphs~1{graph_identifier}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_graph:
+          operation:
+            $ref: "#/paths/~1graphs~1{graph_identifier}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/graphs/methods/get_graph"
@@ -2700,6 +2786,14 @@ components:
             objectKey: $.graphSnapshots
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_graph_snapshot:
           operation:
             $ref: "#/paths/~1snapshots~1{snapshot_identifier}/delete"
@@ -2721,28 +2815,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/graph_snapshots/methods/delete_graph_snapshot"
-    graph_using_import_tasks:
-      id: aws.neptune_graph.graph_using_import_tasks
-      name: graph_using_import_tasks
-      title: graph_using_import_tasks
-      methods:
-        create_graph_using_import_task:
-          operation:
-            $ref: "#/paths/~1importtasks/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/graph_using_import_tasks/methods/create_graph_using_import_task"
-        update: []
-        delete: []
     private_graph_endpoints:
       id: aws.neptune_graph.private_graph_endpoints
       name: private_graph_endpoints
@@ -2768,6 +2840,14 @@ components:
             objectKey: $.privateGraphEndpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_private_graph_endpoint:
           operation:
             $ref: "#/paths/~1graphs~1{graph_identifier}~1endpoints~1{vpc_id}/delete"
@@ -2808,10 +2888,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.neptune_graph.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.neptune_graph.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2819,17 +2899,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.neptune_graph.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2850,9 +2919,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -117,7 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateParticipantTokenResponse'
-      x-stackql-resource: participant_tokens
+      x-stackql-resource: participants
       x-stackql-method: create_participant_token
       x-stackql-verb: INSERT
   /CreateStage:
@@ -350,7 +350,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisconnectParticipantResponse'
-      x-stackql-resource: disconnect_participant
+      x-stackql-resource: participants
       x-stackql-method: disconnect_participant
       x-stackql-verb: EXEC
   /GetComposition:
@@ -379,6 +379,7 @@ paths:
       x-stackql-resource: compositions
       x-stackql-method: get_composition
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.composition
   /GetEncoderConfiguration:
     post:
       operationId: GetEncoderConfiguration
@@ -405,6 +406,7 @@ paths:
       x-stackql-resource: encoder_configurations
       x-stackql-method: get_encoder_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.encoderConfiguration
   /GetIngestConfiguration:
     post:
       operationId: GetIngestConfiguration
@@ -431,6 +433,7 @@ paths:
       x-stackql-resource: ingest_configurations
       x-stackql-method: get_ingest_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ingestConfiguration
   /GetParticipant:
     post:
       operationId: GetParticipant
@@ -463,6 +466,7 @@ paths:
       x-stackql-resource: participants
       x-stackql-method: get_participant
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.participant
   /GetPublicKey:
     post:
       operationId: GetPublicKey
@@ -489,6 +493,7 @@ paths:
       x-stackql-resource: public_keys
       x-stackql-method: get_public_key
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.publicKey
   /GetStage:
     post:
       operationId: GetStage
@@ -515,6 +520,7 @@ paths:
       x-stackql-resource: stages
       x-stackql-method: get_stage
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.stage
   /GetStageSession:
     post:
       operationId: GetStageSession
@@ -544,6 +550,7 @@ paths:
       x-stackql-resource: stage_sessions
       x-stackql-method: get_stage_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.stageSession
   /GetStorageConfiguration:
     post:
       operationId: GetStorageConfiguration
@@ -570,6 +577,7 @@ paths:
       x-stackql-resource: storage_configurations
       x-stackql-method: get_storage_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.storageConfiguration
   /ImportPublicKey:
     post:
       operationId: ImportPublicKey
@@ -689,6 +697,9 @@ paths:
       x-stackql-method: list_ingest_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ingestConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListParticipantEvents:
     post:
       operationId: ListParticipantEvents
@@ -759,6 +770,9 @@ paths:
       x-stackql-method: list_participant_replicas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.replicas
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListParticipants:
     post:
       operationId: ListParticipants
@@ -828,6 +842,9 @@ paths:
       x-stackql-method: list_public_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.publicKeys
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListStageSessions:
     post:
       operationId: ListStageSessions
@@ -929,7 +946,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -960,7 +977,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -988,7 +1005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /StartComposition:
@@ -1064,7 +1081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartParticipantReplicationResponse'
-      x-stackql-resource: participant_replication
+      x-stackql-resource: participants
       x-stackql-method: start_participant_replication
       x-stackql-verb: EXEC
   /StopComposition:
@@ -1122,7 +1139,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopParticipantReplicationResponse'
-      x-stackql-resource: participant_replication
+      x-stackql-resource: participants
       x-stackql-method: stop_participant_replication
       x-stackql-verb: EXEC
   /UpdateIngestConfiguration:

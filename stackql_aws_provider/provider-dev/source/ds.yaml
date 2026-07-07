@@ -52,7 +52,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptSharedDirectoryResult'
-      x-stackql-resource: shared_directory
+      x-stackql-resource: shared_directories
       x-stackql-method: accept_shared_directory
       x-stackql-verb: EXEC
   /AddIpRoutes:
@@ -204,7 +204,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddTagsToResourceResult'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
   /CancelSchemaExtension:
@@ -246,7 +246,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelSchemaExtensionResult'
-      x-stackql-resource: schema_extension
+      x-stackql-resource: directories
       x-stackql-method: cancel_schema_extension
       x-stackql-verb: EXEC
   /ConnectDirectory:
@@ -353,7 +353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAliasResult'
-      x-stackql-resource: alias
+      x-stackql-resource: directories
       x-stackql-method: create_alias
       x-stackql-verb: INSERT
   /CreateComputer:
@@ -405,7 +405,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateComputerResult'
-      x-stackql-resource: computers
+      x-stackql-resource: directories
       x-stackql-method: create_computer
       x-stackql-verb: INSERT
   /CreateConditionalForwarder:
@@ -1220,6 +1220,7 @@ paths:
       x-stackql-resource: certificates
       x-stackql-method: describe_certificate
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Certificate
   /DescribeClientAuthenticationSettings:
     post:
       operationId: DescribeClientAuthenticationSettings
@@ -1271,6 +1272,9 @@ paths:
       x-stackql-method: describe_client_authentication_settings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClientAuthenticationSettingsInfo
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConditionalForwarders:
     post:
       operationId: DescribeConditionalForwarders
@@ -1362,6 +1366,9 @@ paths:
       x-stackql-method: describe_directories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DirectoryDescriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeDirectoryDataAccess:
     post:
       operationId: DescribeDirectoryDataAccess
@@ -1446,6 +1453,9 @@ paths:
       x-stackql-method: describe_domain_controllers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DomainControllers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeEventTopics:
     post:
       operationId: DescribeEventTopics
@@ -1532,6 +1542,7 @@ paths:
       x-stackql-resource: hybrid_ad_updates
       x-stackql-method: describe_hybrid_ad_update
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UpdateActivities
   /DescribeLDAPSSettings:
     post:
       operationId: DescribeLDAPSSettings
@@ -1578,6 +1589,9 @@ paths:
       x-stackql-method: describe_ldaps_settings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LDAPSSettingsInfo
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegions:
     post:
       operationId: DescribeRegions
@@ -1622,6 +1636,9 @@ paths:
       x-stackql-method: describe_regions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegionsDescription
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSettings:
     post:
       operationId: DescribeSettings
@@ -1712,6 +1729,9 @@ paths:
       x-stackql-method: describe_shared_directories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SharedDirectories
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSnapshots:
     post:
       operationId: DescribeSnapshots
@@ -1761,6 +1781,9 @@ paths:
       x-stackql-method: describe_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Snapshots
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeTrusts:
     post:
       operationId: DescribeTrusts
@@ -1810,6 +1833,9 @@ paths:
       x-stackql-method: describe_trusts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Trusts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeUpdateDirectory:
     post:
       operationId: DescribeUpdateDirectory
@@ -1858,6 +1884,9 @@ paths:
       x-stackql-method: describe_update_directory
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UpdateActivities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DisableCAEnrollmentPolicy:
     post:
       operationId: DisableCAEnrollmentPolicy
@@ -1894,7 +1923,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableCAEnrollmentPolicyResult'
-      x-stackql-resource: ca_enrollment_policy
+      x-stackql-resource: directories
       x-stackql-method: disable_ca_enrollment_policy
       x-stackql-verb: EXEC
   /DisableClientAuthentication:
@@ -1934,7 +1963,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableClientAuthenticationResult'
-      x-stackql-resource: client_authentication
+      x-stackql-resource: directories
       x-stackql-method: disable_client_authentication
       x-stackql-verb: EXEC
   /DisableDirectoryDataAccess:
@@ -2011,7 +2040,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableLDAPSResult'
-      x-stackql-resource: ldaps
+      x-stackql-resource: directories
       x-stackql-method: disable_ldaps
       x-stackql-verb: EXEC
   /DisableRadius:
@@ -2048,7 +2077,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableRadiusResult'
-      x-stackql-resource: radius
+      x-stackql-resource: directories
       x-stackql-method: disable_radius
       x-stackql-verb: EXEC
   /DisableSso:
@@ -2095,7 +2124,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableSsoResult'
-      x-stackql-resource: sso
+      x-stackql-resource: directories
       x-stackql-method: disable_sso
       x-stackql-verb: EXEC
   /EnableCAEnrollmentPolicy:
@@ -2140,7 +2169,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableCAEnrollmentPolicyResult'
-      x-stackql-resource: ca_enrollment_policy
+      x-stackql-resource: directories
       x-stackql-method: enable_ca_enrollment_policy
       x-stackql-verb: EXEC
   /EnableClientAuthentication:
@@ -2182,7 +2211,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableClientAuthenticationResult'
-      x-stackql-resource: client_authentication
+      x-stackql-resource: directories
       x-stackql-method: enable_client_authentication
       x-stackql-verb: EXEC
   /EnableDirectoryDataAccess:
@@ -2259,7 +2288,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableLDAPSResult'
-      x-stackql-resource: ldaps
+      x-stackql-resource: directories
       x-stackql-method: enable_ldaps
       x-stackql-verb: EXEC
   /EnableRadius:
@@ -2300,7 +2329,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableRadiusResult'
-      x-stackql-resource: radius
+      x-stackql-resource: directories
       x-stackql-method: enable_radius
       x-stackql-verb: EXEC
   /EnableSso:
@@ -2348,7 +2377,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableSsoResult'
-      x-stackql-resource: sso
+      x-stackql-resource: directories
       x-stackql-method: enable_sso
       x-stackql-verb: EXEC
   /GetDirectoryLimits:
@@ -2381,6 +2410,7 @@ paths:
       x-stackql-resource: directory_limits
       x-stackql-method: get_directory_limits
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DirectoryLimits
   /GetSnapshotLimits:
     post:
       operationId: GetSnapshotLimits
@@ -2417,6 +2447,7 @@ paths:
       x-stackql-resource: snapshot_limits
       x-stackql-method: get_snapshot_limits
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SnapshotLimits
   /ListADAssessments:
     post:
       operationId: ListADAssessments
@@ -2461,6 +2492,9 @@ paths:
       x-stackql-method: list_ad_assessments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Assessments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCertificates:
     post:
       operationId: ListCertificates
@@ -2507,6 +2541,9 @@ paths:
       x-stackql-method: list_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CertificatesInfo
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListIpRoutes:
     post:
       operationId: ListIpRoutes
@@ -2552,6 +2589,9 @@ paths:
       x-stackql-method: list_ip_routes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IpRoutesInfo
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLogSubscriptions:
     post:
       operationId: ListLogSubscriptions
@@ -2596,6 +2636,9 @@ paths:
       x-stackql-method: list_log_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LogSubscriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSchemaExtensions:
     post:
       operationId: ListSchemaExtensions
@@ -2640,6 +2683,9 @@ paths:
       x-stackql-method: list_schema_extensions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SchemaExtensionsInfo
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2679,10 +2725,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResult'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /RegisterCertificate:
     post:
       operationId: RegisterCertificate
@@ -2808,7 +2857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectSharedDirectoryResult'
-      x-stackql-resource: shared_directory
+      x-stackql-resource: shared_directories
       x-stackql-method: reject_shared_directory
       x-stackql-verb: EXEC
   /RemoveIpRoutes:
@@ -2927,7 +2976,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveTagsFromResourceResult'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
   /ResetUserPassword:
@@ -2978,7 +3027,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetUserPasswordResult'
-      x-stackql-resource: user_password
+      x-stackql-resource: directories
       x-stackql-method: reset_user_password
       x-stackql-verb: EXEC
   /RestoreFromSnapshot:
@@ -3018,7 +3067,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreFromSnapshotResult'
-      x-stackql-resource: from_snapshot
+      x-stackql-resource: snapshots
       x-stackql-method: restore_from_snapshot
       x-stackql-verb: EXEC
   /ShareDirectory:
@@ -3079,7 +3128,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ShareDirectoryResult'
-      x-stackql-resource: share_directory
+      x-stackql-resource: directories
       x-stackql-method: share_directory
       x-stackql-verb: EXEC
   /StartADAssessment:
@@ -3177,7 +3226,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSchemaExtensionResult'
-      x-stackql-resource: schema_extension
+      x-stackql-resource: directories
       x-stackql-method: start_schema_extension
       x-stackql-verb: EXEC
   /UnshareDirectory:
@@ -3217,7 +3266,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnshareDirectoryResult'
-      x-stackql-resource: unshare_directory
+      x-stackql-resource: directories
       x-stackql-method: unshare_directory
       x-stackql-verb: EXEC
   /UpdateConditionalForwarder:
@@ -3316,7 +3365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDirectorySetupResult'
-      x-stackql-resource: directory_setups
+      x-stackql-resource: directories
       x-stackql-method: update_directory_setup
       x-stackql-verb: UPDATE
   /UpdateHybridAD:
@@ -3413,7 +3462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNumberOfDomainControllersResult'
-      x-stackql-resource: number_of_domain_controllers
+      x-stackql-resource: domain_controllers
       x-stackql-method: update_number_of_domain_controllers
       x-stackql-verb: UPDATE
   /UpdateRadius:
@@ -3454,7 +3503,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRadiusResult'
-      x-stackql-resource: radius
+      x-stackql-resource: directories
       x-stackql-method: update_radius
       x-stackql-verb: UPDATE
   /UpdateSettings:
@@ -3571,7 +3620,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyTrustResult'
-      x-stackql-resource: trust
+      x-stackql-resource: trusts
       x-stackql-method: verify_trust
       x-stackql-verb: EXEC
 components:

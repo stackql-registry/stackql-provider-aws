@@ -243,9 +243,6 @@ paths:
                   $ref: "#/components/schemas/CatalogIdString"
                 Expression:
                   $ref: "#/components/schemas/Expression"
-              required:
-                - Name
-                - Expression
       responses:
         "200":
           description: Success
@@ -378,8 +375,6 @@ paths:
                   $ref: "#/components/schemas/NameString"
                 CatalogId:
                   $ref: "#/components/schemas/CatalogIdString"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -605,7 +600,6 @@ paths:
                 - TableCatalogId
                 - DatabaseName
                 - TableName
-                - Name
       responses:
         "200":
           description: Success
@@ -716,8 +710,6 @@ paths:
                   $ref: "#/components/schemas/NameString"
                 CatalogId:
                   $ref: "#/components/schemas/CatalogIdString"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1546,9 +1538,6 @@ paths:
                   $ref: "#/components/schemas/CatalogIdString"
                 Expression:
                   $ref: "#/components/schemas/Expression"
-              required:
-                - Name
-                - Expression
       responses:
         "200":
           description: Success
@@ -3410,10 +3399,10 @@ components:
     Result:
       type: string
   x-stackQL-resources:
-    lf_tags_to_resources:
-      id: aws.lakeformation.lf_tags_to_resources
-      name: lf_tags_to_resources
-      title: lf_tags_to_resources
+    resources:
+      id: aws.lakeformation.resources
+      name: resources
+      title: resources
       methods:
         add_lf_tags_to_resource:
           operation:
@@ -3426,12 +3415,209 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        deregister_resource:
+          operation:
+            $ref: "#/paths/~1DeregisterResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_resource:
+          operation:
+            $ref: "#/paths/~1DescribeResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ResourceInfo
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_resources:
+          operation:
+            $ref: "#/paths/~1ListResources/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        register_resource:
+          operation:
+            $ref: "#/paths/~1RegisterResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_lf_tags_from_resource:
+          operation:
+            $ref: "#/paths/~1RemoveLFTagsFromResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_resource:
+          operation:
+            $ref: "#/paths/~1UpdateResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/describe_resource"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/register_resource"
+        update:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/add_lf_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/update_resource"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/deregister_resource"
+    permissions:
+      id: aws.lakeformation.permissions
+      name: permissions
+      title: permissions
+      methods:
+        batch_grant_permissions:
+          operation:
+            $ref: "#/paths/~1BatchGrantPermissions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_revoke_permissions:
+          operation:
+            $ref: "#/paths/~1BatchRevokePermissions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        grant_permissions:
+          operation:
+            $ref: "#/paths/~1GrantPermissions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_permissions:
+          operation:
+            $ref: "#/paths/~1ListPermissions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        revoke_permissions:
+          operation:
+            $ref: "#/paths/~1RevokePermissions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/permissions/methods/list_permissions"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/lf_tags_to_resources/methods/add_lf_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/permissions/methods/revoke_permissions"
         delete: []
+    transactions:
+      id: aws.lakeformation.transactions
+      name: transactions
+      title: transactions
+      methods:
+        commit_transaction:
+          operation:
+            $ref: "#/paths/~1CommitTransaction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_objects_on_cancel:
+          operation:
+            $ref: "#/paths/~1DeleteObjectsOnCancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_transaction:
+          operation:
+            $ref: "#/paths/~1DescribeTransaction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.TransactionDescription
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_transactions:
+          operation:
+            $ref: "#/paths/~1ListTransactions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/transactions/methods/describe_transaction"
+          - $ref: "#/components/x-stackQL-resources/transactions/methods/list_transactions"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/transactions/methods/delete_objects_on_cancel"
     data_cells_filters:
       id: aws.lakeformation.data_cells_filters
       name: data_cells_filters
@@ -3465,6 +3651,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DataCellsFilter
           request:
             nativeCasing: pascal
           config:
@@ -3480,6 +3667,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_data_cells_filter:
@@ -3551,6 +3745,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_lf_tag:
@@ -3622,6 +3823,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_lf_tag_expression:
@@ -3638,7 +3846,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/lf_tag_expressions/methods/get_lf_tag_expression"
-          - $ref: "#/components/x-stackQL-resources/lf_tag_expressions/methods/list_lf_tag_expressions"
         insert:
           - $ref: "#/components/x-stackQL-resources/lf_tag_expressions/methods/create_lf_tag_expression"
         update:
@@ -3749,132 +3956,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/lake_formation_opt_ins/methods/delete_lake_formation_opt_in"
-    objects_on_cancels:
-      id: aws.lakeformation.objects_on_cancels
-      name: objects_on_cancels
-      title: objects_on_cancels
-      methods:
-        delete_objects_on_cancel:
-          operation:
-            $ref: "#/paths/~1DeleteObjectsOnCancel/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/objects_on_cancels/methods/delete_objects_on_cancel"
-    resources:
-      id: aws.lakeformation.resources
-      name: resources
-      title: resources
-      methods:
-        deregister_resource:
-          operation:
-            $ref: "#/paths/~1DeregisterResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_resource:
-          operation:
-            $ref: "#/paths/~1DescribeResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_resources:
-          operation:
-            $ref: "#/paths/~1ListResources/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        register_resource:
-          operation:
-            $ref: "#/paths/~1RegisterResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_resource:
-          operation:
-            $ref: "#/paths/~1UpdateResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/describe_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/register_resource"
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/update_resource"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/deregister_resource"
-    transactions:
-      id: aws.lakeformation.transactions
-      name: transactions
-      title: transactions
-      methods:
-        describe_transaction:
-          operation:
-            $ref: "#/paths/~1DescribeTransaction/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_transactions:
-          operation:
-            $ref: "#/paths/~1ListTransactions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/transactions/methods/describe_transaction"
-          - $ref: "#/components/x-stackQL-resources/transactions/methods/list_transactions"
-        insert: []
-        update: []
-        delete: []
     data_lake_principals:
       id: aws.lakeformation.data_lake_principals
       name: data_lake_principals
@@ -3903,6 +3984,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DataLakeSettings
           request:
             nativeCasing: pascal
           config:
@@ -4152,6 +4234,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4159,40 +4248,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/work_units/methods/get_work_units"
         insert: []
         update: []
-        delete: []
-    permissions:
-      id: aws.lakeformation.permissions
-      name: permissions
-      title: permissions
-      methods:
-        list_permissions:
-          operation:
-            $ref: "#/paths/~1ListPermissions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        revoke_permissions:
-          operation:
-            $ref: "#/paths/~1RevokePermissions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/list_permissions"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/revoke_permissions"
         delete: []
     table_storage_optimizers:
       id: aws.lakeformation.table_storage_optimizers
@@ -4228,28 +4283,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/table_storage_optimizers/methods/update_table_storage_optimizer"
         delete: []
-    lf_tags_from_resources:
-      id: aws.lakeformation.lf_tags_from_resources
-      name: lf_tags_from_resources
-      title: lf_tags_from_resources
-      methods:
-        remove_lf_tags_from_resource:
-          operation:
-            $ref: "#/paths/~1RemoveLFTagsFromResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/lf_tags_from_resources/methods/remove_lf_tags_from_resource"
-        delete: []
     databases_by_lf_tags:
       id: aws.lakeformation.databases_by_lf_tags
       name: databases_by_lf_tags
@@ -4265,6 +4298,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4288,6 +4328,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

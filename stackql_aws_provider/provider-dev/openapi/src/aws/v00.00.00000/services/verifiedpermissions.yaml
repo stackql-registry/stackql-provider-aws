@@ -3363,6 +3363,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_policy:
@@ -3389,6 +3396,146 @@ components:
           - $ref: "#/components/x-stackQL-resources/policies/methods/update_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/policies/methods/delete_policy"
+    policy_stores:
+      id: aws.verifiedpermissions.policy_stores
+      name: policy_stores
+      title: policy_stores
+      methods:
+        batch_is_authorized:
+          operation:
+            $ref: "#/paths/~1BatchIsAuthorized/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_is_authorized_with_token:
+          operation:
+            $ref: "#/paths/~1BatchIsAuthorizedWithToken/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_policy_store:
+          operation:
+            $ref: "#/paths/~1CreatePolicyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_policy_store:
+          operation:
+            $ref: "#/paths/~1DeletePolicyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_policy_store:
+          operation:
+            $ref: "#/paths/~1GetPolicyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        is_authorized:
+          operation:
+            $ref: "#/paths/~1IsAuthorized/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        is_authorized_with_token:
+          operation:
+            $ref: "#/paths/~1IsAuthorizedWithToken/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_policy_stores:
+          operation:
+            $ref: "#/paths/~1ListPolicyStores/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.policyStores
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_policy_store:
+          operation:
+            $ref: "#/paths/~1UpdatePolicyStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/get_policy_store"
+          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/list_policy_stores"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/create_policy_store"
+        update:
+          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/update_policy_store"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/delete_policy_store"
     identity_sources:
       id: aws.verifiedpermissions.identity_sources
       name: identity_sources
@@ -3445,6 +3592,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_identity_source:
@@ -3470,87 +3624,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/identity_sources/methods/update_identity_source"
         delete:
           - $ref: "#/components/x-stackQL-resources/identity_sources/methods/delete_identity_source"
-    policy_stores:
-      id: aws.verifiedpermissions.policy_stores
-      name: policy_stores
-      title: policy_stores
-      methods:
-        create_policy_store:
-          operation:
-            $ref: "#/paths/~1CreatePolicyStore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_policy_store:
-          operation:
-            $ref: "#/paths/~1DeletePolicyStore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_policy_store:
-          operation:
-            $ref: "#/paths/~1GetPolicyStore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_policy_stores:
-          operation:
-            $ref: "#/paths/~1ListPolicyStores/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.policyStores
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_policy_store:
-          operation:
-            $ref: "#/paths/~1UpdatePolicyStore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/get_policy_store"
-          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/list_policy_stores"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/create_policy_store"
-        update:
-          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/update_policy_store"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/policy_stores/methods/delete_policy_store"
     policy_store_alias:
       id: aws.verifiedpermissions.policy_store_alias
       name: policy_store_alias
@@ -3659,6 +3732,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_policy_template:
@@ -3740,6 +3820,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3748,10 +3835,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.verifiedpermissions.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.verifiedpermissions.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3766,17 +3853,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.verifiedpermissions.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -3804,9 +3880,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

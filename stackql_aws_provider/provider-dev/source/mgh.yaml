@@ -340,6 +340,7 @@ paths:
       x-stackql-resource: migration_tasks
       x-stackql-method: describe_migration_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MigrationTask
   /DisassociateCreatedArtifact:
     post:
       operationId: DisassociateCreatedArtifact
@@ -538,7 +539,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportMigrationTaskResult'
-      x-stackql-resource: migration_task
+      x-stackql-resource: migration_tasks
       x-stackql-method: import_migration_task
       x-stackql-verb: EXEC
   /ListApplicationStates:
@@ -584,6 +585,9 @@ paths:
       x-stackql-method: list_application_states
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationStateList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCreatedArtifacts:
     post:
       operationId: ListCreatedArtifacts
@@ -634,6 +638,9 @@ paths:
       x-stackql-method: list_created_artifacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CreatedArtifactList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDiscoveredResources:
     post:
       operationId: ListDiscoveredResources
@@ -682,6 +689,9 @@ paths:
       x-stackql-method: list_discovered_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DiscoveredResourceList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMigrationTaskUpdates:
     post:
       operationId: ListMigrationTaskUpdates
@@ -739,6 +749,9 @@ paths:
       x-stackql-method: list_migration_task_updates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MigrationTaskUpdateList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMigrationTasks:
     post:
       operationId: ListMigrationTasks
@@ -783,6 +796,9 @@ paths:
       x-stackql-method: list_migration_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MigrationTaskSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProgressUpdateStreams:
     post:
       operationId: ListProgressUpdateStreams
@@ -822,6 +838,9 @@ paths:
       x-stackql-method: list_progress_update_streams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProgressUpdateStreamSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSourceResources:
     post:
       operationId: ListSourceResources
@@ -878,6 +897,9 @@ paths:
       x-stackql-method: list_source_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SourceResourceList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /NotifyApplicationState:
     post:
       operationId: NotifyApplicationState
@@ -985,7 +1007,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyMigrationTaskStateResult'
-      x-stackql-resource: migration_task_state
+      x-stackql-resource: migration_tasks
       x-stackql-method: notify_migration_task_state
       x-stackql-verb: EXEC
   /PutResourceAttributes:
@@ -1050,7 +1072,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutResourceAttributesResult'
-      x-stackql-resource: resource_attributes
+      x-stackql-resource: migration_tasks
       x-stackql-method: put_resource_attributes
       x-stackql-verb: REPLACE
 components:

@@ -642,7 +642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IsMemberInGroupsResponse'
-      x-stackql-resource: is_member_in_groups
+      x-stackql-resource: groups
       x-stackql-method: is_member_in_groups
       x-stackql-verb: EXEC
   /ListGroupMemberships:
@@ -699,6 +699,9 @@ paths:
       x-stackql-method: list_group_memberships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupMemberships
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListGroupMembershipsForMember:
     post:
       operationId: ListGroupMembershipsForMember
@@ -754,6 +757,9 @@ paths:
       x-stackql-method: list_group_memberships_for_member
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupMemberships
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListGroups:
     post:
       operationId: ListGroups
@@ -809,6 +815,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListUsers:
     post:
       operationId: ListUsers
@@ -868,6 +877,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /UpdateGroup:
     post:
       operationId: UpdateGroup

@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateAssessmentReportEvidenceFolderResponse'
-      x-stackql-resource: assessment_report_evidence_folders
+      x-stackql-resource: evidence_folders
       x-stackql-method: associate_assessment_report_evidence_folder
       x-stackql-verb: UPDATE
   /assessments/{assessment_id}/batchAssociateToAssessmentReport:
@@ -81,7 +81,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateAssessmentReportEvidenceResponse'
-      x-stackql-resource: batch_associate_assessment_report_evidence
+      x-stackql-resource: evidence_folders
       x-stackql-method: batch_associate_assessment_report_evidence
       x-stackql-verb: EXEC
   /assessments/{assessment_id}/delegations:
@@ -113,7 +113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateDelegationByAssessmentResponse'
-      x-stackql-resource: batch_create_delegation_by_assessment
+      x-stackql-resource: assessments
       x-stackql-method: batch_create_delegation_by_assessment
       x-stackql-verb: EXEC
     put:
@@ -144,7 +144,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDelegationByAssessmentResponse'
-      x-stackql-resource: batch_delete_delegation_by_assessment
+      x-stackql-resource: assessments
       x-stackql-method: batch_delete_delegation_by_assessment
       x-stackql-verb: EXEC
   /assessments/{assessment_id}/batchDisassociateFromAssessmentReport:
@@ -179,7 +179,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateAssessmentReportEvidenceResponse'
-      x-stackql-resource: batch_disassociate_assessment_report_evidence
+      x-stackql-resource: evidence_folders
       x-stackql-method: batch_disassociate_assessment_report_evidence
       x-stackql-verb: EXEC
   /assessments/{assessment_id}/controlSets/{control_set_id}/controls/{control_id}/evidence:
@@ -229,7 +229,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchImportEvidenceToAssessmentControlResponse'
-      x-stackql-resource: batch_import_evidence_to_assessment_control
+      x-stackql-resource: assessments
       x-stackql-method: batch_import_evidence_to_assessment_control
       x-stackql-verb: EXEC
   /assessments:
@@ -614,6 +614,7 @@ paths:
       x-stackql-resource: assessment_frameworks
       x-stackql-method: get_assessment_framework
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.framework
     put:
       operationId: UpdateAssessmentFramework
       description: Updates a custom framework in Audit Manager.
@@ -676,7 +677,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAssessmentFrameworkShareResponse'
-      x-stackql-resource: assessment_framework_shares
+      x-stackql-resource: assessment_frameworks
       x-stackql-method: delete_assessment_framework_share
       x-stackql-verb: DELETE
     put:
@@ -710,7 +711,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAssessmentFrameworkShareResponse'
-      x-stackql-resource: assessment_framework_shares
+      x-stackql-resource: assessment_frameworks
       x-stackql-method: update_assessment_framework_share
       x-stackql-verb: UPDATE
   /assessments/{assessment_id}/reports/{assessment_report_id}:
@@ -793,6 +794,7 @@ paths:
       x-stackql-resource: controls
       x-stackql-method: get_control
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.control
     put:
       operationId: UpdateControl
       description: Updates a custom control in Audit Manager.
@@ -928,7 +930,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateAssessmentReportEvidenceFolderResponse'
-      x-stackql-resource: assessment_report_evidence_folders
+      x-stackql-resource: evidence_folders
       x-stackql-method: disassociate_assessment_report_evidence_folder
       x-stackql-verb: UPDATE
   /account/status:
@@ -973,6 +975,7 @@ paths:
       x-stackql-resource: assessment_report_urls
       x-stackql-method: get_assessment_report_url
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.preSignedUrl
   /assessments/{assessment_id}/changelogs:
     get:
       operationId: GetChangeLogs
@@ -1084,6 +1087,7 @@ paths:
       x-stackql-resource: evidences
       x-stackql-method: get_evidence
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.evidence
   /assessments/{assessment_id}/controlSets/{control_set_id}/evidenceFolders/{evidence_folder_id}/evidence:
     get:
       operationId: GetEvidenceByEvidenceFolder
@@ -1188,6 +1192,7 @@ paths:
       x-stackql-resource: evidence_folders
       x-stackql-method: get_evidence_folder
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.evidenceFolder
   /assessments/{assessment_id}/evidenceFolders:
     get:
       operationId: GetEvidenceFoldersByAssessment
@@ -1281,6 +1286,7 @@ paths:
       x-stackql-resource: insights
       x-stackql-method: get_insights
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.insights
   /insights/assessments/{assessment_id}:
     get:
       operationId: GetInsightsByAssessment
@@ -1302,6 +1308,7 @@ paths:
       x-stackql-resource: insights_by_assessments
       x-stackql-method: get_insights_by_assessment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.insights
   /account/organizationAdminAccount:
     get:
       operationId: GetOrganizationAdminAccount
@@ -1358,6 +1365,7 @@ paths:
       x-stackql-resource: settings
       x-stackql-method: get_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.settings
   /insights/controls-by-assessment:
     get:
       operationId: ListAssessmentControlInsightsByControlDomain
@@ -1597,10 +1605,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListKeywordsForDataSourceResponse'
+                $ref: '#/components/schemas/ListKeywordsForDataSourceOutputDisplay'
       x-stackql-resource: keywords_for_data_sources
       x-stackql-method: list_keywords_for_data_source
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListKeywordsForDataSourceOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "keywords" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"keyword": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /notifications:
     get:
       operationId: ListNotifications
@@ -1646,7 +1659,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1677,7 +1690,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1703,7 +1716,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /account/registerAccount:
@@ -1807,7 +1820,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAssessmentFrameworkShareResponse'
-      x-stackql-resource: assessment_framework_share
+      x-stackql-resource: assessment_frameworks
       x-stackql-method: start_assessment_framework_share
       x-stackql-verb: EXEC
   /assessments/{assessment_id}/controlSets/{control_set_id}/controls/{control_id}:
@@ -1851,7 +1864,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAssessmentControlResponse'
-      x-stackql-resource: assessment_controls
+      x-stackql-resource: controls
       x-stackql-method: update_assessment_control
       x-stackql-verb: UPDATE
   /assessments/{assessment_id}/controlSets/{control_set_id}/status:
@@ -1892,7 +1905,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAssessmentControlSetStatusResponse'
-      x-stackql-resource: assessment_control_set_status
+      x-stackql-resource: assessments
       x-stackql-method: update_assessment_control_set_status
       x-stackql-verb: UPDATE
   /assessments/{assessment_id}/status:
@@ -1924,7 +1937,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAssessmentStatusResponse'
-      x-stackql-resource: assessment_status
+      x-stackql-resource: assessments
       x-stackql-method: update_assessment_status
       x-stackql-verb: UPDATE
   /settings:
@@ -1986,7 +1999,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateAssessmentReportIntegrityResponse'
-      x-stackql-resource: assessment_report_integrity
+      x-stackql-resource: assessment_reports
       x-stackql-method: validate_assessment_report_integrity
       x-stackql-verb: EXEC
 components:
@@ -4182,19 +4195,19 @@ components:
       - AWS_Security_Hub
       - AWS_API_Call
       - MANUAL
-    ListKeywordsForDataSourceResponse:
+    ListKeywordsForDataSourceRowDisplay:
       type: object
       properties:
-        keywords:
-          $ref: '#/components/schemas/Keywords'
+        keyword:
+          type: string
           description: The list of keywords for the control mapping source.
-        nextToken:
-          $ref: '#/components/schemas/Token'
-          description: The pagination token that's used to fetch the next set of results.
-    Keywords:
-      type: array
-      items:
-        $ref: '#/components/schemas/KeywordValue'
+    ListKeywordsForDataSourceOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListKeywordsForDataSourceRowDisplay'
     ListNotificationsResponse:
       type: object
       properties:

@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddProfileKeyResponse'
-      x-stackql-resource: profile_keys
+      x-stackql-resource: profiles
       x-stackql-method: add_profile_key
       x-stackql-verb: UPDATE
   /domains/{domain_name}/calculated-attributes/{calculated_attribute_name}/batch-get-for-profiles:
@@ -849,7 +849,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateIntegrationWorkflowResponse'
-      x-stackql-resource: integration_workflows
+      x-stackql-resource: workflows
       x-stackql-method: create_integration_workflow
       x-stackql-verb: INSERT
   /domains/{domain_name}/profiles:
@@ -1594,6 +1594,9 @@ paths:
       x-stackql-method: list_upload_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/domain-object-types/{object_type_name}:
     delete:
       operationId: DeleteDomainObjectType
@@ -1790,7 +1793,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteProfileKeyResponse'
-      x-stackql-resource: profile_keys
+      x-stackql-resource: profiles
       x-stackql-method: delete_profile_key
       x-stackql-verb: DELETE
   /domains/{domain_name}/profiles/objects/delete:
@@ -2025,7 +2028,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectProfileObjectTypeResponse'
-      x-stackql-resource: detect_profile_object_type
+      x-stackql-resource: domains
       x-stackql-method: detect_profile_object_type
       x-stackql-verb: EXEC
   /domains/{domain_name}/identity-resolution-jobs/auto-merging-preview:
@@ -2340,11 +2343,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetSimilarProfilesResponse'
+                $ref: '#/components/schemas/GetSimilarProfilesOutputDisplay'
       x-stackql-resource: similar_profiles
       x-stackql-method: get_similar_profiles
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ProfileIds
+      x-stackql-responseEnvelope: GetSimilarProfilesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ProfileIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"profile_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/object-types/{object_type_name}/attributes/{attribute_name}/statistics:
     post:
       operationId: GetObjectTypeAttributeStatistics
@@ -2638,7 +2649,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartUploadJobResponse'
-      x-stackql-resource: upload_job
+      x-stackql-resource: domains
       x-stackql-method: start_upload_job
       x-stackql-verb: EXEC
   /domains/{domain_name}/upload-jobs/{job_id}/path:
@@ -2861,6 +2872,9 @@ paths:
       x-stackql-method: list_domain_layouts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/domain-object-types:
     get:
       operationId: ListDomainObjectTypes
@@ -2895,6 +2909,9 @@ paths:
       x-stackql-method: list_domain_object_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains:
     get:
       operationId: ListDomains
@@ -2956,6 +2973,9 @@ paths:
       x-stackql-method: list_event_streams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/event-triggers:
     get:
       operationId: ListEventTriggers
@@ -2990,6 +3010,9 @@ paths:
       x-stackql-method: list_event_triggers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/identity-resolution-jobs:
     get:
       operationId: ListIdentityResolutionJobs
@@ -3113,6 +3136,9 @@ paths:
       x-stackql-method: list_object_type_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/profile-attributes/{attribute_name}/values:
     get:
       operationId: ListProfileAttributeValues
@@ -3373,6 +3399,9 @@ paths:
       x-stackql-method: list_recommender_filters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecommenderFilters
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /recommender-recipes:
     get:
       operationId: ListRecommenderRecipes
@@ -3401,6 +3430,9 @@ paths:
       x-stackql-method: list_recommender_recipes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecommenderRecipes
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/recommender-schemas:
     get:
       operationId: ListRecommenderSchemas
@@ -3435,6 +3467,9 @@ paths:
       x-stackql-method: list_recommender_schemas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecommenderSchemas
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/recommenders:
     get:
       operationId: ListRecommenders
@@ -3469,6 +3504,9 @@ paths:
       x-stackql-method: list_recommenders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Recommenders
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/profiles/ruleBasedMatches:
     get:
       operationId: ListRuleBasedMatches
@@ -3498,11 +3536,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRuleBasedMatchesResponse'
+                $ref: '#/components/schemas/ListRuleBasedMatchesOutputDisplay'
       x-stackql-resource: rule_based_matches
       x-stackql-method: list_rule_based_matches
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.MatchIds
+      x-stackql-responseEnvelope: ListRuleBasedMatchesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "MatchIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"match_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains/{domain_name}/segment-definitions:
     get:
       operationId: ListSegmentDefinitions
@@ -3537,6 +3583,9 @@ paths:
       x-stackql-method: list_segment_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -3556,7 +3605,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -3594,7 +3643,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3621,7 +3670,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /domains/{domain_name}/workflows:
@@ -3714,7 +3763,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeProfilesResponse'
-      x-stackql-resource: merge_profiles
+      x-stackql-resource: profiles
       x-stackql-method: merge_profiles
       x-stackql-verb: EXEC
   /domains/{domain_name}/profiles/search:
@@ -3797,7 +3846,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRecommenderResponse'
-      x-stackql-resource: recommender
+      x-stackql-resource: recommenders
       x-stackql-method: start_recommender
       x-stackql-verb: EXEC
   /domains/{domain_name}/recommenders/{recommender_name}/stop:
@@ -3825,7 +3874,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRecommenderResponse'
-      x-stackql-resource: recommender
+      x-stackql-resource: recommenders
       x-stackql-method: stop_recommender
       x-stackql-verb: EXEC
   /domains/{domain_name}/upload-jobs/{job_id}/stop:
@@ -3852,7 +3901,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopUploadJobResponse'
-      x-stackql-resource: upload_job
+      x-stackql-resource: domains
       x-stackql-method: stop_upload_job
       x-stackql-verb: EXEC
 components:
@@ -7528,36 +7577,19 @@ components:
       enum:
       - RULE_BASED_MATCHING
       - ML_BASED_MATCHING
-    GetSimilarProfilesResponse:
+    GetSimilarProfilesRowDisplay:
       type: object
       properties:
-        ProfileIds:
-          $ref: '#/components/schemas/ProfileIdList'
+        profile_id:
+          type: string
           description: Set of profileIds that belong to the same matching group.
-        MatchId:
-          $ref: '#/components/schemas/string1To255'
-          description: The string matchId that the similar profiles belong to.
-        MatchType:
-          $ref: '#/components/schemas/MatchType'
-          description: Specify the type of matching to get similar profiles for.
-        RuleLevel:
-          $ref: '#/components/schemas/RuleLevel'
-          description: The integer rule level that the profiles matched on.
-        ConfidenceScore:
-          $ref: '#/components/schemas/Double'
-          description: It only has value when the MatchType is ML_BASED_MATCHING.A number between 0 and 1, where a higher
-            score means higher similarity. Examining match confidence scores lets you distinguish between groups of similar
-            records in which the system is highly confident (which you may decide to merge), groups of similar records about
-            which the system is uncertain (which you may decide to have reviewed by a human), and groups of similar records
-            that the system deems to be unlikely (which you may decide to reject). Given confidence scores vary as per the
-            data input, it should not be used as an absolute measure of matching quality.
-        NextToken:
-          $ref: '#/components/schemas/token'
-          description: The pagination token from the previous GetSimilarProfiles API call.
-    RuleLevel:
-      type: integer
-      minimum: 1
-      maximum: 15
+    GetSimilarProfilesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetSimilarProfilesRowDisplay'
     GetUploadJobResponse:
       type: object
       properties:
@@ -8602,19 +8634,19 @@ components:
         LatestRecommenderUpdate:
           $ref: '#/components/schemas/RecommenderUpdate'
           description: Information about the most recent update performed on the recommender, including its status and timing.
-    ListRuleBasedMatchesResponse:
+    ListRuleBasedMatchesRowDisplay:
       type: object
       properties:
-        MatchIds:
-          $ref: '#/components/schemas/MatchIdList'
+        match_id:
+          type: string
           description: The list of MatchIds for the given domain.
-        NextToken:
-          $ref: '#/components/schemas/token'
-          description: The pagination token from the previous ListRuleBasedMatches API call.
-    MatchIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/string1To255'
+    ListRuleBasedMatchesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListRuleBasedMatchesRowDisplay'
     MaxSize500:
       type: integer
       minimum: 1

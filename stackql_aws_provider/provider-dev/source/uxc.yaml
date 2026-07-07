@@ -93,11 +93,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListServicesOutput'
+                $ref: '#/components/schemas/ListServicesOutputDisplay'
       x-stackql-resource: services
       x-stackql-method: list_services
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.services
+      x-stackql-responseEnvelope: ListServicesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "services" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -197,15 +205,19 @@ components:
       type: integer
       minimum: 1
       maximum: 1000
-    ListServicesOutput:
+    ListServicesRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token for retrieving the next page of results. This value is null when no more results are available.
-        services:
-          $ref: '#/components/schemas/ServiceList'
+        service:
+          type: string
           description: The list of available Amazon Web Services service identifiers.
+    ListServicesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListServicesRowDisplay'
     UpdateAccountCustomizationsOutput:
       type: object
       properties:

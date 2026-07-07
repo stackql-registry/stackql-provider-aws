@@ -58,7 +58,6 @@ paths:
                 Version:
                   $ref: "#/components/schemas/StringWithLengthBetween1And64"
               required:
-                - Name
                 - ProtocolType
       responses:
         "201":
@@ -115,8 +114,6 @@ paths:
               properties:
                 Body:
                   $ref: "#/components/schemas/__string"
-              required:
-                - Body
       responses:
         "201":
           description: Success
@@ -150,7 +147,6 @@ paths:
                   $ref: "#/components/schemas/StringWithLengthBetween1And128"
               required:
                 - ApiId
-                - Stage
       responses:
         "201":
           description: Success
@@ -228,7 +224,6 @@ paths:
               required:
                 - AuthorizerType
                 - IdentitySource
-                - Name
       responses:
         "201":
           description: Success
@@ -571,9 +566,6 @@ paths:
                   $ref: "#/components/schemas/StringWithLengthBetween1And128"
                 Schema:
                   $ref: "#/components/schemas/StringWithLengthBetween0And32K"
-              required:
-                - Name
-                - Schema
       responses:
         "201":
           description: Success
@@ -637,7 +629,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
               required:
-                - Authorization
                 - EndpointConfiguration
                 - PortalContent
       responses:
@@ -1042,10 +1033,6 @@ paths:
                   $ref: "#/components/schemas/__listOfRoutingRuleCondition"
                 Priority:
                   $ref: "#/components/schemas/RoutingRulePriority"
-              required:
-                - Actions
-                - Conditions
-                - Priority
       responses:
         "201":
           description: Success
@@ -1185,7 +1172,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
               required:
-                - Name
                 - SubnetIds
       responses:
         "201":
@@ -2668,10 +2654,6 @@ paths:
                   $ref: "#/components/schemas/__listOfRoutingRuleCondition"
                 Priority:
                   $ref: "#/components/schemas/RoutingRulePriority"
-              required:
-                - Actions
-                - Conditions
-                - Priority
       responses:
         "200":
           description: Success
@@ -6529,6 +6511,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_api:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}/delete"
@@ -6540,6 +6530,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        reimport_api:
+          operation:
+            $ref: "#/paths/~1v2~1apis~1{api_id}/put"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_api:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}/patch"
@@ -6551,6 +6552,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_cors_configuration:
+          operation:
+            $ref: "#/paths/~1v2~1apis~1{api_id}~1cors/delete"
+          response:
+            openAPIDocKey: "204"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/apis/methods/get_api"
@@ -6642,6 +6648,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_authorizer:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1authorizers~1{authorizer_id}/delete"
@@ -6664,6 +6678,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        reset_authorizers_cache:
+          operation:
+            $ref: "#/paths/~1v2~1apis~1{api_id}~1stages~1{stage_name}~1cache~1authorizers/delete"
+          response:
+            openAPIDocKey: "204"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/authorizers/methods/get_authorizer"
@@ -6699,6 +6718,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_deployment:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1deployments~1{deployment_id}/delete"
@@ -6756,6 +6783,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_domain_name:
           operation:
             $ref: "#/paths/~1v2~1domainnames~1{domain_name}/delete"
@@ -6813,6 +6848,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_integration:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1integrations~1{integration_id}/delete"
@@ -6870,6 +6913,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_integration_response:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1integrations~1{integration_id}~1integrationresponses~1{integration_response_id}/delete"
@@ -6927,6 +6978,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_model:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1models~1{model_id}/delete"
@@ -6984,6 +7043,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_portal:
           operation:
             $ref: "#/paths/~1v2~1portals~1{portal_id}/delete"
@@ -7006,6 +7073,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disable_portal:
+          operation:
+            $ref: "#/paths/~1v2~1portals~1{portal_id}~1publish/delete"
+          response:
+            openAPIDocKey: "204"
+        publish_portal:
+          operation:
+            $ref: "#/paths/~1v2~1portals~1{portal_id}~1publish/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        preview_portal:
+          operation:
+            $ref: "#/paths/~1v2~1portals~1{portal_id}~1preview/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/portals/methods/get_portal"
@@ -7041,6 +7130,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_portal_product:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}/delete"
@@ -7100,6 +7197,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_product_page:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}~1productpages~1{product_page_id}/delete"
@@ -7159,6 +7264,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_product_rest_endpoint_page:
           operation:
             $ref: "#/paths/~1v2~1portalproducts~1{portal_product_id}~1productrestendpointpages~1{product_rest_endpoint_page_id}/delete"
@@ -7218,6 +7331,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_route:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1routes~1{route_id}/delete"
@@ -7240,6 +7361,16 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_route_request_parameter:
+          operation:
+            $ref: "#/paths/~1v2~1apis~1{api_id}~1routes~1{route_id}~1requestparameters~1{request_parameter_key}/delete"
+          response:
+            openAPIDocKey: "204"
+        delete_route_settings:
+          operation:
+            $ref: "#/paths/~1v2~1apis~1{api_id}~1stages~1{stage_name}~1routesettings~1{route_key}/delete"
+          response:
+            openAPIDocKey: "204"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/routes/methods/get_route"
@@ -7249,6 +7380,8 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/routes/methods/update_route"
         delete:
+          - $ref: "#/components/x-stackQL-resources/routes/methods/delete_route_request_parameter"
+          - $ref: "#/components/x-stackQL-resources/routes/methods/delete_route_settings"
           - $ref: "#/components/x-stackQL-resources/routes/methods/delete_route"
     route_responses:
       id: aws.apigatewayv2.route_responses
@@ -7275,6 +7408,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_route_response:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1routes~1{route_id}~1routeresponses~1{route_response_id}/delete"
@@ -7332,6 +7473,14 @@ components:
             objectKey: $.RoutingRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_routing_rule:
           operation:
             $ref: "#/paths/~1v2~1domainnames~1{domain_name}~1routingrules~1{routing_rule_id}/delete"
@@ -7394,6 +7543,19 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_access_log_settings:
+          operation:
+            $ref: "#/paths/~1v2~1apis~1{api_id}~1stages~1{stage_name}~1accesslogsettings/delete"
+          response:
+            openAPIDocKey: "204"
         delete_stage:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1stages~1{stage_name}/delete"
@@ -7483,38 +7645,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/vpc_links/methods/update_vpc_link"
         delete:
           - $ref: "#/components/x-stackQL-resources/vpc_links/methods/delete_vpc_link"
-    access_log_settings:
-      id: aws.apigatewayv2.access_log_settings
-      name: access_log_settings
-      title: access_log_settings
-      methods:
-        delete_access_log_settings:
-          operation:
-            $ref: "#/paths/~1v2~1apis~1{api_id}~1stages~1{stage_name}~1accesslogsettings/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/access_log_settings/methods/delete_access_log_settings"
-    cors_configurations:
-      id: aws.apigatewayv2.cors_configurations
-      name: cors_configurations
-      title: cors_configurations
-      methods:
-        delete_cors_configuration:
-          operation:
-            $ref: "#/paths/~1v2~1apis~1{api_id}~1cors/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/cors_configurations/methods/delete_cors_configuration"
     portal_product_sharing_policies:
       id: aws.apigatewayv2.portal_product_sharing_policies
       name: portal_product_sharing_policies
@@ -7551,38 +7681,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/portal_product_sharing_policies/methods/put_portal_product_sharing_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/portal_product_sharing_policies/methods/delete_portal_product_sharing_policy"
-    route_request_parameters:
-      id: aws.apigatewayv2.route_request_parameters
-      name: route_request_parameters
-      title: route_request_parameters
-      methods:
-        delete_route_request_parameter:
-          operation:
-            $ref: "#/paths/~1v2~1apis~1{api_id}~1routes~1{route_id}~1requestparameters~1{request_parameter_key}/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/route_request_parameters/methods/delete_route_request_parameter"
-    route_settings:
-      id: aws.apigatewayv2.route_settings
-      name: route_settings
-      title: route_settings
-      methods:
-        delete_route_settings:
-          operation:
-            $ref: "#/paths/~1v2~1apis~1{api_id}~1stages~1{stage_name}~1routesettings~1{route_key}/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/route_settings/methods/delete_route_settings"
     model_templates:
       id: aws.apigatewayv2.model_templates
       name: model_templates
@@ -7611,17 +7709,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/get_tags"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.apigatewayv2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v2~1tags~1{resource-arn}/post"
@@ -7641,9 +7728,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/get_tags"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

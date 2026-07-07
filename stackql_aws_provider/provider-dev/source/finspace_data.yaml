@@ -50,7 +50,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateUserToPermissionGroupResponse'
-      x-stackql-resource: user_to_permission_groups
+      x-stackql-resource: permission_groups
       x-stackql-method: associate_user_to_permission_group
       x-stackql-verb: UPDATE
     delete:
@@ -82,7 +82,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateUserFromPermissionGroupResponse'
-      x-stackql-resource: user_from_permission_groups
+      x-stackql-resource: permission_groups
       x-stackql-method: disassociate_user_from_permission_group
       x-stackql-verb: UPDATE
   /datasets/{dataset_id}/changesetsv2:
@@ -158,6 +158,9 @@ paths:
       x-stackql-method: list_changesets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.changesets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /datasets/{dataset_id}/dataviewsv2:
     post:
       operationId: CreateDataView
@@ -233,6 +236,9 @@ paths:
       x-stackql-method: list_data_views
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataViews
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /datasetsv2:
     post:
       operationId: CreateDataset
@@ -302,6 +308,9 @@ paths:
       x-stackql-method: list_datasets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datasets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /permission-group:
     post:
       operationId: CreatePermissionGroup
@@ -362,6 +371,9 @@ paths:
       x-stackql-method: list_permission_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.permissionGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /user:
     post:
       operationId: CreateUser
@@ -428,6 +440,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.users
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /datasetsv2/{dataset_id}:
     delete:
       operationId: DeleteDataset
@@ -564,6 +579,7 @@ paths:
       x-stackql-resource: permission_groups
       x-stackql-method: get_permission_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.permissionGroup
     put:
       operationId: UpdatePermissionGroup
       description: Modifies the details of a permission group. You cannot modify a permissionGroupID.
@@ -626,7 +642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableUserResponse'
-      x-stackql-resource: user
+      x-stackql-resource: users
       x-stackql-method: disable_user
       x-stackql-verb: EXEC
   /user/{user_id}/enable:
@@ -656,7 +672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableUserResponse'
-      x-stackql-resource: user
+      x-stackql-resource: users
       x-stackql-method: enable_user
       x-stackql-verb: EXEC
   /datasets/{dataset_id}/changesetsv2/{changeset_id}:
@@ -991,7 +1007,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetUserPasswordResponse'
-      x-stackql-resource: user_password
+      x-stackql-resource: users
       x-stackql-method: reset_user_password
       x-stackql-verb: EXEC
 components:

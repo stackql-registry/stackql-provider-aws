@@ -458,10 +458,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListMLEndpointsOutput'
+                $ref: '#/components/schemas/ListMLEndpointsOutputDisplay'
       x-stackql-resource: ml_endpoints
       x-stackql-method: list_ml_endpoints
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListMLEndpointsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range
+        $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ml/endpoints/{id}:
     delete:
       operationId: DeleteMLEndpoint
@@ -583,7 +588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManagePropertygraphStatisticsOutput'
-      x-stackql-resource: manage_propertygraph_statistics
+      x-stackql-resource: propertygraph_statistics
       x-stackql-method: manage_propertygraph_statistics
       x-stackql-verb: EXEC
   /sparql/statistics:
@@ -639,7 +644,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ManageSparqlStatisticsOutput'
-      x-stackql-resource: manage_sparql_statistics
+      x-stackql-resource: sparql_statistics
       x-stackql-method: manage_sparql_statistics
       x-stackql-verb: EXEC
   /system:
@@ -1192,10 +1197,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListMLDataProcessingJobsOutput'
+                $ref: '#/components/schemas/ListMLDataProcessingJobsOutputDisplay'
       x-stackql-resource: ml_data_processing_jobs
       x-stackql-method: list_ml_data_processing_jobs
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListMLDataProcessingJobsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range
+        $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
     post:
       operationId: StartMLDataProcessingJob
       description: Creates a new Neptune ML data processing job for processing the graph data exported from Neptune for training.
@@ -1279,10 +1289,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListMLModelTrainingJobsOutput'
+                $ref: '#/components/schemas/ListMLModelTrainingJobsOutputDisplay'
       x-stackql-resource: ml_model_training_jobs
       x-stackql-method: list_ml_model_training_jobs
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListMLModelTrainingJobsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range
+        $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
     post:
       operationId: StartMLModelTrainingJob
       description: Creates a new Neptune ML model training job. See Model training using the modeltraining command. When invoking
@@ -1371,10 +1386,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListMLModelTransformJobsOutput'
+                $ref: '#/components/schemas/ListMLModelTransformJobsOutputDisplay'
       x-stackql-resource: ml_model_transform_jobs
       x-stackql-method: list_ml_model_transform_jobs
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListMLModelTransformJobsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range
+        $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
     post:
       operationId: StartMLModelTransformJob
       description: Creates a new model transform job. See Use a trained model to generate new model artifacts. When invoking
@@ -2436,42 +2456,70 @@ components:
       type: integer
       minimum: 1
       maximum: 1024
-    ListMLDataProcessingJobsOutput:
+    ListMLDataProcessingJobsRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/StringList'
+        id:
+          type: string
           description: A page listing data processing job IDs.
+    ListMLDataProcessingJobsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListMLDataProcessingJobsRowDisplay'
     ListMLEndpointsInputMaxItemsInteger:
       type: integer
       minimum: 1
       maximum: 1024
-    ListMLEndpointsOutput:
+    ListMLEndpointsRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/StringList'
+        id:
+          type: string
           description: A page from the list of inference endpoint IDs.
+    ListMLEndpointsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListMLEndpointsRowDisplay'
     ListMLModelTrainingJobsInputMaxItemsInteger:
       type: integer
       minimum: 1
       maximum: 1024
-    ListMLModelTrainingJobsOutput:
+    ListMLModelTrainingJobsRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/StringList'
+        id:
+          type: string
           description: A page of the list of model training job IDs.
+    ListMLModelTrainingJobsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListMLModelTrainingJobsRowDisplay'
     ListMLModelTransformJobsInputMaxItemsInteger:
       type: integer
       minimum: 1
       maximum: 1024
-    ListMLModelTransformJobsOutput:
+    ListMLModelTransformJobsRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/StringList'
+        id:
+          type: string
           description: A page from the list of model transform IDs.
+    ListMLModelTransformJobsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListMLModelTransformJobsRowDisplay'
     ListOpenCypherQueriesOutput:
       type: object
       properties:

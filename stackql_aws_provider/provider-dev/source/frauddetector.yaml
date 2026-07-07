@@ -934,7 +934,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteEventsByEventTypeResult'
-      x-stackql-resource: events_by_event_types
+      x-stackql-resource: event_types
       x-stackql-method: delete_events_by_event_type
       x-stackql-verb: DELETE
   /DeleteExternalModel:
@@ -1629,6 +1629,7 @@ paths:
       x-stackql-resource: events
       x-stackql-method: get_event
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.event
   /GetEventPrediction:
     post:
       operationId: GetEventPrediction
@@ -1869,6 +1870,7 @@ paths:
       x-stackql-resource: kms_encryption_keys
       x-stackql-method: get_kms_encryption_key
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.kmsKey
   /GetLabels:
     post:
       operationId: GetLabels
@@ -1950,10 +1952,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetListElementsResult'
+                $ref: '#/components/schemas/GetListElementsOutputDisplay'
       x-stackql-resource: list_elements
       x-stackql-method: get_list_elements
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetListElementsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "elements" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"element": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /GetListsMetadata:
     post:
       operationId: GetListsMetadata
@@ -2323,7 +2330,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResult'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutDetector:
@@ -2720,7 +2727,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendEventResult'
-      x-stackql-resource: event
+      x-stackql-resource: event_types
       x-stackql-method: send_event
       x-stackql-verb: EXEC
   /TagResource:
@@ -2760,7 +2767,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2800,7 +2807,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateDetectorVersion:
@@ -2907,7 +2914,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDetectorVersionMetadataResult'
-      x-stackql-resource: detector_version_metadatas
+      x-stackql-resource: detector_versions
       x-stackql-method: update_detector_version_metadata
       x-stackql-verb: UPDATE
   /UpdateDetectorVersionStatus:
@@ -2952,7 +2959,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDetectorVersionStatusResult'
-      x-stackql-resource: detector_version_status
+      x-stackql-resource: detector_versions
       x-stackql-method: update_detector_version_status
       x-stackql-verb: UPDATE
   /UpdateEventLabel:
@@ -3001,7 +3008,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEventLabelResult'
-      x-stackql-resource: event_labels
+      x-stackql-resource: labels
       x-stackql-method: update_event_label
       x-stackql-verb: UPDATE
   /UpdateList:
@@ -3204,7 +3211,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateModelVersionStatusResult'
-      x-stackql-resource: model_version_status
+      x-stackql-resource: model_versions
       x-stackql-method: update_model_version_status
       x-stackql-verb: UPDATE
   /UpdateRuleMetadata:
@@ -3244,7 +3251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRuleMetadataResult'
-      x-stackql-resource: rule_metadatas
+      x-stackql-resource: rules
       x-stackql-method: update_rule_metadata
       x-stackql-verb: UPDATE
   /UpdateRuleVersion:
@@ -3299,7 +3306,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRuleVersionResult'
-      x-stackql-resource: rule_versions
+      x-stackql-resource: rules
       x-stackql-method: update_rule_version
       x-stackql-verb: UPDATE
   /UpdateVariable:
@@ -5199,15 +5206,19 @@ components:
       type: integer
       minimum: 500
       maximum: 5000
-    GetListElementsResult:
+    GetListElementsRowDisplay:
       type: object
       properties:
-        elements:
-          $ref: '#/components/schemas/ElementsList'
+        element:
+          type: string
           description: The list elements.
-        nextToken:
-          $ref: '#/components/schemas/nextToken'
-          description: The next page token.
+    GetListElementsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetListElementsRowDisplay'
     ListsMetadataMaxResults:
       type: integer
       minimum: 5

@@ -401,6 +401,7 @@ paths:
       x-stackql-resource: elasticsearch_domains
       x-stackql-method: describe_elasticsearch_domain
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DomainStatus
   /2015-01-01/es/role:
     delete:
       operationId: DeleteElasticsearchServiceRole
@@ -561,6 +562,7 @@ paths:
       x-stackql-resource: domain_change_progress
       x-stackql-method: describe_domain_change_progress
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChangeProgressStatus
   /2015-01-01/es/domain/{domain_name}/config:
     get:
       operationId: DescribeElasticsearchDomainConfig
@@ -583,6 +585,7 @@ paths:
       x-stackql-resource: elasticsearch_domain_configs
       x-stackql-method: describe_elasticsearch_domain_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DomainConfig
     post:
       operationId: UpdateElasticsearchDomainConfig
       description: Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance
@@ -826,6 +829,9 @@ paths:
       x-stackql-method: describe_reserved_elasticsearch_instance_offerings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReservedElasticsearchInstanceOfferings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2015-01-01/es/reservedInstances:
     get:
       operationId: DescribeReservedElasticsearchInstances
@@ -862,6 +868,9 @@ paths:
       x-stackql-method: describe_reserved_elasticsearch_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReservedElasticsearchInstances
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2015-01-01/es/vpcEndpoints/describe:
     post:
       operationId: DescribeVpcEndpoints
@@ -913,7 +922,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DissociatePackageResponse'
-      x-stackql-resource: dissociate_package
+      x-stackql-resource: packages
       x-stackql-method: dissociate_package
       x-stackql-verb: EXEC
   /2015-01-01/es/compatibleVersions:
@@ -1002,6 +1011,9 @@ paths:
       x-stackql-method: get_upgrade_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UpgradeHistories
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2015-01-01/es/upgradeDomain/{domain_name}/status:
     get:
       operationId: GetUpgradeStatus
@@ -1117,11 +1129,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListElasticsearchInstanceTypesResponse'
+                $ref: '#/components/schemas/ListElasticsearchInstanceTypesOutputDisplay'
       x-stackql-resource: elasticsearch_instance_types
       x-stackql-method: list_elasticsearch_instance_types
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ElasticsearchInstanceTypes
+      x-stackql-responseEnvelope: ListElasticsearchInstanceTypesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ElasticsearchInstanceTypes" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"elasticsearch_instance_type":
+        {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2015-01-01/es/versions:
     get:
       operationId: ListElasticsearchVersions
@@ -1145,11 +1165,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListElasticsearchVersionsResponse'
+                $ref: '#/components/schemas/ListElasticsearchVersionsOutputDisplay'
       x-stackql-resource: elasticsearch_versions
       x-stackql-method: list_elasticsearch_versions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ElasticsearchVersions
+      x-stackql-responseEnvelope: ListElasticsearchVersionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ElasticsearchVersions" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"elasticsearch_version": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2015-01-01/domain/{domain_name}/packages:
     get:
       operationId: ListPackagesForDomain
@@ -1288,7 +1316,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PurchaseReservedElasticsearchInstanceOfferingResponse'
-      x-stackql-resource: purchase_reserved_elasticsearch_instance_offering
+      x-stackql-resource: reserved_elasticsearch_instance_offerings
       x-stackql-method: purchase_reserved_elasticsearch_instance_offering
       x-stackql-verb: EXEC
   /2015-01-01/es/ccs/inboundConnection/{connection_id}/reject:
@@ -3930,30 +3958,31 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/DomainPackageDetails'
-    ListElasticsearchInstanceTypesResponse:
-      description: Container for the parameters returned by ListElasticsearchInstanceTypes operation.
+    ListElasticsearchInstanceTypesRowDisplay:
       type: object
       properties:
-        ElasticsearchInstanceTypes:
-          $ref: '#/components/schemas/ElasticsearchInstanceTypeList'
+        elasticsearch_instance_type:
+          type: string
           description: List of instance types supported by Amazon Elasticsearch service for given ElasticsearchVersion
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: In case if there are more results available NextToken would be present, make further request to the
-            same API with received NextToken to paginate remaining results.
-    ElasticsearchInstanceTypeList:
-      description: List of instance types supported by Amazon Elasticsearch service.
-      type: array
-      items:
-        $ref: '#/components/schemas/ESPartitionInstanceType'
-    ListElasticsearchVersionsResponse:
-      description: Container for the parameters for response received from ListElasticsearchVersions operation.
+    ListElasticsearchInstanceTypesOutputDisplay:
       type: object
       properties:
-        ElasticsearchVersions:
-          $ref: '#/components/schemas/ElasticsearchVersionList'
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListElasticsearchInstanceTypesRowDisplay'
+    ListElasticsearchVersionsRowDisplay:
+      type: object
+      properties:
+        elasticsearch_version:
+          type: string
+    ListElasticsearchVersionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListElasticsearchVersionsRowDisplay'
     ListPackagesForDomainResponse:
       description: Container for response parameters to ListPackagesForDomain operation.
       type: object

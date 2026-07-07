@@ -47,7 +47,6 @@ paths:
                   description: The key-value pair that defines the tag. The tag value is optional.
               required:
                 - CertificateArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -241,7 +240,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: "One or more resource tags to associate with the imported certificate. Note: You cannot apply tags when reimporting a certificate."
               required:
-                - Certificate
                 - PrivateKey
       responses:
         "200":
@@ -390,7 +388,6 @@ paths:
                   description: The key-value pair that defines the tag to remove.
               required:
                 - CertificateArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -1737,10 +1734,10 @@ components:
           $ref: "#/components/schemas/ValidationMethod"
           description: Specifies the domain validation method.
   x-stackQL-resources:
-    tags_to_certificates:
-      id: aws.acm.tags_to_certificates
-      name: tags_to_certificates
-      title: tags_to_certificates
+    tags:
+      id: aws.acm.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_certificate:
           operation:
@@ -1754,11 +1751,37 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_tags_for_certificate:
+          operation:
+            $ref: "#/paths/~1ListTagsForCertificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_tags_from_certificate:
+          operation:
+            $ref: "#/paths/~1RemoveTagsFromCertificate/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_certificate"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_certificates/methods/add_tags_to_certificate"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_certificate"
         delete: []
     certificates:
       id: aws.acm.certificates
@@ -1783,6 +1806,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Certificate
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1815,6 +1839,25 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        resend_validation_email:
+          operation:
+            $ref: "#/paths/~1ResendValidationEmail/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         revoke_certificate:
@@ -1842,6 +1885,25 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_certificate_options:
+          operation:
+            $ref: "#/paths/~1UpdateCertificateOptions/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1851,6 +1913,7 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/certificates/methods/revoke_certificate"
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/update_certificate_options"
         delete:
           - $ref: "#/components/x-stackQL-resources/certificates/methods/delete_certificate"
     account_configurations:
@@ -1864,6 +1927,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ExpiryEvents
           request:
             mediaType: application/x-amz-json-1.1
             base: "{}"
@@ -1886,74 +1950,4 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/account_configurations/methods/put_account_configuration"
-        delete: []
-    tags_for_certificates:
-      id: aws.acm.tags_for_certificates
-      name: tags_for_certificates
-      title: tags_for_certificates
-      methods:
-        list_tags_for_certificate:
-          operation:
-            $ref: "#/paths/~1ListTagsForCertificate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_certificates/methods/list_tags_for_certificate"
-        insert: []
-        update: []
-        delete: []
-    tags_from_certificates:
-      id: aws.acm.tags_from_certificates
-      name: tags_from_certificates
-      title: tags_from_certificates
-      methods:
-        remove_tags_from_certificate:
-          operation:
-            $ref: "#/paths/~1RemoveTagsFromCertificate/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_certificates/methods/remove_tags_from_certificate"
-        delete: []
-    certificate_options:
-      id: aws.acm.certificate_options
-      name: certificate_options
-      title: certificate_options
-      methods:
-        update_certificate_options:
-          operation:
-            $ref: "#/paths/~1UpdateCertificateOptions/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/certificate_options/methods/update_certificate_options"
         delete: []

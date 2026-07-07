@@ -1600,7 +1600,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListClustersResponse"
+                $ref: "#/components/schemas/ListClustersOutputDisplay"
   /ListContainerInstances:
     post:
       operationId: ListContainerInstances
@@ -1643,7 +1643,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListContainerInstancesResponse"
+                $ref: "#/components/schemas/ListContainerInstancesOutputDisplay"
   /ListDaemonDeployments:
     post:
       operationId: ListDaemonDeployments
@@ -1871,7 +1871,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListServicesResponse"
+                $ref: "#/components/schemas/ListServicesOutputDisplay"
   /ListServicesByNamespace:
     post:
       operationId: ListServicesByNamespace
@@ -1910,7 +1910,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListServicesByNamespaceResponse"
+                $ref: "#/components/schemas/ListServicesByNamespaceOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1983,7 +1983,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTaskDefinitionFamiliesResponse"
+                $ref: "#/components/schemas/ListTaskDefinitionFamiliesOutputDisplay"
   /ListTaskDefinitions:
     post:
       operationId: ListTaskDefinitions
@@ -2026,7 +2026,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTaskDefinitionsResponse"
+                $ref: "#/components/schemas/ListTaskDefinitionsOutputDisplay"
   /ListTasks:
     post:
       operationId: ListTasks
@@ -2084,7 +2084,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTasksResponse"
+                $ref: "#/components/schemas/ListTasksOutputDisplay"
   /PutAccountSetting:
     post:
       operationId: PutAccountSetting
@@ -8374,15 +8374,19 @@ components:
         nextToken:
           $ref: "#/components/schemas/String"
           description: The nextToken value to include in a future ListAttributes request. When the results of a ListAttributes request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
-    ListClustersResponse:
+    ListClustersRowDisplay:
       type: object
       properties:
-        clusterArns:
-          $ref: "#/components/schemas/StringList"
+        cluster_arn:
+          type: string
           description: The list of full Amazon Resource Name (ARN) entries for each cluster that's associated with your account.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListClusters request. When the results of a ListClusters request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
+    ListClustersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListClustersRowDisplay"
     ContainerInstanceStatus:
       type: string
       enum:
@@ -8391,15 +8395,19 @@ components:
         - REGISTERING
         - DEREGISTERING
         - REGISTRATION_FAILED
-    ListContainerInstancesResponse:
+    ListContainerInstancesRowDisplay:
       type: object
       properties:
-        containerInstanceArns:
-          $ref: "#/components/schemas/StringList"
+        container_instance_arn:
+          type: string
           description: The list of container instances with full ARN entries for each container instance associated with the specified cluster.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListContainerInstances request. When the results of a ListContainerInstances request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
+    ListContainerInstancesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListContainerInstancesRowDisplay"
     DaemonDeploymentStatusList:
       type: array
       items:
@@ -8585,24 +8593,32 @@ components:
         statusReason:
           $ref: "#/components/schemas/String"
           description: Information about why the service deployment is in the current status. For example, the circuit breaker detected a deployment failure.
-    ListServicesResponse:
+    ListServicesRowDisplay:
       type: object
       properties:
-        serviceArns:
-          $ref: "#/components/schemas/StringList"
+        service_arn:
+          type: string
           description: The list of full ARN entries for each service that's associated with the specified cluster.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListServices request. When the results of a ListServices request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
-    ListServicesByNamespaceResponse:
+    ListServicesOutputDisplay:
       type: object
       properties:
-        serviceArns:
-          $ref: "#/components/schemas/StringList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListServicesRowDisplay"
+    ListServicesByNamespaceRowDisplay:
+      type: object
+      properties:
+        service_arn:
+          type: string
           description: The list of full ARN entries for each service that's associated with the specified namespace.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListServicesByNamespace request. When the results of a ListServicesByNamespace request exceed maxResults, this value can be used to retrieve the next page of results. When there are no more results to return, this value is null.
+    ListServicesByNamespaceOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListServicesByNamespaceRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -8615,39 +8631,51 @@ components:
         - ACTIVE
         - INACTIVE
         - ALL
-    ListTaskDefinitionFamiliesResponse:
+    ListTaskDefinitionFamiliesRowDisplay:
       type: object
       properties:
-        families:
-          $ref: "#/components/schemas/StringList"
+        family:
+          type: string
           description: The list of task definition family names that match the ListTaskDefinitionFamilies request.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListTaskDefinitionFamilies request. When the results of a ListTaskDefinitionFamilies request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
-    ListTaskDefinitionsResponse:
+    ListTaskDefinitionFamiliesOutputDisplay:
       type: object
       properties:
-        taskDefinitionArns:
-          $ref: "#/components/schemas/StringList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTaskDefinitionFamiliesRowDisplay"
+    ListTaskDefinitionsRowDisplay:
+      type: object
+      properties:
+        task_definition_arn:
+          type: string
           description: The list of task definition Amazon Resource Name (ARN) entries for the ListTaskDefinitions request.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListTaskDefinitions request. When the results of a ListTaskDefinitions request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
+    ListTaskDefinitionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTaskDefinitionsRowDisplay"
     DesiredStatus:
       type: string
       enum:
         - RUNNING
         - PENDING
         - STOPPED
-    ListTasksResponse:
+    ListTasksRowDisplay:
       type: object
       properties:
-        taskArns:
-          $ref: "#/components/schemas/StringList"
+        task_arn:
+          type: string
           description: The list of task ARN entries for the ListTasks request.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListTasks request. When the results of a ListTasks request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there are no more results to return.
+    ListTasksOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTasksRowDisplay"
     PutAccountSettingResponse:
       type: object
       properties:
@@ -9129,6 +9157,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        put_cluster_capacity_providers:
+          operation:
+            $ref: "#/paths/~1PutClusterCapacityProviders/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_capacity_provider:
           operation:
             $ref: "#/paths/~1UpdateCapacityProvider/post"
@@ -9149,6 +9190,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/capacity_providers/methods/create_capacity_provider"
         update:
           - $ref: "#/components/x-stackQL-resources/capacity_providers/methods/update_capacity_provider"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/capacity_providers/methods/put_cluster_capacity_providers"
         delete:
           - $ref: "#/components/x-stackQL-resources/capacity_providers/methods/delete_capacity_provider"
     clusters:
@@ -9201,7 +9244,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.clusterArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListClustersOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "clusterArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"cluster_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_cluster:
+          operation:
+            $ref: "#/paths/~1UpdateCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9209,9 +9278,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        update_cluster:
+        update_cluster_settings:
           operation:
-            $ref: "#/paths/~1UpdateCluster/post"
+            $ref: "#/paths/~1UpdateClusterSettings/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9228,6 +9297,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
         update:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_cluster_settings"
           - $ref: "#/components/x-stackQL-resources/clusters/methods/update_cluster"
         delete:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
@@ -9268,6 +9338,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.daemon
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9348,6 +9419,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.service
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9427,7 +9499,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.serviceArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListServicesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "serviceArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_service_deployment:
+          operation:
+            $ref: "#/paths/~1StopServiceDeployment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9502,6 +9600,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_service_primary_task_set:
+          operation:
+            $ref: "#/paths/~1UpdateServicePrimaryTaskSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_task_set:
           operation:
             $ref: "#/paths/~1UpdateTaskSet/post"
@@ -9522,6 +9633,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/task_sets/methods/create_task_set"
         update:
           - $ref: "#/components/x-stackQL-resources/task_sets/methods/update_task_set"
+          - $ref: "#/components/x-stackQL-resources/task_sets/methods/update_service_primary_task_set"
         delete:
           - $ref: "#/components/x-stackQL-resources/task_sets/methods/delete_task_set"
     account_settings:
@@ -9554,11 +9666,31 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_account_setting:
           operation:
             $ref: "#/paths/~1PutAccountSetting/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_account_setting_default:
+          operation:
+            $ref: "#/paths/~1PutAccountSettingDefault/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9608,6 +9740,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_attributes:
@@ -9656,6 +9795,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.daemonTaskDefinition
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9748,12 +9888,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.taskDefinitionArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTaskDefinitionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "taskDefinitionArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"task_definition_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_task_definition:
@@ -9816,7 +9969,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.containerInstanceArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListContainerInstancesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "containerInstanceArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"container_instance_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        register_container_instance:
+          operation:
+            $ref: "#/paths/~1RegisterContainerInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9824,9 +10003,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        register_container_instance:
+        update_container_instances_state:
           operation:
-            $ref: "#/paths/~1RegisterContainerInstance/post"
+            $ref: "#/paths/~1UpdateContainerInstancesState/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9843,7 +10022,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/container_instances/methods/list_container_instances"
         insert:
           - $ref: "#/components/x-stackQL-resources/container_instances/methods/register_container_instance"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/container_instances/methods/update_container_instances_state"
         delete:
           - $ref: "#/components/x-stackQL-resources/container_instances/methods/deregister_container_instance"
     daemon_deployments:
@@ -9994,7 +10174,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.taskArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTasksOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "taskArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"task_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        submit_task_state_change:
+          operation:
+            $ref: "#/paths/~1SubmitTaskStateChange/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10058,12 +10264,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.serviceArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListServicesByNamespaceOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "serviceArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10072,10 +10291,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.ecs.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.ecs.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -10090,92 +10309,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    task_definition_families:
-      id: aws.ecs.task_definition_families
-      name: task_definition_families
-      title: task_definition_families
-      methods:
-        list_task_definition_families:
-          operation:
-            $ref: "#/paths/~1ListTaskDefinitionFamilies/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.families
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/task_definition_families/methods/list_task_definition_families"
-        insert: []
-        update: []
-        delete: []
-    account_setting_defaults:
-      id: aws.ecs.account_setting_defaults
-      name: account_setting_defaults
-      title: account_setting_defaults
-      methods:
-        put_account_setting_default:
-          operation:
-            $ref: "#/paths/~1PutAccountSettingDefault/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/account_setting_defaults/methods/put_account_setting_default"
-        delete: []
-    cluster_capacity_providers:
-      id: aws.ecs.cluster_capacity_providers
-      name: cluster_capacity_providers
-      title: cluster_capacity_providers
-      methods:
-        put_cluster_capacity_providers:
-          operation:
-            $ref: "#/paths/~1PutClusterCapacityProviders/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/cluster_capacity_providers/methods/put_cluster_capacity_providers"
-        delete: []
-    resources:
-      id: aws.ecs.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -10203,35 +10336,50 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
-    cluster_settings:
-      id: aws.ecs.cluster_settings
-      name: cluster_settings
-      title: cluster_settings
+    task_definition_families:
+      id: aws.ecs.task_definition_families
+      name: task_definition_families
+      title: task_definition_families
       methods:
-        update_cluster_settings:
+        list_task_definition_families:
           operation:
-            $ref: "#/paths/~1UpdateClusterSettings/post"
+            $ref: "#/paths/~1ListTaskDefinitionFamilies/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTaskDefinitionFamiliesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "families" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"family": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/task_definition_families/methods/list_task_definition_families"
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_settings/methods/update_cluster_settings"
+        update: []
         delete: []
     container_agents:
       id: aws.ecs.container_agents
@@ -10256,52 +10404,4 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/container_agents/methods/update_container_agent"
-        delete: []
-    container_instances_states:
-      id: aws.ecs.container_instances_states
-      name: container_instances_states
-      title: container_instances_states
-      methods:
-        update_container_instances_state:
-          operation:
-            $ref: "#/paths/~1UpdateContainerInstancesState/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/container_instances_states/methods/update_container_instances_state"
-        delete: []
-    service_primary_task_sets:
-      id: aws.ecs.service_primary_task_sets
-      name: service_primary_task_sets
-      title: service_primary_task_sets
-      methods:
-        update_service_primary_task_set:
-          operation:
-            $ref: "#/paths/~1UpdateServicePrimaryTaskSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/service_primary_task_sets/methods/update_service_primary_task_set"
         delete: []

@@ -234,8 +234,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -262,8 +260,6 @@ paths:
               properties:
                 Keys:
                   $ref: "#/components/schemas/TagKeyList"
-              required:
-                - Keys
       responses:
         "200":
           description: Success
@@ -1461,6 +1457,44 @@ components:
           $ref: "#/components/schemas/GroupQuery"
           description: The updated resource query associated with the resource group after the update.
   x-stackQL-resources:
+    tags:
+      id: aws.resource_groups.tags
+      name: tags
+      title: tags
+      methods:
+        cancel_tag_sync_task:
+          operation:
+            $ref: "#/paths/~1cancel-tag-sync-task/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_tags:
+          operation:
+            $ref: "#/paths/~1resources~1{arn}~1tags/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_tag_sync_task:
+          operation:
+            $ref: "#/paths/~1start-tag-sync-task/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/get_tags"
+        insert: []
+        update: []
+        delete: []
     groups:
       id: aws.resource_groups.groups
       name: groups
@@ -1494,6 +1528,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Group
           request:
             nativeCasing: pascal
           config:
@@ -1509,6 +1544,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_group:
@@ -1542,6 +1584,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AccountSettings
         update_account_settings:
           operation:
             $ref: "#/paths/~1update-account-settings/post"
@@ -1571,6 +1614,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GroupConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -1606,6 +1650,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GroupQuery
           request:
             nativeCasing: pascal
           config:
@@ -1655,29 +1700,19 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tag_sync_tasks/methods/get_tag_sync_task"
           - $ref: "#/components/x-stackQL-resources/tag_sync_tasks/methods/list_tag_sync_tasks"
-        insert: []
-        update: []
-        delete: []
-    tags:
-      id: aws.resource_groups.tags
-      name: tags
-      title: tags
-      methods:
-        get_tags:
-          operation:
-            $ref: "#/paths/~1resources~1{arn}~1tags/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/get_tags"
         insert: []
         update: []
         delete: []
@@ -1707,6 +1742,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1730,6 +1772,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1750,6 +1799,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ResourceIdentifiers
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        ungroup_resources:
+          operation:
+            $ref: "#/paths/~1ungroup-resources/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:

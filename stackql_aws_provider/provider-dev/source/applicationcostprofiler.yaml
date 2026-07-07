@@ -156,6 +156,9 @@ paths:
       x-stackql-method: list_report_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.reportDefinitions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: PutReportDefinition
       description: Creates the report definition for a report in Application Cost Profiler.

@@ -47,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateRoleToGroupResponse'
-      x-stackql-resource: role_to_groups
+      x-stackql-resource: groups
       x-stackql-method: associate_role_to_group
       x-stackql-verb: UPDATE
     delete:
@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateRoleFromGroupResponse'
-      x-stackql-resource: role_from_groups
+      x-stackql-resource: groups
       x-stackql-method: disassociate_role_from_group
       x-stackql-verb: UPDATE
     get:
@@ -208,6 +208,9 @@ paths:
       x-stackql-method: list_connector_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Definitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/connectors/{connector_definition_id}/versions:
     post:
       operationId: CreateConnectorDefinitionVersion
@@ -279,6 +282,9 @@ paths:
       x-stackql-method: list_connector_definition_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/cores:
     post:
       operationId: CreateCoreDefinition
@@ -341,6 +347,9 @@ paths:
       x-stackql-method: list_core_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Definitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/cores/{core_definition_id}/versions:
     post:
       operationId: CreateCoreDefinitionVersion
@@ -411,6 +420,9 @@ paths:
       x-stackql-method: list_core_definition_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/groups/{group_id}/deployments:
     post:
       operationId: CreateDeployment
@@ -487,6 +499,9 @@ paths:
       x-stackql-method: list_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Deployments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/devices:
     post:
       operationId: CreateDeviceDefinition
@@ -549,6 +564,9 @@ paths:
       x-stackql-method: list_device_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Definitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/devices/{device_definition_id}/versions:
     post:
       operationId: CreateDeviceDefinitionVersion
@@ -618,6 +636,9 @@ paths:
       x-stackql-method: list_device_definition_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/functions:
     post:
       operationId: CreateFunctionDefinition
@@ -681,6 +702,9 @@ paths:
       x-stackql-method: list_function_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Definitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/functions/{function_definition_id}/versions:
     post:
       operationId: CreateFunctionDefinitionVersion
@@ -752,6 +776,9 @@ paths:
       x-stackql-method: list_function_definition_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/groups:
     post:
       operationId: CreateGroup
@@ -817,6 +844,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/groups/{group_id}/certificateauthorities:
     post:
       operationId: CreateGroupCertificateAuthority
@@ -945,6 +975,9 @@ paths:
       x-stackql-method: list_group_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/loggers:
     post:
       operationId: CreateLoggerDefinition
@@ -1007,6 +1040,9 @@ paths:
       x-stackql-method: list_logger_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Definitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/loggers/{logger_definition_id}/versions:
     post:
       operationId: CreateLoggerDefinitionVersion
@@ -1076,6 +1112,9 @@ paths:
       x-stackql-method: list_logger_definition_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/resources:
     post:
       operationId: CreateResourceDefinition
@@ -1139,6 +1178,9 @@ paths:
       x-stackql-method: list_resource_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Definitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/resources/{resource_definition_id}/versions:
     post:
       operationId: CreateResourceDefinitionVersion
@@ -1208,6 +1250,9 @@ paths:
       x-stackql-method: list_resource_definition_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/updates:
     post:
       operationId: CreateSoftwareUpdateJob
@@ -1318,6 +1363,9 @@ paths:
       x-stackql-method: list_subscription_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Definitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/subscriptions/{subscription_definition_id}/versions:
     post:
       operationId: CreateSubscriptionDefinitionVersion
@@ -1387,6 +1435,9 @@ paths:
       x-stackql-method: list_subscription_definition_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/definition/connectors/{connector_definition_id}:
     delete:
       operationId: DeleteConnectorDefinition
@@ -2416,6 +2467,7 @@ paths:
       x-stackql-resource: thing_runtime_configurations
       x-stackql-method: get_thing_runtime_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RuntimeConfiguration
     put:
       operationId: UpdateThingRuntimeConfiguration
       description: Updates the runtime configuration of a thing.
@@ -2480,6 +2532,9 @@ paths:
       x-stackql-method: list_bulk_deployment_detailed_reports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Deployments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /greengrass/bulk/deployments:
     get:
       operationId: ListBulkDeployments
@@ -2508,6 +2563,9 @@ paths:
       x-stackql-method: list_bulk_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BulkDeployments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: StartBulkDeployment
       description: Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of
@@ -2565,7 +2623,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2592,7 +2650,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2614,7 +2672,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /greengrass/groups/{group_id}/deployments/$reset:

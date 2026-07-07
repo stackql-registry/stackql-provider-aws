@@ -53,7 +53,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddStreamGroupLocationsOutput'
-      x-stackql-resource: stream_group_locations
+      x-stackql-resource: stream_groups
       x-stackql-method: add_stream_group_locations
       x-stackql-verb: UPDATE
     delete:
@@ -85,7 +85,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: stream_group_locations
+      x-stackql-resource: stream_groups
       x-stackql-method: remove_stream_group_locations
       x-stackql-verb: UPDATE
   /streamgroups/{identifier}/associations:
@@ -208,6 +208,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /streamgroups:
     post:
       operationId: CreateStreamGroup
@@ -298,6 +301,9 @@ paths:
       x-stackql-method: list_stream_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /streamgroups/{identifier}/streamsessions/{stream_session_identifier}/connections:
     post:
       operationId: CreateStreamSessionConnection
@@ -349,7 +355,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateStreamSessionConnectionOutput'
-      x-stackql-resource: stream_session_connections
+      x-stackql-resource: stream_sessions
       x-stackql-method: create_stream_session_connection
       x-stackql-verb: INSERT
   /applications/{identifier}:
@@ -618,7 +624,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportStreamSessionFilesOutput'
-      x-stackql-resource: stream_session_files
+      x-stackql-resource: stream_sessions
       x-stackql-method: export_stream_session_files
       x-stackql-verb: EXEC
   /streamgroups/{identifier}/streamsessions/{stream_session_identifier}:
@@ -736,6 +742,9 @@ paths:
       x-stackql-method: list_stream_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: StartStreamSession
       description: 'This action initiates a new stream session and outputs connection information that clients can use to
@@ -819,7 +828,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartStreamSessionOutput'
-      x-stackql-resource: stream_session
+      x-stackql-resource: applications
       x-stackql-method: start_stream_session
       x-stackql-verb: EXEC
   /streamsessions:
@@ -870,6 +879,9 @@ paths:
       x-stackql-method: list_stream_sessions_by_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -891,7 +903,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -925,7 +937,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -952,7 +964,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

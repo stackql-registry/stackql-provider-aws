@@ -1712,6 +1712,131 @@ components:
           $ref: "#/components/schemas/string"
           description: The SHA256 tree hash that Amazon Glacier computed for the uploaded part.
   x-stackQL-resources:
+    vaults:
+      id: aws.glacier.vaults
+      name: vaults
+      title: vaults
+      methods:
+        abort_multipart_upload:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1multipart-uploads~1{upload_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        complete_multipart_upload:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1multipart-uploads~1{upload_id}/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+        upload_multipart_part:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1multipart-uploads~1{upload_id}/put"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        abort_vault_lock:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1lock-policy/delete"
+          response:
+            openAPIDocKey: "204"
+        initiate_vault_lock:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1lock-policy/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        complete_vault_lock:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1lock-policy~1{lock_id}/post"
+          response:
+            openAPIDocKey: "204"
+        create_vault:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}/put"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+        delete_vault:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}/delete"
+          response:
+            openAPIDocKey: "204"
+        describe_vault:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        delete_archive:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1archives~1{archive_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        initiate_job:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1jobs/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        initiate_multipart_upload:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1multipart-uploads/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+        list_vaults:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.VaultList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
+        upload_archive:
+          operation:
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1archives/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/vaults/methods/describe_vault"
+          - $ref: "#/components/x-stackQL-resources/vaults/methods/list_vaults"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/vaults/methods/create_vault"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/vaults/methods/delete_archive"
+          - $ref: "#/components/x-stackQL-resources/vaults/methods/delete_vault"
     parts:
       id: aws.glacier.parts
       name: parts
@@ -1726,6 +1851,14 @@ components:
             objectKey: $.Parts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/parts/methods/list_parts"
@@ -1749,10 +1882,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_to_vaults:
-      id: aws.glacier.tags_to_vaults
-      name: tags_to_vaults
-      title: tags_to_vaults
+    tags:
+      id: aws.glacier.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_vault:
           operation:
@@ -1764,68 +1897,29 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_vaults/methods/add_tags_to_vault"
-        delete: []
-    vaults:
-      id: aws.glacier.vaults
-      name: vaults
-      title: vaults
-      methods:
-        create_vault:
+        list_tags_for_vault:
           operation:
-            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}/put"
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1tags/get"
           response:
-            openAPIDocKey: "201"
+            openAPIDocKey: "200"
             mediaType: application/json
-        delete_vault:
+        remove_tags_from_vault:
           operation:
-            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}/delete"
+            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1tags?operation=remove/post"
           response:
             openAPIDocKey: "204"
-        describe_vault:
-          operation:
-            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_vaults:
-          operation:
-            $ref: "#/paths/~1{account_id}~1vaults/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.VaultList
           request:
             nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/vaults/methods/describe_vault"
-          - $ref: "#/components/x-stackQL-resources/vaults/methods/list_vaults"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/vaults/methods/create_vault"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/vaults/methods/delete_vault"
-    archives:
-      id: aws.glacier.archives
-      name: archives
-      title: archives
-      methods:
-        delete_archive:
-          operation:
-            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1archives~1{archive_id}/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_vault"
         insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/archives/methods/delete_archive"
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_vault"
+        delete: []
     vault_access_policies:
       id: aws.glacier.vault_access_policies
       name: vault_access_policies
@@ -1842,6 +1936,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.policy
         set_vault_access_policy:
           operation:
             $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1access-policy/put"
@@ -1876,6 +1971,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.vaultNotificationConfig
         set_vault_notifications:
           operation:
             $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1notification-configuration/put"
@@ -1914,6 +2010,14 @@ components:
             objectKey: $.JobList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
@@ -1932,6 +2036,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Policy
         set_data_retrieval_policy:
           operation:
             $ref: "#/paths/~1{account_id}~1policies~1data-retrieval/put"
@@ -1980,6 +2085,14 @@ components:
             objectKey: $.UploadsList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multipart_uploads/methods/list_multipart_uploads"
@@ -2002,42 +2115,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/provisioned_capacities/methods/list_provisioned_capacity"
         insert: []
         update: []
-        delete: []
-    tags_for_vaults:
-      id: aws.glacier.tags_for_vaults
-      name: tags_for_vaults
-      title: tags_for_vaults
-      methods:
-        list_tags_for_vault:
-          operation:
-            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1tags/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_vaults/methods/list_tags_for_vault"
-        insert: []
-        update: []
-        delete: []
-    tags_from_vaults:
-      id: aws.glacier.tags_from_vaults
-      name: tags_from_vaults
-      title: tags_from_vaults
-      methods:
-        remove_tags_from_vault:
-          operation:
-            $ref: "#/paths/~1{account_id}~1vaults~1{vault_name}~1tags?operation=remove/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_vaults/methods/remove_tags_from_vault"
         delete: []

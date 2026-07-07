@@ -119,6 +119,9 @@ paths:
       x-stackql-method: list_assets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Assets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /packaging_configurations:
     post:
       operationId: CreatePackagingConfiguration
@@ -191,6 +194,9 @@ paths:
       x-stackql-method: list_packaging_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PackagingConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /packaging_groups:
     post:
       operationId: CreatePackagingGroup
@@ -250,6 +256,9 @@ paths:
       x-stackql-method: list_packaging_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PackagingGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /assets/{id}:
     delete:
       operationId: DeleteAsset
@@ -421,7 +430,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -449,7 +458,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -472,7 +481,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

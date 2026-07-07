@@ -1111,7 +1111,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListApplicationsOutput"
+                $ref: "#/components/schemas/ListApplicationsOutputDisplay"
   /ListDeploymentConfigs:
     post:
       operationId: ListDeploymentConfigs
@@ -1142,7 +1142,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDeploymentConfigsOutput"
+                $ref: "#/components/schemas/ListDeploymentConfigsOutputDisplay"
   /ListDeploymentGroups:
     post:
       operationId: ListDeploymentGroups
@@ -1178,7 +1178,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDeploymentGroupsOutput"
+                $ref: "#/components/schemas/ListDeploymentGroupsOutputDisplay"
   /ListDeploymentInstances:
     post:
       operationId: ListDeploymentInstances
@@ -1220,7 +1220,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDeploymentInstancesOutput"
+                $ref: "#/components/schemas/ListDeploymentInstancesOutputDisplay"
   /ListDeploymentTargets:
     post:
       operationId: ListDeploymentTargets
@@ -1259,7 +1259,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDeploymentTargetsOutput"
+                $ref: "#/components/schemas/ListDeploymentTargetsOutputDisplay"
   /ListDeployments:
     post:
       operationId: ListDeployments
@@ -1305,7 +1305,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDeploymentsOutput"
+                $ref: "#/components/schemas/ListDeploymentsOutputDisplay"
   /ListGitHubAccountTokenNames:
     post:
       operationId: ListGitHubAccountTokenNames
@@ -1336,7 +1336,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListGitHubAccountTokenNamesOutput"
+                $ref: "#/components/schemas/ListGitHubAccountTokenNamesOutputDisplay"
   /ListOnPremisesInstances:
     post:
       operationId: ListOnPremisesInstances
@@ -1373,7 +1373,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListOnPremisesInstancesOutput"
+                $ref: "#/components/schemas/ListOnPremisesInstancesOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1643,7 +1643,6 @@ paths:
                   description: A list of tags that TagResource associates with a resource. The resource is identified by the ResourceArn input parameter.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -3457,43 +3456,45 @@ components:
         nextToken:
           $ref: "#/components/schemas/NextToken"
           description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list application revisions call to return the next set of application revisions in the list.
-    ListApplicationsOutput:
-      description: Represents the output of a ListApplications operation.
+    ListApplicationsRowDisplay:
       type: object
       properties:
-        applications:
-          $ref: "#/components/schemas/ApplicationsList"
+        application:
+          type: string
           description: A list of application names.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list applications call to return the next set of applications in the list.
-    ListDeploymentConfigsOutput:
-      description: Represents the output of a ListDeploymentConfigs operation.
+    ListApplicationsOutputDisplay:
       type: object
       properties:
-        deploymentConfigsList:
-          $ref: "#/components/schemas/DeploymentConfigsList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListApplicationsRowDisplay"
+    ListDeploymentConfigsRowDisplay:
+      type: object
+      properties:
+        deployment_configs:
+          type: string
           description: A list of deployment configurations, including built-in configurations such as CodeDeployDefault.OneAtATime.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment configurations call to return the next set of deployment configurations in the list.
-    DeploymentConfigsList:
-      type: array
-      items:
-        $ref: "#/components/schemas/DeploymentConfigName"
-    ListDeploymentGroupsOutput:
-      description: Represents the output of a ListDeploymentGroups operation.
+    ListDeploymentConfigsOutputDisplay:
       type: object
       properties:
-        applicationName:
-          $ref: "#/components/schemas/ApplicationName"
-          description: The application name.
-        deploymentGroups:
-          $ref: "#/components/schemas/DeploymentGroupsList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDeploymentConfigsRowDisplay"
+    ListDeploymentGroupsRowDisplay:
+      type: object
+      properties:
+        deployment_group:
+          type: string
           description: A list of deployment group names.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment groups call to return the next set of deployment groups in the list.
+    ListDeploymentGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDeploymentGroupsRowDisplay"
     InstanceStatusList:
       type: array
       items:
@@ -3502,28 +3503,35 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/InstanceType"
-    ListDeploymentInstancesOutput:
-      description: Represents the output of a ListDeploymentInstances operation.
+    ListDeploymentInstancesRowDisplay:
       type: object
       properties:
-        instancesList:
-          $ref: "#/components/schemas/InstancesList"
+        instances:
+          type: string
           description: A list of instance IDs.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployment instances call to return the next set of deployment instances in the list.
+    ListDeploymentInstancesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDeploymentInstancesRowDisplay"
     TargetFilters:
       type: object
       properties: {}
-    ListDeploymentTargetsOutput:
+    ListDeploymentTargetsRowDisplay:
       type: object
       properties:
-        targetIds:
-          $ref: "#/components/schemas/TargetIdList"
+        target_id:
+          type: string
           description: The unique IDs of deployment targets.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, a token identifier is also returned. It can be used in a subsequent ListDeploymentTargets call to return the next set of deployment targets in the list.
+    ListDeploymentTargetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDeploymentTargetsRowDisplay"
     DeploymentStatusList:
       type: array
       items:
@@ -3538,45 +3546,50 @@ components:
         end:
           $ref: "#/components/schemas/Timestamp"
           description: The end time of the time range. Specify null to leave the end time open-ended.
-    ListDeploymentsOutput:
-      description: Represents the output of a ListDeployments operation.
+    ListDeploymentsRowDisplay:
       type: object
       properties:
-        deployments:
-          $ref: "#/components/schemas/DeploymentsList"
+        deployment:
+          type: string
           description: A list of deployment IDs.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployments call to return the next set of deployments in the list.
-    ListGitHubAccountTokenNamesOutput:
-      description: Represents the output of a ListGitHubAccountTokenNames operation.
+    ListDeploymentsOutputDisplay:
       type: object
       properties:
-        tokenNameList:
-          $ref: "#/components/schemas/GitHubAccountTokenNameList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDeploymentsRowDisplay"
+    ListGitHubAccountTokenNamesRowDisplay:
+      type: object
+      properties:
+        token_name:
+          type: string
           description: A list of names of connections to GitHub accounts.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent ListGitHubAccountTokenNames call to return the next set of names in the list.
-    GitHubAccountTokenNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/GitHubAccountTokenName"
+    ListGitHubAccountTokenNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListGitHubAccountTokenNamesRowDisplay"
     RegistrationStatus:
       type: string
       enum:
         - Registered
         - Deregistered
-    ListOnPremisesInstancesOutput:
-      description: Represents the output of the list on-premises instances operation.
+    ListOnPremisesInstancesRowDisplay:
       type: object
       properties:
-        instanceNames:
-          $ref: "#/components/schemas/InstanceNameList"
+        instance_name:
+          type: string
           description: The list of matching on-premises instance names.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list on-premises instances call to return the next set of on-premises instances in the list.
+    ListOnPremisesInstancesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListOnPremisesInstancesRowDisplay"
     Arn:
       type: string
       minLength: 1
@@ -3631,10 +3644,10 @@ components:
           $ref: "#/components/schemas/AutoScalingGroupList"
           description: If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the Amazon Web Services account. If the output contains data, CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the Amazon Web Services account.
   x-stackQL-resources:
-    tags_to_on_premises_instances:
-      id: aws.codedeploy.tags_to_on_premises_instances
-      name: tags_to_on_premises_instances
-      title: tags_to_on_premises_instances
+    tags:
+      id: aws.codedeploy.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_on_premises_instances:
           operation:
@@ -3648,11 +3661,65 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1ListTagsForResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_tags_from_on_premises_instances:
+          operation:
+            $ref: "#/paths/~1RemoveTagsFromOnPremisesInstances/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1UntagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_on_premises_instances/methods/add_tags_to_on_premises_instances"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_on_premises_instances"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     application_revisions:
       id: aws.codedeploy.application_revisions
@@ -3697,6 +3764,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_application_revision:
@@ -3769,6 +3843,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.application
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3782,12 +3857,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.applications
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListApplicationsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "applications" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"application": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_application:
@@ -3863,6 +3951,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.deploymentGroupInfo
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3876,12 +3965,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.deploymentGroups
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDeploymentGroupsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "deploymentGroups" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"deployment_group": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_deployment_group:
@@ -3932,6 +4034,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.instanceSummary
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3945,12 +4048,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.instancesList
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDeploymentInstancesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "instancesList" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"instances": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3985,6 +4101,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.deploymentTarget
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3998,12 +4115,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.targetIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDeploymentTargetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "targetIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"target_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4051,6 +4181,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.deploymentInfo
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4064,7 +4195,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.deployments
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDeploymentsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "deployments" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"deployment": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_deployment:
+          operation:
+            $ref: "#/paths/~1StopDeployment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4117,6 +4274,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.instanceInfo
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4130,12 +4288,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.instanceNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListOnPremisesInstancesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "instanceNames" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"instance_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_on_premises_instance:
@@ -4196,6 +4367,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.deploymentConfigInfo
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4209,12 +4381,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.deploymentConfigsList
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDeploymentConfigsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "deploymentConfigsList" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"deployment_configs": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4285,41 +4470,30 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.tokenNameList
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListGitHubAccountTokenNamesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "tokenNameList" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"token_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/git_hub_account_token_names/methods/list_git_hub_account_token_names"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.codedeploy.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1ListTagsForResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
         insert: []
         update: []
         delete: []
@@ -4347,65 +4521,4 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/lifecycle_event_hook_execution_status/methods/put_lifecycle_event_hook_execution_status"
-        delete: []
-    tags_from_on_premises_instances:
-      id: aws.codedeploy.tags_from_on_premises_instances
-      name: tags_from_on_premises_instances
-      title: tags_from_on_premises_instances
-      methods:
-        remove_tags_from_on_premises_instances:
-          operation:
-            $ref: "#/paths/~1RemoveTagsFromOnPremisesInstances/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_on_premises_instances/methods/remove_tags_from_on_premises_instances"
-        delete: []
-    resources:
-      id: aws.codedeploy.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1TagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1UntagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
         delete: []

@@ -3907,6 +3907,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.browserSettings
         update_browser_settings:
           operation:
             $ref: "#/paths/~1browserSettings~1{browser_settings_arn}/patch"
@@ -3969,6 +3970,14 @@ components:
             objectKey: $.dataProtectionSettings
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_data_protection_settings:
           operation:
             $ref: "#/paths/~1dataProtectionSettings~1{data_protection_settings_arn}/delete"
@@ -3981,6 +3990,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.dataProtectionSettings
         update_data_protection_settings:
           operation:
             $ref: "#/paths/~1dataProtectionSettings~1{data_protection_settings_arn}/patch"
@@ -4054,6 +4064,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ipAccessSettings
         update_ip_access_settings:
           operation:
             $ref: "#/paths/~1ipAccessSettings~1{ip_access_settings_arn}/patch"
@@ -4127,6 +4138,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.networkSettings
         update_network_settings:
           operation:
             $ref: "#/paths/~1networkSettings~1{network_settings_arn}/patch"
@@ -4189,6 +4201,14 @@ components:
             objectKey: $.sessionLoggers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_session_logger:
           operation:
             $ref: "#/paths/~1sessionLoggers~1{session_logger_arn}/delete"
@@ -4201,6 +4221,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.sessionLogger
         update_session_logger:
           operation:
             $ref: "#/paths/~1sessionLoggers~1{session_logger_arn}/post"
@@ -4274,6 +4295,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.trustStore
         update_trust_store:
           operation:
             $ref: "#/paths/~1trustStores~1{trust_store_arn}/patch"
@@ -4347,6 +4369,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.userAccessLoggingSettings
         update_user_access_logging_settings:
           operation:
             $ref: "#/paths/~1userAccessLoggingSettings~1{user_access_logging_settings_arn}/patch"
@@ -4420,6 +4443,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.userSettings
         update_user_settings:
           operation:
             $ref: "#/paths/~1userSettings~1{user_settings_arn}/patch"
@@ -4471,6 +4495,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.identityProvider
         update_identity_provider:
           operation:
             $ref: "#/paths/~1identityProviders~1{identity_provider_arn}/patch"
@@ -4536,6 +4561,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.portal
         update_portal:
           operation:
             $ref: "#/paths/~1portals~1{portal_arn}/put"
@@ -4562,12 +4588,19 @@ components:
       name: sessions
       title: sessions
       methods:
+        expire_session:
+          operation:
+            $ref: "#/paths/~1portals~1{portal_id}~1sessions~1{session_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_session:
           operation:
             $ref: "#/paths/~1portals~1{portal_id}~1sessions~1{session_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.session
         list_sessions:
           operation:
             $ref: "#/paths/~1portals~1{portal_id}~1sessions/get"
@@ -4577,6 +4610,14 @@ components:
             objectKey: $.sessions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"
@@ -4629,10 +4670,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.workspaces_web.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.workspaces_web.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4640,17 +4681,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.workspaces_web.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -4671,9 +4701,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -118,7 +118,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: query
+      x-stackql-resource: queries
       x-stackql-method: cancel_query
       x-stackql-verb: EXEC
     get:
@@ -221,6 +221,9 @@ paths:
       x-stackql-method: list_graphs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.graphs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /snapshots:
     post:
       operationId: CreateGraphSnapshot
@@ -290,6 +293,9 @@ paths:
       x-stackql-method: list_graph_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.graphSnapshots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /importtasks:
     post:
       operationId: CreateGraphUsingImportTask
@@ -347,7 +353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateGraphUsingImportTaskOutput'
-      x-stackql-resource: graph_using_import_tasks
+      x-stackql-resource: import_tasks
       x-stackql-method: create_graph_using_import_task
       x-stackql-verb: INSERT
     get:
@@ -382,6 +388,9 @@ paths:
       x-stackql-method: list_import_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /graphs/{graph_identifier}/endpoints/:
     post:
       operationId: CreatePrivateGraphEndpoint
@@ -455,6 +464,9 @@ paths:
       x-stackql-method: list_private_graph_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.privateGraphEndpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /graphs/{graph_identifier}:
     delete:
       operationId: DeleteGraph
@@ -531,7 +543,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetGraphOutput'
-      x-stackql-resource: graph
+      x-stackql-resource: graphs
       x-stackql-method: reset_graph
       x-stackql-verb: EXEC
     patch:
@@ -703,7 +715,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteQueryOutput'
-      x-stackql-resource: execute_query
+      x-stackql-resource: graphs
       x-stackql-method: execute_query
       x-stackql-verb: EXEC
     get:
@@ -799,6 +811,9 @@ paths:
       x-stackql-method: list_export_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartExportTask
       description: Export data from an existing Neptune Analytics graph to Amazon S3. The graph state should be AVAILABLE.
@@ -860,7 +875,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -891,7 +906,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -917,7 +932,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /snapshots/{snapshot_identifier}/restore:
@@ -959,7 +974,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreGraphFromSnapshotOutput'
-      x-stackql-resource: graph_from_snapshot
+      x-stackql-resource: graphs
       x-stackql-method: restore_graph_from_snapshot
       x-stackql-verb: EXEC
   /graphs/{graph_identifier}/start:
@@ -980,7 +995,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartGraphOutput'
-      x-stackql-resource: graph
+      x-stackql-resource: graphs
       x-stackql-method: start_graph
       x-stackql-verb: EXEC
   /graphs/{graph_identifier}/importtasks:
@@ -1047,7 +1062,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopGraphOutput'
-      x-stackql-resource: graph
+      x-stackql-resource: graphs
       x-stackql-method: stop_graph
       x-stackql-verb: EXEC
 components:

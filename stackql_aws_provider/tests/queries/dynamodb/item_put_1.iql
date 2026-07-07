@@ -1,0 +1,7 @@
+-- Data-plane write via the REPLACE surface (PutItem is upsert semantics,
+-- mapped to replace by the verb-prefix rules). REPLACE is UPDATE-shaped:
+-- routing keys in WHERE, body fields in SET. Attribute-value maps are
+-- plain JSON strings against the aws-json body schema.
+REPLACE aws.dynamodb.items
+SET Item = '{"pk":{"S":"smoke-1"},"payload":{"S":"alpha-payload"}}'
+WHERE region = '{{ region }}' AND TableName = '{{ table_name }}'

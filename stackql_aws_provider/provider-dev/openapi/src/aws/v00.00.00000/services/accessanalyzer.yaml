@@ -2928,6 +2928,94 @@ components:
         - column
         - offset
   x-stackQL-resources:
+    analyzers:
+      id: aws.accessanalyzer.analyzers
+      name: analyzers
+      title: analyzers
+      methods:
+        apply_archive_rule:
+          operation:
+            $ref: "#/paths/~1archive-rule/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_analyzer:
+          operation:
+            $ref: "#/paths/~1analyzer/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_analyzers:
+          operation:
+            $ref: "#/paths/~1analyzer/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.analyzers
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_analyzer:
+          operation:
+            $ref: "#/paths/~1analyzer~1{analyzer_name}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        get_analyzer:
+          operation:
+            $ref: "#/paths/~1analyzer~1{analyzer_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.analyzer
+        update_analyzer:
+          operation:
+            $ref: "#/paths/~1analyzer~1{analyzer_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_resource_scan:
+          operation:
+            $ref: "#/paths/~1resource~1scan/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/analyzers/methods/get_analyzer"
+          - $ref: "#/components/x-stackQL-resources/analyzers/methods/list_analyzers"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/analyzers/methods/create_analyzer"
+        update:
+          - $ref: "#/components/x-stackQL-resources/analyzers/methods/update_analyzer"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/analyzers/methods/delete_analyzer"
     generated_policies:
       id: aws.accessanalyzer.generated_policies
       name: generated_policies
@@ -2972,12 +3060,21 @@ components:
             objectKey: $.accessPreviews
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_access_preview:
           operation:
             $ref: "#/paths/~1access-preview~1{access_preview_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.accessPreview
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -2988,65 +3085,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/access_previews/methods/create_access_preview"
         update: []
         delete: []
-    analyzers:
-      id: aws.accessanalyzer.analyzers
-      name: analyzers
-      title: analyzers
-      methods:
-        create_analyzer:
-          operation:
-            $ref: "#/paths/~1analyzer/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_analyzers:
-          operation:
-            $ref: "#/paths/~1analyzer/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.analyzers
-          request:
-            nativeCasing: pascal
-        delete_analyzer:
-          operation:
-            $ref: "#/paths/~1analyzer~1{analyzer_name}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        get_analyzer:
-          operation:
-            $ref: "#/paths/~1analyzer~1{analyzer_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_analyzer:
-          operation:
-            $ref: "#/paths/~1analyzer~1{analyzer_name}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/analyzers/methods/get_analyzer"
-          - $ref: "#/components/x-stackQL-resources/analyzers/methods/list_analyzers"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/analyzers/methods/create_analyzer"
-        update:
-          - $ref: "#/components/x-stackQL-resources/analyzers/methods/update_analyzer"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/analyzers/methods/delete_analyzer"
     archive_rules:
       id: aws.accessanalyzer.archive_rules
       name: archive_rules
@@ -3071,6 +3109,14 @@ components:
             objectKey: $.archiveRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_archive_rule:
           operation:
             $ref: "#/paths/~1analyzer~1{analyzer_name}~1archive-rule~1{rule_name}/delete"
@@ -3084,6 +3130,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.archiveRule
         update_archive_rule:
           operation:
             $ref: "#/paths/~1analyzer~1{analyzer_name}~1archive-rule~1{rule_name}/put"
@@ -3104,6 +3151,62 @@ components:
           - $ref: "#/components/x-stackQL-resources/archive_rules/methods/update_archive_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/archive_rules/methods/delete_archive_rule"
+    findings:
+      id: aws.accessanalyzer.findings
+      name: findings
+      title: findings
+      methods:
+        generate_finding_recommendation:
+          operation:
+            $ref: "#/paths/~1recommendation~1{id}/post"
+          response:
+            openAPIDocKey: "200"
+        get_finding:
+          operation:
+            $ref: "#/paths/~1finding~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.finding
+          request:
+            nativeCasing: pascal
+        list_findings:
+          operation:
+            $ref: "#/paths/~1finding/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.findings
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_findings:
+          operation:
+            $ref: "#/paths/~1finding/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/get_finding"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/update_findings"
+        delete: []
     finding_recommendations:
       id: aws.accessanalyzer.finding_recommendations
       name: finding_recommendations
@@ -3118,6 +3221,14 @@ components:
             objectKey: $.recommendedSteps
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/finding_recommendations/methods/get_finding_recommendation"
@@ -3139,6 +3250,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3158,6 +3276,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.resource
           request:
             nativeCasing: pascal
         list_analyzed_resources:
@@ -3170,6 +3289,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3178,49 +3304,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/analyzed_resources/methods/list_analyzed_resources"
         insert: []
         update: []
-        delete: []
-    findings:
-      id: aws.accessanalyzer.findings
-      name: findings
-      title: findings
-      methods:
-        get_finding:
-          operation:
-            $ref: "#/paths/~1finding~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_findings:
-          operation:
-            $ref: "#/paths/~1finding/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.findings
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_findings:
-          operation:
-            $ref: "#/paths/~1finding/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/get_finding"
-          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/update_findings"
         delete: []
     finding_v2s:
       id: aws.accessanalyzer.finding_v2s
@@ -3236,6 +3319,14 @@ components:
             objectKey: $.findingDetails
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/finding_v2s/methods/get_finding_v2"
@@ -3279,6 +3370,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3301,16 +3399,24 @@ components:
             objectKey: $.policyGenerations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generations/methods/list_policy_generations"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.accessanalyzer.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.accessanalyzer.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3318,17 +3424,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.accessanalyzer.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3349,9 +3444,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

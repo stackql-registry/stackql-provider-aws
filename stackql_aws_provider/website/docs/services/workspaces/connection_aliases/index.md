@@ -1,0 +1,134 @@
+--- 
+title: connection_aliases
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - connection_aliases
+  - workspaces
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists a <code>connection_aliases</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="connection_aliases" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.workspaces.connection_aliases" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="describe_connection_aliases"
+    values={[
+        { label: 'describe_connection_aliases', value: 'describe_connection_aliases' }
+    ]}
+>
+<TabItem value="describe_connection_aliases">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="ConnectionAliases" /></td>
+    <td><code>array</code></td>
+    <td>Information about the specified connection aliases.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="NextToken" /></td>
+    <td><code>string</code></td>
+    <td>The token to use to retrieve the next page of results. This value is null when there are no more results to return.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#describe_connection_aliases"><CopyableCode code="describe_connection_aliases" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves a list that describes the connection aliases used for cross-Region redirection. For more information, see Cross-Region Redirection for Amazon WorkSpaces.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="describe_connection_aliases"
+    values={[
+        { label: 'describe_connection_aliases', value: 'describe_connection_aliases' }
+    ]}
+>
+<TabItem value="describe_connection_aliases">
+
+Retrieves a list that describes the connection aliases used for cross-Region redirection. For more information, see Cross-Region Redirection for Amazon WorkSpaces.
+
+```sql
+SELECT
+ConnectionAliases,
+NextToken
+FROM aws.workspaces.connection_aliases
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>

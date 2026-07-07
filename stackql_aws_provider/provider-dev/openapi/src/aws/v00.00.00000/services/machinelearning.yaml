@@ -49,7 +49,6 @@ paths:
                   $ref: "#/components/schemas/TaggableResourceType"
                   description: The type of the ML object to tag.
               required:
-                - Tags
                 - ResourceId
                 - ResourceType
       responses:
@@ -2464,6 +2463,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         get_batch_prediction:
@@ -2502,10 +2508,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/batch_predictions/methods/update_batch_prediction"
         delete:
           - $ref: "#/components/x-stackQL-resources/batch_predictions/methods/delete_batch_prediction"
-    data_source_from_rds:
-      id: aws.machinelearning.data_source_from_rds
-      name: data_source_from_rds
-      title: data_source_from_rds
+    data_sources:
+      id: aws.machinelearning.data_sources
+      name: data_sources
+      title: data_sources
       methods:
         create_data_source_from_rds:
           operation:
@@ -2520,17 +2526,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/data_source_from_rds/methods/create_data_source_from_rds"
-        update: []
-        delete: []
-    data_source_from_redshifts:
-      id: aws.machinelearning.data_source_from_redshifts
-      name: data_source_from_redshifts
-      title: data_source_from_redshifts
-      methods:
         create_data_source_from_redshift:
           operation:
             $ref: "#/paths/~1CreateDataSourceFromRedshift/post"
@@ -2544,17 +2539,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/data_source_from_redshifts/methods/create_data_source_from_redshift"
-        update: []
-        delete: []
-    data_source_from_s3s:
-      id: aws.machinelearning.data_source_from_s3s
-      name: data_source_from_s3s
-      title: data_source_from_s3s
-      methods:
         create_data_source_from_s3:
           operation:
             $ref: "#/paths/~1CreateDataSourceFromS3/post"
@@ -2568,12 +2552,78 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_data_source:
+          operation:
+            $ref: "#/paths/~1DeleteDataSource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_data_sources:
+          operation:
+            $ref: "#/paths/~1DescribeDataSources/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Results
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        get_data_source:
+          operation:
+            $ref: "#/paths/~1GetDataSource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_data_source:
+          operation:
+            $ref: "#/paths/~1UpdateDataSource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/get_data_source"
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/describe_data_sources"
         insert:
-          - $ref: "#/components/x-stackQL-resources/data_source_from_s3s/methods/create_data_source_from_s3"
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/create_data_source_from_rds"
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/create_data_source_from_redshift"
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/create_data_source_from_s3"
+        update:
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/update_data_source"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/delete_data_source"
     evaluations:
       id: aws.machinelearning.evaluations
       name: evaluations
@@ -2617,6 +2667,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         get_evaluation:
@@ -2673,9 +2730,35 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_realtime_endpoint:
+          operation:
+            $ref: "#/paths/~1CreateRealtimeEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_ml_model:
           operation:
             $ref: "#/paths/~1DeleteMLModel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_realtime_endpoint:
+          operation:
+            $ref: "#/paths/~1DeleteRealtimeEndpoint/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2698,11 +2781,31 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         get_ml_model:
           operation:
             $ref: "#/paths/~1GetMLModel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        predict:
+          operation:
+            $ref: "#/paths/~1Predict/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2732,112 +2835,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/ml_models/methods/describe_ml_models"
         insert:
           - $ref: "#/components/x-stackQL-resources/ml_models/methods/create_ml_model"
+          - $ref: "#/components/x-stackQL-resources/ml_models/methods/create_realtime_endpoint"
         update:
           - $ref: "#/components/x-stackQL-resources/ml_models/methods/update_ml_model"
         delete:
           - $ref: "#/components/x-stackQL-resources/ml_models/methods/delete_ml_model"
-    realtime_endpoints:
-      id: aws.machinelearning.realtime_endpoints
-      name: realtime_endpoints
-      title: realtime_endpoints
-      methods:
-        create_realtime_endpoint:
-          operation:
-            $ref: "#/paths/~1CreateRealtimeEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_realtime_endpoint:
-          operation:
-            $ref: "#/paths/~1DeleteRealtimeEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/realtime_endpoints/methods/create_realtime_endpoint"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/realtime_endpoints/methods/delete_realtime_endpoint"
-    data_sources:
-      id: aws.machinelearning.data_sources
-      name: data_sources
-      title: data_sources
-      methods:
-        delete_data_source:
-          operation:
-            $ref: "#/paths/~1DeleteDataSource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_data_sources:
-          operation:
-            $ref: "#/paths/~1DescribeDataSources/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Results
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_data_source:
-          operation:
-            $ref: "#/paths/~1GetDataSource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_data_source:
-          operation:
-            $ref: "#/paths/~1UpdateDataSource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/data_sources/methods/get_data_source"
-          - $ref: "#/components/x-stackQL-resources/data_sources/methods/describe_data_sources"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/data_sources/methods/update_data_source"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/data_sources/methods/delete_data_source"

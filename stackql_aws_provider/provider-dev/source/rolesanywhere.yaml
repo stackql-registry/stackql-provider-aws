@@ -89,6 +89,9 @@ paths:
       x-stackql-method: list_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.profiles
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /trustanchors:
     post:
       operationId: CreateTrustAnchor
@@ -156,6 +159,9 @@ paths:
       x-stackql-method: list_trust_anchors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.trustAnchors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /profiles/{profile_id}/mappings:
     delete:
       operationId: DeleteAttributeMapping
@@ -186,7 +192,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAttributeMappingResponse'
-      x-stackql-resource: attribute_mappings
+      x-stackql-resource: profiles
       x-stackql-method: delete_attribute_mapping
       x-stackql-verb: DELETE
     put:
@@ -221,7 +227,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAttributeMappingResponse'
-      x-stackql-resource: attribute_mappings
+      x-stackql-resource: profiles
       x-stackql-method: put_attribute_mapping
       x-stackql-verb: REPLACE
   /crl/{crl_id}:
@@ -265,6 +271,7 @@ paths:
       x-stackql-resource: crls
       x-stackql-method: get_crl
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.crl
     patch:
       operationId: UpdateCrl
       description: 'Updates the certificate revocation list (CRL). A CRL is a list of certificates that have been revoked
@@ -339,6 +346,7 @@ paths:
       x-stackql-resource: profiles
       x-stackql-method: get_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.profile
     patch:
       operationId: UpdateProfile
       description: 'Updates a profile, a list of the roles that IAM Roles Anywhere service is trusted to assume. You use profiles
@@ -420,6 +428,7 @@ paths:
       x-stackql-resource: trust_anchors
       x-stackql-method: get_trust_anchor
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.trustAnchor
     patch:
       operationId: UpdateTrustAnchor
       description: 'Updates a trust anchor. You establish trust between IAM Roles Anywhere and your certificate authority
@@ -495,7 +504,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfileDetailResponse'
-      x-stackql-resource: profile
+      x-stackql-resource: profiles
       x-stackql-method: disable_profile
       x-stackql-verb: EXEC
   /trustanchor/{trust_anchor_id}/disable:
@@ -517,7 +526,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TrustAnchorDetailResponse'
-      x-stackql-resource: trust_anchor
+      x-stackql-resource: trust_anchors
       x-stackql-method: disable_trust_anchor
       x-stackql-verb: EXEC
   /crl/{crl_id}/enable:
@@ -560,7 +569,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProfileDetailResponse'
-      x-stackql-resource: profile
+      x-stackql-resource: profiles
       x-stackql-method: enable_profile
       x-stackql-verb: EXEC
   /trustanchor/{trust_anchor_id}/enable:
@@ -582,7 +591,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TrustAnchorDetailResponse'
-      x-stackql-resource: trust_anchor
+      x-stackql-resource: trust_anchors
       x-stackql-method: enable_trust_anchor
       x-stackql-verb: EXEC
   /subject/{subject_id}:
@@ -608,6 +617,7 @@ paths:
       x-stackql-resource: subjects
       x-stackql-method: get_subject
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.subject
   /crls:
     post:
       operationId: ImportCrl
@@ -675,6 +685,9 @@ paths:
       x-stackql-method: list_crls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.crls
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /subjects:
     get:
       operationId: ListSubjects
@@ -705,6 +718,9 @@ paths:
       x-stackql-method: list_subjects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.subjects
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     get:
       operationId: ListTagsForResource
@@ -723,7 +739,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /put-notifications-settings:
@@ -754,7 +770,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutNotificationSettingsResponse'
-      x-stackql-resource: notification_settings
+      x-stackql-resource: trust_anchors
       x-stackql-method: put_notification_settings
       x-stackql-verb: REPLACE
   /reset-notifications-settings:
@@ -783,7 +799,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetNotificationSettingsResponse'
-      x-stackql-resource: notification_settings
+      x-stackql-resource: trust_anchors
       x-stackql-method: reset_notification_settings
       x-stackql-verb: EXEC
   /TagResource:
@@ -812,7 +828,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -841,7 +857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

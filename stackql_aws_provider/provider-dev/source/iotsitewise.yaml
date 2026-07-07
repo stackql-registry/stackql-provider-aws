@@ -92,7 +92,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: time_series_to_asset_properties
+      x-stackql-resource: asset_properties
       x-stackql-method: associate_time_series_to_asset_property
       x-stackql-verb: UPDATE
   /projects/{project_id}/assets/associate:
@@ -126,7 +126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateProjectAssetsResponse'
-      x-stackql-resource: batch_associate_project_assets
+      x-stackql-resource: project_assets
       x-stackql-method: batch_associate_project_assets
       x-stackql-verb: EXEC
   /projects/{project_id}/assets/disassociate:
@@ -160,7 +160,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateProjectAssetsResponse'
-      x-stackql-resource: batch_disassociate_project_assets
+      x-stackql-resource: project_assets
       x-stackql-method: batch_disassociate_project_assets
       x-stackql-verb: EXEC
   /properties/batch/aggregates:
@@ -390,6 +390,9 @@ paths:
       x-stackql-method: list_access_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accessPolicySummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assets:
     post:
       operationId: CreateAsset
@@ -476,6 +479,9 @@ paths:
       x-stackql-method: list_assets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /asset-models:
     post:
       operationId: CreateAssetModel
@@ -571,6 +577,9 @@ paths:
       x-stackql-method: list_asset_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetModelSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /asset-models/{asset_model_id}/composite-models:
     post:
       operationId: CreateAssetModelCompositeModel
@@ -693,6 +702,9 @@ paths:
       x-stackql-method: list_asset_model_composite_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetModelCompositeModelSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /jobs:
     post:
       operationId: CreateBulkImportJob
@@ -774,6 +786,9 @@ paths:
       x-stackql-method: list_bulk_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /computation-models:
     post:
       operationId: CreateComputationModel
@@ -846,6 +861,9 @@ paths:
       x-stackql-method: list_computation_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.computationModelSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /dashboards:
     post:
       operationId: CreateDashboard
@@ -917,6 +935,9 @@ paths:
       x-stackql-method: list_dashboards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dashboardSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /datasets:
     post:
       operationId: CreateDataset
@@ -987,6 +1008,9 @@ paths:
       x-stackql-method: list_datasets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datasetSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /20200301/gateways:
     post:
       operationId: CreateGateway
@@ -1048,6 +1072,9 @@ paths:
       x-stackql-method: list_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.gatewaySummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /portals:
     post:
       operationId: CreatePortal
@@ -1128,6 +1155,9 @@ paths:
       x-stackql-method: list_portals
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.portalSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /projects:
     post:
       operationId: CreateProject
@@ -1197,6 +1227,9 @@ paths:
       x-stackql-method: list_projects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.projectSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /access-policies/{access_policy_id}:
     delete:
       operationId: DeleteAccessPolicy
@@ -2688,6 +2721,7 @@ paths:
       x-stackql-resource: logging_options
       x-stackql-method: describe_logging_options
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.loggingOptions
     put:
       operationId: PutLoggingOptions
       description: Sets logging options for IoT SiteWise.
@@ -2880,7 +2914,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: time_series_from_asset_properties
+      x-stackql-resource: asset_properties
       x-stackql-method: disassociate_time_series_from_asset_property
       x-stackql-verb: UPDATE
   /actions:
@@ -2970,6 +3004,9 @@ paths:
       x-stackql-method: list_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /queries/execution:
     post:
       operationId: ExecuteQuery
@@ -3003,6 +3040,9 @@ paths:
       x-stackql-resource: execute_query
       x-stackql-method: execute_query
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /properties/aggregates:
     get:
       operationId: GetAssetPropertyAggregates
@@ -3093,6 +3133,9 @@ paths:
       x-stackql-method: get_asset_property_aggregates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aggregatedValues
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /properties/latest:
     get:
       operationId: GetAssetPropertyValue
@@ -3130,6 +3173,7 @@ paths:
       x-stackql-resource: asset_property_values
       x-stackql-method: get_asset_property_value
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.propertyValue
   /properties/history:
     get:
       operationId: GetAssetPropertyValueHistory
@@ -3208,6 +3252,9 @@ paths:
       x-stackql-method: get_asset_property_value_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetPropertyValueHistory
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /properties/interpolated:
     get:
       operationId: GetInterpolatedAssetPropertyValues
@@ -3331,6 +3378,9 @@ paths:
       x-stackql-method: get_interpolated_asset_property_values
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.interpolatedAssetPropertyValues
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistant/invocation:
     post:
       operationId: InvokeAssistant
@@ -3414,6 +3464,9 @@ paths:
       x-stackql-method: list_asset_model_properties
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetModelPropertySummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assets/{asset_id}/properties:
     get:
       operationId: ListAssetProperties
@@ -3460,6 +3513,9 @@ paths:
       x-stackql-method: list_asset_properties
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetPropertySummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assets/{asset_id}/assetRelationships:
     get:
       operationId: ListAssetRelationships
@@ -3505,6 +3561,9 @@ paths:
       x-stackql-method: list_asset_relationships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetRelationshipSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assets/{asset_id}/hierarchies:
     get:
       operationId: ListAssociatedAssets
@@ -3559,6 +3618,9 @@ paths:
       x-stackql-method: list_associated_assets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assetSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /asset-models/{asset_model_id}/composition-relationships:
     get:
       operationId: ListCompositionRelationships
@@ -3595,6 +3657,9 @@ paths:
       x-stackql-method: list_composition_relationships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.compositionRelationshipSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /computation-models/data-binding-usages:
     post:
       operationId: ListComputationModelDataBindingUsages
@@ -3627,6 +3692,9 @@ paths:
       x-stackql-method: list_computation_model_data_binding_usages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataBindingUsageSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /computation-models/{computation_model_id}/resolve-to-resources:
     get:
       operationId: ListComputationModelResolveToResources
@@ -3661,6 +3729,9 @@ paths:
       x-stackql-method: list_computation_model_resolve_to_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.computationModelResolveToResourceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /executions:
     get:
       operationId: ListExecutions
@@ -3719,6 +3790,9 @@ paths:
       x-stackql-method: list_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /interface/{interface_asset_model_id}/asset-models:
     get:
       operationId: ListInterfaceRelationships
@@ -3754,6 +3828,9 @@ paths:
       x-stackql-method: list_interface_relationships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.interfaceRelationshipSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /projects/{project_id}/assets:
     get:
       operationId: ListProjectAssets
@@ -3783,11 +3860,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListProjectAssetsResponse'
+                $ref: '#/components/schemas/ListProjectAssetsOutputDisplay'
       x-stackql-resource: project_assets
       x-stackql-method: list_project_assets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.assetIds
+      x-stackql-responseEnvelope: ListProjectAssetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "assetIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"asset_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags:
     get:
       operationId: ListTagsForResource
@@ -3806,7 +3891,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -3838,7 +3923,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3864,7 +3949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /timeseries/:
@@ -3917,6 +4002,9 @@ paths:
       x-stackql-method: list_time_series
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TimeSeriesSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /20200301/gateways/{gateway_id}/capability:
     post:
       operationId: UpdateGatewayCapabilityConfiguration
@@ -9064,21 +9152,19 @@ components:
       - name
       - startUrl
       - status
-    ListProjectAssetsResponse:
+    ListProjectAssetsRowDisplay:
       type: object
       properties:
-        assetIds:
-          $ref: '#/components/schemas/AssetIDs'
+        asset_id:
+          type: string
           description: A list that contains the IDs of each asset associated with the project.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token for the next set of results, or null if there are no additional results.
-      required:
-      - assetIds
-    AssetIDs:
-      type: array
-      items:
-        $ref: '#/components/schemas/ID'
+    ListProjectAssetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListProjectAssetsRowDisplay'
     ListProjectsResponse:
       type: object
       properties:

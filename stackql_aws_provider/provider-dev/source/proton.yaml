@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptEnvironmentAccountConnectionOutput'
-      x-stackql-resource: environment_account_connection
+      x-stackql-resource: environments
       x-stackql-method: accept_environment_account_connection
       x-stackql-verb: EXEC
   /CancelComponentDeployment:
@@ -91,7 +91,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelComponentDeploymentOutput'
-      x-stackql-resource: component_deployment
+      x-stackql-resource: components
       x-stackql-method: cancel_component_deployment
       x-stackql-verb: EXEC
   /CancelEnvironmentDeployment:
@@ -131,7 +131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelEnvironmentDeploymentOutput'
-      x-stackql-resource: environment_deployment
+      x-stackql-resource: environments
       x-stackql-method: cancel_environment_deployment
       x-stackql-verb: EXEC
   /CancelServiceInstanceDeployment:
@@ -176,7 +176,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelServiceInstanceDeploymentOutput'
-      x-stackql-resource: service_instance_deployment
+      x-stackql-resource: service_instances
       x-stackql-method: cancel_service_instance_deployment
       x-stackql-verb: EXEC
   /CancelServicePipelineDeployment:
@@ -217,7 +217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelServicePipelineDeploymentOutput'
-      x-stackql-resource: service_pipeline_deployment
+      x-stackql-resource: services
       x-stackql-method: cancel_service_pipeline_deployment
       x-stackql-verb: EXEC
   /CreateComponent:
@@ -1511,6 +1511,7 @@ paths:
       x-stackql-resource: account_settings
       x-stackql-method: get_account_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.accountSettings
   /GetComponent:
     post:
       operationId: GetComponent
@@ -1548,6 +1549,7 @@ paths:
       x-stackql-resource: components
       x-stackql-method: get_component
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.component
   /GetDeployment:
     post:
       operationId: GetDeployment
@@ -1597,6 +1599,7 @@ paths:
       x-stackql-resource: deployments
       x-stackql-method: get_deployment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deployment
   /GetEnvironment:
     post:
       operationId: GetEnvironment
@@ -1633,6 +1636,7 @@ paths:
       x-stackql-resource: environments
       x-stackql-method: get_environment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environment
   /GetEnvironmentAccountConnection:
     post:
       operationId: GetEnvironmentAccountConnection
@@ -1670,6 +1674,7 @@ paths:
       x-stackql-resource: environment_account_connections
       x-stackql-method: get_environment_account_connection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environmentAccountConnection
   /GetEnvironmentTemplate:
     post:
       operationId: GetEnvironmentTemplate
@@ -1706,6 +1711,7 @@ paths:
       x-stackql-resource: environment_templates
       x-stackql-method: get_environment_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environmentTemplate
   /GetEnvironmentTemplateVersion:
     post:
       operationId: GetEnvironmentTemplateVersion
@@ -1750,6 +1756,7 @@ paths:
       x-stackql-resource: environment_template_versions
       x-stackql-method: get_environment_template_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environmentTemplateVersion
   /GetRepository:
     post:
       operationId: GetRepository
@@ -1790,6 +1797,7 @@ paths:
       x-stackql-resource: repositories
       x-stackql-method: get_repository
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.repository
   /GetRepositorySyncStatus:
     post:
       operationId: GetRepositorySyncStatus
@@ -1842,6 +1850,7 @@ paths:
       x-stackql-resource: repository_sync_status
       x-stackql-method: get_repository_sync_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.latestSync
   /GetResourcesSummary:
     post:
       operationId: GetResourcesSummary
@@ -1879,6 +1888,7 @@ paths:
       x-stackql-resource: resources_summaries
       x-stackql-method: get_resources_summary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.counts
   /GetService:
     post:
       operationId: GetService
@@ -1915,6 +1925,7 @@ paths:
       x-stackql-resource: services
       x-stackql-method: get_service
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.service
   /GetServiceInstance:
     post:
       operationId: GetServiceInstance
@@ -1956,6 +1967,7 @@ paths:
       x-stackql-resource: service_instances
       x-stackql-method: get_service_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.serviceInstance
   /GetServiceInstanceSyncStatus:
     post:
       operationId: GetServiceInstanceSyncStatus
@@ -2037,6 +2049,7 @@ paths:
       x-stackql-resource: service_sync_blocker_summaries
       x-stackql-method: get_service_sync_blocker_summary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.serviceSyncBlockerSummary
   /GetServiceSyncConfig:
     post:
       operationId: GetServiceSyncConfig
@@ -2073,6 +2086,7 @@ paths:
       x-stackql-resource: service_sync_configs
       x-stackql-method: get_service_sync_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.serviceSyncConfig
   /GetServiceTemplate:
     post:
       operationId: GetServiceTemplate
@@ -2109,6 +2123,7 @@ paths:
       x-stackql-resource: service_templates
       x-stackql-method: get_service_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.serviceTemplate
   /GetServiceTemplateVersion:
     post:
       operationId: GetServiceTemplateVersion
@@ -2153,6 +2168,7 @@ paths:
       x-stackql-resource: service_template_versions
       x-stackql-method: get_service_template_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.serviceTemplateVersion
   /GetTemplateSyncConfig:
     post:
       operationId: GetTemplateSyncConfig
@@ -2193,6 +2209,7 @@ paths:
       x-stackql-resource: template_sync_configs
       x-stackql-method: get_template_sync_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.templateSyncConfig
   /GetTemplateSyncStatus:
     post:
       operationId: GetTemplateSyncStatus
@@ -2282,6 +2299,9 @@ paths:
       x-stackql-method: list_component_outputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.outputs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListComponentProvisionedResources:
     post:
       operationId: ListComponentProvisionedResources
@@ -2324,6 +2344,9 @@ paths:
       x-stackql-method: list_component_provisioned_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.provisionedResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListComponents:
     post:
       operationId: ListComponents
@@ -2376,6 +2399,9 @@ paths:
       x-stackql-method: list_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.components
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDeployments:
     post:
       operationId: ListDeployments
@@ -2431,6 +2457,9 @@ paths:
       x-stackql-method: list_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deployments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironmentAccountConnections:
     post:
       operationId: ListEnvironmentAccountConnections
@@ -2483,6 +2512,9 @@ paths:
       x-stackql-method: list_environment_account_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environmentAccountConnections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironmentOutputs:
     post:
       operationId: ListEnvironmentOutputs
@@ -2527,6 +2559,9 @@ paths:
       x-stackql-method: list_environment_outputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.outputs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironmentProvisionedResources:
     post:
       operationId: ListEnvironmentProvisionedResources
@@ -2569,6 +2604,9 @@ paths:
       x-stackql-method: list_environment_provisioned_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.provisionedResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironmentTemplateVersions:
     post:
       operationId: ListEnvironmentTemplateVersions
@@ -2618,6 +2656,9 @@ paths:
       x-stackql-method: list_environment_template_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templateVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironmentTemplates:
     post:
       operationId: ListEnvironmentTemplates
@@ -2657,6 +2698,9 @@ paths:
       x-stackql-method: list_environment_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironments:
     post:
       operationId: ListEnvironments
@@ -2699,6 +2743,9 @@ paths:
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRepositories:
     post:
       operationId: ListRepositories
@@ -2738,6 +2785,9 @@ paths:
       x-stackql-method: list_repositories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.repositories
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRepositorySyncDefinitions:
     post:
       operationId: ListRepositorySyncDefinitions
@@ -2787,6 +2837,9 @@ paths:
       x-stackql-method: list_repository_sync_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.syncDefinitions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServiceInstanceOutputs:
     post:
       operationId: ListServiceInstanceOutputs
@@ -2835,6 +2888,9 @@ paths:
       x-stackql-method: list_service_instance_outputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.outputs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServiceInstanceProvisionedResources:
     post:
       operationId: ListServiceInstanceProvisionedResources
@@ -2880,6 +2936,9 @@ paths:
       x-stackql-method: list_service_instance_provisioned_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.provisionedResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServiceInstances:
     post:
       operationId: ListServiceInstances
@@ -2934,6 +2993,9 @@ paths:
       x-stackql-method: list_service_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.serviceInstances
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServicePipelineOutputs:
     post:
       operationId: ListServicePipelineOutputs
@@ -2978,6 +3040,9 @@ paths:
       x-stackql-method: list_service_pipeline_outputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.outputs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServicePipelineProvisionedResources:
     post:
       operationId: ListServicePipelineProvisionedResources
@@ -3019,6 +3084,9 @@ paths:
       x-stackql-method: list_service_pipeline_provisioned_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.provisionedResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServiceTemplateVersions:
     post:
       operationId: ListServiceTemplateVersions
@@ -3068,6 +3136,9 @@ paths:
       x-stackql-method: list_service_template_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templateVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServiceTemplates:
     post:
       operationId: ListServiceTemplates
@@ -3107,6 +3178,9 @@ paths:
       x-stackql-method: list_service_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServices:
     post:
       operationId: ListServices
@@ -3146,6 +3220,9 @@ paths:
       x-stackql-method: list_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.services
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -3186,10 +3263,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /NotifyResourceDeploymentStatusChange:
     post:
       operationId: NotifyResourceDeploymentStatusChange
@@ -3275,7 +3355,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectEnvironmentAccountConnectionOutput'
-      x-stackql-resource: environment_account_connection
+      x-stackql-resource: environments
       x-stackql-method: reject_environment_account_connection
       x-stackql-verb: EXEC
   /TagResource:
@@ -3316,7 +3396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3357,7 +3437,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAccountSettings:
@@ -3912,7 +3992,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateServicePipelineOutput'
-      x-stackql-resource: service_pipelines
+      x-stackql-resource: services
       x-stackql-method: update_service_pipeline
       x-stackql-verb: UPDATE
   /UpdateServiceSyncBlocker:
@@ -3952,7 +4032,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateServiceSyncBlockerOutput'
-      x-stackql-resource: service_sync_blockers
+      x-stackql-resource: services
       x-stackql-method: update_service_sync_blocker
       x-stackql-verb: UPDATE
   /UpdateServiceSyncConfig:

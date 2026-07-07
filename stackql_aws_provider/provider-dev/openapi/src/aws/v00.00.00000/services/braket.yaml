@@ -1664,6 +1664,12 @@ components:
       name: jobs
       title: jobs
       methods:
+        cancel_job:
+          operation:
+            $ref: "#/paths/~1job~1{job_arn}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         create_job:
           operation:
             $ref: "#/paths/~1job/post"
@@ -1693,6 +1699,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1708,6 +1721,17 @@ components:
       name: quantum_tasks
       title: quantum_tasks
       methods:
+        cancel_quantum_task:
+          operation:
+            $ref: "#/paths/~1quantum-task~1{quantum_task_arn}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_quantum_task:
           operation:
             $ref: "#/paths/~1quantum-task/post"
@@ -1737,6 +1761,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1779,6 +1810,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_spending_limit:
@@ -1822,6 +1860,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1831,10 +1876,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.braket.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.braket.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1842,17 +1887,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.braket.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1873,9 +1907,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

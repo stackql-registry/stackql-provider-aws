@@ -211,7 +211,6 @@ paths:
               required:
                 - OrganizationId
                 - EntityId
-                - Alias
       responses:
         "200":
           description: Success
@@ -297,7 +296,6 @@ paths:
                   description: If this parameter is enabled, the group will be hidden from the address book.
               required:
                 - OrganizationId
-                - Name
       responses:
         "200":
           description: Success
@@ -386,9 +384,6 @@ paths:
                   description: The list of rules for the impersonation role.
               required:
                 - OrganizationId
-                - Name
-                - Type
-                - Rules
       responses:
         "200":
           description: Success
@@ -506,8 +501,6 @@ paths:
                 EnableInteroperability:
                   $ref: "#/components/schemas/Boolean"
                   description: When true, allows organization interoperability between WorkMail and Microsoft Exchange. If true, you must include a AD Connector directory ID in the request.
-              required:
-                - Alias
       responses:
         "200":
           description: Success
@@ -553,8 +546,6 @@ paths:
                   description: If this parameter is enabled, the resource will be hidden from the address book.
               required:
                 - OrganizationId
-                - Name
-                - Type
       responses:
         "200":
           description: Success
@@ -612,7 +603,6 @@ paths:
                   description: User ID from the IAM Identity Center. If this parameter is empty it will be updated automatically when the user logs in for the first time to the mailbox associated with WorkMail.
               required:
                 - OrganizationId
-                - Name
                 - DisplayName
       responses:
         "200":
@@ -691,7 +681,6 @@ paths:
               required:
                 - OrganizationId
                 - EntityId
-                - Alias
       responses:
         "200":
           description: Success
@@ -2125,7 +2114,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAliasesResponse"
+                $ref: "#/components/schemas/ListAliasesOutputDisplay"
   /ListAvailabilityConfigurations:
     post:
       operationId: ListAvailabilityConfigurations
@@ -2953,7 +2942,6 @@ paths:
                   description: Enforces or suspends a policy after it's applied.
               required:
                 - OrganizationId
-                - Enforced
       responses:
         "200":
           description: Success
@@ -3046,7 +3034,6 @@ paths:
                 - OrganizationId
                 - UserId
                 - DeviceId
-                - Effect
       responses:
         "200":
           description: Success
@@ -3312,7 +3299,6 @@ paths:
                   description: The tag key-value pairs.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -3559,9 +3545,6 @@ paths:
               required:
                 - OrganizationId
                 - ImpersonationRoleId
-                - Name
-                - Type
-                - Rules
       responses:
         "200":
           description: Success
@@ -5077,19 +5060,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListAliasesResponse:
+    ListAliasesRowDisplay:
       type: object
       properties:
-        Aliases:
-          $ref: "#/components/schemas/Aliases"
+        alias:
+          type: string
           description: The entity's paginated aliases.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use to retrieve the next page of results. The value is "null" when there are no more results to return.
-    Aliases:
-      type: array
-      items:
-        $ref: "#/components/schemas/EmailAddress"
+    ListAliasesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAliasesRowDisplay"
     ListAvailabilityConfigurationsResponse:
       type: object
       properties:
@@ -5817,10 +5800,10 @@ components:
     UpdateUserResponse:
       type: object
   x-stackQL-resources:
-    delegate_to_resources:
-      id: aws.workmail.delegate_to_resources
-      name: delegate_to_resources
-      title: delegate_to_resources
+    resources:
+      id: aws.workmail.resources
+      name: resources
+      title: resources
       methods:
         associate_delegate_to_resource:
           operation:
@@ -5835,16 +5818,107 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_resource:
+          operation:
+            $ref: "#/paths/~1CreateResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_resource:
+          operation:
+            $ref: "#/paths/~1DeleteResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_resource:
+          operation:
+            $ref: "#/paths/~1DescribeResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_delegate_from_resource:
+          operation:
+            $ref: "#/paths/~1DisassociateDelegateFromResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_resources:
+          operation:
+            $ref: "#/paths/~1ListResources/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Resources
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_resource:
+          operation:
+            $ref: "#/paths/~1UpdateResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/describe_resource"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/create_resource"
         update:
-          - $ref: "#/components/x-stackQL-resources/delegate_to_resources/methods/associate_delegate_to_resource"
-        delete: []
-    member_to_groups:
-      id: aws.workmail.member_to_groups
-      name: member_to_groups
-      title: member_to_groups
+          - $ref: "#/components/x-stackQL-resources/resources/methods/associate_delegate_to_resource"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/update_resource"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/delete_resource"
+    groups:
+      id: aws.workmail.groups
+      name: groups
+      title: groups
       methods:
         associate_member_to_group:
           operation:
@@ -5859,122 +5933,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_to_groups/methods/associate_member_to_group"
-        delete: []
-    alias:
-      id: aws.workmail.alias
-      name: alias
-      title: alias
-      methods:
-        create_alias:
-          operation:
-            $ref: "#/paths/~1CreateAlias/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_alias:
-          operation:
-            $ref: "#/paths/~1DeleteAlias/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/create_alias"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/delete_alias"
-    availability_configurations:
-      id: aws.workmail.availability_configurations
-      name: availability_configurations
-      title: availability_configurations
-      methods:
-        create_availability_configuration:
-          operation:
-            $ref: "#/paths/~1CreateAvailabilityConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_availability_configuration:
-          operation:
-            $ref: "#/paths/~1DeleteAvailabilityConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_availability_configurations:
-          operation:
-            $ref: "#/paths/~1ListAvailabilityConfigurations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AvailabilityConfigurations
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_availability_configuration:
-          operation:
-            $ref: "#/paths/~1UpdateAvailabilityConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/list_availability_configurations"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/create_availability_configuration"
-        update:
-          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/update_availability_configuration"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/delete_availability_configuration"
-    groups:
-      id: aws.workmail.groups
-      name: groups
-      title: groups
-      methods:
         create_group:
           operation:
             $ref: "#/paths/~1CreateGroup/post"
@@ -6014,6 +5972,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disassociate_member_from_group:
+          operation:
+            $ref: "#/paths/~1DisassociateMemberFromGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_groups:
           operation:
             $ref: "#/paths/~1ListGroups/post"
@@ -6026,6 +5997,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_group:
@@ -6048,52 +6026,28 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/groups/methods/create_group"
         update:
+          - $ref: "#/components/x-stackQL-resources/groups/methods/associate_member_to_group"
           - $ref: "#/components/x-stackQL-resources/groups/methods/update_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/groups/methods/delete_group"
-    identity_center_applications:
-      id: aws.workmail.identity_center_applications
-      name: identity_center_applications
-      title: identity_center_applications
-      methods:
-        create_identity_center_application:
-          operation:
-            $ref: "#/paths/~1CreateIdentityCenterApplication/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_identity_center_application:
-          operation:
-            $ref: "#/paths/~1DeleteIdentityCenterApplication/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/identity_center_applications/methods/create_identity_center_application"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/identity_center_applications/methods/delete_identity_center_application"
     impersonation_roles:
       id: aws.workmail.impersonation_roles
       name: impersonation_roles
       title: impersonation_roles
       methods:
+        assume_impersonation_role:
+          operation:
+            $ref: "#/paths/~1AssumeImpersonationRole/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_impersonation_role:
           operation:
             $ref: "#/paths/~1CreateImpersonationRole/post"
@@ -6169,6 +6123,356 @@ components:
           - $ref: "#/components/x-stackQL-resources/impersonation_roles/methods/update_impersonation_role"
         delete:
           - $ref: "#/components/x-stackQL-resources/impersonation_roles/methods/delete_impersonation_role"
+    organizations:
+      id: aws.workmail.organizations
+      name: organizations
+      title: organizations
+      methods:
+        cancel_mailbox_export_job:
+          operation:
+            $ref: "#/paths/~1CancelMailboxExportJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_alias:
+          operation:
+            $ref: "#/paths/~1CreateAlias/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_organization:
+          operation:
+            $ref: "#/paths/~1CreateOrganization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_alias:
+          operation:
+            $ref: "#/paths/~1DeleteAlias/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_organization:
+          operation:
+            $ref: "#/paths/~1DeleteOrganization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_retention_policy:
+          operation:
+            $ref: "#/paths/~1DeleteRetentionPolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deregister_from_work_mail:
+          operation:
+            $ref: "#/paths/~1DeregisterFromWorkMail/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_organization:
+          operation:
+            $ref: "#/paths/~1DescribeOrganization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_organizations:
+          operation:
+            $ref: "#/paths/~1ListOrganizations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.OrganizationSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        put_retention_policy:
+          operation:
+            $ref: "#/paths/~1PutRetentionPolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        register_to_work_mail:
+          operation:
+            $ref: "#/paths/~1RegisterToWorkMail/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reset_password:
+          operation:
+            $ref: "#/paths/~1ResetPassword/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_mailbox_export_job:
+          operation:
+            $ref: "#/paths/~1StartMailboxExportJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        test_availability_configuration:
+          operation:
+            $ref: "#/paths/~1TestAvailabilityConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_mailbox_quota:
+          operation:
+            $ref: "#/paths/~1UpdateMailboxQuota/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_primary_email_address:
+          operation:
+            $ref: "#/paths/~1UpdatePrimaryEmailAddress/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/describe_organization"
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/list_organizations"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/register_to_work_mail"
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/create_alias"
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/create_organization"
+        update:
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/update_mailbox_quota"
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/update_primary_email_address"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/put_retention_policy"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_alias"
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_organization"
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_retention_policy"
+    availability_configurations:
+      id: aws.workmail.availability_configurations
+      name: availability_configurations
+      title: availability_configurations
+      methods:
+        create_availability_configuration:
+          operation:
+            $ref: "#/paths/~1CreateAvailabilityConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_availability_configuration:
+          operation:
+            $ref: "#/paths/~1DeleteAvailabilityConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_availability_configurations:
+          operation:
+            $ref: "#/paths/~1ListAvailabilityConfigurations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AvailabilityConfigurations
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_availability_configuration:
+          operation:
+            $ref: "#/paths/~1UpdateAvailabilityConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/list_availability_configurations"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/create_availability_configuration"
+        update:
+          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/update_availability_configuration"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/availability_configurations/methods/delete_availability_configuration"
+    identity_center_applications:
+      id: aws.workmail.identity_center_applications
+      name: identity_center_applications
+      title: identity_center_applications
+      methods:
+        create_identity_center_application:
+          operation:
+            $ref: "#/paths/~1CreateIdentityCenterApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_identity_center_application:
+          operation:
+            $ref: "#/paths/~1DeleteIdentityCenterApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/identity_center_applications/methods/create_identity_center_application"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/identity_center_applications/methods/delete_identity_center_application"
     mobile_device_access_rules:
       id: aws.workmail.mobile_device_access_rules
       name: mobile_device_access_rules
@@ -6235,182 +6539,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/mobile_device_access_rules/methods/update_mobile_device_access_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/mobile_device_access_rules/methods/delete_mobile_device_access_rule"
-    organizations:
-      id: aws.workmail.organizations
-      name: organizations
-      title: organizations
-      methods:
-        create_organization:
-          operation:
-            $ref: "#/paths/~1CreateOrganization/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_organization:
-          operation:
-            $ref: "#/paths/~1DeleteOrganization/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_organization:
-          operation:
-            $ref: "#/paths/~1DescribeOrganization/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_organizations:
-          operation:
-            $ref: "#/paths/~1ListOrganizations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.OrganizationSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/organizations/methods/describe_organization"
-          - $ref: "#/components/x-stackQL-resources/organizations/methods/list_organizations"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/organizations/methods/create_organization"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_organization"
-    resources:
-      id: aws.workmail.resources
-      name: resources
-      title: resources
-      methods:
-        create_resource:
-          operation:
-            $ref: "#/paths/~1CreateResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_resource:
-          operation:
-            $ref: "#/paths/~1DeleteResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_resource:
-          operation:
-            $ref: "#/paths/~1DescribeResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_resources:
-          operation:
-            $ref: "#/paths/~1ListResources/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Resources
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1TagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1UntagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_resource:
-          operation:
-            $ref: "#/paths/~1UpdateResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/describe_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/create_resource"
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/update_resource"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/delete_resource"
     users:
       id: aws.workmail.users
       name: users
@@ -6467,6 +6595,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_user:
@@ -6681,6 +6816,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_mailbox_permissions:
@@ -6802,6 +6944,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6811,69 +6960,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/personal_access_tokens/methods/delete_personal_access_token"
-    retention_policies:
-      id: aws.workmail.retention_policies
-      name: retention_policies
-      title: retention_policies
-      methods:
-        delete_retention_policy:
-          operation:
-            $ref: "#/paths/~1DeleteRetentionPolicy/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        put_retention_policy:
-          operation:
-            $ref: "#/paths/~1PutRetentionPolicy/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/retention_policies/methods/put_retention_policy"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/retention_policies/methods/delete_retention_policy"
-    from_work_mails:
-      id: aws.workmail.from_work_mails
-      name: from_work_mails
-      title: from_work_mails
-      methods:
-        deregister_from_work_mail:
-          operation:
-            $ref: "#/paths/~1DeregisterFromWorkMail/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/from_work_mails/methods/deregister_from_work_mail"
     mail_domains:
       id: aws.workmail.mail_domains
       name: mail_domains
@@ -6931,13 +7017,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_default_mail_domain:
+          operation:
+            $ref: "#/paths/~1UpdateDefaultMailDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/mail_domains/methods/get_mail_domain"
           - $ref: "#/components/x-stackQL-resources/mail_domains/methods/list_mail_domains"
         insert:
           - $ref: "#/components/x-stackQL-resources/mail_domains/methods/register_mail_domain"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/mail_domains/methods/update_default_mail_domain"
         delete:
           - $ref: "#/components/x-stackQL-resources/mail_domains/methods/deregister_mail_domain"
     entities:
@@ -7040,54 +7140,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/mailbox_export_jobs/methods/list_mailbox_export_jobs"
         insert: []
         update: []
-        delete: []
-    delegate_from_resources:
-      id: aws.workmail.delegate_from_resources
-      name: delegate_from_resources
-      title: delegate_from_resources
-      methods:
-        disassociate_delegate_from_resource:
-          operation:
-            $ref: "#/paths/~1DisassociateDelegateFromResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/delegate_from_resources/methods/disassociate_delegate_from_resource"
-        delete: []
-    member_from_groups:
-      id: aws.workmail.member_from_groups
-      name: member_from_groups
-      title: member_from_groups
-      methods:
-        disassociate_member_from_group:
-          operation:
-            $ref: "#/paths/~1DisassociateMemberFromGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_from_groups/methods/disassociate_member_from_group"
         delete: []
     access_control_effects:
       id: aws.workmail.access_control_effects
@@ -7244,12 +7296,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Aliases
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAliasesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Aliases" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"alias": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7275,6 +7340,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7324,6 +7396,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7332,10 +7411,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.workmail.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.workmail.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7350,105 +7429,37 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1UntagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    to_work_mails:
-      id: aws.workmail.to_work_mails
-      name: to_work_mails
-      title: to_work_mails
-      methods:
-        register_to_work_mail:
-          operation:
-            $ref: "#/paths/~1RegisterToWorkMail/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/to_work_mails/methods/register_to_work_mail"
-        update: []
-        delete: []
-    default_mail_domains:
-      id: aws.workmail.default_mail_domains
-      name: default_mail_domains
-      title: default_mail_domains
-      methods:
-        update_default_mail_domain:
-          operation:
-            $ref: "#/paths/~1UpdateDefaultMailDomain/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/default_mail_domains/methods/update_default_mail_domain"
-        delete: []
-    mailbox_quotas:
-      id: aws.workmail.mailbox_quotas
-      name: mailbox_quotas
-      title: mailbox_quotas
-      methods:
-        update_mailbox_quota:
-          operation:
-            $ref: "#/paths/~1UpdateMailboxQuota/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/mailbox_quotas/methods/update_mailbox_quota"
-        delete: []
-    primary_email_address:
-      id: aws.workmail.primary_email_address
-      name: primary_email_address
-      title: primary_email_address
-      methods:
-        update_primary_email_address:
-          operation:
-            $ref: "#/paths/~1UpdatePrimaryEmailAddress/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/primary_email_address/methods/update_primary_email_address"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

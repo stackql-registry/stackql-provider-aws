@@ -112,7 +112,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListCrossAccountAuthorizationsResponse"
+                $ref: "#/components/schemas/ListCrossAccountAuthorizationsOutputDisplay"
   /readinesschecks:
     post:
       operationId: CreateReadinessCheck
@@ -237,7 +237,6 @@ paths:
               required:
                 - ResourceSetName
                 - ResourceSetType
-                - Resources
       responses:
         "200":
           description: Success
@@ -318,8 +317,6 @@ paths:
               properties:
                 Cells:
                   $ref: "#/components/schemas/__listOf__string"
-              required:
-                - Cells
       responses:
         "200":
           description: Success
@@ -454,8 +451,6 @@ paths:
               properties:
                 Cells:
                   $ref: "#/components/schemas/__listOf__string"
-              required:
-                - Cells
       responses:
         "200":
           description: Success
@@ -517,7 +512,6 @@ paths:
                   $ref: "#/components/schemas/__listOfResource"
               required:
                 - ResourceSetType
-                - Resources
       responses:
         "200":
           description: Success
@@ -748,8 +742,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1261,19 +1253,19 @@ components:
         - CellArn
         - CellName
         - Cells
-    ListCrossAccountAuthorizationsResponse:
+    ListCrossAccountAuthorizationsRowDisplay:
       type: object
       properties:
-        CrossAccountAuthorizations:
-          $ref: "#/components/schemas/__listOfCrossAccountAuthorization"
+        cross_account_authorization:
+          type: string
           description: A list of cross-account authorizations.
-        NextToken:
-          $ref: "#/components/schemas/__string"
-          description: The token that identifies which batch of results you want to see.
-    __listOfCrossAccountAuthorization:
-      type: array
-      items:
-        $ref: "#/components/schemas/CrossAccountAuthorization"
+    ListCrossAccountAuthorizationsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListCrossAccountAuthorizationsRowDisplay"
     ListReadinessChecksResponse:
       type: object
       properties:
@@ -1512,6 +1504,14 @@ components:
             objectKey: $.Cells
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_cell:
           operation:
             $ref: "#/paths/~1cells~1{cell_name}/delete"
@@ -1566,9 +1566,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.CrossAccountAuthorizations
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListCrossAccountAuthorizationsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "CrossAccountAuthorizations" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"cross_account_authorization": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_cross_account_authorization:
           operation:
             $ref: "#/paths/~1crossaccountauthorizations~1{cross_account_authorization}/delete"
@@ -1608,6 +1622,14 @@ components:
             objectKey: $.ReadinessChecks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_readiness_check:
           operation:
             $ref: "#/paths/~1readinesschecks~1{readiness_check_name}/delete"
@@ -1665,6 +1687,14 @@ components:
             objectKey: $.RecoveryGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_recovery_group:
           operation:
             $ref: "#/paths/~1recoverygroups~1{recovery_group_name}/delete"
@@ -1722,6 +1752,14 @@ components:
             objectKey: $.ResourceSets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_resource_set:
           operation:
             $ref: "#/paths/~1resourcesets~1{resource_set_name}/delete"
@@ -1787,6 +1825,14 @@ components:
             objectKey: $.ReadinessChecks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cell_readiness_summaries/methods/get_cell_readiness_summary"
@@ -1807,6 +1853,14 @@ components:
             objectKey: $.Rules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/readiness_check_resource_status/methods/get_readiness_check_resource_status"
@@ -1827,6 +1881,14 @@ components:
             objectKey: $.Resources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/readiness_check_status/methods/get_readiness_check_status"
@@ -1847,6 +1909,14 @@ components:
             objectKey: $.ReadinessChecks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_group_readiness_summaries/methods/get_recovery_group_readiness_summary"
@@ -1867,16 +1937,24 @@ components:
             objectKey: $.Rules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/rules/methods/list_rules"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.route53_recovery_readiness.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.route53_recovery_readiness.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resources:
           operation:
@@ -1884,17 +1962,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resources"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.route53_recovery_readiness.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
@@ -1914,9 +1981,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resources"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

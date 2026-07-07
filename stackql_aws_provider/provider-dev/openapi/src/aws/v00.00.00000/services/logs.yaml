@@ -2926,7 +2926,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListLogGroupsForQueryResponse"
+                $ref: "#/components/schemas/ListLogGroupsForQueryOutputDisplay"
   /ListScheduledQueries:
     post:
       operationId: ListScheduledQueries
@@ -7881,18 +7881,19 @@ components:
       type: integer
       minimum: 50
       maximum: 500
-    ListLogGroupsForQueryResponse:
+    ListLogGroupsForQueryRowDisplay:
       type: object
       properties:
-        logGroupIdentifiers:
-          $ref: "#/components/schemas/LogGroupIdentifiers"
+        log_group_identifier:
+          type: string
           description: An array of the names and ARNs of the log groups that were processed in the query.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-    LogGroupIdentifiers:
-      type: array
-      items:
-        $ref: "#/components/schemas/LogGroupIdentifier"
+    ListLogGroupsForQueryOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListLogGroupsForQueryRowDisplay"
     ListScheduledQueriesMaxResults:
       type: integer
       minimum: 1
@@ -8315,6 +8316,10 @@ components:
       properties:
         message:
           $ref: "#/components/schemas/Message"
+    LogGroupIdentifiers:
+      type: array
+      items:
+        $ref: "#/components/schemas/LogGroupIdentifier"
     EventsLimitStartQuery:
       type: integer
       minimum: 1
@@ -8531,10 +8536,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/kms_keys/methods/associate_kms_key"
           - $ref: "#/components/x-stackQL-resources/kms_keys/methods/disassociate_kms_key"
         delete: []
-    source_to_s3_table_integrations:
-      id: aws.logs.source_to_s3_table_integrations
-      name: source_to_s3_table_integrations
-      title: source_to_s3_table_integrations
+    integrations:
+      id: aws.logs.integrations
+      name: integrations
+      title: integrations
       methods:
         associate_source_to_s3_table_integration:
           operation:
@@ -8549,12 +8554,83 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_integration:
+          operation:
+            $ref: "#/paths/~1DeleteIntegration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_source_from_s3_table_integration:
+          operation:
+            $ref: "#/paths/~1DisassociateSourceFromS3TableIntegration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_integration:
+          operation:
+            $ref: "#/paths/~1GetIntegration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_integrations:
+          operation:
+            $ref: "#/paths/~1ListIntegrations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_integration:
+          operation:
+            $ref: "#/paths/~1PutIntegration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/integrations/methods/get_integration"
+          - $ref: "#/components/x-stackQL-resources/integrations/methods/list_integrations"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/source_to_s3_table_integrations/methods/associate_source_to_s3_table_integration"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/integrations/methods/associate_source_to_s3_table_integration"
+          - $ref: "#/components/x-stackQL-resources/integrations/methods/disassociate_source_from_s3_table_integration"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/integrations/methods/put_integration"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/integrations/methods/delete_integration"
     deliveries:
       id: aws.logs.deliveries
       name: deliveries
@@ -8597,11 +8673,32 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         get_delivery:
           operation:
             $ref: "#/paths/~1GetDelivery/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.delivery
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_delivery_configuration:
+          operation:
+            $ref: "#/paths/~1UpdateDeliveryConfiguration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -8618,7 +8715,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/deliveries/methods/describe_deliveries"
         insert:
           - $ref: "#/components/x-stackQL-resources/deliveries/methods/create_delivery"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/deliveries/methods/update_delivery_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/deliveries/methods/delete_delivery"
     export_tasks:
@@ -8651,6 +8749,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8753,6 +8858,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_log_anomaly_detector:
@@ -8806,6 +8918,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_retention_policy:
+          operation:
+            $ref: "#/paths/~1DeleteRetentionPolicy/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         describe_log_groups:
           operation:
             $ref: "#/paths/~1DescribeLogGroups/post"
@@ -8818,6 +8942,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         list_log_groups:
@@ -8833,9 +8964,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        tag_log_group:
+        put_bearer_token_authentication:
           operation:
-            $ref: "#/paths/~1TagLogGroup/post"
+            $ref: "#/paths/~1PutBearerTokenAuthentication/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -8845,9 +8976,21 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        untag_log_group:
+        put_log_group_deletion_protection:
           operation:
-            $ref: "#/paths/~1UntagLogGroup/post"
+            $ref: "#/paths/~1PutLogGroupDeletionProtection/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_retention_policy:
+          operation:
+            $ref: "#/paths/~1PutRetentionPolicy/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -8862,8 +9005,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/log_groups/methods/describe_log_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/log_groups/methods/create_log_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/log_groups/methods/tag_log_group"
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/log_groups/methods/put_bearer_token_authentication"
+          - $ref: "#/components/x-stackQL-resources/log_groups/methods/put_log_group_deletion_protection"
+          - $ref: "#/components/x-stackQL-resources/log_groups/methods/put_retention_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/log_groups/methods/delete_log_group"
     log_streams:
@@ -8907,6 +9053,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9052,6 +9205,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_scheduled_query:
@@ -9210,6 +9370,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         get_delivery_destination:
@@ -9218,6 +9385,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.deliveryDestination
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9271,6 +9439,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.policy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9329,6 +9498,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         get_delivery_source:
@@ -9337,6 +9513,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.deliverySource
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9396,6 +9573,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_destination:
@@ -9411,6 +9595,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        put_destination_policy:
+          operation:
+            $ref: "#/paths/~1PutDestinationPolicy/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/destinations/methods/describe_destinations"
@@ -9418,6 +9614,7 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/destinations/methods/put_destination"
+          - $ref: "#/components/x-stackQL-resources/destinations/methods/put_destination_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/destinations/methods/delete_destination"
     index_policies:
@@ -9473,73 +9670,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/index_policies/methods/put_index_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/index_policies/methods/delete_index_policy"
-    integrations:
-      id: aws.logs.integrations
-      name: integrations
-      title: integrations
-      methods:
-        delete_integration:
-          operation:
-            $ref: "#/paths/~1DeleteIntegration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_integration:
-          operation:
-            $ref: "#/paths/~1GetIntegration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_integrations:
-          operation:
-            $ref: "#/paths/~1ListIntegrations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        put_integration:
-          operation:
-            $ref: "#/paths/~1PutIntegration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/integrations/methods/get_integration"
-          - $ref: "#/components/x-stackQL-resources/integrations/methods/list_integrations"
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/integrations/methods/put_integration"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/integrations/methods/delete_integration"
     metric_filters:
       id: aws.logs.metric_filters
       name: metric_filters
@@ -9569,6 +9699,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_metric_filter:
@@ -9674,6 +9811,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_resource_policy:
@@ -9698,43 +9842,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/put_resource_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/delete_resource_policy"
-    retention_policies:
-      id: aws.logs.retention_policies
-      name: retention_policies
-      title: retention_policies
-      methods:
-        delete_retention_policy:
-          operation:
-            $ref: "#/paths/~1DeleteRetentionPolicy/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        put_retention_policy:
-          operation:
-            $ref: "#/paths/~1PutRetentionPolicy/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/retention_policies/methods/put_retention_policy"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/retention_policies/methods/delete_retention_policy"
     subscription_filters:
       id: aws.logs.subscription_filters
       name: subscription_filters
@@ -9764,6 +9871,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_subscription_filter:
@@ -9855,6 +9969,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9928,6 +10049,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9936,14 +10064,14 @@ components:
         insert: []
         update: []
         delete: []
-    source_from_s3_table_integrations:
-      id: aws.logs.source_from_s3_table_integrations
-      name: source_from_s3_table_integrations
-      title: source_from_s3_table_integrations
+    log_events:
+      id: aws.logs.log_events
+      name: log_events
+      title: log_events
       methods:
-        disassociate_source_from_s3_table_integration:
+        filter_log_events:
           operation:
-            $ref: "#/paths/~1DisassociateSourceFromS3TableIntegration/post"
+            $ref: "#/paths/~1FilterLogEvents/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9952,19 +10080,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/source_from_s3_table_integrations/methods/disassociate_source_from_s3_table_integration"
-        delete: []
-    log_events:
-      id: aws.logs.log_events
-      name: log_events
-      title: log_events
-      methods:
         get_log_events:
           operation:
             $ref: "#/paths/~1GetLogEvents/post"
@@ -10058,6 +10182,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.fieldStream
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10136,6 +10261,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10161,6 +10293,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10186,6 +10325,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_anomaly:
@@ -10218,12 +10364,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.logGroupIdentifiers
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListLogGroupsForQueryOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "logGroupIdentifiers" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"log_group_identifier": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10249,6 +10408,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10257,10 +10423,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.logs.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.logs.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -10275,17 +10441,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    tags_log_groups:
-      id: aws.logs.tags_log_groups
-      name: tags_log_groups
-      title: tags_log_groups
-      methods:
         list_tags_log_group:
           operation:
             $ref: "#/paths/~1ListTagsLogGroup/post"
@@ -10299,20 +10454,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_log_groups/methods/list_tags_log_group"
-        insert: []
-        update: []
-        delete: []
-    bearer_token_authentications:
-      id: aws.logs.bearer_token_authentications
-      name: bearer_token_authentications
-      title: bearer_token_authentications
-      methods:
-        put_bearer_token_authentication:
+        tag_log_group:
           operation:
-            $ref: "#/paths/~1PutBearerTokenAuthentication/post"
+            $ref: "#/paths/~1TagLogGroup/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -10322,69 +10466,21 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/bearer_token_authentications/methods/put_bearer_token_authentication"
-        delete: []
-    destination_policies:
-      id: aws.logs.destination_policies
-      name: destination_policies
-      title: destination_policies
-      methods:
-        put_destination_policy:
-          operation:
-            $ref: "#/paths/~1PutDestinationPolicy/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/destination_policies/methods/put_destination_policy"
-        delete: []
-    log_group_deletion_protections:
-      id: aws.logs.log_group_deletion_protections
-      name: log_group_deletion_protections
-      title: log_group_deletion_protections
-      methods:
-        put_log_group_deletion_protection:
-          operation:
-            $ref: "#/paths/~1PutLogGroupDeletionProtection/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/log_group_deletion_protections/methods/put_log_group_deletion_protection"
-        delete: []
-    resources:
-      id: aws.logs.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_log_group:
+          operation:
+            $ref: "#/paths/~1UntagLogGroup/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -10407,33 +10503,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_log_group"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    delivery_configurations:
-      id: aws.logs.delivery_configurations
-      name: delivery_configurations
-      title: delivery_configurations
-      methods:
-        update_delivery_configuration:
-          operation:
-            $ref: "#/paths/~1UpdateDeliveryConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/delivery_configurations/methods/update_delivery_configuration"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_log_group"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

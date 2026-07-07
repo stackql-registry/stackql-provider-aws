@@ -1,0 +1,1 @@
+SELECT vpc_id, state, cidr_block FROM aws.ec2.vpcs WHERE region = '{{ region }}'

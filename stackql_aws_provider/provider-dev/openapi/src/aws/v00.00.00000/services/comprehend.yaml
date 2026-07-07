@@ -3267,7 +3267,6 @@ paths:
                   description: Tags being associated with a specific Amazon Comprehend resource. There can be a maximum of 50 tags (both existing and pending) associated with a specific resource.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -6777,6 +6776,108 @@ components:
           $ref: "#/components/schemas/FlywheelProperties"
           description: The flywheel properties.
   x-stackQL-resources:
+    endpoints:
+      id: aws.comprehend.endpoints
+      name: endpoints
+      title: endpoints
+      methods:
+        classify_document:
+          operation:
+            $ref: "#/paths/~1ClassifyDocument/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_endpoint:
+          operation:
+            $ref: "#/paths/~1CreateEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_endpoint:
+          operation:
+            $ref: "#/paths/~1DeleteEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_endpoint:
+          operation:
+            $ref: "#/paths/~1DescribeEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.EndpointProperties
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_endpoints:
+          operation:
+            $ref: "#/paths/~1ListEndpoints/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.EndpointPropertiesList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_endpoint:
+          operation:
+            $ref: "#/paths/~1UpdateEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/describe_endpoint"
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/list_endpoints"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/create_endpoint"
+        update:
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/update_endpoint"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/delete_endpoint"
     datasets:
       id: aws.comprehend.datasets
       name: datasets
@@ -6801,6 +6902,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DatasetProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6866,6 +6968,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DocumentClassifierProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6885,6 +6988,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_training_document_classifier:
+          operation:
+            $ref: "#/paths/~1StopTrainingDocumentClassifier/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6896,87 +7019,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/document_classifiers/methods/delete_document_classifier"
-    endpoints:
-      id: aws.comprehend.endpoints
-      name: endpoints
-      title: endpoints
-      methods:
-        create_endpoint:
-          operation:
-            $ref: "#/paths/~1CreateEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_endpoint:
-          operation:
-            $ref: "#/paths/~1DeleteEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_endpoint:
-          operation:
-            $ref: "#/paths/~1DescribeEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_endpoints:
-          operation:
-            $ref: "#/paths/~1ListEndpoints/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.EndpointPropertiesList
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_endpoint:
-          operation:
-            $ref: "#/paths/~1UpdateEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/describe_endpoint"
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/list_endpoints"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/create_endpoint"
-        update:
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/update_endpoint"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/delete_endpoint"
     entity_recognizers:
       id: aws.comprehend.entity_recognizers
       name: entity_recognizers
@@ -7014,6 +7056,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EntityRecognizerProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7028,6 +7071,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EntityRecognizerPropertiesList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_training_entity_recognizer:
+          operation:
+            $ref: "#/paths/~1StopTrainingEntityRecognizer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7081,6 +7144,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FlywheelProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7091,6 +7155,19 @@ components:
         list_flywheels:
           operation:
             $ref: "#/paths/~1ListFlywheels/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_flywheel_iteration:
+          operation:
+            $ref: "#/paths/~1StartFlywheelIteration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7188,6 +7265,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DocumentClassificationJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7207,6 +7285,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7227,6 +7312,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DominantLanguageDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7246,6 +7332,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7266,6 +7359,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EntitiesDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7285,6 +7379,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7305,6 +7406,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EventsDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7343,6 +7445,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FlywheelIterationProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7367,6 +7470,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.KeyPhrasesDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7386,6 +7490,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7406,6 +7517,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PiiEntitiesDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7425,6 +7537,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7445,6 +7564,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SentimentDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7464,6 +7584,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7484,6 +7611,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TargetedSentimentDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7522,6 +7650,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TopicsDetectionJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7541,6 +7670,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7622,10 +7758,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.comprehend.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.comprehend.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7640,17 +7776,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.comprehend.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -7678,9 +7803,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

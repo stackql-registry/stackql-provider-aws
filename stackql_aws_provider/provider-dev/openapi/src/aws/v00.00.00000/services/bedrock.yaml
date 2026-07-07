@@ -10472,50 +10472,17 @@ components:
     UpdateProvisionedModelThroughputResponse:
       type: object
   x-stackQL-resources:
-    advanced_prompt_optimization_jobs:
-      id: aws.bedrock.advanced_prompt_optimization_jobs
-      name: advanced_prompt_optimization_jobs
-      title: advanced_prompt_optimization_jobs
-      methods:
-        create_advanced_prompt_optimization_job:
-          operation:
-            $ref: "#/paths/~1advanced-prompt-optimization-jobs/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_advanced_prompt_optimization_jobs:
-          operation:
-            $ref: "#/paths/~1advanced-prompt-optimization-jobs/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.jobSummaries
-          request:
-            nativeCasing: pascal
-        get_advanced_prompt_optimization_job:
-          operation:
-            $ref: "#/paths/~1advanced-prompt-optimization-jobs~1{job_identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/get_advanced_prompt_optimization_job"
-          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/list_advanced_prompt_optimization_jobs"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/create_advanced_prompt_optimization_job"
-        update: []
-        delete: []
     automated_reasoning_policies:
       id: aws.bedrock.automated_reasoning_policies
       name: automated_reasoning_policies
       title: automated_reasoning_policies
       methods:
+        cancel_automated_reasoning_policy_build_workflow:
+          operation:
+            $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1build-workflows~1{build_workflow_id}~1cancel/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
         create_automated_reasoning_policy:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies/post"
@@ -10536,6 +10503,25 @@ components:
             objectKey: $.automatedReasoningPolicySummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        create_automated_reasoning_policy_version:
+          operation:
+            $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1versions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_automated_reasoning_policy:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}/delete"
@@ -10561,16 +10547,92 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        export_automated_reasoning_policy_version:
+          operation:
+            $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1export/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_automated_reasoning_policy_build_workflow:
+          operation:
+            $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1build-workflows~1{build_workflow_type}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_automated_reasoning_policy_test_workflow:
+          operation:
+            $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1build-workflows~1{build_workflow_id}~1test-workflows/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/get_automated_reasoning_policy"
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/list_automated_reasoning_policies"
         insert:
+          - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/create_automated_reasoning_policy_version"
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/create_automated_reasoning_policy"
         update:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/update_automated_reasoning_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policies/methods/delete_automated_reasoning_policy"
+    advanced_prompt_optimization_jobs:
+      id: aws.bedrock.advanced_prompt_optimization_jobs
+      name: advanced_prompt_optimization_jobs
+      title: advanced_prompt_optimization_jobs
+      methods:
+        create_advanced_prompt_optimization_job:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_advanced_prompt_optimization_jobs:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-jobs/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.jobSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        get_advanced_prompt_optimization_job:
+          operation:
+            $ref: "#/paths/~1advanced-prompt-optimization-jobs~1{job_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/get_advanced_prompt_optimization_job"
+          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/list_advanced_prompt_optimization_jobs"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/advanced_prompt_optimization_jobs/methods/create_advanced_prompt_optimization_job"
+        update: []
+        delete: []
     automated_reasoning_policy_test_cases:
       id: aws.bedrock.automated_reasoning_policy_test_cases
       name: automated_reasoning_policy_test_cases
@@ -10596,6 +10658,14 @@ components:
             objectKey: $.testCases
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_automated_reasoning_policy_test_case:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1test-cases~1{test_case_id}/delete"
@@ -10631,28 +10701,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_test_cases/methods/update_automated_reasoning_policy_test_case"
         delete:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_test_cases/methods/delete_automated_reasoning_policy_test_case"
-    automated_reasoning_policy_versions:
-      id: aws.bedrock.automated_reasoning_policy_versions
-      name: automated_reasoning_policy_versions
-      title: automated_reasoning_policy_versions
-      methods:
-        create_automated_reasoning_policy_version:
-          operation:
-            $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1versions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_versions/methods/create_automated_reasoning_policy_version"
-        update: []
-        delete: []
     custom_models:
       id: aws.bedrock.custom_models
       name: custom_models
@@ -10690,6 +10738,14 @@ components:
             objectKey: $.modelSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/custom_models/methods/get_custom_model"
@@ -10724,6 +10780,14 @@ components:
             objectKey: $.modelDeploymentSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_custom_model_deployment:
           operation:
             $ref: "#/paths/~1model-customization~1custom-model-deployments~1{custom_model_deployment_identifier}/delete"
@@ -10782,6 +10846,14 @@ components:
             objectKey: $.jobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_evaluation_job:
           operation:
             $ref: "#/paths/~1evaluation-jobs~1{job_identifier}/get"
@@ -10796,10 +10868,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/evaluation_jobs/methods/create_evaluation_job"
         update: []
         delete: []
-    foundation_model_agreements:
-      id: aws.bedrock.foundation_model_agreements
-      name: foundation_model_agreements
-      title: foundation_model_agreements
+    foundation_models:
+      id: aws.bedrock.foundation_models
+      name: foundation_models
+      title: foundation_models
       methods:
         create_foundation_model_agreement:
           operation:
@@ -10823,13 +10895,30 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_foundation_model:
+          operation:
+            $ref: "#/paths/~1foundation-models~1{model_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.modelDetails
+        list_foundation_models:
+          operation:
+            $ref: "#/paths/~1foundation-models/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/foundation_models/methods/get_foundation_model"
+          - $ref: "#/components/x-stackQL-resources/foundation_models/methods/list_foundation_models"
         insert:
-          - $ref: "#/components/x-stackQL-resources/foundation_model_agreements/methods/create_foundation_model_agreement"
+          - $ref: "#/components/x-stackQL-resources/foundation_models/methods/create_foundation_model_agreement"
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/foundation_model_agreements/methods/delete_foundation_model_agreement"
+          - $ref: "#/components/x-stackQL-resources/foundation_models/methods/delete_foundation_model_agreement"
     guardrails:
       id: aws.bedrock.guardrails
       name: guardrails
@@ -10855,6 +10944,25 @@ components:
             objectKey: $.guardrails
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        create_guardrail_version:
+          operation:
+            $ref: "#/paths/~1guardrails~1{guardrail_identifier}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_guardrail:
           operation:
             $ref: "#/paths/~1guardrails~1{guardrail_identifier}/delete"
@@ -10888,32 +10996,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/guardrails/methods/list_guardrails"
         insert:
           - $ref: "#/components/x-stackQL-resources/guardrails/methods/create_guardrail"
+          - $ref: "#/components/x-stackQL-resources/guardrails/methods/create_guardrail_version"
         update:
           - $ref: "#/components/x-stackQL-resources/guardrails/methods/update_guardrail"
         delete:
           - $ref: "#/components/x-stackQL-resources/guardrails/methods/delete_guardrail"
-    guardrail_versions:
-      id: aws.bedrock.guardrail_versions
-      name: guardrail_versions
-      title: guardrail_versions
-      methods:
-        create_guardrail_version:
-          operation:
-            $ref: "#/paths/~1guardrails~1{guardrail_identifier}/post"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/guardrail_versions/methods/create_guardrail_version"
-        update: []
-        delete: []
     inference_profiles:
       id: aws.bedrock.inference_profiles
       name: inference_profiles
@@ -10939,6 +11026,14 @@ components:
             objectKey: $.inferenceProfileSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_inference_profile:
           operation:
             $ref: "#/paths/~1inference-profiles~1{inference_profile_identifier}/delete"
@@ -10985,6 +11080,14 @@ components:
             objectKey: $.marketplaceModelEndpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_marketplace_model_endpoint:
           operation:
             $ref: "#/paths/~1marketplace-model~1endpoints~1{endpoint_arn}/delete"
@@ -10997,6 +11100,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.marketplaceModelEndpoint
         update_marketplace_model_endpoint:
           operation:
             $ref: "#/paths/~1marketplace-model~1endpoints~1{endpoint_arn}/patch"
@@ -11061,6 +11165,14 @@ components:
             objectKey: $.modelCopyJobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_model_copy_job:
           operation:
             $ref: "#/paths/~1model-copy-jobs~1{job_arn}/get"
@@ -11100,6 +11212,14 @@ components:
             objectKey: $.modelCustomizationJobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_model_customization_job:
           operation:
             $ref: "#/paths/~1model-customization-jobs~1{job_identifier}/get"
@@ -11139,6 +11259,14 @@ components:
             objectKey: $.modelImportJobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_model_import_job:
           operation:
             $ref: "#/paths/~1model-import-jobs~1{job_identifier}/get"
@@ -11184,6 +11312,14 @@ components:
             objectKey: $.invocationJobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/model_invocation_jobs/methods/get_model_invocation_job"
@@ -11217,6 +11353,14 @@ components:
             objectKey: $.promptRouterSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_prompt_router:
           operation:
             $ref: "#/paths/~1prompt-routers~1{prompt_router_arn}/delete"
@@ -11286,6 +11430,14 @@ components:
             objectKey: $.provisionedModelSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/provisioned_model_throughputs/methods/get_provisioned_model_throughput"
@@ -11324,6 +11476,14 @@ components:
             objectKey: $.automatedReasoningPolicyBuildWorkflowSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_build_workflows/methods/get_automated_reasoning_policy_build_workflow"
@@ -11388,6 +11548,14 @@ components:
             objectKey: $.modelSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/imported_models/methods/get_imported_model"
@@ -11413,6 +11581,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.loggingConfig
         put_model_invocation_logging_configuration:
           operation:
             $ref: "#/paths/~1logging~1modelinvocations/put"
@@ -11546,6 +11715,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.testResult
         list_automated_reasoning_policy_test_results:
           operation:
             $ref: "#/paths/~1automated-reasoning-policies~1{policy_arn}~1build-workflows~1{build_workflow_id}~1test-results/get"
@@ -11555,36 +11725,18 @@ components:
             objectKey: $.testResults
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_test_results/methods/get_automated_reasoning_policy_test_result"
           - $ref: "#/components/x-stackQL-resources/automated_reasoning_policy_test_results/methods/list_automated_reasoning_policy_test_results"
-        insert: []
-        update: []
-        delete: []
-    foundation_models:
-      id: aws.bedrock.foundation_models
-      name: foundation_models
-      title: foundation_models
-      methods:
-        get_foundation_model:
-          operation:
-            $ref: "#/paths/~1foundation-models~1{model_identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_foundation_models:
-          operation:
-            $ref: "#/paths/~1foundation-models/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/foundation_models/methods/get_foundation_model"
-          - $ref: "#/components/x-stackQL-resources/foundation_models/methods/list_foundation_models"
         insert: []
         update: []
         delete: []
@@ -11649,6 +11801,14 @@ components:
             objectKey: $.guardrailsConfig
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/enforced_guardrails_configurations/methods/list_enforced_guardrails_configuration"
@@ -11674,10 +11834,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.bedrock.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.bedrock.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -11690,17 +11850,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.bedrock.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tagResource/post"
@@ -11724,9 +11873,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

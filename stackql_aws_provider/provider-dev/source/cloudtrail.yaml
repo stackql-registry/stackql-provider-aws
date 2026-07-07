@@ -1296,6 +1296,7 @@ paths:
       x-stackql-resource: trails
       x-stackql-method: get_trail
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Trail
   /GetTrailStatus:
     post:
       operationId: GetTrailStatus
@@ -1501,6 +1502,9 @@ paths:
       x-stackql-method: list_import_failures
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Failures
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListImports:
     post:
       operationId: ListImports
@@ -1545,6 +1549,9 @@ paths:
       x-stackql-method: list_imports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Imports
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInsightsData:
     post:
       operationId: ListInsightsData
@@ -1612,6 +1619,9 @@ paths:
       x-stackql-method: list_insights_data
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInsightsMetricData:
     post:
       operationId: ListInsightsMetricData
@@ -1754,6 +1764,9 @@ paths:
       x-stackql-method: list_public_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PublicKeyList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListQueries:
     post:
       operationId: ListQueries
@@ -1855,6 +1868,9 @@ paths:
       x-stackql-method: list_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceTagList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTrails:
     post:
       operationId: ListTrails
@@ -1893,6 +1909,9 @@ paths:
       x-stackql-method: list_trails
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Trails
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /LookupEvents:
     post:
       operationId: LookupEvents
@@ -1958,6 +1977,9 @@ paths:
       x-stackql-method: lookup_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutEventConfiguration:
     post:
       operationId: PutEventConfiguration
@@ -2320,7 +2342,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreEventDataStoreResponse'
-      x-stackql-resource: event_data_store
+      x-stackql-resource: events
       x-stackql-method: restore_event_data_store
       x-stackql-verb: EXEC
   /SearchSampleQueries:
@@ -2411,7 +2433,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDashboardRefreshResponse'
-      x-stackql-resource: dashboard_refresh
+      x-stackql-resource: dashboards
       x-stackql-method: start_dashboard_refresh
       x-stackql-verb: EXEC
   /StartEventDataStoreIngestion:
@@ -2449,7 +2471,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEventDataStoreIngestionResponse'
-      x-stackql-resource: event_data_store_ingestion
+      x-stackql-resource: event_data_stores
       x-stackql-method: start_event_data_store_ingestion
       x-stackql-verb: EXEC
   /StartImport:
@@ -2637,7 +2659,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopEventDataStoreIngestionResponse'
-      x-stackql-resource: event_data_store_ingestion
+      x-stackql-resource: event_data_stores
       x-stackql-method: stop_event_data_store_ingestion
       x-stackql-verb: EXEC
   /StopImport:

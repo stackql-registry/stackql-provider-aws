@@ -891,7 +891,6 @@ paths:
                   description: The tags that you want to add to the resource.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -1668,10 +1667,10 @@ components:
     UpdateAutoManagementResponse:
       type: object
   x-stackQL-resources:
-    service_quota_templates:
-      id: aws.service_quotas.service_quota_templates
-      name: service_quota_templates
-      title: service_quota_templates
+    service_quotas:
+      id: aws.service_quotas.service_quotas
+      name: service_quotas
+      title: service_quotas
       methods:
         associate_service_quota_template:
           operation:
@@ -1699,11 +1698,63 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_service_quota:
+          operation:
+            $ref: "#/paths/~1GetServiceQuota/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Quota
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_service_quotas:
+          operation:
+            $ref: "#/paths/~1ListServiceQuotas/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Quotas
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        put_service_quota_increase_request_into_template:
+          operation:
+            $ref: "#/paths/~1PutServiceQuotaIncreaseRequestIntoTemplate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/service_quotas/methods/get_service_quota"
+          - $ref: "#/components/x-stackQL-resources/service_quotas/methods/list_service_quotas"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/service_quota_templates/methods/associate_service_quota_template"
+          - $ref: "#/components/x-stackQL-resources/service_quotas/methods/associate_service_quota_template"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/service_quotas/methods/put_service_quota_increase_request_into_template"
         delete: []
     support_cases:
       id: aws.service_quotas.support_cases
@@ -1753,6 +1804,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ServiceQuotaIncreaseRequestInTemplate
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1778,6 +1830,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Quota
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1797,6 +1850,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1889,6 +1949,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RequestedQuota
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1899,45 +1960,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/requested_service_quota_changes/methods/get_requested_service_quota_change"
-        insert: []
-        update: []
-        delete: []
-    service_quotas:
-      id: aws.service_quotas.service_quotas
-      name: service_quotas
-      title: service_quotas
-      methods:
-        get_service_quota:
-          operation:
-            $ref: "#/paths/~1GetServiceQuota/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_service_quotas:
-          operation:
-            $ref: "#/paths/~1ListServiceQuotas/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Quotas
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/service_quotas/methods/get_service_quota"
-          - $ref: "#/components/x-stackQL-resources/service_quotas/methods/list_service_quotas"
         insert: []
         update: []
         delete: []
@@ -1958,6 +1980,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1983,6 +2012,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2008,6 +2044,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2033,6 +2076,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2041,10 +2091,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.service_quotas.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.service_quotas.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2059,42 +2109,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    service_quota_increase_request_into_templates:
-      id: aws.service_quotas.service_quota_increase_request_into_templates
-      name: service_quota_increase_request_into_templates
-      title: service_quota_increase_request_into_templates
-      methods:
-        put_service_quota_increase_request_into_template:
-          operation:
-            $ref: "#/paths/~1PutServiceQuotaIncreaseRequestIntoTemplate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/service_quota_increase_request_into_templates/methods/put_service_quota_increase_request_into_template"
-        delete: []
-    resources:
-      id: aws.service_quotas.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2122,11 +2136,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     auto_managements:
       id: aws.service_quotas.auto_managements

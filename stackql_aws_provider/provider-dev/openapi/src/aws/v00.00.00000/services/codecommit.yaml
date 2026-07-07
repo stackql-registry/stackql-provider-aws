@@ -1793,7 +1793,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListApprovalRuleTemplatesOutput"
+                $ref: "#/components/schemas/ListApprovalRuleTemplatesOutputDisplay"
   /ListAssociatedApprovalRuleTemplatesForRepository:
     post:
       operationId: ListAssociatedApprovalRuleTemplatesForRepository
@@ -1832,7 +1832,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryOutput"
+                $ref: "#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay"
   /ListBranches:
     post:
       operationId: ListBranches
@@ -1868,7 +1868,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListBranchesOutput"
+                $ref: "#/components/schemas/ListBranchesOutputDisplay"
   /ListFileCommitHistory:
     post:
       operationId: ListFileCommitHistory
@@ -1959,7 +1959,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPullRequestsOutput"
+                $ref: "#/components/schemas/ListPullRequestsOutputDisplay"
   /ListRepositories:
     post:
       operationId: ListRepositories
@@ -2035,7 +2035,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutput"
+                $ref: "#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -5175,38 +5175,45 @@ components:
         - updateReference
         - createReference
         - deleteReference
-    ListApprovalRuleTemplatesOutput:
+    ListApprovalRuleTemplatesRowDisplay:
       type: object
       properties:
-        approvalRuleTemplateNames:
-          $ref: "#/components/schemas/ApprovalRuleTemplateNameList"
+        approval_rule_template_name:
+          type: string
           description: The names of all the approval rule templates found in the Amazon Web Services Region for your Amazon Web Services account.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: An enumeration token that allows the operation to batch the next results of the operation.
-    ApprovalRuleTemplateNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/ApprovalRuleTemplateName"
-    ListAssociatedApprovalRuleTemplatesForRepositoryOutput:
+    ListApprovalRuleTemplatesOutputDisplay:
       type: object
       properties:
-        approvalRuleTemplateNames:
-          $ref: "#/components/schemas/ApprovalRuleTemplateNameList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListApprovalRuleTemplatesRowDisplay"
+    ListAssociatedApprovalRuleTemplatesForRepositoryRowDisplay:
+      type: object
+      properties:
+        approval_rule_template_name:
+          type: string
           description: The names of all approval rule templates associated with the repository.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: An enumeration token that allows the operation to batch the next results of the operation.
-    ListBranchesOutput:
-      description: Represents the output of a list branches operation.
+    ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay:
       type: object
       properties:
-        branches:
-          $ref: "#/components/schemas/BranchNameList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryRowDisplay"
+    ListBranchesRowDisplay:
+      type: object
+      properties:
+        branche:
+          type: string
           description: The list of branch names.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: An enumeration token that returns the batch of the results.
+    ListBranchesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListBranchesRowDisplay"
     ListFileCommitHistoryResponse:
       type: object
       properties:
@@ -5241,21 +5248,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/RevisionId"
-    ListPullRequestsOutput:
+    ListPullRequestsRowDisplay:
       type: object
       properties:
-        pullRequestIds:
-          $ref: "#/components/schemas/PullRequestIdList"
+        pull_request_id:
+          type: string
           description: The system-generated IDs of the pull requests.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: An enumeration token that allows the operation to batch the next results of the operation.
-      required:
-        - pullRequestIds
-    PullRequestIdList:
-      type: array
-      items:
-        $ref: "#/components/schemas/PullRequestId"
+    ListPullRequestsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPullRequestsRowDisplay"
     SortByEnum:
       type: string
       enum:
@@ -5290,15 +5295,19 @@ components:
         repositoryId:
           $ref: "#/components/schemas/RepositoryId"
           description: The ID associated with the repository.
-    ListRepositoriesForApprovalRuleTemplateOutput:
+    ListRepositoriesForApprovalRuleTemplateRowDisplay:
       type: object
       properties:
-        repositoryNames:
-          $ref: "#/components/schemas/RepositoryNameList"
+        repository_name:
+          type: string
           description: A list of repository names that are associated with the specified approval rule template.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: An enumeration token that allows the operation to batch the next results of the operation.
+    ListRepositoriesForApprovalRuleTemplateOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRepositoriesForApprovalRuleTemplateRowDisplay"
     ResourceArn:
       type: string
     ListTagsForResourceOutput:
@@ -5546,10 +5555,10 @@ components:
           $ref: "#/components/schemas/KmsKeyId"
           description: The ID of the encryption key formerly used to encrypt and decrypt the repository.
   x-stackQL-resources:
-    approval_rule_template_with_repositories:
-      id: aws.codecommit.approval_rule_template_with_repositories
-      name: approval_rule_template_with_repositories
-      title: approval_rule_template_with_repositories
+    repositories:
+      id: aws.codecommit.repositories
+      name: repositories
+      title: repositories
       methods:
         associate_approval_rule_template_with_repository:
           operation:
@@ -5563,20 +5572,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/approval_rule_template_with_repositories/methods/associate_approval_rule_template_with_repository"
-        delete: []
-    commits:
-      id: aws.codecommit.commits
-      name: commits
-      title: commits
-      methods:
-        batch_get_commits:
+        batch_associate_approval_rule_template_with_repositories:
           operation:
-            $ref: "#/paths/~1BatchGetCommits/post"
+            $ref: "#/paths/~1BatchAssociateApprovalRuleTemplateWithRepositories/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5587,9 +5585,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        create_commit:
+        batch_disassociate_approval_rule_template_from_repositories:
           operation:
-            $ref: "#/paths/~1CreateCommit/post"
+            $ref: "#/paths/~1BatchDisassociateApprovalRuleTemplateFromRepositories/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5600,32 +5598,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        get_commit:
-          operation:
-            $ref: "#/paths/~1GetCommit/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/commits/methods/batch_get_commits"
-          - $ref: "#/components/x-stackQL-resources/commits/methods/get_commit"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/commits/methods/create_commit"
-        update: []
-        delete: []
-    repositories:
-      id: aws.codecommit.repositories
-      name: repositories
-      title: repositories
-      methods:
         batch_get_repositories:
           operation:
             $ref: "#/paths/~1BatchGetRepositories/post"
@@ -5665,12 +5637,25 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disassociate_approval_rule_template_from_repository:
+          operation:
+            $ref: "#/paths/~1DisassociateApprovalRuleTemplateFromRepository/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_repository:
           operation:
             $ref: "#/paths/~1GetRepository/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.repositoryMetadata
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5690,6 +5675,102 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        merge_branches_by_fast_forward:
+          operation:
+            $ref: "#/paths/~1MergeBranchesByFastForward/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        merge_branches_by_squash:
+          operation:
+            $ref: "#/paths/~1MergeBranchesBySquash/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        merge_branches_by_three_way:
+          operation:
+            $ref: "#/paths/~1MergeBranchesByThreeWay/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        post_comment_for_compared_commit:
+          operation:
+            $ref: "#/paths/~1PostCommentForComparedCommit/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_repository_description:
+          operation:
+            $ref: "#/paths/~1UpdateRepositoryDescription/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_repository_encryption_key:
+          operation:
+            $ref: "#/paths/~1UpdateRepositoryEncryptionKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_repository_name:
+          operation:
+            $ref: "#/paths/~1UpdateRepositoryName/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5699,9 +5780,117 @@ components:
           - $ref: "#/components/x-stackQL-resources/repositories/methods/list_repositories"
         insert:
           - $ref: "#/components/x-stackQL-resources/repositories/methods/create_repository"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/associate_approval_rule_template_with_repository"
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/update_repository_encryption_key"
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/update_repository_name"
+          - $ref: "#/components/x-stackQL-resources/repositories/methods/update_repository_description"
         delete:
           - $ref: "#/components/x-stackQL-resources/repositories/methods/delete_repository"
+    merge_conflicts:
+      id: aws.codecommit.merge_conflicts
+      name: merge_conflicts
+      title: merge_conflicts
+      methods:
+        batch_describe_merge_conflicts:
+          operation:
+            $ref: "#/paths/~1BatchDescribeMergeConflicts/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_merge_conflicts:
+          operation:
+            $ref: "#/paths/~1DescribeMergeConflicts/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_merge_conflicts:
+          operation:
+            $ref: "#/paths/~1GetMergeConflicts/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/merge_conflicts/methods/describe_merge_conflicts"
+          - $ref: "#/components/x-stackQL-resources/merge_conflicts/methods/get_merge_conflicts"
+        insert: []
+        update: []
+        delete: []
+    commits:
+      id: aws.codecommit.commits
+      name: commits
+      title: commits
+      methods:
+        batch_get_commits:
+          operation:
+            $ref: "#/paths/~1BatchGetCommits/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_commit:
+          operation:
+            $ref: "#/paths/~1CreateCommit/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_commit:
+          operation:
+            $ref: "#/paths/~1GetCommit/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.commit
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/commits/methods/batch_get_commits"
+          - $ref: "#/components/x-stackQL-resources/commits/methods/get_commit"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/commits/methods/create_commit"
+        update: []
+        delete: []
     approval_rule_templates:
       id: aws.codecommit.approval_rule_templates
       name: approval_rule_templates
@@ -5739,6 +5928,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.approvalRuleTemplate
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5749,6 +5939,52 @@ components:
         list_approval_rule_templates:
           operation:
             $ref: "#/paths/~1ListApprovalRuleTemplates/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListApprovalRuleTemplatesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "approvalRuleTemplateNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"approval_rule_template_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_approval_rule_template_content:
+          operation:
+            $ref: "#/paths/~1UpdateApprovalRuleTemplateContent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_approval_rule_template_description:
+          operation:
+            $ref: "#/paths/~1UpdateApprovalRuleTemplateDescription/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_approval_rule_template_name:
+          operation:
+            $ref: "#/paths/~1UpdateApprovalRuleTemplateName/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5765,7 +6001,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/approval_rule_templates/methods/list_approval_rule_templates"
         insert:
           - $ref: "#/components/x-stackQL-resources/approval_rule_templates/methods/create_approval_rule_template"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/approval_rule_templates/methods/update_approval_rule_template_content"
+          - $ref: "#/components/x-stackQL-resources/approval_rule_templates/methods/update_approval_rule_template_description"
+          - $ref: "#/components/x-stackQL-resources/approval_rule_templates/methods/update_approval_rule_template_name"
         delete:
           - $ref: "#/components/x-stackQL-resources/approval_rule_templates/methods/delete_approval_rule_template"
     branches:
@@ -5804,6 +6043,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.branch
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5817,7 +6057,32 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.branches
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListBranchesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "branches" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"branche": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_default_branch:
+          operation:
+            $ref: "#/paths/~1UpdateDefaultBranch/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5831,7 +6096,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/branches/methods/get_branch"
         insert:
           - $ref: "#/components/x-stackQL-resources/branches/methods/create_branch"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/branches/methods/update_default_branch"
         delete:
           - $ref: "#/components/x-stackQL-resources/branches/methods/delete_branch"
     pull_requests:
@@ -5852,46 +6118,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        get_pull_request:
-          operation:
-            $ref: "#/paths/~1GetPullRequest/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_pull_requests:
-          operation:
-            $ref: "#/paths/~1ListPullRequests/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.pullRequestIds
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/get_pull_request"
-          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/list_pull_requests"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/create_pull_request"
-        update: []
-        delete: []
-    pull_request_approval_rules:
-      id: aws.codecommit.pull_request_approval_rules
-      name: pull_request_approval_rules
-      title: pull_request_approval_rules
-      methods:
         create_pull_request_approval_rule:
           operation:
             $ref: "#/paths/~1CreatePullRequestApprovalRule/post"
@@ -5918,17 +6144,194 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        evaluate_pull_request_approval_rules:
+          operation:
+            $ref: "#/paths/~1EvaluatePullRequestApprovalRules/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_pull_request:
+          operation:
+            $ref: "#/paths/~1GetPullRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.pullRequest
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_pull_requests:
+          operation:
+            $ref: "#/paths/~1ListPullRequests/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPullRequestsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "pullRequestIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pull_request_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        merge_pull_request_by_fast_forward:
+          operation:
+            $ref: "#/paths/~1MergePullRequestByFastForward/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        merge_pull_request_by_squash:
+          operation:
+            $ref: "#/paths/~1MergePullRequestBySquash/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        merge_pull_request_by_three_way:
+          operation:
+            $ref: "#/paths/~1MergePullRequestByThreeWay/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        override_pull_request_approval_rules:
+          operation:
+            $ref: "#/paths/~1OverridePullRequestApprovalRules/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        post_comment_for_pull_request:
+          operation:
+            $ref: "#/paths/~1PostCommentForPullRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_pull_request_approval_rule_content:
+          operation:
+            $ref: "#/paths/~1UpdatePullRequestApprovalRuleContent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_pull_request_description:
+          operation:
+            $ref: "#/paths/~1UpdatePullRequestDescription/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_pull_request_status:
+          operation:
+            $ref: "#/paths/~1UpdatePullRequestStatus/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_pull_request_title:
+          operation:
+            $ref: "#/paths/~1UpdatePullRequestTitle/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/get_pull_request"
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/list_pull_requests"
         insert:
-          - $ref: "#/components/x-stackQL-resources/pull_request_approval_rules/methods/create_pull_request_approval_rule"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/create_pull_request_approval_rule"
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/create_pull_request"
+        update:
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/update_pull_request_approval_rule_content"
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/update_pull_request_description"
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/update_pull_request_status"
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/update_pull_request_title"
         delete:
-          - $ref: "#/components/x-stackQL-resources/pull_request_approval_rules/methods/delete_pull_request_approval_rule"
-    unreferenced_merge_commits:
-      id: aws.codecommit.unreferenced_merge_commits
-      name: unreferenced_merge_commits
-      title: unreferenced_merge_commits
+          - $ref: "#/components/x-stackQL-resources/pull_requests/methods/delete_pull_request_approval_rule"
+    merge_commits:
+      id: aws.codecommit.merge_commits
+      name: merge_commits
+      title: merge_commits
       methods:
         create_unreferenced_merge_commit:
           operation:
@@ -5943,16 +6346,30 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_merge_commit:
+          operation:
+            $ref: "#/paths/~1GetMergeCommit/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/merge_commits/methods/get_merge_commit"
         insert:
-          - $ref: "#/components/x-stackQL-resources/unreferenced_merge_commits/methods/create_unreferenced_merge_commit"
+          - $ref: "#/components/x-stackQL-resources/merge_commits/methods/create_unreferenced_merge_commit"
         update: []
         delete: []
-    comment_contents:
-      id: aws.codecommit.comment_contents
-      name: comment_contents
-      title: comment_contents
+    comments:
+      id: aws.codecommit.comments
+      name: comments
+      title: comments
       methods:
         delete_comment_content:
           operation:
@@ -5967,12 +6384,41 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_comment:
+          operation:
+            $ref: "#/paths/~1GetComment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.comment
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_comment:
+          operation:
+            $ref: "#/paths/~1UpdateComment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/comments/methods/get_comment"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/comments/methods/update_comment"
         delete:
-          - $ref: "#/components/x-stackQL-resources/comment_contents/methods/delete_comment_content"
+          - $ref: "#/components/x-stackQL-resources/comments/methods/delete_comment_content"
     files:
       id: aws.codecommit.files
       name: files
@@ -6026,44 +6472,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/files/methods/put_file"
         delete:
           - $ref: "#/components/x-stackQL-resources/files/methods/delete_file"
-    merge_conflicts:
-      id: aws.codecommit.merge_conflicts
-      name: merge_conflicts
-      title: merge_conflicts
-      methods:
-        describe_merge_conflicts:
-          operation:
-            $ref: "#/paths/~1DescribeMergeConflicts/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_merge_conflicts:
-          operation:
-            $ref: "#/paths/~1GetMergeConflicts/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/merge_conflicts/methods/describe_merge_conflicts"
-          - $ref: "#/components/x-stackQL-resources/merge_conflicts/methods/get_merge_conflicts"
-        insert: []
-        update: []
-        delete: []
     pull_request_events:
       id: aws.codecommit.pull_request_events
       name: pull_request_events
@@ -6081,6 +6489,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6088,29 +6503,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/pull_request_events/methods/describe_pull_request_events"
         insert: []
         update: []
-        delete: []
-    approval_rule_template_from_repositories:
-      id: aws.codecommit.approval_rule_template_from_repositories
-      name: approval_rule_template_from_repositories
-      title: approval_rule_template_from_repositories
-      methods:
-        disassociate_approval_rule_template_from_repository:
-          operation:
-            $ref: "#/paths/~1DisassociateApprovalRuleTemplateFromRepository/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/approval_rule_template_from_repositories/methods/disassociate_approval_rule_template_from_repository"
         delete: []
     blobs:
       id: aws.codecommit.blobs
@@ -6135,44 +6527,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/blobs/methods/get_blob"
         insert: []
         update: []
-        delete: []
-    comments:
-      id: aws.codecommit.comments
-      name: comments
-      title: comments
-      methods:
-        get_comment:
-          operation:
-            $ref: "#/paths/~1GetComment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_comment:
-          operation:
-            $ref: "#/paths/~1UpdateComment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/comments/methods/get_comment"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/comments/methods/update_comment"
         delete: []
     comment_reactions:
       id: aws.codecommit.comment_reactions
@@ -6229,6 +6583,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6254,6 +6615,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6279,6 +6647,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6308,30 +6683,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folders/methods/get_folder"
-        insert: []
-        update: []
-        delete: []
-    merge_commits:
-      id: aws.codecommit.merge_commits
-      name: merge_commits
-      title: merge_commits
-      methods:
-        get_merge_commit:
-          operation:
-            $ref: "#/paths/~1GetMergeCommit/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/merge_commits/methods/get_merge_commit"
         insert: []
         update: []
         delete: []
@@ -6483,6 +6834,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "approvalRuleTemplateNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"approval_rule_template_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6531,6 +6889,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "repositoryNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"repository_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6544,10 +6909,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.codecommit.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.codecommit.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6562,17 +6927,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.codecommit.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -6598,270 +6952,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    approval_rule_template_contents:
-      id: aws.codecommit.approval_rule_template_contents
-      name: approval_rule_template_contents
-      title: approval_rule_template_contents
-      methods:
-        update_approval_rule_template_content:
-          operation:
-            $ref: "#/paths/~1UpdateApprovalRuleTemplateContent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/approval_rule_template_contents/methods/update_approval_rule_template_content"
-        delete: []
-    approval_rule_template_descriptions:
-      id: aws.codecommit.approval_rule_template_descriptions
-      name: approval_rule_template_descriptions
-      title: approval_rule_template_descriptions
-      methods:
-        update_approval_rule_template_description:
-          operation:
-            $ref: "#/paths/~1UpdateApprovalRuleTemplateDescription/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/approval_rule_template_descriptions/methods/update_approval_rule_template_description"
-        delete: []
-    approval_rule_template_names:
-      id: aws.codecommit.approval_rule_template_names
-      name: approval_rule_template_names
-      title: approval_rule_template_names
-      methods:
-        update_approval_rule_template_name:
-          operation:
-            $ref: "#/paths/~1UpdateApprovalRuleTemplateName/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/approval_rule_template_names/methods/update_approval_rule_template_name"
-        delete: []
-    default_branches:
-      id: aws.codecommit.default_branches
-      name: default_branches
-      title: default_branches
-      methods:
-        update_default_branch:
-          operation:
-            $ref: "#/paths/~1UpdateDefaultBranch/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/default_branches/methods/update_default_branch"
-        delete: []
-    pull_request_approval_rule_contents:
-      id: aws.codecommit.pull_request_approval_rule_contents
-      name: pull_request_approval_rule_contents
-      title: pull_request_approval_rule_contents
-      methods:
-        update_pull_request_approval_rule_content:
-          operation:
-            $ref: "#/paths/~1UpdatePullRequestApprovalRuleContent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/pull_request_approval_rule_contents/methods/update_pull_request_approval_rule_content"
-        delete: []
-    pull_request_descriptions:
-      id: aws.codecommit.pull_request_descriptions
-      name: pull_request_descriptions
-      title: pull_request_descriptions
-      methods:
-        update_pull_request_description:
-          operation:
-            $ref: "#/paths/~1UpdatePullRequestDescription/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/pull_request_descriptions/methods/update_pull_request_description"
-        delete: []
-    pull_request_status:
-      id: aws.codecommit.pull_request_status
-      name: pull_request_status
-      title: pull_request_status
-      methods:
-        update_pull_request_status:
-          operation:
-            $ref: "#/paths/~1UpdatePullRequestStatus/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/pull_request_status/methods/update_pull_request_status"
-        delete: []
-    pull_request_titles:
-      id: aws.codecommit.pull_request_titles
-      name: pull_request_titles
-      title: pull_request_titles
-      methods:
-        update_pull_request_title:
-          operation:
-            $ref: "#/paths/~1UpdatePullRequestTitle/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/pull_request_titles/methods/update_pull_request_title"
-        delete: []
-    repository_descriptions:
-      id: aws.codecommit.repository_descriptions
-      name: repository_descriptions
-      title: repository_descriptions
-      methods:
-        update_repository_description:
-          operation:
-            $ref: "#/paths/~1UpdateRepositoryDescription/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/repository_descriptions/methods/update_repository_description"
-        delete: []
-    repository_encryption_keys:
-      id: aws.codecommit.repository_encryption_keys
-      name: repository_encryption_keys
-      title: repository_encryption_keys
-      methods:
-        update_repository_encryption_key:
-          operation:
-            $ref: "#/paths/~1UpdateRepositoryEncryptionKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/repository_encryption_keys/methods/update_repository_encryption_key"
-        delete: []
-    repository_names:
-      id: aws.codecommit.repository_names
-      name: repository_names
-      title: repository_names
-      methods:
-        update_repository_name:
-          operation:
-            $ref: "#/paths/~1UpdateRepositoryName/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/repository_names/methods/update_repository_name"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

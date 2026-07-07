@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddCustomAttributesResponse'
-      x-stackql-resource: custom_attributes
+      x-stackql-resource: user_pools
       x-stackql-method: add_custom_attributes
       x-stackql-verb: UPDATE
   /AddUserPoolClientSecret:
@@ -159,7 +159,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: admin_add_user_to_group
+      x-stackql-resource: user_pools
       x-stackql-method: admin_add_user_to_group
       x-stackql-verb: EXEC
   /AdminConfirmSignUp:
@@ -223,7 +223,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminConfirmSignUpResponse'
-      x-stackql-resource: admin_confirm_sign_up
+      x-stackql-resource: user_pools
       x-stackql-method: admin_confirm_sign_up
       x-stackql-verb: EXEC
   /AdminCreateUser:
@@ -356,7 +356,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminCreateUserResponse'
-      x-stackql-resource: admin_create_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_create_user
       x-stackql-verb: EXEC
   /AdminDeleteUser:
@@ -398,7 +398,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: admin_delete_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_delete_user
       x-stackql-verb: EXEC
   /AdminDeleteUserAttributes:
@@ -450,7 +450,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminDeleteUserAttributesResponse'
-      x-stackql-resource: admin_delete_user_attributes
+      x-stackql-resource: user_pools
       x-stackql-method: admin_delete_user_attributes
       x-stackql-verb: EXEC
   /AdminDisableProviderForUser:
@@ -506,7 +506,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminDisableProviderForUserResponse'
-      x-stackql-resource: admin_disable_provider_for_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_disable_provider_for_user
       x-stackql-verb: EXEC
   /AdminDisableUser:
@@ -553,7 +553,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminDisableUserResponse'
-      x-stackql-resource: admin_disable_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_disable_user
       x-stackql-verb: EXEC
   /AdminEnableUser:
@@ -599,7 +599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminEnableUserResponse'
-      x-stackql-resource: admin_enable_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_enable_user
       x-stackql-verb: EXEC
   /AdminForgetDevice:
@@ -647,7 +647,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: admin_forget_device
+      x-stackql-resource: user_pools
       x-stackql-method: admin_forget_device
       x-stackql-verb: EXEC
   /AdminGetDevice:
@@ -698,7 +698,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminGetDeviceResponse'
-      x-stackql-resource: admin_get_device
+      x-stackql-resource: user_pools
       x-stackql-method: admin_get_device
       x-stackql-verb: EXEC
   /AdminGetUser:
@@ -746,7 +746,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminGetUserResponse'
-      x-stackql-resource: admin_get_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_get_user
       x-stackql-verb: EXEC
   /AdminInitiateAuth:
@@ -863,7 +863,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminInitiateAuthResponse'
-      x-stackql-resource: admin_initiate_auth
+      x-stackql-resource: user_pools
       x-stackql-method: admin_initiate_auth
       x-stackql-verb: EXEC
   /AdminLinkProviderForUser:
@@ -938,7 +938,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminLinkProviderForUserResponse'
-      x-stackql-resource: admin_link_provider_for_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_link_provider_for_user
       x-stackql-verb: EXEC
   /AdminListDevices:
@@ -996,7 +996,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminListDevicesResponse'
-      x-stackql-resource: admin_list_devices
+      x-stackql-resource: devices
       x-stackql-method: admin_list_devices
       x-stackql-verb: EXEC
   /AdminListGroupsForUser:
@@ -1053,9 +1053,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminListGroupsForUserResponse'
-      x-stackql-resource: admin_list_groups_for_user
+      x-stackql-resource: user_pools
       x-stackql-method: admin_list_groups_for_user
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /AdminListUserAuthEvents:
     post:
       operationId: AdminListUserAuthEvents
@@ -1110,9 +1113,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminListUserAuthEventsResponse'
-      x-stackql-resource: admin_list_user_auth_events
+      x-stackql-resource: user_pools
       x-stackql-method: admin_list_user_auth_events
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /AdminRemoveUserFromGroup:
     post:
       operationId: AdminRemoveUserFromGroup
@@ -1158,7 +1164,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: admin_remove_user_from_group
+      x-stackql-resource: user_pools
       x-stackql-method: admin_remove_user_from_group
       x-stackql-verb: EXEC
   /AdminResetUserPassword:
@@ -1230,7 +1236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminResetUserPasswordResponse'
-      x-stackql-resource: admin_reset_user_password
+      x-stackql-resource: user_pools
       x-stackql-method: admin_reset_user_password
       x-stackql-verb: EXEC
   /AdminRespondToAuthChallenge:
@@ -1400,7 +1406,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminRespondToAuthChallengeResponse'
-      x-stackql-resource: admin_respond_to_auth_challenge
+      x-stackql-resource: user_pools
       x-stackql-method: admin_respond_to_auth_challenge
       x-stackql-verb: EXEC
   /AdminSetUserMFAPreference:
@@ -1468,7 +1474,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminSetUserMFAPreferenceResponse'
-      x-stackql-resource: admin_set_user_mfa_preference
+      x-stackql-resource: user_pools
       x-stackql-method: admin_set_user_mfa_preference
       x-stackql-verb: EXEC
   /AdminSetUserPassword:
@@ -1538,7 +1544,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminSetUserPasswordResponse'
-      x-stackql-resource: admin_set_user_password
+      x-stackql-resource: user_pools
       x-stackql-method: admin_set_user_password
       x-stackql-verb: EXEC
   /AdminSetUserSettings:
@@ -1589,7 +1595,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminSetUserSettingsResponse'
-      x-stackql-resource: admin_set_user_settings
+      x-stackql-resource: user_pools
       x-stackql-method: admin_set_user_settings
       x-stackql-verb: EXEC
   /AdminUpdateAuthEventFeedback:
@@ -1652,7 +1658,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminUpdateAuthEventFeedbackResponse'
-      x-stackql-resource: admin_update_auth_event_feedback
+      x-stackql-resource: user_pools
       x-stackql-method: admin_update_auth_event_feedback
       x-stackql-verb: EXEC
   /AdminUpdateDeviceStatus:
@@ -1710,7 +1716,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminUpdateDeviceStatusResponse'
-      x-stackql-resource: admin_update_device_status
+      x-stackql-resource: user_pools
       x-stackql-method: admin_update_device_status
       x-stackql-verb: EXEC
   /AdminUpdateUserAttributes:
@@ -1795,7 +1801,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminUpdateUserAttributesResponse'
-      x-stackql-resource: admin_update_user_attributes
+      x-stackql-resource: user_pools
       x-stackql-method: admin_update_user_attributes
       x-stackql-verb: EXEC
   /AdminUserGlobalSignOut:
@@ -1851,7 +1857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AdminUserGlobalSignOutResponse'
-      x-stackql-resource: admin_user_global_sign_out
+      x-stackql-resource: user_pools
       x-stackql-method: admin_user_global_sign_out
       x-stackql-verb: EXEC
   /AssociateSoftwareToken:
@@ -3393,7 +3399,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteUserAttributesResponse'
-      x-stackql-resource: user_attributes
+      x-stackql-resource: users
       x-stackql-method: delete_user_attributes
       x-stackql-verb: DELETE
   /DeleteUserPool:
@@ -3643,6 +3649,7 @@ paths:
       x-stackql-resource: identity_providers
       x-stackql-method: describe_identity_provider
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.IdentityProvider
   /DescribeManagedLoginBranding:
     post:
       operationId: DescribeManagedLoginBranding
@@ -3688,6 +3695,7 @@ paths:
       x-stackql-resource: managed_login_brandings
       x-stackql-method: describe_managed_login_branding
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ManagedLoginBranding
   /DescribeManagedLoginBrandingByClient:
     post:
       operationId: DescribeManagedLoginBrandingByClient
@@ -3734,6 +3742,7 @@ paths:
       x-stackql-resource: managed_login_branding_by_clients
       x-stackql-method: describe_managed_login_branding_by_client
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ManagedLoginBranding
   /DescribeResourceServer:
     post:
       operationId: DescribeResourceServer
@@ -3778,6 +3787,7 @@ paths:
       x-stackql-resource: resource_servers
       x-stackql-method: describe_resource_server
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResourceServer
   /DescribeRiskConfiguration:
     post:
       operationId: DescribeRiskConfiguration
@@ -3825,6 +3835,7 @@ paths:
       x-stackql-resource: risk_configurations
       x-stackql-method: describe_risk_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RiskConfiguration
   /DescribeTerms:
     post:
       operationId: DescribeTerms
@@ -3869,6 +3880,7 @@ paths:
       x-stackql-resource: terms
       x-stackql-method: describe_terms
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Terms
   /DescribeUserImportJob:
     post:
       operationId: DescribeUserImportJob
@@ -3910,6 +3922,7 @@ paths:
       x-stackql-resource: user_import_jobs
       x-stackql-method: describe_user_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UserImportJob
   /DescribeUserPool:
     post:
       operationId: DescribeUserPool
@@ -3950,6 +3963,7 @@ paths:
       x-stackql-resource: user_pools
       x-stackql-method: describe_user_pool
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UserPool
   /DescribeUserPoolClient:
     post:
       operationId: DescribeUserPoolClient
@@ -3995,6 +4009,7 @@ paths:
       x-stackql-resource: user_pool_clients
       x-stackql-method: describe_user_pool_client
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UserPoolClient
   /DescribeUserPoolDomain:
     post:
       operationId: DescribeUserPoolDomain
@@ -4035,6 +4050,7 @@ paths:
       x-stackql-resource: user_pool_domains
       x-stackql-method: describe_user_pool_domain
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DomainDescription
   /ForgetDevice:
     post:
       operationId: ForgetDevice
@@ -4253,6 +4269,7 @@ paths:
       x-stackql-resource: devices
       x-stackql-method: get_device
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Device
   /GetGroup:
     post:
       operationId: GetGroup
@@ -4297,6 +4314,7 @@ paths:
       x-stackql-resource: groups
       x-stackql-method: get_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Group
   /GetIdentityProviderByIdentifier:
     post:
       operationId: GetIdentityProviderByIdentifier
@@ -4340,6 +4358,7 @@ paths:
       x-stackql-resource: identity_provider_by_identifiers
       x-stackql-method: get_identity_provider_by_identifier
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.IdentityProvider
   /GetLogDeliveryConfiguration:
     post:
       operationId: GetLogDeliveryConfiguration
@@ -4381,6 +4400,7 @@ paths:
       x-stackql-resource: log_delivery_configurations
       x-stackql-method: get_log_delivery_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LogDeliveryConfiguration
   /GetSigningCertificate:
     post:
       operationId: GetSigningCertificate
@@ -4493,6 +4513,7 @@ paths:
       x-stackql-resource: tokens_from_refresh_tokens
       x-stackql-method: get_tokens_from_refresh_token
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AuthenticationResult
   /GetUICustomization:
     post:
       operationId: GetUICustomization
@@ -4535,6 +4556,7 @@ paths:
       x-stackql-resource: ui_customizations
       x-stackql-method: get_ui_customization
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UICustomization
   /GetUser:
     post:
       operationId: GetUser
@@ -4644,6 +4666,7 @@ paths:
       x-stackql-resource: user_attribute_verification_codes
       x-stackql-method: get_user_attribute_verification_code
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CodeDeliveryDetails
   /GetUserAuthFactors:
     post:
       operationId: GetUserAuthFactors
@@ -4997,6 +5020,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListIdentityProviders:
     post:
       operationId: ListIdentityProviders
@@ -5047,6 +5073,9 @@ paths:
       x-stackql-method: list_identity_providers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Providers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceServers:
     post:
       operationId: ListResourceServers
@@ -5097,6 +5126,9 @@ paths:
       x-stackql-method: list_resource_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceServers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -5130,7 +5162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTerms:
@@ -5331,6 +5363,9 @@ paths:
       x-stackql-method: list_user_pool_clients
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserPoolClients
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListUserPools:
     post:
       operationId: ListUserPools
@@ -5377,6 +5412,9 @@ paths:
       x-stackql-method: list_user_pools
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserPools
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListUsers:
     post:
       operationId: ListUsers
@@ -5458,6 +5496,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: PaginationToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.PaginationToken
   /ListUsersInGroup:
     post:
       operationId: ListUsersInGroup
@@ -5515,6 +5556,9 @@ paths:
       x-stackql-method: list_users_in_group
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWebAuthnCredentials:
     post:
       operationId: ListWebAuthnCredentials
@@ -6092,7 +6136,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetUserMFAPreferenceResponse'
-      x-stackql-resource: user_mfa_preferences
+      x-stackql-resource: users
       x-stackql-method: set_user_mfa_preference
       x-stackql-verb: UPDATE
   /SetUserPoolMfaConfig:
@@ -6209,7 +6253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetUserSettingsResponse'
-      x-stackql-resource: user_settings
+      x-stackql-resource: users
       x-stackql-method: set_user_settings
       x-stackql-verb: UPDATE
   /SignUp:
@@ -6354,7 +6398,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartUserImportJobResponse'
-      x-stackql-resource: user_import_job
+      x-stackql-resource: users
       x-stackql-method: start_user_import_job
       x-stackql-verb: EXEC
   /StartWebAuthnRegistration:
@@ -6436,7 +6480,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopUserImportJobResponse'
-      x-stackql-resource: user_import_job
+      x-stackql-resource: users
       x-stackql-method: stop_user_import_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -6484,7 +6528,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -6524,7 +6568,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAuthEventFeedback:
@@ -6593,7 +6637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAuthEventFeedbackResponse'
-      x-stackql-resource: auth_event_feedbacks
+      x-stackql-resource: user_pools
       x-stackql-method: update_auth_event_feedback
       x-stackql-verb: UPDATE
   /UpdateDeviceStatus:
@@ -6646,7 +6690,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDeviceStatusResponse'
-      x-stackql-resource: device_status
+      x-stackql-resource: devices
       x-stackql-method: update_device_status
       x-stackql-verb: UPDATE
   /UpdateGroup:
@@ -7066,7 +7110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateUserAttributesResponse'
-      x-stackql-resource: user_attributes
+      x-stackql-resource: users
       x-stackql-method: update_user_attributes
       x-stackql-verb: UPDATE
   /UpdateUserPool:
@@ -7605,7 +7649,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyUserAttributeResponse'
-      x-stackql-resource: user_attribute
+      x-stackql-resource: users
       x-stackql-method: verify_user_attribute
       x-stackql-verb: EXEC
 components:

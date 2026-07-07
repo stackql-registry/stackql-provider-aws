@@ -4016,10 +4016,97 @@ components:
           $ref: "#/components/schemas/DirectConnectGatewayAssociation"
           description: Information about an association between a Direct Connect gateway and a virtual private gateway or transit gateway.
   x-stackQL-resources:
-    connection_on_interconnects:
-      id: aws.directconnect.connection_on_interconnects
-      name: connection_on_interconnects
-      title: connection_on_interconnects
+    direct_connect_gateway_associations:
+      id: aws.directconnect.direct_connect_gateway_associations
+      name: direct_connect_gateway_associations
+      title: direct_connect_gateway_associations
+      methods:
+        accept_direct_connect_gateway_association_proposal:
+          operation:
+            $ref: "#/paths/~1AcceptDirectConnectGatewayAssociationProposal/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_direct_connect_gateway_association:
+          operation:
+            $ref: "#/paths/~1CreateDirectConnectGatewayAssociation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_direct_connect_gateway_association:
+          operation:
+            $ref: "#/paths/~1DeleteDirectConnectGatewayAssociation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_direct_connect_gateway_associations:
+          operation:
+            $ref: "#/paths/~1DescribeDirectConnectGatewayAssociations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.directConnectGatewayAssociations
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_direct_connect_gateway_association:
+          operation:
+            $ref: "#/paths/~1UpdateDirectConnectGatewayAssociation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/describe_direct_connect_gateway_associations"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/create_direct_connect_gateway_association"
+        update:
+          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/update_direct_connect_gateway_association"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/delete_direct_connect_gateway_association"
+    interconnects:
+      id: aws.directconnect.interconnects
+      name: interconnects
+      title: interconnects
       methods:
         allocate_connection_on_interconnect:
           operation:
@@ -4034,12 +4121,54 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_interconnect:
+          operation:
+            $ref: "#/paths/~1CreateInterconnect/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_interconnect:
+          operation:
+            $ref: "#/paths/~1DeleteInterconnect/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_interconnects:
+          operation:
+            $ref: "#/paths/~1DescribeInterconnects/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/interconnects/methods/describe_interconnects"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/interconnects/methods/create_interconnect"
         update:
-          - $ref: "#/components/x-stackQL-resources/connection_on_interconnects/methods/allocate_connection_on_interconnect"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/interconnects/methods/allocate_connection_on_interconnect"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/interconnects/methods/delete_interconnect"
     hosted_connections:
       id: aws.directconnect.hosted_connections
       name: hosted_connections
@@ -4092,14 +4221,79 @@ components:
           - $ref: "#/components/x-stackQL-resources/hosted_connections/methods/allocate_hosted_connection"
           - $ref: "#/components/x-stackQL-resources/hosted_connections/methods/associate_hosted_connection"
         delete: []
-    private_virtual_interfaces:
-      id: aws.directconnect.private_virtual_interfaces
-      name: private_virtual_interfaces
-      title: private_virtual_interfaces
+    virtual_interfaces:
+      id: aws.directconnect.virtual_interfaces
+      name: virtual_interfaces
+      title: virtual_interfaces
       methods:
         allocate_private_virtual_interface:
           operation:
             $ref: "#/paths/~1AllocatePrivateVirtualInterface/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        allocate_public_virtual_interface:
+          operation:
+            $ref: "#/paths/~1AllocatePublicVirtualInterface/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        allocate_transit_virtual_interface:
+          operation:
+            $ref: "#/paths/~1AllocateTransitVirtualInterface/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        associate_virtual_interface:
+          operation:
+            $ref: "#/paths/~1AssociateVirtualInterface/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        confirm_private_virtual_interface:
+          operation:
+            $ref: "#/paths/~1ConfirmPrivateVirtualInterface/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        confirm_public_virtual_interface:
+          operation:
+            $ref: "#/paths/~1ConfirmPublicVirtualInterface/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4123,31 +4317,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/private_virtual_interfaces/methods/create_private_virtual_interface"
-        update:
-          - $ref: "#/components/x-stackQL-resources/private_virtual_interfaces/methods/allocate_private_virtual_interface"
-        delete: []
-    public_virtual_interfaces:
-      id: aws.directconnect.public_virtual_interfaces
-      name: public_virtual_interfaces
-      title: public_virtual_interfaces
-      methods:
-        allocate_public_virtual_interface:
-          operation:
-            $ref: "#/paths/~1AllocatePublicVirtualInterface/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         create_public_virtual_interface:
           operation:
             $ref: "#/paths/~1CreatePublicVirtualInterface/post"
@@ -4161,121 +4330,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/public_virtual_interfaces/methods/create_public_virtual_interface"
-        update:
-          - $ref: "#/components/x-stackQL-resources/public_virtual_interfaces/methods/allocate_public_virtual_interface"
-        delete: []
-    transit_virtual_interfaces:
-      id: aws.directconnect.transit_virtual_interfaces
-      name: transit_virtual_interfaces
-      title: transit_virtual_interfaces
-      methods:
-        allocate_transit_virtual_interface:
-          operation:
-            $ref: "#/paths/~1AllocateTransitVirtualInterface/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         create_transit_virtual_interface:
           operation:
             $ref: "#/paths/~1CreateTransitVirtualInterface/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/transit_virtual_interfaces/methods/create_transit_virtual_interface"
-        update:
-          - $ref: "#/components/x-stackQL-resources/transit_virtual_interfaces/methods/allocate_transit_virtual_interface"
-        delete: []
-    connection_with_lags:
-      id: aws.directconnect.connection_with_lags
-      name: connection_with_lags
-      title: connection_with_lags
-      methods:
-        associate_connection_with_lag:
-          operation:
-            $ref: "#/paths/~1AssociateConnectionWithLag/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/connection_with_lags/methods/associate_connection_with_lag"
-        delete: []
-    mac_sec_keys:
-      id: aws.directconnect.mac_sec_keys
-      name: mac_sec_keys
-      title: mac_sec_keys
-      methods:
-        associate_mac_sec_key:
-          operation:
-            $ref: "#/paths/~1AssociateMacSecKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        disassociate_mac_sec_key:
-          operation:
-            $ref: "#/paths/~1DisassociateMacSecKey/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/mac_sec_keys/methods/disassociate_mac_sec_key"
-          - $ref: "#/components/x-stackQL-resources/mac_sec_keys/methods/associate_mac_sec_key"
-        delete: []
-    virtual_interfaces:
-      id: aws.directconnect.virtual_interfaces
-      name: virtual_interfaces
-      title: virtual_interfaces
-      methods:
-        associate_virtual_interface:
-          operation:
-            $ref: "#/paths/~1AssociateVirtualInterface/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4312,22 +4369,68 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_bgp_failover_test:
+          operation:
+            $ref: "#/paths/~1StartBgpFailoverTest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_bgp_failover_test:
+          operation:
+            $ref: "#/paths/~1StopBgpFailoverTest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_virtual_interface_attributes:
+          operation:
+            $ref: "#/paths/~1UpdateVirtualInterfaceAttributes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/describe_virtual_interfaces"
-        insert: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/create_private_virtual_interface"
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/create_public_virtual_interface"
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/create_transit_virtual_interface"
         update:
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/allocate_private_virtual_interface"
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/allocate_public_virtual_interface"
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/allocate_transit_virtual_interface"
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/associate_virtual_interface"
+          - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/update_virtual_interface_attributes"
         delete:
           - $ref: "#/components/x-stackQL-resources/virtual_interfaces/methods/delete_virtual_interface"
-    bgp_peers:
-      id: aws.directconnect.bgp_peers
-      name: bgp_peers
-      title: bgp_peers
+    lags:
+      id: aws.directconnect.lags
+      name: lags
+      title: lags
       methods:
-        create_bgp_peer:
+        associate_connection_with_lag:
           operation:
-            $ref: "#/paths/~1CreateBGPPeer/post"
+            $ref: "#/paths/~1AssociateConnectionWithLag/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4338,9 +4441,61 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_bgp_peer:
+        create_lag:
           operation:
-            $ref: "#/paths/~1DeleteBGPPeer/post"
+            $ref: "#/paths/~1CreateLag/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_lag:
+          operation:
+            $ref: "#/paths/~1DeleteLag/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_lags:
+          operation:
+            $ref: "#/paths/~1DescribeLags/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_connection_from_lag:
+          operation:
+            $ref: "#/paths/~1DisassociateConnectionFromLag/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_lag:
+          operation:
+            $ref: "#/paths/~1UpdateLag/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4352,17 +4507,46 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/lags/methods/describe_lags"
         insert:
-          - $ref: "#/components/x-stackQL-resources/bgp_peers/methods/create_bgp_peer"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/lags/methods/create_lag"
+        update:
+          - $ref: "#/components/x-stackQL-resources/lags/methods/associate_connection_with_lag"
+          - $ref: "#/components/x-stackQL-resources/lags/methods/update_lag"
         delete:
-          - $ref: "#/components/x-stackQL-resources/bgp_peers/methods/delete_bgp_peer"
+          - $ref: "#/components/x-stackQL-resources/lags/methods/delete_lag"
     connections:
       id: aws.directconnect.connections
       name: connections
       title: connections
       methods:
+        associate_mac_sec_key:
+          operation:
+            $ref: "#/paths/~1AssociateMacSecKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        confirm_connection:
+          operation:
+            $ref: "#/paths/~1ConfirmConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_connection:
           operation:
             $ref: "#/paths/~1CreateConnection/post"
@@ -4402,6 +4586,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disassociate_mac_sec_key:
+          operation:
+            $ref: "#/paths/~1DisassociateMacSecKey/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_connection:
           operation:
             $ref: "#/paths/~1UpdateConnection/post"
@@ -4421,6 +4618,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/connections/methods/create_connection"
         update:
+          - $ref: "#/components/x-stackQL-resources/connections/methods/disassociate_mac_sec_key"
           - $ref: "#/components/x-stackQL-resources/connections/methods/update_connection"
         delete:
           - $ref: "#/components/x-stackQL-resources/connections/methods/delete_connection"
@@ -4429,6 +4627,19 @@ components:
       name: direct_connect_gateways
       title: direct_connect_gateways
       methods:
+        confirm_transit_virtual_interface:
+          operation:
+            $ref: "#/paths/~1ConfirmTransitVirtualInterface/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_direct_connect_gateway:
           operation:
             $ref: "#/paths/~1CreateDirectConnectGateway/post"
@@ -4467,6 +4678,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_direct_connect_gateway:
@@ -4491,14 +4709,14 @@ components:
           - $ref: "#/components/x-stackQL-resources/direct_connect_gateways/methods/update_direct_connect_gateway"
         delete:
           - $ref: "#/components/x-stackQL-resources/direct_connect_gateways/methods/delete_direct_connect_gateway"
-    direct_connect_gateway_associations:
-      id: aws.directconnect.direct_connect_gateway_associations
-      name: direct_connect_gateway_associations
-      title: direct_connect_gateway_associations
+    bgp_peers:
+      id: aws.directconnect.bgp_peers
+      name: bgp_peers
+      title: bgp_peers
       methods:
-        create_direct_connect_gateway_association:
+        create_bgp_peer:
           operation:
-            $ref: "#/paths/~1CreateDirectConnectGatewayAssociation/post"
+            $ref: "#/paths/~1CreateBGPPeer/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4509,36 +4727,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_direct_connect_gateway_association:
+        delete_bgp_peer:
           operation:
-            $ref: "#/paths/~1DeleteDirectConnectGatewayAssociation/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_direct_connect_gateway_associations:
-          operation:
-            $ref: "#/paths/~1DescribeDirectConnectGatewayAssociations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.directConnectGatewayAssociations
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_direct_connect_gateway_association:
-          operation:
-            $ref: "#/paths/~1UpdateDirectConnectGatewayAssociation/post"
+            $ref: "#/paths/~1DeleteBGPPeer/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4550,14 +4741,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/describe_direct_connect_gateway_associations"
+        select: []
         insert:
-          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/create_direct_connect_gateway_association"
-        update:
-          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/update_direct_connect_gateway_association"
+          - $ref: "#/components/x-stackQL-resources/bgp_peers/methods/create_bgp_peer"
+        update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_associations/methods/delete_direct_connect_gateway_association"
+          - $ref: "#/components/x-stackQL-resources/bgp_peers/methods/delete_bgp_peer"
     direct_connect_gateway_association_proposals:
       id: aws.directconnect.direct_connect_gateway_association_proposals
       name: direct_connect_gateway_association_proposals
@@ -4610,124 +4799,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_association_proposals/methods/delete_direct_connect_gateway_association_proposal"
-    interconnects:
-      id: aws.directconnect.interconnects
-      name: interconnects
-      title: interconnects
-      methods:
-        create_interconnect:
-          operation:
-            $ref: "#/paths/~1CreateInterconnect/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_interconnect:
-          operation:
-            $ref: "#/paths/~1DeleteInterconnect/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_interconnects:
-          operation:
-            $ref: "#/paths/~1DescribeInterconnects/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/interconnects/methods/describe_interconnects"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/interconnects/methods/create_interconnect"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/interconnects/methods/delete_interconnect"
-    lags:
-      id: aws.directconnect.lags
-      name: lags
-      title: lags
-      methods:
-        create_lag:
-          operation:
-            $ref: "#/paths/~1CreateLag/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_lag:
-          operation:
-            $ref: "#/paths/~1DeleteLag/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_lags:
-          operation:
-            $ref: "#/paths/~1DescribeLags/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_lag:
-          operation:
-            $ref: "#/paths/~1UpdateLag/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/lags/methods/describe_lags"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/lags/methods/create_lag"
-        update:
-          - $ref: "#/components/x-stackQL-resources/lags/methods/update_lag"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/lags/methods/delete_lag"
     connection_loas:
       id: aws.directconnect.connection_loas
       name: connection_loas
@@ -4739,6 +4810,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.loa
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4813,6 +4885,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4832,6 +4911,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.loa
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4931,85 +5011,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/describe_tags"
-        insert: []
-        update: []
-        delete: []
-    virtual_gateways:
-      id: aws.directconnect.virtual_gateways
-      name: virtual_gateways
-      title: virtual_gateways
-      methods:
-        describe_virtual_gateways:
-          operation:
-            $ref: "#/paths/~1DescribeVirtualGateways/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/virtual_gateways/methods/describe_virtual_gateways"
-        insert: []
-        update: []
-        delete: []
-    connection_from_lags:
-      id: aws.directconnect.connection_from_lags
-      name: connection_from_lags
-      title: connection_from_lags
-      methods:
-        disassociate_connection_from_lag:
-          operation:
-            $ref: "#/paths/~1DisassociateConnectionFromLag/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/connection_from_lags/methods/disassociate_connection_from_lag"
-        delete: []
-    virtual_interface_test_histories:
-      id: aws.directconnect.virtual_interface_test_histories
-      name: virtual_interface_test_histories
-      title: virtual_interface_test_histories
-      methods:
-        list_virtual_interface_test_history:
-          operation:
-            $ref: "#/paths/~1ListVirtualInterfaceTestHistory/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/virtual_interface_test_histories/methods/list_virtual_interface_test_history"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.directconnect.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -5037,20 +5038,41 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/describe_tags"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
-    virtual_interface_attributes:
-      id: aws.directconnect.virtual_interface_attributes
-      name: virtual_interface_attributes
-      title: virtual_interface_attributes
+    virtual_gateways:
+      id: aws.directconnect.virtual_gateways
+      name: virtual_gateways
+      title: virtual_gateways
       methods:
-        update_virtual_interface_attributes:
+        describe_virtual_gateways:
           operation:
-            $ref: "#/paths/~1UpdateVirtualInterfaceAttributes/post"
+            $ref: "#/paths/~1DescribeVirtualGateways/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/virtual_gateways/methods/describe_virtual_gateways"
+        insert: []
+        update: []
+        delete: []
+    virtual_interface_test_histories:
+      id: aws.directconnect.virtual_interface_test_histories
+      name: virtual_interface_test_histories
+      title: virtual_interface_test_histories
+      methods:
+        list_virtual_interface_test_history:
+          operation:
+            $ref: "#/paths/~1ListVirtualInterfaceTestHistory/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5062,8 +5084,8 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/virtual_interface_test_histories/methods/list_virtual_interface_test_history"
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/virtual_interface_attributes/methods/update_virtual_interface_attributes"
+        update: []
         delete: []

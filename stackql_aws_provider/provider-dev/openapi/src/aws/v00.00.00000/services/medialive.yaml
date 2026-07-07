@@ -407,11 +407,7 @@ paths:
                 - EvaluationPeriods
                 - GroupIdentifier
                 - MetricName
-                - Name
-                - Period
-                - Statistic
                 - TargetResourceType
-                - Threshold
                 - TreatMissingData
       responses:
         "201":
@@ -480,8 +476,6 @@ paths:
                   $ref: "#/components/schemas/TagMap"
                 RequestId:
                   $ref: "#/components/schemas/__stringMin1Max256PatternS"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -606,7 +600,6 @@ paths:
               required:
                 - EventType
                 - GroupIdentifier
-                - Name
       responses:
         "201":
           description: Success
@@ -668,8 +661,6 @@ paths:
                   $ref: "#/components/schemas/TagMap"
                 RequestId:
                   $ref: "#/components/schemas/__stringMin1Max256PatternS"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -848,7 +839,6 @@ paths:
               required:
                 - AvailabilityZones
                 - MultiplexSettings
-                - Name
                 - RequestId
       responses:
         "201":
@@ -1204,7 +1194,6 @@ paths:
                   $ref: "#/components/schemas/__stringMin1Max256PatternS"
               required:
                 - DiscoveryEntryPointArn
-                - Name
       responses:
         "201":
           description: Success
@@ -15073,38 +15062,104 @@ components:
           $ref: "#/components/schemas/SdiSource"
           description: Settings for the SDI source.
   x-stackQL-resources:
-    schedules:
-      id: aws.medialive.schedules
-      name: schedules
-      title: schedules
+    input_devices:
+      id: aws.medialive.input_devices
+      name: input_devices
+      title: input_devices
       methods:
-        delete_schedule:
+        accept_input_device_transfer:
           operation:
-            $ref: "#/paths/~1prod~1channels~1{channel_id}~1schedule/delete"
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1accept/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-        describe_schedule:
+        cancel_input_device_transfer:
           operation:
-            $ref: "#/paths/~1prod~1channels~1{channel_id}~1schedule/get"
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1cancel/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ScheduleActions
+        describe_input_device:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_input_device:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_input_devices:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.InputDevices
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        reject_input_device_transfer:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1reject/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_input_device_maintenance_window:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1startInputDeviceMaintenanceWindow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        transfer_input_device:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1transfer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/schedules/methods/describe_schedule"
+          - $ref: "#/components/x-stackQL-resources/input_devices/methods/describe_input_device"
+          - $ref: "#/components/x-stackQL-resources/input_devices/methods/list_input_devices"
         insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/schedules/methods/delete_schedule"
+        update:
+          - $ref: "#/components/x-stackQL-resources/input_devices/methods/update_input_device"
+        delete: []
     channels:
       id: aws.medialive.channels
       name: channels
       title: channels
       methods:
+        batch_update_schedule:
+          operation:
+            $ref: "#/paths/~1prod~1channels~1{channel_id}~1schedule/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_channel:
           operation:
             $ref: "#/paths/~1prod~1channels/post"
@@ -15125,6 +15180,14 @@ components:
             objectKey: $.Channels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_channel:
           operation:
             $ref: "#/paths/~1prod~1channels~1{channel_id}/delete"
@@ -15148,6 +15211,40 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        restart_channel_pipelines:
+          operation:
+            $ref: "#/paths/~1prod~1channels~1{channel_id}~1restartChannelPipelines/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_channel:
+          operation:
+            $ref: "#/paths/~1prod~1channels~1{channel_id}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_channel:
+          operation:
+            $ref: "#/paths/~1prod~1channels~1{channel_id}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_channel_class:
+          operation:
+            $ref: "#/paths/~1prod~1channels~1{channel_id}~1channelClass/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/describe_channel"
@@ -15155,9 +15252,45 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/channels/methods/create_channel"
         update:
+          - $ref: "#/components/x-stackQL-resources/channels/methods/update_channel_class"
           - $ref: "#/components/x-stackQL-resources/channels/methods/update_channel"
         delete:
           - $ref: "#/components/x-stackQL-resources/channels/methods/delete_channel"
+    schedules:
+      id: aws.medialive.schedules
+      name: schedules
+      title: schedules
+      methods:
+        delete_schedule:
+          operation:
+            $ref: "#/paths/~1prod~1channels~1{channel_id}~1schedule/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_schedule:
+          operation:
+            $ref: "#/paths/~1prod~1channels~1{channel_id}~1schedule/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ScheduleActions
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/schedules/methods/describe_schedule"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/schedules/methods/delete_schedule"
     channel_placement_groups:
       id: aws.medialive.channel_placement_groups
       name: channel_placement_groups
@@ -15183,6 +15316,14 @@ components:
             objectKey: $.ChannelPlacementGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_channel_placement_group:
           operation:
             $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1channelplacementgroups~1{channel_placement_group_id}/delete"
@@ -15241,6 +15382,14 @@ components:
             objectKey: $.CloudWatchAlarmTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_cloud_watch_alarm_template:
           operation:
             $ref: "#/paths/~1prod~1cloudwatch-alarm-templates~1{identifier}/delete"
@@ -15298,6 +15447,14 @@ components:
             objectKey: $.CloudWatchAlarmTemplateGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_cloud_watch_alarm_template_group:
           operation:
             $ref: "#/paths/~1prod~1cloudwatch-alarm-template-groups~1{identifier}/delete"
@@ -15355,6 +15512,14 @@ components:
             objectKey: $.Clusters
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_cluster:
           operation:
             $ref: "#/paths/~1prod~1clusters~1{cluster_id}/delete"
@@ -15413,6 +15578,14 @@ components:
             objectKey: $.EventBridgeRuleTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_event_bridge_rule_template:
           operation:
             $ref: "#/paths/~1prod~1eventbridge-rule-templates~1{identifier}/delete"
@@ -15470,6 +15643,14 @@ components:
             objectKey: $.EventBridgeRuleTemplateGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_event_bridge_rule_template_group:
           operation:
             $ref: "#/paths/~1prod~1eventbridge-rule-template-groups~1{identifier}/delete"
@@ -15527,6 +15708,25 @@ components:
             objectKey: $.Inputs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        create_partner_input:
+          operation:
+            $ref: "#/paths/~1prod~1inputs~1{input_id}~1partners/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_input:
           operation:
             $ref: "#/paths/~1prod~1inputs~1{input_id}/delete"
@@ -15550,11 +15750,35 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        reboot_input_device:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1reboot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_input_device:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_input_device:
+          operation:
+            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/inputs/methods/describe_input"
           - $ref: "#/components/x-stackQL-resources/inputs/methods/list_inputs"
         insert:
+          - $ref: "#/components/x-stackQL-resources/inputs/methods/create_partner_input"
           - $ref: "#/components/x-stackQL-resources/inputs/methods/create_input"
         update:
           - $ref: "#/components/x-stackQL-resources/inputs/methods/update_input"
@@ -15585,6 +15809,14 @@ components:
             objectKey: $.InputSecurityGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_input_security_group:
           operation:
             $ref: "#/paths/~1prod~1inputSecurityGroups~1{input_security_group_id}/delete"
@@ -15643,6 +15875,14 @@ components:
             objectKey: $.Multiplexes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_multiplex:
           operation:
             $ref: "#/paths/~1prod~1multiplexes~1{multiplex_id}/delete"
@@ -15666,6 +15906,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_multiplex:
+          operation:
+            $ref: "#/paths/~1prod~1multiplexes~1{multiplex_id}~1start/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        stop_multiplex:
+          operation:
+            $ref: "#/paths/~1prod~1multiplexes~1{multiplex_id}~1stop/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multiplexes/methods/describe_multiplex"
@@ -15701,6 +15953,14 @@ components:
             objectKey: $.MultiplexPrograms
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_multiplex_program:
           operation:
             $ref: "#/paths/~1prod~1multiplexes~1{multiplex_id}~1programs~1{program_name}/delete"
@@ -15759,6 +16019,14 @@ components:
             objectKey: $.Networks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_network:
           operation:
             $ref: "#/paths/~1prod~1networks~1{network_id}/delete"
@@ -15817,6 +16085,25 @@ components:
             objectKey: $.Nodes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        create_node_registration_script:
+          operation:
+            $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1nodeRegistrationScript/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_node:
           operation:
             $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1nodes~1{node_id}/delete"
@@ -15840,6 +16127,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_node_state:
+          operation:
+            $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1nodes~1{node_id}~1state/put"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/nodes/methods/describe_node"
@@ -15850,50 +16148,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/nodes/methods/update_node"
         delete:
           - $ref: "#/components/x-stackQL-resources/nodes/methods/delete_node"
-    node_registration_scripts:
-      id: aws.medialive.node_registration_scripts
-      name: node_registration_scripts
-      title: node_registration_scripts
-      methods:
-        create_node_registration_script:
-          operation:
-            $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1nodeRegistrationScript/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/node_registration_scripts/methods/create_node_registration_script"
-        update: []
-        delete: []
-    partner_inputs:
-      id: aws.medialive.partner_inputs
-      name: partner_inputs
-      title: partner_inputs
-      methods:
-        create_partner_input:
-          operation:
-            $ref: "#/paths/~1prod~1inputs~1{input_id}~1partners/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/partner_inputs/methods/create_partner_input"
-        update: []
-        delete: []
     sdi_sources:
       id: aws.medialive.sdi_sources
       name: sdi_sources
@@ -15919,6 +16173,14 @@ components:
             objectKey: $.SdiSources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_sdi_source:
           operation:
             $ref: "#/paths/~1prod~1sdiSources~1{sdi_source_id}/delete"
@@ -15931,6 +16193,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SdiSource
         update_sdi_source:
           operation:
             $ref: "#/paths/~1prod~1sdiSources~1{sdi_source_id}/put"
@@ -15977,6 +16240,14 @@ components:
             objectKey: $.SignalMaps
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_signal_map:
           operation:
             $ref: "#/paths/~1prod~1signal-maps~1{identifier}/delete"
@@ -16019,18 +16290,6 @@ components:
             openAPIDocKey: "204"
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/create_tags"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/delete_tags"
-    tags_for_resources:
-      id: aws.medialive.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
         list_tags_for_resource:
           operation:
             $ref: "#/paths/~1prod~1tags~1{resource-arn}/get"
@@ -16039,10 +16298,12 @@ components:
             mediaType: application/json
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/create_tags"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/delete_tags"
     reservations:
       id: aws.medialive.reservations
       name: reservations
@@ -16080,6 +16341,14 @@ components:
             objectKey: $.Reservations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reservations/methods/describe_reservation"
@@ -16100,6 +16369,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AccountConfiguration
         update_account_configuration:
           operation:
             $ref: "#/paths/~1prod~1accountConfiguration/put"
@@ -16117,45 +16387,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/account_configurations/methods/update_account_configuration"
-        delete: []
-    input_devices:
-      id: aws.medialive.input_devices
-      name: input_devices
-      title: input_devices
-      methods:
-        describe_input_device:
-          operation:
-            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_input_device:
-          operation:
-            $ref: "#/paths/~1prod~1inputDevices~1{input_device_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_input_devices:
-          operation:
-            $ref: "#/paths/~1prod~1inputDevices/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.InputDevices
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/input_devices/methods/describe_input_device"
-          - $ref: "#/components/x-stackQL-resources/input_devices/methods/list_input_devices"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/input_devices/methods/update_input_device"
         delete: []
     input_device_thumbnails:
       id: aws.medialive.input_device_thumbnails
@@ -16194,6 +16425,25 @@ components:
             objectKey: $.Offerings
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        purchase_offering:
+          operation:
+            $ref: "#/paths/~1prod~1offerings~1{offering_id}~1purchase/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/offerings/methods/describe_offering"
@@ -16234,6 +16484,14 @@ components:
             objectKey: $.Alerts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/alerts/methods/list_alerts"
@@ -16254,6 +16512,14 @@ components:
             objectKey: $.Alerts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_alerts/methods/list_cluster_alerts"
@@ -16274,6 +16540,14 @@ components:
             objectKey: $.InputDeviceTransfers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/input_device_transfers/methods/list_input_device_transfers"
@@ -16294,6 +16568,14 @@ components:
             objectKey: $.Alerts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multiplex_alerts/methods/list_multiplex_alerts"
@@ -16316,48 +16598,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions"
         insert: []
         update: []
-        delete: []
-    channel_class:
-      id: aws.medialive.channel_class
-      name: channel_class
-      title: channel_class
-      methods:
-        update_channel_class:
-          operation:
-            $ref: "#/paths/~1prod~1channels~1{channel_id}~1channelClass/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/channel_class/methods/update_channel_class"
-        delete: []
-    node_states:
-      id: aws.medialive.node_states
-      name: node_states
-      title: node_states
-      methods:
-        update_node_state:
-          operation:
-            $ref: "#/paths/~1prod~1clusters~1{cluster_id}~1nodes~1{node_id}~1state/put"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/node_states/methods/update_node_state"
         delete: []

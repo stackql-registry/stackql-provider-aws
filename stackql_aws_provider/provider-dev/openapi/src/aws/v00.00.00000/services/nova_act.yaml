@@ -1234,6 +1234,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        invoke_act_step:
+          operation:
+            $ref: "#/paths/~1workflow-definitions~1{workflow_definition_name}~1workflow-runs~1{workflow_run_id}~1sessions~1{session_id}~1acts~1{act_id}~1invoke-step~1/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_acts:
           operation:
             $ref: "#/paths/~1workflow-definitions~1{workflow_definition_name}~1acts/post"
@@ -1244,6 +1255,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_act:
@@ -1291,6 +1309,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1326,6 +1351,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_workflow_definition:
@@ -1375,6 +1407,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_workflow_run:

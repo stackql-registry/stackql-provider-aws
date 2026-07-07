@@ -119,6 +119,9 @@ paths:
       x-stackql-method: list_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Connectors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /challenges/{challenge_arn}:
     delete:
       operationId: DeleteChallenge
@@ -174,6 +177,7 @@ paths:
       x-stackql-resource: connectors
       x-stackql-method: get_connector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Connector
   /challengeMetadata/{challenge_arn}:
     get:
       operationId: GetChallengeMetadata
@@ -195,6 +199,7 @@ paths:
       x-stackql-resource: challenge_metadatas
       x-stackql-method: get_challenge_metadata
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChallengeMetadata
   /challengePasswords/{challenge_arn}:
     get:
       operationId: GetChallengePassword
@@ -254,6 +259,9 @@ paths:
       x-stackql-method: list_challenge_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Challenges
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -275,7 +283,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -302,7 +310,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -324,7 +332,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

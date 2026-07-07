@@ -57,7 +57,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptQualificationRequestResponse'
-      x-stackql-resource: qualification_request
+      x-stackql-resource: qualification_requests
       x-stackql-method: accept_qualification_request
       x-stackql-verb: EXEC
   /ApproveAssignment:
@@ -107,7 +107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApproveAssignmentResponse'
-      x-stackql-resource: assignment
+      x-stackql-resource: assignments
       x-stackql-method: approve_assignment
       x-stackql-verb: EXEC
   /AssociateQualificationWithWorker:
@@ -161,7 +161,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateQualificationWithWorkerResponse'
-      x-stackql-resource: qualification_with_workers
+      x-stackql-resource: qualification_types
       x-stackql-method: associate_qualification_with_worker
       x-stackql-verb: UPDATE
   /CreateAdditionalAssignmentsForHIT:
@@ -214,7 +214,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAdditionalAssignmentsForHITResponse'
-      x-stackql-resource: additional_assignments_for_hits
+      x-stackql-resource: assignments_for_hits
       x-stackql-method: create_additional_assignments_for_hit
       x-stackql-verb: INSERT
   /CreateHIT:
@@ -415,7 +415,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHITTypeResponse'
-      x-stackql-resource: hit_types
+      x-stackql-resource: hits
       x-stackql-method: create_hit_type
       x-stackql-verb: INSERT
   /CreateHITWithHITType:
@@ -505,7 +505,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHITWithHITTypeResponse'
-      x-stackql-resource: hit_with_hit_types
+      x-stackql-resource: hits
       x-stackql-method: create_hit_with_hit_type
       x-stackql-verb: INSERT
   /CreateQualificationType:
@@ -806,7 +806,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateQualificationFromWorkerResponse'
-      x-stackql-resource: qualification_from_workers
+      x-stackql-resource: qualification_types
       x-stackql-method: disassociate_qualification_from_worker
       x-stackql-verb: UPDATE
   /GetAccountBalance:
@@ -961,6 +961,7 @@ paths:
       x-stackql-resource: hits
       x-stackql-method: get_hit
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.HIT
   /GetQualificationScore:
     post:
       operationId: GetQualificationScore
@@ -1004,6 +1005,7 @@ paths:
       x-stackql-resource: qualification_scores
       x-stackql-method: get_qualification_score
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Qualification
   /GetQualificationType:
     post:
       operationId: GetQualificationType
@@ -1040,6 +1042,7 @@ paths:
       x-stackql-resource: qualification_types
       x-stackql-method: get_qualification_type
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.QualificationType
   /ListAssignmentsForHIT:
     post:
       operationId: ListAssignmentsForHIT
@@ -1094,6 +1097,9 @@ paths:
       x-stackql-method: list_assignments_for_hit
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Assignments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListBonusPayments:
     post:
       operationId: ListBonusPayments
@@ -1142,6 +1148,9 @@ paths:
       x-stackql-method: list_bonus_payments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BonusPayments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHITs:
     post:
       operationId: ListHITs
@@ -1180,6 +1189,9 @@ paths:
       x-stackql-method: list_hi_ts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HITs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHITsForQualificationType:
     post:
       operationId: ListHITsForQualificationType
@@ -1225,6 +1237,9 @@ paths:
       x-stackql-method: list_hi_ts_for_qualification_type
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HITs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListQualificationRequests:
     post:
       operationId: ListQualificationRequests
@@ -1267,6 +1282,9 @@ paths:
       x-stackql-method: list_qualification_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.QualificationRequests
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListQualificationTypes:
     post:
       operationId: ListQualificationTypes
@@ -1321,6 +1339,9 @@ paths:
       x-stackql-method: list_qualification_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.QualificationTypes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListReviewPolicyResultsForHIT:
     post:
       operationId: ListReviewPolicyResultsForHIT
@@ -1424,6 +1445,9 @@ paths:
       x-stackql-method: list_reviewable_hi_ts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HITs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkerBlocks:
     post:
       operationId: ListWorkerBlocks
@@ -1461,6 +1485,9 @@ paths:
       x-stackql-method: list_worker_blocks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkerBlocks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkersWithQualificationType:
     post:
       operationId: ListWorkersWithQualificationType
@@ -1508,6 +1535,9 @@ paths:
       x-stackql-method: list_workers_with_qualification_type
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Qualifications
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /NotifyWorkers:
     post:
       operationId: NotifyWorkers
@@ -1596,7 +1626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectAssignmentResponse'
-      x-stackql-resource: assignment
+      x-stackql-resource: assignments
       x-stackql-method: reject_assignment
       x-stackql-verb: EXEC
   /RejectQualificationRequest:
@@ -1637,7 +1667,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectQualificationRequestResponse'
-      x-stackql-resource: qualification_request
+      x-stackql-resource: qualification_requests
       x-stackql-method: reject_qualification_request
       x-stackql-verb: EXEC
   /SendBonus:
@@ -1699,7 +1729,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendBonusResponse'
-      x-stackql-resource: bonus
+      x-stackql-resource: assignments
       x-stackql-method: send_bonus
       x-stackql-verb: EXEC
   /SendTestEventNotification:
@@ -1787,7 +1817,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateExpirationForHITResponse'
-      x-stackql-resource: expiration_for_hits
+      x-stackql-resource: hits
       x-stackql-method: update_expiration_for_hit
       x-stackql-verb: UPDATE
   /UpdateHITReviewStatus:
@@ -1828,7 +1858,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHITReviewStatusResponse'
-      x-stackql-resource: hit_review_status
+      x-stackql-resource: hits
       x-stackql-method: update_hit_review_status
       x-stackql-verb: UPDATE
   /UpdateHITTypeOfHIT:
@@ -1870,7 +1900,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHITTypeOfHITResponse'
-      x-stackql-resource: hit_type_of_hits
+      x-stackql-resource: hits
       x-stackql-method: update_hit_type_of_hit
       x-stackql-verb: UPDATE
   /UpdateNotificationSettings:

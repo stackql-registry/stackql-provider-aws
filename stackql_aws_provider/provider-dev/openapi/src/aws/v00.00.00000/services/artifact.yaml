@@ -580,6 +580,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.accountSettings
         put_account_settings:
           operation:
             $ref: "#/paths/~1v1~1account-settings~1put/put"
@@ -621,6 +622,14 @@ components:
             objectKey: $.reports
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reports/methods/get_report"
@@ -639,6 +648,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.reportDetails
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -680,6 +690,14 @@ components:
             objectKey: $.customerAgreements
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/customer_agreements/methods/list_customer_agreements"
@@ -700,6 +718,14 @@ components:
             objectKey: $.reports
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/report_versions/methods/list_report_versions"

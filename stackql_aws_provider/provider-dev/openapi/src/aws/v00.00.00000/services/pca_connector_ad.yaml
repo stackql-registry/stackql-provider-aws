@@ -218,8 +218,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
               required:
                 - ConnectorArn
-                - Definition
-                - Name
       responses:
         "200":
           description: Success
@@ -575,8 +573,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -1964,6 +1960,14 @@ components:
             objectKey: $.Connectors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_connector:
           operation:
             $ref: "#/paths/~1connectors~1{connector_arn}/delete"
@@ -1975,6 +1979,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Connector
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connectors/methods/get_connector"
@@ -2009,6 +2014,14 @@ components:
             objectKey: $.DirectoryRegistrations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_directory_registration:
           operation:
             $ref: "#/paths/~1directoryRegistrations~1{directory_registration_arn}/delete"
@@ -2020,6 +2033,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DirectoryRegistration
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/directory_registrations/methods/get_directory_registration"
@@ -2055,6 +2069,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ServicePrincipalName
         list_service_principal_names:
           operation:
             $ref: "#/paths/~1directoryRegistrations~1{directory_registration_arn}~1servicePrincipalNames/get"
@@ -2064,6 +2079,14 @@ components:
             objectKey: $.ServicePrincipalNames
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/service_principal_names/methods/get_service_principal_name"
@@ -2098,6 +2121,14 @@ components:
             objectKey: $.Templates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_template:
           operation:
             $ref: "#/paths/~1templates~1{template_arn}/delete"
@@ -2109,6 +2140,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Template
         update_template:
           operation:
             $ref: "#/paths/~1templates~1{template_arn}/patch"
@@ -2153,6 +2185,14 @@ components:
             objectKey: $.AccessControlEntries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_template_group_access_control_entry:
           operation:
             $ref: "#/paths/~1templates~1{template_arn}~1accessControlEntries~1{group_security_identifier}/delete"
@@ -2164,6 +2204,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AccessControlEntry
         update_template_group_access_control_entry:
           operation:
             $ref: "#/paths/~1templates~1{template_arn}~1accessControlEntries~1{group_security_identifier}/patch"
@@ -2184,10 +2225,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/template_group_access_control_entries/methods/update_template_group_access_control_entry"
         delete:
           - $ref: "#/components/x-stackQL-resources/template_group_access_control_entries/methods/delete_template_group_access_control_entry"
-    tags_for_resources:
-      id: aws.pca_connector_ad.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.pca_connector_ad.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2195,17 +2236,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.pca_connector_ad.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2224,9 +2254,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

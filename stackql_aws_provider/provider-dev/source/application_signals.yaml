@@ -237,6 +237,7 @@ paths:
       x-stackql-resource: service_level_objectives
       x-stackql-method: get_service_level_objective
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Slo
     patch:
       operationId: UpdateServiceLevelObjective
       description: Updates an existing service level objective (SLO). If you omit parameters, the previous values of those
@@ -417,6 +418,9 @@ paths:
       x-stackql-method: list_entity_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChangeEvents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /grouping-attribute-definitions:
     post:
       operationId: ListGroupingAttributeDefinitions
@@ -512,6 +516,9 @@ paths:
       x-stackql-method: list_service_dependencies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceDependencies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /service-dependents:
     post:
       operationId: ListServiceDependents
@@ -569,6 +576,9 @@ paths:
       x-stackql-method: list_service_dependents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceDependents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /slo/{id}/exclusion-windows:
     get:
       operationId: ListServiceLevelObjectiveExclusionWindows
@@ -605,6 +615,9 @@ paths:
       x-stackql-method: list_service_level_objective_exclusion_windows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ExclusionWindows
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /slos:
     post:
       operationId: ListServiceLevelObjectives
@@ -671,6 +684,9 @@ paths:
       x-stackql-method: list_service_level_objectives
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SloSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /service-operations:
     post:
       operationId: ListServiceOperations
@@ -727,6 +743,9 @@ paths:
       x-stackql-method: list_service_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceOperations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /service/states:
     post:
       operationId: ListServiceStates
@@ -768,6 +787,9 @@ paths:
       x-stackql-method: list_service_states
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceStates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /services:
     get:
       operationId: ListServices
@@ -827,6 +849,9 @@ paths:
       x-stackql-method: list_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags:
     get:
       operationId: ListTagsForResource
@@ -847,7 +872,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /start-discovery:
@@ -904,7 +929,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /untag-resource:
@@ -933,7 +958,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

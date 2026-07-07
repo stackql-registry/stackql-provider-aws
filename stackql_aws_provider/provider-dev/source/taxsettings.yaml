@@ -255,6 +255,7 @@ paths:
       x-stackql-resource: tax_registrations
       x-stackql-method: get_tax_registration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.taxRegistration
   /GetTaxRegistrationDocument:
     post:
       operationId: GetTaxRegistrationDocument
@@ -310,6 +311,9 @@ paths:
       x-stackql-method: list_supplemental_tax_registrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.taxRegistrations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTaxExemptions:
     post:
       operationId: ListTaxExemptions
@@ -336,6 +340,9 @@ paths:
       x-stackql-resource: tax_exemptions
       x-stackql-method: list_tax_exemptions
       x-stackql-verb: SELECT
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTaxRegistrations:
     post:
       operationId: ListTaxRegistrations
@@ -364,6 +371,9 @@ paths:
       x-stackql-method: list_tax_registrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accountDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /PutSupplementalTaxRegistration:
     post:
       operationId: PutSupplementalTaxRegistration

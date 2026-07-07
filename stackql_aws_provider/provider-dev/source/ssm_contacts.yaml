@@ -72,7 +72,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptPageResult'
-      x-stackql-resource: page
+      x-stackql-resource: pages
       x-stackql-method: accept_page
       x-stackql-verb: EXEC
   /ActivateContactChannel:
@@ -113,7 +113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateContactChannelResult'
-      x-stackql-resource: contact_channel
+      x-stackql-resource: contacts
       x-stackql-method: activate_contact_channel
       x-stackql-verb: EXEC
   /CreateContact:
@@ -383,7 +383,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateContactChannelResult'
-      x-stackql-resource: contact_channel
+      x-stackql-resource: contacts
       x-stackql-method: deactivate_contact_channel
       x-stackql-verb: EXEC
   /DeleteContact:
@@ -841,6 +841,9 @@ paths:
       x-stackql-method: list_contact_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactChannels
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListContacts:
     post:
       operationId: ListContacts
@@ -885,6 +888,9 @@ paths:
       x-stackql-method: list_contacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Contacts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEngagements:
     post:
       operationId: ListEngagements
@@ -929,6 +935,9 @@ paths:
       x-stackql-method: list_engagements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Engagements
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPageReceipts:
     post:
       operationId: ListPageReceipts
@@ -972,6 +981,9 @@ paths:
       x-stackql-method: list_page_receipts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Receipts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPageResolutions:
     post:
       operationId: ListPageResolutions
@@ -1014,6 +1026,9 @@ paths:
       x-stackql-method: list_page_resolutions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PageResolutions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPagesByContact:
     post:
       operationId: ListPagesByContact
@@ -1057,6 +1072,9 @@ paths:
       x-stackql-method: list_pages_by_contact
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Pages
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPagesByEngagement:
     post:
       operationId: ListPagesByEngagement
@@ -1100,6 +1118,9 @@ paths:
       x-stackql-method: list_pages_by_engagement
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Pages
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPreviewRotationShifts:
     post:
       operationId: ListPreviewRotationShifts
@@ -1169,6 +1190,9 @@ paths:
       x-stackql-method: list_preview_rotation_shifts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RotationShifts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRotationOverrides:
     post:
       operationId: ListRotationOverrides
@@ -1221,6 +1245,9 @@ paths:
       x-stackql-method: list_rotation_overrides
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RotationOverrides
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRotationShifts:
     post:
       operationId: ListRotationShifts
@@ -1272,6 +1299,9 @@ paths:
       x-stackql-method: list_rotation_shifts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RotationShifts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRotations:
     post:
       operationId: ListRotations
@@ -1315,6 +1345,9 @@ paths:
       x-stackql-method: list_rotations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rotations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1348,7 +1381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResult'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutContactPolicy:
@@ -1428,7 +1461,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendActivationCodeResult'
-      x-stackql-resource: activation_code
+      x-stackql-resource: contact_channels
       x-stackql-method: send_activation_code
       x-stackql-verb: EXEC
   /StartEngagement:
@@ -1574,7 +1607,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1614,7 +1647,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateContact:

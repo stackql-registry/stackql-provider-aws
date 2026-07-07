@@ -45,7 +45,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutPropertyValuesResponse'
-      x-stackql-resource: batch_put_property_values
+      x-stackql-resource: property_values
       x-stackql-method: batch_put_property_values
       x-stackql-verb: EXEC
   /metadata-transfer-jobs/{metadata_transfer_job_id}/cancel:
@@ -66,7 +66,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMetadataTransferJobResponse'
-      x-stackql-resource: metadata_transfer_job
+      x-stackql-resource: metadata_transfer_jobs
       x-stackql-method: cancel_metadata_transfer_job
       x-stackql-verb: EXEC
   /workspaces/{workspace_id}/component-types/{component_type_id}:
@@ -745,7 +745,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteQueryResponse'
-      x-stackql-resource: execute_query
+      x-stackql-resource: workspaces
       x-stackql-method: execute_query
       x-stackql-verb: EXEC
   /metadata-transfer-jobs/{metadata_transfer_job_id}:
@@ -1261,7 +1261,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /workspaces-list:
@@ -1316,7 +1316,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1343,7 +1343,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

@@ -8304,6 +8304,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.collaborationAnalysisTemplate
         list_collaboration_analysis_templates:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1analysistemplates/get"
@@ -8313,6 +8314,14 @@ components:
             objectKey: $.collaborationAnalysisTemplateSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_analysis_templates/methods/batch_get_collaboration_analysis_template"
@@ -8343,6 +8352,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.schema
         list_schemas:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1schemas/get"
@@ -8352,6 +8362,14 @@ components:
             objectKey: $.schemaSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schemas/methods/batch_get_schema"
@@ -8382,6 +8400,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.analysisRule
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schema_analysis_rules/methods/get_schema_analysis_rule"
@@ -8414,6 +8433,14 @@ components:
             objectKey: $.analysisTemplateSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_analysis_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1analysistemplates~1{analysis_template_identifier}/delete"
@@ -8426,6 +8453,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.analysisTemplate
         update_analysis_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1analysistemplates~1{analysis_template_identifier}/patch"
@@ -8472,6 +8500,14 @@ components:
             objectKey: $.collaborationList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_collaboration:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}/delete"
@@ -8484,6 +8520,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.collaboration
         update_collaboration:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}/patch"
@@ -8530,12 +8567,21 @@ components:
             objectKey: $.collaborationChangeRequestSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_collaboration_change_request:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1changeRequests~1{change_request_identifier}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.collaborationChangeRequest
         update_collaboration_change_request:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1changeRequests~1{change_request_identifier}/patch"
@@ -8581,6 +8627,14 @@ components:
             objectKey: $.configuredAudienceModelAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_configured_audience_model_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredaudiencemodelassociations~1{configured_audience_model_association_identifier}/delete"
@@ -8593,6 +8647,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.configuredAudienceModelAssociation
         update_configured_audience_model_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredaudiencemodelassociations~1{configured_audience_model_association_identifier}/patch"
@@ -8639,6 +8694,14 @@ components:
             objectKey: $.configuredTableSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_configured_table:
           operation:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}/delete"
@@ -8651,6 +8714,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.configuredTable
         update_configured_table:
           operation:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}/patch"
@@ -8700,6 +8764,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.analysisRule
         update_configured_table_analysis_rule:
           operation:
             $ref: "#/paths/~1configuredTables~1{configured_table_identifier}~1analysisRule~1{analysis_rule_type}/patch"
@@ -8745,6 +8810,14 @@ components:
             objectKey: $.configuredTableAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_configured_table_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}/delete"
@@ -8757,6 +8830,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.configuredTableAssociation
         update_configured_table_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}/patch"
@@ -8806,6 +8880,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.analysisRule
         update_configured_table_association_analysis_rule:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configuredTableAssociations~1{configured_table_association_identifier}~1analysisRule~1{analysis_rule_type}/patch"
@@ -8851,6 +8926,14 @@ components:
             objectKey: $.idMappingTableSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_id_mapping_table:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idmappingtables~1{id_mapping_table_identifier}/delete"
@@ -8863,9 +8946,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.idMappingTable
         update_id_mapping_table:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idmappingtables~1{id_mapping_table_identifier}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        populate_id_mapping_table:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1idmappingtables~1{id_mapping_table_identifier}~1populate/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -8909,6 +9004,14 @@ components:
             objectKey: $.idNamespaceAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_id_namespace_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idnamespaceassociations~1{id_namespace_association_identifier}/delete"
@@ -8921,6 +9024,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.idNamespaceAssociation
         update_id_namespace_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1idnamespaceassociations~1{id_namespace_association_identifier}/patch"
@@ -8967,6 +9071,14 @@ components:
             objectKey: $.membershipSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_membership:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}/delete"
@@ -8979,9 +9091,43 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.membership
         update_membership:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_protected_job:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1protectedJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_protected_query:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1protectedQueries/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        preview_privacy_impact:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1previewprivacyimpact/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9025,6 +9171,14 @@ components:
             objectKey: $.privacyBudgetTemplateSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_privacy_budget_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1privacybudgettemplates~1{privacy_budget_template_identifier}/delete"
@@ -9037,6 +9191,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.privacyBudgetTemplate
         update_privacy_budget_template:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1privacybudgettemplates~1{privacy_budget_template_identifier}/patch"
@@ -9078,6 +9233,14 @@ components:
             objectKey: $.memberSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/members/methods/list_members"
@@ -9096,6 +9259,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.collaborationConfiguredAudienceModelAssociation
         list_collaboration_configured_audience_model_associations:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1configuredaudiencemodelassociations/get"
@@ -9105,6 +9269,14 @@ components:
             objectKey: $.collaborationConfiguredAudienceModelAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_configured_audience_model_associations/methods/get_collaboration_configured_audience_model_association"
@@ -9123,6 +9295,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.collaborationIdNamespaceAssociation
         list_collaboration_id_namespace_associations:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1idnamespaceassociations/get"
@@ -9132,6 +9305,14 @@ components:
             objectKey: $.collaborationIdNamespaceAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_id_namespace_associations/methods/get_collaboration_id_namespace_association"
@@ -9150,6 +9331,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.collaborationPrivacyBudgetTemplate
         list_collaboration_privacy_budget_templates:
           operation:
             $ref: "#/paths/~1collaborations~1{collaboration_identifier}~1privacybudgettemplates/get"
@@ -9159,6 +9341,14 @@ components:
             objectKey: $.collaborationPrivacyBudgetTemplateSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_privacy_budget_templates/methods/get_collaboration_privacy_budget_template"
@@ -9177,6 +9367,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.protectedJob
         update_protected_job:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1protectedJobs~1{protected_job_identifier}/patch"
@@ -9197,6 +9388,14 @@ components:
             objectKey: $.protectedJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_jobs/methods/get_protected_job"
@@ -9216,6 +9415,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.protectedQuery
         update_protected_query:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1protectedQueries~1{protected_query_identifier}/patch"
@@ -9236,6 +9436,14 @@ components:
             objectKey: $.protectedQueries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_queries/methods/get_protected_query"
@@ -9258,6 +9466,14 @@ components:
             objectKey: $.collaborationPrivacyBudgetSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_privacy_budgets/methods/list_collaboration_privacy_budgets"
@@ -9278,16 +9494,24 @@ components:
             objectKey: $.privacyBudgetSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/privacy_budgets/methods/list_privacy_budgets"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.cleanrooms.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.cleanrooms.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9295,17 +9519,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.cleanrooms.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -9326,9 +9539,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

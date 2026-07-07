@@ -44,7 +44,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptInvitationResponse'
-      x-stackql-resource: invitation
+      x-stackql-resource: invitations
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
   /custom-data-identifiers/get:
@@ -92,7 +92,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateAutomatedDiscoveryAccountsResponse'
-      x-stackql-resource: batch_update_automated_discovery_accounts
+      x-stackql-resource: automated_discovery_accounts
       x-stackql-method: batch_update_automated_discovery_accounts
       x-stackql-verb: EXEC
     get:
@@ -130,6 +130,9 @@ paths:
       x-stackql-method: list_automated_discovery_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /allow-lists:
     post:
       operationId: CreateAllowList
@@ -193,6 +196,9 @@ paths:
       x-stackql-method: list_allow_lists
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.allowLists
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /jobs:
     post:
       operationId: CreateClassificationJob
@@ -356,6 +362,9 @@ paths:
       x-stackql-method: list_findings_filters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findingsFilterListItems
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /invitations:
     post:
       operationId: CreateInvitations
@@ -413,6 +422,9 @@ paths:
       x-stackql-method: list_invitations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.invitations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /members:
     post:
       operationId: CreateMember
@@ -476,6 +488,9 @@ paths:
       x-stackql-method: list_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /findings/sample:
     post:
       operationId: CreateSampleFindings
@@ -497,7 +512,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSampleFindingsResponse'
-      x-stackql-resource: sample_findings
+      x-stackql-resource: findings
       x-stackql-method: create_sample_findings
       x-stackql-verb: INSERT
   /invitations/decline:
@@ -523,7 +538,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeclineInvitationsResponse'
-      x-stackql-resource: decline_invitations
+      x-stackql-resource: invitations
       x-stackql-method: decline_invitations
       x-stackql-verb: EXEC
   /allow-lists/{id}:
@@ -833,6 +848,9 @@ paths:
       x-stackql-method: describe_buckets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.buckets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /jobs/{job_id}:
     get:
       operationId: DescribeClassificationJob
@@ -1081,6 +1099,9 @@ paths:
       x-stackql-method: list_organization_admin_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.adminAccounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /administrator/disassociate:
     post:
       operationId: DisassociateFromAdministratorAccount
@@ -1093,7 +1114,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateFromAdministratorAccountResponse'
-      x-stackql-resource: from_administrator_accounts
+      x-stackql-resource: administrator_accounts
       x-stackql-method: disassociate_from_administrator_account
       x-stackql-verb: UPDATE
   /master/disassociate:
@@ -1109,7 +1130,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateFromMasterAccountResponse'
-      x-stackql-resource: from_master_accounts
+      x-stackql-resource: master_accounts
       x-stackql-method: disassociate_from_master_account
       x-stackql-verb: UPDATE
   /members/disassociate/{id}:
@@ -1148,6 +1169,7 @@ paths:
       x-stackql-resource: administrator_accounts
       x-stackql-method: get_administrator_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.administrator
   /automated-discovery/configuration:
     get:
       operationId: GetAutomatedDiscoveryConfiguration
@@ -1232,6 +1254,7 @@ paths:
       x-stackql-resource: classification_export_configurations
       x-stackql-method: get_classification_export_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.configuration
     put:
       operationId: PutClassificationExportConfiguration
       description: Adds or updates the configuration settings for storing data classification results.
@@ -1382,6 +1405,7 @@ paths:
       x-stackql-resource: findings_publication_configurations
       x-stackql-method: get_findings_publication_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.securityHubConfiguration
     put:
       operationId: PutFindingsPublicationConfiguration
       description: Updates the configuration settings for publishing findings to Security Hub.
@@ -1438,6 +1462,7 @@ paths:
       x-stackql-resource: master_accounts
       x-stackql-method: get_master_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.master
   /resource-profiles:
     get:
       operationId: GetResourceProfile
@@ -1661,6 +1686,9 @@ paths:
       x-stackql-method: get_usage_statistics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.records
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /usage:
     get:
       operationId: GetUsageTotals
@@ -1715,6 +1743,9 @@ paths:
       x-stackql-method: list_classification_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /classification-scopes:
     get:
       operationId: ListClassificationScopes
@@ -1743,6 +1774,9 @@ paths:
       x-stackql-method: list_classification_scopes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.classificationScopes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /custom-data-identifiers/list:
     post:
       operationId: ListCustomDataIdentifiers
@@ -1770,6 +1804,9 @@ paths:
       x-stackql-method: list_custom_data_identifiers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /findings:
     post:
       operationId: ListFindings
@@ -1796,11 +1833,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFindingsResponse'
+                $ref: '#/components/schemas/ListFindingsOutputDisplay'
       x-stackql-resource: findings
       x-stackql-method: list_findings
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.findingIds
+      x-stackql-responseEnvelope: ListFindingsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "findingIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /managed-data-identifiers/list:
     post:
       operationId: ListManagedDataIdentifiers
@@ -1826,6 +1871,9 @@ paths:
       x-stackql-method: list_managed_data_identifiers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /resource-profiles/artifacts:
     get:
       operationId: ListResourceProfileArtifacts
@@ -1855,6 +1903,9 @@ paths:
       x-stackql-method: list_resource_profile_artifacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.artifacts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /resource-profiles/detections:
     get:
       operationId: ListResourceProfileDetections
@@ -1889,6 +1940,9 @@ paths:
       x-stackql-method: list_resource_profile_detections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.detections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     patch:
       operationId: UpdateResourceProfileDetections
       description: Updates the sensitivity scoring settings for an S3 bucket.
@@ -1946,6 +2000,9 @@ paths:
       x-stackql-method: list_sensitivity_inspection_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sensitivityInspectionTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1964,7 +2021,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1995,7 +2052,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2022,7 +2079,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /datasources/search-resources:
@@ -2057,6 +2114,9 @@ paths:
       x-stackql-method: search_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.matchingResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /custom-data-identifiers/test:
     post:
       operationId: TestCustomDataIdentifier
@@ -2121,7 +2181,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateMemberSessionResponse'
-      x-stackql-resource: member_sessions
+      x-stackql-resource: members
       x-stackql-method: update_member_session
       x-stackql-verb: UPDATE
 components:
@@ -5813,17 +5873,20 @@ components:
         name:
           $ref: '#/components/schemas/__string'
           description: The custom name of the custom data identifier.
-    ListFindingsResponse:
+    ListFindingsRowDisplay:
       type: object
       properties:
-        findingIds:
-          $ref: '#/components/schemas/__listOf__string'
+        finding_id:
+          type: string
           description: An array of strings, where each string is the unique identifier for a finding that matches the filter
             criteria specified in the request.
-        nextToken:
-          $ref: '#/components/schemas/__string'
-          description: The string to use in a subsequent request to get the next page of results in a paginated response.
-            This value is null if there are no additional pages.
+    ListFindingsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFindingsRowDisplay'
     ListFindingsFiltersResponse:
       type: object
       properties:

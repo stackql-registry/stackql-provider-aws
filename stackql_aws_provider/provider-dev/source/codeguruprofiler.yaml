@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddNotificationChannelsResponse'
-      x-stackql-resource: notification_channels
+      x-stackql-resource: profiling_groups
       x-stackql-method: add_notification_channels
       x-stackql-verb: UPDATE
     get:
@@ -69,6 +69,7 @@ paths:
       x-stackql-resource: notification_configurations
       x-stackql-method: get_notification_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.notificationConfiguration
   /profilingGroups/{profiling_group_name}/frames/-/metrics:
     post:
       operationId: BatchGetFrameMetricData
@@ -162,7 +163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfigureAgentResponse'
-      x-stackql-resource: configure_agent
+      x-stackql-resource: profiling_groups
       x-stackql-method: configure_agent
       x-stackql-verb: EXEC
   /profilingGroups:
@@ -285,6 +286,7 @@ paths:
       x-stackql-resource: profiling_groups
       x-stackql-method: describe_profiling_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.profilingGroup
     put:
       operationId: UpdateProfilingGroup
       description: Updates a profiling group.
@@ -639,6 +641,9 @@ paths:
       x-stackql-method: list_profile_times
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.profileTimes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -657,7 +662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -688,7 +693,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -715,7 +720,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /profilingGroups/{profiling_group_name}/agentProfile:
@@ -764,7 +769,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostAgentProfileResponse'
-      x-stackql-resource: post_agent_profile
+      x-stackql-resource: profiling_groups
       x-stackql-method: post_agent_profile
       x-stackql-verb: EXEC
   /profilingGroups/{profiling_group_name}/policy/{action_group}:
@@ -816,7 +821,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutPermissionResponse'
-      x-stackql-resource: permissions
+      x-stackql-resource: profiling_groups
       x-stackql-method: put_permission
       x-stackql-verb: REPLACE
     delete:
@@ -853,7 +858,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemovePermissionResponse'
-      x-stackql-resource: permissions
+      x-stackql-resource: profiling_groups
       x-stackql-method: remove_permission
       x-stackql-verb: UPDATE
   /profilingGroups/{profiling_group_name}/notificationConfiguration/{channel_id}:
@@ -880,7 +885,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveNotificationChannelResponse'
-      x-stackql-resource: notification_channels
+      x-stackql-resource: profiling_groups
       x-stackql-method: remove_notification_channel
       x-stackql-verb: UPDATE
   /internal/profilingGroups/{profiling_group_name}/anomalies/{anomaly_instance_id}/feedback:
@@ -921,7 +926,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitFeedbackResponse'
-      x-stackql-resource: feedback
+      x-stackql-resource: profiling_groups
       x-stackql-method: submit_feedback
       x-stackql-verb: EXEC
 components:

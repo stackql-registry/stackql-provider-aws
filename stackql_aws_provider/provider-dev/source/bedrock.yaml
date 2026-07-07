@@ -95,7 +95,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelAutomatedReasoningPolicyBuildWorkflowResponse'
-      x-stackql-resource: automated_reasoning_policy_build_workflow
+      x-stackql-resource: automated_reasoning_policies
       x-stackql-method: cancel_automated_reasoning_policy_build_workflow
       x-stackql-verb: EXEC
   /advanced-prompt-optimization-jobs:
@@ -180,6 +180,9 @@ paths:
       x-stackql-method: list_advanced_prompt_optimization_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /automated-reasoning-policies:
     post:
       operationId: CreateAutomatedReasoningPolicy
@@ -255,6 +258,9 @@ paths:
       x-stackql-method: list_automated_reasoning_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.automatedReasoningPolicySummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /automated-reasoning-policies/{policy_arn}/test-cases:
     post:
       operationId: CreateAutomatedReasoningPolicyTestCase
@@ -331,6 +337,9 @@ paths:
       x-stackql-method: list_automated_reasoning_policy_test_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.testCases
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /automated-reasoning-policies/{policy_arn}/versions:
     post:
       operationId: CreateAutomatedReasoningPolicyVersion
@@ -365,7 +374,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAutomatedReasoningPolicyVersionResponse'
-      x-stackql-resource: automated_reasoning_policy_versions
+      x-stackql-resource: automated_reasoning_policies
       x-stackql-method: create_automated_reasoning_policy_version
       x-stackql-verb: INSERT
   /custom-models/create-custom-model:
@@ -523,6 +532,9 @@ paths:
       x-stackql-method: list_custom_model_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.modelDeploymentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /evaluation-jobs:
     post:
       operationId: CreateEvaluationJob
@@ -640,6 +652,9 @@ paths:
       x-stackql-method: list_evaluation_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /create-foundation-model-agreement:
     post:
       operationId: CreateFoundationModelAgreement
@@ -666,7 +681,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateFoundationModelAgreementResponse'
-      x-stackql-resource: foundation_model_agreements
+      x-stackql-resource: foundation_models
       x-stackql-method: create_foundation_model_agreement
       x-stackql-verb: INSERT
   /guardrails:
@@ -770,6 +785,9 @@ paths:
       x-stackql-method: list_guardrails
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.guardrails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /guardrails/{guardrail_identifier}:
     post:
       operationId: CreateGuardrailVersion
@@ -800,7 +818,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateGuardrailVersionResponse'
-      x-stackql-resource: guardrail_versions
+      x-stackql-resource: guardrails
       x-stackql-method: create_guardrail_version
       x-stackql-verb: INSERT
     delete:
@@ -1003,6 +1021,9 @@ paths:
       x-stackql-method: list_inference_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.inferenceProfileSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /marketplace-model/endpoints:
     post:
       operationId: CreateMarketplaceModelEndpoint
@@ -1076,6 +1097,9 @@ paths:
       x-stackql-method: list_marketplace_model_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.marketplaceModelEndpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /model-copy-jobs:
     post:
       operationId: CreateModelCopyJob
@@ -1193,6 +1217,9 @@ paths:
       x-stackql-method: list_model_copy_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.modelCopyJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /model-customization-jobs:
     post:
       operationId: CreateModelCustomizationJob
@@ -1325,6 +1352,9 @@ paths:
       x-stackql-method: list_model_customization_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.modelCustomizationJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /model-import-jobs:
     post:
       operationId: CreateModelImportJob
@@ -1438,6 +1468,9 @@ paths:
       x-stackql-method: list_model_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.modelImportJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /model-invocation-job:
     post:
       operationId: CreateModelInvocationJob
@@ -1563,6 +1596,9 @@ paths:
       x-stackql-method: list_prompt_routers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.promptRouterSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /provisioned-model-throughput:
     post:
       operationId: CreateProvisionedModelThroughput
@@ -2031,7 +2067,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteFoundationModelAgreementResponse'
-      x-stackql-resource: foundation_model_agreements
+      x-stackql-resource: foundation_models
       x-stackql-method: delete_foundation_model_agreement
       x-stackql-verb: DELETE
   /imported-models/{model_identifier}:
@@ -2160,6 +2196,7 @@ paths:
       x-stackql-resource: marketplace_model_endpoints
       x-stackql-method: get_marketplace_model_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.marketplaceModelEndpoint
     patch:
       operationId: UpdateMarketplaceModelEndpoint
       description: Updates the configuration of an existing endpoint for a model from Amazon Bedrock Marketplace.
@@ -2222,6 +2259,7 @@ paths:
       x-stackql-resource: model_invocation_logging_configurations
       x-stackql-method: get_model_invocation_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.loggingConfig
     put:
       operationId: PutModelInvocationLoggingConfiguration
       description: Set the configuration values for model invocation logging.
@@ -2446,7 +2484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportAutomatedReasoningPolicyVersionResponse'
-      x-stackql-resource: automated_reasoning_policy_version
+      x-stackql-resource: automated_reasoning_policies
       x-stackql-method: export_automated_reasoning_policy_version
       x-stackql-verb: EXEC
   /advanced-prompt-optimization-jobs/{job_identifier}:
@@ -2646,6 +2684,7 @@ paths:
       x-stackql-resource: automated_reasoning_policy_test_results
       x-stackql-method: get_automated_reasoning_policy_test_result
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.testResult
   /evaluation-jobs/{job_identifier}:
     get:
       operationId: GetEvaluationJob
@@ -2688,6 +2727,7 @@ paths:
       x-stackql-resource: foundation_models
       x-stackql-method: get_foundation_model
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.modelDetails
   /foundation-model-availability/{model_id}:
     get:
       operationId: GetFoundationModelAvailability
@@ -2872,6 +2912,9 @@ paths:
       x-stackql-method: list_automated_reasoning_policy_build_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.automatedReasoningPolicyBuildWorkflowSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /automated-reasoning-policies/{policy_arn}/build-workflows/{build_workflow_id}/test-results:
     get:
       operationId: ListAutomatedReasoningPolicyTestResults
@@ -2914,6 +2957,9 @@ paths:
       x-stackql-method: list_automated_reasoning_policy_test_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.testResults
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /custom-models:
     get:
       operationId: ListCustomModels
@@ -3004,6 +3050,9 @@ paths:
       x-stackql-method: list_custom_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.modelSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /enforcedGuardrailsConfiguration:
     get:
       operationId: ListEnforcedGuardrailsConfiguration
@@ -3026,6 +3075,9 @@ paths:
       x-stackql-method: list_enforced_guardrails_configuration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.guardrailsConfig
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     put:
       operationId: PutEnforcedGuardrailConfiguration
       description: Sets the account-level enforced guardrail configuration.
@@ -3184,6 +3236,9 @@ paths:
       x-stackql-method: list_imported_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.modelSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /model-invocation-jobs:
     get:
       operationId: ListModelInvocationJobs
@@ -3266,6 +3321,9 @@ paths:
       x-stackql-method: list_model_invocation_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.invocationJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /provisioned-model-throughputs:
     get:
       operationId: ListProvisionedModelThroughputs
@@ -3341,6 +3399,9 @@ paths:
       x-stackql-method: list_provisioned_model_throughputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.provisionedModelSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /listTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -3365,7 +3426,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /resource-policy:
@@ -3474,7 +3535,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAutomatedReasoningPolicyBuildWorkflowResponse'
-      x-stackql-resource: automated_reasoning_policy_build_workflow
+      x-stackql-resource: automated_reasoning_policies
       x-stackql-method: start_automated_reasoning_policy_build_workflow
       x-stackql-verb: EXEC
   /automated-reasoning-policies/{policy_arn}/build-workflows/{build_workflow_id}/test-workflows:
@@ -3513,7 +3574,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAutomatedReasoningPolicyTestWorkflowResponse'
-      x-stackql-resource: automated_reasoning_policy_test_workflow
+      x-stackql-resource: automated_reasoning_policies
       x-stackql-method: start_automated_reasoning_policy_test_workflow
       x-stackql-verb: EXEC
   /advanced-prompt-optimization-jobs/{job_identifier}/stop:
@@ -3629,7 +3690,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /untagResource:
@@ -3659,7 +3720,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

@@ -66,7 +66,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHttpNamespaceResponse'
-      x-stackql-resource: http_namespaces
+      x-stackql-resource: namespaces
       x-stackql-method: create_http_namespace
       x-stackql-verb: INSERT
   /CreatePrivateDnsNamespace:
@@ -128,7 +128,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePrivateDnsNamespaceResponse'
-      x-stackql-resource: private_dns_namespaces
+      x-stackql-resource: namespaces
       x-stackql-method: create_private_dns_namespace
       x-stackql-verb: INSERT
   /CreatePublicDnsNamespace:
@@ -186,7 +186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePublicDnsNamespaceResponse'
-      x-stackql-resource: public_dns_namespaces
+      x-stackql-resource: namespaces
       x-stackql-method: create_public_dns_namespace
       x-stackql-verb: INSERT
   /CreateService:
@@ -506,7 +506,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DiscoverInstancesResponse'
-      x-stackql-resource: discover_instances
+      x-stackql-resource: instances
       x-stackql-method: discover_instances
       x-stackql-verb: EXEC
   /DiscoverInstancesRevision:
@@ -553,7 +553,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DiscoverInstancesRevisionResponse'
-      x-stackql-resource: discover_instances_revision
+      x-stackql-resource: namespaces
       x-stackql-method: discover_instances_revision
       x-stackql-verb: EXEC
   /GetInstance:
@@ -691,6 +691,7 @@ paths:
       x-stackql-resource: namespaces
       x-stackql-method: get_namespace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Namespace
   /GetOperation:
     post:
       operationId: GetOperation
@@ -733,6 +734,7 @@ paths:
       x-stackql-resource: operations
       x-stackql-method: get_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Operation
   /GetService:
     post:
       operationId: GetService
@@ -771,6 +773,7 @@ paths:
       x-stackql-resource: services
       x-stackql-method: get_service
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Service
   /GetServiceAttributes:
     post:
       operationId: GetServiceAttributes
@@ -810,6 +813,7 @@ paths:
       x-stackql-resource: service_attributes
       x-stackql-method: get_service_attributes
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ServiceAttributes
   /ListInstances:
     post:
       operationId: ListInstances
@@ -858,6 +862,9 @@ paths:
       x-stackql-method: list_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Instances
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListNamespaces:
     post:
       operationId: ListNamespaces
@@ -907,6 +914,9 @@ paths:
       x-stackql-method: list_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Namespaces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOperations:
     post:
       operationId: ListOperations
@@ -956,6 +966,9 @@ paths:
       x-stackql-method: list_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Operations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListServices:
     post:
       operationId: ListServices
@@ -1004,6 +1017,9 @@ paths:
       x-stackql-method: list_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Services
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1037,7 +1053,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /RegisterInstance:
@@ -1187,7 +1203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1227,7 +1243,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateHttpNamespace:
@@ -1272,7 +1288,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHttpNamespaceResponse'
-      x-stackql-resource: http_namespaces
+      x-stackql-resource: namespaces
       x-stackql-method: update_http_namespace
       x-stackql-verb: UPDATE
   /UpdateInstanceCustomHealthStatus:
@@ -1318,7 +1334,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: instance_custom_health_status
+      x-stackql-resource: instances
       x-stackql-method: update_instance_custom_health_status
       x-stackql-verb: UPDATE
   /UpdatePrivateDnsNamespace:
@@ -1363,7 +1379,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePrivateDnsNamespaceResponse'
-      x-stackql-resource: private_dns_namespaces
+      x-stackql-resource: namespaces
       x-stackql-method: update_private_dns_namespace
       x-stackql-verb: UPDATE
   /UpdatePublicDnsNamespace:
@@ -1408,7 +1424,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePublicDnsNamespaceResponse'
-      x-stackql-resource: public_dns_namespaces
+      x-stackql-resource: namespaces
       x-stackql-method: update_public_dns_namespace
       x-stackql-verb: UPDATE
   /UpdateService:

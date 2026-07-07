@@ -1460,7 +1460,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTablesOutput"
+                $ref: "#/components/schemas/ListTablesOutputDisplay"
   /ListTagsOfResource:
     post:
       operationId: ListTagsOfResource
@@ -1552,7 +1552,6 @@ paths:
                   description: An optional parameter that returns the item attributes for a PutItem operation that failed a condition check. There is no additional cost associated with requesting a return value aside from the small network and processing overhead of receiving a larger response. No read capacity units are consumed.
               required:
                 - TableName
-                - Item
       responses:
         "200":
           description: Success
@@ -1595,7 +1594,6 @@ paths:
                   description: Set this parameter to true to confirm that you want to remove your permissions to change the policy of this resource in the future.
               required:
                 - ResourceArn
-                - Policy
       responses:
         "200":
           description: Success
@@ -4896,20 +4894,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListTablesOutput:
-      description: Represents the output of a ListTables operation.
+    ListTablesRowDisplay:
       type: object
       properties:
-        TableNames:
-          $ref: "#/components/schemas/TableNameList"
+        table_name:
+          type: string
           description: The names of the tables associated with the current account at the current endpoint. The maximum size of this array is 100. If LastEvaluatedTableName also appears in the output, you can use this value as the ExclusiveStartTableName parameter in a subsequent ListTables request and obtain the next page of results.
-        LastEvaluatedTableName:
-          $ref: "#/components/schemas/TableName"
-          description: The name of the last table in the current page of results. Use this value as the ExclusiveStartTableName in a new request to obtain the next page of results, until all the table names are returned. If you do not receive a LastEvaluatedTableName value in the response, this means that there are no more table names to be retrieved.
-    TableNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/TableName"
+    ListTablesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTablesRowDisplay"
     ListTagsOfResourceOutput:
       type: object
       properties:
@@ -5789,6 +5786,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        transact_get_items:
+          operation:
+            $ref: "#/paths/~1TransactGetItems/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        transact_write_items:
+          operation:
+            $ref: "#/paths/~1TransactWriteItems/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_item:
           operation:
             $ref: "#/paths/~1UpdateItem/post"
@@ -5850,6 +5873,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.BackupDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5869,6 +5893,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: ExclusiveStartBackupArn
+                location: body
+              responseToken:
+                key: $.LastEvaluatedBackupArn
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5904,6 +5935,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GlobalTableDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5983,6 +6015,46 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Table
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_kinesis_streaming_destination:
+          operation:
+            $ref: "#/paths/~1DisableKinesisStreamingDestination/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_kinesis_streaming_destination:
+          operation:
+            $ref: "#/paths/~1EnableKinesisStreamingDestination/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        export_table_to_point_in_time:
+          operation:
+            $ref: "#/paths/~1ExportTableToPointInTime/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5996,12 +6068,91 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.TableNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTablesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "TableNames" -}}{{- $tok := index . "LastEvaluatedTableName" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"table_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "LastEvaluatedTableName": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: ExclusiveStartTableName
+                location: body
+              responseToken:
+                key: $.LastEvaluatedTableName
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        query:
+          operation:
+            $ref: "#/paths/~1Query/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: ExclusiveStartKey
+                location: body
+              responseToken:
+                key: $.LastEvaluatedKey
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        restore_table_from_backup:
+          operation:
+            $ref: "#/paths/~1RestoreTableFromBackup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        restore_table_to_point_in_time:
+          operation:
+            $ref: "#/paths/~1RestoreTableToPointInTime/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        scan:
+          operation:
+            $ref: "#/paths/~1Scan/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: ExclusiveStartKey
+                location: body
+              responseToken:
+                key: $.LastEvaluatedKey
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_table:
@@ -6091,6 +6242,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ContinuousBackupsDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6205,6 +6357,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ExportDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6281,6 +6434,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ImportTableDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6381,6 +6535,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TableAutoScalingDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6419,6 +6574,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TimeToLiveDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6446,10 +6602,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/time_to_lives/methods/update_time_to_live"
         delete: []
-    tags_of_resources:
-      id: aws.dynamodb.tags_of_resources
-      name: tags_of_resources
-      title: tags_of_resources
+    tags:
+      id: aws.dynamodb.tags
+      name: tags
+      title: tags
       methods:
         list_tags_of_resource:
           operation:
@@ -6463,19 +6619,15 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_of_resources/methods/list_tags_of_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.dynamodb.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -6501,9 +6653,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_of_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

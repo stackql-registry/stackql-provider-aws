@@ -47,7 +47,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CancelJobOutputDisplay'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelJobOutputDisplay
@@ -69,7 +69,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CancelJobInput'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CancelJobOutputDisplay

@@ -158,8 +158,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/String"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -443,7 +441,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListManagedViewsOutput"
+                $ref: "#/components/schemas/ListManagedViewsOutputDisplay"
   /ListResources:
     post:
       operationId: ListResources
@@ -518,7 +516,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListServiceViewsOutput"
+                $ref: "#/components/schemas/ListServiceViewsOutputDisplay"
   /ListStreamingAccessForServices:
     post:
       operationId: ListStreamingAccessForServices
@@ -654,7 +652,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListViewsOutput"
+                $ref: "#/components/schemas/ListViewsOutputDisplay"
   /Search:
     post:
       operationId: Search
@@ -700,9 +698,6 @@ paths:
                   $ref: "#/components/schemas/String"
                 Type:
                   $ref: "#/components/schemas/IndexType"
-              required:
-                - Arn
-                - Type
       responses:
         "200":
           description: Success
@@ -1345,19 +1340,19 @@ components:
       type: string
       minLength: 1
       maxLength: 1024
-    ListManagedViewsOutput:
+    ListManagedViewsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: If present, indicates that more output is available than is included in the current response. Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the NextToken response element comes back as null. The pagination tokens expire after 24 hours.
-        ManagedViews:
-          $ref: "#/components/schemas/ManagedViewArnList"
+        managed_view:
+          type: string
           description: The list of managed views available in the Amazon Web Services Region in which you called this operation.
-    ManagedViewArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    ListManagedViewsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListManagedViewsRowDisplay"
     ListResourcesInputMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1466,19 +1461,19 @@ components:
       type: integer
       minimum: 1
       maximum: 50
-    ListServiceViewsOutput:
+    ListServiceViewsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination token to use in a subsequent ListServiceViews request to retrieve the next set of results.
-        ServiceViews:
-          $ref: "#/components/schemas/ServiceViewArnList"
+        service_view:
+          type: string
           description: A list of Amazon Resource Names (ARNs) for the service views available in the current Amazon Web Services account.
-    ServiceViewArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    ListServiceViewsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListServiceViewsRowDisplay"
     ListStreamingAccessForServicesInputMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1549,19 +1544,19 @@ components:
       type: integer
       minimum: 1
       maximum: 50
-    ListViewsOutput:
+    ListViewsRowDisplay:
       type: object
       properties:
-        Views:
-          $ref: "#/components/schemas/ViewArnList"
+        view:
+          type: string
           description: The list of views available in the Amazon Web Services Region in which you called this operation.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: If present, indicates that more output is available than is included in the current response. Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the NextToken response element comes back as null. The pagination tokens expire after 24 hours.
-    ViewArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    ListViewsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListViewsRowDisplay"
     QueryString:
       type: string
       minLength: 0
@@ -1738,10 +1733,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Views
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListViewsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Views" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"view": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_view:
@@ -1758,7 +1766,7 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/views/methods/get_view"
-          - $ref: "#/components/x-stackQL-resources/views/methods/batch_get_view"
+          - $ref: "#/components/x-stackQL-resources/views/methods/list_views"
         insert:
           - $ref: "#/components/x-stackQL-resources/views/methods/create_view"
         update:
@@ -1808,6 +1816,24 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_index_type:
+          operation:
+            $ref: "#/paths/~1UpdateIndexType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1815,7 +1841,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/indexes/methods/get_index"
         insert:
           - $ref: "#/components/x-stackQL-resources/indexes/methods/create_index"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/update_index_type"
         delete:
           - $ref: "#/components/x-stackQL-resources/indexes/methods/delete_index"
     resource_explorer_setups:
@@ -1855,6 +1882,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1876,6 +1910,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.OrgConfiguration
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/account_level_service_configurations/methods/get_account_level_service_configuration"
@@ -1893,6 +1928,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ManagedView
           request:
             nativeCasing: pascal
           config:
@@ -1904,10 +1940,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ManagedViews
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListManagedViewsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ManagedViews" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"managed_view": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1938,6 +1987,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1957,6 +2013,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.View
           request:
             nativeCasing: pascal
           config:
@@ -1968,10 +2025,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ServiceViews
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListServiceViewsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ServiceViews" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_view": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1996,6 +2066,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2019,34 +2096,20 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
+        update: []
         delete: []
     streaming_access_for_services:
       id: aws.resource_explorer_2.streaming_access_for_services
@@ -2063,6 +2126,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2086,6 +2156,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2094,10 +2171,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.resource_explorer_2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.resource_explorer_2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2105,20 +2182,9 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    index_types:
-      id: aws.resource_explorer_2.index_types
-      name: index_types
-      title: index_types
-      methods:
-        update_index_type:
+        tag_resource:
           operation:
-            $ref: "#/paths/~1UpdateIndexType/post"
+            $ref: "#/paths/~1tags~1{resource_arn}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2127,9 +2193,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/index_types/methods/update_index_type"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

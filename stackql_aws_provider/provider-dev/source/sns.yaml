@@ -60,7 +60,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: permissions
+      x-stackql-resource: topics
       x-stackql-method: add_permission
       x-stackql-verb: UPDATE
     post:
@@ -77,7 +77,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddPermissionInput'
-      x-stackql-resource: permissions
+      x-stackql-resource: topics
       x-stackql-method: add_permission
       x-stackql-verb: UPDATE
   /?Action=CheckIfPhoneNumberIsOptedOut&Version=2010-03-31:
@@ -178,7 +178,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ConfirmSubscriptionOutputDisplay'
-      x-stackql-resource: subscription
+      x-stackql-resource: topics
       x-stackql-method: confirm_subscription
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ConfirmSubscriptionOutputDisplay
@@ -201,7 +201,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ConfirmSubscriptionInput'
-      x-stackql-resource: subscription
+      x-stackql-resource: topics
       x-stackql-method: confirm_subscription
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ConfirmSubscriptionOutputDisplay
@@ -353,7 +353,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreatePlatformEndpointOutputDisplay'
-      x-stackql-resource: platform_endpoints
+      x-stackql-resource: platform_applications
       x-stackql-method: create_platform_endpoint
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreatePlatformEndpointOutputDisplay
@@ -381,7 +381,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreatePlatformEndpointInput'
-      x-stackql-resource: platform_endpoints
+      x-stackql-resource: platform_applications
       x-stackql-method: create_platform_endpoint
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreatePlatformEndpointOutputDisplay
@@ -1327,6 +1327,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListPhoneNumbersOptedOutOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListPhoneNumbersOptedOutResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "ListPhoneNumbersOptedOutResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "phoneNumbers" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member"
+        }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{-
+        range $i, $v := $n -}}{{- if $i }},{{ end }}{"phone_number": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf
+        $n) "string") $n -}}{"phone_number": {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListPhoneNumbersOptedOut
       description: Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them. The results
@@ -1352,6 +1359,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListPhoneNumbersOptedOutOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListPhoneNumbersOptedOutResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "ListPhoneNumbersOptedOutResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "phoneNumbers" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member"
+        }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{-
+        range $i, $v := $n -}}{{- if $i }},{{ end }}{"phone_number": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf
+        $n) "string") $n -}}{"phone_number": {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListPlatformApplications&Version=2010-03-31:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1630,7 +1644,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -1652,7 +1666,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListTagsForResourceRequest'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -1977,7 +1991,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PublishBatchOutputDisplay'
-      x-stackql-resource: batch
+      x-stackql-resource: topics
       x-stackql-method: publish_batch
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishBatchOutputDisplay
@@ -2012,7 +2026,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PublishBatchInput'
-      x-stackql-resource: batch
+      x-stackql-resource: topics
       x-stackql-method: publish_batch
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PublishBatchOutputDisplay
@@ -2094,7 +2108,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: permissions
+      x-stackql-resource: topics
       x-stackql-method: remove_permission
       x-stackql-verb: UPDATE
     post:
@@ -2110,7 +2124,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemovePermissionInput'
-      x-stackql-resource: permissions
+      x-stackql-resource: topics
       x-stackql-method: remove_permission
       x-stackql-verb: UPDATE
   /?Action=SetEndpointAttributes&Version=2010-03-31:
@@ -2586,7 +2600,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SubscribeOutputDisplay'
-      x-stackql-resource: subscribe
+      x-stackql-resource: topics
       x-stackql-method: subscribe
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SubscribeOutputDisplay
@@ -2610,7 +2624,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SubscribeInput'
-      x-stackql-resource: subscribe
+      x-stackql-resource: topics
       x-stackql-method: subscribe
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SubscribeOutputDisplay
@@ -2652,7 +2666,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/TagResourceOutputDisplay'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: TagResourceOutputDisplay
@@ -2678,7 +2692,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagResourceRequest'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: TagResourceOutputDisplay
@@ -2709,7 +2723,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: unsubscribe
+      x-stackql-resource: subscriptions
       x-stackql-method: unsubscribe
       x-stackql-verb: EXEC
     post:
@@ -2728,7 +2742,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UnsubscribeInput'
-      x-stackql-resource: unsubscribe
+      x-stackql-resource: subscriptions
       x-stackql-method: unsubscribe
       x-stackql-verb: EXEC
   /?Action=UntagResource&Version=2010-03-31:
@@ -2764,7 +2778,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutputDisplay'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UntagResourceOutputDisplay
@@ -2786,7 +2800,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagResourceRequest'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UntagResourceOutputDisplay
@@ -3580,7 +3594,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/PhoneNumberDisplay'
+            $ref: '#/components/schemas/ListPhoneNumbersOptedOutRowDisplay'
     ListPhoneNumbersOptedOutInput:
       description: The input for the ListPhoneNumbersOptedOut action.
       type: object
@@ -3589,6 +3603,13 @@ components:
           $ref: '#/components/schemas/string'
           description: A NextToken string is used when you call the ListPhoneNumbersOptedOut action to retrieve additional
             records that are available after the first page of results.
+    ListPhoneNumbersOptedOutRowDisplay:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          description: A list of phone numbers that are opted out of receiving SMS messages. The list is paginated, and each
+            page can contain up to 100 phone numbers.
     PlatformApplicationDisplay:
       type: object
       properties:

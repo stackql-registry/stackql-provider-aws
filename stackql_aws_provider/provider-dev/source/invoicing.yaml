@@ -319,6 +319,7 @@ paths:
       x-stackql-resource: invoice_pdfs
       x-stackql-method: get_invoice_pdf
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.InvoicePDF
   /GetInvoiceUnit:
     post:
       operationId: GetInvoiceUnit
@@ -397,6 +398,7 @@ paths:
       x-stackql-resource: procurement_portal_preferences
       x-stackql-method: get_procurement_portal_preference
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ProcurementPortalPreference
   /ListInvoiceSummaries:
     post:
       operationId: ListInvoiceSummaries
@@ -445,6 +447,9 @@ paths:
       x-stackql-method: list_invoice_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InvoiceSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInvoiceUnits:
     post:
       operationId: ListInvoiceUnits
@@ -493,6 +498,9 @@ paths:
       x-stackql-method: list_invoice_units
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InvoiceUnits
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProcurementPortalPreferences:
     post:
       operationId: ListProcurementPortalPreferences
@@ -534,6 +542,9 @@ paths:
       x-stackql-method: list_procurement_portal_preferences
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProcurementPortalPreferences
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -567,7 +578,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutProcurementPortalPreference:
@@ -675,7 +686,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -715,7 +726,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateInvoiceUnit:
@@ -812,7 +823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateProcurementPortalPreferenceStatusResponse'
-      x-stackql-resource: procurement_portal_preference_status
+      x-stackql-resource: procurement_portal_preferences
       x-stackql-method: update_procurement_portal_preference_status
       x-stackql-verb: UPDATE
 components:

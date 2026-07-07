@@ -3281,6 +3281,14 @@ components:
             objectKey: $.asyncInvokeSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/async_invokes/methods/get_async_invoke"

@@ -2373,6 +2373,73 @@ components:
         - DomainName
         - AccessPolicies
   x-stackQL-resources:
+    suggesters:
+      id: aws.cloudsearch.suggesters
+      name: suggesters
+      title: suggesters
+      methods:
+        build_suggesters:
+          operation:
+            $ref: "#/paths/~1?Action=BuildSuggesters&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BuildSuggestersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_suggester:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteSuggester&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteSuggesterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_suggesters:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeSuggesters&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeSuggestersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/suggesters/methods/describe_suggesters"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/suggesters/methods/delete_suggester"
     domains:
       id: aws.cloudsearch.domains
       name: domains
@@ -2392,6 +2459,74 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        define_analysis_scheme:
+          operation:
+            $ref: "#/paths/~1?Action=DefineAnalysisScheme&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DefineAnalysisSchemeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        define_expression:
+          operation:
+            $ref: "#/paths/~1?Action=DefineExpression&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DefineExpressionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        define_index_field:
+          operation:
+            $ref: "#/paths/~1?Action=DefineIndexField&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DefineIndexFieldOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        define_suggester:
+          operation:
+            $ref: "#/paths/~1?Action=DefineSuggester&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DefineSuggesterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -2430,6 +2565,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        index_documents:
+          operation:
+            $ref: "#/paths/~1?Action=IndexDocuments&Version=2013-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/IndexDocumentsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -2593,56 +2745,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/index_fields/methods/delete_index_field"
-    suggesters:
-      id: aws.cloudsearch.suggesters
-      name: suggesters
-      title: suggesters
-      methods:
-        delete_suggester:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteSuggester&Version=2013-01-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteSuggesterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_suggesters:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeSuggesters&Version=2013-01-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeSuggestersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/suggesters/methods/describe_suggesters"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/suggesters/methods/delete_suggester"
     availability_options:
       id: aws.cloudsearch.availability_options
       name: availability_options

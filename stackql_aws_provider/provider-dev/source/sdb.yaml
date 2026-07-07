@@ -46,7 +46,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: batch_delete_attributes
+      x-stackql-resource: attributes
       x-stackql-method: batch_delete_attributes
       x-stackql-verb: EXEC
     post:
@@ -63,7 +63,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchDeleteAttributesRequest'
-      x-stackql-resource: batch_delete_attributes
+      x-stackql-resource: attributes
       x-stackql-method: batch_delete_attributes
       x-stackql-verb: EXEC
   /?Action=BatchPutAttributes&Version=2009-04-15:
@@ -114,7 +114,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: batch_put_attributes
+      x-stackql-resource: attributes
       x-stackql-method: batch_put_attributes
       x-stackql-verb: EXEC
     post:
@@ -149,7 +149,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchPutAttributesRequest'
-      x-stackql-resource: batch_put_attributes
+      x-stackql-resource: attributes
       x-stackql-method: batch_put_attributes
       x-stackql-verb: EXEC
   /?Action=CreateDomain&Version=2009-04-15:
@@ -336,7 +336,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DomainMetadataOutputDisplay'
-      x-stackql-resource: domain_metadata
+      x-stackql-resource: domains
       x-stackql-method: domain_metadata
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DomainMetadataOutputDisplay
@@ -358,7 +358,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DomainMetadataRequest'
-      x-stackql-resource: domain_metadata
+      x-stackql-resource: domains
       x-stackql-method: domain_metadata
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DomainMetadataOutputDisplay
@@ -417,6 +417,12 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $s := separator ", " -}}{{- $n := index . "GetAttributesResponse" -}}{{- if eq (kindOf
+        $n) "map" }}{{ $n = index $n "GetAttributesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "Attributes" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{-
+        range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson
+        $n }}{{- end -}}]}'
     post:
       operationId: POST_GetAttributes
       description: Returns all of the attributes associated with the specified item. Optionally, the attributes returned can
@@ -441,6 +447,12 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetAttributesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $s := separator ", " -}}{{- $n := index . "GetAttributesResponse" -}}{{- if eq (kindOf
+        $n) "map" }}{{ $n = index $n "GetAttributesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "Attributes" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{-
+        range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson
+        $n }}{{- end -}}]}'
   /?Action=ListDomains&Version=2009-04-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -481,6 +493,12 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDomainsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListDomainsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n
+        "ListDomainsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DomainNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"domain_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"domain_name":
+        {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListDomains
       description: The ListDomains operation lists all domains associated with the Access Key ID. It returns domain names
@@ -505,6 +523,12 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListDomainsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListDomainsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n
+        "ListDomainsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DomainNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"domain_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"domain_name":
+        {{ toJson $n }}}{{- end -}}]}'
   /?Action=PutAttributes&Version=2009-04-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -912,19 +936,26 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    GetAttributesResultDisplay:
+    AttributeDisplay:
       type: object
       properties:
-        Attributes:
+        Name:
           type: string
-          description: The list of attributes returned by the operation.
+          description: The name of the attribute.
+        AlternateNameEncoding:
+          type: string
+        Value:
+          type: string
+          description: The value of the attribute.
+        AlternateValueEncoding:
+          type: string
     GetAttributesOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/GetAttributesResultDisplay'
+            $ref: '#/components/schemas/AttributeDisplay'
     GetAttributesRequest:
       type: object
       properties:
@@ -956,7 +987,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/StringDisplay'
+            $ref: '#/components/schemas/ListDomainsRowDisplay'
     ListDomainsRequest:
       type: object
       properties:
@@ -967,6 +998,12 @@ components:
         NextToken:
           $ref: '#/components/schemas/String'
           description: A string informing Amazon SimpleDB where to start the next list of domain names.
+    ListDomainsRowDisplay:
+      type: object
+      properties:
+        domain_name:
+          type: string
+          description: A list of domain names that match the expression.
     PutAttributesRequest:
       type: object
       properties:

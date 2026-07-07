@@ -410,6 +410,7 @@ paths:
       x-stackql-resource: certificate_authorities
       x-stackql-method: describe_certificate_authority
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CertificateAuthority
   /DescribeCertificateAuthorityAuditReport:
     post:
       operationId: DescribeCertificateAuthorityAuditReport
@@ -689,7 +690,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_authority_certificate
+      x-stackql-resource: certificate_authorities
       x-stackql-method: import_certificate_authority_certificate
       x-stackql-verb: EXEC
   /IssueCertificate:
@@ -788,7 +789,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IssueCertificateResponse'
-      x-stackql-resource: issue_certificate
+      x-stackql-resource: certificate_authorities
       x-stackql-method: issue_certificate
       x-stackql-verb: EXEC
   /ListCertificateAuthorities:
@@ -837,6 +838,9 @@ paths:
       x-stackql-method: list_certificate_authorities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CertificateAuthorities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPermissions:
     post:
       operationId: ListPermissions
@@ -893,6 +897,9 @@ paths:
       x-stackql-method: list_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Permissions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTags:
     post:
       operationId: ListTags
@@ -943,6 +950,9 @@ paths:
       x-stackql-method: list_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutPolicy:
     post:
       operationId: PutPolicy
@@ -1031,7 +1041,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_authority
+      x-stackql-resource: certificates
       x-stackql-method: restore_certificate_authority
       x-stackql-verb: EXEC
   /RevokeCertificate:
@@ -1131,7 +1141,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_authorities
+      x-stackql-resource: tags
       x-stackql-method: tag_certificate_authority
       x-stackql-verb: UPDATE
   /UntagCertificateAuthority:
@@ -1171,7 +1181,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_authorities
+      x-stackql-resource: tags
       x-stackql-method: untag_certificate_authority
       x-stackql-verb: UPDATE
   /UpdateCertificateAuthority:

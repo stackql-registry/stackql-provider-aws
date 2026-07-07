@@ -38,7 +38,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
               required:
-                - Name
                 - ProfileId
                 - ResourceId
       responses:
@@ -69,7 +68,6 @@ paths:
                 ResourceProperties:
                   $ref: "#/components/schemas/ResourceProperties"
               required:
-                - Name
                 - ProfileId
                 - ResourceArn
       responses:
@@ -99,7 +97,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ClientToken
-                - Name
       responses:
         "200":
           description: Success
@@ -387,8 +384,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -792,6 +787,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        associate_resource_to_profile:
+          operation:
+            $ref: "#/paths/~1profileresourceassociation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_profile:
           operation:
             $ref: "#/paths/~1profile/post"
@@ -815,9 +821,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Profile
         disassociate_profile:
           operation:
             $ref: "#/paths/~1profileassociation~1Profileid~1{profile_id}~1resourceid~1{resource_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        disassociate_resource_from_profile:
+          operation:
+            $ref: "#/paths/~1profileresourceassociation~1profileid~1{profile_id}~1resourcearn~1{resource_arn}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -830,6 +843,14 @@ components:
             objectKey: $.ProfileSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/get_profile"
@@ -838,48 +859,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/create_profile"
         update:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/associate_profile"
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/associate_resource_to_profile"
           - $ref: "#/components/x-stackQL-resources/profiles/methods/disassociate_profile"
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/disassociate_resource_from_profile"
         delete:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/delete_profile"
-    resource_to_profiles:
-      id: aws.route53profiles.resource_to_profiles
-      name: resource_to_profiles
-      title: resource_to_profiles
-      methods:
-        associate_resource_to_profile:
-          operation:
-            $ref: "#/paths/~1profileresourceassociation/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resource_to_profiles/methods/associate_resource_to_profile"
-        delete: []
-    resource_from_profiles:
-      id: aws.route53profiles.resource_from_profiles
-      name: resource_from_profiles
-      title: resource_from_profiles
-      methods:
-        disassociate_resource_from_profile:
-          operation:
-            $ref: "#/paths/~1profileresourceassociation~1profileid~1{profile_id}~1resourcearn~1{resource_arn}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resource_from_profiles/methods/disassociate_resource_from_profile"
-        delete: []
     profile_associations:
       id: aws.route53profiles.profile_associations
       name: profile_associations
@@ -891,6 +875,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ProfileAssociation
         list_profile_associations:
           operation:
             $ref: "#/paths/~1profileassociations/get"
@@ -900,6 +885,14 @@ components:
             objectKey: $.ProfileAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profile_associations/methods/get_profile_association"
@@ -918,6 +911,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ProfileResourceAssociation
         update_profile_resource_association:
           operation:
             $ref: "#/paths/~1profileresourceassociation~1{profile_resource_association_id}/patch"
@@ -938,6 +932,14 @@ components:
             objectKey: $.ProfileResourceAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profile_resource_associations/methods/get_profile_resource_association"
@@ -946,10 +948,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/profile_resource_associations/methods/update_profile_resource_association"
         delete: []
-    tags_for_resources:
-      id: aws.route53profiles.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.route53profiles.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -957,17 +959,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.route53profiles.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -988,9 +979,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

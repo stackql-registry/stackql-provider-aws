@@ -510,6 +510,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.StreamDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0

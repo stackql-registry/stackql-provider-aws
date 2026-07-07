@@ -9005,7 +9005,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: bucket_metadata_inventory_table_configurations
+      x-stackql-resource: buckets
       x-stackql-method: update_bucket_metadata_inventory_table_configuration
       x-stackql-verb: UPDATE
   /{bucket}?metadataJournalTable:
@@ -9060,7 +9060,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: bucket_metadata_journal_table_configurations
+      x-stackql-resource: buckets
       x-stackql-method: update_bucket_metadata_journal_table_configuration
       x-stackql-verb: UPDATE
   /{bucket}/{key}?encryption:
@@ -9186,7 +9186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateObjectEncryptionOutputDisplay'
-      x-stackql-resource: object_encryptions
+      x-stackql-resource: objects
       x-stackql-method: update_object_encryption
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateObjectEncryptionOutputDisplay

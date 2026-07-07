@@ -4984,6 +4984,83 @@ components:
           $ref: "#/components/schemas/TargetGroupStatus"
           description: The status.
   x-stackQL-resources:
+    listeners:
+      id: aws.vpc_lattice.listeners
+      name: listeners
+      title: listeners
+      methods:
+        batch_update_rule:
+          operation:
+            $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}~1rules/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_listener:
+          operation:
+            $ref: "#/paths/~1services~1{service_identifier}~1listeners/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_listeners:
+          operation:
+            $ref: "#/paths/~1services~1{service_identifier}~1listeners/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_listener:
+          operation:
+            $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        get_listener:
+          operation:
+            $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_listener:
+          operation:
+            $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/listeners/methods/get_listener"
+          - $ref: "#/components/x-stackQL-resources/listeners/methods/list_listeners"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/listeners/methods/create_listener"
+        update:
+          - $ref: "#/components/x-stackQL-resources/listeners/methods/update_listener"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/listeners/methods/delete_listener"
     rules:
       id: aws.vpc_lattice.rules
       name: rules
@@ -5009,6 +5086,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_rule:
           operation:
             $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}~1rules~1{rule_identifier}/delete"
@@ -5067,6 +5152,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_access_log_subscription:
           operation:
             $ref: "#/paths/~1accesslogsubscriptions~1{access_log_subscription_identifier}/delete"
@@ -5100,64 +5193,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/access_log_subscriptions/methods/update_access_log_subscription"
         delete:
           - $ref: "#/components/x-stackQL-resources/access_log_subscriptions/methods/delete_access_log_subscription"
-    listeners:
-      id: aws.vpc_lattice.listeners
-      name: listeners
-      title: listeners
-      methods:
-        create_listener:
-          operation:
-            $ref: "#/paths/~1services~1{service_identifier}~1listeners/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_listeners:
-          operation:
-            $ref: "#/paths/~1services~1{service_identifier}~1listeners/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-        delete_listener:
-          operation:
-            $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        get_listener:
-          operation:
-            $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_listener:
-          operation:
-            $ref: "#/paths/~1services~1{service_identifier}~1listeners~1{listener_identifier}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/listeners/methods/get_listener"
-          - $ref: "#/components/x-stackQL-resources/listeners/methods/list_listeners"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/listeners/methods/create_listener"
-        update:
-          - $ref: "#/components/x-stackQL-resources/listeners/methods/update_listener"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/listeners/methods/delete_listener"
     resource_configurations:
       id: aws.vpc_lattice.resource_configurations
       name: resource_configurations
@@ -5183,6 +5218,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_resource_configuration:
           operation:
             $ref: "#/paths/~1resourceconfigurations~1{resource_configuration_identifier}/delete"
@@ -5241,6 +5284,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_resource_gateway:
           operation:
             $ref: "#/paths/~1resourcegateways~1{resource_gateway_identifier}/delete"
@@ -5299,6 +5350,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_service:
           operation:
             $ref: "#/paths/~1services~1{service_identifier}/delete"
@@ -5357,6 +5416,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_service_network:
           operation:
             $ref: "#/paths/~1servicenetworks~1{service_network_identifier}/delete"
@@ -5415,6 +5482,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_service_network_resource_association:
           operation:
             $ref: "#/paths/~1servicenetworkresourceassociations~1{service_network_resource_association_identifier}/delete"
@@ -5461,6 +5536,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_service_network_service_association:
           operation:
             $ref: "#/paths/~1servicenetworkserviceassociations~1{service_network_service_association_identifier}/delete"
@@ -5507,6 +5590,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_service_network_vpc_association:
           operation:
             $ref: "#/paths/~1servicenetworkvpcassociations~1{service_network_vpc_association_identifier}/delete"
@@ -5565,6 +5656,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_target_group:
           operation:
             $ref: "#/paths/~1targetgroups~1{target_group_identifier}/delete"
@@ -5661,6 +5760,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_verifications/methods/get_domain_verification"
@@ -5689,6 +5796,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_endpoint_associations/methods/list_resource_endpoint_associations"
@@ -5759,6 +5874,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_targets:
@@ -5794,16 +5916,24 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/service_network_vpc_endpoint_associations/methods/list_service_network_vpc_endpoint_associations"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.vpc_lattice.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.vpc_lattice.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5811,17 +5941,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.vpc_lattice.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -5842,9 +5961,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

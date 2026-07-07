@@ -119,6 +119,9 @@ paths:
       x-stackql-method: list_datasets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Datasets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /profileJobs:
     post:
       operationId: CreateProfileJob
@@ -171,7 +174,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateProfileJobResponse'
-      x-stackql-resource: profile_jobs
+      x-stackql-resource: jobs
       x-stackql-method: create_profile_job
       x-stackql-verb: INSERT
   /projects:
@@ -240,6 +243,9 @@ paths:
       x-stackql-method: list_projects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Projects
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /recipes:
     post:
       operationId: CreateRecipe
@@ -307,6 +313,9 @@ paths:
       x-stackql-method: list_recipes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Recipes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /recipeJobs:
     post:
       operationId: CreateRecipeJob
@@ -359,7 +368,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateRecipeJobResponse'
-      x-stackql-resource: recipe_jobs
+      x-stackql-resource: jobs
       x-stackql-method: create_recipe_job
       x-stackql-verb: INSERT
   /rulesets:
@@ -433,6 +442,9 @@ paths:
       x-stackql-method: list_rulesets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rulesets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /schedules:
     post:
       operationId: CreateSchedule
@@ -500,6 +512,9 @@ paths:
       x-stackql-method: list_schedules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Schedules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /datasets/{name}:
     delete:
       operationId: DeleteDataset
@@ -989,6 +1004,9 @@ paths:
       x-stackql-method: list_job_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobRuns
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /jobs:
     get:
       operationId: ListJobs
@@ -1032,6 +1050,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /recipeVersions:
     get:
       operationId: ListRecipeVersions
@@ -1066,6 +1087,9 @@ paths:
       x-stackql-method: list_recipe_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Recipes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1084,7 +1108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1116,7 +1140,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1143,7 +1167,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /recipes/{name}/publishRecipe:
@@ -1211,7 +1235,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendProjectSessionActionResponse'
-      x-stackql-resource: project_session_action
+      x-stackql-resource: projects
       x-stackql-method: send_project_session_action
       x-stackql-verb: EXEC
   /jobs/{name}/startJobRun:
@@ -1232,7 +1256,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: job_run
+      x-stackql-resource: jobs
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /projects/{name}/startProjectSession:
@@ -1262,7 +1286,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProjectSessionResponse'
-      x-stackql-resource: project_session
+      x-stackql-resource: projects
       x-stackql-method: start_project_session
       x-stackql-verb: EXEC
   /jobs/{name}/jobRun/{run_id}/stopJobRun:
@@ -1289,7 +1313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopJobRunResponse'
-      x-stackql-resource: job_run
+      x-stackql-resource: jobs
       x-stackql-method: stop_job_run
       x-stackql-verb: EXEC
   /profileJobs/{name}:
@@ -1342,7 +1366,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateProfileJobResponse'
-      x-stackql-resource: profile_jobs
+      x-stackql-resource: jobs
       x-stackql-method: update_profile_job
       x-stackql-verb: UPDATE
   /recipeJobs/{name}:
@@ -1392,7 +1416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRecipeJobResponse'
-      x-stackql-resource: recipe_jobs
+      x-stackql-resource: jobs
       x-stackql-method: update_recipe_job
       x-stackql-verb: UPDATE
 components:

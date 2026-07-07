@@ -759,7 +759,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListVersionsResponse"
+                $ref: "#/components/schemas/ListVersionsOutputDisplay"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1494,19 +1494,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListVersionsResponse:
+    ListVersionsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: The token to use in a subsequent ListVersions operation to return the next set of results.
-        grafanaVersions:
-          $ref: "#/components/schemas/GrafanaVersionList"
+        grafana_version:
+          type: string
           description: The Grafana versions available to create. If a workspace ID is included in the request, the Grafana versions to which this workspace can be upgraded.
-    GrafanaVersionList:
-      type: array
-      items:
-        $ref: "#/components/schemas/GrafanaVersion"
+    ListVersionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListVersionsRowDisplay"
     ListWorkspaceServiceAccountTokensRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1767,10 +1767,10 @@ components:
     UpdateWorkspaceConfigurationResponse:
       type: object
   x-stackQL-resources:
-    licenses:
-      id: aws.grafana.licenses
-      name: licenses
-      title: licenses
+    workspaces:
+      id: aws.grafana.workspaces
+      name: workspaces
+      title: workspaces
       methods:
         associate_license:
           operation:
@@ -1784,17 +1784,6 @@ components:
           response:
             openAPIDocKey: "202"
             mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/licenses/methods/associate_license"
-        delete: []
-    workspaces:
-      id: aws.grafana.workspaces
-      name: workspaces
-      title: workspaces
-      methods:
         create_workspace:
           operation:
             $ref: "#/paths/~1workspaces/post"
@@ -1815,6 +1804,25 @@ components:
             objectKey: $.workspaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        create_workspace_api_key:
+          operation:
+            $ref: "#/paths/~1workspaces~1{workspace_id}~1apikeys/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}/delete"
@@ -1827,37 +1835,12 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.workspace
         update_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}/put"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspace"
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/list_workspaces"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace"
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/update_workspace"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/delete_workspace"
-    workspace_api_keys:
-      id: aws.grafana.workspace_api_keys
-      name: workspace_api_keys
-      title: workspace_api_keys
-      methods:
-        create_workspace_api_key:
-          operation:
-            $ref: "#/paths/~1workspaces~1{workspace_id}~1apikeys/post"
-          response:
-            openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -1871,12 +1854,18 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspace"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/list_workspaces"
         insert:
-          - $ref: "#/components/x-stackQL-resources/workspace_api_keys/methods/create_workspace_api_key"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace_api_key"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace"
+        update:
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/associate_license"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/update_workspace"
         delete:
-          - $ref: "#/components/x-stackQL-resources/workspace_api_keys/methods/delete_workspace_api_key"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/delete_workspace_api_key"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/delete_workspace"
     workspace_service_accounts:
       id: aws.grafana.workspace_service_accounts
       name: workspace_service_accounts
@@ -1902,6 +1891,14 @@ components:
             objectKey: $.serviceAccounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_workspace_service_account:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1serviceaccounts~1{service_account_id}/delete"
@@ -1941,6 +1938,14 @@ components:
             objectKey: $.serviceAccountTokens
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_workspace_service_account_token:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1serviceaccounts~1{service_account_id}~1tokens~1{token_id}/delete"
@@ -1966,6 +1971,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.authentication
         update_workspace_authentication:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1authentication/post"
@@ -2027,6 +2033,14 @@ components:
             objectKey: $.permissions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_permissions:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1permissions/patch"
@@ -2045,10 +2059,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/permissions/methods/update_permissions"
         delete: []
-    tags_for_resources:
-      id: aws.grafana.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.grafana.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2056,17 +2070,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.grafana.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2087,11 +2090,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     versions:
       id: aws.grafana.versions
@@ -2104,9 +2108,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.grafanaVersions
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListVersionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "grafanaVersions" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"grafana_version": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions"

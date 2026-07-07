@@ -126,7 +126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateSourceToS3TableIntegrationResponse'
-      x-stackql-resource: source_to_s3_table_integrations
+      x-stackql-resource: integrations
       x-stackql-method: associate_source_to_s3_table_integration
       x-stackql-verb: UPDATE
   /CancelExportTask:
@@ -1366,7 +1366,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: retention_policies
+      x-stackql-resource: log_groups
       x-stackql-method: delete_retention_policy
       x-stackql-verb: DELETE
   /DeleteScheduledQuery:
@@ -1589,6 +1589,9 @@ paths:
       x-stackql-method: describe_configuration_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configurationTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeDeliveries:
     post:
       operationId: DescribeDeliveries
@@ -1630,6 +1633,9 @@ paths:
       x-stackql-method: describe_deliveries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deliveries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeDeliveryDestinations:
     post:
       operationId: DescribeDeliveryDestinations
@@ -1667,6 +1673,9 @@ paths:
       x-stackql-method: describe_delivery_destinations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deliveryDestinations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeDeliverySources:
     post:
       operationId: DescribeDeliverySources
@@ -1704,6 +1713,9 @@ paths:
       x-stackql-method: describe_delivery_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deliverySources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeDestinations:
     post:
       operationId: DescribeDestinations
@@ -1746,6 +1758,9 @@ paths:
       x-stackql-method: describe_destinations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.destinations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeExportTasks:
     post:
       operationId: DescribeExportTasks
@@ -1793,6 +1808,9 @@ paths:
       x-stackql-method: describe_export_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.exportTasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeFieldIndexes:
     post:
       operationId: DescribeFieldIndexes
@@ -2055,6 +2073,9 @@ paths:
       x-stackql-method: describe_log_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.logGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeLogStreams:
     post:
       operationId: DescribeLogStreams
@@ -2123,6 +2144,9 @@ paths:
       x-stackql-method: describe_log_streams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.logStreams
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeLookupTables:
     post:
       operationId: DescribeLookupTables
@@ -2221,6 +2245,9 @@ paths:
       x-stackql-method: describe_metric_filters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.metricFilters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeQueries:
     post:
       operationId: DescribeQueries
@@ -2272,6 +2299,9 @@ paths:
       x-stackql-method: describe_queries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.queries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeQueryDefinitions:
     post:
       operationId: DescribeQueryDefinitions
@@ -2363,6 +2393,9 @@ paths:
       x-stackql-method: describe_resource_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourcePolicies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeSubscriptionFilters:
     post:
       operationId: DescribeSubscriptionFilters
@@ -2411,6 +2444,9 @@ paths:
       x-stackql-method: describe_subscription_filters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.subscriptionFilters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DisassociateKmsKey:
     post:
       operationId: DisassociateKmsKey
@@ -2497,7 +2533,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateSourceFromS3TableIntegrationResponse'
-      x-stackql-resource: source_from_s3_table_integrations
+      x-stackql-resource: integrations
       x-stackql-method: disassociate_source_from_s3_table_integration
       x-stackql-verb: UPDATE
   /FilterLogEvents:
@@ -2593,9 +2629,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FilterLogEventsResponse'
-      x-stackql-resource: filter_log_events
+      x-stackql-resource: log_events
       x-stackql-method: filter_log_events
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetDataProtectionPolicy:
     post:
       operationId: GetDataProtectionPolicy
@@ -2674,6 +2713,7 @@ paths:
       x-stackql-resource: deliveries
       x-stackql-method: get_delivery
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.delivery
   /GetDeliveryDestination:
     post:
       operationId: GetDeliveryDestination
@@ -2710,6 +2750,7 @@ paths:
       x-stackql-resource: delivery_destinations
       x-stackql-method: get_delivery_destination
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deliveryDestination
   /GetDeliveryDestinationPolicy:
     post:
       operationId: GetDeliveryDestinationPolicy
@@ -2747,6 +2788,7 @@ paths:
       x-stackql-resource: delivery_destination_policies
       x-stackql-method: get_delivery_destination_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.policy
   /GetDeliverySource:
     post:
       operationId: GetDeliverySource
@@ -2783,6 +2825,7 @@ paths:
       x-stackql-resource: delivery_sources
       x-stackql-method: get_delivery_source
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deliverySource
   /GetIntegration:
     post:
       operationId: GetIntegration
@@ -3092,6 +3135,7 @@ paths:
       x-stackql-resource: log_objects
       x-stackql-method: get_log_object
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.fieldStream
   /GetLogRecord:
     post:
       operationId: GetLogRecord
@@ -3319,6 +3363,9 @@ paths:
       x-stackql-method: get_scheduled_query_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.triggerHistory
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetTransformer:
     post:
       operationId: GetTransformer
@@ -3434,6 +3481,9 @@ paths:
       x-stackql-method: list_aggregate_log_group_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.aggregateLogGroupSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAnomalies:
     post:
       operationId: ListAnomalies
@@ -3480,6 +3530,9 @@ paths:
       x-stackql-method: list_anomalies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.anomalies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListIntegrations:
     post:
       operationId: ListIntegrations
@@ -3564,6 +3617,9 @@ paths:
       x-stackql-method: list_log_anomaly_detectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.anomalyDetectors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListLogGroups:
     post:
       operationId: ListLogGroups
@@ -3685,11 +3741,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListLogGroupsForQueryResponse'
+                $ref: '#/components/schemas/ListLogGroupsForQueryOutputDisplay'
       x-stackql-resource: log_groups_for_queries
       x-stackql-method: list_log_groups_for_query
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.logGroupIdentifiers
+      x-stackql-responseEnvelope: ListLogGroupsForQueryOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "logGroupIdentifiers" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"log_group_identifier": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListScheduledQueries:
     post:
       operationId: ListScheduledQueries
@@ -3732,6 +3796,9 @@ paths:
       x-stackql-method: list_scheduled_queries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scheduledQueries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSourcesForS3TableIntegration:
     post:
       operationId: ListSourcesForS3TableIntegration
@@ -3775,6 +3842,9 @@ paths:
       x-stackql-method: list_sources_for_s3_table_integration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -3811,7 +3881,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTagsLogGroup:
@@ -3848,7 +3918,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsLogGroupResponse'
-      x-stackql-resource: tags_log_groups
+      x-stackql-resource: tags
       x-stackql-method: list_tags_log_group
       x-stackql-verb: SELECT
   /PutAccountPolicy:
@@ -4102,7 +4172,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: bearer_token_authentications
+      x-stackql-resource: log_groups
       x-stackql-method: put_bearer_token_authentication
       x-stackql-verb: REPLACE
   /PutDataProtectionPolicy:
@@ -4483,7 +4553,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: destination_policies
+      x-stackql-resource: destinations
       x-stackql-method: put_destination_policy
       x-stackql-verb: REPLACE
   /PutIndexPolicy:
@@ -4710,7 +4780,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: log_group_deletion_protections
+      x-stackql-resource: log_groups
       x-stackql-method: put_log_group_deletion_protection
       x-stackql-verb: REPLACE
   /PutMetricFilter:
@@ -4966,7 +5036,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: retention_policies
+      x-stackql-resource: log_groups
       x-stackql-method: put_retention_policy
       x-stackql-verb: REPLACE
   /PutSubscriptionFilter:
@@ -5365,7 +5435,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: log_groups
+      x-stackql-resource: tags
       x-stackql-method: tag_log_group
       x-stackql-verb: UPDATE
   /TagResource:
@@ -5410,7 +5480,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestMetricFilter:
@@ -5533,7 +5603,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: log_groups
+      x-stackql-resource: tags
       x-stackql-method: untag_log_group
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -5572,7 +5642,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAnomaly:
@@ -5681,7 +5751,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDeliveryConfigurationResponse'
-      x-stackql-resource: delivery_configurations
+      x-stackql-resource: deliveries
       x-stackql-method: update_delivery_configuration
       x-stackql-verb: UPDATE
   /UpdateLogAnomalyDetector:
@@ -9712,18 +9782,19 @@ components:
       type: integer
       minimum: 50
       maximum: 500
-    ListLogGroupsForQueryResponse:
+    ListLogGroupsForQueryRowDisplay:
       type: object
       properties:
-        logGroupIdentifiers:
-          $ref: '#/components/schemas/LogGroupIdentifiers'
+        log_group_identifier:
+          type: string
           description: An array of the names and ARNs of the log groups that were processed in the query.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-    LogGroupIdentifiers:
-      type: array
-      items:
-        $ref: '#/components/schemas/LogGroupIdentifier'
+    ListLogGroupsForQueryOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListLogGroupsForQueryRowDisplay'
     ListScheduledQueriesMaxResults:
       type: integer
       minimum: 1
@@ -10187,6 +10258,10 @@ components:
       properties:
         message:
           $ref: '#/components/schemas/Message'
+    LogGroupIdentifiers:
+      type: array
+      items:
+        $ref: '#/components/schemas/LogGroupIdentifier'
     EventsLimitStartQuery:
       type: integer
       minimum: 1

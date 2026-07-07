@@ -5,7 +5,7 @@ info:
   description: Interconnect
   x-serviceName: interconnect
   x-serviceAlias: interconnect
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2022-07-26'
   x-endpointPrefix: interconnect
   x-targetPrefix: Interconnect
@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptConnectionProposalResponse'
-      x-stackql-resource: connection_proposal
+      x-stackql-resource: connections
       x-stackql-method: accept_connection_proposal
       x-stackql-verb: EXEC
   /CreateConnection:
@@ -249,6 +249,7 @@ paths:
       x-stackql-resource: connections
       x-stackql-method: get_connection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.connection
   /GetEnvironment:
     post:
       operationId: GetEnvironment
@@ -285,6 +286,7 @@ paths:
       x-stackql-resource: environments
       x-stackql-method: get_environment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environment
   /ListAttachPoints:
     post:
       operationId: ListAttachPoints
@@ -328,6 +330,9 @@ paths:
       x-stackql-method: list_attach_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.attachPoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListConnections:
     post:
       operationId: ListConnections
@@ -380,6 +385,9 @@ paths:
       x-stackql-method: list_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.connections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironments:
     post:
       operationId: ListEnvironments
@@ -425,6 +433,9 @@ paths:
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -458,7 +469,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /TagResource:
@@ -498,7 +509,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -538,7 +549,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateConnection:

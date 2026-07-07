@@ -1039,7 +1039,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: ssh_public_keys
+      x-stackql-resource: servers
       x-stackql-method: delete_ssh_public_key
       x-stackql-verb: DELETE
   /DeleteUser:
@@ -1265,6 +1265,7 @@ paths:
       x-stackql-resource: agreements
       x-stackql-method: describe_agreement
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Agreement
   /DescribeCertificate:
     post:
       operationId: DescribeCertificate
@@ -1305,6 +1306,7 @@ paths:
       x-stackql-resource: certificates
       x-stackql-method: describe_certificate
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Certificate
   /DescribeConnector:
     post:
       operationId: DescribeConnector
@@ -1341,6 +1343,7 @@ paths:
       x-stackql-resource: connectors
       x-stackql-method: describe_connector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Connector
   /DescribeExecution:
     post:
       operationId: DescribeExecution
@@ -1423,6 +1426,7 @@ paths:
       x-stackql-resource: host_keys
       x-stackql-method: describe_host_key
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.HostKey
   /DescribeProfile:
     post:
       operationId: DescribeProfile
@@ -1459,6 +1463,7 @@ paths:
       x-stackql-resource: profiles
       x-stackql-method: describe_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Profile
   /DescribeSecurityPolicy:
     post:
       operationId: DescribeSecurityPolicy
@@ -1497,6 +1502,7 @@ paths:
       x-stackql-resource: security_policies
       x-stackql-method: describe_security_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SecurityPolicy
   /DescribeServer:
     post:
       operationId: DescribeServer
@@ -1535,6 +1541,7 @@ paths:
       x-stackql-resource: servers
       x-stackql-method: describe_server
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Server
   /DescribeUser:
     post:
       operationId: DescribeUser
@@ -1616,6 +1623,7 @@ paths:
       x-stackql-resource: web_apps
       x-stackql-method: describe_web_app
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.WebApp
   /DescribeWebAppCustomization:
     post:
       operationId: DescribeWebAppCustomization
@@ -1652,6 +1660,7 @@ paths:
       x-stackql-resource: web_app_customizations
       x-stackql-method: describe_web_app_customization
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.WebAppCustomization
   /DescribeWorkflow:
     post:
       operationId: DescribeWorkflow
@@ -1688,6 +1697,7 @@ paths:
       x-stackql-resource: workflows
       x-stackql-method: describe_workflow
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Workflow
   /ImportCertificate:
     post:
       operationId: ImportCertificate
@@ -1808,7 +1818,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportHostKeyResponse'
-      x-stackql-resource: host_key
+      x-stackql-resource: servers
       x-stackql-method: import_host_key
       x-stackql-verb: EXEC
   /ImportSshPublicKey:
@@ -1855,7 +1865,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportSshPublicKeyResponse'
-      x-stackql-resource: ssh_public_key
+      x-stackql-resource: servers
       x-stackql-method: import_ssh_public_key
       x-stackql-verb: EXEC
   /ListAccesses:
@@ -1903,6 +1913,9 @@ paths:
       x-stackql-method: list_accesses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accesses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAgreements:
     post:
       operationId: ListAgreements
@@ -1951,6 +1964,9 @@ paths:
       x-stackql-method: list_agreements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Agreements
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCertificates:
     post:
       operationId: ListCertificates
@@ -1994,6 +2010,9 @@ paths:
       x-stackql-method: list_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Certificates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListConnectors:
     post:
       operationId: ListConnectors
@@ -2034,6 +2053,9 @@ paths:
       x-stackql-method: list_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Connectors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListExecutions:
     post:
       operationId: ListExecutions
@@ -2086,6 +2108,9 @@ paths:
       x-stackql-method: list_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Executions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFileTransferResults:
     post:
       operationId: ListFileTransferResults
@@ -2140,6 +2165,9 @@ paths:
       x-stackql-method: list_file_transfer_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FileTransferResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHostKeys:
     post:
       operationId: ListHostKeys
@@ -2228,6 +2256,9 @@ paths:
       x-stackql-method: list_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Profiles
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSecurityPolicies:
     post:
       operationId: ListSecurityPolicies
@@ -2266,11 +2297,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSecurityPoliciesResponse'
+                $ref: '#/components/schemas/ListSecurityPoliciesOutputDisplay'
       x-stackql-resource: security_policies
       x-stackql-method: list_security_policies
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.SecurityPolicyNames
+      x-stackql-responseEnvelope: ListSecurityPoliciesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SecurityPolicyNames" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"security_policy_name": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListServers:
     post:
       operationId: ListServers
@@ -2311,6 +2350,9 @@ paths:
       x-stackql-method: list_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Servers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2354,10 +2396,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListUsers:
     post:
       operationId: ListUsers
@@ -2403,6 +2448,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWebApps:
     post:
       operationId: ListWebApps
@@ -2444,6 +2492,9 @@ paths:
       x-stackql-method: list_web_apps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WebApps
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkflows:
     post:
       operationId: ListWorkflows
@@ -2483,6 +2534,9 @@ paths:
       x-stackql-method: list_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Workflows
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /SendWorkflowStepState:
     post:
       operationId: SendWorkflowStepState
@@ -2530,7 +2584,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendWorkflowStepStateResponse'
-      x-stackql-resource: workflow_step_state
+      x-stackql-resource: workflows
       x-stackql-method: send_workflow_step_state
       x-stackql-verb: EXEC
   /StartDirectoryListing:
@@ -2594,7 +2648,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDirectoryListingResponse'
-      x-stackql-resource: directory_listing
+      x-stackql-resource: connectors
       x-stackql-method: start_directory_listing
       x-stackql-verb: EXEC
   /StartFileTransfer:
@@ -2659,7 +2713,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFileTransferResponse'
-      x-stackql-resource: file_transfer
+      x-stackql-resource: connectors
       x-stackql-method: start_file_transfer
       x-stackql-verb: EXEC
   /StartRemoteDelete:
@@ -2700,7 +2754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRemoteDeleteResponse'
-      x-stackql-resource: remote_delete
+      x-stackql-resource: connectors
       x-stackql-method: start_remote_delete
       x-stackql-verb: EXEC
   /StartRemoteMove:
@@ -2745,7 +2799,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRemoteMoveResponse'
-      x-stackql-resource: remote_move
+      x-stackql-resource: connectors
       x-stackql-method: start_remote_move
       x-stackql-verb: EXEC
   /StartServer:
@@ -2780,7 +2834,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: server
+      x-stackql-resource: servers
       x-stackql-method: start_server
       x-stackql-verb: EXEC
   /StopServer:
@@ -2817,7 +2871,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: server
+      x-stackql-resource: servers
       x-stackql-method: stop_server
       x-stackql-verb: EXEC
   /TagResource:
@@ -2856,7 +2910,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestConnection:
@@ -2893,7 +2947,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestConnectionResponse'
-      x-stackql-resource: connection
+      x-stackql-resource: connectors
       x-stackql-method: test_connection
       x-stackql-verb: EXEC
   /TestIdentityProvider:
@@ -2958,7 +3012,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestIdentityProviderResponse'
-      x-stackql-resource: identity_provider
+      x-stackql-resource: servers
       x-stackql-method: test_identity_provider
       x-stackql-verb: EXEC
   /UntagResource:
@@ -2997,7 +3051,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAccess:
@@ -6643,23 +6697,19 @@ components:
           $ref: '#/components/schemas/ProfileType'
           description: Indicates whether to list only LOCAL type profiles or only PARTNER type profiles. If not supplied in
             the request, the command lists all types of profiles.
-    ListSecurityPoliciesResponse:
+    ListSecurityPoliciesRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: When you can get additional results from the ListSecurityPolicies operation, a NextToken parameter
-            is returned in the output. In a following command, you can pass in the NextToken parameter to continue listing
-            security policies.
-        SecurityPolicyNames:
-          $ref: '#/components/schemas/SecurityPolicyNames'
+        security_policy_name:
+          type: string
           description: An array of security policies that were listed.
-      required:
-      - SecurityPolicyNames
-    SecurityPolicyNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/SecurityPolicyName'
+    ListSecurityPoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSecurityPoliciesRowDisplay'
     ListServersResponse:
       type: object
       properties:

@@ -62,7 +62,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConvertRecoveryPointToSnapshotResponse'
-      x-stackql-resource: convert_recovery_point_to_snapshot
+      x-stackql-resource: recovery_points
       x-stackql-method: convert_recovery_point_to_snapshot
       x-stackql-verb: EXEC
   /CreateCustomDomainAssociation:
@@ -1069,6 +1069,7 @@ paths:
       x-stackql-resource: endpoint_access
       x-stackql-method: get_endpoint_access
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.endpoint
   /GetIdentityCenterAuthToken:
     post:
       operationId: GetIdentityCenterAuthToken
@@ -1148,6 +1149,7 @@ paths:
       x-stackql-resource: namespaces
       x-stackql-method: get_namespace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.namespace
   /GetRecoveryPoint:
     post:
       operationId: GetRecoveryPoint
@@ -1184,6 +1186,7 @@ paths:
       x-stackql-resource: recovery_points
       x-stackql-method: get_recovery_point
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.recoveryPoint
   /GetReservation:
     post:
       operationId: GetReservation
@@ -1221,6 +1224,7 @@ paths:
       x-stackql-resource: reservations
       x-stackql-method: get_reservation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.reservation
   /GetReservationOffering:
     post:
       operationId: GetReservationOffering
@@ -1257,6 +1261,7 @@ paths:
       x-stackql-resource: reservation_offerings
       x-stackql-method: get_reservation_offering
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.reservationOffering
   /GetResourcePolicy:
     post:
       operationId: GetResourcePolicy
@@ -1293,6 +1298,7 @@ paths:
       x-stackql-resource: resource_policies
       x-stackql-method: get_resource_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.resourcePolicy
   /GetScheduledAction:
     post:
       operationId: GetScheduledAction
@@ -1329,6 +1335,7 @@ paths:
       x-stackql-resource: scheduled_actions
       x-stackql-method: get_scheduled_action
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.scheduledAction
   /GetSnapshot:
     post:
       operationId: GetSnapshot
@@ -1369,6 +1376,7 @@ paths:
       x-stackql-resource: snapshots
       x-stackql-method: get_snapshot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.snapshot
   /GetTableRestoreStatus:
     post:
       operationId: GetTableRestoreStatus
@@ -1405,6 +1413,7 @@ paths:
       x-stackql-resource: table_restore_status
       x-stackql-method: get_table_restore_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.tableRestoreStatus
   /GetTrack:
     post:
       operationId: GetTrack
@@ -1441,6 +1450,7 @@ paths:
       x-stackql-resource: tracks
       x-stackql-method: get_track
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.track
   /GetUsageLimit:
     post:
       operationId: GetUsageLimit
@@ -1477,6 +1487,7 @@ paths:
       x-stackql-resource: usage_limits
       x-stackql-method: get_usage_limit
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.usageLimit
   /GetWorkgroup:
     post:
       operationId: GetWorkgroup
@@ -1513,6 +1524,7 @@ paths:
       x-stackql-resource: workgroups
       x-stackql-method: get_workgroup
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.workgroup
   /ListCustomDomainAssociations:
     post:
       operationId: ListCustomDomainAssociations
@@ -1559,6 +1571,9 @@ paths:
       x-stackql-method: list_custom_domain_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.associations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEndpointAccess:
     post:
       operationId: ListEndpointAccess
@@ -1608,6 +1623,9 @@ paths:
       x-stackql-method: list_endpoint_access
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.endpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListManagedWorkgroups:
     post:
       operationId: ListManagedWorkgroups
@@ -1651,6 +1669,9 @@ paths:
       x-stackql-method: list_managed_workgroups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.managedWorkgroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListNamespaces:
     post:
       operationId: ListNamespaces
@@ -1691,6 +1712,9 @@ paths:
       x-stackql-method: list_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.namespaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRecoveryPoints:
     post:
       operationId: ListRecoveryPoints
@@ -1743,6 +1767,9 @@ paths:
       x-stackql-method: list_recovery_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recoveryPoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListReservationOfferings:
     post:
       operationId: ListReservationOfferings
@@ -1782,6 +1809,9 @@ paths:
       x-stackql-method: list_reservation_offerings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.reservationOfferingsList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListReservations:
     post:
       operationId: ListReservations
@@ -1821,6 +1851,9 @@ paths:
       x-stackql-method: list_reservations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.reservationsList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListScheduledActions:
     post:
       operationId: ListScheduledActions
@@ -1864,6 +1897,9 @@ paths:
       x-stackql-method: list_scheduled_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scheduledActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSnapshotCopyConfigurations:
     post:
       operationId: ListSnapshotCopyConfigurations
@@ -1907,6 +1943,9 @@ paths:
       x-stackql-method: list_snapshot_copy_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.snapshotCopyConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSnapshots:
     post:
       operationId: ListSnapshots
@@ -1962,6 +2001,9 @@ paths:
       x-stackql-method: list_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.snapshots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTableRestoreStatus:
     post:
       operationId: ListTableRestoreStatus
@@ -2009,6 +2051,9 @@ paths:
       x-stackql-method: list_table_restore_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tableRestoreStatuses
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2042,7 +2087,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTracks:
@@ -2086,6 +2131,9 @@ paths:
       x-stackql-method: list_tracks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tracks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListUsageLimits:
     post:
       operationId: ListUsageLimits
@@ -2133,6 +2181,9 @@ paths:
       x-stackql-method: list_usage_limits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.usageLimits
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWorkgroups:
     post:
       operationId: ListWorkgroups
@@ -2176,6 +2227,9 @@ paths:
       x-stackql-method: list_workgroups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workgroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /PutResourcePolicy:
     post:
       operationId: PutResourcePolicy
@@ -2261,7 +2315,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreFromRecoveryPointResponse'
-      x-stackql-resource: from_recovery_point
+      x-stackql-resource: recovery_points
       x-stackql-method: restore_from_recovery_point
       x-stackql-verb: EXEC
   /RestoreFromSnapshot:
@@ -2321,7 +2375,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreFromSnapshotResponse'
-      x-stackql-resource: from_snapshot
+      x-stackql-resource: namespaces
       x-stackql-method: restore_from_snapshot
       x-stackql-verb: EXEC
   /RestoreTableFromRecoveryPoint:
@@ -2391,7 +2445,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreTableFromRecoveryPointResponse'
-      x-stackql-resource: table_from_recovery_point
+      x-stackql-resource: recovery_points
       x-stackql-method: restore_table_from_recovery_point
       x-stackql-verb: EXEC
   /RestoreTableFromSnapshot:
@@ -2461,7 +2515,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreTableFromSnapshotResponse'
-      x-stackql-resource: table_from_snapshot
+      x-stackql-resource: namespaces
       x-stackql-method: restore_table_from_snapshot
       x-stackql-verb: EXEC
   /TagResource:
@@ -2501,7 +2555,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2541,7 +2595,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCustomDomainAssociation:
@@ -2682,7 +2736,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateLakehouseConfigurationResponse'
-      x-stackql-resource: lakehouse_configurations
+      x-stackql-resource: namespaces
       x-stackql-method: update_lakehouse_configuration
       x-stackql-verb: UPDATE
   /UpdateNamespace:

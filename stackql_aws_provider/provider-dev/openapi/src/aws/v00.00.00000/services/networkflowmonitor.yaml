@@ -1574,6 +1574,14 @@ components:
             objectKey: $.monitors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_monitor:
           operation:
             $ref: "#/paths/~1monitors~1{monitor_name}/delete"
@@ -1597,6 +1605,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_query_monitor_top_contributors:
+          operation:
+            $ref: "#/paths/~1monitors~1{monitor_name}~1topContributorsQueries/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_query_monitor_top_contributors:
+          operation:
+            $ref: "#/paths/~1monitors~1{monitor_name}~1topContributorsQueries~1{query_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/monitors/methods/get_monitor"
@@ -1632,6 +1657,14 @@ components:
             objectKey: $.scopes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_scope:
           operation:
             $ref: "#/paths/~1scopes~1{scope_id}/delete"
@@ -1655,6 +1688,40 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_query_workload_insights_top_contributors:
+          operation:
+            $ref: "#/paths/~1workloadInsights~1{scope_id}~1topContributorsQueries/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_query_workload_insights_top_contributors_data:
+          operation:
+            $ref: "#/paths/~1workloadInsights~1{scope_id}~1topContributorsDataQueries/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_query_workload_insights_top_contributors:
+          operation:
+            $ref: "#/paths/~1workloadInsights~1{scope_id}~1topContributorsQueries~1{query_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_query_workload_insights_top_contributors_data:
+          operation:
+            $ref: "#/paths/~1workloadInsights~1{scope_id}~1topContributorsDataQueries~1{query_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scopes/methods/get_scope"
@@ -1679,6 +1746,14 @@ components:
             objectKey: $.topContributors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_results_monitor_top_contributors/methods/get_query_results_monitor_top_contributors"
@@ -1699,6 +1774,14 @@ components:
             objectKey: $.topContributors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_results_workload_insights_top_contributors/methods/get_query_results_workload_insights_top_contributors"
@@ -1719,6 +1802,14 @@ components:
             objectKey: $.datapoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_results_workload_insights_top_contributors_datas/methods/get_query_results_workload_insights_top_contributors_data"
@@ -1776,10 +1867,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.networkflowmonitor.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.networkflowmonitor.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1787,17 +1878,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.networkflowmonitor.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1818,9 +1898,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

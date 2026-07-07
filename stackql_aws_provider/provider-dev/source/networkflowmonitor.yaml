@@ -93,6 +93,9 @@ paths:
       x-stackql-method: list_monitors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.monitors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /scopes:
     post:
       operationId: CreateScope
@@ -158,6 +161,9 @@ paths:
       x-stackql-method: list_scopes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scopes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /monitors/{monitor_name}:
     delete:
       operationId: DeleteMonitor
@@ -362,6 +368,9 @@ paths:
       x-stackql-method: get_query_results_monitor_top_contributors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.topContributors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workloadInsights/{scope_id}/topContributorsQueries/{query_id}/results:
     get:
       operationId: GetQueryResultsWorkloadInsightsTopContributors
@@ -411,6 +420,9 @@ paths:
       x-stackql-method: get_query_results_workload_insights_top_contributors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.topContributors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workloadInsights/{scope_id}/topContributorsDataQueries/{query_id}/results:
     get:
       operationId: GetQueryResultsWorkloadInsightsTopContributorsData
@@ -461,6 +473,9 @@ paths:
       x-stackql-method: get_query_results_workload_insights_top_contributors_data
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datapoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /monitors/{monitor_name}/topContributorsQueries/{query_id}/status:
     get:
       operationId: GetQueryStatusMonitorTopContributors
@@ -584,7 +599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -615,7 +630,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -641,7 +656,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /monitors/{monitor_name}/topContributorsQueries:
@@ -689,7 +704,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQueryMonitorTopContributorsOutput'
-      x-stackql-resource: query_monitor_top_contributors
+      x-stackql-resource: monitors
       x-stackql-method: start_query_monitor_top_contributors
       x-stackql-verb: EXEC
   /workloadInsights/{scope_id}/topContributorsQueries:
@@ -739,7 +754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQueryWorkloadInsightsTopContributorsOutput'
-      x-stackql-resource: query_workload_insights_top_contributors
+      x-stackql-resource: scopes
       x-stackql-method: start_query_workload_insights_top_contributors
       x-stackql-verb: EXEC
   /workloadInsights/{scope_id}/topContributorsDataQueries:
@@ -786,7 +801,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQueryWorkloadInsightsTopContributorsDataOutput'
-      x-stackql-resource: query_workload_insights_top_contributors_data
+      x-stackql-resource: scopes
       x-stackql-method: start_query_workload_insights_top_contributors_data
       x-stackql-verb: EXEC
   /monitors/{monitor_name}/topContributorsQueries/{query_id}:
@@ -817,7 +832,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopQueryMonitorTopContributorsOutput'
-      x-stackql-resource: query_monitor_top_contributors
+      x-stackql-resource: monitors
       x-stackql-method: stop_query_monitor_top_contributors
       x-stackql-verb: EXEC
   /workloadInsights/{scope_id}/topContributorsQueries/{query_id}:
@@ -849,7 +864,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopQueryWorkloadInsightsTopContributorsOutput'
-      x-stackql-resource: query_workload_insights_top_contributors
+      x-stackql-resource: scopes
       x-stackql-method: stop_query_workload_insights_top_contributors
       x-stackql-verb: EXEC
   /workloadInsights/{scope_id}/topContributorsDataQueries/{query_id}:
@@ -881,7 +896,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopQueryWorkloadInsightsTopContributorsDataOutput'
-      x-stackql-resource: query_workload_insights_top_contributors_data
+      x-stackql-resource: scopes
       x-stackql-method: stop_query_workload_insights_top_contributors_data
       x-stackql-verb: EXEC
 components:

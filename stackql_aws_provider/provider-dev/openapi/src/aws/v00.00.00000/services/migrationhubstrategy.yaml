@@ -2292,6 +2292,14 @@ components:
             objectKey: $.taskInfos
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_file_tasks/methods/get_import_file_task"
@@ -2357,6 +2365,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.assessmentSummary
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/portfolio_summaries/methods/get_portfolio_summary"
@@ -2394,6 +2403,14 @@ components:
             objectKey: $.associatedApplications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/server_details/methods/get_server_details"
@@ -2432,6 +2449,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2455,13 +2479,32 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_application_component_config:
+          operation:
+            $ref: "#/paths/~1update-applicationcomponent-config~1/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_components/methods/list_application_components"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/application_components/methods/update_application_component_config"
         delete: []
     collectors:
       id: aws.migrationhubstrategy.collectors
@@ -2477,6 +2520,14 @@ components:
             objectKey: $.Collectors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collectors/methods/list_collectors"
@@ -2498,41 +2549,15 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/servers/methods/list_servers"
-        insert: []
-        update: []
-        delete: []
-    application_component_configs:
-      id: aws.migrationhubstrategy.application_component_configs
-      name: application_component_configs
-      title: application_component_configs
-      methods:
-        update_application_component_config:
-          operation:
-            $ref: "#/paths/~1update-applicationcomponent-config~1/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/application_component_configs/methods/update_application_component_config"
-        delete: []
-    server_configs:
-      id: aws.migrationhubstrategy.server_configs
-      name: server_configs
-      title: server_configs
-      methods:
         update_server_config:
           operation:
             $ref: "#/paths/~1update-server-config~1/post"
@@ -2545,8 +2570,9 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/servers/methods/list_servers"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/server_configs/methods/update_server_config"
+          - $ref: "#/components/x-stackQL-resources/servers/methods/update_server_config"
         delete: []

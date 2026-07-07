@@ -176,8 +176,6 @@ paths:
               properties:
                 Policy:
                   $ref: "#/components/schemas/ResourcePolicy"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -429,8 +427,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagList"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1281,6 +1277,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Pipeline
         list_pipelines:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1listPipelines/get"
@@ -1341,6 +1338,14 @@ components:
             objectKey: $.PipelineEndpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pipeline_endpoints/methods/list_pipeline_endpoints"
@@ -1443,6 +1448,14 @@ components:
             objectKey: $.PipelineEndpointConnections
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         revoke_pipeline_endpoint_connections:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1revokePipelineEndpointConnections/post"
@@ -1461,10 +1474,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/pipeline_endpoint_connections/methods/revoke_pipeline_endpoint_connections"
         delete: []
-    tags_for_resources:
-      id: aws.osis.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.osis.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1474,17 +1487,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.osis.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~12022-01-01~1osis~1tagResource~1/post"
@@ -1508,9 +1510,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

@@ -116,8 +116,6 @@ paths:
                 Cidr:
                   $ref: "#/components/schemas/GenericString"
                   description: The address range, in CIDR notation. This must be the exact range that you provisioned. You can't advertise only a portion of the provisioned range. For more information, see Bring your own IP addresses (BYOIP) in the Global Accelerator Developer Guide.
-              required:
-                - Cidr
       responses:
         "200":
           description: Success
@@ -207,7 +205,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
                   description: Create tags for an accelerator. For more information, see Tagging in Global Accelerator in the Global Accelerator Developer Guide.
               required:
-                - Name
                 - IdempotencyToken
       responses:
         "200":
@@ -253,7 +250,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
                   description: Add tags for a cross-account attachment. For more information, see Tagging in Global Accelerator in the Global Accelerator Developer Guide.
               required:
-                - Name
                 - IdempotencyToken
       responses:
         "200":
@@ -302,7 +298,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
                   description: Create tags for an accelerator. For more information, see Tagging in Global Accelerator in the Global Accelerator Developer Guide.
               required:
-                - Name
                 - IdempotencyToken
       responses:
         "200":
@@ -501,7 +496,6 @@ paths:
               required:
                 - AcceleratorArn
                 - PortRanges
-                - Protocol
                 - IdempotencyToken
       responses:
         "200":
@@ -779,8 +773,6 @@ paths:
                 Cidr:
                   $ref: "#/components/schemas/GenericString"
                   description: The address range, in CIDR notation. The prefix must be the same prefix that you specified when you provisioned the address range. For more information, see Bring your own IP addresses (BYOIP) in the Global Accelerator Developer Guide.
-              required:
-                - Cidr
       responses:
         "200":
           description: Success
@@ -1213,7 +1205,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListCrossAccountResourceAccountsResponse"
+                $ref: "#/components/schemas/ListCrossAccountResourceAccountsOutputDisplay"
   /ListCrossAccountResources:
     post:
       operationId: ListCrossAccountResources
@@ -1592,7 +1584,6 @@ paths:
                   $ref: "#/components/schemas/CidrAuthorizationContext"
                   description: A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP.
               required:
-                - Cidr
                 - CidrAuthorizationContext
       responses:
         "200":
@@ -1696,7 +1687,6 @@ paths:
                   description: The tags to add to a resource. A tag consists of a key and a value that you define.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -2123,8 +2113,6 @@ paths:
                 Cidr:
                   $ref: "#/components/schemas/GenericString"
                   description: The address range, in CIDR notation. For more information, see Bring your own IP addresses (BYOIP) in the Global Accelerator Developer Guide.
-              required:
-                - Cidr
       responses:
         "200":
           description: Success
@@ -2908,16 +2896,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Attachment"
-    ListCrossAccountResourceAccountsResponse:
+    ListCrossAccountResourceAccountsRowDisplay:
       type: object
       properties:
-        ResourceOwnerAwsAccountIds:
-          $ref: "#/components/schemas/AwsAccountIds"
+        resource_owner_aws_account_id:
+          type: string
           description: The account IDs of principals (resource owners) in a cross-account attachment who can work with resources listed in the same attachment.
-    AwsAccountIds:
-      type: array
-      items:
-        $ref: "#/components/schemas/AwsAccountId"
+    ListCrossAccountResourceAccountsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListCrossAccountResourceAccountsRowDisplay"
     AwsAccountId:
       type: string
       minLength: 12
@@ -3225,10 +3216,10 @@ components:
           $ref: "#/components/schemas/ByoipCidr"
           description: Information about the BYOIP address pool.
   x-stackQL-resources:
-    custom_routing_endpoints:
-      id: aws.globalaccelerator.custom_routing_endpoints
-      name: custom_routing_endpoints
-      title: custom_routing_endpoints
+    endpoint_groups:
+      id: aws.globalaccelerator.endpoint_groups
+      name: endpoint_groups
+      title: endpoint_groups
       methods:
         add_custom_routing_endpoints:
           operation:
@@ -3243,9 +3234,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        remove_custom_routing_endpoints:
+        add_endpoints:
           operation:
-            $ref: "#/paths/~1RemoveCustomRoutingEndpoints/post"
+            $ref: "#/paths/~1AddEndpoints/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        allow_custom_routing_traffic:
+          operation:
+            $ref: "#/paths/~1AllowCustomRoutingTraffic/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -3255,24 +3259,83 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/custom_routing_endpoints/methods/add_custom_routing_endpoints"
-          - $ref: "#/components/x-stackQL-resources/custom_routing_endpoints/methods/remove_custom_routing_endpoints"
-        delete: []
-    endpoints:
-      id: aws.globalaccelerator.endpoints
-      name: endpoints
-      title: endpoints
-      methods:
-        add_endpoints:
+        create_endpoint_group:
           operation:
-            $ref: "#/paths/~1AddEndpoints/post"
+            $ref: "#/paths/~1CreateEndpointGroup/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_endpoint_group:
+          operation:
+            $ref: "#/paths/~1DeleteEndpointGroup/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deny_custom_routing_traffic:
+          operation:
+            $ref: "#/paths/~1DenyCustomRoutingTraffic/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_endpoint_group:
+          operation:
+            $ref: "#/paths/~1DescribeEndpointGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.EndpointGroup
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_endpoint_groups:
+          operation:
+            $ref: "#/paths/~1ListEndpointGroups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.EndpointGroups
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        remove_custom_routing_endpoints:
+          operation:
+            $ref: "#/paths/~1RemoveCustomRoutingEndpoints/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3292,13 +3355,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_endpoint_group:
+          operation:
+            $ref: "#/paths/~1UpdateEndpointGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/describe_endpoint_group"
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/list_endpoint_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/create_endpoint_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/add_endpoints"
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/remove_endpoints"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/add_custom_routing_endpoints"
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/remove_custom_routing_endpoints"
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/remove_endpoints"
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/update_endpoint_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/delete_endpoint_group"
     byoip_cidrs:
       id: aws.globalaccelerator.byoip_cidrs
       name: byoip_cidrs
@@ -3342,6 +3424,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         provision_byoip_cidr:
@@ -3414,6 +3503,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Accelerator
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3433,6 +3523,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_accelerator:
@@ -3494,6 +3591,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CrossAccountAttachment
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3513,6 +3611,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_cross_account_attachment:
@@ -3574,6 +3679,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Accelerator
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3593,6 +3699,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_custom_routing_accelerator:
@@ -3654,6 +3767,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EndpointGroup
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3673,6 +3787,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3720,6 +3841,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Listener
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3739,6 +3861,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_custom_routing_listener:
@@ -3764,86 +3893,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/custom_routing_listeners/methods/update_custom_routing_listener"
         delete:
           - $ref: "#/components/x-stackQL-resources/custom_routing_listeners/methods/delete_custom_routing_listener"
-    endpoint_groups:
-      id: aws.globalaccelerator.endpoint_groups
-      name: endpoint_groups
-      title: endpoint_groups
-      methods:
-        create_endpoint_group:
-          operation:
-            $ref: "#/paths/~1CreateEndpointGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_endpoint_group:
-          operation:
-            $ref: "#/paths/~1DeleteEndpointGroup/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_endpoint_group:
-          operation:
-            $ref: "#/paths/~1DescribeEndpointGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_endpoint_groups:
-          operation:
-            $ref: "#/paths/~1ListEndpointGroups/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.EndpointGroups
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_endpoint_group:
-          operation:
-            $ref: "#/paths/~1UpdateEndpointGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/describe_endpoint_group"
-          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/list_endpoint_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/create_endpoint_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/update_endpoint_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/endpoint_groups/methods/delete_endpoint_group"
     listeners:
       id: aws.globalaccelerator.listeners
       name: listeners
@@ -3880,6 +3929,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Listener
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3899,6 +3949,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_listener:
@@ -3935,6 +3992,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AcceleratorAttributes
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3973,6 +4031,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AcceleratorAttributes
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4011,6 +4070,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListCrossAccountResourceAccountsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ResourceOwnerAwsAccountIds" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_owner_aws_account_id": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4041,6 +4107,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4066,6 +4139,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4091,6 +4171,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4099,10 +4186,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.globalaccelerator.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.globalaccelerator.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4117,17 +4204,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.globalaccelerator.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -4155,9 +4231,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

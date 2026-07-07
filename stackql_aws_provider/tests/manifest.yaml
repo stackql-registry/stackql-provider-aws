@@ -1,0 +1,467 @@
+# Smoke-test manifest for the stackql AWS provider.
+#
+# Tests run in order and share a variable map: a test's `exports` publish
+# values as {test_name}.{export_name}, referenced by later .iql templates
+# (and `contains` expectations) as {{ test_name.export_name }}.
+#
+# Full mutation lifecycles cover the four AWS wire protocols:
+#   ec2        aws.ec2.vpcs (+ vpc_attributes UPDATE)   eager id via RETURNING
+#              + aws.ec2.instances compute lifecycle    INSERT (RunInstances via
+#                durable-mappings CSV pin), EXEC stop/start, attribute UPDATE,
+#                DELETE (terminate), state polling throughout
+#   query      aws.sns.topics (+ topic_attributes)      lazy id via follow-up SELECT
+#   rest-xml   aws.s3.buckets                           path-param routed
+#   aws-json   aws.dynamodb.tables                      list-of-struct body, async states
+#              + aws.dynamodb.items data-plane ops      REPLACE (PutItem), point
+#                SELECT (GetItem), DELETE (DeleteItem) interleaved with the
+#                control-plane lifecycle
+#
+# Cleanup steps carry `always_run: true` so a mid-lifecycle failure still
+# tears down anything that was created (steps whose template variables are
+# unresolvable are skipped automatically).
+
+config:
+  registry_path: ../provider-dev/openapi
+  queries_dir: queries
+  stackql: ../.bin/stackql
+  query_timeout_seconds: 300
+
+vars:
+  region: ap-southeast-2
+  global_region: us-east-1
+  cidr_block: 10.99.0.0/16
+  subnet_cidr: 10.99.1.0/24
+  instance_type: t3.micro
+  ami_ssm_param: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
+  topic_name: stackql-smoke-topic
+  table_name: stackql-smoke-ddb
+  bucket_prefix: stackql-smoke
+  appconfig_app_name: stackql-smoke-app
+
+tests:
+  # ----- read-only smokes + account id export -------------------------------
+  - name: caller_identity
+    description: query protocol (global endpoint), plain .iql; exports the account id
+    file: sts/caller_identity.iql
+    expect:
+      min_rows: 1
+    exports:
+      - name: account
+        column: account
+
+  - name: iam_users
+    description: query protocol global list
+    file: iam/users_list.iql
+    expect:
+      min_rows: 1
+      contains: ["arn:aws:iam"]
+
+  - name: lambda_functions
+    description: rest-json list reachability + list-path DDL guard (zero functions is fine)
+    file: lambda/functions_list.iql
+
+  - name: dynamodb_list
+    description: aws-json list via scalar-explode transform (ListTables -> table_name rows)
+    file: dynamodb/table_list.iql
+
+  # ----- ec2 protocol lifecycle: aws.ec2.vpcs --------------------------------
+  - name: vpc_create
+    description: INSERT with eager id capture via RETURNING
+    file: ec2/vpc_create.iql
+    expect:
+      min_rows: 1
+      contains: ["vpc-", "{{ cidr_block }}"]
+    exports:
+      - name: vpc_id
+        column: vpc_id
+
+  - name: vpc_list
+    description: list sees the new vpc
+    file: ec2/vpc_list.iql
+    expect:
+      contains: ["{{ vpc_create.vpc_id }}"]
+
+  - name: vpc_get
+    description: server-side filtered get by exported id
+    file: ec2/vpc_get.iql
+    expect:
+      min_rows: 1
+      contains: ["{{ vpc_create.vpc_id }}", "{{ cidr_block }}"]
+
+  - name: vpc_attr_update
+    description: UPDATE with a nested-struct query param (JSON() fan-out)
+    file: ec2/vpc_attr_update.iql
+
+  - name: vpc_attr_verify
+    description: re-read confirms the attribute flipped
+    file: ec2/vpc_attr_verify.iql
+    expect:
+      # the column value is a JSON string ({"value":"true"}), which arrives
+      # escaped inside --output json - assert on the bare tokens
+      contains: ["true"]
+      not_contains: ["false"]
+
+  # ----- ec2 compute lifecycle: aws.ec2.instances in a subnet of the smoke vpc
+  # RunInstances is INSERT-routed via a conscious durable-mappings CSV edit
+  # (provider-dev/config/all_services.csv: exec -> insert); stop/start stay on
+  # the EXEC surface (lifecycle transitions, rule 6). Cleanup order matters:
+  # terminate instance -> subnet delete -> vpc delete, each always_run.
+  - name: subnet_create
+    description: INSERT a subnet into the smoke vpc, eager id via RETURNING
+    file: ec2/subnet_create.iql
+    expect:
+      min_rows: 1
+      contains: ["subnet-", "{{ subnet_cidr }}"]
+    exports:
+      - name: subnet_id
+        column: subnet_id
+
+  - name: ami_lookup
+    description: resolve the latest AL2023 AMI from the public SSM parameter (no hardcoded AMI ids)
+    file: ec2/ami_lookup.iql
+    expect:
+      contains: ["ami-"]
+    exports:
+      # 8-17 hex chars: real AMI ids only. A bare `ami-[0-9a-f]+` matches
+      # "ami-a" inside the parameter NAME (ami-amazon-linux-latest), which
+      # appears before the Value in the response.
+      - name: ami_id
+        regex: 'ami-[0-9a-f]{8,17}'
+
+  - name: instance_create
+    description: INSERT (RunInstances via CSV pin) of a {{ instance_type }} into the subnet
+    file: ec2/instance_create.iql
+    expect:
+      min_rows: 1
+      contains: ["i-"]
+    exports:
+      - name: instance_id
+        column: instance_id
+
+  - name: instance_running
+    description: poll the id-filtered describe until the instance is running
+    file: ec2/instance_state.iql
+    retry:
+      attempts: 15
+      delay_seconds: 10
+    expect:
+      min_rows: 1
+      contains: ["running"]
+      not_contains: ["pending"]
+
+  - name: instance_stop
+    description: lifecycle transition via EXEC (StopInstances)
+    file: ec2/instance_stop.iql
+
+  - name: instance_stopped
+    description: poll until stopped ("stopped" is substring-distinct from "stopping")
+    file: ec2/instance_state.iql
+    retry:
+      attempts: 18
+      delay_seconds: 10
+    expect:
+      contains: ["stopped"]
+      not_contains: ["stopping"]
+
+  - name: instance_start
+    description: lifecycle transition via EXEC (StartInstances)
+    file: ec2/instance_start.iql
+
+  - name: instance_started
+    description: poll until running again
+    file: ec2/instance_state.iql
+    retry:
+      attempts: 15
+      delay_seconds: 10
+    expect:
+      contains: ["running"]
+      not_contains: ["pending"]
+
+  - name: instance_attr_update
+    description: UPDATE via ModifyInstanceAttribute generic Attribute/Value pair
+    file: ec2/instance_attr_update.iql
+
+  - name: instance_attr_verify
+    description: DescribeInstanceAttribute shows the updated shutdown behaviour
+    file: ec2/instance_attr_verify.iql
+    expect:
+      contains: ["terminate"]
+
+  - name: instance_terminate
+    description: DELETE routed to TerminateInstances
+    file: ec2/instance_terminate.iql
+    always_run: true
+
+  - name: instance_confirm_terminated
+    description: >
+      subnet-scoped describe no longer contains the instance. Terminated
+      instances drop their subnet association, so absence from the
+      subnet-filtered rows is the definitive "gone" signal (terminated
+      instances linger in unfiltered DescribeInstances for up to an hour).
+    file: ec2/instance_state.iql
+    always_run: true
+    retry:
+      attempts: 18
+      delay_seconds: 10
+    expect:
+      allow_error: true
+      not_contains: ["{{ instance_create.instance_id }}"]
+
+  - name: instance_sweep
+    description: >
+      cleanup safety net - re-find any instance carrying the test tag even
+      when instance_create's export never materialised (RunInstances can
+      succeed while the RETURNING projection fails). Optional export: no
+      stray means the terminate step is skipped.
+    file: ec2/instance_sweep.iql
+    always_run: true
+    expect:
+      allow_error: true
+    exports:
+      - name: stray_id
+        regex: 'i-[0-9a-f]{8,17}'
+        optional: true
+
+  - name: instance_sweep_terminate
+    description: terminate the sweep's find (no-op on already-terminated instances)
+    file: ec2/instance_sweep_terminate.iql
+    always_run: true
+
+  - name: subnet_delete
+    description: DELETE the subnet (retries while the terminated instance's ENI releases)
+    file: ec2/subnet_delete.iql
+    always_run: true
+    retry:
+      attempts: 15
+      delay_seconds: 15
+
+  - name: subnet_confirm_gone
+    description: subnet list no longer contains the subnet
+    file: ec2/subnet_confirm_gone.iql
+    always_run: true
+    retry:
+      attempts: 4
+      delay_seconds: 5
+    expect:
+      not_contains: ["{{ subnet_create.subnet_id }}"]
+
+  - name: vpc_delete
+    description: DELETE via snake_case key
+    file: ec2/vpc_delete.iql
+    always_run: true
+    retry:
+      attempts: 6
+      delay_seconds: 10
+
+  - name: vpc_confirm_gone
+    description: list no longer contains the vpc
+    file: ec2/vpc_confirm_gone.iql
+    always_run: true
+    retry:
+      attempts: 4
+      delay_seconds: 5
+    expect:
+      not_contains: ["{{ vpc_create.vpc_id }}"]
+
+  # ----- rest-json lifecycle: aws.appconfig.applications ---------------------
+  # Free, instant, full CRUD - the live-mutation proof for the rest-json
+  # protocol (JSON bodies + path-param routing).
+  - name: appconfig_app_create
+    description: rest-json INSERT with eager id via RETURNING
+    file: appconfig/app_create.iql
+    expect:
+      min_rows: 1
+      contains: ["{{ appconfig_app_name }}"]
+    exports:
+      # RETURNING * on rest-json projects RAW wire-cased keys (Id, Name),
+      # unlike named/ec2 RETURNING which snake-aliases - export by the
+      # exact key.
+      - name: app_id
+        column: Id
+
+  - name: appconfig_app_get
+    description: path-param routed get by exported id
+    file: appconfig/app_get.iql
+    expect:
+      min_rows: 1
+      contains: ["{{ appconfig_app_create.app_id }}", "{{ appconfig_app_name }}"]
+
+  - name: appconfig_app_update
+    description: rest-json UPDATE (JSON body field, path-param key)
+    file: appconfig/app_update.iql
+
+  - name: appconfig_app_verify
+    description: re-read shows the updated description
+    file: appconfig/app_get.iql
+    expect:
+      contains: ["stackql-smoke-updated"]
+
+  - name: appconfig_app_delete
+    description: DELETE by path param
+    file: appconfig/app_delete.iql
+    always_run: true
+
+  - name: appconfig_app_confirm_gone
+    description: list no longer contains the application id
+    file: appconfig/app_confirm_gone.iql
+    always_run: true
+    retry:
+      attempts: 4
+      delay_seconds: 5
+    expect:
+      not_contains: ["{{ appconfig_app_create.app_id }}"]
+
+  # ----- query protocol lifecycle: aws.sns.topics ----------------------------
+  - name: topic_create
+    description: INSERT; arn assigned lazily
+    file: sns/topic_create.iql
+
+  - name: topic_find
+    description: lazy id capture from a follow-up SELECT (regex export)
+    file: sns/topic_find.iql
+    expect:
+      contains: ["{{ topic_name }}"]
+    exports:
+      - name: topic_arn
+        regex: 'arn:aws:sns:[a-z0-9-]+:[0-9]+:{{ topic_name }}'
+
+  - name: topic_attr_update
+    description: SetTopicAttributes (DisplayName)
+    file: sns/topic_attr_update.iql
+
+  - name: topic_attr_verify
+    description: GetTopicAttributes shows the new DisplayName
+    file: sns/topic_attr_verify.iql
+    expect:
+      contains: ["stackql-smoke-display"]
+
+  - name: topic_delete
+    description: DELETE via snake_case key
+    file: sns/topic_delete.iql
+    always_run: true
+
+  - name: topic_confirm_gone
+    description: list no longer contains the topic arn
+    file: sns/topic_confirm_gone.iql
+    always_run: true
+    retry:
+      attempts: 4
+      delay_seconds: 5
+    expect:
+      not_contains: ["{{ topic_find.topic_arn }}"]
+
+  # ----- rest-xml lifecycle: aws.s3.buckets ----------------------------------
+  - name: bucket_create
+    description: INSERT routed by path parameter, account-namespaced global name
+    file: s3/bucket_create.iql
+
+  - name: bucket_list
+    description: list projects name / arn / creation date
+    file: s3/bucket_list.iql
+    expect:
+      contains: ["arn:aws:s3:::{{ bucket_prefix }}-{{ caller_identity.account }}"]
+
+  - name: bucket_delete
+    description: DELETE by path parameter
+    file: s3/bucket_delete.iql
+    always_run: true
+    # DeleteBucket has no response body; when the bucket was never created
+    # (earlier failure) the 404 makes stackql print "error processing
+    # response" even though the cleanup outcome is correct.
+    fatal_exempt: ["error processing response"]
+    expect:
+      allow_error: true
+
+  - name: bucket_confirm_gone
+    description: list no longer contains the bucket
+    file: s3/bucket_confirm_gone.iql
+    always_run: true
+    retry:
+      attempts: 4
+      delay_seconds: 5
+    expect:
+      not_contains: ["{{ bucket_prefix }}-{{ caller_identity.account }}"]
+
+  # ----- aws-json lifecycle: aws.dynamodb.tables -----------------------------
+  - name: table_create
+    description: INSERT with list-of-struct body fields (KeySchema / AttributeDefinitions)
+    file: dynamodb/table_create.iql
+
+  - name: table_active
+    description: poll DescribeTable until the table is ACTIVE
+    file: dynamodb/table_active.iql
+    retry:
+      attempts: 10
+      delay_seconds: 8
+    expect:
+      contains: ["ACTIVE"]
+      not_contains: ["CREATING", "UPDATING"]
+
+  # ----- aws-json data plane: aws.dynamodb.items, interleaved with the
+  # control-plane lifecycle (put/read/delete items on the live table, then
+  # the control-plane update + delete continue below).
+  - name: item_put_1
+    description: data-plane REPLACE (PutItem upsert) with attribute-value map body
+    file: dynamodb/item_put_1.iql
+
+  - name: item_put_2
+    description: second record
+    file: dynamodb/item_put_2.iql
+
+  - name: item_get_1
+    description: point read (GetItem, ConsistentRead) returns the first payload
+    file: dynamodb/item_get_1.iql
+    expect:
+      min_rows: 1
+      contains: ["alpha-payload"]
+
+  - name: item_get_2
+    description: point read returns the second payload
+    file: dynamodb/item_get_2.iql
+    expect:
+      min_rows: 1
+      contains: ["beta-payload"]
+
+  - name: item_delete_1
+    description: data-plane DELETE (DeleteItem)
+    file: dynamodb/item_delete_1.iql
+
+  - name: item_delete_2
+    description: delete the second record
+    file: dynamodb/item_delete_2.iql
+
+  - name: items_confirm_gone
+    description: GetItem on the deleted key returns no Item member
+    file: dynamodb/items_confirm_gone.iql
+    expect:
+      allow_error: true
+      not_contains: ["alpha-payload"]
+
+  - name: table_update
+    description: UpdateTable (TableClass) with a snake_case where key
+    file: dynamodb/table_update.iql
+
+  - name: table_verify
+    description: DescribeTable shows the new table class
+    file: dynamodb/table_verify.iql
+    retry:
+      attempts: 6
+      delay_seconds: 8
+    expect:
+      contains: ["STANDARD_INFREQUENT_ACCESS"]
+
+  - name: table_delete
+    description: DELETE via snake_case key
+    file: dynamodb/table_delete.iql
+    always_run: true
+
+  - name: table_confirm_gone
+    description: DescribeTable eventually returns ResourceNotFoundException
+    file: dynamodb/table_confirm_gone.iql
+    always_run: true
+    retry:
+      attempts: 10
+      delay_seconds: 8
+    expect:
+      allow_error: true
+      contains: ["ResourceNotFoundException"]

@@ -49,7 +49,6 @@ paths:
                   $ref: "#/components/schemas/ClientToken"
                   description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
               required:
-                - Catalog
                 - Identifier
                 - ClientToken
       responses:
@@ -144,7 +143,6 @@ paths:
                   $ref: "#/components/schemas/ClientToken"
                   description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
               required:
-                - Catalog
                 - Identifier
                 - ConnectionType
                 - Reason
@@ -187,7 +185,6 @@ paths:
                   $ref: "#/components/schemas/ClientToken"
                   description: A unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
               required:
-                - Catalog
                 - Identifier
                 - ClientToken
       responses:
@@ -231,7 +228,6 @@ paths:
                   $ref: "#/components/schemas/ProfileTaskId"
                   description: The unique identifier of the profile update task to cancel.
               required:
-                - Catalog
                 - Identifier
                 - TaskId
       responses:
@@ -284,7 +280,6 @@ paths:
                   $ref: "#/components/schemas/ParticipantIdentifier"
                   description: The identifier of the organization or partner to invite for connection.
               required:
-                - Catalog
                 - ClientToken
                 - ConnectionType
                 - Email
@@ -341,7 +336,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: A list of tags to associate with the partner account for organization and billing purposes.
               required:
-                - Catalog
                 - LegalName
                 - PrimarySolutionType
                 - AllianceLeadContact
@@ -425,7 +419,6 @@ paths:
                   $ref: "#/components/schemas/PartnerIdentifier"
                   description: The unique identifier of the partner account.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -462,7 +455,6 @@ paths:
                   $ref: "#/components/schemas/ConnectionId"
                   description: The unique identifier of the connection to retrieve.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -499,7 +491,6 @@ paths:
                   $ref: "#/components/schemas/ConnectionInvitationId"
                   description: The unique identifier of the connection invitation to retrieve.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -532,8 +523,6 @@ paths:
                 Catalog:
                   $ref: "#/components/schemas/Catalog"
                   description: The catalog identifier for the partner account.
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -569,7 +558,6 @@ paths:
                   $ref: "#/components/schemas/PartnerIdentifier"
                   description: The unique identifier of the partner account to retrieve.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -606,7 +594,6 @@ paths:
                   $ref: "#/components/schemas/PartnerIdentifier"
                   description: The unique identifier of the partner account.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -643,7 +630,6 @@ paths:
                   $ref: "#/components/schemas/PartnerIdentifier"
                   description: The unique identifier of the partner account.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -727,8 +713,6 @@ paths:
                 Status:
                   $ref: "#/components/schemas/InvitationStatus"
                   description: Filter results by invitation status (pending, accepted, rejected, canceled, expired).
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -772,8 +756,6 @@ paths:
                 OtherParticipantIdentifiers:
                   $ref: "#/components/schemas/ListConnectionsRequestOtherParticipantIdentifiersList"
                   description: Filter results by specific participant identifiers.
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -808,8 +790,6 @@ paths:
                 NextToken:
                   $ref: "#/components/schemas/NextToken"
                   description: The token for retrieving the next page of results in paginated responses.
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -884,7 +864,6 @@ paths:
                   $ref: "#/components/schemas/EmailVerificationCode"
                   description: The verification code sent to the alliance lead contact's email to confirm the update.
               required:
-                - Catalog
                 - Identifier
                 - AllianceLeadContact
       responses:
@@ -925,9 +904,7 @@ paths:
                   $ref: "#/components/schemas/ProfileVisibility"
                   description: The visibility setting to apply to the partner profile.
               required:
-                - Catalog
                 - Identifier
-                - Visibility
       responses:
         "200":
           description: Success
@@ -969,7 +946,6 @@ paths:
                   $ref: "#/components/schemas/RejectConnectionInvitationRequestReasonString"
                   description: The reason for rejecting the connection invitation.
               required:
-                - Catalog
                 - Identifier
                 - ClientToken
       responses:
@@ -1050,7 +1026,6 @@ paths:
                   $ref: "#/components/schemas/TaskDetails"
                   description: The details of the profile updates to be performed.
               required:
-                - Catalog
                 - Identifier
                 - TaskDetails
       responses:
@@ -1123,7 +1098,6 @@ paths:
                   description: A list of tags to add or update for the specified resource.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -1202,8 +1176,6 @@ paths:
                   $ref: "#/components/schemas/UpdateConnectionPreferencesRequestExcludedParticipantIdentifiersList"
                   description: The updated list of participant identifiers to exclude from connections.
               required:
-                - Catalog
-                - Revision
                 - AccessType
       responses:
         "200":
@@ -2718,6 +2690,91 @@ components:
         - UpdatedAt
         - Revision
   x-stackQL-resources:
+    connections:
+      id: aws.partnercentral_account.connections
+      name: connections
+      title: connections
+      methods:
+        accept_connection_invitation:
+          operation:
+            $ref: "#/paths/~1AcceptConnectionInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_connection_invitation:
+          operation:
+            $ref: "#/paths/~1CancelConnectionInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_connection:
+          operation:
+            $ref: "#/paths/~1GetConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_connections:
+          operation:
+            $ref: "#/paths/~1ListConnections/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ConnectionSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reject_connection_invitation:
+          operation:
+            $ref: "#/paths/~1RejectConnectionInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/connections/methods/get_connection"
+          - $ref: "#/components/x-stackQL-resources/connections/methods/list_connections"
+        insert: []
+        update: []
+        delete: []
     aws_training_certification_email_domains:
       id: aws.partnercentral_account.aws_training_certification_email_domains
       name: aws_training_certification_email_domains
@@ -2799,6 +2856,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2852,6 +2916,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2900,45 +2971,6 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/alliance_lead_contacts/methods/put_alliance_lead_contact"
-        delete: []
-    connections:
-      id: aws.partnercentral_account.connections
-      name: connections
-      title: connections
-      methods:
-        get_connection:
-          operation:
-            $ref: "#/paths/~1GetConnection/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_connections:
-          operation:
-            $ref: "#/paths/~1ListConnections/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ConnectionSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/connections/methods/get_connection"
-          - $ref: "#/components/x-stackQL-resources/connections/methods/list_connections"
-        insert: []
-        update: []
         delete: []
     connection_preferences:
       id: aws.partnercentral_account.connection_preferences
@@ -3065,10 +3097,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.partnercentral_account.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.partnercentral_account.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3083,17 +3115,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.partnercentral_account.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -3121,9 +3142,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

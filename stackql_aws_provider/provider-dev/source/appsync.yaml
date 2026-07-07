@@ -89,6 +89,7 @@ paths:
       x-stackql-resource: api_associations
       x-stackql-method: get_api_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.apiAssociation
   /v1/sourceApis/{source_api_identifier}/mergedApiAssociations:
     post:
       operationId: AssociateMergedGraphqlApi
@@ -124,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMergedGraphqlApiResponse'
-      x-stackql-resource: merged_graphql_apis
+      x-stackql-resource: graphql_apis
       x-stackql-method: associate_merged_graphql_api
       x-stackql-verb: UPDATE
   /v1/mergedApis/{merged_api_identifier}/sourceApiAssociations:
@@ -162,7 +163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateSourceGraphqlApiResponse'
-      x-stackql-resource: source_graphql_apis
+      x-stackql-resource: graphql_apis
       x-stackql-method: associate_source_graphql_api
       x-stackql-verb: UPDATE
   /v2/apis:
@@ -228,6 +229,9 @@ paths:
       x-stackql-method: list_apis
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.apis
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/apis/{api_id}/ApiCaches:
     post:
       operationId: CreateApiCache
@@ -312,6 +316,7 @@ paths:
       x-stackql-resource: api_caches
       x-stackql-method: get_api_cache
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.apiCache
   /v1/apis/{api_id}/apikeys:
     post:
       operationId: CreateApiKey
@@ -380,6 +385,9 @@ paths:
       x-stackql-method: list_api_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.apiKeys
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/apis/{api_id}/channelNamespaces:
     post:
       operationId: CreateChannelNamespace
@@ -457,6 +465,9 @@ paths:
       x-stackql-method: list_channel_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.channelNamespaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/apis/{api_id}/datasources:
     post:
       operationId: CreateDataSource
@@ -546,6 +557,9 @@ paths:
       x-stackql-method: list_data_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataSources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/domainnames:
     post:
       operationId: CreateDomainName
@@ -607,6 +621,9 @@ paths:
       x-stackql-method: list_domain_names
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.domainNameConfigs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/apis/{api_id}/functions:
     post:
       operationId: CreateFunction
@@ -693,6 +710,9 @@ paths:
       x-stackql-method: list_functions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.functions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/apis:
     post:
       operationId: CreateGraphqlApi
@@ -792,6 +812,9 @@ paths:
       x-stackql-method: list_graphql_apis
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.graphqlApis
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/apis/{api_id}/types/{type_name}/resolvers:
     post:
       operationId: CreateResolver
@@ -893,6 +916,9 @@ paths:
       x-stackql-method: list_resolvers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resolvers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/apis/{api_id}/types:
     post:
       operationId: CreateType
@@ -968,6 +994,9 @@ paths:
       x-stackql-method: list_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.types
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/apis/{api_id}:
     delete:
       operationId: DeleteApi
@@ -1009,6 +1038,7 @@ paths:
       x-stackql-resource: apis
       x-stackql-method: get_api
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.api
     post:
       operationId: UpdateApi
       description: Updates an Api.
@@ -1162,6 +1192,7 @@ paths:
       x-stackql-resource: channel_namespaces
       x-stackql-method: get_channel_namespace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.channelNamespace
     post:
       operationId: UpdateChannelNamespace
       description: Updates a ChannelNamespace associated with an Api.
@@ -1256,6 +1287,7 @@ paths:
       x-stackql-resource: data_sources
       x-stackql-method: get_data_source
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dataSource
     post:
       operationId: UpdateDataSource
       description: Updates a DataSource object.
@@ -1354,6 +1386,7 @@ paths:
       x-stackql-resource: domain_names
       x-stackql-method: get_domain_name
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.domainNameConfig
     post:
       operationId: UpdateDomainName
       description: Updates a custom DomainName object.
@@ -1436,6 +1469,7 @@ paths:
       x-stackql-resource: functions
       x-stackql-method: get_function
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.functionConfiguration
     post:
       operationId: UpdateFunction
       description: Updates a Function object.
@@ -1533,6 +1567,7 @@ paths:
       x-stackql-resource: graphql_apis
       x-stackql-method: get_graphql_api
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.graphqlApi
     post:
       operationId: UpdateGraphqlApi
       description: Updates a GraphqlApi object.
@@ -1656,6 +1691,7 @@ paths:
       x-stackql-resource: resolvers
       x-stackql-method: get_resolver
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.resolver
     post:
       operationId: UpdateResolver
       description: Updates a Resolver object.
@@ -1776,6 +1812,7 @@ paths:
       x-stackql-resource: types
       x-stackql-method: get_type
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.type
     post:
       operationId: UpdateType
       description: Updates a Type object.
@@ -1842,7 +1879,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMergedGraphqlApiResponse'
-      x-stackql-resource: merged_graphql_apis
+      x-stackql-resource: graphql_apis
       x-stackql-method: disassociate_merged_graphql_api
       x-stackql-verb: UPDATE
   /v1/mergedApis/{merged_api_identifier}/sourceApiAssociations/{association_id}:
@@ -1872,7 +1909,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateSourceGraphqlApiResponse'
-      x-stackql-resource: source_graphql_apis
+      x-stackql-resource: graphql_apis
       x-stackql-method: disassociate_source_graphql_api
       x-stackql-verb: UPDATE
     get:
@@ -1903,6 +1940,7 @@ paths:
       x-stackql-resource: source_api_associations
       x-stackql-method: get_source_api_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.sourceApiAssociation
     post:
       operationId: UpdateSourceApiAssociation
       description: Updates some of the configuration choices of a particular source API association.
@@ -2031,7 +2069,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FlushApiCacheResponse'
-      x-stackql-resource: flush_api_cache
+      x-stackql-resource: apis
       x-stackql-method: flush_api_cache
       x-stackql-verb: EXEC
   /v1/datasources/introspections/{introspection_id}:
@@ -2223,7 +2261,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSchemaCreationResponse'
-      x-stackql-resource: schema_creation
+      x-stackql-resource: apis
       x-stackql-method: start_schema_creation
       x-stackql-verb: EXEC
   /v1/apis/{api_id}/functions/{function_id}/resolvers:
@@ -2267,6 +2305,9 @@ paths:
       x-stackql-method: list_resolvers_by_function
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resolvers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/apis/{api_id}/sourceApiAssociations:
     get:
       operationId: ListSourceApiAssociations
@@ -2302,6 +2343,9 @@ paths:
       x-stackql-method: list_source_api_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sourceApiAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2320,7 +2364,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2351,7 +2395,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2377,7 +2421,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/mergedApis/{merged_api_identifier}/sourceApiAssociations/{association_id}/types:
@@ -2429,6 +2473,9 @@ paths:
       x-stackql-method: list_types_by_association
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.types
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/datasources/introspections:
     post:
       operationId: StartDataSourceIntrospection
@@ -2450,7 +2497,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceIntrospectionResponse'
-      x-stackql-resource: data_source_introspection
+      x-stackql-resource: data_sources
       x-stackql-method: start_data_source_introspection
       x-stackql-verb: EXEC
   /v1/mergedApis/{merged_api_identifier}/sourceApiAssociations/{association_id}/merge:

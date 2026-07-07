@@ -333,7 +333,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSourceViewsForBillingViewResponse"
+                $ref: "#/components/schemas/ListSourceViewsForBillingViewOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -907,17 +907,19 @@ components:
         healthStatus:
           $ref: "#/components/schemas/BillingViewHealthStatus"
           description: The current health status of the billing view.
-    ListSourceViewsForBillingViewResponse:
+    ListSourceViewsForBillingViewRowDisplay:
       type: object
       properties:
-        sourceViews:
-          $ref: "#/components/schemas/BillingViewSourceViewsList"
+        source_view:
+          type: string
           description: A list of billing views used as the data source for the custom billing view.
-        nextToken:
-          $ref: "#/components/schemas/PageToken"
-          description: The pagination token that is used on subsequent calls to list billing views.
-      required:
-        - sourceViews
+    ListSourceViewsForBillingViewOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListSourceViewsForBillingViewRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -1018,6 +1020,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.billingView
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1037,6 +1040,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_billing_view:
@@ -1097,12 +1107,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.sourceViews
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSourceViewsForBillingViewOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "sourceViews" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"source_view": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1111,10 +1134,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.billing.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.billing.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1129,17 +1152,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.billing.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1167,9 +1179,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

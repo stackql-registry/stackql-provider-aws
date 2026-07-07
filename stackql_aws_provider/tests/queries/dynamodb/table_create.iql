@@ -1,0 +1,12 @@
+-- aws-json INSERT with list-of-struct body fields passed as JSON strings
+-- (translated by requestBodyTranslate: naive against the native body
+-- schema). Tagged so test-created resources are identifiable (key
+-- stackql-provider-test). CreateBucket has no tag parameter, so the s3
+-- leg stays untagged.
+INSERT INTO aws.dynamodb.tables(region, TableName, KeySchema, AttributeDefinitions, BillingMode, Tags)
+SELECT '{{ region }}',
+       '{{ table_name }}',
+       '[{"AttributeName":"pk","KeyType":"HASH"}]',
+       '[{"AttributeName":"pk","AttributeType":"S"}]',
+       'PAY_PER_REQUEST',
+       '[{"Key":"stackql-provider-test","Value":"table_create"}]'

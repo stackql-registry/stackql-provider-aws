@@ -51,8 +51,6 @@ paths:
                 StreamId:
                   $ref: "#/components/schemas/StreamId"
                   description: Not Implemented. Reserved for future use.
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -800,7 +798,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListStreamsOutput"
+                $ref: "#/components/schemas/ListStreamsOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1007,8 +1005,6 @@ paths:
                 StreamId:
                   $ref: "#/components/schemas/StreamId"
                   description: Not Implemented. Reserved for future use.
-              required:
-                - Records
       responses:
         "200":
           description: Success
@@ -1048,7 +1044,6 @@ paths:
                   description: Details of the resource policy. It must include the identity of the principal and the actions allowed on this resource. This is formatted as a JSON string.
               required:
                 - ResourceARN
-                - Policy
       responses:
         "200":
           description: Success
@@ -1334,7 +1329,6 @@ paths:
                   $ref: "#/components/schemas/StreamId"
                   description: Not Implemented. Reserved for future use.
               required:
-                - Tags
                 - ResourceARN
       responses:
         "200":
@@ -2232,53 +2226,19 @@ components:
       type: integer
       minimum: 1
       maximum: 10000
-    ListStreamsOutput:
-      description: Represents the output for ListStreams.
+    ListStreamsRowDisplay:
       type: object
       properties:
-        StreamNames:
-          $ref: "#/components/schemas/StreamNameList"
+        stream_name:
+          type: string
           description: The names of the streams that are associated with the Amazon Web Services account making the ListStreams request.
-        HasMoreStreams:
-          $ref: "#/components/schemas/BooleanObject"
-          description: If set to true, there are more streams available to list.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-        StreamSummaries:
-          $ref: "#/components/schemas/StreamSummaryList"
-      required:
-        - StreamNames
-        - HasMoreStreams
-    StreamNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/StreamName"
-    StreamSummaryList:
-      type: array
-      items:
-        $ref: "#/components/schemas/StreamSummary"
-    StreamSummary:
-      description: The summary of a stream.
+    ListStreamsOutputDisplay:
       type: object
       properties:
-        StreamName:
-          $ref: "#/components/schemas/StreamName"
-          description: The name of a stream.
-        StreamARN:
-          $ref: "#/components/schemas/StreamARN"
-          description: The ARN of the stream.
-        StreamStatus:
-          $ref: "#/components/schemas/StreamStatus"
-          description: The status of the stream.
-        StreamModeDetails:
-          $ref: "#/components/schemas/StreamModeDetails"
-        StreamCreationTimestamp:
-          $ref: "#/components/schemas/Timestamp"
-          description: The timestamp at which the stream was created.
-      required:
-        - StreamName
-        - StreamARN
-        - StreamStatus
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListStreamsRowDisplay"
     ListTagsForResourceOutput:
       type: object
       properties:
@@ -2597,10 +2557,10 @@ components:
           $ref: "#/components/schemas/WarmThroughputObject"
           description: Specifies the updated warm throughput configuration for your data stream.
   x-stackQL-resources:
-    tags_to_streams:
-      id: aws.kinesis.tags_to_streams
-      name: tags_to_streams
-      title: tags_to_streams
+    tags:
+      id: aws.kinesis.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_stream:
           operation:
@@ -2614,11 +2574,78 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1ListTagsForResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_tags_for_stream:
+          operation:
+            $ref: "#/paths/~1ListTagsForStream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_tags_from_stream:
+          operation:
+            $ref: "#/paths/~1RemoveTagsFromStream/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1UntagResource/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_stream"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_streams/methods/add_tags_to_stream"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags_from_stream"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_stream"
         delete: []
     streams:
       id: aws.kinesis.streams
@@ -2655,6 +2682,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.StreamDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2668,7 +2696,69 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.StreamNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListStreamsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "StreamNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"stream_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_stream_encryption:
+          operation:
+            $ref: "#/paths/~1StartStreamEncryption/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_stream_encryption:
+          operation:
+            $ref: "#/paths/~1StopStreamEncryption/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_stream_mode:
+          operation:
+            $ref: "#/paths/~1UpdateStreamMode/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_stream_warm_throughput:
+          operation:
+            $ref: "#/paths/~1UpdateStreamWarmThroughput/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2681,7 +2771,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/streams/methods/describe_stream"
         insert:
           - $ref: "#/components/x-stackQL-resources/streams/methods/create_stream"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/streams/methods/update_stream_mode"
+          - $ref: "#/components/x-stackQL-resources/streams/methods/update_stream_warm_throughput"
         delete:
           - $ref: "#/components/x-stackQL-resources/streams/methods/delete_stream"
     resource_policies:
@@ -2758,6 +2850,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ConsumerDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2777,6 +2870,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_stream_consumer:
@@ -2812,6 +2912,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MinimumThroughputBillingCommitment
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2874,6 +2975,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.StreamDescriptionSummary
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2981,120 +3083,59 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        merge_shards:
+          operation:
+            $ref: "#/paths/~1MergeShards/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        subscribe_to_shard:
+          operation:
+            $ref: "#/paths/~1SubscribeToShard/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_shard_count:
+          operation:
+            $ref: "#/paths/~1UpdateShardCount/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/shards/methods/list_shards"
         insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.kinesis.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1ListTagsForResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    tags_for_streams:
-      id: aws.kinesis.tags_for_streams
-      name: tags_for_streams
-      title: tags_for_streams
-      methods:
-        list_tags_for_stream:
-          operation:
-            $ref: "#/paths/~1ListTagsForStream/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_streams/methods/list_tags_for_stream"
-        insert: []
-        update: []
-        delete: []
-    tags_from_streams:
-      id: aws.kinesis.tags_from_streams
-      name: tags_from_streams
-      title: tags_from_streams
-      methods:
-        remove_tags_from_stream:
-          operation:
-            $ref: "#/paths/~1RemoveTagsFromStream/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_streams/methods/remove_tags_from_stream"
-        delete: []
-    resources:
-      id: aws.kinesis.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1TagResource/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1UntagResource/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/shards/methods/update_shard_count"
         delete: []
     max_record_sizes:
       id: aws.kinesis.max_record_sizes
@@ -3118,75 +3159,4 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/max_record_sizes/methods/update_max_record_size"
-        delete: []
-    shard_counts:
-      id: aws.kinesis.shard_counts
-      name: shard_counts
-      title: shard_counts
-      methods:
-        update_shard_count:
-          operation:
-            $ref: "#/paths/~1UpdateShardCount/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/shard_counts/methods/update_shard_count"
-        delete: []
-    stream_modes:
-      id: aws.kinesis.stream_modes
-      name: stream_modes
-      title: stream_modes
-      methods:
-        update_stream_mode:
-          operation:
-            $ref: "#/paths/~1UpdateStreamMode/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/stream_modes/methods/update_stream_mode"
-        delete: []
-    stream_warm_throughputs:
-      id: aws.kinesis.stream_warm_throughputs
-      name: stream_warm_throughputs
-      title: stream_warm_throughputs
-      methods:
-        update_stream_warm_throughput:
-          operation:
-            $ref: "#/paths/~1UpdateStreamWarmThroughput/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/stream_warm_throughputs/methods/update_stream_warm_throughput"
         delete: []

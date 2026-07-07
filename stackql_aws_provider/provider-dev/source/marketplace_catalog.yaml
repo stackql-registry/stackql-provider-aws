@@ -41,7 +41,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDescribeEntitiesResponse'
-      x-stackql-resource: batch_describe_entities
+      x-stackql-resource: entities
       x-stackql-method: batch_describe_entities
       x-stackql-verb: EXEC
   /CancelChangeSet:
@@ -208,6 +208,9 @@ paths:
       x-stackql-method: list_change_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChangeSetSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEntities:
     post:
       operationId: ListEntities
@@ -252,6 +255,9 @@ paths:
       x-stackql-method: list_entities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EntitySummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -275,7 +281,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutResourcePolicy:
@@ -379,7 +385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -408,7 +414,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

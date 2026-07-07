@@ -92,6 +92,9 @@ paths:
       x-stackql-method: list_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.namespaces
+      x-stackql-pagination-request-token-key: continuationToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.continuationToken
   /tables/{table_bucket_arn}/{namespace}:
     put:
       operationId: CreateTable
@@ -228,6 +231,9 @@ paths:
       x-stackql-method: list_table_buckets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tableBuckets
+      x-stackql-pagination-request-token-key: continuationToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.continuationToken
   /namespaces/{table_bucket_arn}/{namespace}:
     delete:
       operationId: DeleteNamespace
@@ -394,6 +400,7 @@ paths:
       x-stackql-resource: table_bucket_encryptions
       x-stackql-method: get_table_bucket_encryption
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.encryptionConfiguration
     put:
       operationId: PutTableBucketEncryption
       description: Sets the encryption configuration for a table bucket. Permissions You must have the s3tables:PutTableBucketEncryption
@@ -926,6 +933,7 @@ paths:
       x-stackql-resource: table_bucket_storage_class
       x-stackql-method: get_table_bucket_storage_class
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.storageClassConfiguration
     put:
       operationId: PutTableBucketStorageClass
       description: Sets or updates the storage class configuration for a table bucket. This configuration serves as the default
@@ -989,6 +997,7 @@ paths:
       x-stackql-resource: table_encryptions
       x-stackql-method: get_table_encryption
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.encryptionConfiguration
   /tables/{table_bucket_arn}/{namespace}/{name}/maintenance:
     get:
       operationId: GetTableMaintenanceConfiguration
@@ -1167,6 +1176,7 @@ paths:
       x-stackql-resource: table_record_expiration_configurations
       x-stackql-method: get_table_record_expiration_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.configuration
     put:
       operationId: PutTableRecordExpirationConfiguration
       description: Creates or updates the expiration configuration settings for records in a table, including the status of
@@ -1279,6 +1289,7 @@ paths:
       x-stackql-resource: table_storage_class
       x-stackql-method: get_table_storage_class
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.storageClassConfiguration
   /tables/{table_bucket_arn}:
     get:
       operationId: ListTables
@@ -1328,6 +1339,9 @@ paths:
       x-stackql-method: list_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tables
+      x-stackql-pagination-request-token-key: continuationToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.continuationToken
   /tag/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1351,7 +1365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1388,7 +1402,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1419,7 +1433,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /buckets/{table_bucket_arn}/maintenance/{type}:
@@ -1546,7 +1560,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: rename_table
+      x-stackql-resource: table_buckets
       x-stackql-method: rename_table
       x-stackql-verb: EXEC
 components:

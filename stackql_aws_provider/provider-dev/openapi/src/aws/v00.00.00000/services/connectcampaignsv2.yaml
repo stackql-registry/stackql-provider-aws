@@ -2054,32 +2054,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-        list_campaigns:
-          operation:
-            $ref: "#/paths/~1v2~1campaigns-summary/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.campaignSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/campaigns/methods/describe_campaign"
-          - $ref: "#/components/x-stackQL-resources/campaigns/methods/list_campaigns"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/campaigns/methods/create_campaign"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/campaigns/methods/delete_campaign"
-    campaign_channel_subtype_configs:
-      id: aws.connectcampaignsv2.campaign_channel_subtype_configs
-      name: campaign_channel_subtype_configs
-      title: campaign_channel_subtype_configs
-      methods:
+            objectKey: $.campaign
         delete_campaign_channel_subtype_config:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1channel-subtype-config/delete"
@@ -2097,18 +2072,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_channel_subtype_configs/methods/update_campaign_channel_subtype_config"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/campaign_channel_subtype_configs/methods/delete_campaign_channel_subtype_config"
-    campaign_communication_limits:
-      id: aws.connectcampaignsv2.campaign_communication_limits
-      name: campaign_communication_limits
-      title: campaign_communication_limits
-      methods:
         delete_campaign_communication_limits:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1communication-limits/delete"
@@ -2126,25 +2089,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_communication_limits/methods/update_campaign_communication_limits"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/campaign_communication_limits/methods/delete_campaign_communication_limits"
-    campaign_communication_times:
-      id: aws.connectcampaignsv2.campaign_communication_times
-      name: campaign_communication_times
-      title: campaign_communication_times
-      methods:
         delete_campaign_communication_time:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1communication-time/delete"
           response:
             openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
         update_campaign_communication_time:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1communication-time/post"
@@ -2155,18 +2104,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_communication_times/methods/update_campaign_communication_time"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/campaign_communication_times/methods/delete_campaign_communication_time"
-    campaign_entry_limits:
-      id: aws.connectcampaignsv2.campaign_entry_limits
-      name: campaign_entry_limits
-      title: campaign_entry_limits
-      methods:
         delete_campaign_entry_limits:
           operation:
             $ref: "#/paths/~1v2~1campaigns~1{id}~1entry-limits/delete"
@@ -2182,13 +2119,84 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_campaigns:
+          operation:
+            $ref: "#/paths/~1v2~1campaigns-summary/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.campaignSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_campaign_flow_association:
+          operation:
+            $ref: "#/paths/~1v2~1campaigns~1{id}~1flow/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_campaign_name:
+          operation:
+            $ref: "#/paths/~1v2~1campaigns~1{id}~1name/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_campaign_schedule:
+          operation:
+            $ref: "#/paths/~1v2~1campaigns~1{id}~1schedule/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_campaign_source:
+          operation:
+            $ref: "#/paths/~1v2~1campaigns~1{id}~1source/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/describe_campaign"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/list_campaigns"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/create_campaign"
         update:
-          - $ref: "#/components/x-stackQL-resources/campaign_entry_limits/methods/update_campaign_entry_limits"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_channel_subtype_config"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_communication_limits"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_communication_time"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_entry_limits"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_flow_association"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_name"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_schedule"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_source"
         delete:
-          - $ref: "#/components/x-stackQL-resources/campaign_entry_limits/methods/delete_campaign_entry_limits"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/delete_campaign_channel_subtype_config"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/delete_campaign_communication_limits"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/delete_campaign"
     connect_instance_configs:
       id: aws.connectcampaignsv2.connect_instance_configs
       name: connect_instance_configs
@@ -2207,6 +2215,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.connectInstanceConfig
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connect_instance_configs/methods/get_connect_instance_config"
@@ -2238,6 +2247,14 @@ components:
             objectKey: $.integrationSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         put_connect_instance_integration:
           operation:
             $ref: "#/paths/~1v2~1connect-instance~1{connect_instance_id}~1integrations/put"
@@ -2284,6 +2301,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.connectInstanceOnboardingJobStatus
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instance_onboarding_job_status/methods/get_instance_onboarding_job_status"
@@ -2340,6 +2358,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.communicationLimitsConfig
         put_instance_communication_limits:
           operation:
             $ref: "#/paths/~1v2~1connect-instance~1{connect_instance_id}~1communication-limits/put"
@@ -2358,10 +2377,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/instance_communication_limits/methods/put_instance_communication_limits"
         delete: []
-    tags_for_resources:
-      id: aws.connectcampaignsv2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.connectcampaignsv2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2369,17 +2388,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.connectcampaignsv2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v2~1tags~1{arn}/post"
@@ -2398,11 +2406,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     outbound_request_batches:
       id: aws.connectcampaignsv2.outbound_request_batches
@@ -2449,88 +2458,4 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/profile_outbound_request_batches/methods/put_profile_outbound_request_batch"
-        delete: []
-    campaign_flow_associations:
-      id: aws.connectcampaignsv2.campaign_flow_associations
-      name: campaign_flow_associations
-      title: campaign_flow_associations
-      methods:
-        update_campaign_flow_association:
-          operation:
-            $ref: "#/paths/~1v2~1campaigns~1{id}~1flow/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_flow_associations/methods/update_campaign_flow_association"
-        delete: []
-    campaign_names:
-      id: aws.connectcampaignsv2.campaign_names
-      name: campaign_names
-      title: campaign_names
-      methods:
-        update_campaign_name:
-          operation:
-            $ref: "#/paths/~1v2~1campaigns~1{id}~1name/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_names/methods/update_campaign_name"
-        delete: []
-    campaign_schedules:
-      id: aws.connectcampaignsv2.campaign_schedules
-      name: campaign_schedules
-      title: campaign_schedules
-      methods:
-        update_campaign_schedule:
-          operation:
-            $ref: "#/paths/~1v2~1campaigns~1{id}~1schedule/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_schedules/methods/update_campaign_schedule"
-        delete: []
-    campaign_sources:
-      id: aws.connectcampaignsv2.campaign_sources
-      name: campaign_sources
-      title: campaign_sources
-      methods:
-        update_campaign_source:
-          operation:
-            $ref: "#/paths/~1v2~1campaigns~1{id}~1source/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_sources/methods/update_campaign_source"
         delete: []

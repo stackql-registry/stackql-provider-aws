@@ -5,7 +5,7 @@ info:
   description: AWS Compute Optimizer
   x-serviceName: compute-optimizer
   x-serviceAlias: compute_optimizer
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: "2019-11-01"
   x-endpointPrefix: compute-optimizer
   x-targetPrefix: ComputeOptimizerService
@@ -4744,6 +4744,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4756,7 +4758,16 @@ components:
             objectKey: $.recommendationPreferencesDetails
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_recommendation_preferences:
@@ -4767,6 +4778,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4793,7 +4806,16 @@ components:
             objectKey: $.recommendationExportJobs
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4815,6 +4837,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4826,6 +4850,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4848,6 +4874,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4859,6 +4887,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4881,6 +4911,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4892,6 +4924,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4914,6 +4948,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4925,6 +4961,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4947,6 +4985,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4958,6 +4998,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4980,6 +5022,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4992,7 +5036,16 @@ components:
             objectKey: $.lambdaFunctionRecommendations
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5014,6 +5067,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5025,6 +5080,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5047,6 +5104,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5058,6 +5117,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5080,6 +5141,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5102,6 +5165,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5124,6 +5189,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5146,6 +5213,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5157,6 +5226,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5181,7 +5252,16 @@ components:
             objectKey: $.accountEnrollmentStatuses
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5203,6 +5283,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -5226,7 +5308,16 @@ components:
             objectKey: $.recommendationSummaries
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

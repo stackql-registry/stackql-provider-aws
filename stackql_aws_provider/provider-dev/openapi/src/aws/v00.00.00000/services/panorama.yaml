@@ -793,8 +793,6 @@ paths:
                   $ref: "#/components/schemas/NetworkPayload"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -893,8 +891,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -2814,10 +2810,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/application_instances/methods/remove_application_instance"
         delete: []
-    job_for_devices:
-      id: aws.panorama.job_for_devices
-      name: job_for_devices
-      title: job_for_devices
+    devices:
+      id: aws.panorama.devices
+      name: devices
+      title: devices
       methods:
         create_job_for_devices:
           operation:
@@ -2830,12 +2826,59 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_device:
+          operation:
+            $ref: "#/paths/~1devices~1{device_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_device:
+          operation:
+            $ref: "#/paths/~1devices~1{device_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_device_metadata:
+          operation:
+            $ref: "#/paths/~1devices~1{device_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_devices:
+          operation:
+            $ref: "#/paths/~1devices/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        provision_device:
+          operation:
+            $ref: "#/paths/~1devices/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/devices/methods/describe_device"
+          - $ref: "#/components/x-stackQL-resources/devices/methods/list_devices"
         insert:
-          - $ref: "#/components/x-stackQL-resources/job_for_devices/methods/create_job_for_devices"
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/devices/methods/create_job_for_devices"
+        update:
+          - $ref: "#/components/x-stackQL-resources/devices/methods/update_device_metadata"
+          - $ref: "#/components/x-stackQL-resources/devices/methods/provision_device"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/devices/methods/delete_device"
     devices_jobs:
       id: aws.panorama.devices_jobs
       name: devices_jobs
@@ -2978,73 +3021,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/package_import_jobs/methods/create_package_import_job"
         update: []
         delete: []
-    devices:
-      id: aws.panorama.devices
-      name: devices
-      title: devices
-      methods:
-        delete_device:
-          operation:
-            $ref: "#/paths/~1devices~1{device_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_device:
-          operation:
-            $ref: "#/paths/~1devices~1{device_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_devices:
-          operation:
-            $ref: "#/paths/~1devices/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        provision_device:
-          operation:
-            $ref: "#/paths/~1devices/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/devices/methods/describe_device"
-          - $ref: "#/components/x-stackQL-resources/devices/methods/list_devices"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/devices/methods/provision_device"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/devices/methods/delete_device"
-    device_metadatas:
-      id: aws.panorama.device_metadatas
-      name: device_metadatas
-      title: device_metadatas
-      methods:
-        update_device_metadata:
-          operation:
-            $ref: "#/paths/~1devices~1{device_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/device_metadatas/methods/update_device_metadata"
-        delete: []
     package_versions:
       id: aws.panorama.package_versions
       name: package_versions
@@ -3179,16 +3155,27 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        signal_application_instance_node_instances:
+          operation:
+            $ref: "#/paths/~1application-instances~1{application_instance_id}~1node-signals/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_instance_node_instances/methods/list_application_instance_node_instances"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.panorama.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.panorama.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3196,17 +3183,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.panorama.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3227,9 +3203,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

@@ -525,8 +525,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -673,7 +671,6 @@ paths:
               required:
                 - GraphArn
                 - InvestigationId
-                - State
       responses:
         "200":
           description: Success
@@ -1492,6 +1489,103 @@ components:
         - EKS_AUDIT
         - ASFF_SECURITYHUB_FINDING
   x-stackQL-resources:
+    graphs:
+      id: aws.detective.graphs
+      name: graphs
+      title: graphs
+      methods:
+        accept_invitation:
+          operation:
+            $ref: "#/paths/~1invitation/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_graph:
+          operation:
+            $ref: "#/paths/~1graph/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_graph:
+          operation:
+            $ref: "#/paths/~1graph~1removal/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_membership:
+          operation:
+            $ref: "#/paths/~1membership~1removal/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_graphs:
+          operation:
+            $ref: "#/paths/~1graphs~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_invitation:
+          operation:
+            $ref: "#/paths/~1invitation~1removal/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_investigation:
+          operation:
+            $ref: "#/paths/~1investigations~1startInvestigation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_monitoring_member:
+          operation:
+            $ref: "#/paths/~1graph~1member~1monitoringstate/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/graphs/methods/list_graphs"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/graphs/methods/create_graph"
+        update:
+          - $ref: "#/components/x-stackQL-resources/graphs/methods/disassociate_membership"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/graphs/methods/delete_graph"
     graph_member_datasources:
       id: aws.detective.graph_member_datasources
       name: graph_member_datasources
@@ -1536,51 +1630,6 @@ components:
         insert: []
         update: []
         delete: []
-    graphs:
-      id: aws.detective.graphs
-      name: graphs
-      title: graphs
-      methods:
-        create_graph:
-          operation:
-            $ref: "#/paths/~1graph/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_graph:
-          operation:
-            $ref: "#/paths/~1graph~1removal/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_graphs:
-          operation:
-            $ref: "#/paths/~1graphs~1list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/graphs/methods/list_graphs"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/graphs/methods/create_graph"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/graphs/methods/delete_graph"
     members:
       id: aws.detective.members
       name: members
@@ -1672,27 +1721,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/organization_configurations/methods/update_organization_configuration"
         delete: []
-    memberships:
-      id: aws.detective.memberships
-      name: memberships
-      title: memberships
-      methods:
-        disassociate_membership:
-          operation:
-            $ref: "#/paths/~1membership~1removal/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/memberships/methods/disassociate_membership"
-        delete: []
     investigations:
       id: aws.detective.investigations
       name: investigations
@@ -1720,12 +1748,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_investigation_state:
+          operation:
+            $ref: "#/paths/~1investigations~1updateInvestigationState/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/investigations/methods/get_investigation"
           - $ref: "#/components/x-stackQL-resources/investigations/methods/list_investigations"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/investigations/methods/update_investigation_state"
         delete: []
     datasource_packages:
       id: aws.detective.datasource_packages
@@ -1826,10 +1865,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.detective.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.detective.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1837,17 +1876,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.detective.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1868,30 +1896,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    investigation_states:
-      id: aws.detective.investigation_states
-      name: investigation_states
-      title: investigation_states
-      methods:
-        update_investigation_state:
-          operation:
-            $ref: "#/paths/~1investigations~1updateInvestigationState/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/investigation_states/methods/update_investigation_state"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

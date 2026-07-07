@@ -7,7 +7,18 @@ These are the load-bearing design rules. Each derives from a stackql core source
 Two stages, both committed:
 
 1. **`openapi-generation/botocore_to_openapi.py`** (Python) reads each `service-2.json` in the in-tree `botocore/data/` checkout and emits one OpenAPI 3.0 YAML per service into `provider-dev/source/`. Every operation is stamped with `x-stackql-*` breadcrumbs.
-2. **`provider-dev/scripts/generate-provider.mjs`** (Node) folds the breadcrumbs into `components/x-stackQL-resources`, strips the tags, writes the final stackql provider tree under `provider-dev/openapi/src/aws/<version>/`.
+2. **`provider-dev/scripts/generate-provider.mjs`** (Node) folds the breadcrumbs into `components/x-stackQL-resources`, strips the tags, writes the final stackql provider tree under `provider-dev/openapi/src/aws/<version>/`. Routing is pinned by the durable mappings CSV (see "Durable mappings").
+
+## Durable mappings — `provider-dev/config/all_services.csv`
+
+Checked-in CSV following the `@stackql/provider-utils` `analyze` contract (same header, same `filename::operationId` key). It guarantees a regen maps a known operation to exactly the resource / method / sqlVerb / objectKey it shipped with — the SQL surface only changes through a conscious, reviewable CSV edit.
+
+- **Existing rows win**: stage 2 uses the row's `stackql_resource_name` / `stackql_method_name` / `stackql_verb` / `stackql_object_key` over the breadcrumb-derived values, and logs each divergence (`pin` lines).
+- **Append-only**: rows are never rewritten. New `filename::operationId` keys get derived mappings and are appended; rows for removed ops persist harmlessly.
+- **Demotions are pinned**: when the sqlVerbs dedupe pass demotes a clashing method to EXEC, the appended row records `exec` — so the resolution can't silently flip when a later botocore drop changes op insertion order. Within a signature clash group, CSV-pinned candidates beat unpinned (new) ones for the sqlVerbs slot.
+- **Bootstrap**: deleting the CSV and regenerating re-derives everything from breadcrumbs (only do this deliberately — it forfeits all pins).
+
+**Benchmark regression guard** — `provider-dev/config/benchmarks.json` (committed) pins the surface counts: services / resources / methods / selectableResources must never FALL between generations (they only creep up as botocore grows), and the non-selectable ratio must not spike beyond `ratioTolerancePct` (a spike means a generator change started stranding readers). Stage 2 hard-fails on any regression; conscious re-baselining is `generate-provider.mjs --update-benchmarks`.
 
 ## Naming and case (post-casing-engine)
 
@@ -20,7 +31,7 @@ Concretely after this:
 
 - Service / resource / method names: **snake_case** (filename-driven; stackql namespace alias). No change.
 - Path params: **snake_case** (template substitutions; no AWS-side wire meaning). No change.
-- Query / header / body parameter `name` fields: **PascalCase** (= botocore wire name). The OpenAPI spec carries the native AWS name verbatim. Stackql renders columns and accepts SQL clauses in snake via the casing engine.
+- Query / header / body parameter `name` fields: **the SERIALISED wire name** (PascalCase in practice). For query/ec2 protocols this is `locationName || memberName` (ec2 upper-firsts the locationName: `maxResults` -> `MaxResults`), NOT the bare member name — any-sdk's AWSCanonical transpose uses the param name verbatim as the fan-out base key, so `InstanceIds` (locationName `InstanceId`) must be the param `InstanceId` or EC2 returns UnknownParameter. Inner JSON keys are likewise wire names (`TagSpecification.1.Tag.1.Key` -> `JSON('[{"ResourceType":...,"Tag":[...]}]')`). Query-protocol NON-flattened lists serialise as `Name.member.N`, so the JSON carries the member level explicitly: `Tags = JSON('{"member":[...]}')`.
 - Response columns: **snake_case** (rendered by the casing engine from PascalCase property names at column-inference time).
 - Struct values passed in SQL (e.g. `EnableDnsHostnames = '{"Value": true}'`): inner keys use the **wire format** (PascalCase). The engine's body-field matcher also accepts inner snake (`{"value": true}`), but PascalCase is canonical.
 
@@ -77,6 +88,14 @@ Do not auto-promote POST to GET. Emit whatever `service-2.json -> operations[X].
 
 Resource name = pluralised noun after verb-prefix strip. `DescribeVolumes` → `volumes`, `CreateVolume` → `volumes`, `AttachVolume` → `volumes`. Full CRUD-and-lifecycle co-located.
 
+**Co-location pass** (stage 1, runs after all ops are tagged): naive noun stripping strands mutation ops in select-less orphan resources (~18% of the provider before the pass; ~3% after). Four relocation rules rewrite `x-stackql-resource`:
+1. **Tag plumbing** — ops matching `Tag*/Untag*/AddTags*/RemoveTags*/ListTags*` route to the service's `tags` resource (selectable wherever a `ListTags*` lister exists). `ListTagOptions`-style entity ops don't match (regex requires plural `Tags`).
+2. **Full-suffix merge** — a non-selectable resource whose name ends with a selectable sibling's name folds into it, longest match first (`application_fleets` -> `fleets`, `scaling_policies` -> `policies`).
+3. **Leading-token merge** — pluralised leading tokens naming a selectable sibling fold in (`certificate_options` -> `certificates`).
+4. **Identifier-based rehoming** — the required identifier params name the thing an op operates ON: `SetDesiredCapacity` requires `AutoScalingGroupName` -> `auto_scaling_groups`; `CreateRoute` requires `RouteTableId` -> `route_tables`; `DeleteCorsConfiguration` requires `ApiId` -> `apis`. Fires only when EVERY op of the orphan agrees on the same selectable target (longest name on ties). Query/ec2 GET/POST twins are grouped by base operationId first — the param-less POST form must not veto.
+
+The residual non-selectable set (~200, 3.3%) is verified honest API shape: mutation-only ops whose required identifiers name nothing selectable (`PutAccountName`, `SetInstanceHealth`, `CreateMeetingDialOut`) — no reader exists for them in the API. Associate/disassociate pairs sharing a required-param signature still lose one side to EXEC via rule 9 dedupe - expected, callable via EXEC.
+
 ### 8. `sqlVerbs` ordering — most-specific first
 
 Within each `sqlVerbs[verbKey]` array, sort by `requiredParams.length DESC`. Router picks first method whose required params are satisfiable from the SQL clause, so `get_function` (`[function_name, region]`) sits ahead of `list_functions` (`[region]`).
@@ -85,16 +104,35 @@ Within each `sqlVerbs[verbKey]` array, sort by `requiredParams.length DESC`. Rou
 
 Within a `(resource, sqlVerb)` bucket, no two methods share the same required-params signature. The dedupe pass keeps the first by insertion order and demotes the rest to EXEC. Stage 2 has a build-time `verifySignatureUniqueness` guard that hard-fails the build if any collision survives the dedupe. Note: the candidates phase records `requiredParams` from the **final** registered op (the one whose `$ref` `methodEntry.operation.$ref` points at), not the first iteration — so dedupe matches what `verifySignatureUniqueness` sees.
 
-### 10. Empty / orphan resources — prune
+### 10. Empty / orphan resources — prune; zero-column selects — demote
 
 A resource with all-empty sqlVerb arrays gets dropped (no SQL surface). A service whose every resource was pruned is skipped (don't register in `providerServices`). Typical victims: data-plane-only services (`cloudsearchdomain`, `sagemaker_runtime`, `rds_data`, ...).
 
-### 11. Signature computation — skip sigv4/routing headers
+Invariants (test-meta-routes enforces all three): a service must have resources, a resource must have methods (not necessarily selectable), and every SELECT-routed method must project at least one field.
+
+**Scalar-list explode (preferred over demotion)**: a select whose wire payload is a list of column-less elements — bare scalars (`ListTables` -> `[TableName]`), `document` shapes, maps, nested lists, empty structs — keeps its SELECT surface via a generated golang-template transform that explodes elements into rows under a faux singular column (`table_name`, `queue_url`, `finding`), with row/envelope schemas injected into `components/schemas` (`<OpName>RowDisplay` / `<OpName>OutputDisplay`, `objectKey: $.line_items`). `golang_template_json_v0.3.0` for rest-json/aws-json (paginator token passed through as a sibling so pagination survives), `golang_template_mxj_v0.3.0` for query/ec2 (defends against mxj single-element collapse). Explode fires when the paginator `result_key` names the list (authoritative) or the list is the sole non-metadata output member — never when useful scalar siblings would be thrown away. rest-xml is not exploded (wrapper conventions vary).
+
+**Single-row projection (query/ec2 fallback)**: when the synthesised Display row comes out empty and explode doesn't apply (multi-member outputs mixing scalars and scalar lists — `DescribeLoggingStatus`, `DescribeAllowedNodeTypeModifications`), an mxj template projects the WHOLE output as one row, every non-metadata member toJson'd into a snake column. The row-shape picker also prefers list members with struct elements over scalar-element lists (`SolutionStackDetails` over `SolutionStacks`).
+
+**Nested-list unwrap (query/ec2)**: `DescribeInstances` wraps the real rows one list deep (`Reservations[].Instances[]`) — the walker stops at the outer list and rows become reservation wrappers with no `instance_id` column. When the paginator's `result_key` names the outer list AND the outer element carries a noun-matched inner list of structs, a generated mxj template flattens outer x inner (single-collapse defence at both levels) and emits each inner element via `toJson` (wire-name keys; Display extraction resolves GetWireName). The paginator gate matters: elb/elbv2 `DescribeTags` match structurally but their outer element carries the join key (`LoadBalancerName`) — those stay wrapped. `RunInstances`-style singletons (`Reservation.Instances`) unwrap via the row-shape picker's noun-matched-list rule instead.
+
+**JSON() does NOT transpose in SELECT WHERE** (verified on the wire): `WHERE Filter = JSON('[...]')` never reaches the request — only UPDATE SET and INSERT values fan out via JSON(). Server-side SELECT filtering on query/ec2 is limited to plain scalar params; row scoping should use column equality (client-side SQL) on the projected rows instead.
+
+**No batch mutations — singleton scalars only** (verified on the wire; stackql/stackql#683): a JSON-array string in DELETE WHERE or EXEC params goes to the wire VERBATIM (`InstanceId=["i-..."]` -> InvalidInstanceID.Malformed). EC2 accepts the flat un-indexed form for a single value (`InstanceId=i-...`), so mutations/lifecycle ops take one id per statement: `DELETE ... WHERE InstanceId = 'i-...'`, `EXEC ... @InstanceId = 'i-...'`. Multiple targets = multiple singleton statements. (`SELECT ... WHERE x IN (...)` does fan out into parallel dispatches — reads only.)
+
+**Noun-list creates get exact-wire templates**: the schema-driven walker finds row containers by naming convention (singular+Set: `volumeSet`, `reservationSet`) and misses plural containers (`RunInstances` -> `instancesSet` — RETURNING projected one all-null row). Create-ish ops returning a noun-matched list (the non-list-op branch of the row-shape picker: `RunInstances`, `CreateSnapshots`, `CopyVolumes`, ...) get a generated mxj template with exact wire names instead of the walker.
+
+**Singleton-struct unwrap (rest-json/aws-json)**: a select whose output is a single wrapper member (`DescribeTable` -> `{Table: {...}}`) gets `objectKey: $.<Member>` so DESCRIBE projects the inner structure's fields instead of one object-typed column. Fires only for exactly-one non-metadata member that is a structure with named members (maps and multi-member outputs unchanged).
+
+**Zero-column demotion (backstop)**: any select method still projecting no fields after the above is demoted to EXEC by the stage 2 zero-column pass (0 methods currently — the transforms cover everything; the guard remains for future botocore drops). Per-method, not per-resource: DESCRIBE resolves columns via the first select method in router order, so one empty method poisons an otherwise healthy resource. The residual non-selectable set (356, ~6%) is verified mutation/lifecycle-only — no reader op exists in those APIs.
+
+### 11. Signature computation — skip sigv4/routing headers, count only BINDABLE body fields
 
 `requiredParamsOf` in the Node script:
 - Skips `X-Amz-Target`, `X-Amz-Date`, `X-Amz-Signature`, `X-Amz-Algorithm`, `X-Amz-Credential`, `X-Amz-Security-Token`, `X-Amz-SignedHeaders`, `X-Amz-Content-Sha256`.
 - Required body fields appear under their native (Pascal) names — no `data__` prefix because `requestBodyTranslate: naive` is set on body-bearing methods.
 - For body schemas declared as `$ref`, follow one level to find the underlying `required` list.
+- Counts body-required fields ONLY from the runtime-bindable content entry: exact `request.mediaType` match, or `application/json` when no `request.mediaType` is set (stackql's loader default). An unbound body's required fields are invisible to runtime routing, so counting them would make build-time signatures diverge from `SHOW EXTENDED METHODS`. The `verifyBodyBinding` guard hard-fails the build if any registered method carries a requestBody with no bindable content key (query/ec2 GET->POST translate methods exempt).
 
 ### 12. YAML 1.1 boolean keywords — must be quoted
 
@@ -102,7 +140,9 @@ Stackql's Go YAML parser is YAML 1.1; it coerces `y/Y/yes/Yes/YES/n/N/no/No/NO/o
 
 ### 13. aws-json — amz-json content key matching `request.mediaType`, body inlined
 
-For aws-json, emit a single `application/x-amz-json-<jsonVersion>` content entry (jsonVersion from botocore metadata, default `1.0`) and stamp the same string as the method's `request.mediaType` in stage 2, plus `request.base: '{}'` (the fallback body sent verbatim when no SQL-supplied body fields exist, merged under supplied fields when they do — aws-json requires a JSON body even for no-input ops). Do NOT use `request.default` for this: it diverts supplied body params in any-sdk's armoury flow. The loader binds the body schema by EXACT content-key match against `request.mediaType`; a mismatch silently drops the schema and required body fields vanish from routing. any-sdk's media fuzzy-matcher maps amz-json variants onto the JSON marshal path. Body schemas inlined in `requestBody` (not `$ref` to a separate named shape) so stackql's required-param scan reaches them.
+**Protocol resolution**: stage 1 resolves the effective protocol botocore-style — first match of `['json', 'rest-json', 'rest-xml', 'query', 'ec2']` against `metadata.protocols`, falling back to the legacy `metadata.protocol` field. Newer smithy models declare `protocol: smithy-rpc-v2-cbor` while also listing `json` in `protocols` (9 services: arc_region_switch, cloudwatch, comprehendmedical, compute_optimizer, compute_optimizer_automation, gamelift, interconnect, marketplace_entitlement, snowball); trusting the legacy field routed them through the unknown-protocol fallback with `x-protocol: smithy-rpc-v2-cbor`, which starved stage 2's `request.mediaType`/`request.base` stamps and made required body fields vanish from runtime routing.
+
+For aws-json, emit a single `application/x-amz-json-<jsonVersion>` content entry (jsonVersion from botocore metadata, default `1.0`) and stamp the same string as the method's `request.mediaType` in stage 2 (derived from the op's actual content key), plus `request.base: '{}'` (the fallback body sent verbatim when no SQL-supplied body fields exist, merged under supplied fields when they do — aws-json requires a JSON body even for no-input ops). Do NOT use `request.default` for this: it diverts supplied body params in any-sdk's armoury flow. The loader binds the body schema by EXACT content-key match against `request.mediaType`; a mismatch silently drops the schema and required body fields vanish from routing. any-sdk's media fuzzy-matcher maps amz-json variants onto the JSON marshal path. Body schemas inlined in `requestBody` (not `$ref` to a separate named shape) so stackql's required-param scan reaches them.
 
 Same exact-match rule for rest-xml bodies: content key `application/xml` + `request.mediaType: application/xml` (activates any-sdk's schema-driven JSON-map -> XML body marshalling).
 
@@ -164,6 +204,28 @@ The `$ref` on `operation` points at the GET form; stackql translates GET-with-qu
 
 The casing engine takes care of accepting SQL clauses in snake form; the request body wire shape uses native (Pascal) field names verbatim.
 
+**EXEC-verb exception**: a method routed to EXEC whose operation has NO requestBody (query/ec2 lifecycle ops - the `$ref` is the GET form) must NOT carry a `request` block at all. Stackql's exec analyzer treats a present `request` as "this method has a body schema" and hard-fails with `no request body for operation`. Nothing is lost: `nativeCasing` only drives snake->Pascal WHERE-key reversal, and EXEC invocations pass wire-cased `@params`.
+
+### 17. NOCASE collision demotion + build-time guard (all protocols)
+
+Stackql builds a resource's table as `snake-aliased response columns + union of required parameters (wire-cased) across the resource's methods`. SQLite's NOCASE collation treats `role` and `Role` as duplicates and aborts CREATE TABLE **with exit code 0** (error is text-only) - so this class of bug is invisible to exit-code checks.
+
+Three layers of defence:
+
+1. **Stage 1** (`botocore_to_openapi.py`): service-wide demotion for query/ec2/rest-xml - required query/header params and inline required body fields whose lowercased form matches a rendered snake Display column but whose exact form differs are demoted to `required: false`. Path params exempt (structural).
+2. **Stage 2** (`generate-provider.mjs` `demoteNocaseCollisions`, runs BEFORE signature computation so sqlVerbs ordering/dedupe see the demoted view): resource-scoped demotion for ALL protocols (rest-json/aws-json have no Display schemas - the pass reads the raw response schema, descending through `x-stackql-objectKey`; the lambda case was response column `role` vs create_function's required body field `Role`). Path param names are seeded into the collision set (they reserve their name: connect's body `Origin` vs path `origin`). Param-vs-param groups differing only by case keep one canonical form (the all-lowercase one when present, else lexicographically first) and demote the rest (connect: query `origin` vs body `Origin`).
+3. **Build-time guard** (`verifyNoNocaseCollisions`): hard-fails the whole build if any surviving required param NOCASE-collides with a response column or another required param - a "duplicate column name" DDL abort can never ship silently.
+
+Test-side: the harness has fatal-pattern greps and dedicated list-path DDL select tests (lambda, dynamodb - the list method's table differs from the get path's); `tests/smoke.py` applies `DEFAULT_FATAL_PATTERNS` to every test's output regardless of expectations.
+
+### 18. Pagination — rest-json / aws-json only (for now)
+
+Stage 1 (`_pagination_breadcrumbs`) reads `paginators-1.json` and stamps `x-stackql-pagination-*` breadcrumbs for simple paginators (single string `input_token`/`output_token`, plain top-level members; composite/jmespath tokens skipped). Stage 2 folds them into `config.pagination.{requestToken,responseToken}`. Request token location: `query` for rest querystring members (key = locationName), `body` for aws-json and rest body members. Response token: `$.<OutputMember>` against the raw JSON body, `location: body`.
+
+**Gate**: only `rest-json` and `json` protocols. stackql extracts the response token from the response `rawBody`; for XML protocols that IS the schema-driven walker's output, which currently drops sibling scalars (the token) — see any-sdk issue #117 (https://github.com/stackql/any-sdk/issues/117). When that lands, lift the protocol gate and use the output member's XML wire name in the JSONPath.
+
+Verified live: DynamoDB ListTables with `"Limit" = 1` traverses all pages, re-injecting `ExclusiveStartTableName` into each subsequent body with the original params preserved. (Note: `Limit` is a reserved SQL word — quote it.)
+
 ## Things NOT to do
 
 - Don't run `analyze` / `generate-mappings` from `@stackql/provider-utils`. We short-circuit analyze by stamping `x-stackql-*` tags at openapi-generation time.
@@ -173,16 +235,16 @@ The casing engine takes care of accepting SQL clauses in snake form; the request
 
 ## Integration test harness
 
-`bin/integration-tests.sh` exercises every protocol/regime archetype with `DESCRIBE EXTENDED` (offline) and live `SELECT` (needs `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`). Run after every regen:
+`bin/integration-tests.sh` exercises every protocol/regime archetype with `DESCRIBE EXTENDED` (offline) and live `SELECT` (needs `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY`). It defaults to the repo-pinned Linux binary at `.bin/stackql` (run under WSL / Linux); override with `STACKQL=/path/to/stackql`. Run after every regen:
 
 ```bash
-STACKQL=/tmp/stackql bash bin/integration-tests.sh            # all tests
-STACKQL=/tmp/stackql bash bin/integration-tests.sh --describe-only  # offline only
-STACKQL=/tmp/stackql bash bin/integration-tests.sh --auth-smoke-test-only  # one auth-only SELECT per service
-AWS_RUN_DML_TESTS=1 STACKQL=/tmp/stackql bash bin/integration-tests.sh --select-only  # full DML lifecycle
+bash bin/integration-tests.sh                     # all tests (uses .bin/stackql)
+bash bin/integration-tests.sh --describe-only     # offline only
+bash bin/integration-tests.sh --auth-smoke-test-only  # one auth-only SELECT per service
+AWS_RUN_DML_TESTS=1 bash bin/integration-tests.sh --select-only  # full DML lifecycle
 ```
 
-The harness auto-detects WSL/MINGW and translates registry paths to Windows-style when stackql is a Windows binary.
+The harness auto-detects WSL/MINGW and translates registry paths to Windows-style when stackql is a Windows binary. The manifest-driven smoke suite in `tests/` (see `tests/README.md`) uses the same `.bin/stackql` default via `config.stackql` in `tests/manifest.yaml`.
 
 ## File layout
 

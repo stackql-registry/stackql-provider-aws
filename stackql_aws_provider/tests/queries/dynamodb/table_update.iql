@@ -1,0 +1,4 @@
+-- snake_case where key against an aws-json body field.
+UPDATE aws.dynamodb.tables
+SET TableClass = 'STANDARD_INFREQUENT_ACCESS'
+WHERE region = '{{ region }}' AND table_name = '{{ table_name }}'

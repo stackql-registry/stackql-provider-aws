@@ -5500,7 +5500,13 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/XmlStringMaxLen255Display"
+            $ref: "#/components/schemas/DescribeAutoScalingNotificationTypesRowDisplay"
+    DescribeAutoScalingNotificationTypesRowDisplay:
+      type: object
+      properties:
+        auto_scaling_notification_type:
+          type: string
+          description: The notification types.
     InstanceRefreshIds:
       type: array
       items:
@@ -5663,7 +5669,13 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/XmlStringMaxLen255Display"
+            $ref: "#/components/schemas/DescribeLifecycleHookTypesRowDisplay"
+    DescribeLifecycleHookTypesRowDisplay:
+      type: object
+      properties:
+        lifecycle_hook_type:
+          type: string
+          description: The lifecycle hook types.
     LifecycleHookNames:
       type: array
       items:
@@ -6100,7 +6112,13 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/XmlStringMaxLen1600Display"
+            $ref: "#/components/schemas/DescribeTerminationPolicyTypesRowDisplay"
+    DescribeTerminationPolicyTypesRowDisplay:
+      type: object
+      properties:
+        termination_policy_type:
+          type: string
+          description: "The termination policies supported by Amazon EC2 Auto Scaling: OldestInstance, OldestLaunchConfiguration, NewestInstance, ClosestToNextInstanceHour, Default, OldestLaunchTemplate, and AllocationStrategy."
     TrafficSourceStateDisplay:
       type: object
       properties:
@@ -7511,16 +7529,125 @@ components:
       required:
         - AutoScalingGroupName
   x-stackQL-resources:
-    instances:
-      id: aws.autoscaling.instances
-      name: instances
-      title: instances
+    auto_scaling_groups:
+      id: aws.autoscaling.auto_scaling_groups
+      name: auto_scaling_groups
+      title: auto_scaling_groups
       methods:
         attach_instances:
           operation:
             $ref: "#/paths/~1?Action=AttachInstances&Version=2011-01-01/get"
           response:
             openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        batch_delete_scheduled_action:
+          operation:
+            $ref: "#/paths/~1?Action=BatchDeleteScheduledAction&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BatchDeleteScheduledActionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        batch_put_scheduled_update_group_action:
+          operation:
+            $ref: "#/paths/~1?Action=BatchPutScheduledUpdateGroupAction&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BatchPutScheduledUpdateGroupActionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        cancel_instance_refresh:
+          operation:
+            $ref: "#/paths/~1?Action=CancelInstanceRefresh&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CancelInstanceRefreshOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        complete_lifecycle_action:
+          operation:
+            $ref: "#/paths/~1?Action=CompleteLifecycleAction&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CompleteLifecycleActionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_auto_scaling_group:
+          operation:
+            $ref: "#/paths/~1?Action=CreateAutoScalingGroup&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_auto_scaling_group:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteAutoScalingGroup&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_auto_scaling_groups:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeAutoScalingGroups&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeAutoScalingGroupsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -7547,13 +7674,237 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        disable_metrics_collection:
+          operation:
+            $ref: "#/paths/~1?Action=DisableMetricsCollection&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_metrics_collection:
+          operation:
+            $ref: "#/paths/~1?Action=EnableMetricsCollection&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enter_standby:
+          operation:
+            $ref: "#/paths/~1?Action=EnterStandby&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnterStandbyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        exit_standby:
+          operation:
+            $ref: "#/paths/~1?Action=ExitStandby&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ExitStandbyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        launch_instances:
+          operation:
+            $ref: "#/paths/~1?Action=LaunchInstances&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/LaunchInstancesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        put_scheduled_update_group_action:
+          operation:
+            $ref: "#/paths/~1?Action=PutScheduledUpdateGroupAction&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        record_lifecycle_action_heartbeat:
+          operation:
+            $ref: "#/paths/~1?Action=RecordLifecycleActionHeartbeat&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RecordLifecycleActionHeartbeatOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        resume_processes:
+          operation:
+            $ref: "#/paths/~1?Action=ResumeProcesses&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        rollback_instance_refresh:
+          operation:
+            $ref: "#/paths/~1?Action=RollbackInstanceRefresh&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RollbackInstanceRefreshOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_desired_capacity:
+          operation:
+            $ref: "#/paths/~1?Action=SetDesiredCapacity&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_instance_protection:
+          operation:
+            $ref: "#/paths/~1?Action=SetInstanceProtection&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetInstanceProtectionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        start_instance_refresh:
+          operation:
+            $ref: "#/paths/~1?Action=StartInstanceRefresh&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartInstanceRefreshOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        suspend_processes:
+          operation:
+            $ref: "#/paths/~1?Action=SuspendProcesses&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        terminate_instance_in_auto_scaling_group:
+          operation:
+            $ref: "#/paths/~1?Action=TerminateInstanceInAutoScalingGroup&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TerminateInstanceInAutoScalingGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        update_auto_scaling_group:
+          operation:
+            $ref: "#/paths/~1?Action=UpdateAutoScalingGroup&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/describe_auto_scaling_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/create_auto_scaling_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/instances/methods/detach_instances"
-          - $ref: "#/components/x-stackQL-resources/instances/methods/attach_instances"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/set_instance_protection"
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/detach_instances"
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/set_desired_capacity"
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/update_auto_scaling_group"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/put_scheduled_update_group_action"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/terminate_instance_in_auto_scaling_group"
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/delete_auto_scaling_group"
     load_balancer_target_groups:
       id: aws.autoscaling.load_balancer_target_groups
       name: load_balancer_target_groups
@@ -7609,8 +7960,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -7678,8 +8027,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -7747,8 +8094,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -7761,75 +8106,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/traffic_sources/methods/attach_traffic_sources"
         delete: []
-    auto_scaling_groups:
-      id: aws.autoscaling.auto_scaling_groups
-      name: auto_scaling_groups
-      title: auto_scaling_groups
-      methods:
-        create_auto_scaling_group:
-          operation:
-            $ref: "#/paths/~1?Action=CreateAutoScalingGroup&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_auto_scaling_group:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteAutoScalingGroup&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_auto_scaling_groups:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeAutoScalingGroups&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeAutoScalingGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        update_auto_scaling_group:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateAutoScalingGroup&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/describe_auto_scaling_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/create_auto_scaling_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/update_auto_scaling_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/auto_scaling_groups/methods/delete_auto_scaling_group"
     launch_configurations:
       id: aws.autoscaling.launch_configurations
       name: launch_configurations
@@ -7886,10 +8162,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/launch_configurations/methods/delete_launch_configuration"
-    or_update_tags:
-      id: aws.autoscaling.or_update_tags
-      name: or_update_tags
-      title: or_update_tags
+    tags:
+      id: aws.autoscaling.tags
+      name: tags
+      title: tags
       methods:
         create_or_update_tags:
           operation:
@@ -7903,12 +8179,45 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        delete_tags:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteTags&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_tags:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeTags&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeTagsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/describe_tags"
         insert:
-          - $ref: "#/components/x-stackQL-resources/or_update_tags/methods/create_or_update_tags"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/create_or_update_tags"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/delete_tags"
     lifecycle_hooks:
       id: aws.autoscaling.lifecycle_hooks
       name: lifecycle_hooks
@@ -8073,11 +8382,42 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        execute_policy:
+          operation:
+            $ref: "#/paths/~1?Action=ExecutePolicy&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        put_scaling_policy:
+          operation:
+            $ref: "#/paths/~1?Action=PutScalingPolicy&Version=2011-01-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PutScalingPolicyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policies/methods/describe_policies"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/policies/methods/put_scaling_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/policies/methods/delete_policy"
     scheduled_actions:
@@ -8123,49 +8463,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/scheduled_actions/methods/delete_scheduled_action"
-    tags:
-      id: aws.autoscaling.tags
-      name: tags
-      title: tags
-      methods:
-        delete_tags:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteTags&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_tags:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeTags&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeTagsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/describe_tags"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/delete_tags"
     warm_pools:
       id: aws.autoscaling.warm_pools
       name: warm_pools
@@ -8338,7 +8635,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/DescribeAutoScalingNotificationTypesOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "DescribeAutoScalingNotificationTypesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DescribeAutoScalingNotificationTypesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "AutoScalingNotificationTypes" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"auto_scaling_notification_type": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"auto_scaling_notification_type": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           config:
             queryParamTranspose:
@@ -8396,7 +8694,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/DescribeLifecycleHookTypesOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "DescribeLifecycleHookTypesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DescribeLifecycleHookTypesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "LifecycleHookTypes" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"lifecycle_hook_type": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"lifecycle_hook_type": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           config:
             queryParamTranspose:
@@ -8510,7 +8809,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/DescribeTerminationPolicyTypesOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "DescribeTerminationPolicyTypesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DescribeTerminationPolicyTypesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "TerminationPolicyTypes" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"termination_policy_type": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"termination_policy_type": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           config:
             queryParamTranspose:
@@ -8553,84 +8853,6 @@ components:
         insert: []
         update: []
         delete: []
-    scaling_policies:
-      id: aws.autoscaling.scaling_policies
-      name: scaling_policies
-      title: scaling_policies
-      methods:
-        put_scaling_policy:
-          operation:
-            $ref: "#/paths/~1?Action=PutScalingPolicy&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutScalingPolicyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/scaling_policies/methods/put_scaling_policy"
-        delete: []
-    scheduled_update_group_actions:
-      id: aws.autoscaling.scheduled_update_group_actions
-      name: scheduled_update_group_actions
-      title: scheduled_update_group_actions
-      methods:
-        put_scheduled_update_group_action:
-          operation:
-            $ref: "#/paths/~1?Action=PutScheduledUpdateGroupAction&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/scheduled_update_group_actions/methods/put_scheduled_update_group_action"
-        delete: []
-    desired_capacities:
-      id: aws.autoscaling.desired_capacities
-      name: desired_capacities
-      title: desired_capacities
-      methods:
-        set_desired_capacity:
-          operation:
-            $ref: "#/paths/~1?Action=SetDesiredCapacity&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/desired_capacities/methods/set_desired_capacity"
-        delete: []
     instance_healths:
       id: aws.autoscaling.instance_healths
       name: instance_healths
@@ -8654,63 +8876,3 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/instance_healths/methods/set_instance_health"
         delete: []
-    instance_protections:
-      id: aws.autoscaling.instance_protections
-      name: instance_protections
-      title: instance_protections
-      methods:
-        set_instance_protection:
-          operation:
-            $ref: "#/paths/~1?Action=SetInstanceProtection&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetInstanceProtectionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/instance_protections/methods/set_instance_protection"
-        delete: []
-    instance_in_auto_scaling_groups:
-      id: aws.autoscaling.instance_in_auto_scaling_groups
-      name: instance_in_auto_scaling_groups
-      title: instance_in_auto_scaling_groups
-      methods:
-        terminate_instance_in_auto_scaling_group:
-          operation:
-            $ref: "#/paths/~1?Action=TerminateInstanceInAutoScalingGroup&Version=2011-01-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/TerminateInstanceInAutoScalingGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/instance_in_auto_scaling_groups/methods/terminate_instance_in_auto_scaling_group"

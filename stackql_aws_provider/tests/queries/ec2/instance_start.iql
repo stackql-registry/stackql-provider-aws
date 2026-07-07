@@ -1,0 +1,5 @@
+-- Lifecycle transition via the EXEC surface (StartInstances). Singleton
+-- scalar form (see instance_stop.iql).
+EXEC aws.ec2.instances.start_instances
+  @region = '{{ region }}',
+  @InstanceId = '{{ instance_create.instance_id }}'

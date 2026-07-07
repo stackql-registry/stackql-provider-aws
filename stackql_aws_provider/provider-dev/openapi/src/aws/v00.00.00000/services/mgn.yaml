@@ -6433,6 +6433,17 @@ components:
       name: applications
       title: applications
       methods:
+        archive_application:
+          operation:
+            $ref: "#/paths/~1ArchiveApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         associate_applications:
           operation:
             $ref: "#/paths/~1AssociateApplications/post"
@@ -6487,6 +6498,24 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        unarchive_application:
+          operation:
+            $ref: "#/paths/~1UnarchiveApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_application:
@@ -6510,6 +6539,94 @@ components:
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
+    waves:
+      id: aws.mgn.waves
+      name: waves
+      title: waves
+      methods:
+        archive_wave:
+          operation:
+            $ref: "#/paths/~1ArchiveWave/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_wave:
+          operation:
+            $ref: "#/paths/~1CreateWave/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_wave:
+          operation:
+            $ref: "#/paths/~1DeleteWave/post"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_waves:
+          operation:
+            $ref: "#/paths/~1ListWaves/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        unarchive_wave:
+          operation:
+            $ref: "#/paths/~1UnarchiveWave/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_wave:
+          operation:
+            $ref: "#/paths/~1UpdateWave/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/waves/methods/list_waves"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/waves/methods/create_wave"
+        update:
+          - $ref: "#/components/x-stackQL-resources/waves/methods/update_wave"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/waves/methods/delete_wave"
     source_servers:
       id: aws.mgn.source_servers
       name: source_servers
@@ -6518,6 +6635,17 @@ components:
         associate_source_servers:
           operation:
             $ref: "#/paths/~1AssociateSourceServers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        change_server_life_cycle_state:
+          operation:
+            $ref: "#/paths/~1ChangeServerLifeCycleState/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6547,11 +6675,106 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         disassociate_source_servers:
           operation:
             $ref: "#/paths/~1DisassociateSourceServers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disconnect_from_service:
+          operation:
+            $ref: "#/paths/~1DisconnectFromService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        finalize_cutover:
+          operation:
+            $ref: "#/paths/~1FinalizeCutover/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        mark_as_archived:
+          operation:
+            $ref: "#/paths/~1MarkAsArchived/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        pause_replication:
+          operation:
+            $ref: "#/paths/~1PauseReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resume_replication:
+          operation:
+            $ref: "#/paths/~1ResumeReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        retry_data_replication:
+          operation:
+            $ref: "#/paths/~1RetryDataReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_replication:
+          operation:
+            $ref: "#/paths/~1StartReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_replication:
+          operation:
+            $ref: "#/paths/~1StopReplication/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6571,12 +6794,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_source_server_replication_type:
+          operation:
+            $ref: "#/paths/~1UpdateSourceServerReplicationType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/source_servers/methods/describe_source_servers"
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/source_servers/methods/associate_source_servers"
+          - $ref: "#/components/x-stackQL-resources/source_servers/methods/update_source_server_replication_type"
           - $ref: "#/components/x-stackQL-resources/source_servers/methods/update_source_server"
         delete:
           - $ref: "#/components/x-stackQL-resources/source_servers/methods/delete_source_server"
@@ -6616,6 +6851,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_connector:
@@ -6675,6 +6917,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_launch_configuration_template:
@@ -6745,6 +6994,57 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_network_migration_analysis:
+          operation:
+            $ref: "#/paths/~1network-migration~1StartNetworkMigrationAnalysis/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_network_migration_code_generation:
+          operation:
+            $ref: "#/paths/~1network-migration~1StartNetworkMigrationCodeGeneration/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_network_migration_deployment:
+          operation:
+            $ref: "#/paths/~1network-migration~1StartNetworkMigrationDeployment/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_network_migration_mapping:
+          operation:
+            $ref: "#/paths/~1network-migration~1StartNetworkMigrationMapping/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_network_migration_definition:
@@ -6805,6 +7105,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_replication_configuration_template:
@@ -6827,65 +7134,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/replication_configuration_templates/methods/update_replication_configuration_template"
         delete:
           - $ref: "#/components/x-stackQL-resources/replication_configuration_templates/methods/delete_replication_configuration_template"
-    waves:
-      id: aws.mgn.waves
-      name: waves
-      title: waves
-      methods:
-        create_wave:
-          operation:
-            $ref: "#/paths/~1CreateWave/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_wave:
-          operation:
-            $ref: "#/paths/~1DeleteWave/post"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_waves:
-          operation:
-            $ref: "#/paths/~1ListWaves/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_wave:
-          operation:
-            $ref: "#/paths/~1UpdateWave/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/waves/methods/list_waves"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/waves/methods/create_wave"
-        update:
-          - $ref: "#/components/x-stackQL-resources/waves/methods/update_wave"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/waves/methods/delete_wave"
     jobs:
       id: aws.mgn.jobs
       name: jobs
@@ -6912,6 +7160,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6945,6 +7200,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vcenter_clients/methods/describe_vcenter_clients"
@@ -6967,6 +7230,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7020,6 +7290,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.construct
           request:
             nativeCasing: pascal
           config:
@@ -7035,6 +7306,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7093,6 +7371,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7116,6 +7401,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7139,6 +7431,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7162,6 +7461,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7182,6 +7488,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_import_file_enrichment:
+          operation:
+            $ref: "#/paths/~1network-migration~1StartImportFileEnrichment/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7208,6 +7532,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7231,6 +7562,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7254,6 +7592,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7277,6 +7622,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7300,6 +7652,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7323,6 +7682,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7346,6 +7712,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7369,6 +7742,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7392,6 +7772,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_network_migration_mapper_segment:
@@ -7427,6 +7814,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7447,6 +7841,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_network_migration_mapping_update:
+          operation:
+            $ref: "#/paths/~1network-migration~1StartNetworkMigrationMappingUpdate/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -7473,6 +7885,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_source_server_action:
@@ -7506,10 +7925,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/source_server_actions/methods/put_source_server_action"
         delete: []
-    tags_for_resources:
-      id: aws.mgn.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mgn.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7517,17 +7936,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mgn.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -7546,11 +7954,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     template_actions:
       id: aws.mgn.template_actions
@@ -7567,6 +7976,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_template_action:
@@ -7622,25 +8038,3 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/target_instances/methods/terminate_target_instances"
-    source_server_replication_types:
-      id: aws.mgn.source_server_replication_types
-      name: source_server_replication_types
-      title: source_server_replication_types
-      methods:
-        update_source_server_replication_type:
-          operation:
-            $ref: "#/paths/~1UpdateSourceServerReplicationType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/source_server_replication_types/methods/update_source_server_replication_type"
-        delete: []

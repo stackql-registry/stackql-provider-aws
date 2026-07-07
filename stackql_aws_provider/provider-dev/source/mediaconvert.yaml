@@ -84,6 +84,7 @@ paths:
       x-stackql-resource: jobs
       x-stackql-method: get_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Job
   /2017-08-29/jobs:
     post:
       operationId: CreateJob
@@ -186,6 +187,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2017-08-29/jobTemplates:
     post:
       operationId: CreateJobTemplate
@@ -279,6 +283,9 @@ paths:
       x-stackql-method: list_job_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2017-08-29/presets:
     post:
       operationId: CreatePreset
@@ -362,6 +369,9 @@ paths:
       x-stackql-method: list_presets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Presets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2017-08-29/queues:
     post:
       operationId: CreateQueue
@@ -445,6 +455,9 @@ paths:
       x-stackql-method: list_queues
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Queues
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2017-08-29/resourceShares:
     post:
       operationId: CreateResourceShare
@@ -471,7 +484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateResourceShareResponse'
-      x-stackql-resource: resource_shares
+      x-stackql-resource: jobs
       x-stackql-method: create_resource_share
       x-stackql-verb: INSERT
   /2017-08-29/jobTemplates/{name}:
@@ -515,6 +528,7 @@ paths:
       x-stackql-resource: job_templates
       x-stackql-method: get_job_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JobTemplate
     put:
       operationId: UpdateJobTemplate
       description: Modify one of your existing job templates.
@@ -587,6 +601,7 @@ paths:
       x-stackql-resource: policies
       x-stackql-method: get_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Policy
     put:
       operationId: PutPolicy
       description: Create or change your policy. For more information about policies, see the user guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
@@ -653,6 +668,7 @@ paths:
       x-stackql-resource: presets
       x-stackql-method: get_preset
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Preset
     put:
       operationId: UpdatePreset
       description: Modify one of your existing presets.
@@ -727,6 +743,7 @@ paths:
       x-stackql-resource: queues
       x-stackql-method: get_queue
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Queue
     put:
       operationId: UpdateQueue
       description: Modify one of your existing queues.
@@ -795,6 +812,9 @@ paths:
       x-stackql-method: describe_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Endpoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /2017-08-29/certificates/{arn}:
     delete:
       operationId: DisassociateCertificate
@@ -857,9 +877,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResourceTags
     put:
       operationId: UntagResource
       description: Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the
@@ -888,7 +909,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /2017-08-29/versions:
@@ -920,6 +941,9 @@ paths:
       x-stackql-method: list_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2017-08-29/probe:
     post:
       operationId: Probe
@@ -1003,6 +1027,9 @@ paths:
       x-stackql-method: search_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2017-08-29/jobsQueries:
     post:
       operationId: StartJobsQuery
@@ -1031,7 +1058,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobsQueryResponse'
-      x-stackql-resource: jobs_query
+      x-stackql-resource: jobs
       x-stackql-method: start_jobs_query
       x-stackql-verb: EXEC
   /2017-08-29/tags:
@@ -1061,7 +1088,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
 components:

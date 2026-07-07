@@ -485,7 +485,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: utterances
+      x-stackql-resource: bots
       x-stackql-method: delete_utterances
       x-stackql-verb: DELETE
   /bots/{name}/versions/{versionoralias}:
@@ -560,6 +560,9 @@ paths:
       x-stackql-method: get_bot_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BotAliases
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /bots/{bot_name}/aliases/{alias_name}/channels/:
     get:
       operationId: GetBotChannelAssociations
@@ -611,6 +614,9 @@ paths:
       x-stackql-method: get_bot_channel_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.botChannelAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /bots/{name}/versions/:
     get:
       operationId: GetBotVersions
@@ -651,6 +657,9 @@ paths:
       x-stackql-method: get_bot_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.bots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /bots/:
     get:
       operationId: GetBots
@@ -691,6 +700,9 @@ paths:
       x-stackql-method: get_bots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.bots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /builtins/intents/{signature}:
     get:
       operationId: GetBuiltinIntent
@@ -758,6 +770,9 @@ paths:
       x-stackql-method: get_builtin_intents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.intents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /builtins/slottypes/:
     get:
       operationId: GetBuiltinSlotTypes
@@ -803,6 +818,9 @@ paths:
       x-stackql-method: get_builtin_slot_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.slotTypes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /exports/:
     get:
       operationId: GetExport
@@ -903,6 +921,9 @@ paths:
       x-stackql-method: get_intent_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.intents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /intents/:
     get:
       operationId: GetIntents
@@ -942,6 +963,9 @@ paths:
       x-stackql-method: get_intents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.intents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /migrations/{migration_id}:
     get:
       operationId: GetMigration
@@ -1125,6 +1149,9 @@ paths:
       x-stackql-method: get_slot_type_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.slotTypes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /slottypes/:
     get:
       operationId: GetSlotTypes
@@ -1164,6 +1191,9 @@ paths:
       x-stackql-method: get_slot_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.slotTypes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /bots/{botname}/utterances?view=aggregation:
     get:
       operationId: GetUtterancesView
@@ -1229,7 +1259,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1261,7 +1291,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1287,7 +1317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /bots/{name}/versions/$LATEST:

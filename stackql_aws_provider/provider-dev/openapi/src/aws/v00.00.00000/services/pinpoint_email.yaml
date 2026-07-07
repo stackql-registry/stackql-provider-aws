@@ -72,7 +72,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListConfigurationSetsResponse"
+                $ref: "#/components/schemas/ListConfigurationSetsOutputDisplay"
   /v1/email/configuration-sets/{configuration_set_name}/event-destinations:
     post:
       operationId: CreateConfigurationSetEventDestination
@@ -169,7 +169,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDedicatedIpPoolsResponse"
+                $ref: "#/components/schemas/ListDedicatedIpPoolsOutputDisplay"
   /v1/email/deliverability-dashboard/test:
     post:
       operationId: CreateDeliverabilityTestReport
@@ -675,7 +675,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -1996,35 +1995,32 @@ components:
       enum:
         - USE_DEFAULT_VALUE
         - REJECT_MESSAGE
-    ListConfigurationSetsResponse:
-      description: A list of configuration sets in your Amazon Pinpoint account in the current AWS Region.
+    ListConfigurationSetsRowDisplay:
       type: object
       properties:
-        ConfigurationSets:
-          $ref: "#/components/schemas/ConfigurationSetNameList"
+        configuration_set:
+          type: string
           description: An array that contains all of the configuration sets in your Amazon Pinpoint account in the current AWS Region.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: A token that indicates that there are additional configuration sets to list. To view additional configuration sets, issue another request to ListConfigurationSets, and pass this token in the NextToken parameter.
-    ConfigurationSetNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/ConfigurationSetName"
-    ListDedicatedIpPoolsResponse:
-      description: A list of dedicated IP pools.
+    ListConfigurationSetsOutputDisplay:
       type: object
       properties:
-        DedicatedIpPools:
-          $ref: "#/components/schemas/ListOfDedicatedIpPools"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListConfigurationSetsRowDisplay"
+    ListDedicatedIpPoolsRowDisplay:
+      type: object
+      properties:
+        dedicated_ip_pool:
+          type: string
           description: A list of all of the dedicated IP pools that are associated with your Amazon Pinpoint account.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: A token that indicates that there are additional IP pools to list. To view additional IP pools, issue another request to ListDedicatedIpPools, passing this token in the NextToken parameter.
-    ListOfDedicatedIpPools:
-      description: A list of dedicated IP pools that are associated with your Amazon Pinpoint account.
-      type: array
-      items:
-        $ref: "#/components/schemas/PoolName"
+    ListDedicatedIpPoolsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDedicatedIpPoolsRowDisplay"
     ListDeliverabilityTestReportsResponse:
       description: A list of the predictive inbox placement test reports that are available for your account, regardless of whether or not those tests are complete.
       type: object
@@ -2215,9 +2211,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ConfigurationSets
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListConfigurationSetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ConfigurationSets" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration_set": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_configuration_set:
           operation:
             $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}/delete"
@@ -2230,6 +2240,50 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        put_configuration_set_delivery_options:
+          operation:
+            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1delivery-options/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_configuration_set_reputation_options:
+          operation:
+            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1reputation-options/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_configuration_set_sending_options:
+          operation:
+            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1sending/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_configuration_set_tracking_options:
+          operation:
+            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1tracking-options/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/get_configuration_set"
@@ -2237,6 +2291,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set"
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/put_configuration_set_delivery_options"
         delete:
           - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/delete_configuration_set"
     configuration_set_event_destinations:
@@ -2309,9 +2365,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.DedicatedIpPools
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDedicatedIpPoolsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "DedicatedIpPools" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"dedicated_ip_pool": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_dedicated_ip_pool:
           operation:
             $ref: "#/paths/~1v1~1email~1dedicated-ip-pools~1{pool_name}/delete"
@@ -2357,6 +2427,14 @@ components:
             objectKey: $.DeliverabilityTestReports
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/deliverability_test_reports/methods/get_deliverability_test_report"
@@ -2390,6 +2468,14 @@ components:
             objectKey: $.EmailIdentities
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_email_identity:
           operation:
             $ref: "#/paths/~1v1~1email~1identities~1{email_identity}/delete"
@@ -2402,6 +2488,39 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        put_email_identity_dkim_attributes:
+          operation:
+            $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1dkim/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_email_identity_feedback_attributes:
+          operation:
+            $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1feedback/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_email_identity_mail_from_attributes:
+          operation:
+            $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1mail-from/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/email_identities/methods/get_email_identity"
@@ -2409,6 +2528,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/email_identities/methods/create_email_identity"
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/email_identities/methods/put_email_identity_dkim_attributes"
         delete:
           - $ref: "#/components/x-stackQL-resources/email_identities/methods/delete_email_identity"
     accounts:
@@ -2422,11 +2543,35 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        put_account_dedicated_ip_warmup_attributes:
+          operation:
+            $ref: "#/paths/~1v1~1email~1account~1dedicated-ips~1warmup/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_account_sending_attributes:
+          operation:
+            $ref: "#/paths/~1v1~1email~1account~1sending/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/accounts/methods/get_account"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/put_account_dedicated_ip_warmup_attributes"
         delete: []
     blacklist_reports:
       id: aws.pinpoint_email.blacklist_reports
@@ -2458,6 +2603,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DedicatedIp
         get_dedicated_ips:
           operation:
             $ref: "#/paths/~1v1~1email~1dedicated-ips/get"
@@ -2467,12 +2613,45 @@ components:
             objectKey: $.DedicatedIps
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        put_dedicated_ip_in_pool:
+          operation:
+            $ref: "#/paths/~1v1~1email~1dedicated-ips~1{ip}~1pool/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_dedicated_ip_warmup_attributes:
+          operation:
+            $ref: "#/paths/~1v1~1email~1dedicated-ips~1{ip}~1warmup/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dedicated_ips/methods/get_dedicated_ip"
           - $ref: "#/components/x-stackQL-resources/dedicated_ips/methods/get_dedicated_ips"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/dedicated_ips/methods/put_dedicated_ip_in_pool"
+          - $ref: "#/components/x-stackQL-resources/dedicated_ips/methods/put_dedicated_ip_warmup_attributes"
         delete: []
     deliverability_dashboard_options:
       id: aws.pinpoint_email.deliverability_dashboard_options
@@ -2515,6 +2694,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DomainDeliverabilityCampaign
         list_domain_deliverability_campaigns:
           operation:
             $ref: "#/paths/~1v1~1email~1deliverability-dashboard~1domains~1{subscribed_domain}~1campaigns/get"
@@ -2549,10 +2729,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.pinpoint_email.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.pinpoint_email.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2562,17 +2742,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.pinpoint_email.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1email~1tags/post"
@@ -2593,262 +2762,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    account_dedicated_ip_warmup_attributes:
-      id: aws.pinpoint_email.account_dedicated_ip_warmup_attributes
-      name: account_dedicated_ip_warmup_attributes
-      title: account_dedicated_ip_warmup_attributes
-      methods:
-        put_account_dedicated_ip_warmup_attributes:
-          operation:
-            $ref: "#/paths/~1v1~1email~1account~1dedicated-ips~1warmup/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/account_dedicated_ip_warmup_attributes/methods/put_account_dedicated_ip_warmup_attributes"
-        delete: []
-    account_sending_attributes:
-      id: aws.pinpoint_email.account_sending_attributes
-      name: account_sending_attributes
-      title: account_sending_attributes
-      methods:
-        put_account_sending_attributes:
-          operation:
-            $ref: "#/paths/~1v1~1email~1account~1sending/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/account_sending_attributes/methods/put_account_sending_attributes"
-        delete: []
-    configuration_set_delivery_options:
-      id: aws.pinpoint_email.configuration_set_delivery_options
-      name: configuration_set_delivery_options
-      title: configuration_set_delivery_options
-      methods:
-        put_configuration_set_delivery_options:
-          operation:
-            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1delivery-options/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_delivery_options/methods/put_configuration_set_delivery_options"
-        delete: []
-    configuration_set_reputation_options:
-      id: aws.pinpoint_email.configuration_set_reputation_options
-      name: configuration_set_reputation_options
-      title: configuration_set_reputation_options
-      methods:
-        put_configuration_set_reputation_options:
-          operation:
-            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1reputation-options/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_reputation_options/methods/put_configuration_set_reputation_options"
-        delete: []
-    configuration_set_sending_options:
-      id: aws.pinpoint_email.configuration_set_sending_options
-      name: configuration_set_sending_options
-      title: configuration_set_sending_options
-      methods:
-        put_configuration_set_sending_options:
-          operation:
-            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1sending/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_sending_options/methods/put_configuration_set_sending_options"
-        delete: []
-    configuration_set_tracking_options:
-      id: aws.pinpoint_email.configuration_set_tracking_options
-      name: configuration_set_tracking_options
-      title: configuration_set_tracking_options
-      methods:
-        put_configuration_set_tracking_options:
-          operation:
-            $ref: "#/paths/~1v1~1email~1configuration-sets~1{configuration_set_name}~1tracking-options/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_tracking_options/methods/put_configuration_set_tracking_options"
-        delete: []
-    dedicated_ip_in_pools:
-      id: aws.pinpoint_email.dedicated_ip_in_pools
-      name: dedicated_ip_in_pools
-      title: dedicated_ip_in_pools
-      methods:
-        put_dedicated_ip_in_pool:
-          operation:
-            $ref: "#/paths/~1v1~1email~1dedicated-ips~1{ip}~1pool/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/dedicated_ip_in_pools/methods/put_dedicated_ip_in_pool"
-        delete: []
-    dedicated_ip_warmup_attributes:
-      id: aws.pinpoint_email.dedicated_ip_warmup_attributes
-      name: dedicated_ip_warmup_attributes
-      title: dedicated_ip_warmup_attributes
-      methods:
-        put_dedicated_ip_warmup_attributes:
-          operation:
-            $ref: "#/paths/~1v1~1email~1dedicated-ips~1{ip}~1warmup/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/dedicated_ip_warmup_attributes/methods/put_dedicated_ip_warmup_attributes"
-        delete: []
-    email_identity_dkim_attributes:
-      id: aws.pinpoint_email.email_identity_dkim_attributes
-      name: email_identity_dkim_attributes
-      title: email_identity_dkim_attributes
-      methods:
-        put_email_identity_dkim_attributes:
-          operation:
-            $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1dkim/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/email_identity_dkim_attributes/methods/put_email_identity_dkim_attributes"
-        delete: []
-    email_identity_feedback_attributes:
-      id: aws.pinpoint_email.email_identity_feedback_attributes
-      name: email_identity_feedback_attributes
-      title: email_identity_feedback_attributes
-      methods:
-        put_email_identity_feedback_attributes:
-          operation:
-            $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1feedback/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/email_identity_feedback_attributes/methods/put_email_identity_feedback_attributes"
-        delete: []
-    email_identity_mail_from_attributes:
-      id: aws.pinpoint_email.email_identity_mail_from_attributes
-      name: email_identity_mail_from_attributes
-      title: email_identity_mail_from_attributes
-      methods:
-        put_email_identity_mail_from_attributes:
-          operation:
-            $ref: "#/paths/~1v1~1email~1identities~1{email_identity}~1mail-from/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/email_identity_mail_from_attributes/methods/put_email_identity_mail_from_attributes"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

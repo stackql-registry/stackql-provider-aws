@@ -1,0 +1,2 @@
+DELETE FROM aws.dynamodb.items
+WHERE region = '{{ region }}' AND TableName = '{{ table_name }}' AND Key = '{"pk":{"S":"smoke-2"}}'

@@ -36,7 +36,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptAttachmentResponse'
-      x-stackql-resource: attachment
+      x-stackql-resource: attachments
       x-stackql-method: accept_attachment
       x-stackql-verb: EXEC
   /global-networks/{global_network_id}/connect-peer-associations:
@@ -117,6 +117,9 @@ paths:
       x-stackql-method: get_connect_peer_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConnectPeerAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/customer-gateway-associations:
     post:
       operationId: AssociateCustomerGateway
@@ -156,7 +159,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateCustomerGatewayResponse'
-      x-stackql-resource: customer_gateways
+      x-stackql-resource: global_networks
       x-stackql-method: associate_customer_gateway
       x-stackql-verb: UPDATE
     get:
@@ -199,6 +202,9 @@ paths:
       x-stackql-method: get_customer_gateway_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CustomerGatewayAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/link-associations:
     post:
       operationId: AssociateLink
@@ -313,6 +319,9 @@ paths:
       x-stackql-method: get_link_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LinkAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/transit-gateway-connect-peer-associations:
     post:
       operationId: AssociateTransitGatewayConnectPeer
@@ -350,7 +359,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateTransitGatewayConnectPeerResponse'
-      x-stackql-resource: transit_gateway_connect_peers
+      x-stackql-resource: connect_peers
       x-stackql-method: associate_transit_gateway_connect_peer
       x-stackql-verb: UPDATE
     get:
@@ -392,6 +401,9 @@ paths:
       x-stackql-method: get_transit_gateway_connect_peer_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TransitGatewayConnectPeerAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /connect-attachments:
     post:
       operationId: CreateConnectAttachment
@@ -516,6 +528,9 @@ paths:
       x-stackql-method: list_connect_peers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConnectPeers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/connections:
     post:
       operationId: CreateConnection
@@ -606,6 +621,9 @@ paths:
       x-stackql-method: get_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Connections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /core-networks:
     post:
       operationId: CreateCoreNetwork
@@ -667,6 +685,9 @@ paths:
       x-stackql-method: list_core_networks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CoreNetworks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prefix-list:
     post:
       operationId: CreateCoreNetworkPrefixListAssociation
@@ -793,6 +814,9 @@ paths:
       x-stackql-method: get_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Devices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /direct-connect-gateway-attachments:
     post:
       operationId: CreateDirectConnectGatewayAttachment
@@ -892,6 +916,9 @@ paths:
       x-stackql-method: describe_global_networks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GlobalNetworks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/links:
     post:
       operationId: CreateLink
@@ -993,6 +1020,9 @@ paths:
       x-stackql-method: get_links
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Links
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/sites:
     post:
       operationId: CreateSite
@@ -1066,6 +1096,9 @@ paths:
       x-stackql-method: get_sites
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Sites
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /site-to-site-vpn-attachments:
     post:
       operationId: CreateSiteToSiteVpnAttachment
@@ -1271,6 +1304,7 @@ paths:
       x-stackql-resource: connect_peers
       x-stackql-method: get_connect_peer
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ConnectPeer
   /global-networks/{global_network_id}/connections/{connection_id}:
     delete:
       operationId: DeleteConnection
@@ -1380,6 +1414,7 @@ paths:
       x-stackql-resource: core_networks
       x-stackql-method: get_core_network
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CoreNetwork
     patch:
       operationId: UpdateCoreNetwork
       description: Updates the description of a core network.
@@ -1844,7 +1879,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterTransitGatewayResponse'
-      x-stackql-resource: transit_gateways
+      x-stackql-resource: global_networks
       x-stackql-method: deregister_transit_gateway
       x-stackql-verb: DELETE
   /global-networks/{global_network_id}/connect-peer-associations/{connect_peer_id}:
@@ -1898,7 +1933,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateCustomerGatewayResponse'
-      x-stackql-resource: customer_gateways
+      x-stackql-resource: global_networks
       x-stackql-method: disassociate_customer_gateway
       x-stackql-verb: UPDATE
   /global-networks/{global_network_id}/transit-gateway-connect-peer-associations/{transit_gateway_connect_peer_arn}:
@@ -1925,7 +1960,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateTransitGatewayConnectPeerResponse'
-      x-stackql-resource: transit_gateway_connect_peers
+      x-stackql-resource: connect_peers
       x-stackql-method: disassociate_transit_gateway_connect_peer
       x-stackql-verb: UPDATE
   /core-networks/{core_network_id}/core-network-change-sets/{policy_version_id}/execute:
@@ -1952,7 +1987,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteCoreNetworkChangeSetResponse'
-      x-stackql-resource: execute_core_network_change_set
+      x-stackql-resource: core_networks
       x-stackql-method: execute_core_network_change_set
       x-stackql-verb: EXEC
   /connect-attachments/{attachment_id}:
@@ -1976,6 +2011,7 @@ paths:
       x-stackql-resource: connect_attachments
       x-stackql-method: get_connect_attachment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ConnectAttachment
   /core-networks/{core_network_id}/core-network-change-events/{policy_version_id}:
     get:
       operationId: GetCoreNetworkChangeEvents
@@ -2016,6 +2052,9 @@ paths:
       x-stackql-method: get_core_network_change_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CoreNetworkChangeEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /core-networks/{core_network_id}/core-network-change-sets/{policy_version_id}:
     get:
       operationId: GetCoreNetworkChangeSet
@@ -2056,6 +2095,9 @@ paths:
       x-stackql-method: get_core_network_change_set
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CoreNetworkChanges
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /core-networks/{core_network_id}/core-network-policy:
     get:
       operationId: GetCoreNetworkPolicy
@@ -2090,6 +2132,7 @@ paths:
       x-stackql-resource: core_network_policies
       x-stackql-method: get_core_network_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CoreNetworkPolicy
     post:
       operationId: PutCoreNetworkPolicy
       description: Creates a new, immutable version of a core network policy. A subsequent change set is created showing the
@@ -2149,6 +2192,7 @@ paths:
       x-stackql-resource: direct_connect_gateway_attachments
       x-stackql-method: get_direct_connect_gateway_attachment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DirectConnectGatewayAttachment
     patch:
       operationId: UpdateDirectConnectGatewayAttachment
       description: Updates the edge locations associated with an Amazon Web Services Direct Connect gateway attachment.
@@ -2221,6 +2265,9 @@ paths:
       x-stackql-method: get_network_resource_counts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NetworkResourceCounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/network-resource-relationships:
     get:
       operationId: GetNetworkResourceRelationships
@@ -2294,6 +2341,9 @@ paths:
       x-stackql-method: get_network_resource_relationships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Relationships
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/network-resources:
     get:
       operationId: GetNetworkResources
@@ -2368,6 +2418,9 @@ paths:
       x-stackql-method: get_network_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NetworkResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/network-routes:
     post:
       operationId: GetNetworkRoutes
@@ -2487,6 +2540,9 @@ paths:
       x-stackql-method: get_network_telemetry
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NetworkTelemetry
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /global-networks/{global_network_id}/route-analyses/{route_analysis_id}:
     get:
       operationId: GetRouteAnalysis
@@ -2514,6 +2570,7 @@ paths:
       x-stackql-resource: route_analysis
       x-stackql-method: get_route_analysis
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RouteAnalysis
   /site-to-site-vpn-attachments/{attachment_id}:
     get:
       operationId: GetSiteToSiteVpnAttachment
@@ -2535,6 +2592,7 @@ paths:
       x-stackql-resource: site_to_site_vpn_attachments
       x-stackql-method: get_site_to_site_vpn_attachment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SiteToSiteVpnAttachment
   /transit-gateway-peerings/{peering_id}:
     get:
       operationId: GetTransitGatewayPeering
@@ -2556,6 +2614,7 @@ paths:
       x-stackql-resource: transit_gateway_peerings
       x-stackql-method: get_transit_gateway_peering
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TransitGatewayPeering
   /global-networks/{global_network_id}/transit-gateway-registrations:
     get:
       operationId: GetTransitGatewayRegistrations
@@ -2596,6 +2655,9 @@ paths:
       x-stackql-method: get_transit_gateway_registrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TransitGatewayRegistrations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: RegisterTransitGateway
       description: Registers a transit gateway in your global network. Not all Regions support transit gateways for global
@@ -2628,7 +2690,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterTransitGatewayResponse'
-      x-stackql-resource: transit_gateways
+      x-stackql-resource: global_networks
       x-stackql-method: register_transit_gateway
       x-stackql-verb: INSERT
   /transit-gateway-route-table-attachments/{attachment_id}:
@@ -2652,6 +2714,7 @@ paths:
       x-stackql-resource: transit_gateway_route_table_attachments
       x-stackql-method: get_transit_gateway_route_table_attachment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TransitGatewayRouteTableAttachment
   /vpc-attachments/{attachment_id}:
     get:
       operationId: GetVpcAttachment
@@ -2673,6 +2736,7 @@ paths:
       x-stackql-resource: vpc_attachments
       x-stackql-method: get_vpc_attachment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VpcAttachment
     patch:
       operationId: UpdateVpcAttachment
       description: Updates a VPC attachment.
@@ -2746,6 +2810,9 @@ paths:
       x-stackql-method: list_attachment_routing_policy_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AttachmentRoutingPolicyAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /attachments:
     get:
       operationId: ListAttachments
@@ -2798,6 +2865,9 @@ paths:
       x-stackql-method: list_attachments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Attachments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /core-networks/{core_network_id}/core-network-policy-versions:
     get:
       operationId: ListCoreNetworkPolicyVersions
@@ -2832,6 +2902,9 @@ paths:
       x-stackql-method: list_core_network_policy_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CoreNetworkPolicyVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prefix-list/core-network/{core_network_id}:
     get:
       operationId: ListCoreNetworkPrefixListAssociations
@@ -2872,6 +2945,9 @@ paths:
       x-stackql-method: list_core_network_prefix_list_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PrefixListAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /core-networks/{core_network_id}/core-network-routing-information:
     post:
       operationId: ListCoreNetworkRoutingInformation
@@ -2930,6 +3006,9 @@ paths:
       x-stackql-method: list_core_network_routing_information
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CoreNetworkRoutingInformation
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /organizations/service-access:
     get:
       operationId: ListOrganizationServiceAccessStatus
@@ -2958,6 +3037,7 @@ paths:
       x-stackql-resource: organization_service_access_status
       x-stackql-method: list_organization_service_access_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.OrganizationStatus
     post:
       operationId: StartOrganizationServiceAccessUpdate
       description: Enables the Network Manager service for an Amazon Web Services Organization. This can only be called by
@@ -3036,6 +3116,9 @@ paths:
       x-stackql-method: list_peerings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Peerings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -3054,7 +3137,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -3085,7 +3168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3111,7 +3194,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /routing-policy-label:
@@ -3145,7 +3228,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAttachmentRoutingPolicyLabelResponse'
-      x-stackql-resource: attachment_routing_policy_labels
+      x-stackql-resource: attachments
       x-stackql-method: put_attachment_routing_policy_label
       x-stackql-verb: REPLACE
   /attachments/{attachment_id}/reject:
@@ -3166,7 +3249,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectAttachmentResponse'
-      x-stackql-resource: attachment
+      x-stackql-resource: attachments
       x-stackql-method: reject_attachment
       x-stackql-verb: EXEC
   /routing-policy-label/core-network/{core_network_id}/attachment/{attachment_id}:
@@ -3193,7 +3276,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveAttachmentRoutingPolicyLabelResponse'
-      x-stackql-resource: attachment_routing_policy_labels
+      x-stackql-resource: attachments
       x-stackql-method: remove_attachment_routing_policy_label
       x-stackql-verb: UPDATE
   /core-networks/{core_network_id}/core-network-policy-versions/{policy_version_id}/restore:
@@ -3221,7 +3304,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreCoreNetworkPolicyVersionResponse'
-      x-stackql-resource: core_network_policy_version
+      x-stackql-resource: core_network_policies
       x-stackql-method: restore_core_network_policy_version
       x-stackql-verb: EXEC
   /global-networks/{global_network_id}/route-analyses:
@@ -3299,7 +3382,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNetworkResourceMetadataResponse'
-      x-stackql-resource: network_resource_metadatas
+      x-stackql-resource: network_resources
       x-stackql-method: update_network_resource_metadata
       x-stackql-verb: UPDATE
 components:

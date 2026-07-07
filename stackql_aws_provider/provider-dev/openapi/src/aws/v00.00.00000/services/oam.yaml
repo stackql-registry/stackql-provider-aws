@@ -66,8 +66,6 @@ paths:
                   $ref: "#/components/schemas/SinkName"
                 Tags:
                   $ref: "#/components/schemas/TagMapInput"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -304,8 +302,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMapInput"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -353,7 +349,6 @@ paths:
                 SinkIdentifier:
                   $ref: "#/components/schemas/ResourceIdentifier"
               required:
-                - Policy
                 - SinkIdentifier
       responses:
         "200":
@@ -829,6 +824,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_link:
@@ -900,6 +902,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -961,6 +970,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -969,10 +985,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.oam.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.oam.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -980,17 +996,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.oam.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
@@ -1011,9 +1016,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

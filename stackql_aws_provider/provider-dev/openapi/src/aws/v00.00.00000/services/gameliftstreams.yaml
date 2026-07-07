@@ -122,7 +122,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
               required:
-                - Description
                 - RuntimeEnvironment
                 - ExecutablePath
                 - ApplicationSourceUri
@@ -181,7 +180,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
               required:
-                - Description
                 - StreamClass
       responses:
         "201":
@@ -563,7 +561,6 @@ paths:
                 PerformanceStatsConfiguration:
                   $ref: "#/components/schemas/PerformanceStatsConfiguration"
               required:
-                - Protocol
                 - SignalRequest
                 - ApplicationIdentifier
       responses:
@@ -646,8 +643,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1728,10 +1723,10 @@ components:
       required:
         - Arn
   x-stackQL-resources:
-    stream_group_locations:
-      id: aws.gameliftstreams.stream_group_locations
-      name: stream_group_locations
-      title: stream_group_locations
+    stream_groups:
+      id: aws.gameliftstreams.stream_groups
+      name: stream_groups
+      title: stream_groups
       methods:
         add_stream_group_locations:
           operation:
@@ -1751,13 +1746,68 @@ components:
             openAPIDocKey: "204"
           request:
             nativeCasing: pascal
+        create_stream_group:
+          operation:
+            $ref: "#/paths/~1streamgroups/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_stream_groups:
+          operation:
+            $ref: "#/paths/~1streamgroups/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_stream_group:
+          operation:
+            $ref: "#/paths/~1streamgroups~1{identifier}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_stream_group:
+          operation:
+            $ref: "#/paths/~1streamgroups~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_stream_group:
+          operation:
+            $ref: "#/paths/~1streamgroups~1{identifier}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/get_stream_group"
+          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/list_stream_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/create_stream_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/stream_group_locations/methods/add_stream_group_locations"
-          - $ref: "#/components/x-stackQL-resources/stream_group_locations/methods/remove_stream_group_locations"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/add_stream_group_locations"
+          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/remove_stream_group_locations"
+          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/update_stream_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/delete_stream_group"
     applications:
       id: aws.gameliftstreams.applications
       name: applications
@@ -1794,6 +1844,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{identifier}/delete"
@@ -1827,6 +1885,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_stream_session:
+          operation:
+            $ref: "#/paths/~1streamgroups~1{identifier}~1streamsessions/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
@@ -1838,67 +1907,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
-    stream_groups:
-      id: aws.gameliftstreams.stream_groups
-      name: stream_groups
-      title: stream_groups
-      methods:
-        create_stream_group:
-          operation:
-            $ref: "#/paths/~1streamgroups/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_stream_groups:
-          operation:
-            $ref: "#/paths/~1streamgroups/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Items
-          request:
-            nativeCasing: pascal
-        delete_stream_group:
-          operation:
-            $ref: "#/paths/~1streamgroups~1{identifier}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_stream_group:
-          operation:
-            $ref: "#/paths/~1streamgroups~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_stream_group:
-          operation:
-            $ref: "#/paths/~1streamgroups~1{identifier}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/get_stream_group"
-          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/list_stream_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/create_stream_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/update_stream_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/stream_groups/methods/delete_stream_group"
-    stream_session_connections:
-      id: aws.gameliftstreams.stream_session_connections
-      name: stream_session_connections
-      title: stream_session_connections
+    stream_sessions:
+      id: aws.gameliftstreams.stream_sessions
+      name: stream_sessions
+      title: stream_sessions
       methods:
         create_stream_session_connection:
           operation:
@@ -1911,17 +1923,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/stream_session_connections/methods/create_stream_session_connection"
-        update: []
-        delete: []
-    stream_sessions:
-      id: aws.gameliftstreams.stream_sessions
-      name: stream_sessions
-      title: stream_sessions
-      methods:
+        export_stream_session_files:
+          operation:
+            $ref: "#/paths/~1streamgroups~1{identifier}~1streamsessions~1{stream_session_identifier}~1exportfiles/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_stream_session:
           operation:
             $ref: "#/paths/~1streamgroups~1{identifier}~1streamsessions~1{stream_session_identifier}/get"
@@ -1942,11 +1954,20 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/get_stream_session"
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/list_stream_sessions"
-        insert: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/create_stream_session_connection"
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/stream_sessions/methods/terminate_stream_session"
@@ -1964,16 +1985,24 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/stream_sessions_by_accounts/methods/list_stream_sessions_by_account"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.gameliftstreams.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.gameliftstreams.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1981,17 +2010,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.gameliftstreams.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2012,9 +2030,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

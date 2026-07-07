@@ -85,6 +85,9 @@ paths:
       x-stackql-method: list_common_controls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CommonControls
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-control-mappings:
     post:
       operationId: ListControlMappings
@@ -123,6 +126,9 @@ paths:
       x-stackql-method: list_control_mappings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ControlMappings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-controls:
     post:
       operationId: ListControls
@@ -162,6 +168,9 @@ paths:
       x-stackql-method: list_controls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Controls
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /domains:
     post:
       operationId: ListDomains
@@ -190,6 +199,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Domains
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /objectives:
     post:
       operationId: ListObjectives
@@ -228,6 +240,9 @@ paths:
       x-stackql-method: list_objectives
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Objectives
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

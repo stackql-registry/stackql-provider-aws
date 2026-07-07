@@ -1022,9 +1022,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_queued_savings_plan:
+          operation:
+            $ref: "#/paths/~1DeleteQueuedSavingsPlan/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         describe_savings_plans:
           operation:
             $ref: "#/paths/~1DescribeSavingsPlans/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        return_savings_plan:
+          operation:
+            $ref: "#/paths/~1ReturnSavingsPlan/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1039,29 +1061,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/savings_plans/methods/create_savings_plan"
         update: []
-        delete: []
-    queued_savings_plans:
-      id: aws.savingsplans.queued_savings_plans
-      name: queued_savings_plans
-      title: queued_savings_plans
-      methods:
-        delete_queued_savings_plan:
-          operation:
-            $ref: "#/paths/~1DeleteQueuedSavingsPlan/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/queued_savings_plans/methods/delete_queued_savings_plan"
+          - $ref: "#/components/x-stackQL-resources/savings_plans/methods/delete_queued_savings_plan"
     savings_plan_rates:
       id: aws.savingsplans.savings_plan_rates
       name: savings_plan_rates
@@ -1128,10 +1129,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.savingsplans.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.savingsplans.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1144,17 +1145,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.savingsplans.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1178,9 +1168,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

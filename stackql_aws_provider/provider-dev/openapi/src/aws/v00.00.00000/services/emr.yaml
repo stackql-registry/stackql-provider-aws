@@ -282,7 +282,6 @@ paths:
                   $ref: "#/components/schemas/String"
                   description: The security configuration details in JSON format. For JSON parameters and examples, see Use Security Configurations to Set Up Cluster Security in the Amazon EMR Management Guide.
               required:
-                - Name
                 - SecurityConfiguration
       responses:
         "200":
@@ -364,7 +363,6 @@ paths:
                   $ref: "#/components/schemas/XmlString"
                   description: The KMS key identifier (ARN) used to encrypt Amazon EMR Studio workspace and notebook files when backed up to Amazon S3.
               required:
-                - Name
                 - AuthMode
                 - VpcId
                 - SubnetIds
@@ -446,8 +444,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/XmlString"
                   description: The name of the security configuration.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -723,8 +719,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/XmlString"
                   description: The name of the security configuration.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1345,7 +1339,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListReleaseLabelsOutput"
+                $ref: "#/components/schemas/ListReleaseLabelsOutputDisplay"
   /ListSecurityConfigurations:
     post:
       operationId: ListSecurityConfigurations
@@ -5148,15 +5142,19 @@ components:
         Application:
           $ref: "#/components/schemas/String"
           description: Optional release label application filter. For example, spark@2.1.0.
-    ListReleaseLabelsOutput:
+    ListReleaseLabelsRowDisplay:
       type: object
       properties:
-        ReleaseLabels:
-          $ref: "#/components/schemas/StringList"
+        release_label:
+          type: string
           description: The returned release labels.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: Used to paginate the next page of results if specified in the next ListReleaseLabels request.
+    ListReleaseLabelsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListReleaseLabelsRowDisplay"
     ListSecurityConfigurationsOutput:
       type: object
       properties:
@@ -5603,6 +5601,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_instance_fleet:
@@ -5654,6 +5659,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_instance_groups:
@@ -5668,18 +5680,47 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        put_auto_scaling_policy:
+          operation:
+            $ref: "#/paths/~1PutAutoScalingPolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_auto_scaling_policy:
+          operation:
+            $ref: "#/paths/~1RemoveAutoScalingPolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instance_groups/methods/list_instance_groups"
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/instance_groups/methods/add_instance_groups"
+          - $ref: "#/components/x-stackQL-resources/instance_groups/methods/remove_auto_scaling_policy"
           - $ref: "#/components/x-stackQL-resources/instance_groups/methods/modify_instance_groups"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/instance_groups/methods/put_auto_scaling_policy"
         delete: []
-    job_flow_steps:
-      id: aws.emr.job_flow_steps
-      name: job_flow_steps
-      title: job_flow_steps
+    steps:
+      id: aws.emr.steps
+      name: steps
+      title: steps
       methods:
         add_job_flow_steps:
           operation:
@@ -5694,11 +5735,74 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        cancel_steps:
+          operation:
+            $ref: "#/paths/~1CancelSteps/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_step:
+          operation:
+            $ref: "#/paths/~1DescribeStep/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Step
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_steps:
+          operation:
+            $ref: "#/paths/~1ListSteps/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Steps
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        set_keep_job_flow_alive_when_no_steps:
+          operation:
+            $ref: "#/paths/~1SetKeepJobFlowAliveWhenNoSteps/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/steps/methods/describe_step"
+          - $ref: "#/components/x-stackQL-resources/steps/methods/list_steps"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/job_flow_steps/methods/add_job_flow_steps"
+          - $ref: "#/components/x-stackQL-resources/steps/methods/add_job_flow_steps"
+          - $ref: "#/components/x-stackQL-resources/steps/methods/set_keep_job_flow_alive_when_no_steps"
         delete: []
     tags:
       id: aws.emr.tags
@@ -5738,58 +5842,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags"
           - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags"
         delete: []
-    steps:
-      id: aws.emr.steps
-      name: steps
-      title: steps
-      methods:
-        cancel_steps:
-          operation:
-            $ref: "#/paths/~1CancelSteps/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_step:
-          operation:
-            $ref: "#/paths/~1DescribeStep/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_steps:
-          operation:
-            $ref: "#/paths/~1ListSteps/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Steps
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/steps/methods/describe_step"
-          - $ref: "#/components/x-stackQL-resources/steps/methods/list_steps"
-        insert: []
-        update: []
-        delete: []
     persistent_app_uis:
       id: aws.emr.persistent_app_uis
       name: persistent_app_uis
@@ -5814,6 +5866,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PersistentAppUI
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5884,12 +5937,18 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_configurations/methods/describe_security_configuration"
-          - $ref: "#/components/x-stackQL-resources/security_configurations/methods/list_security_configurations"
         insert:
           - $ref: "#/components/x-stackQL-resources/security_configurations/methods/create_security_configuration"
         update: []
@@ -5931,6 +5990,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Studio
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5950,6 +6010,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_studio:
@@ -6009,6 +6076,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SessionMapping
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6028,6 +6096,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_studio_session_mapping:
@@ -6063,6 +6138,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Cluster
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6082,6 +6158,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_cluster:
@@ -6123,6 +6206,42 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        set_termination_protection:
+          operation:
+            $ref: "#/paths/~1SetTerminationProtection/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_unhealthy_node_replacement:
+          operation:
+            $ref: "#/paths/~1SetUnhealthyNodeReplacement/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_visible_to_all_users:
+          operation:
+            $ref: "#/paths/~1SetVisibleToAllUsers/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         terminate_job_flows:
           operation:
             $ref: "#/paths/~1TerminateJobFlows/post"
@@ -6139,7 +6258,10 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/job_flows/methods/describe_job_flows"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/job_flows/methods/set_termination_protection"
+          - $ref: "#/components/x-stackQL-resources/job_flows/methods/set_unhealthy_node_replacement"
+          - $ref: "#/components/x-stackQL-resources/job_flows/methods/set_visible_to_all_users"
         delete:
           - $ref: "#/components/x-stackQL-resources/job_flows/methods/terminate_job_flows"
     notebook_executions:
@@ -6153,6 +6275,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.NotebookExecution
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6172,6 +6295,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6205,6 +6335,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListReleaseLabelsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ReleaseLabels" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"release_label": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6229,6 +6366,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AutoTerminationPolicy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6345,6 +6483,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ManagedScalingPolicy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6452,6 +6591,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6477,6 +6623,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6508,135 +6661,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/supported_instance_types/methods/list_supported_instance_types"
         insert: []
         update: []
-        delete: []
-    auto_scaling_policies:
-      id: aws.emr.auto_scaling_policies
-      name: auto_scaling_policies
-      title: auto_scaling_policies
-      methods:
-        put_auto_scaling_policy:
-          operation:
-            $ref: "#/paths/~1PutAutoScalingPolicy/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        remove_auto_scaling_policy:
-          operation:
-            $ref: "#/paths/~1RemoveAutoScalingPolicy/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/auto_scaling_policies/methods/remove_auto_scaling_policy"
-        replace:
-          - $ref: "#/components/x-stackQL-resources/auto_scaling_policies/methods/put_auto_scaling_policy"
-        delete: []
-    keep_job_flow_alive_when_no_steps:
-      id: aws.emr.keep_job_flow_alive_when_no_steps
-      name: keep_job_flow_alive_when_no_steps
-      title: keep_job_flow_alive_when_no_steps
-      methods:
-        set_keep_job_flow_alive_when_no_steps:
-          operation:
-            $ref: "#/paths/~1SetKeepJobFlowAliveWhenNoSteps/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/keep_job_flow_alive_when_no_steps/methods/set_keep_job_flow_alive_when_no_steps"
-        delete: []
-    termination_protections:
-      id: aws.emr.termination_protections
-      name: termination_protections
-      title: termination_protections
-      methods:
-        set_termination_protection:
-          operation:
-            $ref: "#/paths/~1SetTerminationProtection/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/termination_protections/methods/set_termination_protection"
-        delete: []
-    unhealthy_node_replacements:
-      id: aws.emr.unhealthy_node_replacements
-      name: unhealthy_node_replacements
-      title: unhealthy_node_replacements
-      methods:
-        set_unhealthy_node_replacement:
-          operation:
-            $ref: "#/paths/~1SetUnhealthyNodeReplacement/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/unhealthy_node_replacements/methods/set_unhealthy_node_replacement"
-        delete: []
-    visible_to_all_users:
-      id: aws.emr.visible_to_all_users
-      name: visible_to_all_users
-      title: visible_to_all_users
-      methods:
-        set_visible_to_all_users:
-          operation:
-            $ref: "#/paths/~1SetVisibleToAllUsers/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/visible_to_all_users/methods/set_visible_to_all_users"
         delete: []

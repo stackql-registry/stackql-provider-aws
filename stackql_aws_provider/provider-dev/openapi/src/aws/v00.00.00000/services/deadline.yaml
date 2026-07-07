@@ -3585,7 +3585,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListJobParameterDefinitionsResponse"
+                $ref: "#/components/schemas/ListJobParameterDefinitionsOutputDisplay"
   /2023-10-12/license-endpoints/{license_endpoint_id}/metered-products:
     get:
       operationId: ListMeteredProducts
@@ -8862,24 +8862,19 @@ components:
         - principalType
         - identityStoreId
         - membershipLevel
-    ListJobParameterDefinitionsResponse:
-      description: Shared pagination field for List operation outputs (nextToken).
+    ListJobParameterDefinitionsRowDisplay:
       type: object
       properties:
-        jobParameterDefinitions:
-          $ref: "#/components/schemas/JobParameterDefinitions"
+        job_parameter_definition:
+          type: object
           description: Lists parameter definitions of a job.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If Deadline Cloud returns nextToken, then there are more results available. The value of nextToken is a unique pagination token for each page. To retrieve the next page, call the operation again using the returned token. Keep all other arguments unchanged. If no results remain, then nextToken is set to null. Each pagination token expires after 24 hours. If you provide a token that isn't valid, then you receive an HTTP 400 ValidationException error.
-      required:
-        - jobParameterDefinitions
-    JobParameterDefinitions:
-      type: array
-      items:
-        $ref: "#/components/schemas/JobParameterDefinition"
-    JobParameterDefinition:
+    ListJobParameterDefinitionsOutputDisplay:
       type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListJobParameterDefinitionsRowDisplay"
     ListJobsResponse:
       description: Shared pagination field for List operation outputs (nextToken).
       type: object
@@ -10661,10 +10656,10 @@ components:
       type: integer
       minimum: 0
   x-stackQL-resources:
-    member_to_farms:
-      id: aws.deadline.member_to_farms
-      name: member_to_farms
-      title: member_to_farms
+    farms:
+      id: aws.deadline.farms
+      name: farms
+      title: farms
       methods:
         associate_member_to_farm:
           operation:
@@ -10677,33 +10672,79 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_to_farms/methods/associate_member_to_farm"
-        delete: []
-    member_from_farms:
-      id: aws.deadline.member_from_farms
-      name: member_from_farms
-      title: member_from_farms
-      methods:
         disassociate_member_from_farm:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1members~1{principal_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        create_farm:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_farms:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.farms
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_farm:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_farm:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_farm:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/farms/methods/get_farm"
+          - $ref: "#/components/x-stackQL-resources/farms/methods/list_farms"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/farms/methods/create_farm"
         update:
-          - $ref: "#/components/x-stackQL-resources/member_from_farms/methods/disassociate_member_from_farm"
-        delete: []
-    member_to_fleets:
-      id: aws.deadline.member_to_fleets
-      name: member_to_fleets
-      title: member_to_fleets
+          - $ref: "#/components/x-stackQL-resources/farms/methods/associate_member_to_farm"
+          - $ref: "#/components/x-stackQL-resources/farms/methods/disassociate_member_from_farm"
+          - $ref: "#/components/x-stackQL-resources/farms/methods/update_farm"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/farms/methods/delete_farm"
+    fleets:
+      id: aws.deadline.fleets
+      name: fleets
+      title: fleets
       methods:
         associate_member_to_fleet:
           operation:
@@ -10716,33 +10757,85 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_to_fleets/methods/associate_member_to_fleet"
-        delete: []
-    member_from_fleets:
-      id: aws.deadline.member_from_fleets
-      name: member_from_fleets
-      title: member_from_fleets
-      methods:
         disassociate_member_from_fleet:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1members~1{principal_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        assume_fleet_role_for_read:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1read-roles/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_fleet:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_fleets:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.fleets
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_fleet:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_fleet:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_fleet:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/get_fleet"
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/list_fleets"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/create_fleet"
         update:
-          - $ref: "#/components/x-stackQL-resources/member_from_fleets/methods/disassociate_member_from_fleet"
-        delete: []
-    member_to_jobs:
-      id: aws.deadline.member_to_jobs
-      name: member_to_jobs
-      title: member_to_jobs
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/associate_member_to_fleet"
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/disassociate_member_from_fleet"
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/update_fleet"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/fleets/methods/delete_fleet"
+    jobs:
+      id: aws.deadline.jobs
+      name: jobs
+      title: jobs
       methods:
         associate_member_to_job:
           operation:
@@ -10755,37 +10848,15 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_to_jobs/methods/associate_member_to_job"
-        delete: []
-    member_from_jobs:
-      id: aws.deadline.member_from_jobs
-      name: member_from_jobs
-      title: member_from_jobs
-      methods:
         disassociate_member_from_job:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1members~1{principal_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_from_jobs/methods/disassociate_member_from_job"
-        delete: []
-    member_to_queues:
-      id: aws.deadline.member_to_queues
-      name: member_to_queues
-      title: member_to_queues
-      methods:
-        associate_member_to_queue:
+        batch_get_job:
           operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1members~1{principal_id}/put"
+            $ref: "#/paths/~12023-10-12~1batch-get-job/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -10794,37 +10865,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_to_queues/methods/associate_member_to_queue"
-        delete: []
-    member_from_queues:
-      id: aws.deadline.member_from_queues
-      name: member_from_queues
-      title: member_from_queues
-      methods:
-        disassociate_member_from_queue:
+        copy_job_template:
           operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1members~1{principal_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_from_queues/methods/disassociate_member_from_queue"
-        delete: []
-    jobs:
-      id: aws.deadline.jobs
-      name: jobs
-      title: jobs
-      methods:
-        batch_get_job:
-          operation:
-            $ref: "#/paths/~12023-10-12~1batch-get-job/post"
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1template/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -10853,6 +10896,14 @@ components:
             objectKey: $.jobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_job:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}/get"
@@ -10890,8 +10941,220 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/create_job"
         update:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/associate_member_to_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/disassociate_member_from_job"
           - $ref: "#/components/x-stackQL-resources/jobs/methods/update_job"
         delete: []
+    queues:
+      id: aws.deadline.queues
+      name: queues
+      title: queues
+      methods:
+        associate_member_to_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1members~1{principal_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_member_from_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1members~1{principal_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        assume_queue_role_for_read:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1read-roles/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        assume_queue_role_for_user:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1user-roles/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_queues:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.queues
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_queue:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/queues/methods/get_queue"
+          - $ref: "#/components/x-stackQL-resources/queues/methods/list_queues"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/queues/methods/create_queue"
+        update:
+          - $ref: "#/components/x-stackQL-resources/queues/methods/associate_member_to_queue"
+          - $ref: "#/components/x-stackQL-resources/queues/methods/disassociate_member_from_queue"
+          - $ref: "#/components/x-stackQL-resources/queues/methods/update_queue"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/queues/methods/delete_queue"
+    workers:
+      id: aws.deadline.workers
+      name: workers
+      title: workers
+      methods:
+        assume_fleet_role_for_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}~1fleet-roles/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        assume_queue_role_for_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}~1queue-roles/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        batch_get_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1batch-get-worker/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_workers:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.workers
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_worker:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_workers:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1search~1workers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_worker_schedule:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}~1schedule/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/workers/methods/get_worker"
+          - $ref: "#/components/x-stackQL-resources/workers/methods/search_workers"
+          - $ref: "#/components/x-stackQL-resources/workers/methods/list_workers"
+          - $ref: "#/components/x-stackQL-resources/workers/methods/batch_get_worker"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/workers/methods/create_worker"
+        update:
+          - $ref: "#/components/x-stackQL-resources/workers/methods/update_worker"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/workers/methods/delete_worker"
     job_entities:
       id: aws.deadline.job_entities
       name: job_entities
@@ -10947,6 +11210,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_sessions_statistics_aggregation:
+          operation:
+            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1sessions-statistics-aggregation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_sessions:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1jobs~1{job_id}~1sessions/get"
@@ -10956,6 +11230,14 @@ components:
             objectKey: $.sessions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"
@@ -10996,6 +11278,14 @@ components:
             objectKey: $.sessionActions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/session_actions/methods/get_session_action"
@@ -11046,6 +11336,14 @@ components:
             objectKey: $.steps
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         search_steps:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1search~1steps/post"
@@ -11109,6 +11407,14 @@ components:
             objectKey: $.tasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         search_tasks:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1search~1tasks/post"
@@ -11130,88 +11436,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tasks/methods/update_task"
         delete: []
-    workers:
-      id: aws.deadline.workers
-      name: workers
-      title: workers
-      methods:
-        batch_get_worker:
-          operation:
-            $ref: "#/paths/~12023-10-12~1batch-get-worker/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        create_worker:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_workers:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.workers
-          request:
-            nativeCasing: pascal
-        delete_worker:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_worker:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_worker:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        search_workers:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1search~1workers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workers/methods/get_worker"
-          - $ref: "#/components/x-stackQL-resources/workers/methods/search_workers"
-          - $ref: "#/components/x-stackQL-resources/workers/methods/list_workers"
-          - $ref: "#/components/x-stackQL-resources/workers/methods/batch_get_worker"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/workers/methods/create_worker"
-        update:
-          - $ref: "#/components/x-stackQL-resources/workers/methods/update_worker"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/workers/methods/delete_worker"
     budgets:
       id: aws.deadline.budgets
       name: budgets
@@ -11237,6 +11461,14 @@ components:
             objectKey: $.budgets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_budget:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1budgets~1{budget_id}/delete"
@@ -11270,122 +11502,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/budgets/methods/update_budget"
         delete:
           - $ref: "#/components/x-stackQL-resources/budgets/methods/delete_budget"
-    farms:
-      id: aws.deadline.farms
-      name: farms
-      title: farms
-      methods:
-        create_farm:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_farms:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.farms
-          request:
-            nativeCasing: pascal
-        delete_farm:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_farm:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_farm:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/farms/methods/get_farm"
-          - $ref: "#/components/x-stackQL-resources/farms/methods/list_farms"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/farms/methods/create_farm"
-        update:
-          - $ref: "#/components/x-stackQL-resources/farms/methods/update_farm"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/farms/methods/delete_farm"
-    fleets:
-      id: aws.deadline.fleets
-      name: fleets
-      title: fleets
-      methods:
-        create_fleet:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_fleets:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.fleets
-          request:
-            nativeCasing: pascal
-        delete_fleet:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_fleet:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_fleet:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/fleets/methods/get_fleet"
-          - $ref: "#/components/x-stackQL-resources/fleets/methods/list_fleets"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/fleets/methods/create_fleet"
-        update:
-          - $ref: "#/components/x-stackQL-resources/fleets/methods/update_fleet"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/fleets/methods/delete_fleet"
     license_endpoints:
       id: aws.deadline.license_endpoints
       name: license_endpoints
@@ -11411,6 +11527,14 @@ components:
             objectKey: $.licenseEndpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_license_endpoint:
           operation:
             $ref: "#/paths/~12023-10-12~1license-endpoints~1{license_endpoint_id}/delete"
@@ -11457,6 +11581,14 @@ components:
             objectKey: $.limits
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_limit:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1limits~1{limit_id}/delete"
@@ -11515,6 +11647,14 @@ components:
             objectKey: $.monitors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_monitor:
           operation:
             $ref: "#/paths/~12023-10-12~1monitors~1{monitor_id}/delete"
@@ -11548,64 +11688,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/monitors/methods/update_monitor"
         delete:
           - $ref: "#/components/x-stackQL-resources/monitors/methods/delete_monitor"
-    queues:
-      id: aws.deadline.queues
-      name: queues
-      title: queues
-      methods:
-        create_queue:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_queues:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.queues
-          request:
-            nativeCasing: pascal
-        delete_queue:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_queue:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_queue:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/queues/methods/get_queue"
-          - $ref: "#/components/x-stackQL-resources/queues/methods/list_queues"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/queues/methods/create_queue"
-        update:
-          - $ref: "#/components/x-stackQL-resources/queues/methods/update_queue"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/queues/methods/delete_queue"
     queue_environments:
       id: aws.deadline.queue_environments
       name: queue_environments
@@ -11631,6 +11713,14 @@ components:
             objectKey: $.environments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_queue_environment:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queues~1{queue_id}~1environments~1{queue_environment_id}/delete"
@@ -11689,6 +11779,14 @@ components:
             objectKey: $.queueFleetAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_queue_fleet_association:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-fleet-associations~1{queue_id}~1{fleet_id}/delete"
@@ -11747,6 +11845,14 @@ components:
             objectKey: $.queueLimitAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_queue_limit_association:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1queue-limit-associations~1{queue_id}~1{limit_id}/delete"
@@ -11805,6 +11911,14 @@ components:
             objectKey: $.storageProfiles
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_storage_profile:
           operation:
             $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1storage-profiles~1{storage_profile_id}/delete"
@@ -11864,6 +11978,14 @@ components:
             objectKey: $.meteredProducts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metered_products/methods/list_metered_products"
@@ -11916,6 +12038,14 @@ components:
             objectKey: $.statistics
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions_statistics_aggregations/methods/get_sessions_statistics_aggregation"
@@ -11953,6 +12083,14 @@ components:
             objectKey: $.meteredProducts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/available_metered_products/methods/list_available_metered_products"
@@ -11973,6 +12111,14 @@ components:
             objectKey: $.members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/farm_members/methods/list_farm_members"
@@ -11993,6 +12139,14 @@ components:
             objectKey: $.members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/fleet_members/methods/list_fleet_members"
@@ -12013,6 +12167,14 @@ components:
             objectKey: $.members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_members/methods/list_job_members"
@@ -12030,9 +12192,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.jobParameterDefinitions
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListJobParameterDefinitionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "jobParameterDefinitions" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"job_parameter_definition": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_parameter_definitions/methods/list_job_parameter_definitions"
@@ -12053,6 +12229,14 @@ components:
             objectKey: $.members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/queue_members/methods/list_queue_members"
@@ -12073,6 +12257,14 @@ components:
             objectKey: $.sessions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions_for_workers/methods/list_sessions_for_worker"
@@ -12093,6 +12285,14 @@ components:
             objectKey: $.consumers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/step_consumers/methods/list_step_consumers"
@@ -12113,6 +12313,14 @@ components:
             objectKey: $.dependencies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/step_dependencies/methods/list_step_dependencies"
@@ -12133,16 +12341,24 @@ components:
             objectKey: $.storageProfiles
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/storage_profiles_for_queues/methods/list_storage_profiles_for_queue"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.deadline.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.deadline.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -12150,17 +12366,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.deadline.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~12023-10-12~1tags~1{resource_arn}/post"
@@ -12181,31 +12386,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-        delete: []
-    worker_schedules:
-      id: aws.deadline.worker_schedules
-      name: worker_schedules
-      title: worker_schedules
-      methods:
-        update_worker_schedule:
-          operation:
-            $ref: "#/paths/~12023-10-12~1farms~1{farm_id}~1fleets~1{fleet_id}~1workers~1{worker_id}~1schedule/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/worker_schedules/methods/update_worker_schedule"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

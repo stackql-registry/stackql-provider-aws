@@ -34,8 +34,6 @@ paths:
                   $ref: "#/components/schemas/ClientRequestToken"
                 Tags:
                   $ref: "#/components/schemas/TagList"
-              required:
-                - Sidewalk
       responses:
         "200":
           description: Success
@@ -392,9 +390,7 @@ paths:
                 ClientRequestToken:
                   $ref: "#/components/schemas/ClientRequestToken"
               required:
-                - Name
                 - ExpressionType
-                - Expression
                 - RoleArn
       responses:
         "201":
@@ -631,8 +627,6 @@ paths:
                   $ref: "#/components/schemas/ClientRequestToken"
                 MulticastGroups:
                   $ref: "#/components/schemas/NetworkAnalyzerMulticastGroupList"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -743,7 +737,6 @@ paths:
                 Sidewalk:
                   $ref: "#/components/schemas/SidewalkCreateWirelessDevice"
               required:
-                - Type
                 - DestinationName
       responses:
         "201":
@@ -1562,8 +1555,6 @@ paths:
               properties:
                 Sidewalk:
                   $ref: "#/components/schemas/SidewalkUpdateImportInfo"
-              required:
-                - Sidewalk
       responses:
         "204":
           description: Success
@@ -1754,8 +1745,6 @@ paths:
               properties:
                 Sidewalk:
                   $ref: "#/components/schemas/SidewalkUpdateAccount"
-              required:
-                - Sidewalk
       responses:
         "204":
           description: Success
@@ -2020,8 +2009,6 @@ paths:
               properties:
                 Position:
                   $ref: "#/components/schemas/PositionCoordinate"
-              required:
-                - Position
       responses:
         "204":
           description: Success
@@ -2506,7 +2493,6 @@ paths:
                   $ref: "#/components/schemas/SidewalkStartImportInfo"
               required:
                 - DestinationName
-                - Sidewalk
       responses:
         "201":
           description: Success
@@ -2637,8 +2623,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagList"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -7083,10 +7067,10 @@ components:
     UpdateWirelessGatewayResponse:
       type: object
   x-stackQL-resources:
-    aws_account_with_partner_accounts:
-      id: aws.iotwireless.aws_account_with_partner_accounts
-      name: aws_account_with_partner_accounts
-      title: aws_account_with_partner_accounts
+    partner_accounts:
+      id: aws.iotwireless.partner_accounts
+      name: partner_accounts
+      title: partner_accounts
       methods:
         associate_aws_account_with_partner_account:
           operation:
@@ -7099,17 +7083,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/aws_account_with_partner_accounts/methods/associate_aws_account_with_partner_account"
-        delete: []
-    partner_accounts:
-      id: aws.iotwireless.partner_accounts
-      name: partner_accounts
-      title: partner_accounts
-      methods:
         list_partner_accounts:
           operation:
             $ref: "#/paths/~1partner-accounts/get"
@@ -7118,6 +7091,12 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        disassociate_aws_account_from_partner_account:
+          operation:
+            $ref: "#/paths/~1partner-accounts~1{partner_account_id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
         get_partner_account:
           operation:
             $ref: "#/paths/~1partner-accounts~1{partner_account_id}/get"
@@ -7144,11 +7123,12 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/partner_accounts/methods/update_partner_account"
+          - $ref: "#/components/x-stackQL-resources/partner_accounts/methods/associate_aws_account_with_partner_account"
         delete: []
-    multicast_group_with_fuota_tasks:
-      id: aws.iotwireless.multicast_group_with_fuota_tasks
-      name: multicast_group_with_fuota_tasks
-      title: multicast_group_with_fuota_tasks
+    fuota_tasks:
+      id: aws.iotwireless.fuota_tasks
+      name: fuota_tasks
+      title: fuota_tasks
       methods:
         associate_multicast_group_with_fuota_task:
           operation:
@@ -7161,17 +7141,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/multicast_group_with_fuota_tasks/methods/associate_multicast_group_with_fuota_task"
-        delete: []
-    wireless_device_with_fuota_tasks:
-      id: aws.iotwireless.wireless_device_with_fuota_tasks
-      name: wireless_device_with_fuota_tasks
-      title: wireless_device_with_fuota_tasks
-      methods:
         associate_wireless_device_with_fuota_task:
           operation:
             $ref: "#/paths/~1fuota-tasks~1{id}~1wireless-device/put"
@@ -7183,16 +7152,78 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_fuota_task:
+          operation:
+            $ref: "#/paths/~1fuota-tasks/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_fuota_tasks:
+          operation:
+            $ref: "#/paths/~1fuota-tasks/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_fuota_task:
+          operation:
+            $ref: "#/paths/~1fuota-tasks~1{id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        get_fuota_task:
+          operation:
+            $ref: "#/paths/~1fuota-tasks~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_fuota_task:
+          operation:
+            $ref: "#/paths/~1fuota-tasks~1{id}/patch"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_multicast_group_from_fuota_task:
+          operation:
+            $ref: "#/paths/~1fuota-tasks~1{id}~1multicast-groups~1{multicast_group_id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        disassociate_wireless_device_from_fuota_task:
+          operation:
+            $ref: "#/paths/~1fuota-tasks~1{id}~1wireless-devices~1{wireless_device_id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/get_fuota_task"
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/list_fuota_tasks"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/create_fuota_task"
         update:
-          - $ref: "#/components/x-stackQL-resources/wireless_device_with_fuota_tasks/methods/associate_wireless_device_with_fuota_task"
-        delete: []
-    wireless_device_with_multicast_groups:
-      id: aws.iotwireless.wireless_device_with_multicast_groups
-      name: wireless_device_with_multicast_groups
-      title: wireless_device_with_multicast_groups
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/associate_multicast_group_with_fuota_task"
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/associate_wireless_device_with_fuota_task"
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/disassociate_multicast_group_from_fuota_task"
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/disassociate_wireless_device_from_fuota_task"
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/update_fuota_task"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/delete_fuota_task"
+    multicast_groups:
+      id: aws.iotwireless.multicast_groups
+      name: multicast_groups
+      title: multicast_groups
       methods:
         associate_wireless_device_with_multicast_group:
           operation:
@@ -7205,16 +7236,87 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        cancel_multicast_group_session:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}~1session/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        start_multicast_group_session:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}~1session/put"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_multicast_groups:
+          operation:
+            $ref: "#/paths/~1multicast-groups/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        get_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}/patch"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_wireless_device_from_multicast_group:
+          operation:
+            $ref: "#/paths/~1multicast-groups~1{id}~1wireless-devices~1{wireless_device_id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/get_multicast_group"
+          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/list_multicast_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/create_multicast_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/wireless_device_with_multicast_groups/methods/associate_wireless_device_with_multicast_group"
-        delete: []
-    wireless_device_with_things:
-      id: aws.iotwireless.wireless_device_with_things
-      name: wireless_device_with_things
-      title: wireless_device_with_things
+          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/associate_wireless_device_with_multicast_group"
+          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/disassociate_wireless_device_from_multicast_group"
+          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/update_multicast_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/delete_multicast_group"
+    wireless_devices:
+      id: aws.iotwireless.wireless_devices
+      name: wireless_devices
+      title: wireless_devices
       methods:
         associate_wireless_device_with_thing:
           operation:
@@ -7227,33 +7329,91 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_device_with_things/methods/associate_wireless_device_with_thing"
-        delete: []
-    wireless_device_from_things:
-      id: aws.iotwireless.wireless_device_from_things
-      name: wireless_device_from_things
-      title: wireless_device_from_things
-      methods:
         disassociate_wireless_device_from_thing:
           operation:
             $ref: "#/paths/~1wireless-devices~1{id}~1thing/delete"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+        create_wireless_device:
+          operation:
+            $ref: "#/paths/~1wireless-devices/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_wireless_devices:
+          operation:
+            $ref: "#/paths/~1wireless-devices/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_wireless_device:
+          operation:
+            $ref: "#/paths/~1wireless-devices~1{id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        update_wireless_device:
+          operation:
+            $ref: "#/paths/~1wireless-devices~1{id}/patch"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deregister_wireless_device:
+          operation:
+            $ref: "#/paths/~1wireless-devices~1{identifier}~1deregister/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        get_wireless_device:
+          operation:
+            $ref: "#/paths/~1wireless-devices~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        start_wireless_device_import_task:
+          operation:
+            $ref: "#/paths/~1wireless_device_import_task/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/get_wireless_device"
+          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/list_wireless_devices"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/create_wireless_device"
         update:
-          - $ref: "#/components/x-stackQL-resources/wireless_device_from_things/methods/disassociate_wireless_device_from_thing"
-        delete: []
-    wireless_gateway_with_certificates:
-      id: aws.iotwireless.wireless_gateway_with_certificates
-      name: wireless_gateway_with_certificates
-      title: wireless_gateway_with_certificates
+          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/associate_wireless_device_with_thing"
+          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/update_wireless_device"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/delete_wireless_device"
+          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/deregister_wireless_device"
+    wireless_gateways:
+      id: aws.iotwireless.wireless_gateways
+      name: wireless_gateways
+      title: wireless_gateways
       methods:
         associate_wireless_gateway_with_certificate:
           operation:
@@ -7266,29 +7426,85 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateway_with_certificates/methods/associate_wireless_gateway_with_certificate"
-        delete: []
-    wireless_gateway_from_certificates:
-      id: aws.iotwireless.wireless_gateway_from_certificates
-      name: wireless_gateway_from_certificates
-      title: wireless_gateway_from_certificates
-      methods:
         disassociate_wireless_gateway_from_certificate:
           operation:
             $ref: "#/paths/~1wireless-gateways~1{id}~1certificate/delete"
           response:
             openAPIDocKey: "204"
             mediaType: application/json
+        associate_wireless_gateway_with_thing:
+          operation:
+            $ref: "#/paths/~1wireless-gateways~1{id}~1thing/put"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_wireless_gateway_from_thing:
+          operation:
+            $ref: "#/paths/~1wireless-gateways~1{id}~1thing/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        create_wireless_gateway:
+          operation:
+            $ref: "#/paths/~1wireless-gateways/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_wireless_gateways:
+          operation:
+            $ref: "#/paths/~1wireless-gateways/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_wireless_gateway:
+          operation:
+            $ref: "#/paths/~1wireless-gateways~1{id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        update_wireless_gateway:
+          operation:
+            $ref: "#/paths/~1wireless-gateways~1{id}/patch"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_wireless_gateway:
+          operation:
+            $ref: "#/paths/~1wireless-gateways~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/get_wireless_gateway"
+          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/list_wireless_gateways"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/create_wireless_gateway"
         update:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateway_from_certificates/methods/disassociate_wireless_gateway_from_certificate"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/associate_wireless_gateway_with_certificate"
+          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/associate_wireless_gateway_with_thing"
+          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/update_wireless_gateway"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/delete_wireless_gateway"
     wireless_gateway_certificates:
       id: aws.iotwireless.wireless_gateway_certificates
       name: wireless_gateway_certificates
@@ -7306,45 +7522,6 @@ components:
         insert: []
         update: []
         delete: []
-    wireless_gateway_with_things:
-      id: aws.iotwireless.wireless_gateway_with_things
-      name: wireless_gateway_with_things
-      title: wireless_gateway_with_things
-      methods:
-        associate_wireless_gateway_with_thing:
-          operation:
-            $ref: "#/paths/~1wireless-gateways~1{id}~1thing/put"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateway_with_things/methods/associate_wireless_gateway_with_thing"
-        delete: []
-    wireless_gateway_from_things:
-      id: aws.iotwireless.wireless_gateway_from_things
-      name: wireless_gateway_from_things
-      title: wireless_gateway_from_things
-      methods:
-        disassociate_wireless_gateway_from_thing:
-          operation:
-            $ref: "#/paths/~1wireless-gateways~1{id}~1thing/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateway_from_things/methods/disassociate_wireless_gateway_from_thing"
-        delete: []
     multicast_group_sessions:
       id: aws.iotwireless.multicast_group_sessions
       name: multicast_group_sessions
@@ -7356,6 +7533,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.LoRaWAN
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multicast_group_sessions/methods/get_multicast_group_session"
@@ -7403,6 +7581,17 @@ components:
             $ref: "#/paths/~1destinations~1{name}/patch"
           response:
             openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_single_wireless_device_import_task:
+          operation:
+            $ref: "#/paths/~1wireless_single_device_import_task/post"
+          response:
+            openAPIDocKey: "201"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -7464,120 +7653,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/device_profiles/methods/delete_device_profile"
-    fuota_tasks:
-      id: aws.iotwireless.fuota_tasks
-      name: fuota_tasks
-      title: fuota_tasks
-      methods:
-        create_fuota_task:
-          operation:
-            $ref: "#/paths/~1fuota-tasks/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_fuota_tasks:
-          operation:
-            $ref: "#/paths/~1fuota-tasks/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        delete_fuota_task:
-          operation:
-            $ref: "#/paths/~1fuota-tasks~1{id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        get_fuota_task:
-          operation:
-            $ref: "#/paths/~1fuota-tasks~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_fuota_task:
-          operation:
-            $ref: "#/paths/~1fuota-tasks~1{id}/patch"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/get_fuota_task"
-          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/list_fuota_tasks"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/create_fuota_task"
-        update:
-          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/update_fuota_task"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/fuota_tasks/methods/delete_fuota_task"
-    multicast_groups:
-      id: aws.iotwireless.multicast_groups
-      name: multicast_groups
-      title: multicast_groups
-      methods:
-        create_multicast_group:
-          operation:
-            $ref: "#/paths/~1multicast-groups/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_multicast_groups:
-          operation:
-            $ref: "#/paths/~1multicast-groups/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        delete_multicast_group:
-          operation:
-            $ref: "#/paths/~1multicast-groups~1{id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        get_multicast_group:
-          operation:
-            $ref: "#/paths/~1multicast-groups~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_multicast_group:
-          operation:
-            $ref: "#/paths/~1multicast-groups~1{id}/patch"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/get_multicast_group"
-          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/list_multicast_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/create_multicast_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/update_multicast_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/multicast_groups/methods/delete_multicast_group"
     network_analyzer_configurations:
       id: aws.iotwireless.network_analyzer_configurations
       name: network_analyzer_configurations
@@ -7680,133 +7755,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/service_profiles/methods/delete_service_profile"
-    wireless_devices:
-      id: aws.iotwireless.wireless_devices
-      name: wireless_devices
-      title: wireless_devices
-      methods:
-        create_wireless_device:
-          operation:
-            $ref: "#/paths/~1wireless-devices/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_wireless_devices:
-          operation:
-            $ref: "#/paths/~1wireless-devices/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        delete_wireless_device:
-          operation:
-            $ref: "#/paths/~1wireless-devices~1{id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        update_wireless_device:
-          operation:
-            $ref: "#/paths/~1wireless-devices~1{id}/patch"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        deregister_wireless_device:
-          operation:
-            $ref: "#/paths/~1wireless-devices~1{identifier}~1deregister/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        get_wireless_device:
-          operation:
-            $ref: "#/paths/~1wireless-devices~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/get_wireless_device"
-          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/list_wireless_devices"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/create_wireless_device"
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/update_wireless_device"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/delete_wireless_device"
-          - $ref: "#/components/x-stackQL-resources/wireless_devices/methods/deregister_wireless_device"
-    wireless_gateways:
-      id: aws.iotwireless.wireless_gateways
-      name: wireless_gateways
-      title: wireless_gateways
-      methods:
-        create_wireless_gateway:
-          operation:
-            $ref: "#/paths/~1wireless-gateways/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_wireless_gateways:
-          operation:
-            $ref: "#/paths/~1wireless-gateways/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        delete_wireless_gateway:
-          operation:
-            $ref: "#/paths/~1wireless-gateways~1{id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        update_wireless_gateway:
-          operation:
-            $ref: "#/paths/~1wireless-gateways~1{id}/patch"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_wireless_gateway:
-          operation:
-            $ref: "#/paths/~1wireless-gateways~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/get_wireless_gateway"
-          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/list_wireless_gateways"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/create_wireless_gateway"
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/update_wireless_gateway"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/wireless_gateways/methods/delete_wireless_gateway"
     wireless_gateway_tasks:
       id: aws.iotwireless.wireless_gateway_tasks
       name: wireless_gateway_tasks
@@ -7961,76 +7909,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/wireless_device_import_tasks/methods/update_wireless_device_import_task"
         delete:
           - $ref: "#/components/x-stackQL-resources/wireless_device_import_tasks/methods/delete_wireless_device_import_task"
-    aws_account_from_partner_accounts:
-      id: aws.iotwireless.aws_account_from_partner_accounts
-      name: aws_account_from_partner_accounts
-      title: aws_account_from_partner_accounts
-      methods:
-        disassociate_aws_account_from_partner_account:
-          operation:
-            $ref: "#/paths/~1partner-accounts~1{partner_account_id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/aws_account_from_partner_accounts/methods/disassociate_aws_account_from_partner_account"
-        delete: []
-    multicast_group_from_fuota_tasks:
-      id: aws.iotwireless.multicast_group_from_fuota_tasks
-      name: multicast_group_from_fuota_tasks
-      title: multicast_group_from_fuota_tasks
-      methods:
-        disassociate_multicast_group_from_fuota_task:
-          operation:
-            $ref: "#/paths/~1fuota-tasks~1{id}~1multicast-groups~1{multicast_group_id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/multicast_group_from_fuota_tasks/methods/disassociate_multicast_group_from_fuota_task"
-        delete: []
-    wireless_device_from_fuota_tasks:
-      id: aws.iotwireless.wireless_device_from_fuota_tasks
-      name: wireless_device_from_fuota_tasks
-      title: wireless_device_from_fuota_tasks
-      methods:
-        disassociate_wireless_device_from_fuota_task:
-          operation:
-            $ref: "#/paths/~1fuota-tasks~1{id}~1wireless-devices~1{wireless_device_id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_device_from_fuota_tasks/methods/disassociate_wireless_device_from_fuota_task"
-        delete: []
-    wireless_device_from_multicast_groups:
-      id: aws.iotwireless.wireless_device_from_multicast_groups
-      name: wireless_device_from_multicast_groups
-      title: wireless_device_from_multicast_groups
-      methods:
-        disassociate_wireless_device_from_multicast_group:
-          operation:
-            $ref: "#/paths/~1multicast-groups~1{id}~1wireless-devices~1{wireless_device_id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/wireless_device_from_multicast_groups/methods/disassociate_wireless_device_from_multicast_group"
-        delete: []
     event_configuration_by_resource_types:
       id: aws.iotwireless.event_configuration_by_resource_types
       name: event_configuration_by_resource_types
@@ -8089,6 +7967,44 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/log_levels_by_resource_types/methods/update_log_levels_by_resource_types"
         delete: []
+    resource_log_levels:
+      id: aws.iotwireless.resource_log_levels
+      name: resource_log_levels
+      title: resource_log_levels
+      methods:
+        reset_all_resource_log_levels:
+          operation:
+            $ref: "#/paths/~1log-levels/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        get_resource_log_level:
+          operation:
+            $ref: "#/paths/~1log-levels~1{resource_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        put_resource_log_level:
+          operation:
+            $ref: "#/paths/~1log-levels~1{resource_identifier}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/resource_log_levels/methods/get_resource_log_level"
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/resource_log_levels/methods/put_resource_log_level"
+        delete: []
     metric_configurations:
       id: aws.iotwireless.metric_configurations
       name: metric_configurations
@@ -8100,6 +8016,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SummaryMetric
         update_metric_configuration:
           operation:
             $ref: "#/paths/~1metric-configuration/put"
@@ -8265,38 +8182,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/resource_event_configurations/methods/update_resource_event_configuration"
         delete: []
-    resource_log_levels:
-      id: aws.iotwireless.resource_log_levels
-      name: resource_log_levels
-      title: resource_log_levels
-      methods:
-        get_resource_log_level:
-          operation:
-            $ref: "#/paths/~1log-levels~1{resource_identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        put_resource_log_level:
-          operation:
-            $ref: "#/paths/~1log-levels~1{resource_identifier}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resource_log_levels/methods/get_resource_log_level"
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/resource_log_levels/methods/put_resource_log_level"
-        delete: []
     resource_positions:
       id: aws.iotwireless.resource_positions
       name: resource_positions
@@ -8375,6 +8260,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.LoRaWAN
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/wireless_gateway_firmware_informations/methods/get_wireless_gateway_firmware_information"
@@ -8455,10 +8341,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.iotwireless.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.iotwireless.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -8468,17 +8354,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.iotwireless.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags/post"
@@ -8499,9 +8374,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

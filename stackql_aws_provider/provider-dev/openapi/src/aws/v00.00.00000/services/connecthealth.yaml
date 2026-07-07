@@ -1463,6 +1463,61 @@ components:
       minLength: 1
       maxLength: 128
   x-stackQL-resources:
+    subscriptions:
+      id: aws.connecthealth.subscriptions
+      name: subscriptions
+      title: subscriptions
+      methods:
+        activate_subscription:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions~1{subscription_id}~1activate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_subscription:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+        list_subscriptions:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.subscriptions
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        deactivate_subscription:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions~1{subscription_id}~1deactivate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_subscription:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions~1{subscription_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.subscription
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/get_subscription"
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/create_subscription"
+        update: []
+        delete: []
     domains:
       id: aws.connecthealth.domains
       name: domains
@@ -1488,6 +1543,14 @@ components:
             objectKey: $.domains
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_domain:
           operation:
             $ref: "#/paths/~1domain~1{domain_id}/delete"
@@ -1500,6 +1563,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        start_patient_insights_job:
+          operation:
+            $ref: "#/paths/~1domain~1{domain_id}~1patient-insights-job/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domains/methods/get_domain"
@@ -1509,40 +1583,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
-    subscriptions:
-      id: aws.connecthealth.subscriptions
-      name: subscriptions
-      title: subscriptions
-      methods:
-        create_subscription:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-        list_subscriptions:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.subscriptions
-          request:
-            nativeCasing: pascal
-        get_subscription:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_id}~1subscriptions~1{subscription_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/get_subscription"
-          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/create_subscription"
-        update: []
-        delete: []
     medical_scribe_listening_sessions:
       id: aws.connecthealth.medical_scribe_listening_sessions
       name: medical_scribe_listening_sessions
@@ -1554,6 +1594,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.medicalScribeListeningSessionDetails
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/medical_scribe_listening_sessions/methods/get_medical_scribe_listening_session"
@@ -1577,10 +1618,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.connecthealth.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.connecthealth.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1588,17 +1629,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.connecthealth.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1617,9 +1647,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

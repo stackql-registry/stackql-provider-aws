@@ -61,7 +61,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddCustomRoutingEndpointsResponse'
-      x-stackql-resource: custom_routing_endpoints
+      x-stackql-resource: endpoint_groups
       x-stackql-method: add_custom_routing_endpoints
       x-stackql-verb: UPDATE
   /AddEndpoints:
@@ -108,7 +108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddEndpointsResponse'
-      x-stackql-resource: endpoints
+      x-stackql-resource: endpoint_groups
       x-stackql-method: add_endpoints
       x-stackql-verb: UPDATE
   /AdvertiseByoipCidr:
@@ -210,7 +210,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: allow_custom_routing_traffic
+      x-stackql-resource: endpoint_groups
       x-stackql-method: allow_custom_routing_traffic
       x-stackql-verb: EXEC
   /CreateAccelerator:
@@ -970,7 +970,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: deny_custom_routing_traffic
+      x-stackql-resource: endpoint_groups
       x-stackql-method: deny_custom_routing_traffic
       x-stackql-verb: EXEC
   /DeprovisionByoipCidr:
@@ -1051,6 +1051,7 @@ paths:
       x-stackql-resource: accelerators
       x-stackql-method: describe_accelerator
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Accelerator
   /DescribeAcceleratorAttributes:
     post:
       operationId: DescribeAcceleratorAttributes
@@ -1087,6 +1088,7 @@ paths:
       x-stackql-resource: accelerator_attributes
       x-stackql-method: describe_accelerator_attributes
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AcceleratorAttributes
   /DescribeCrossAccountAttachment:
     post:
       operationId: DescribeCrossAccountAttachment
@@ -1123,6 +1125,7 @@ paths:
       x-stackql-resource: cross_account_attachments
       x-stackql-method: describe_cross_account_attachment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CrossAccountAttachment
   /DescribeCustomRoutingAccelerator:
     post:
       operationId: DescribeCustomRoutingAccelerator
@@ -1159,6 +1162,7 @@ paths:
       x-stackql-resource: custom_routing_accelerators
       x-stackql-method: describe_custom_routing_accelerator
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Accelerator
   /DescribeCustomRoutingAcceleratorAttributes:
     post:
       operationId: DescribeCustomRoutingAcceleratorAttributes
@@ -1196,6 +1200,7 @@ paths:
       x-stackql-resource: custom_routing_accelerator_attributes
       x-stackql-method: describe_custom_routing_accelerator_attributes
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AcceleratorAttributes
   /DescribeCustomRoutingEndpointGroup:
     post:
       operationId: DescribeCustomRoutingEndpointGroup
@@ -1232,6 +1237,7 @@ paths:
       x-stackql-resource: custom_routing_endpoint_groups
       x-stackql-method: describe_custom_routing_endpoint_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EndpointGroup
   /DescribeCustomRoutingListener:
     post:
       operationId: DescribeCustomRoutingListener
@@ -1268,6 +1274,7 @@ paths:
       x-stackql-resource: custom_routing_listeners
       x-stackql-method: describe_custom_routing_listener
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Listener
   /DescribeEndpointGroup:
     post:
       operationId: DescribeEndpointGroup
@@ -1304,6 +1311,7 @@ paths:
       x-stackql-resource: endpoint_groups
       x-stackql-method: describe_endpoint_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EndpointGroup
   /DescribeListener:
     post:
       operationId: DescribeListener
@@ -1340,6 +1348,7 @@ paths:
       x-stackql-resource: listeners
       x-stackql-method: describe_listener
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Listener
   /ListAccelerators:
     post:
       operationId: ListAccelerators
@@ -1379,6 +1388,9 @@ paths:
       x-stackql-method: list_accelerators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accelerators
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListByoipCidrs:
     post:
       operationId: ListByoipCidrs
@@ -1419,6 +1431,9 @@ paths:
       x-stackql-method: list_byoip_cidrs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ByoipCidrs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCrossAccountAttachments:
     post:
       operationId: ListCrossAccountAttachments
@@ -1458,6 +1473,9 @@ paths:
       x-stackql-method: list_cross_account_attachments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CrossAccountAttachments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCrossAccountResourceAccounts:
     post:
       operationId: ListCrossAccountResourceAccounts
@@ -1485,10 +1503,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListCrossAccountResourceAccountsResponse'
+                $ref: '#/components/schemas/ListCrossAccountResourceAccountsOutputDisplay'
       x-stackql-resource: cross_account_resource_accounts
       x-stackql-method: list_cross_account_resource_accounts
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListCrossAccountResourceAccountsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ResourceOwnerAwsAccountIds" -}}{"line_items": [{{- if eq (kindOf $lst)
+        "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_owner_aws_account_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]}'
   /ListCrossAccountResources:
     post:
       operationId: ListCrossAccountResources
@@ -1536,6 +1560,9 @@ paths:
       x-stackql-method: list_cross_account_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CrossAccountResources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCustomRoutingAccelerators:
     post:
       operationId: ListCustomRoutingAccelerators
@@ -1575,6 +1602,9 @@ paths:
       x-stackql-method: list_custom_routing_accelerators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accelerators
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCustomRoutingEndpointGroups:
     post:
       operationId: ListCustomRoutingEndpointGroups
@@ -1619,6 +1649,9 @@ paths:
       x-stackql-method: list_custom_routing_endpoint_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EndpointGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCustomRoutingListeners:
     post:
       operationId: ListCustomRoutingListeners
@@ -1663,6 +1696,9 @@ paths:
       x-stackql-method: list_custom_routing_listeners
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Listeners
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCustomRoutingPortMappings:
     post:
       operationId: ListCustomRoutingPortMappings
@@ -1720,6 +1756,9 @@ paths:
       x-stackql-method: list_custom_routing_port_mappings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PortMappings
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCustomRoutingPortMappingsByDestination:
     post:
       operationId: ListCustomRoutingPortMappingsByDestination
@@ -1772,6 +1811,9 @@ paths:
       x-stackql-method: list_custom_routing_port_mappings_by_destination
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DestinationPortMappings
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEndpointGroups:
     post:
       operationId: ListEndpointGroups
@@ -1816,6 +1858,9 @@ paths:
       x-stackql-method: list_endpoint_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EndpointGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListListeners:
     post:
       operationId: ListListeners
@@ -1860,6 +1905,9 @@ paths:
       x-stackql-method: list_listeners
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Listeners
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1895,7 +1943,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ProvisionByoipCidr:
@@ -1979,7 +2027,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: custom_routing_endpoints
+      x-stackql-resource: endpoint_groups
       x-stackql-method: remove_custom_routing_endpoints
       x-stackql-verb: UPDATE
   /RemoveEndpoints:
@@ -2021,7 +2069,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: endpoints
+      x-stackql-resource: endpoint_groups
       x-stackql-method: remove_endpoints
       x-stackql-verb: UPDATE
   /TagResource:
@@ -2063,7 +2111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2106,7 +2154,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAccelerator:
@@ -3512,17 +3560,20 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Attachment'
-    ListCrossAccountResourceAccountsResponse:
+    ListCrossAccountResourceAccountsRowDisplay:
       type: object
       properties:
-        ResourceOwnerAwsAccountIds:
-          $ref: '#/components/schemas/AwsAccountIds'
+        resource_owner_aws_account_id:
+          type: string
           description: The account IDs of principals (resource owners) in a cross-account attachment who can work with resources
             listed in the same attachment.
-    AwsAccountIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/AwsAccountId'
+    ListCrossAccountResourceAccountsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCrossAccountResourceAccountsRowDisplay'
     AwsAccountId:
       type: string
       minLength: 12

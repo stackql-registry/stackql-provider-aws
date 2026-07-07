@@ -9273,12 +9273,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_object_encryption:
+          operation:
+            $ref: "#/paths/~1{bucket}~1{key}?encryption/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateObjectEncryptionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/objects/methods/get_object"
           - $ref: "#/components/x-stackQL-resources/objects/methods/list_objects"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/objects/methods/update_object_encryption"
         replace:
           - $ref: "#/components/x-stackQL-resources/objects/methods/put_object"
         delete:
@@ -9326,12 +9345,36 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+        update_bucket_metadata_inventory_table_configuration:
+          operation:
+            $ref: "#/paths/~1{bucket}?metadataInventoryTable/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_bucket_metadata_journal_table_configuration:
+          operation:
+            $ref: "#/paths/~1{bucket}?metadataJournalTable/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/buckets/methods/list_buckets"
         insert:
           - $ref: "#/components/x-stackQL-resources/buckets/methods/create_bucket"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/buckets/methods/update_bucket_metadata_inventory_table_configuration"
+          - $ref: "#/components/x-stackQL-resources/buckets/methods/update_bucket_metadata_journal_table_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/buckets/methods/delete_bucket"
     bucket_metadata_configurations:
@@ -10861,77 +10904,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/parts/methods/list_parts"
         insert: []
         update: []
-        delete: []
-    bucket_metadata_inventory_table_configurations:
-      id: aws.s3.bucket_metadata_inventory_table_configurations
-      name: bucket_metadata_inventory_table_configurations
-      title: bucket_metadata_inventory_table_configurations
-      methods:
-        update_bucket_metadata_inventory_table_configuration:
-          operation:
-            $ref: "#/paths/~1{bucket}?metadataInventoryTable/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/bucket_metadata_inventory_table_configurations/methods/update_bucket_metadata_inventory_table_configuration"
-        delete: []
-    bucket_metadata_journal_table_configurations:
-      id: aws.s3.bucket_metadata_journal_table_configurations
-      name: bucket_metadata_journal_table_configurations
-      title: bucket_metadata_journal_table_configurations
-      methods:
-        update_bucket_metadata_journal_table_configuration:
-          operation:
-            $ref: "#/paths/~1{bucket}?metadataJournalTable/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/bucket_metadata_journal_table_configurations/methods/update_bucket_metadata_journal_table_configuration"
-        delete: []
-    object_encryptions:
-      id: aws.s3.object_encryptions
-      name: object_encryptions
-      title: object_encryptions
-      methods:
-        update_object_encryption:
-          operation:
-            $ref: "#/paths/~1{bucket}~1{key}?encryption/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateObjectEncryptionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/object_encryptions/methods/update_object_encryption"
         delete: []

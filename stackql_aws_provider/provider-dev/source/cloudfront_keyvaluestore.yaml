@@ -177,6 +177,9 @@ paths:
       x-stackql-method: list_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: UpdateKeys
       description: Puts or Deletes multiple key value pairs in a single, all-or-nothing operation.

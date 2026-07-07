@@ -94,6 +94,9 @@ paths:
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /devices/{id}:
     delete:
       operationId: DeleteDevice
@@ -146,6 +149,7 @@ paths:
       x-stackql-resource: devices
       x-stackql-method: get_device
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.device
     patch:
       operationId: UpdateDevice
       description: Updates a thin client device.
@@ -231,6 +235,7 @@ paths:
       x-stackql-resource: environments
       x-stackql-method: get_environment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environment
     patch:
       operationId: UpdateEnvironment
       description: Updates an environment.
@@ -327,6 +332,7 @@ paths:
       x-stackql-resource: software_sets
       x-stackql-method: get_software_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.softwareSet
     patch:
       operationId: UpdateSoftwareSet
       description: Updates a software set.
@@ -391,6 +397,9 @@ paths:
       x-stackql-method: list_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.devices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /softwaresets:
     get:
       operationId: ListSoftwareSets
@@ -424,6 +433,9 @@ paths:
       x-stackql-method: list_software_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.softwareSets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -442,7 +454,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -473,7 +485,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -499,7 +511,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

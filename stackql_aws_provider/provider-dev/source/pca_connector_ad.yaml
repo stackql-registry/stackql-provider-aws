@@ -85,6 +85,9 @@ paths:
       x-stackql-method: list_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Connectors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /directoryRegistrations:
     post:
       operationId: CreateDirectoryRegistration
@@ -147,6 +150,9 @@ paths:
       x-stackql-method: list_directory_registrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DirectoryRegistrations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /directoryRegistrations/{directory_registration_arn}/servicePrincipalNames/{connector_arn}:
     post:
       operationId: CreateServicePrincipalName
@@ -228,6 +234,7 @@ paths:
       x-stackql-resource: service_principal_names
       x-stackql-method: get_service_principal_name
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ServicePrincipalName
   /templates:
     post:
       operationId: CreateTemplate
@@ -301,6 +308,9 @@ paths:
       x-stackql-method: list_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Templates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /templates/{template_arn}/accessControlEntries:
     post:
       operationId: CreateTemplateGroupAccessControlEntry
@@ -374,6 +384,9 @@ paths:
       x-stackql-method: list_template_group_access_control_entries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccessControlEntries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /connectors/{connector_arn}:
     delete:
       operationId: DeleteConnector
@@ -416,6 +429,7 @@ paths:
       x-stackql-resource: connectors
       x-stackql-method: get_connector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Connector
   /directoryRegistrations/{directory_registration_arn}:
     delete:
       operationId: DeleteDirectoryRegistration
@@ -454,6 +468,7 @@ paths:
       x-stackql-resource: directory_registrations
       x-stackql-method: get_directory_registration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DirectoryRegistration
   /templates/{template_arn}:
     delete:
       operationId: DeleteTemplate
@@ -491,6 +506,7 @@ paths:
       x-stackql-resource: templates
       x-stackql-method: get_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Template
     patch:
       operationId: UpdateTemplate
       description: Update template configuration to define the information included in certificates.
@@ -567,6 +583,7 @@ paths:
       x-stackql-resource: template_group_access_control_entries
       x-stackql-method: get_template_group_access_control_entry
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccessControlEntry
     patch:
       operationId: UpdateTemplateGroupAccessControlEntry
       description: Update a group access control entry you created using CreateTemplateGroupAccessControlEntry.
@@ -637,6 +654,9 @@ paths:
       x-stackql-method: list_service_principal_names
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServicePrincipalNames
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -655,7 +675,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -682,7 +702,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -704,7 +724,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

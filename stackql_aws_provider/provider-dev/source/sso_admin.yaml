@@ -108,7 +108,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AttachCustomerManagedPolicyReferenceToPermissionSetResponse'
-      x-stackql-resource: customer_managed_policy_reference_to_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: attach_customer_managed_policy_reference_to_permission_set
       x-stackql-verb: UPDATE
   /AttachManagedPolicyToPermissionSet:
@@ -156,7 +156,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AttachManagedPolicyToPermissionSetResponse'
-      x-stackql-resource: managed_policy_to_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: attach_managed_policy_to_permission_set
       x-stackql-verb: UPDATE
   /CreateAccountAssignment:
@@ -848,7 +848,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteInlinePolicyFromPermissionSetResponse'
-      x-stackql-resource: inline_policy_from_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: delete_inline_policy_from_permission_set
       x-stackql-verb: DELETE
   /DeleteInstance:
@@ -1007,7 +1007,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeletePermissionsBoundaryFromPermissionSetResponse'
-      x-stackql-resource: permissions_boundary_from_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: delete_permissions_boundary_from_permission_set
       x-stackql-verb: DELETE
   /DeleteTrustedTokenIssuer:
@@ -1090,6 +1090,7 @@ paths:
       x-stackql-resource: account_assignment_creation_status
       x-stackql-method: describe_account_assignment_creation_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccountAssignmentCreationStatus
   /DescribeAccountAssignmentDeletionStatus:
     post:
       operationId: DescribeAccountAssignmentDeletionStatus
@@ -1132,6 +1133,7 @@ paths:
       x-stackql-resource: account_assignment_deletion_status
       x-stackql-method: describe_account_assignment_deletion_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccountAssignmentDeletionStatus
   /DescribeApplication:
     post:
       operationId: DescribeApplication
@@ -1376,6 +1378,7 @@ paths:
       x-stackql-resource: permission_sets
       x-stackql-method: describe_permission_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PermissionSet
   /DescribePermissionSetProvisioningStatus:
     post:
       operationId: DescribePermissionSetProvisioningStatus
@@ -1419,6 +1422,7 @@ paths:
       x-stackql-resource: permission_set_provisioning_status
       x-stackql-method: describe_permission_set_provisioning_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PermissionSetProvisioningStatus
   /DescribeRegion:
     post:
       operationId: DescribeRegion
@@ -1544,7 +1548,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetachCustomerManagedPolicyReferenceFromPermissionSetResponse'
-      x-stackql-resource: customer_managed_policy_reference_from_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: detach_customer_managed_policy_reference_from_permission_set
       x-stackql-verb: UPDATE
   /DetachManagedPolicyFromPermissionSet:
@@ -1590,7 +1594,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetachManagedPolicyFromPermissionSetResponse'
-      x-stackql-resource: managed_policy_from_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: detach_managed_policy_from_permission_set
       x-stackql-verb: UPDATE
   /GetApplicationAccessScope:
@@ -1710,6 +1714,7 @@ paths:
       x-stackql-resource: application_authentication_methods
       x-stackql-method: get_application_authentication_method
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AuthenticationMethod
   /GetApplicationGrant:
     post:
       operationId: GetApplicationGrant
@@ -1750,6 +1755,7 @@ paths:
       x-stackql-resource: application_grants
       x-stackql-method: get_application_grant
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Grant
   /GetApplicationSessionConfiguration:
     post:
       operationId: GetApplicationSessionConfiguration
@@ -1871,6 +1877,7 @@ paths:
       x-stackql-resource: permissions_boundary_for_permission_sets
       x-stackql-method: get_permissions_boundary_for_permission_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PermissionsBoundary
   /ListAccountAssignmentCreationStatus:
     post:
       operationId: ListAccountAssignmentCreationStatus
@@ -1921,6 +1928,9 @@ paths:
       x-stackql-method: list_account_assignment_creation_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignmentsCreationStatus
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAccountAssignmentDeletionStatus:
     post:
       operationId: ListAccountAssignmentDeletionStatus
@@ -1971,6 +1981,9 @@ paths:
       x-stackql-method: list_account_assignment_deletion_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignmentsDeletionStatus
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAccountAssignments:
     post:
       operationId: ListAccountAssignments
@@ -2025,6 +2038,9 @@ paths:
       x-stackql-method: list_account_assignments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAccountAssignmentsForPrincipal:
     post:
       operationId: ListAccountAssignmentsForPrincipal
@@ -2089,6 +2105,9 @@ paths:
       x-stackql-method: list_account_assignments_for_principal
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAssignments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAccountsForProvisionedPermissionSet:
     post:
       operationId: ListAccountsForProvisionedPermissionSet
@@ -2138,11 +2157,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAccountsForProvisionedPermissionSetResponse'
+                $ref: '#/components/schemas/ListAccountsForProvisionedPermissionSetOutputDisplay'
       x-stackql-resource: accounts_for_provisioned_permission_sets
       x-stackql-method: list_accounts_for_provisioned_permission_set
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.AccountIds
+      x-stackql-responseEnvelope: ListAccountsForProvisionedPermissionSetOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "AccountIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"account_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationAccessScopes:
     post:
       operationId: ListApplicationAccessScopes
@@ -2193,6 +2220,9 @@ paths:
       x-stackql-method: list_application_access_scopes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Scopes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationAssignments:
     post:
       operationId: ListApplicationAssignments
@@ -2243,6 +2273,9 @@ paths:
       x-stackql-method: list_application_assignments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationAssignments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationAssignmentsForPrincipal:
     post:
       operationId: ListApplicationAssignmentsForPrincipal
@@ -2308,6 +2341,9 @@ paths:
       x-stackql-method: list_application_assignments_for_principal
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationAssignments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationAuthenticationMethods:
     post:
       operationId: ListApplicationAuthenticationMethods
@@ -2350,6 +2386,9 @@ paths:
       x-stackql-method: list_application_authentication_methods
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AuthenticationMethods
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationGrants:
     post:
       operationId: ListApplicationGrants
@@ -2392,6 +2431,9 @@ paths:
       x-stackql-method: list_application_grants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Grants
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationProviders:
     post:
       operationId: ListApplicationProviders
@@ -2437,6 +2479,9 @@ paths:
       x-stackql-method: list_application_providers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationProviders
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplications:
     post:
       operationId: ListApplications
@@ -2495,6 +2540,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Applications
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCustomerManagedPolicyReferencesInPermissionSet:
     post:
       operationId: ListCustomerManagedPolicyReferencesInPermissionSet
@@ -2543,6 +2591,9 @@ paths:
       x-stackql-method: list_customer_managed_policy_references_in_permission_set
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CustomerManagedPolicyReferences
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInstances:
     post:
       operationId: ListInstances
@@ -2583,6 +2634,9 @@ paths:
       x-stackql-method: list_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Instances
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListManagedPoliciesInPermissionSet:
     post:
       operationId: ListManagedPoliciesInPermissionSet
@@ -2633,6 +2687,9 @@ paths:
       x-stackql-method: list_managed_policies_in_permission_set
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AttachedManagedPolicies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPermissionSetProvisioningStatus:
     post:
       operationId: ListPermissionSetProvisioningStatus
@@ -2682,6 +2739,9 @@ paths:
       x-stackql-method: list_permission_set_provisioning_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PermissionSetsProvisioningStatus
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPermissionSets:
     post:
       operationId: ListPermissionSets
@@ -2723,11 +2783,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPermissionSetsResponse'
+                $ref: '#/components/schemas/ListPermissionSetsOutputDisplay'
       x-stackql-resource: permission_sets
       x-stackql-method: list_permission_sets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.PermissionSets
+      x-stackql-responseEnvelope: ListPermissionSetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "PermissionSets" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"permission_set": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPermissionSetsProvisionedToAccount:
     post:
       operationId: ListPermissionSetsProvisionedToAccount
@@ -2776,11 +2844,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPermissionSetsProvisionedToAccountResponse'
+                $ref: '#/components/schemas/ListPermissionSetsProvisionedToAccountOutputDisplay'
       x-stackql-resource: permission_sets_provisioned_to_accounts
       x-stackql-method: list_permission_sets_provisioned_to_account
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.PermissionSets
+      x-stackql-responseEnvelope: ListPermissionSetsProvisionedToAccountOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "PermissionSets" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"permission_set": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRegions:
     post:
       operationId: ListRegions
@@ -2827,6 +2903,9 @@ paths:
       x-stackql-method: list_regions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Regions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2869,10 +2948,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTrustedTokenIssuers:
     post:
       operationId: ListTrustedTokenIssuers
@@ -2924,6 +3006,9 @@ paths:
       x-stackql-method: list_trusted_token_issuers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrustedTokenIssuers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ProvisionPermissionSet:
     post:
       operationId: ProvisionPermissionSet
@@ -3244,7 +3329,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutInlinePolicyToPermissionSetResponse'
-      x-stackql-resource: inline_policy_to_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: put_inline_policy_to_permission_set
       x-stackql-verb: REPLACE
   /PutPermissionsBoundaryToPermissionSet:
@@ -3289,7 +3374,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutPermissionsBoundaryToPermissionSetResponse'
-      x-stackql-resource: permissions_boundary_to_permission_sets
+      x-stackql-resource: permission_sets
       x-stackql-method: put_permissions_boundary_to_permission_set
       x-stackql-verb: REPLACE
   /RemoveRegion:
@@ -3380,7 +3465,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3425,7 +3510,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateApplication:
@@ -4810,20 +4895,19 @@ components:
       enum:
       - LATEST_PERMISSION_SET_PROVISIONED
       - LATEST_PERMISSION_SET_NOT_PROVISIONED
-    ListAccountsForProvisionedPermissionSetResponse:
+    ListAccountsForProvisionedPermissionSetRowDisplay:
       type: object
       properties:
-        AccountIds:
-          $ref: '#/components/schemas/AccountList'
+        account_id:
+          type: string
           description: The list of Amazon Web Services AccountIds.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: The pagination token for the list API. Initially the value is null. Use the output of previous API
-            calls to make subsequent calls.
-    AccountList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AccountId'
+    ListAccountsForProvisionedPermissionSetOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAccountsForProvisionedPermissionSetRowDisplay'
     ListApplicationAccessScopesRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -5196,30 +5280,32 @@ components:
         CreatedDate:
           $ref: '#/components/schemas/Date'
           description: The date that the permission set was created.
-    ListPermissionSetsResponse:
+    ListPermissionSetsRowDisplay:
       type: object
       properties:
-        PermissionSets:
-          $ref: '#/components/schemas/PermissionSetList'
+        permission_set:
+          type: string
           description: Defines the level of access on an Amazon Web Services account.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: The pagination token for the list API. Initially the value is null. Use the output of previous API
-            calls to make subsequent calls.
-    PermissionSetList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PermissionSetArn'
-    ListPermissionSetsProvisionedToAccountResponse:
+    ListPermissionSetsOutputDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: The pagination token for the list API. Initially the value is null. Use the output of previous API
-            calls to make subsequent calls.
-        PermissionSets:
-          $ref: '#/components/schemas/PermissionSetList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPermissionSetsRowDisplay'
+    ListPermissionSetsProvisionedToAccountRowDisplay:
+      type: object
+      properties:
+        permission_set:
+          type: string
           description: Defines the level of access that an Amazon Web Services account has.
+    ListPermissionSetsProvisionedToAccountOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPermissionSetsProvisionedToAccountRowDisplay'
     ListRegionsResponse:
       type: object
       properties:

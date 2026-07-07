@@ -58,7 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateResourceTypesResponse'
-      x-stackql-resource: resource_types
+      x-stackql-resource: configuration_recorders
       x-stackql-method: associate_resource_types
       x-stackql-verb: UPDATE
   /BatchGetAggregateResourceConfig:
@@ -401,7 +401,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteEvaluationResultsResponse'
-      x-stackql-resource: evaluation_results
+      x-stackql-resource: config_rules
       x-stackql-method: delete_evaluation_results
       x-stackql-verb: DELETE
   /DeleteOrganizationConfigRule:
@@ -717,7 +717,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteServiceLinkedConfigurationRecorderResponse'
-      x-stackql-resource: service_linked_configuration_recorders
+      x-stackql-resource: configuration_recorders
       x-stackql-method: delete_service_linked_configuration_recorder
       x-stackql-verb: DELETE
   /DeleteStoredQuery:
@@ -792,7 +792,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeliverConfigSnapshotResponse'
-      x-stackql-resource: deliver_config_snapshot
+      x-stackql-resource: delivery_channels
       x-stackql-method: deliver_config_snapshot
       x-stackql-verb: EXEC
   /DescribeAggregateComplianceByConfigRules:
@@ -845,6 +845,9 @@ paths:
       x-stackql-method: describe_aggregate_compliance_by_config_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregateComplianceByConfigRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAggregateComplianceByConformancePacks:
     post:
       operationId: DescribeAggregateComplianceByConformancePacks
@@ -896,6 +899,9 @@ paths:
       x-stackql-method: describe_aggregate_compliance_by_conformance_packs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregateComplianceByConformancePacks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAggregationAuthorizations:
     post:
       operationId: DescribeAggregationAuthorizations
@@ -936,6 +942,9 @@ paths:
       x-stackql-method: describe_aggregation_authorizations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregationAuthorizations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeComplianceByConfigRule:
     post:
       operationId: DescribeComplianceByConfigRule
@@ -987,6 +996,9 @@ paths:
       x-stackql-method: describe_compliance_by_config_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComplianceByConfigRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeComplianceByResource:
     post:
       operationId: DescribeComplianceByResource
@@ -1049,6 +1061,9 @@ paths:
       x-stackql-method: describe_compliance_by_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComplianceByResources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConfigRuleEvaluationStatus:
     post:
       operationId: DescribeConfigRuleEvaluationStatus
@@ -1096,6 +1111,9 @@ paths:
       x-stackql-method: describe_config_rule_evaluation_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigRulesEvaluationStatus
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConfigRules:
     post:
       operationId: DescribeConfigRules
@@ -1141,6 +1159,9 @@ paths:
       x-stackql-method: describe_config_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConfigurationAggregatorSourcesStatus:
     post:
       operationId: DescribeConfigurationAggregatorSourcesStatus
@@ -1193,6 +1214,9 @@ paths:
       x-stackql-method: describe_configuration_aggregator_sources_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregatedSourceStatusList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConfigurationAggregators:
     post:
       operationId: DescribeConfigurationAggregators
@@ -1237,6 +1261,9 @@ paths:
       x-stackql-method: describe_configuration_aggregators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationAggregators
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConfigurationRecorderStatus:
     post:
       operationId: DescribeConfigurationRecorderStatus
@@ -1375,6 +1402,9 @@ paths:
       x-stackql-method: describe_conformance_pack_compliance
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConformancePackRuleComplianceList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConformancePackStatus:
     post:
       operationId: DescribeConformancePackStatus
@@ -1418,6 +1448,9 @@ paths:
       x-stackql-method: describe_conformance_pack_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConformancePackStatusDetails
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConformancePacks:
     post:
       operationId: DescribeConformancePacks
@@ -1461,6 +1494,9 @@ paths:
       x-stackql-method: describe_conformance_packs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConformancePackDetails
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeDeliveryChannelStatus:
     post:
       operationId: DescribeDeliveryChannelStatus
@@ -1581,6 +1617,9 @@ paths:
       x-stackql-method: describe_organization_config_rule_statuses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConfigRuleStatuses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeOrganizationConfigRules:
     post:
       operationId: DescribeOrganizationConfigRules
@@ -1634,6 +1673,9 @@ paths:
       x-stackql-method: describe_organization_config_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConfigRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeOrganizationConformancePackStatuses:
     post:
       operationId: DescribeOrganizationConformancePackStatuses
@@ -1682,6 +1724,9 @@ paths:
       x-stackql-method: describe_organization_conformance_pack_statuses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConformancePackStatuses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeOrganizationConformancePacks:
     post:
       operationId: DescribeOrganizationConformancePacks
@@ -1734,6 +1779,9 @@ paths:
       x-stackql-method: describe_organization_conformance_packs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConformancePacks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribePendingAggregationRequests:
     post:
       operationId: DescribePendingAggregationRequests
@@ -1774,6 +1822,9 @@ paths:
       x-stackql-method: describe_pending_aggregation_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PendingAggregationRequests
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRemediationConfigurations:
     post:
       operationId: DescribeRemediationConfigurations
@@ -1914,6 +1965,9 @@ paths:
       x-stackql-method: describe_remediation_execution_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RemediationExecutionStatuses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRetentionConfigurations:
     post:
       operationId: DescribeRetentionConfigurations
@@ -1957,6 +2011,9 @@ paths:
       x-stackql-method: describe_retention_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RetentionConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DisassociateResourceTypes:
     post:
       operationId: DisassociateResourceTypes
@@ -1997,7 +2054,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateResourceTypesResponse'
-      x-stackql-resource: resource_types
+      x-stackql-resource: configuration_recorders
       x-stackql-method: disassociate_resource_types
       x-stackql-verb: UPDATE
   /GetAggregateComplianceDetailsByConfigRule:
@@ -2065,6 +2122,9 @@ paths:
       x-stackql-method: get_aggregate_compliance_details_by_config_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregateEvaluationResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetAggregateConfigRuleComplianceSummary:
     post:
       operationId: GetAggregateConfigRuleComplianceSummary
@@ -2264,6 +2324,7 @@ paths:
       x-stackql-resource: aggregate_resource_configs
       x-stackql-method: get_aggregate_resource_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ConfigurationItem
   /GetComplianceDetailsByConfigRule:
     post:
       operationId: GetComplianceDetailsByConfigRule
@@ -2316,6 +2377,9 @@ paths:
       x-stackql-method: get_compliance_details_by_config_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EvaluationResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetComplianceDetailsByResource:
     post:
       operationId: GetComplianceDetailsByResource
@@ -2369,6 +2433,9 @@ paths:
       x-stackql-method: get_compliance_details_by_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EvaluationResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetComplianceSummaryByConfigRule:
     post:
       operationId: GetComplianceSummaryByConfigRule
@@ -2393,6 +2460,7 @@ paths:
       x-stackql-resource: compliance_summary_by_config_rules
       x-stackql-method: get_compliance_summary_by_config_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ComplianceSummary
   /GetComplianceSummaryByResourceType:
     post:
       operationId: GetComplianceSummaryByResourceType
@@ -2524,6 +2592,9 @@ paths:
       x-stackql-method: get_conformance_pack_compliance_summary
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConformancePackComplianceSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetCustomRulePolicy:
     post:
       operationId: GetCustomRulePolicy
@@ -2664,6 +2735,9 @@ paths:
       x-stackql-method: get_organization_config_rule_detailed_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConfigRuleDetailedStatus
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetOrganizationConformancePackDetailedStatus:
     post:
       operationId: GetOrganizationConformancePackDetailedStatus
@@ -2713,6 +2787,9 @@ paths:
       x-stackql-method: get_organization_conformance_pack_detailed_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationConformancePackDetailedStatuses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetOrganizationCustomRulePolicy:
     post:
       operationId: GetOrganizationCustomRulePolicy
@@ -2820,6 +2897,9 @@ paths:
       x-stackql-method: get_resource_config_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configurationItems
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetResourceEvaluationSummary:
     post:
       operationId: GetResourceEvaluationSummary
@@ -2897,6 +2977,7 @@ paths:
       x-stackql-resource: stored_queries
       x-stackql-method: get_stored_query
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.StoredQuery
   /ListAggregateDiscoveredResources:
     post:
       operationId: ListAggregateDiscoveredResources
@@ -2954,6 +3035,9 @@ paths:
       x-stackql-method: list_aggregate_discovered_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceIdentifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListConfigurationRecorders:
     post:
       operationId: ListConfigurationRecorders
@@ -2996,6 +3080,9 @@ paths:
       x-stackql-method: list_configuration_recorders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationRecorderSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListConformancePackComplianceScores:
     post:
       operationId: ListConformancePackComplianceScores
@@ -3123,6 +3210,9 @@ paths:
       x-stackql-method: list_discovered_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourceIdentifiers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListResourceEvaluations:
     post:
       operationId: ListResourceEvaluations
@@ -3166,6 +3256,9 @@ paths:
       x-stackql-method: list_resource_evaluations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceEvaluations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStoredQueries:
     post:
       operationId: ListStoredQueries
@@ -3248,10 +3341,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutAggregationAuthorization:
     post:
       operationId: PutAggregationAuthorization
@@ -3669,7 +3765,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutExternalEvaluationResponse'
-      x-stackql-resource: external_evaluations
+      x-stackql-resource: config_rules
       x-stackql-method: put_external_evaluation
       x-stackql-verb: REPLACE
   /PutOrganizationConfigRule:
@@ -4098,7 +4194,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutServiceLinkedConfigurationRecorderResponse'
-      x-stackql-resource: service_linked_configuration_recorders
+      x-stackql-resource: configuration_recorders
       x-stackql-method: put_service_linked_configuration_recorder
       x-stackql-verb: REPLACE
   /PutStoredQuery:
@@ -4202,9 +4298,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SelectAggregateResourceConfigResponse'
-      x-stackql-resource: select_aggregate_resource_config
+      x-stackql-resource: configuration_aggregators
       x-stackql-method: select_aggregate_resource_config
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /SelectResourceConfig:
     post:
       operationId: SelectResourceConfig
@@ -4250,6 +4349,9 @@ paths:
       x-stackql-resource: select_resource_config
       x-stackql-method: select_resource_config
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /StartConfigRulesEvaluation:
     post:
       operationId: StartConfigRulesEvaluation
@@ -4292,7 +4394,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConfigRulesEvaluationResponse'
-      x-stackql-resource: config_rules_evaluation
+      x-stackql-resource: config_rules
       x-stackql-method: start_config_rules_evaluation
       x-stackql-verb: EXEC
   /StartConfigurationRecorder:
@@ -4327,7 +4429,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: configuration_recorder
+      x-stackql-resource: configuration_recorders
       x-stackql-method: start_configuration_recorder
       x-stackql-verb: EXEC
   /StartRemediationExecution:
@@ -4371,7 +4473,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRemediationExecutionResponse'
-      x-stackql-resource: remediation_execution
+      x-stackql-resource: config_rules
       x-stackql-method: start_remediation_execution
       x-stackql-verb: EXEC
   /StartResourceEvaluation:
@@ -4466,7 +4568,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: configuration_recorder
+      x-stackql-resource: configuration_recorders
       x-stackql-method: stop_configuration_recorder
       x-stackql-verb: EXEC
   /TagResource:
@@ -4506,7 +4608,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -4544,7 +4646,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

@@ -3071,6 +3071,174 @@ components:
         - networkId
         - suspended
   x-stackQL-resources:
+    networks:
+      id: aws.wickr.networks
+      name: networks
+      title: networks
+      methods:
+        batch_create_user:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1users/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_user:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1users~1batch-delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_lookup_user_uname:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1users~1uname-lookup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_reinvite_user:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1users~1re-invite/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_reset_devices_for_user:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1users~1{user_id}~1devices/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_toggle_user_suspend_status:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1users~1toggleSuspend/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_data_retention:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1data-retention-bots/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_network:
+          operation:
+            $ref: "#/paths/~1networks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_networks:
+          operation:
+            $ref: "#/paths/~1networks/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.networks
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_network:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_network:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_network:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        register_oidc_config:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1oidc~1save/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        register_oidc_config_test:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1oidc~1test/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/networks/methods/get_network"
+          - $ref: "#/components/x-stackQL-resources/networks/methods/list_networks"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/networks/methods/register_oidc_config"
+          - $ref: "#/components/x-stackQL-resources/networks/methods/register_oidc_config_test"
+          - $ref: "#/components/x-stackQL-resources/networks/methods/create_network"
+        update:
+          - $ref: "#/components/x-stackQL-resources/networks/methods/update_data_retention"
+          - $ref: "#/components/x-stackQL-resources/networks/methods/update_network"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/networks/methods/delete_network"
     users:
       id: aws.wickr.users
       name: users
@@ -3085,6 +3253,14 @@ components:
             objectKey: $.users
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_user:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1users/patch"
@@ -3126,6 +3302,14 @@ components:
             objectKey: $.devices
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/devices_for_users/methods/list_devices_for_user"
@@ -3157,6 +3341,14 @@ components:
             objectKey: $.bots
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_bot:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1bots~1{bot_id}/delete"
@@ -3213,6 +3405,12 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        create_data_retention_bot_challenge:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1data-retention-bots~1challenge/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_retention_bots/methods/get_data_retention_bot"
@@ -3221,103 +3419,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/data_retention_bots/methods/delete_data_retention_bot"
-    data_retentions:
-      id: aws.wickr.data_retentions
-      name: data_retentions
-      title: data_retentions
-      methods:
-        update_data_retention:
-          operation:
-            $ref: "#/paths/~1networks~1{network_id}~1data-retention-bots/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/data_retentions/methods/update_data_retention"
-        delete: []
-    data_retention_bot_challenges:
-      id: aws.wickr.data_retention_bot_challenges
-      name: data_retention_bot_challenges
-      title: data_retention_bot_challenges
-      methods:
-        create_data_retention_bot_challenge:
-          operation:
-            $ref: "#/paths/~1networks~1{network_id}~1data-retention-bots~1challenge/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/data_retention_bot_challenges/methods/create_data_retention_bot_challenge"
-        update: []
-        delete: []
-    networks:
-      id: aws.wickr.networks
-      name: networks
-      title: networks
-      methods:
-        create_network:
-          operation:
-            $ref: "#/paths/~1networks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_networks:
-          operation:
-            $ref: "#/paths/~1networks/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.networks
-          request:
-            nativeCasing: pascal
-        delete_network:
-          operation:
-            $ref: "#/paths/~1networks~1{network_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_network:
-          operation:
-            $ref: "#/paths/~1networks~1{network_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_network:
-          operation:
-            $ref: "#/paths/~1networks~1{network_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/networks/methods/get_network"
-          - $ref: "#/components/x-stackQL-resources/networks/methods/list_networks"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/networks/methods/create_network"
-        update:
-          - $ref: "#/components/x-stackQL-resources/networks/methods/update_network"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/networks/methods/delete_network"
     security_groups:
       id: aws.wickr.security_groups
       name: security_groups
@@ -3343,6 +3444,14 @@ components:
             objectKey: $.securityGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_security_group:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1security-groups~1{group_id}/delete"
@@ -3355,6 +3464,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.securityGroup
         update_security_group:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1security-groups~1{group_id}/patch"
@@ -3518,6 +3628,14 @@ components:
             objectKey: $.blocklist
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/blocked_guest_users/methods/list_blocked_guest_users"
@@ -3538,6 +3656,14 @@ components:
             objectKey: $.guestlist
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_guest_user:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1guest-users~1{username_hash}/patch"
@@ -3570,53 +3696,17 @@ components:
             objectKey: $.users
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_group_users/methods/list_security_group_users"
         insert: []
-        update: []
-        delete: []
-    oidc_configs:
-      id: aws.wickr.oidc_configs
-      name: oidc_configs
-      title: oidc_configs
-      methods:
-        register_oidc_config:
-          operation:
-            $ref: "#/paths/~1networks~1{network_id}~1oidc~1save/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/oidc_configs/methods/register_oidc_config"
-        update: []
-        delete: []
-    oidc_config_tests:
-      id: aws.wickr.oidc_config_tests
-      name: oidc_config_tests
-      title: oidc_config_tests
-      methods:
-        register_oidc_config_test:
-          operation:
-            $ref: "#/paths/~1networks~1{network_id}~1oidc~1test/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/oidc_config_tests/methods/register_oidc_config_test"
         update: []
         delete: []

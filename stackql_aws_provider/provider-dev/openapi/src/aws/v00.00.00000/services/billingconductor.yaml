@@ -33,7 +33,6 @@ paths:
                 AccountIds:
                   $ref: "#/components/schemas/AccountIdList"
               required:
-                - Arn
                 - AccountIds
       responses:
         "200":
@@ -59,7 +58,6 @@ paths:
                 PricingRuleArns:
                   $ref: "#/components/schemas/PricingRuleArnsNonEmptyInput"
               required:
-                - Arn
                 - PricingRuleArns
       responses:
         "200":
@@ -155,7 +153,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - AccountGrouping
                 - ComputationPreference
       responses:
@@ -202,8 +199,6 @@ paths:
                 PresentationDetails:
                   $ref: "#/components/schemas/PresentationObject"
               required:
-                - Name
-                - Description
                 - BillingGroupArn
                 - ChargeDetails
       responses:
@@ -239,8 +234,6 @@ paths:
                   $ref: "#/components/schemas/PricingRuleArnsInput"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -288,10 +281,6 @@ paths:
                   $ref: "#/components/schemas/UsageType"
                 Operation:
                   $ref: "#/components/schemas/Operation"
-              required:
-                - Name
-                - Scope
-                - Type
       responses:
         "200":
           description: Success
@@ -313,8 +302,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/BillingGroupArn"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -338,8 +325,6 @@ paths:
                   $ref: "#/components/schemas/CustomLineItemArn"
                 BillingPeriodRange:
                   $ref: "#/components/schemas/CustomLineItemBillingPeriodRange"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -361,8 +346,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/PricingPlanArn"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -384,8 +367,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/PricingRuleArn"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -410,7 +391,6 @@ paths:
                 AccountIds:
                   $ref: "#/components/schemas/AccountIdList"
               required:
-                - Arn
                 - AccountIds
       responses:
         "200":
@@ -436,7 +416,6 @@ paths:
                 PricingRuleArns:
                   $ref: "#/components/schemas/PricingRuleArnsNonEmptyInput"
               required:
-                - Arn
                 - PricingRuleArns
       responses:
         "200":
@@ -467,8 +446,6 @@ paths:
                   $ref: "#/components/schemas/MaxBillingGroupCostReportResults"
                 NextToken:
                   $ref: "#/components/schemas/Token"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -575,8 +552,6 @@ paths:
                   $ref: "#/components/schemas/Token"
                 Filters:
                   $ref: "#/components/schemas/ListCustomLineItemVersionsFilter"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -666,7 +641,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPricingPlansAssociatedWithPricingRuleOutput"
+                $ref: "#/components/schemas/ListPricingPlansAssociatedWithPricingRuleOutputDisplay"
   /list-pricing-rules:
     post:
       operationId: ListPricingRules
@@ -722,7 +697,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPricingRulesAssociatedToPricingPlanOutput"
+                $ref: "#/components/schemas/ListPricingRulesAssociatedToPricingPlanOutputDisplay"
   /list-resources-associated-to-custom-line-item:
     post:
       operationId: ListResourcesAssociatedToCustomLineItem
@@ -745,8 +720,6 @@ paths:
                   $ref: "#/components/schemas/Token"
                 Filters:
                   $ref: "#/components/schemas/ListResourcesAssociatedToCustomLineItemFilter"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -791,8 +764,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -847,8 +818,6 @@ paths:
                   $ref: "#/components/schemas/BillingGroupDescription"
                 AccountGrouping:
                   $ref: "#/components/schemas/UpdateBillingGroupAccountGrouping"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -878,8 +847,6 @@ paths:
                   $ref: "#/components/schemas/UpdateCustomLineItemChargeDetails"
                 BillingPeriodRange:
                   $ref: "#/components/schemas/CustomLineItemBillingPeriodRange"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -905,8 +872,6 @@ paths:
                   $ref: "#/components/schemas/PricingPlanName"
                 Description:
                   $ref: "#/components/schemas/PricingPlanDescription"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -938,8 +903,6 @@ paths:
                   $ref: "#/components/schemas/ModifierPercentage"
                 Tiering:
                   $ref: "#/components/schemas/UpdateTieringInput"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -2055,21 +2018,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListPricingPlansAssociatedWithPricingRuleOutput:
+    ListPricingPlansAssociatedWithPricingRuleRowDisplay:
       type: object
       properties:
-        BillingPeriod:
-          $ref: "#/components/schemas/BillingPeriod"
-          description: The pricing plan billing period for which associations will be listed.
-        PricingRuleArn:
-          $ref: "#/components/schemas/PricingRuleArn"
-          description: The pricing rule Amazon Resource Name (ARN) for which associations will be listed.
-        PricingPlanArns:
-          $ref: "#/components/schemas/PricingPlanArns"
+        pricing_plan_arn:
+          type: string
           description: The list containing pricing plans that are associated with the requested pricing rule.
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: The pagination token to be used on subsequent calls.
+    ListPricingPlansAssociatedWithPricingRuleOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPricingPlansAssociatedWithPricingRuleRowDisplay"
     ListPricingRulesFilter:
       description: The filter that specifies criteria that the pricing rules returned by the ListPricingRules API will adhere to.
       type: object
@@ -2165,21 +2126,19 @@ components:
           description: Activate or deactivate Amazon Web Services Free Tier application.
       required:
         - Activated
-    ListPricingRulesAssociatedToPricingPlanOutput:
+    ListPricingRulesAssociatedToPricingPlanRowDisplay:
       type: object
       properties:
-        BillingPeriod:
-          $ref: "#/components/schemas/BillingPeriod"
-          description: The billing period for which the pricing rule associations are listed.
-        PricingPlanArn:
-          $ref: "#/components/schemas/PricingPlanArn"
-          description: The Amazon Resource Name (ARN) of the pricing plan for which associations are listed.
-        PricingRuleArns:
-          $ref: "#/components/schemas/PricingRuleArns"
+        pricing_rule_arn:
+          type: string
           description: A list containing pricing rules that are associated with the requested pricing plan.
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: The pagination token to be used on subsequent calls.
+    ListPricingRulesAssociatedToPricingPlanOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPricingRulesAssociatedToPricingPlanRowDisplay"
     ListResourcesAssociatedToCustomLineItemFilter:
       description: A filter that specifies the type of resource associations that should be retrieved for a custom line item.
       type: object
@@ -2517,6 +2476,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_pricing_rule:
@@ -2577,6 +2543,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_billing_group:
@@ -2636,6 +2609,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_custom_line_item:
@@ -2695,6 +2675,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_pricing_plan:
@@ -2743,12 +2730,18 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/billing_group_cost_reports/methods/get_billing_group_cost_report"
-          - $ref: "#/components/x-stackQL-resources/billing_group_cost_reports/methods/list_billing_group_cost_reports"
         insert: []
         update: []
         delete: []
@@ -2767,6 +2760,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2790,6 +2790,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2809,10 +2816,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.PricingPlanArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPricingPlansAssociatedWithPricingRuleOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "PricingPlanArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pricing_plan_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2832,10 +2852,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.PricingRuleArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPricingRulesAssociatedToPricingPlanOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "PricingRuleArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pricing_rule_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2859,6 +2892,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2867,10 +2907,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.billingconductor.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.billingconductor.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2878,17 +2918,6 @@ components:
           response:
             openAPIDocKey: "204"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.billingconductor.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2909,9 +2938,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

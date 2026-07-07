@@ -1,0 +1,11 @@
+-- Scope state assertions to the single instance in the smoke subnet via
+-- the subnet_id COLUMN. This is guaranteed client-side filtering:
+-- DescribeInstances has no SubnetId param to bind (and JSON() Filters
+-- don't transpose to the wire), while instance_id WOULD bind to the
+-- InstanceId wire param in un-indexed form. Rows are individual
+-- instances via the nested-list unwrap transform. Terminated instances
+-- drop their subnet association, so this also proves "gone".
+-- NOTE: the state column is `state` (botocore member `State`, wire
+-- `instanceState`) - columns follow MEMBER names, not wire names.
+SELECT instance_id, state FROM aws.ec2.instances
+WHERE region = '{{ region }}' AND subnet_id = '{{ subnet_create.subnet_id }}'

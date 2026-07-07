@@ -38,7 +38,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelTaskOutput'
-      x-stackql-resource: task
+      x-stackql-resource: tasks
       x-stackql-method: cancel_task
       x-stackql-verb: EXEC
   /task:
@@ -219,6 +219,9 @@ paths:
       x-stackql-method: list_device_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /managed-devices:
     get:
       operationId: ListDevices
@@ -254,6 +257,9 @@ paths:
       x-stackql-method: list_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.devices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /executions:
     get:
       operationId: ListExecutions
@@ -294,6 +300,9 @@ paths:
       x-stackql-method: list_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -312,7 +321,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -339,7 +348,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -362,7 +371,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /tasks:
@@ -399,6 +408,9 @@ paths:
       x-stackql-method: list_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

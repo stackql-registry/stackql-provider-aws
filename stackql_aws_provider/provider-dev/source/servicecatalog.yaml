@@ -60,7 +60,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptPortfolioShareOutput'
-      x-stackql-resource: portfolio_share
+      x-stackql-resource: portfolios
       x-stackql-method: accept_portfolio_share
       x-stackql-verb: EXEC
   /AssociateBudgetWithResource:
@@ -174,7 +174,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociatePrincipalWithPortfolioOutput'
-      x-stackql-resource: principal_with_portfolios
+      x-stackql-resource: portfolios
       x-stackql-method: associate_principal_with_portfolio
       x-stackql-verb: UPDATE
   /AssociateProductWithPortfolio:
@@ -221,7 +221,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateProductWithPortfolioOutput'
-      x-stackql-resource: product_with_portfolios
+      x-stackql-resource: portfolios
       x-stackql-method: associate_product_with_portfolio
       x-stackql-verb: UPDATE
   /AssociateServiceActionWithProvisioningArtifact:
@@ -273,7 +273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateServiceActionWithProvisioningArtifactOutput'
-      x-stackql-resource: service_action_with_provisioning_artifacts
+      x-stackql-resource: provisioning_artifacts
       x-stackql-method: associate_service_action_with_provisioning_artifact
       x-stackql-verb: UPDATE
   /AssociateTagOptionWithResource:
@@ -313,7 +313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateTagOptionWithResourceOutput'
-      x-stackql-resource: tag_option_with_resources
+      x-stackql-resource: tag_options
       x-stackql-method: associate_tag_option_with_resource
       x-stackql-verb: UPDATE
   /BatchAssociateServiceActionWithProvisioningArtifact:
@@ -1929,6 +1929,7 @@ paths:
       x-stackql-resource: service_actions
       x-stackql-method: describe_service_action
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ServiceActionDetail
   /DescribeServiceActionExecutionParameters:
     post:
       operationId: DescribeServiceActionExecutionParameters
@@ -2009,6 +2010,7 @@ paths:
       x-stackql-resource: tag_options
       x-stackql-method: describe_tag_option
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TagOptionDetail
   /DisableAWSOrganizationsAccess:
     post:
       operationId: DisableAWSOrganizationsAccess
@@ -2141,7 +2143,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociatePrincipalFromPortfolioOutput'
-      x-stackql-resource: principal_from_portfolios
+      x-stackql-resource: portfolios
       x-stackql-method: disassociate_principal_from_portfolio
       x-stackql-verb: UPDATE
   /DisassociateProductFromPortfolio:
@@ -2185,7 +2187,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateProductFromPortfolioOutput'
-      x-stackql-resource: product_from_portfolios
+      x-stackql-resource: portfolios
       x-stackql-method: disassociate_product_from_portfolio
       x-stackql-verb: UPDATE
   /DisassociateServiceActionFromProvisioningArtifact:
@@ -2237,7 +2239,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateServiceActionFromProvisioningArtifactOutput'
-      x-stackql-resource: service_action_from_provisioning_artifacts
+      x-stackql-resource: provisioning_artifacts
       x-stackql-method: disassociate_service_action_from_provisioning_artifact
       x-stackql-verb: UPDATE
   /DisassociateTagOptionFromResource:
@@ -2277,7 +2279,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateTagOptionFromResourceOutput'
-      x-stackql-resource: tag_option_from_resources
+      x-stackql-resource: tag_options
       x-stackql-method: disassociate_tag_option_from_resource
       x-stackql-verb: UPDATE
   /EnableAWSOrganizationsAccess:
@@ -2414,7 +2416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteProvisionedProductServiceActionOutput'
-      x-stackql-resource: execute_provisioned_product_service_action
+      x-stackql-resource: provisioned_products
       x-stackql-method: execute_provisioned_product_service_action
       x-stackql-verb: EXEC
   /GetAWSOrganizationsAccessStatus:
@@ -2564,7 +2566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportAsProvisionedProductOutput'
-      x-stackql-resource: as_provisioned_product
+      x-stackql-resource: provisioning_artifacts
       x-stackql-method: import_as_provisioned_product
       x-stackql-verb: EXEC
   /ListAcceptedPortfolioShares:
@@ -2615,6 +2617,9 @@ paths:
       x-stackql-method: list_accepted_portfolio_shares
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PortfolioDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListBudgetsForResource:
     post:
       operationId: ListBudgetsForResource
@@ -2709,6 +2714,9 @@ paths:
       x-stackql-method: list_constraints_for_portfolio
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConstraintDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListLaunchPaths:
     post:
       operationId: ListLaunchPaths
@@ -2759,6 +2767,9 @@ paths:
       x-stackql-method: list_launch_paths
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LaunchPathSummaries
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListOrganizationPortfolioAccess:
     post:
       operationId: ListOrganizationPortfolioAccess
@@ -2813,6 +2824,9 @@ paths:
       x-stackql-method: list_organization_portfolio_access
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationNodes
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListPortfolioAccess:
     post:
       operationId: ListPortfolioAccess
@@ -2905,6 +2919,9 @@ paths:
       x-stackql-method: list_portfolios
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PortfolioDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListPortfoliosForProduct:
     post:
       operationId: ListPortfoliosForProduct
@@ -2951,6 +2968,9 @@ paths:
       x-stackql-method: list_portfolios_for_product
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PortfolioDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListPrincipalsForPortfolio:
     post:
       operationId: ListPrincipalsForPortfolio
@@ -2997,6 +3017,9 @@ paths:
       x-stackql-method: list_principals_for_portfolio
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Principals
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListProvisionedProductPlans:
     post:
       operationId: ListProvisionedProductPlans
@@ -3044,6 +3067,9 @@ paths:
       x-stackql-method: list_provisioned_product_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProvisionedProductPlans
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListProvisioningArtifacts:
     post:
       operationId: ListProvisioningArtifacts
@@ -3129,6 +3155,9 @@ paths:
       x-stackql-method: list_provisioning_artifacts_for_service_action
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProvisioningArtifactViews
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListRecordHistory:
     post:
       operationId: ListRecordHistory
@@ -3176,6 +3205,9 @@ paths:
       x-stackql-method: list_record_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecordDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListResourcesForTagOption:
     post:
       operationId: ListResourcesForTagOption
@@ -3222,6 +3254,9 @@ paths:
       x-stackql-method: list_resources_for_tag_option
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.PageToken
   /ListServiceActions:
     post:
       operationId: ListServiceActions
@@ -3263,6 +3298,9 @@ paths:
       x-stackql-method: list_service_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceActionSummaries
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListServiceActionsForProvisioningArtifact:
     post:
       operationId: ListServiceActionsForProvisioningArtifact
@@ -3314,6 +3352,9 @@ paths:
       x-stackql-method: list_service_actions_for_provisioning_artifact
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceActionSummaries
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListStackInstancesForProvisionedProduct:
     post:
       operationId: ListStackInstancesForProvisionedProduct
@@ -3402,6 +3443,9 @@ paths:
       x-stackql-method: list_tag_options
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TagOptionDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.PageToken
   /NotifyProvisionProductEngineWorkflowResult:
     post:
       operationId: NotifyProvisionProductEngineWorkflowResult
@@ -3457,7 +3501,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyProvisionProductEngineWorkflowResultOutput'
-      x-stackql-resource: provision_product_engine_workflow_result
+      x-stackql-resource: records
       x-stackql-method: notify_provision_product_engine_workflow_result
       x-stackql-verb: EXEC
   /NotifyTerminateProvisionedProductEngineWorkflowResult:
@@ -3509,7 +3553,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyTerminateProvisionedProductEngineWorkflowResultOutput'
-      x-stackql-resource: terminate_provisioned_product_engine_workflow_result
+      x-stackql-resource: records
       x-stackql-method: notify_terminate_provisioned_product_engine_workflow_result
       x-stackql-verb: EXEC
   /NotifyUpdateProvisionedProductEngineWorkflowResult:
@@ -3564,7 +3608,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyUpdateProvisionedProductEngineWorkflowResultOutput'
-      x-stackql-resource: update_provisioned_product_engine_workflow_result
+      x-stackql-resource: records
       x-stackql-method: notify_update_provisioned_product_engine_workflow_result
       x-stackql-verb: EXEC
   /ProvisionProduct:
@@ -3691,7 +3735,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectPortfolioShareOutput'
-      x-stackql-resource: portfolio_share
+      x-stackql-resource: portfolios
       x-stackql-method: reject_portfolio_share
       x-stackql-verb: EXEC
   /ScanProvisionedProducts:
@@ -3734,9 +3778,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScanProvisionedProductsOutput'
-      x-stackql-resource: scan_provisioned_products
+      x-stackql-resource: provisioned_products
       x-stackql-method: scan_provisioned_products
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /SearchProducts:
     post:
       operationId: SearchProducts
@@ -3844,6 +3891,9 @@ paths:
       x-stackql-method: search_products_as_admin
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProductViewDetails
+      x-stackql-pagination-request-token-key: PageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /SearchProvisionedProducts:
     post:
       operationId: SearchProvisionedProducts
@@ -4345,7 +4395,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateProvisionedProductPropertiesOutput'
-      x-stackql-resource: provisioned_product_properties
+      x-stackql-resource: provisioned_products
       x-stackql-method: update_provisioned_product_properties
       x-stackql-verb: UPDATE
   /UpdateProvisioningArtifact:

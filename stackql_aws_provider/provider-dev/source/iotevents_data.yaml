@@ -258,6 +258,7 @@ paths:
       x-stackql-resource: alarms
       x-stackql-method: describe_alarm
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.alarm
   /detectors/{detector_model_name}/keyValues/:
     get:
       operationId: DescribeDetector
@@ -285,6 +286,7 @@ paths:
       x-stackql-resource: detectors
       x-stackql-method: describe_detector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.detector
   /alarms/{alarm_model_name}:
     get:
       operationId: ListAlarms

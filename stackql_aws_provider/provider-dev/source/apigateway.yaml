@@ -100,6 +100,9 @@ paths:
       x-stackql-method: get_api_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/authorizers:
     post:
       operationId: CreateAuthorizer
@@ -182,6 +185,9 @@ paths:
       x-stackql-method: get_authorizers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /domainnames/{domain_name}/basepathmappings:
     post:
       operationId: CreateBasePathMapping
@@ -263,6 +269,9 @@ paths:
       x-stackql-method: get_base_path_mappings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/deployments:
     post:
       operationId: CreateDeployment
@@ -340,6 +349,9 @@ paths:
       x-stackql-method: get_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/documentation/parts:
     post:
       operationId: CreateDocumentationPart
@@ -433,6 +445,9 @@ paths:
       x-stackql-method: get_documentation_parts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
     put:
       operationId: ImportDocumentationParts
       description: Imports documentation parts
@@ -547,6 +562,9 @@ paths:
       x-stackql-method: get_documentation_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /domainnames:
     post:
       operationId: CreateDomainName
@@ -636,6 +654,9 @@ paths:
       x-stackql-method: get_domain_names
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /domainnameaccessassociations:
     post:
       operationId: CreateDomainNameAccessAssociation
@@ -777,6 +798,9 @@ paths:
       x-stackql-method: get_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/requestvalidators:
     post:
       operationId: CreateRequestValidator
@@ -844,6 +868,9 @@ paths:
       x-stackql-method: get_request_validators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/resources/{parent_id}:
     post:
       operationId: CreateResource
@@ -959,6 +986,9 @@ paths:
       x-stackql-method: get_rest_apis
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/stages:
     post:
       operationId: CreateStage
@@ -1106,6 +1136,9 @@ paths:
       x-stackql-method: get_usage_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /usageplans/{usageplan_id}/keys:
     post:
       operationId: CreateUsagePlanKey
@@ -1182,6 +1215,9 @@ paths:
       x-stackql-method: get_usage_plan_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /vpclinks:
     post:
       operationId: CreateVpcLink
@@ -1244,6 +1280,9 @@ paths:
       x-stackql-method: get_vpc_links
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /apikeys/{api__key}:
     delete:
       operationId: DeleteApiKey
@@ -1408,7 +1447,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestInvokeAuthorizerResponse'
-      x-stackql-resource: invoke_authorizer
+      x-stackql-resource: authorizers
       x-stackql-method: test_invoke_authorizer
       x-stackql-verb: EXEC
     patch:
@@ -2623,7 +2662,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestInvokeMethodResponse'
-      x-stackql-resource: invoke_method
+      x-stackql-resource: resources
       x-stackql-method: test_invoke_method
       x-stackql-verb: EXEC
     patch:
@@ -3512,7 +3551,7 @@ paths:
       responses:
         '202':
           description: Success
-      x-stackql-resource: flush_stage_authorizers_cache
+      x-stackql-resource: stages
       x-stackql-method: flush_stage_authorizers_cache
       x-stackql-verb: EXEC
   /restapis/{restapi_id}/stages/{stage_name}/cache/data:
@@ -3535,7 +3574,7 @@ paths:
       responses:
         '202':
           description: Success
-      x-stackql-resource: flush_stage_cache
+      x-stackql-resource: stages
       x-stackql-method: flush_stage_cache
       x-stackql-verb: EXEC
   /clientcertificates:
@@ -3591,6 +3630,9 @@ paths:
       x-stackql-method: get_client_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /account:
     get:
       operationId: GetAccount
@@ -3718,6 +3760,9 @@ paths:
       x-stackql-method: get_gateway_responses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/models/{model_name}/default_template:
     get:
       operationId: GetModelTemplate
@@ -3788,6 +3833,9 @@ paths:
       x-stackql-method: get_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}:
     get:
       operationId: GetSdk
@@ -3880,6 +3928,9 @@ paths:
       x-stackql-method: get_sdk_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /tags/{resource_arn}:
     get:
       operationId: GetTags
@@ -3938,7 +3989,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3960,7 +4011,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /usageplans/{usageplan_id}/usage:
@@ -4014,6 +4065,9 @@ paths:
       x-stackql-resource: usages
       x-stackql-method: get_usage
       x-stackql-verb: SELECT
+      x-stackql-pagination-request-token-key: position
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.position
   /apikeys?mode=import:
     post:
       operationId: ImportApiKeys
@@ -4120,7 +4174,7 @@ paths:
       responses:
         '202':
           description: Success
-      x-stackql-resource: domain_name_access_association
+      x-stackql-resource: domain_names
       x-stackql-method: reject_domain_name_access_association
       x-stackql-verb: EXEC
   /usageplans/{usageplan_id}/keys/{key_id}/usage:

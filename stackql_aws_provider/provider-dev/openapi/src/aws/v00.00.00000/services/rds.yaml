@@ -19980,19 +19980,13 @@ components:
           description: The name of the DB shard group to reboot.
       required:
         - DBShardGroupIdentifier
-    RegisterDBProxyTargetsResponseDisplay:
-      type: object
-      properties:
-        DBProxyTargets:
-          type: string
-          description: One or more DBProxyTarget objects that are created when you register targets with a target group.
     RegisterDBProxyTargetsOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/RegisterDBProxyTargetsResponseDisplay"
+            $ref: "#/components/schemas/DBProxyTargetDisplay"
     RegisterDBProxyTargetsRequest:
       type: object
       properties:
@@ -21342,10 +21336,10 @@ components:
       required:
         - DBInstanceIdentifier
   x-stackQL-resources:
-    role_to_db_clusters:
-      id: aws.rds.role_to_db_clusters
-      name: role_to_db_clusters
-      title: role_to_db_clusters
+    db_clusters:
+      id: aws.rds.db_clusters
+      name: db_clusters
+      title: db_clusters
       methods:
         add_role_to_db_cluster:
           operation:
@@ -21359,16 +21353,293 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        backtrack_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=BacktrackDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BacktrackDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        copy_db_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=CopyDBClusterSnapshot&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyDBClusterSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=CreateDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_db_clusters:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeDBClusters&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeDBClustersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        failover_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=FailoverDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/FailoverDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_current_db_cluster_capacity:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyCurrentDBClusterCapacity&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyCurrentDBClusterCapacityOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        promote_read_replica_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=PromoteReadReplicaDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PromoteReadReplicaDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reboot_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=RebootDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RebootDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        remove_role_from_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=RemoveRoleFromDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_db_cluster_from_s3:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreDBClusterFromS3&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreDBClusterFromS3OutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_db_cluster_from_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreDBClusterFromSnapshot&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreDBClusterFromSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_db_cluster_to_point_in_time:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreDBClusterToPointInTime&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreDBClusterToPointInTimeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        start_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=StartDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        stop_db_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=StopDBCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StopDBClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/describe_db_clusters"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/create_db_cluster"
         update:
-          - $ref: "#/components/x-stackQL-resources/role_to_db_clusters/methods/add_role_to_db_cluster"
-        delete: []
-    role_to_db_instances:
-      id: aws.rds.role_to_db_instances
-      name: role_to_db_instances
-      title: role_to_db_instances
+          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/add_role_to_db_cluster"
+          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/modify_db_cluster"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/delete_db_cluster"
+    db_instances:
+      id: aws.rds.db_instances
+      name: db_instances
+      title: db_instances
       methods:
         add_role_to_db_instance:
           operation:
@@ -21382,12 +21653,275 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        create_db_instance:
+          operation:
+            $ref: "#/paths/~1?Action=CreateDBInstance&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateDBInstanceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_db_instance_read_replica:
+          operation:
+            $ref: "#/paths/~1?Action=CreateDBInstanceReadReplica&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateDBInstanceReadReplicaOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_db_instance:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteDBInstance&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteDBInstanceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_db_instances:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeDBInstances&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeDBInstancesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        download_db_log_file_portion:
+          operation:
+            $ref: "#/paths/~1?Action=DownloadDBLogFilePortion&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DownloadDBLogFilePortionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_db_instance:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyDBInstance&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyDBInstanceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        promote_read_replica:
+          operation:
+            $ref: "#/paths/~1?Action=PromoteReadReplica&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PromoteReadReplicaOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reboot_db_instance:
+          operation:
+            $ref: "#/paths/~1?Action=RebootDBInstance&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RebootDBInstanceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        remove_role_from_db_instance:
+          operation:
+            $ref: "#/paths/~1?Action=RemoveRoleFromDBInstance&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_db_instance_from_db_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreDBInstanceFromDBSnapshot&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreDBInstanceFromDBSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_db_instance_from_s3:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreDBInstanceFromS3&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreDBInstanceFromS3OutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_db_instance_to_point_in_time:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreDBInstanceToPointInTime&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreDBInstanceToPointInTimeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        start_db_instance:
+          operation:
+            $ref: "#/paths/~1?Action=StartDBInstance&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartDBInstanceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        stop_db_instance:
+          operation:
+            $ref: "#/paths/~1?Action=StopDBInstance&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StopDBInstanceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        switchover_read_replica:
+          operation:
+            $ref: "#/paths/~1?Action=SwitchoverReadReplica&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SwitchoverReadReplicaOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/db_instances/methods/describe_db_instances"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/db_instances/methods/create_db_instance"
+          - $ref: "#/components/x-stackQL-resources/db_instances/methods/create_db_instance_read_replica"
         update:
-          - $ref: "#/components/x-stackQL-resources/role_to_db_instances/methods/add_role_to_db_instance"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/db_instances/methods/add_role_to_db_instance"
+          - $ref: "#/components/x-stackQL-resources/db_instances/methods/modify_db_instance"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/db_instances/methods/delete_db_instance"
     source_identifier_to_subscriptions:
       id: aws.rds.source_identifier_to_subscriptions
       name: source_identifier_to_subscriptions
@@ -21418,10 +21952,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/source_identifier_to_subscriptions/methods/add_source_identifier_to_subscription"
         delete: []
-    tags_to_resources:
-      id: aws.rds.tags_to_resources
-      name: tags_to_resources
-      title: tags_to_resources
+    tags:
+      id: aws.rds.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_resource:
           operation:
@@ -21435,16 +21969,49 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1?Action=ListTagsForResource&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTagsForResourceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        remove_tags_from_resource:
+          operation:
+            $ref: "#/paths/~1?Action=RemoveTagsFromResource&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_resources/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags_from_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_resource"
         delete: []
-    db_security_group_ingress:
-      id: aws.rds.db_security_group_ingress
-      name: db_security_group_ingress
-      title: db_security_group_ingress
+    db_security_groups:
+      id: aws.rds.db_security_groups
+      name: db_security_groups
+      title: db_security_groups
       methods:
         authorize_db_security_group_ingress:
           operation:
@@ -21455,6 +22022,56 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/AuthorizeDBSecurityGroupIngressOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_db_security_group:
+          operation:
+            $ref: "#/paths/~1?Action=CreateDBSecurityGroup&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateDBSecurityGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_db_security_group:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteDBSecurityGroup&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_db_security_groups:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeDBSecurityGroups&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeDBSecurityGroupsOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -21477,6 +22094,54 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/db_security_groups/methods/describe_db_security_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/db_security_groups/methods/create_db_security_group"
+        update:
+          - $ref: "#/components/x-stackQL-resources/db_security_groups/methods/authorize_db_security_group_ingress"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/db_security_groups/methods/delete_db_security_group"
+    export_tasks:
+      id: aws.rds.export_tasks
+      name: export_tasks
+      title: export_tasks
+      methods:
+        cancel_export_task:
+          operation:
+            $ref: "#/paths/~1?Action=CancelExportTask&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CancelExportTaskOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_export_tasks:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeExportTasks&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeExportTasksOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -21484,11 +22149,156 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        start_export_task:
+          operation:
+            $ref: "#/paths/~1?Action=StartExportTask&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartExportTaskOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/export_tasks/methods/describe_export_tasks"
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/db_security_group_ingress/methods/authorize_db_security_group_ingress"
+        update: []
+        delete: []
+    db_cluster_parameters:
+      id: aws.rds.db_cluster_parameters
+      name: db_cluster_parameters
+      title: db_cluster_parameters
+      methods:
+        copy_db_cluster_parameter_group:
+          operation:
+            $ref: "#/paths/~1?Action=CopyDBClusterParameterGroup&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyDBClusterParameterGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_db_cluster_parameters:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeDBClusterParameters&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeDBClusterParametersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reset_db_cluster_parameter_group:
+          operation:
+            $ref: "#/paths/~1?Action=ResetDBClusterParameterGroup&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResetDBClusterParameterGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/db_cluster_parameters/methods/describe_db_cluster_parameters"
+        insert: []
+        update: []
+        delete: []
+    db_parameters:
+      id: aws.rds.db_parameters
+      name: db_parameters
+      title: db_parameters
+      methods:
+        copy_db_parameter_group:
+          operation:
+            $ref: "#/paths/~1?Action=CopyDBParameterGroup&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyDBParameterGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_db_parameters:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeDBParameters&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeDBParametersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reset_db_parameter_group:
+          operation:
+            $ref: "#/paths/~1?Action=ResetDBParameterGroup&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResetDBParameterGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/db_parameters/methods/describe_db_parameters"
+        insert: []
+        update: []
         delete: []
     blue_green_deployments:
       id: aws.rds.blue_green_deployments
@@ -21552,6 +22362,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        switchover_blue_green_deployment:
+          operation:
+            $ref: "#/paths/~1?Action=SwitchoverBlueGreenDeployment&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SwitchoverBlueGreenDeploymentOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/blue_green_deployments/methods/describe_blue_green_deployments"
@@ -21560,10 +22387,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/blue_green_deployments/methods/delete_blue_green_deployment"
-    custom_db_engine_versions:
-      id: aws.rds.custom_db_engine_versions
-      name: custom_db_engine_versions
-      title: custom_db_engine_versions
+    db_engine_versions:
+      id: aws.rds.db_engine_versions
+      name: db_engine_versions
+      title: db_engine_versions
       methods:
         create_custom_db_engine_version:
           operation:
@@ -21603,6 +22430,25 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        describe_db_engine_versions:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeDBEngineVersions&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeDBEngineVersionsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         modify_custom_db_engine_version:
           operation:
             $ref: "#/paths/~1?Action=ModifyCustomDBEngineVersion&Version=2014-10-31/get"
@@ -21623,103 +22469,14 @@ components:
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/custom_db_engine_versions/methods/create_custom_db_engine_version"
-        update:
-          - $ref: "#/components/x-stackQL-resources/custom_db_engine_versions/methods/modify_custom_db_engine_version"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/custom_db_engine_versions/methods/delete_custom_db_engine_version"
-    db_clusters:
-      id: aws.rds.db_clusters
-      name: db_clusters
-      title: db_clusters
-      methods:
-        create_db_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=CreateDBCluster&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateDBClusterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_db_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteDBCluster&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteDBClusterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_db_clusters:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeDBClusters&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeDBClustersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        modify_db_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyDBCluster&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyDBClusterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/describe_db_clusters"
+          - $ref: "#/components/x-stackQL-resources/db_engine_versions/methods/describe_db_engine_versions"
         insert:
-          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/create_db_cluster"
+          - $ref: "#/components/x-stackQL-resources/db_engine_versions/methods/create_custom_db_engine_version"
         update:
-          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/modify_db_cluster"
+          - $ref: "#/components/x-stackQL-resources/db_engine_versions/methods/modify_custom_db_engine_version"
         delete:
-          - $ref: "#/components/x-stackQL-resources/db_clusters/methods/delete_db_cluster"
+          - $ref: "#/components/x-stackQL-resources/db_engine_versions/methods/delete_custom_db_engine_version"
     db_cluster_endpoints:
       id: aws.rds.db_cluster_endpoints
       name: db_cluster_endpoints
@@ -21963,126 +22720,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/db_cluster_snapshots/methods/delete_db_cluster_snapshot"
-    db_instances:
-      id: aws.rds.db_instances
-      name: db_instances
-      title: db_instances
-      methods:
-        create_db_instance:
-          operation:
-            $ref: "#/paths/~1?Action=CreateDBInstance&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateDBInstanceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_db_instance:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteDBInstance&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteDBInstanceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_db_instances:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeDBInstances&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeDBInstancesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        modify_db_instance:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyDBInstance&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyDBInstanceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/db_instances/methods/describe_db_instances"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/db_instances/methods/create_db_instance"
-        update:
-          - $ref: "#/components/x-stackQL-resources/db_instances/methods/modify_db_instance"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/db_instances/methods/delete_db_instance"
-    db_instance_read_replicas:
-      id: aws.rds.db_instance_read_replicas
-      name: db_instance_read_replicas
-      title: db_instance_read_replicas
-      methods:
-        create_db_instance_read_replica:
-          operation:
-            $ref: "#/paths/~1?Action=CreateDBInstanceReadReplica&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateDBInstanceReadReplicaOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/db_instance_read_replicas/methods/create_db_instance_read_replica"
-        update: []
-        delete: []
     db_parameter_groups:
       id: aws.rds.db_parameter_groups
       name: db_parameter_groups
@@ -22346,69 +22983,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/db_proxy_endpoints/methods/modify_db_proxy_endpoint"
         delete:
           - $ref: "#/components/x-stackQL-resources/db_proxy_endpoints/methods/delete_db_proxy_endpoint"
-    db_security_groups:
-      id: aws.rds.db_security_groups
-      name: db_security_groups
-      title: db_security_groups
-      methods:
-        create_db_security_group:
-          operation:
-            $ref: "#/paths/~1?Action=CreateDBSecurityGroup&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateDBSecurityGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_db_security_group:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteDBSecurityGroup&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_db_security_groups:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeDBSecurityGroups&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeDBSecurityGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/db_security_groups/methods/describe_db_security_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/db_security_groups/methods/create_db_security_group"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/db_security_groups/methods/delete_db_security_group"
     db_shard_groups:
       id: aws.rds.db_shard_groups
       name: db_shard_groups
@@ -22485,6 +23059,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reboot_db_shard_group:
+          operation:
+            $ref: "#/paths/~1?Action=RebootDBShardGroup&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RebootDBShardGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -22824,6 +23415,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        failover_global_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=FailoverGlobalCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/FailoverGlobalClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         modify_global_cluster:
           operation:
             $ref: "#/paths/~1?Action=ModifyGlobalCluster&Version=2014-10-31/get"
@@ -22843,12 +23451,49 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        remove_from_global_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=RemoveFromGlobalCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RemoveFromGlobalClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        switchover_global_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=SwitchoverGlobalCluster&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SwitchoverGlobalClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/global_clusters/methods/describe_global_clusters"
         insert:
           - $ref: "#/components/x-stackQL-resources/global_clusters/methods/create_global_cluster"
         update:
+          - $ref: "#/components/x-stackQL-resources/global_clusters/methods/remove_from_global_cluster"
           - $ref: "#/components/x-stackQL-resources/global_clusters/methods/modify_global_cluster"
         delete:
           - $ref: "#/components/x-stackQL-resources/global_clusters/methods/delete_global_cluster"
@@ -23208,6 +23853,40 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        start_db_instance_automated_backups_replication:
+          operation:
+            $ref: "#/paths/~1?Action=StartDBInstanceAutomatedBackupsReplication&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartDBInstanceAutomatedBackupsReplicationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        stop_db_instance_automated_backups_replication:
+          operation:
+            $ref: "#/paths/~1?Action=StopDBInstanceAutomatedBackupsReplication&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StopDBInstanceAutomatedBackupsReplicationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/db_instance_automated_backups/methods/describe_db_instance_automated_backups"
@@ -23268,7 +23947,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/RegisterDBProxyTargetsOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $s := separator ", " -}}{{- $n := index . "RegisterDBProxyTargetsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "RegisterDBProxyTargetsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DBProxyTargets" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson $n }}{{- end -}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -23393,36 +24073,6 @@ components:
         insert: []
         update: []
         delete: []
-    db_cluster_parameters:
-      id: aws.rds.db_cluster_parameters
-      name: db_cluster_parameters
-      title: db_cluster_parameters
-      methods:
-        describe_db_cluster_parameters:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeDBClusterParameters&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeDBClusterParametersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/db_cluster_parameters/methods/describe_db_cluster_parameters"
-        insert: []
-        update: []
-        delete: []
     db_cluster_snapshot_attributes:
       id: aws.rds.db_cluster_snapshot_attributes
       name: db_cluster_snapshot_attributes
@@ -23472,36 +24122,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/db_cluster_snapshot_attributes/methods/modify_db_cluster_snapshot_attribute"
-        delete: []
-    db_engine_versions:
-      id: aws.rds.db_engine_versions
-      name: db_engine_versions
-      title: db_engine_versions
-      methods:
-        describe_db_engine_versions:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeDBEngineVersions&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeDBEngineVersionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/db_engine_versions/methods/describe_db_engine_versions"
-        insert: []
-        update: []
         delete: []
     db_log_files:
       id: aws.rds.db_log_files
@@ -23560,36 +24180,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/db_major_engine_versions/methods/describe_db_major_engine_versions"
-        insert: []
-        update: []
-        delete: []
-    db_parameters:
-      id: aws.rds.db_parameters
-      name: db_parameters
-      title: db_parameters
-      methods:
-        describe_db_parameters:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeDBParameters&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeDBParametersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/db_parameters/methods/describe_db_parameters"
         insert: []
         update: []
         delete: []
@@ -23893,36 +24483,6 @@ components:
         insert: []
         update: []
         delete: []
-    export_tasks:
-      id: aws.rds.export_tasks
-      name: export_tasks
-      title: export_tasks
-      methods:
-        describe_export_tasks:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeExportTasks&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeExportTasksOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/export_tasks/methods/describe_export_tasks"
-        insert: []
-        update: []
-        delete: []
     option_group_options:
       id: aws.rds.option_group_options
       name: option_group_options
@@ -24067,6 +24627,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        purchase_reserved_db_instances_offering:
+          operation:
+            $ref: "#/paths/~1?Action=PurchaseReservedDBInstancesOffering&Version=2014-10-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PurchaseReservedDBInstancesOfferingOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reserved_db_instances_offerings/methods/describe_reserved_db_instances_offerings"
@@ -24163,36 +24740,6 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.rds.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1?Action=ListTagsForResource&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListTagsForResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
     activity_streams:
       id: aws.rds.activity_streams
       name: activity_streams
@@ -24223,112 +24770,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/activity_streams/methods/modify_activity_stream"
         delete: []
-    current_db_cluster_capacities:
-      id: aws.rds.current_db_cluster_capacities
-      name: current_db_cluster_capacities
-      title: current_db_cluster_capacities
-      methods:
-        modify_current_db_cluster_capacity:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyCurrentDBClusterCapacity&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyCurrentDBClusterCapacityOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/current_db_cluster_capacities/methods/modify_current_db_cluster_capacity"
-        delete: []
-    from_global_clusters:
-      id: aws.rds.from_global_clusters
-      name: from_global_clusters
-      title: from_global_clusters
-      methods:
-        remove_from_global_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=RemoveFromGlobalCluster&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RemoveFromGlobalClusterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/from_global_clusters/methods/remove_from_global_cluster"
-        delete: []
-    role_from_db_clusters:
-      id: aws.rds.role_from_db_clusters
-      name: role_from_db_clusters
-      title: role_from_db_clusters
-      methods:
-        remove_role_from_db_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=RemoveRoleFromDBCluster&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/role_from_db_clusters/methods/remove_role_from_db_cluster"
-        delete: []
-    role_from_db_instances:
-      id: aws.rds.role_from_db_instances
-      name: role_from_db_instances
-      title: role_from_db_instances
-      methods:
-        remove_role_from_db_instance:
-          operation:
-            $ref: "#/paths/~1?Action=RemoveRoleFromDBInstance&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/role_from_db_instances/methods/remove_role_from_db_instance"
-        delete: []
     source_identifier_from_subscriptions:
       id: aws.rds.source_identifier_from_subscriptions
       name: source_identifier_from_subscriptions
@@ -24358,27 +24799,4 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/source_identifier_from_subscriptions/methods/remove_source_identifier_from_subscription"
-        delete: []
-    tags_from_resources:
-      id: aws.rds.tags_from_resources
-      name: tags_from_resources
-      title: tags_from_resources
-      methods:
-        remove_tags_from_resource:
-          operation:
-            $ref: "#/paths/~1?Action=RemoveTagsFromResource&Version=2014-10-31/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_resources/methods/remove_tags_from_resource"
         delete: []

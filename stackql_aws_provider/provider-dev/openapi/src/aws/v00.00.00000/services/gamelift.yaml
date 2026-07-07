@@ -5,7 +5,7 @@ info:
   description: Amazon GameLift
   x-serviceName: gamelift
   x-serviceAlias: gamelift
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: "2015-10-01"
   x-endpointPrefix: gamelift
   x-targetPrefix: GameLift
@@ -317,7 +317,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: A list of labels to assign to the container group definition resource. Tags are developer-defined key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access management and cost allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web Services General Reference.
               required:
-                - Name
                 - TotalMemoryLimitMebibytes
                 - TotalVcpuLimit
                 - OperatingSystem
@@ -646,8 +645,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
                   description: A list of labels to assign to the new game session queue resource. Tags are developer-defined key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access management and cost allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web Services General Reference.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -758,7 +755,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: A list of labels to assign to the new matchmaking configuration resource. Tags are developer-defined key-value pairs. Tagging Amazon Web Services resources are useful for resource management, access management and cost allocation. For more information, see Tagging Amazon Web Services Resources in the Amazon Web Services General Reference.
               required:
-                - Name
                 - RequestTimeoutSeconds
                 - AcceptanceRequired
                 - RuleSetName
@@ -1134,8 +1130,6 @@ paths:
                 VersionCountToRetain:
                   $ref: "#/components/schemas/WholeNumber"
                   description: The number of most recent versions to keep while deleting all older versions.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1269,8 +1263,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/GameSessionQueueNameOrArn"
                   description: A descriptive label that is associated with game session queue. Queue names must be unique within each Region. You can use either the queue ID or ARN value.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1335,8 +1327,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/MatchmakingConfigurationName"
                   description: A unique identifier for the matchmaking configuration. You can use either the configuration name or ARN value.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1405,7 +1395,6 @@ paths:
                   $ref: "#/components/schemas/FleetIdOrArn"
                   description: A unique identifier for the fleet to be deleted. You can use either the fleet ID or ARN value.
               required:
-                - Name
                 - FleetId
       responses:
         "200":
@@ -1746,8 +1735,6 @@ paths:
                 VersionNumber:
                   $ref: "#/components/schemas/PositiveInteger"
                   description: The specific version to retrieve.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -3202,8 +3189,6 @@ paths:
                 NextToken:
                   $ref: "#/components/schemas/NonZeroAndMaxString"
                   description: A token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this operation. To start at the beginning of the result set, do not specify a value.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -3324,7 +3309,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFleetsOutput"
+                $ref: "#/components/schemas/ListFleetsOutputDisplay"
   /ListGameServerGroups:
     post:
       operationId: ListGameServerGroups
@@ -3557,7 +3542,6 @@ paths:
                   $ref: "#/components/schemas/TargetConfiguration"
                   description: An object that contains settings for a target-based scaling policy.
               required:
-                - Name
                 - FleetId
                 - MetricName
       responses:
@@ -4169,7 +4153,6 @@ paths:
                   description: A list of one or more tags to assign to the specified Amazon GameLift Servers resource. Tags are developer-defined and structured as key-value pairs. The maximum tag limit may be lower than stated. See Tagging Amazon Web Services Resources for tagging limits.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -4449,8 +4432,6 @@ paths:
                 OperatingSystem:
                   $ref: "#/components/schemas/ContainerOperatingSystem"
                   description: The platform that all containers in the group use. Containers in a group must run on the same operating system. Amazon Linux 2 (AL2) will reach end of support on 6/30/2026. See more details in the Amazon Linux 2 FAQs. For game servers that are hosted on AL2 and use server SDK version 4.x for Amazon GameLift Servers, first update the game server build to server SDK 5.x, and then deploy to AL2023 instances. See Migrate to server SDK version 5.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -4780,8 +4761,6 @@ paths:
                 NotificationTarget:
                   $ref: "#/components/schemas/QueueSnsArnStringModel"
                   description: An SNS topic ARN that is set up to receive game session placement notifications. See Setting up notifications for game session placement.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -4852,8 +4831,6 @@ paths:
                 FlexMatchMode:
                   $ref: "#/components/schemas/FlexMatchMode"
                   description: Indicates whether this matchmaking configuration is being used with Amazon GameLift Servers hosting or as a standalone matchmaking solution. STANDALONE - FlexMatch forms matches and returns match information, including players and team assignments, in a MatchmakingSucceeded event. WITH_QUEUE - FlexMatch forms matches and uses the specified Amazon GameLift Servers queue to start a game session for the match.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -9237,19 +9214,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/FleetDeployment"
-    ListFleetsOutput:
+    ListFleetsRowDisplay:
       type: object
       properties:
-        FleetIds:
-          $ref: "#/components/schemas/FleetIdList"
+        fleet_id:
+          type: string
           description: A set of fleet IDs that match the list request.
-        NextToken:
-          $ref: "#/components/schemas/NonZeroAndMaxString"
-          description: A token that indicates where to resume retrieving results on the next call to this operation. If no token is returned, these results represent the end of the list.
-    FleetIdList:
-      type: array
-      items:
-        $ref: "#/components/schemas/FleetId"
+    ListFleetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFleetsRowDisplay"
     ListGameServerGroupsOutput:
       type: object
       properties:
@@ -9586,6 +9563,121 @@ components:
           $ref: "#/components/schemas/BooleanModel"
           description: A response indicating whether the rule set is valid.
   x-stackQL-resources:
+    game_server_groups:
+      id: aws.gamelift.game_server_groups
+      name: game_server_groups
+      title: game_server_groups
+      methods:
+        claim_game_server:
+          operation:
+            $ref: "#/paths/~1ClaimGameServer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_game_server_group:
+          operation:
+            $ref: "#/paths/~1CreateGameServerGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_game_server_group:
+          operation:
+            $ref: "#/paths/~1DeleteGameServerGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_game_server_group:
+          operation:
+            $ref: "#/paths/~1DescribeGameServerGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.GameServerGroup
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_game_server_groups:
+          operation:
+            $ref: "#/paths/~1ListGameServerGroups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.GameServerGroups
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        suspend_game_server_group:
+          operation:
+            $ref: "#/paths/~1SuspendGameServerGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_game_server_group:
+          operation:
+            $ref: "#/paths/~1UpdateGameServerGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/describe_game_server_group"
+          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/list_game_server_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/create_game_server_group"
+        update:
+          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/update_game_server_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/delete_game_server_group"
     alias:
       id: aws.gamelift.alias
       name: alias
@@ -9599,6 +9691,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9609,6 +9703,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9618,8 +9714,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Alias
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resolve_alias:
+          operation:
+            $ref: "#/paths/~1ResolveAlias/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9631,6 +9743,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9656,6 +9770,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9666,6 +9782,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9675,8 +9793,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Build
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9689,6 +9810,28 @@ components:
             objectKey: $.Builds
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        request_upload_credentials:
+          operation:
+            $ref: "#/paths/~1RequestUploadCredentials/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9700,6 +9843,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9726,6 +9871,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9737,6 +9884,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9746,8 +9895,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ContainerFleet
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9760,7 +9912,16 @@ components:
             objectKey: $.ContainerFleets
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_container_fleet:
@@ -9771,6 +9932,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9797,6 +9960,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9808,6 +9973,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9817,8 +9984,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ContainerGroupDefinition
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9831,7 +10001,16 @@ components:
             objectKey: $.ContainerGroupDefinitions
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_container_group_definition:
@@ -9842,13 +10021,14 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/container_group_definitions/methods/describe_container_group_definition"
-          - $ref: "#/components/x-stackQL-resources/container_group_definitions/methods/list_container_group_definitions"
         insert:
           - $ref: "#/components/x-stackQL-resources/container_group_definitions/methods/create_container_group_definition"
         update:
@@ -9868,6 +10048,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9878,6 +10060,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9887,9 +10071,50 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.FleetIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFleetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "FleetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"fleet_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_fleet_actions:
+          operation:
+            $ref: "#/paths/~1StartFleetActions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_fleet_actions:
+          operation:
+            $ref: "#/paths/~1StopFleetActions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9901,10 +10126,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/fleets/methods/delete_fleet"
-    fleet_locations:
-      id: aws.gamelift.fleet_locations
-      name: fleet_locations
-      title: fleet_locations
+    locations:
+      id: aws.gamelift.locations
+      name: locations
+      title: locations
       methods:
         create_fleet_locations:
           operation:
@@ -9914,6 +10139,21 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_location:
+          operation:
+            $ref: "#/paths/~1CreateLocation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -9925,87 +10165,55 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/fleet_locations/methods/create_fleet_locations"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/fleet_locations/methods/delete_fleet_locations"
-    game_server_groups:
-      id: aws.gamelift.game_server_groups
-      name: game_server_groups
-      title: game_server_groups
-      methods:
-        create_game_server_group:
+        delete_location:
           operation:
-            $ref: "#/paths/~1CreateGameServerGroup/post"
+            $ref: "#/paths/~1DeleteLocation/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_game_server_group:
+        list_locations:
           operation:
-            $ref: "#/paths/~1DeleteGameServerGroup/post"
+            $ref: "#/paths/~1ListLocations/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Locations
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_game_server_group:
-          operation:
-            $ref: "#/paths/~1DescribeGameServerGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_game_server_groups:
-          operation:
-            $ref: "#/paths/~1ListGameServerGroups/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.GameServerGroups
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_game_server_group:
-          operation:
-            $ref: "#/paths/~1UpdateGameServerGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/describe_game_server_group"
-          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/list_game_server_groups"
+          - $ref: "#/components/x-stackQL-resources/locations/methods/list_locations"
         insert:
-          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/create_game_server_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/update_game_server_group"
+          - $ref: "#/components/x-stackQL-resources/locations/methods/create_fleet_locations"
+          - $ref: "#/components/x-stackQL-resources/locations/methods/create_location"
+        update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/game_server_groups/methods/delete_game_server_group"
+          - $ref: "#/components/x-stackQL-resources/locations/methods/delete_fleet_locations"
+          - $ref: "#/components/x-stackQL-resources/locations/methods/delete_location"
     game_sessions:
       id: aws.gamelift.game_sessions
       name: game_sessions
@@ -10019,6 +10227,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10031,7 +10241,16 @@ components:
             objectKey: $.GameSessions
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         search_game_sessions:
@@ -10043,6 +10262,41 @@ components:
             objectKey: $.GameSessions
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_game_session_placement:
+          operation:
+            $ref: "#/paths/~1StartGameSessionPlacement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_game_session_placement:
+          operation:
+            $ref: "#/paths/~1StopGameSessionPlacement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10054,6 +10308,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10065,6 +10321,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10090,6 +10348,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10101,6 +10361,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10113,7 +10375,16 @@ components:
             objectKey: $.GameSessionQueues
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_game_session_queue:
@@ -10124,6 +10395,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10136,53 +10409,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/game_session_queues/methods/update_game_session_queue"
         delete:
           - $ref: "#/components/x-stackQL-resources/game_session_queues/methods/delete_game_session_queue"
-    locations:
-      id: aws.gamelift.locations
-      name: locations
-      title: locations
-      methods:
-        create_location:
-          operation:
-            $ref: "#/paths/~1CreateLocation/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_location:
-          operation:
-            $ref: "#/paths/~1DeleteLocation/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_locations:
-          operation:
-            $ref: "#/paths/~1ListLocations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Locations
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/locations/methods/list_locations"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/locations/methods/create_location"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/locations/methods/delete_location"
     matchmaking_configurations:
       id: aws.gamelift.matchmaking_configurations
       name: matchmaking_configurations
@@ -10196,6 +10422,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10207,6 +10435,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10219,7 +10449,16 @@ components:
             objectKey: $.Configurations
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_matchmaking_configuration:
@@ -10230,6 +10469,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10255,6 +10496,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10266,6 +10509,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10278,7 +10523,16 @@ components:
             objectKey: $.RuleSets
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10302,6 +10556,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10313,6 +10569,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10325,7 +10583,16 @@ components:
             objectKey: $.PlayerSessions
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10349,6 +10616,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10359,6 +10628,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10368,8 +10639,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Script
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10382,7 +10656,16 @@ components:
             objectKey: $.Scripts
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_script:
@@ -10393,6 +10676,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10419,6 +10704,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10430,6 +10717,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10441,6 +10730,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10465,6 +10756,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10476,6 +10769,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10487,6 +10782,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10510,6 +10807,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10522,7 +10821,16 @@ components:
             objectKey: $.ScalingPolicies
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_scaling_policy:
@@ -10533,6 +10841,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10558,6 +10868,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10567,8 +10879,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Compute
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10581,7 +10896,16 @@ components:
             objectKey: $.ComputeList
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_compute:
@@ -10592,6 +10916,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10616,6 +10942,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10625,8 +10953,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GameServer
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10639,7 +10970,16 @@ components:
             objectKey: $.GameServers
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_game_server:
@@ -10650,6 +10990,21 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resume_game_server_group:
+          operation:
+            $ref: "#/paths/~1ResumeGameServerGroup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10661,6 +11016,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10687,6 +11044,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10709,6 +11068,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10732,7 +11093,16 @@ components:
             objectKey: $.FleetAttributes
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_fleet_attributes:
@@ -10743,6 +11113,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10767,7 +11139,16 @@ components:
             objectKey: $.FleetCapacity
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_fleet_capacity:
@@ -10778,6 +11159,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10801,6 +11184,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10813,7 +11198,16 @@ components:
             objectKey: $.FleetDeployments
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10837,7 +11231,16 @@ components:
             objectKey: $.Events
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10859,6 +11262,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10879,8 +11284,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FleetCapacity
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10901,8 +11309,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FleetUtilization
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10925,6 +11336,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10936,6 +11349,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -10960,7 +11375,16 @@ components:
             objectKey: $.FleetUtilization
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10983,7 +11407,16 @@ components:
             objectKey: $.GameServerInstances
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11006,7 +11439,16 @@ components:
             objectKey: $.GameSessionDetails
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11026,8 +11468,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GameSessionPlacement
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11051,7 +11496,16 @@ components:
             objectKey: $.Instances
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11073,6 +11527,21 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_matchmaking_rule_set:
+          operation:
+            $ref: "#/paths/~1ValidateMatchmakingRuleSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11093,8 +11562,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RuntimeConfiguration
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11106,6 +11578,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11129,6 +11603,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11151,6 +11627,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11173,6 +11651,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11193,8 +11673,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.InstanceAccess
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11217,6 +11700,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11240,7 +11725,16 @@ components:
             objectKey: $.Aliases
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11263,7 +11757,16 @@ components:
             objectKey: $.ContainerGroupDefinitions
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11272,10 +11775,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.gamelift.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.gamelift.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -11285,20 +11788,11 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.gamelift.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -11307,6 +11801,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -11318,13 +11814,16 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

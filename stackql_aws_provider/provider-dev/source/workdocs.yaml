@@ -45,7 +45,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: abort_document_version_upload
+      x-stackql-resource: documents
       x-stackql-method: abort_document_version_upload
       x-stackql-verb: EXEC
     get:
@@ -158,7 +158,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateUserResponse'
-      x-stackql-resource: user
+      x-stackql-resource: users
       x-stackql-method: activate_user
       x-stackql-verb: EXEC
     delete:
@@ -181,7 +181,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: user
+      x-stackql-resource: users
       x-stackql-method: deactivate_user
       x-stackql-verb: EXEC
   /api/v1/resources/{resource_id}/permissions:
@@ -272,6 +272,9 @@ paths:
       x-stackql-method: describe_resource_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Principals
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
     delete:
       operationId: RemoveAllResourcePermissions
       description: Removes all the permissions from the specified resource.
@@ -292,7 +295,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: all_resource_permissions
+      x-stackql-resource: resource_permissions
       x-stackql-method: remove_all_resource_permissions
       x-stackql-verb: UPDATE
   /api/v1/documents/{document_id}/versions/{version_id}/comment:
@@ -390,7 +393,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCustomMetadataResponse'
-      x-stackql-resource: custom_metadatas
+      x-stackql-resource: resources
       x-stackql-method: create_custom_metadata
       x-stackql-verb: INSERT
     delete:
@@ -435,7 +438,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteCustomMetadataResponse'
-      x-stackql-resource: custom_metadatas
+      x-stackql-resource: resources
       x-stackql-method: delete_custom_metadata
       x-stackql-verb: DELETE
   /api/v1/folders:
@@ -509,7 +512,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateLabelsResponse'
-      x-stackql-resource: labels
+      x-stackql-resource: resources
       x-stackql-method: create_labels
       x-stackql-verb: INSERT
     delete:
@@ -548,7 +551,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteLabelsResponse'
-      x-stackql-resource: labels
+      x-stackql-resource: resources
       x-stackql-method: delete_labels
       x-stackql-verb: DELETE
   /api/v1/organizations/{organization_id}/subscriptions:
@@ -624,6 +627,9 @@ paths:
       x-stackql-method: describe_notification_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Subscriptions
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/users:
     post:
       operationId: CreateUser
@@ -760,6 +766,9 @@ paths:
       x-stackql-method: describe_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/documents/{document_id}/versions/{version_id}/comment/{comment_id}:
     delete:
       operationId: DeleteComment
@@ -1110,6 +1119,9 @@ paths:
       x-stackql-method: describe_folder_contents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Folders
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/organizations/{organization_id}/subscriptions/{subscription_id}:
     delete:
       operationId: DeleteNotificationSubscription
@@ -1291,6 +1303,9 @@ paths:
       x-stackql-method: describe_activities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserActivities
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/documents/{document_id}/versions/{version_id}/comments:
     get:
       operationId: DescribeComments
@@ -1338,6 +1353,9 @@ paths:
       x-stackql-method: describe_comments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Comments
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/documents/{document_id}/versions:
     get:
       operationId: DescribeDocumentVersions
@@ -1391,6 +1409,9 @@ paths:
       x-stackql-method: describe_document_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DocumentVersions
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/groups:
     get:
       operationId: DescribeGroups
@@ -1438,6 +1459,9 @@ paths:
       x-stackql-method: describe_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/me/root:
     get:
       operationId: DescribeRootFolders
@@ -1476,6 +1500,9 @@ paths:
       x-stackql-method: describe_root_folders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Folders
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /api/v1/me:
     get:
       operationId: GetCurrentUser
@@ -1500,6 +1527,7 @@ paths:
       x-stackql-resource: current_users
       x-stackql-method: get_current_user
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.User
   /api/v1/documents/{document_id}/path:
     get:
       operationId: GetDocumentPath
@@ -1549,6 +1577,7 @@ paths:
       x-stackql-resource: document_paths
       x-stackql-method: get_document_path
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Path
   /api/v1/folders/{folder_id}/path:
     get:
       operationId: GetFolderPath
@@ -1597,6 +1626,7 @@ paths:
       x-stackql-resource: folder_paths
       x-stackql-method: get_folder_path
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Path
   /api/v1/resources:
     get:
       operationId: GetResources
@@ -1797,6 +1827,9 @@ paths:
       x-stackql-method: search_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
 components:
   parameters:
     X-Amz-Content-Sha256:

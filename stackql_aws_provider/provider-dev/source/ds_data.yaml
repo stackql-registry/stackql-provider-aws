@@ -357,6 +357,9 @@ paths:
       x-stackql-method: list_group_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Members
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /Groups/ListGroups:
     post:
       operationId: ListGroups
@@ -395,6 +398,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GroupMemberships/ListGroupsForMember:
     post:
       operationId: ListGroupsForMember
@@ -439,6 +445,9 @@ paths:
       x-stackql-method: list_groups_for_member
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /Users/ListUsers:
     post:
       operationId: ListUsers
@@ -477,6 +486,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GroupMemberships/RemoveGroupMember:
     post:
       operationId: RemoveGroupMember
@@ -562,6 +574,9 @@ paths:
       x-stackql-method: search_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /Users/SearchUsers:
     post:
       operationId: SearchUsers
@@ -608,6 +623,9 @@ paths:
       x-stackql-method: search_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /Groups/UpdateGroup:
     post:
       operationId: UpdateGroup

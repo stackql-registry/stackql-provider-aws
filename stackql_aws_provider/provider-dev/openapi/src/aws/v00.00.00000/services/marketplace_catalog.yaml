@@ -71,7 +71,7 @@ paths:
       parameters:
         - name: resourceArn
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/ResourceARN"
           description: The Amazon Resource Name (ARN) of the entity resource that is associated with the resource policy.
@@ -137,7 +137,7 @@ paths:
       parameters:
         - name: resourceArn
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/ResourceARN"
           description: The Amazon Resource Name (ARN) of the entity resource that is associated with the resource policy.
@@ -170,8 +170,6 @@ paths:
                   $ref: "#/components/schemas/ListChangeSetsMaxResultInteger"
                 NextToken:
                   $ref: "#/components/schemas/NextToken"
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -210,7 +208,6 @@ paths:
                 EntityTypeSort:
                   $ref: "#/components/schemas/EntityTypeSort"
               required:
-                - Catalog
                 - EntityType
       responses:
         "200":
@@ -260,7 +257,6 @@ paths:
                   $ref: "#/components/schemas/ResourcePolicyJson"
               required:
                 - ResourceArn
-                - Policy
       responses:
         "200":
           description: Success
@@ -293,7 +289,6 @@ paths:
                 Intent:
                   $ref: "#/components/schemas/Intent"
               required:
-                - Catalog
                 - ChangeSet
       responses:
         "200":
@@ -320,7 +315,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -2397,6 +2391,56 @@ components:
     UntagResourceResponse:
       type: object
   x-stackQL-resources:
+    entities:
+      id: aws.marketplace_catalog.entities
+      name: entities
+      title: entities
+      methods:
+        batch_describe_entities:
+          operation:
+            $ref: "#/paths/~1BatchDescribeEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_entity:
+          operation:
+            $ref: "#/paths/~1DescribeEntity/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        list_entities:
+          operation:
+            $ref: "#/paths/~1ListEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.EntitySummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/entities/methods/describe_entity"
+          - $ref: "#/components/x-stackQL-resources/entities/methods/list_entities"
+        insert: []
+        update: []
+        delete: []
     resource_policies:
       id: aws.marketplace_catalog.resource_policies
       name: resource_policies
@@ -2461,6 +2505,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2470,42 +2521,10 @@ components:
         insert: []
         update: []
         delete: []
-    entities:
-      id: aws.marketplace_catalog.entities
-      name: entities
-      title: entities
-      methods:
-        describe_entity:
-          operation:
-            $ref: "#/paths/~1DescribeEntity/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_entities:
-          operation:
-            $ref: "#/paths/~1ListEntities/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.EntitySummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/entities/methods/describe_entity"
-          - $ref: "#/components/x-stackQL-resources/entities/methods/list_entities"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.marketplace_catalog.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.marketplace_catalog.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2518,17 +2537,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.marketplace_catalog.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2552,9 +2560,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

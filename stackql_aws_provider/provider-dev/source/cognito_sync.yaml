@@ -119,6 +119,7 @@ paths:
       x-stackql-resource: datasets
       x-stackql-method: describe_dataset
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Dataset
     post:
       operationId: UpdateRecords
       description: Posts updates to records and adds and deletes records for a dataset and user. The sync count in the record
@@ -206,6 +207,7 @@ paths:
       x-stackql-resource: identity_pool_usages
       x-stackql-method: describe_identity_pool_usage
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.IdentityPoolUsage
   /identitypools/{identity_pool_id}/identities/{identity_id}:
     get:
       operationId: DescribeIdentityUsage
@@ -236,6 +238,7 @@ paths:
       x-stackql-resource: identity_usages
       x-stackql-method: describe_identity_usage
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.IdentityUsage
   /identitypools/{identity_pool_id}/getBulkPublishDetails:
     post:
       operationId: GetBulkPublishDetails
@@ -584,7 +587,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubscribeToDatasetResponse'
-      x-stackql-resource: to_dataset
+      x-stackql-resource: datasets
       x-stackql-method: subscribe_to_dataset
       x-stackql-verb: EXEC
     delete:
@@ -624,7 +627,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnsubscribeFromDatasetResponse'
-      x-stackql-resource: from_dataset
+      x-stackql-resource: datasets
       x-stackql-method: unsubscribe_from_dataset
       x-stackql-verb: EXEC
 components:

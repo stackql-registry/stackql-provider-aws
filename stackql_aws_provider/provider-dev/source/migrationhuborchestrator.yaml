@@ -207,6 +207,9 @@ paths:
       x-stackql-method: list_workflow_step_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowStepGroupsSummary
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /template/{id}:
     delete:
       operationId: DeleteTemplate
@@ -658,6 +661,9 @@ paths:
       x-stackql-method: list_plugins
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.plugins
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -676,7 +682,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -707,7 +713,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -733,7 +739,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /templatestepgroups/{template_id}:
@@ -770,6 +776,9 @@ paths:
       x-stackql-method: list_template_step_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templateStepGroupSummary
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /templatesteps:
     get:
       operationId: ListTemplateSteps
@@ -810,6 +819,9 @@ paths:
       x-stackql-method: list_template_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templateStepSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /migrationworkflowtemplates:
     get:
       operationId: ListTemplates
@@ -844,6 +856,9 @@ paths:
       x-stackql-method: list_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templateSummary
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workflow/{workflow_id}/workflowstepgroups/{step_group_id}/workflowsteps:
     get:
       operationId: ListWorkflowSteps
@@ -884,6 +899,9 @@ paths:
       x-stackql-method: list_workflow_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowStepsSummary
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /migrationworkflows:
     get:
       operationId: ListWorkflows
@@ -936,6 +954,9 @@ paths:
       x-stackql-method: list_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.migrationWorkflowSummary
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /retryworkflowstep/{id}:
     post:
       operationId: RetryWorkflowStep
@@ -966,7 +987,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetryWorkflowStepResponse'
-      x-stackql-resource: retry_workflow_step
+      x-stackql-resource: workflows
       x-stackql-method: retry_workflow_step
       x-stackql-verb: EXEC
   /migrationworkflow/{id}/start:

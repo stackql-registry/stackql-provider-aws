@@ -1178,6 +1178,39 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        recognize_text:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botAliases~1{bot_alias_id}~1botLocales~1{locale_id}~1sessions~1{session_id}~1text/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        recognize_utterance:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botAliases~1{bot_alias_id}~1botLocales~1{locale_id}~1sessions~1{session_id}~1utterance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_conversation:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_id}~1botAliases~1{bot_alias_id}~1botLocales~1{locale_id}~1sessions~1{session_id}~1conversation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"

@@ -59,10 +59,6 @@ paths:
                   $ref: "#/components/schemas/__string"
                 TemplateUrl:
                   $ref: "#/components/schemas/__string"
-              required:
-                - Author
-                - Description
-                - Name
       responses:
         "201":
           description: Success
@@ -320,8 +316,6 @@ paths:
               properties:
                 Statements:
                   $ref: "#/components/schemas/__listOfApplicationPolicyStatement"
-              required:
-                - Statements
       responses:
         "200":
           description: Success
@@ -1056,6 +1050,25 @@ components:
             objectKey: $.Applications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        create_cloud_formation_change_set:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1changesets/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -1080,11 +1093,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        unshare_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1unshare/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
           - $ref: "#/components/x-stackQL-resources/applications/methods/list_applications"
         insert:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/create_cloud_formation_change_set"
           - $ref: "#/components/x-stackQL-resources/applications/methods/create_application"
         update:
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
@@ -1115,33 +1139,19 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_versions/methods/list_application_versions"
         insert:
           - $ref: "#/components/x-stackQL-resources/application_versions/methods/create_application_version"
-        update: []
-        delete: []
-    cloud_formation_change_sets:
-      id: aws.serverlessrepo.cloud_formation_change_sets
-      name: cloud_formation_change_sets
-      title: cloud_formation_change_sets
-      methods:
-        create_cloud_formation_change_set:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1changesets/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/cloud_formation_change_sets/methods/create_cloud_formation_change_set"
         update: []
         delete: []
     cloud_formation_templates:
@@ -1217,6 +1227,14 @@ components:
             objectKey: $.Dependencies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_dependencies/methods/list_application_dependencies"

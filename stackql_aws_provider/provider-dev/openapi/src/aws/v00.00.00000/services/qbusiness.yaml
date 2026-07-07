@@ -6790,14 +6790,115 @@ components:
     UpdateWebExperienceResponse:
       type: object
   x-stackQL-resources:
-    permissions:
-      id: aws.qbusiness.permissions
-      name: permissions
-      title: permissions
+    applications:
+      id: aws.qbusiness.applications
+      name: applications
+      title: applications
       methods:
         associate_permission:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1policy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_document:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1documents~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_put_document:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1documents/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        chat:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1conversations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        chat_sync:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1conversations?sync/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        check_document_access:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1index~1{index_id}~1users~1{user_id}~1documents~1{document_id}~1check-document-access/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_application:
+          operation:
+            $ref: "#/paths/~1applications/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_applications:
+          operation:
+            $ref: "#/paths/~1applications/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.applications
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6813,12 +6914,17 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/list_applications"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/create_application"
         update:
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/associate_permission"
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/disassociate_permission"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/applications/methods/associate_permission"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/disassociate_permission"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
     policies:
       id: aws.qbusiness.policies
       name: policies
@@ -6841,6 +6947,12 @@ components:
       name: subscriptions
       title: subscriptions
       methods:
+        cancel_subscription:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1subscriptions~1{subscription_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         update_subscription:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1subscriptions~1{subscription_id}/put"
@@ -6872,6 +6984,14 @@ components:
             objectKey: $.subscriptions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
@@ -6894,6 +7014,14 @@ components:
             objectKey: $.conversations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_conversation:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1conversations~1{conversation_id}/delete"
@@ -6902,17 +7030,29 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        put_feedback:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1conversations~1{conversation_id}~1messages~1{message_id}~1feedback/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/conversations/methods/list_conversations"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/conversations/methods/put_feedback"
         delete:
           - $ref: "#/components/x-stackQL-resources/conversations/methods/delete_conversation"
-    anonymous_web_experience_urls:
-      id: aws.qbusiness.anonymous_web_experience_urls
-      name: anonymous_web_experience_urls
-      title: anonymous_web_experience_urls
+    web_experiences:
+      id: aws.qbusiness.web_experiences
+      name: web_experiences
+      title: web_experiences
       methods:
         create_anonymous_web_experience_url:
           operation:
@@ -6925,20 +7065,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/anonymous_web_experience_urls/methods/create_anonymous_web_experience_url"
-        update: []
-        delete: []
-    applications:
-      id: aws.qbusiness.applications
-      name: applications
-      title: applications
-      methods:
-        create_application:
+        create_web_experience:
           operation:
-            $ref: "#/paths/~1applications/post"
+            $ref: "#/paths/~1applications~1{application_id}~1experiences/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6947,30 +7076,38 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        list_applications:
+        list_web_experiences:
           operation:
-            $ref: "#/paths/~1applications/get"
+            $ref: "#/paths/~1applications~1{application_id}~1experiences/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.applications
+            objectKey: $.webExperiences
           request:
             nativeCasing: pascal
-        delete_application:
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_web_experience:
           operation:
-            $ref: "#/paths/~1applications~1{application_id}/delete"
+            $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-        get_application:
+        get_web_experience:
           operation:
-            $ref: "#/paths/~1applications~1{application_id}/get"
+            $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-        update_application:
+        update_web_experience:
           operation:
-            $ref: "#/paths/~1applications~1{application_id}/put"
+            $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6981,14 +7118,15 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
-          - $ref: "#/components/x-stackQL-resources/applications/methods/list_applications"
+          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/get_web_experience"
+          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/list_web_experiences"
         insert:
-          - $ref: "#/components/x-stackQL-resources/applications/methods/create_application"
+          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/create_anonymous_web_experience_url"
+          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/create_web_experience"
         update:
-          - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
+          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/update_web_experience"
         delete:
-          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
+          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/delete_web_experience"
     chat_response_configurations:
       id: aws.qbusiness.chat_response_configurations
       name: chat_response_configurations
@@ -7014,6 +7152,14 @@ components:
             objectKey: $.chatResponseConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_chat_response_configuration:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1chatresponseconfigurations~1{chat_response_configuration_id}/delete"
@@ -7072,6 +7218,14 @@ components:
             objectKey: $.dataAccessors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_data_accessor:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1dataaccessors~1{data_accessor_id}/delete"
@@ -7130,6 +7284,14 @@ components:
             objectKey: $.dataSources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_data_source:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1datasources~1{data_source_id}/delete"
@@ -7153,6 +7315,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_data_source_sync_job:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1datasources~1{data_source_id}~1startsync/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_data_source_sync_job:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1datasources~1{data_source_id}~1stopsync/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/get_data_source"
@@ -7225,6 +7399,14 @@ components:
             objectKey: $.indices
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/indices/methods/list_indices"
@@ -7256,6 +7438,14 @@ components:
             objectKey: $.plugins
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_plugin:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1plugins~1{plugin_id}/delete"
@@ -7314,6 +7504,14 @@ components:
             objectKey: $.retrievers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_retriever:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1retrievers~1{retriever_id}/delete"
@@ -7395,64 +7593,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/users/methods/update_user"
         delete:
           - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
-    web_experiences:
-      id: aws.qbusiness.web_experiences
-      name: web_experiences
-      title: web_experiences
-      methods:
-        create_web_experience:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1experiences/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_web_experiences:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1experiences/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.webExperiences
-          request:
-            nativeCasing: pascal
-        delete_web_experience:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_web_experience:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_web_experience:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1experiences~1{web_experience_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/get_web_experience"
-          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/list_web_experiences"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/create_web_experience"
-        update:
-          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/update_web_experience"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/web_experiences/methods/delete_web_experience"
     attachments:
       id: aws.qbusiness.attachments
       name: attachments
@@ -7475,6 +7615,14 @@ components:
             objectKey: $.attachments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attachments/methods/list_attachments"
@@ -7502,6 +7650,14 @@ components:
             objectKey: $.topicConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_chat_controls_configuration:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1chatcontrols/patch"
@@ -7535,6 +7691,14 @@ components:
             objectKey: $.messages
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/messages/methods/list_messages"
@@ -7571,6 +7735,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         put_group:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1indices~1{index_id}~1groups/put"
@@ -7642,6 +7814,14 @@ components:
             objectKey: $.history
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_source_sync_jobs/methods/list_data_source_sync_jobs"
@@ -7662,6 +7842,14 @@ components:
             objectKey: $.documentDetailList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/documents/methods/list_documents"
@@ -7682,6 +7870,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/plugin_actions/methods/list_plugin_actions"
@@ -7702,6 +7898,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/plugin_type_actions/methods/list_plugin_type_actions"
@@ -7722,16 +7926,24 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/plugin_type_metadatas/methods/list_plugin_type_metadata"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.qbusiness.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.qbusiness.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7739,17 +7951,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.qbusiness.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
@@ -7770,33 +7971,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    feedbacks:
-      id: aws.qbusiness.feedbacks
-      name: feedbacks
-      title: feedbacks
-      methods:
-        put_feedback:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1conversations~1{conversation_id}~1messages~1{message_id}~1feedback/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/feedbacks/methods/put_feedback"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     relevant_contents:
       id: aws.qbusiness.relevant_contents
@@ -7813,6 +7993,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

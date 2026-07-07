@@ -185,7 +185,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: One or more tag key-value pairs for the Protection object that is created.
               required:
-                - Name
                 - ResourceArn
       responses:
         "200":
@@ -975,7 +974,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListResourcesInProtectionGroupResponse"
+                $ref: "#/components/schemas/ListResourcesInProtectionGroupOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1038,7 +1037,6 @@ paths:
                   description: The tags that you want to modify or add to the resource.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -2072,21 +2070,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Protection"
-    ListResourcesInProtectionGroupResponse:
+    ListResourcesInProtectionGroupRowDisplay:
       type: object
       properties:
-        ResourceArns:
-          $ref: "#/components/schemas/ResourceArnList"
+        resource_arn:
+          type: string
           description: The Amazon Resource Names (ARNs) of the resources that are included in the protection group.
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: When you request a list of objects from Shield Advanced, if the response does not include all of the remaining available objects, Shield Advanced includes a NextToken value in the response. You can retrieve the next batch of objects by requesting the list again and providing the token that was returned by the prior call in your request. You can indicate the maximum number of objects that you want Shield Advanced to return for a single call with the MaxResults setting. Shield Advanced will not return more than MaxResults objects, but may return fewer, even if more objects are still available. Whenever more objects remain that Shield Advanced has not yet returned to you, the response will include a NextToken value.
-      required:
-        - ResourceArns
-    ResourceArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/ResourceArn"
+    ListResourcesInProtectionGroupOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListResourcesInProtectionGroupRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -2185,10 +2181,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/drt_roles/methods/associate_drt_role"
           - $ref: "#/components/x-stackQL-resources/drt_roles/methods/disassociate_drt_role"
         delete: []
-    health_checks:
-      id: aws.shield.health_checks
-      name: health_checks
-      title: health_checks
+    protections:
+      id: aws.shield.protections
+      name: protections
+      title: protections
       methods:
         associate_health_check:
           operation:
@@ -2203,54 +2199,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        disassociate_health_check:
-          operation:
-            $ref: "#/paths/~1DisassociateHealthCheck/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/health_checks/methods/associate_health_check"
-        delete: []
-    proactive_engagement_details:
-      id: aws.shield.proactive_engagement_details
-      name: proactive_engagement_details
-      title: proactive_engagement_details
-      methods:
-        associate_proactive_engagement_details:
-          operation:
-            $ref: "#/paths/~1AssociateProactiveEngagementDetails/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/proactive_engagement_details/methods/associate_proactive_engagement_details"
-        delete: []
-    protections:
-      id: aws.shield.protections
-      name: protections
-      title: protections
-      methods:
         create_protection:
           operation:
             $ref: "#/paths/~1CreateProtection/post"
@@ -2283,6 +2231,20 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Protection
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_health_check:
+          operation:
+            $ref: "#/paths/~1DisassociateHealthCheck/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2302,6 +2264,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2309,9 +2278,34 @@ components:
           - $ref: "#/components/x-stackQL-resources/protections/methods/describe_protection"
         insert:
           - $ref: "#/components/x-stackQL-resources/protections/methods/create_protection"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/protections/methods/associate_health_check"
         delete:
           - $ref: "#/components/x-stackQL-resources/protections/methods/delete_protection"
+    proactive_engagement_details:
+      id: aws.shield.proactive_engagement_details
+      name: proactive_engagement_details
+      title: proactive_engagement_details
+      methods:
+        associate_proactive_engagement_details:
+          operation:
+            $ref: "#/paths/~1AssociateProactiveEngagementDetails/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/proactive_engagement_details/methods/associate_proactive_engagement_details"
+        delete: []
     protection_groups:
       id: aws.shield.protection_groups
       name: protection_groups
@@ -2349,6 +2343,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ProtectionGroup
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2429,6 +2424,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Subscription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2469,6 +2465,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Attack
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2488,6 +2485,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2618,6 +2622,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListResourcesInProtectionGroupOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ResourceArns" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2631,10 +2642,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.shield.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.shield.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2649,17 +2660,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.shield.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2687,11 +2687,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     application_layer_automatic_responses:
       id: aws.shield.application_layer_automatic_responses

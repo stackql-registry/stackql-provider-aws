@@ -44,7 +44,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelImageCreationResponse'
-      x-stackql-resource: image_creation
+      x-stackql-resource: images
       x-stackql-method: cancel_image_creation
       x-stackql-verb: EXEC
   /CancelLifecycleExecution:
@@ -73,7 +73,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelLifecycleExecutionResponse'
-      x-stackql-resource: lifecycle_execution
+      x-stackql-resource: lifecycle_executions
       x-stackql-method: cancel_lifecycle_execution
       x-stackql-verb: EXEC
   /CreateComponent:
@@ -770,7 +770,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DistributeImageResponse'
-      x-stackql-resource: distribute_image
+      x-stackql-resource: distribution_configurations
       x-stackql-method: distribute_image
       x-stackql-verb: EXEC
   /GetComponent:
@@ -1025,6 +1025,7 @@ paths:
       x-stackql-resource: lifecycle_executions
       x-stackql-method: get_lifecycle_execution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.lifecycleExecution
   /GetLifecyclePolicy:
     get:
       operationId: GetLifecyclePolicy
@@ -1046,6 +1047,7 @@ paths:
       x-stackql-resource: lifecycle_policies
       x-stackql-method: get_lifecycle_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.lifecyclePolicy
   /GetMarketplaceResource:
     post:
       operationId: GetMarketplaceResource
@@ -1250,7 +1252,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportDiskImageResponse'
-      x-stackql-resource: disk_image
+      x-stackql-resource: infrastructure_configurations
       x-stackql-method: import_disk_image
       x-stackql-verb: EXEC
   /ImportVmImage:
@@ -1332,6 +1334,9 @@ paths:
       x-stackql-method: list_component_build_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.componentSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListComponents:
     post:
       operationId: ListComponents
@@ -1370,6 +1375,9 @@ paths:
       x-stackql-method: list_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.componentVersionList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListContainerRecipes:
     post:
       operationId: ListContainerRecipes
@@ -1401,6 +1409,9 @@ paths:
       x-stackql-method: list_container_recipes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.containerRecipeSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDistributionConfigurations:
     post:
       operationId: ListDistributionConfigurations
@@ -1430,6 +1441,9 @@ paths:
       x-stackql-method: list_distribution_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.distributionConfigurationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImageBuildVersions:
     post:
       operationId: ListImageBuildVersions
@@ -1461,6 +1475,9 @@ paths:
       x-stackql-method: list_image_build_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImagePackages:
     post:
       operationId: ListImagePackages
@@ -1493,6 +1510,9 @@ paths:
       x-stackql-method: list_image_packages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imagePackageList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImagePipelineImages:
     post:
       operationId: ListImagePipelineImages
@@ -1526,6 +1546,9 @@ paths:
       x-stackql-method: list_image_pipeline_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImagePipelines:
     post:
       operationId: ListImagePipelines
@@ -1555,6 +1578,9 @@ paths:
       x-stackql-method: list_image_pipelines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imagePipelineList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImageRecipes:
     post:
       operationId: ListImageRecipes
@@ -1586,6 +1612,9 @@ paths:
       x-stackql-method: list_image_recipes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageRecipeSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImageScanFindingAggregations:
     post:
       operationId: ListImageScanFindingAggregations
@@ -1617,6 +1646,9 @@ paths:
       x-stackql-method: list_image_scan_finding_aggregations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.responses
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImageScanFindings:
     post:
       operationId: ListImageScanFindings
@@ -1646,6 +1678,9 @@ paths:
       x-stackql-method: list_image_scan_findings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListImages:
     post:
       operationId: ListImages
@@ -1682,6 +1717,9 @@ paths:
       x-stackql-method: list_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageVersionList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListInfrastructureConfigurations:
     post:
       operationId: ListInfrastructureConfigurations
@@ -1711,6 +1749,9 @@ paths:
       x-stackql-method: list_infrastructure_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.infrastructureConfigurationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListLifecycleExecutionResources:
     post:
       operationId: ListLifecycleExecutionResources
@@ -1744,6 +1785,9 @@ paths:
       x-stackql-method: list_lifecycle_execution_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListLifecycleExecutions:
     post:
       operationId: ListLifecycleExecutions
@@ -1775,6 +1819,9 @@ paths:
       x-stackql-method: list_lifecycle_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.lifecycleExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListLifecyclePolicies:
     post:
       operationId: ListLifecyclePolicies
@@ -1804,6 +1851,9 @@ paths:
       x-stackql-method: list_lifecycle_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.lifecyclePolicySummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1822,7 +1872,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1853,7 +1903,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1879,7 +1929,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /ListWaitingWorkflowSteps:
@@ -1909,6 +1959,9 @@ paths:
       x-stackql-method: list_waiting_workflow_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.steps
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWorkflowBuildVersions:
     post:
       operationId: ListWorkflowBuildVersions
@@ -1938,6 +1991,9 @@ paths:
       x-stackql-method: list_workflow_build_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWorkflowExecutions:
     post:
       operationId: ListWorkflowExecutions
@@ -1969,6 +2025,9 @@ paths:
       x-stackql-method: list_workflow_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWorkflowStepExecutions:
     post:
       operationId: ListWorkflowStepExecutions
@@ -2000,6 +2059,9 @@ paths:
       x-stackql-method: list_workflow_step_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.steps
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWorkflows:
     post:
       operationId: ListWorkflows
@@ -2033,6 +2095,9 @@ paths:
       x-stackql-method: list_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowVersionList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /PutComponentPolicy:
     put:
       operationId: PutComponentPolicy
@@ -2184,7 +2249,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetryImageResponse'
-      x-stackql-resource: retry_image
+      x-stackql-resource: image_build_versions
       x-stackql-method: retry_image
       x-stackql-verb: EXEC
   /SendWorkflowStepAction:
@@ -2221,7 +2286,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendWorkflowStepActionResponse'
-      x-stackql-resource: workflow_step_action
+      x-stackql-resource: workflows
       x-stackql-method: send_workflow_step_action
       x-stackql-verb: EXEC
   /StartImagePipelineExecution:
@@ -2252,7 +2317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImagePipelineExecutionResponse'
-      x-stackql-resource: image_pipeline_execution
+      x-stackql-resource: image_pipelines
       x-stackql-method: start_image_pipeline_execution
       x-stackql-verb: EXEC
   /StartResourceStateUpdate:

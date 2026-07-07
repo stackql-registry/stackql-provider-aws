@@ -343,6 +343,7 @@ paths:
       x-stackql-resource: domains
       x-stackql-method: describe_domain
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Domain
   /DescribeFraudster:
     post:
       operationId: DescribeFraudster
@@ -383,6 +384,7 @@ paths:
       x-stackql-resource: fraudsters
       x-stackql-method: describe_fraudster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Fraudster
   /DescribeFraudsterRegistrationJob:
     post:
       operationId: DescribeFraudsterRegistrationJob
@@ -423,6 +425,7 @@ paths:
       x-stackql-resource: fraudster_registration_jobs
       x-stackql-method: describe_fraudster_registration_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Job
   /DescribeSpeaker:
     post:
       operationId: DescribeSpeaker
@@ -463,6 +466,7 @@ paths:
       x-stackql-resource: speakers
       x-stackql-method: describe_speaker
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Speaker
   /DescribeSpeakerEnrollmentJob:
     post:
       operationId: DescribeSpeakerEnrollmentJob
@@ -503,6 +507,7 @@ paths:
       x-stackql-resource: speaker_enrollment_jobs
       x-stackql-method: describe_speaker_enrollment_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Job
   /DescribeWatchlist:
     post:
       operationId: DescribeWatchlist
@@ -543,6 +548,7 @@ paths:
       x-stackql-resource: watchlists
       x-stackql-method: describe_watchlist
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Watchlist
   /DisassociateFraudster:
     post:
       operationId: DisassociateFraudster
@@ -628,7 +634,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvaluateSessionResponse'
-      x-stackql-resource: evaluate_session
+      x-stackql-resource: domains
       x-stackql-method: evaluate_session
       x-stackql-verb: EXEC
   /ListDomains:
@@ -672,6 +678,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DomainSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFraudsterRegistrationJobs:
     post:
       operationId: ListFraudsterRegistrationJobs
@@ -722,6 +731,9 @@ paths:
       x-stackql-method: list_fraudster_registration_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFraudsters:
     post:
       operationId: ListFraudsters
@@ -772,6 +784,9 @@ paths:
       x-stackql-method: list_fraudsters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FraudsterSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSpeakerEnrollmentJobs:
     post:
       operationId: ListSpeakerEnrollmentJobs
@@ -822,6 +837,9 @@ paths:
       x-stackql-method: list_speaker_enrollment_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSpeakers:
     post:
       operationId: ListSpeakers
@@ -868,6 +886,9 @@ paths:
       x-stackql-method: list_speakers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SpeakerSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -901,7 +922,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListWatchlists:
@@ -950,6 +971,9 @@ paths:
       x-stackql-method: list_watchlists
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WatchlistSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /OptOutSpeaker:
     post:
       operationId: OptOutSpeaker
@@ -990,7 +1014,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OptOutSpeakerResponse'
-      x-stackql-resource: opt_out_speaker
+      x-stackql-resource: speakers
       x-stackql-method: opt_out_speaker
       x-stackql-verb: EXEC
   /StartFraudsterRegistrationJob:
@@ -1055,7 +1079,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFraudsterRegistrationJobResponse'
-      x-stackql-resource: fraudster_registration_job
+      x-stackql-resource: fraudsters
       x-stackql-method: start_fraudster_registration_job
       x-stackql-verb: EXEC
   /StartSpeakerEnrollmentJob:
@@ -1120,7 +1144,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeakerEnrollmentJobResponse'
-      x-stackql-resource: speaker_enrollment_job
+      x-stackql-resource: speakers
       x-stackql-method: start_speaker_enrollment_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -1160,7 +1184,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1200,7 +1224,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateDomain:

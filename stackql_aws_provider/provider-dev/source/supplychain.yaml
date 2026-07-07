@@ -155,6 +155,7 @@ paths:
       x-stackql-resource: data_integration_flows
       x-stackql-method: get_data_integration_flow
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.flow
     patch:
       operationId: UpdateDataIntegrationFlow
       description: Enables you to programmatically update an existing data pipeline to ingest data from the source systems
@@ -321,6 +322,7 @@ paths:
       x-stackql-resource: data_lake_datasets
       x-stackql-method: get_data_lake_dataset
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dataset
     patch:
       operationId: UpdateDataLakeDataset
       description: Enables you to programmatically update an Amazon Web Services Supply Chain data lake dataset. Developers
@@ -463,6 +465,7 @@ paths:
       x-stackql-resource: data_lake_namespaces
       x-stackql-method: get_data_lake_namespace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.namespace
     patch:
       operationId: UpdateDataLakeNamespace
       description: Enables you to programmatically update an Amazon Web Services Supply Chain data lake namespace. Developers
@@ -581,6 +584,9 @@ paths:
       x-stackql-method: list_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.instances
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /api/instance/{instance_id}:
     delete:
       operationId: DeleteInstance
@@ -627,6 +633,7 @@ paths:
       x-stackql-resource: instances
       x-stackql-method: get_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.instance
     patch:
       operationId: UpdateInstance
       description: Enables you to programmatically update an Amazon Web Services Supply Chain instance description by providing
@@ -686,6 +693,7 @@ paths:
       x-stackql-resource: bill_of_materials_import_jobs
       x-stackql-method: get_bill_of_materials_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.job
   /api-data/data-integration/instance/{instance_id}/data-integration-events/{event_id}:
     get:
       operationId: GetDataIntegrationEvent
@@ -714,6 +722,7 @@ paths:
       x-stackql-resource: data_integration_events
       x-stackql-method: get_data_integration_event
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.event
   /api-data/data-integration/instance/{instance_id}/data-integration-flows/{flow_name}/executions/{execution_id}:
     get:
       operationId: GetDataIntegrationFlowExecution
@@ -747,6 +756,7 @@ paths:
       x-stackql-resource: data_integration_flow_executions
       x-stackql-method: get_data_integration_flow_execution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.flowExecution
   /api-data/data-integration/instance/{instance_id}/data-integration-events:
     get:
       operationId: ListDataIntegrationEvents
@@ -788,6 +798,9 @@ paths:
       x-stackql-method: list_data_integration_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: SendDataIntegrationEvent
       description: Send the data payload for the event with real-time data for analysis or monitoring. The real-time data
@@ -829,7 +842,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDataIntegrationEventResponse'
-      x-stackql-resource: data_integration_event
+      x-stackql-resource: instances
       x-stackql-method: send_data_integration_event
       x-stackql-verb: EXEC
   /api-data/data-integration/instance/{instance_id}/data-integration-flows/{flow_name}/executions:
@@ -872,6 +885,9 @@ paths:
       x-stackql-method: list_data_integration_flow_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.flowExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /api/data-integration/instance/{instance_id}/data-integration-flows:
     get:
       operationId: ListDataIntegrationFlows
@@ -907,6 +923,9 @@ paths:
       x-stackql-method: list_data_integration_flows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.flows
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /api/datalake/instance/{instance_id}/namespaces/{namespace}/datasets:
     get:
       operationId: ListDataLakeDatasets
@@ -951,6 +970,9 @@ paths:
       x-stackql-method: list_data_lake_datasets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datasets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /api/datalake/instance/{instance_id}/namespaces:
     get:
       operationId: ListDataLakeNamespaces
@@ -987,6 +1009,9 @@ paths:
       x-stackql-method: list_data_lake_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.namespaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /api/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1007,7 +1032,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1041,7 +1066,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1069,7 +1094,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

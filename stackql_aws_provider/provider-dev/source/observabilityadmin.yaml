@@ -424,6 +424,7 @@ paths:
       x-stackql-resource: telemetry_pipelines
       x-stackql-method: get_telemetry_pipeline
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Pipeline
   /GetTelemetryRule:
     post:
       operationId: GetTelemetryRule
@@ -509,6 +510,9 @@ paths:
       x-stackql-method: list_centralization_rules_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CentralizationRuleSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceTelemetry:
     post:
       operationId: ListResourceTelemetry
@@ -545,6 +549,9 @@ paths:
       x-stackql-method: list_resource_telemetry
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TelemetryConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceTelemetryForOrganization:
     post:
       operationId: ListResourceTelemetryForOrganization
@@ -583,6 +590,9 @@ paths:
       x-stackql-method: list_resource_telemetry_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TelemetryConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListS3TableIntegrations:
     post:
       operationId: ListS3TableIntegrations
@@ -611,6 +621,9 @@ paths:
       x-stackql-method: list_s3_table_integrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IntegrationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -635,7 +648,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTelemetryPipelines:
@@ -666,6 +679,9 @@ paths:
       x-stackql-method: list_telemetry_pipelines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTelemetryRules:
     post:
       operationId: ListTelemetryRules
@@ -695,6 +711,9 @@ paths:
       x-stackql-method: list_telemetry_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TelemetryRuleSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTelemetryRulesForOrganization:
     post:
       operationId: ListTelemetryRulesForOrganization
@@ -729,6 +748,9 @@ paths:
       x-stackql-method: list_telemetry_rules_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TelemetryRuleSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /StartTelemetryEnrichment:
     post:
       operationId: StartTelemetryEnrichment
@@ -850,7 +872,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestTelemetryPipeline:
@@ -905,7 +927,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCentralizationRuleForOrganization:
@@ -1068,7 +1090,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateTelemetryPipelineConfigurationOutput'
-      x-stackql-resource: telemetry_pipeline_configuration
+      x-stackql-resource: telemetry_pipelines
       x-stackql-method: validate_telemetry_pipeline_configuration
       x-stackql-verb: EXEC
 components:

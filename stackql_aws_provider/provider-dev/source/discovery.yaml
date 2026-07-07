@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateConfigurationItemsToApplicationResponse'
-      x-stackql-resource: configuration_items_to_applications
+      x-stackql-resource: configurations
       x-stackql-method: associate_configuration_items_to_application
       x-stackql-verb: UPDATE
   /BatchDeleteAgents:
@@ -92,7 +92,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteAgentsResponse'
-      x-stackql-resource: batch_delete_agents
+      x-stackql-resource: agents
       x-stackql-method: batch_delete_agents
       x-stackql-verb: EXEC
   /BatchDeleteImportData:
@@ -136,7 +136,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteImportDataResponse'
-      x-stackql-resource: batch_delete_import_data
+      x-stackql-resource: import_tasks
       x-stackql-method: batch_delete_import_data
       x-stackql-verb: EXEC
   /CreateApplication:
@@ -351,6 +351,9 @@ paths:
       x-stackql-method: describe_agents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentsInfo
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeBatchDeleteConfigurationTask:
     post:
       operationId: DescribeBatchDeleteConfigurationTask
@@ -387,6 +390,7 @@ paths:
       x-stackql-resource: batch_delete_configuration_tasks
       x-stackql-method: describe_batch_delete_configuration_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.task
   /DescribeConfigurations:
     post:
       operationId: DescribeConfigurations
@@ -423,10 +427,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DescribeConfigurationsResponse'
+                $ref: '#/components/schemas/DescribeConfigurationsOutputDisplay'
       x-stackql-resource: configurations
       x-stackql-method: describe_configurations
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeConfigurationsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "configurations" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /DescribeContinuousExports:
     post:
       operationId: DescribeContinuousExports
@@ -470,6 +479,9 @@ paths:
       x-stackql-method: describe_continuous_exports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.descriptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeExportConfigurations:
     post:
       operationId: DescribeExportConfigurations
@@ -512,6 +524,9 @@ paths:
       x-stackql-method: describe_export_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.exportsInfo
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeExportTasks:
     post:
       operationId: DescribeExportTasks
@@ -561,6 +576,9 @@ paths:
       x-stackql-method: describe_export_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.exportsInfo
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeImportTasks:
     post:
       operationId: DescribeImportTasks
@@ -604,6 +622,9 @@ paths:
       x-stackql-method: describe_import_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeTags:
     post:
       operationId: DescribeTags
@@ -649,6 +670,9 @@ paths:
       x-stackql-method: describe_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DisassociateConfigurationItemsFromApplication:
     post:
       operationId: DisassociateConfigurationItemsFromApplication
@@ -686,7 +710,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateConfigurationItemsFromApplicationResponse'
-      x-stackql-resource: configuration_items_from_applications
+      x-stackql-resource: configurations
       x-stackql-method: disassociate_configuration_items_from_application
       x-stackql-verb: UPDATE
   /ExportConfigurations:
@@ -799,11 +823,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListConfigurationsResponse'
+                $ref: '#/components/schemas/ListConfigurationsOutputDisplay'
       x-stackql-resource: configurations
       x-stackql-method: list_configurations
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.configurations
+      x-stackql-responseEnvelope: ListConfigurationsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "configurations" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServerNeighbors:
     post:
       operationId: ListServerNeighbors
@@ -893,7 +925,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBatchDeleteConfigurationTaskResponse'
-      x-stackql-resource: batch_delete_configuration_task
+      x-stackql-resource: configurations
       x-stackql-method: start_batch_delete_configuration_task
       x-stackql-verb: EXEC
   /StartContinuousExport:
@@ -963,7 +995,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataCollectionByAgentIdsResponse'
-      x-stackql-resource: data_collection_by_agent_ids
+      x-stackql-resource: agents
       x-stackql-method: start_data_collection_by_agent_ids
       x-stackql-verb: EXEC
   /StartExportTask:
@@ -1163,7 +1195,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDataCollectionByAgentIdsResponse'
-      x-stackql-resource: data_collection_by_agent_ids
+      x-stackql-resource: agents
       x-stackql-method: stop_data_collection_by_agent_ids
       x-stackql-verb: EXEC
   /UpdateApplication:
@@ -1648,19 +1680,19 @@ components:
       type: integer
     WarningText:
       type: string
-    DescribeConfigurationsResponse:
+    DescribeConfigurationsRowDisplay:
       type: object
       properties:
-        configurations:
-          $ref: '#/components/schemas/DescribeConfigurationsAttributes'
+        configuration:
+          type: object
           description: A key in the response map. The value is an array of data.
-    DescribeConfigurationsAttributes:
-      type: array
-      items:
-        $ref: '#/components/schemas/DescribeConfigurationsAttribute'
-    DescribeConfigurationsAttribute:
+    DescribeConfigurationsOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DescribeConfigurationsRowDisplay'
     ContinuousExportIds:
       type: array
       items:
@@ -2273,24 +2305,19 @@ components:
       enum:
       - ASC
       - DESC
-    ListConfigurationsResponse:
+    ListConfigurationsRowDisplay:
       type: object
       properties:
-        configurations:
-          $ref: '#/components/schemas/Configurations'
+        configuration:
+          type: object
           description: Returns configuration details, including the configuration ID, attribute names, and attribute values.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: Token to retrieve the next set of results. For example, if your call to ListConfigurations returned
-            100 items, but you set ListConfigurationsRequest$maxResults to 10, you received a set of 10 results along with
-            this token. Use this token in the next query to retrieve the next set of 10.
-    Configurations:
-      type: array
-      items:
-        $ref: '#/components/schemas/Configuration'
-    Configuration:
+    ListConfigurationsOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListConfigurationsRowDisplay'
     ListServerNeighborsResponse:
       type: object
       properties:

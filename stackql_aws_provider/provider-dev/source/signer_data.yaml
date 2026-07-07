@@ -58,10 +58,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetRevocationStatusResponse'
+                $ref: '#/components/schemas/GetRevocationStatusOutputDisplay'
       x-stackql-resource: revocation_status
       x-stackql-method: get_revocation_status
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetRevocationStatusOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "revokedEntities" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"revoked_entity": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -125,18 +130,16 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-    GetRevocationStatusResponse:
-      description: Response containing the list of revoked entities.
+    GetRevocationStatusRowDisplay:
       type: object
       properties:
-        revokedEntities:
-          $ref: '#/components/schemas/RevokedEntities'
+        revoked_entity:
+          type: string
           description: List of entity identifiers that have been revoked. Empty if no revocations found.
-    RevokedEntities:
-      type: array
-      items:
-        $ref: '#/components/schemas/RevokedEntity'
-    RevokedEntity:
-      type: string
-      minLength: 1
-      maxLength: 2048
+    GetRevocationStatusOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetRevocationStatusRowDisplay'

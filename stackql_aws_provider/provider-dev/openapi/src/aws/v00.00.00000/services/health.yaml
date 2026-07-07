@@ -56,7 +56,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DescribeAffectedAccountsForOrganizationResponse"
+                $ref: "#/components/schemas/DescribeAffectedAccountsForOrganizationOutputDisplay"
   /DescribeAffectedEntities:
     post:
       operationId: DescribeAffectedEntities
@@ -556,32 +556,19 @@ components:
       type: integer
       minimum: 10
       maximum: 100
-    DescribeAffectedAccountsForOrganizationResponse:
+    DescribeAffectedAccountsForOrganizationRowDisplay:
       type: object
       properties:
-        affectedAccounts:
-          $ref: "#/components/schemas/affectedAccountsList"
+        affected_account:
+          type: string
           description: A JSON set of elements of the affected accounts.
-        eventScopeCode:
-          $ref: "#/components/schemas/eventScopeCode"
-          description: This parameter specifies if the Health event is a public Amazon Web Services service event or an account-specific event. If the eventScopeCode value is PUBLIC, then the affectedAccounts value is always empty. If the eventScopeCode value is ACCOUNT_SPECIFIC, then the affectedAccounts value lists the affected Amazon Web Services accounts in your organization. For example, if an event affects a service such as Amazon Elastic Compute Cloud and you have Amazon Web Services accounts that use that service, those account IDs appear in the response. If the eventScopeCode value is NONE, then the eventArn that you specified in the request is invalid or doesn't exist.
-        nextToken:
-          $ref: "#/components/schemas/nextToken"
-          description: If the results of a search are large, only a portion of the results are returned, and a nextToken pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
-    affectedAccountsList:
-      type: array
-      items:
-        $ref: "#/components/schemas/accountId"
-    accountId:
-      type: string
-      maxLength: 12
-      pattern: ^\S+$
-    eventScopeCode:
-      type: string
-      enum:
-        - PUBLIC
-        - ACCOUNT_SPECIFIC
-        - NONE
+    DescribeAffectedAccountsForOrganizationOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/DescribeAffectedAccountsForOrganizationRowDisplay"
     EntityFilter:
       description: The values to use to filter results from the DescribeAffectedEntities operation.
       type: object
@@ -719,6 +706,10 @@ components:
           description: Additional metadata about the affected entity.
     entityUrl:
       type: string
+    accountId:
+      type: string
+      maxLength: 12
+      pattern: ^\S+$
     OrganizationEntityFiltersList:
       type: array
       items:
@@ -1103,6 +1094,12 @@ components:
       minLength: 3
       maxLength: 100
       pattern: "[a-zA-Z0-9\\_\\-]{3,100}"
+    eventScopeCode:
+      type: string
+      enum:
+        - PUBLIC
+        - ACCOUNT_SPECIFIC
+        - NONE
     EventDescription:
       description: The detailed description of the event. Included in the information returned by the DescribeEventDetails operation.
       type: object
@@ -1390,12 +1387,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.affectedAccounts
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeAffectedAccountsForOrganizationOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "affectedAccounts" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"affected_account": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1421,6 +1431,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1446,6 +1463,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1519,6 +1543,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1592,6 +1623,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1617,6 +1655,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1642,6 +1687,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

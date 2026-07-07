@@ -311,6 +311,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_put_metrics:
+          operation:
+            $ref: "#/paths/~1BatchPutMetrics/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metrics/methods/batch_get_metrics"

@@ -91,9 +91,7 @@ paths:
                   $ref: "#/components/schemas/ResourceTagList"
                   description: The tag structure that contains a tag key and value.
               required:
-                - Name
                 - InvoiceReceiver
-                - Rule
       responses:
         "200":
           description: Success
@@ -1925,6 +1923,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_invoice_unit:
@@ -1987,6 +1992,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ProcurementPortalPreference
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2006,11 +2012,31 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_procurement_portal_preference:
           operation:
             $ref: "#/paths/~1PutProcurementPortalPreference/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_procurement_portal_preference_status:
+          operation:
+            $ref: "#/paths/~1UpdateProcurementPortalPreferenceStatus/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2027,7 +2053,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/procurement_portal_preferences/methods/list_procurement_portal_preferences"
         insert:
           - $ref: "#/components/x-stackQL-resources/procurement_portal_preferences/methods/create_procurement_portal_preference"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/procurement_portal_preferences/methods/update_procurement_portal_preference_status"
         replace:
           - $ref: "#/components/x-stackQL-resources/procurement_portal_preferences/methods/put_procurement_portal_preference"
         delete:
@@ -2043,6 +2070,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.InvoicePDF
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2073,6 +2101,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2081,10 +2116,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.invoicing.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.invoicing.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2099,17 +2134,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.invoicing.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2137,33 +2161,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    procurement_portal_preference_status:
-      id: aws.invoicing.procurement_portal_preference_status
-      name: procurement_portal_preference_status
-      title: procurement_portal_preference_status
-      methods:
-        update_procurement_portal_preference_status:
-          operation:
-            $ref: "#/paths/~1UpdateProcurementPortalPreferenceStatus/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/procurement_portal_preference_status/methods/update_procurement_portal_preference_status"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

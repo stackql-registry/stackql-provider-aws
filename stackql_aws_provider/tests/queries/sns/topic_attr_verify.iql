@@ -1,0 +1,1 @@
+SELECT * FROM aws.sns.topic_attributes WHERE region = '{{ region }}' AND TopicArn = '{{ topic_find.topic_arn }}'

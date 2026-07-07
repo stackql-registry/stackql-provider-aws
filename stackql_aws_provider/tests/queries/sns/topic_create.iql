@@ -1,0 +1,7 @@
+-- query protocol INSERT; the topic arn is assigned lazily (captured by the
+-- follow-up topic_find SELECT). Tagged so test-created resources are
+-- identifiable. Query-protocol non-flattened lists serialise as
+-- Tags.member.N.<field>, so the JSON carries the member level explicitly.
+INSERT INTO aws.sns.topics(region, Name, Tags)
+SELECT '{{ region }}', '{{ topic_name }}',
+       JSON('{"member":[{"Key":"stackql-provider-test","Value":"topic_create"}]}')

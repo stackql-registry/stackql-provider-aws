@@ -154,6 +154,9 @@ paths:
       x-stackql-method: list_efficiency_metrics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.efficiencyMetricsByGroup
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnrollmentStatuses:
     post:
       operationId: ListEnrollmentStatuses
@@ -199,6 +202,9 @@ paths:
       x-stackql-method: list_enrollment_statuses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRecommendationSummaries:
     post:
       operationId: ListRecommendationSummaries
@@ -249,6 +255,9 @@ paths:
       x-stackql-method: list_recommendation_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRecommendations:
     post:
       operationId: ListRecommendations
@@ -296,6 +305,9 @@ paths:
       x-stackql-method: list_recommendations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /UpdateEnrollmentStatus:
     post:
       operationId: UpdateEnrollmentStatus

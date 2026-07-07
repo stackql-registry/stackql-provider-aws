@@ -101,8 +101,6 @@ paths:
               properties:
                 Value:
                   $ref: "#/components/schemas/Value"
-              required:
-                - Value
       responses:
         "200":
           description: Success
@@ -463,6 +461,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_keys:
           operation:
             $ref: "#/paths/~1key-value-stores~1{kvs_arn}~1keys/post"

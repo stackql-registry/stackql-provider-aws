@@ -47,6 +47,9 @@ paths:
       x-stackql-method: batch_get_traces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Traces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /CancelTraceRetrieval:
     post:
       operationId: CancelTraceRetrieval
@@ -71,7 +74,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelTraceRetrievalResult'
-      x-stackql-resource: trace_retrieval
+      x-stackql-resource: traces
       x-stackql-method: cancel_trace_retrieval
       x-stackql-verb: EXEC
   /CreateGroup:
@@ -233,6 +236,7 @@ paths:
       x-stackql-resource: encryption_configs
       x-stackql-method: get_encryption_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EncryptionConfig
   /GetGroup:
     post:
       operationId: GetGroup
@@ -259,6 +263,7 @@ paths:
       x-stackql-resource: groups
       x-stackql-method: get_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Group
   /Groups:
     post:
       operationId: GetGroups
@@ -284,6 +289,9 @@ paths:
       x-stackql-method: get_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Groups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetIndexingRules:
     post:
       operationId: GetIndexingRules
@@ -336,6 +344,7 @@ paths:
       x-stackql-resource: insights
       x-stackql-method: get_insight
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Insight
   /InsightEvents:
     post:
       operationId: GetInsightEvents
@@ -501,6 +510,9 @@ paths:
       x-stackql-method: get_sampling_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SamplingRuleRecords
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /SamplingStatisticSummaries:
     post:
       operationId: GetSamplingStatisticSummaries
@@ -526,6 +538,9 @@ paths:
       x-stackql-method: get_sampling_statistic_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SamplingStatisticSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /SamplingTargets:
     post:
       operationId: GetSamplingTargets
@@ -593,6 +608,9 @@ paths:
       x-stackql-method: get_service_graph
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Services
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /TimeSeriesServiceStatistics:
     post:
       operationId: GetTimeSeriesServiceStatistics
@@ -635,6 +653,9 @@ paths:
       x-stackql-method: get_time_series_service_statistics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TimeSeriesServiceStatistics
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /TraceGraph:
     post:
       operationId: GetTraceGraph
@@ -664,6 +685,9 @@ paths:
       x-stackql-method: get_trace_graph
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Services
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetTraceSegmentDestination:
     post:
       operationId: GetTraceSegmentDestination
@@ -727,6 +751,9 @@ paths:
       x-stackql-method: get_trace_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TraceSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourcePolicies:
     post:
       operationId: ListResourcePolicies
@@ -752,6 +779,9 @@ paths:
       x-stackql-method: list_resource_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourcePolicies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRetrievedTraces:
     post:
       operationId: ListRetrievedTraces
@@ -813,10 +843,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutEncryptionConfig:
     post:
       operationId: PutEncryptionConfig
@@ -955,7 +988,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutTraceSegmentsResult'
-      x-stackql-resource: trace_segments
+      x-stackql-resource: traces
       x-stackql-method: put_trace_segments
       x-stackql-verb: REPLACE
   /StartTraceRetrieval:
@@ -993,7 +1026,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTraceRetrievalResult'
-      x-stackql-resource: trace_retrieval
+      x-stackql-resource: traces
       x-stackql-method: start_trace_retrieval
       x-stackql-verb: EXEC
   /TagResource:
@@ -1022,7 +1055,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1052,7 +1085,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateGroup:

@@ -4113,6 +4113,96 @@ components:
       items:
         $ref: "#/components/schemas/ResourceTagKey"
   x-stackQL-resources:
+    closed_workflow_executions:
+      id: aws.swf.closed_workflow_executions
+      name: closed_workflow_executions
+      title: closed_workflow_executions
+      methods:
+        count_closed_workflow_executions:
+          operation:
+            $ref: "#/paths/~1CountClosedWorkflowExecutions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_closed_workflow_executions:
+          operation:
+            $ref: "#/paths/~1ListClosedWorkflowExecutions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.executionInfos
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextPageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/closed_workflow_executions/methods/list_closed_workflow_executions"
+        insert: []
+        update: []
+        delete: []
+    open_workflow_executions:
+      id: aws.swf.open_workflow_executions
+      name: open_workflow_executions
+      title: open_workflow_executions
+      methods:
+        count_open_workflow_executions:
+          operation:
+            $ref: "#/paths/~1CountOpenWorkflowExecutions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_open_workflow_executions:
+          operation:
+            $ref: "#/paths/~1ListOpenWorkflowExecutions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.executionInfos
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextPageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/open_workflow_executions/methods/list_open_workflow_executions"
+        insert: []
+        update: []
+        delete: []
     activity_types:
       id: aws.swf.activity_types
       name: activity_types
@@ -4155,6 +4245,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextPageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_activity_type:
@@ -4220,6 +4317,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextPageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_workflow_type:
@@ -4273,6 +4377,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextPageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_domain:
@@ -4349,6 +4460,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextPageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4357,60 +4475,10 @@ components:
         insert: []
         update: []
         delete: []
-    closed_workflow_executions:
-      id: aws.swf.closed_workflow_executions
-      name: closed_workflow_executions
-      title: closed_workflow_executions
-      methods:
-        list_closed_workflow_executions:
-          operation:
-            $ref: "#/paths/~1ListClosedWorkflowExecutions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.executionInfos
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/closed_workflow_executions/methods/list_closed_workflow_executions"
-        insert: []
-        update: []
-        delete: []
-    open_workflow_executions:
-      id: aws.swf.open_workflow_executions
-      name: open_workflow_executions
-      title: open_workflow_executions
-      methods:
-        list_open_workflow_executions:
-          operation:
-            $ref: "#/paths/~1ListOpenWorkflowExecutions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.executionInfos
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/open_workflow_executions/methods/list_open_workflow_executions"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.swf.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.swf.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4425,17 +4493,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.swf.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -4461,9 +4518,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

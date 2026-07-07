@@ -57,7 +57,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: Tags to be associated with this resource. A tag is a key-value pair that adds metadata to a resource. Each tag key for the resource must be unique. For more information, see Tagging your resources.
               required:
-                - Name
                 - ParallelDataConfig
                 - ClientToken
       responses:
@@ -91,8 +90,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ResourceName"
                   description: The name of the parallel data resource that is being deleted.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -124,8 +121,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ResourceName"
                   description: The name of the custom terminology being deleted.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -186,8 +181,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ResourceName"
                   description: The name of the parallel data resource that is being retrieved.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -222,8 +215,6 @@ paths:
                 TerminologyDataFormat:
                   $ref: "#/components/schemas/TerminologyDataFormat"
                   description: The data format of the custom terminology being retrieved. If you don't specify this parameter, Amazon Translate returns a file with the same format as the file that was imported to create the terminology. If you specify this parameter when you retrieve a multi-directional terminology resource, you must specify the same format as the input file that was imported to create it. Otherwise, Amazon Translate throws an error.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -583,7 +574,6 @@ paths:
                   description: Tags being associated with a specific Amazon Translate resource. There can be a maximum of 50 tags (both existing and pending) associated with a specific resource.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -756,7 +746,6 @@ paths:
                   $ref: "#/components/schemas/ClientTokenString"
                   description: A unique identifier for the request. This token is automatically generated when you use Amazon Translate through an AWS SDK.
               required:
-                - Name
                 - ParallelDataConfig
                 - ClientToken
       responses:
@@ -1643,7 +1632,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/parallel_datas/methods/get_parallel_data"
-          - $ref: "#/components/x-stackQL-resources/parallel_datas/methods/list_parallel_data"
         insert:
           - $ref: "#/components/x-stackQL-resources/parallel_datas/methods/create_parallel_data"
         update:
@@ -1692,12 +1680,18 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/terminologies/methods/get_terminology"
-          - $ref: "#/components/x-stackQL-resources/terminologies/methods/list_terminologies"
         insert: []
         update: []
         delete:
@@ -1713,6 +1707,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TextTranslationJobProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1764,10 +1759,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.translate.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.translate.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1782,17 +1777,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.translate.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1820,9 +1804,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

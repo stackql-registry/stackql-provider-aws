@@ -87,7 +87,6 @@ paths:
                   description: An array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging Amazon Web Services Resources.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -571,7 +570,6 @@ paths:
                   description: A list of tags to apply to the action.
               required:
                 - ActionName
-                - Source
                 - ActionType
       responses:
         "200":
@@ -772,7 +770,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: A list of tags to apply to the artifact.
               required:
-                - Source
                 - ArtifactType
       responses:
         "200":
@@ -1011,7 +1008,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: Tags of the cluster policy.
               required:
-                - Name
                 - ClusterArn
                 - SchedulerConfig
       responses:
@@ -1161,7 +1157,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: Tags of the compute allocation definition.
               required:
-                - Name
                 - ClusterArn
                 - ComputeQuotaConfig
                 - ComputeQuotaTarget
@@ -1213,7 +1208,6 @@ paths:
                   description: A list of tags to apply to the context.
               required:
                 - ContextName
-                - Source
                 - ContextType
       responses:
         "200":
@@ -1476,7 +1470,6 @@ paths:
                   description: List of stages to be added to the edge deployment plan.
               required:
                 - EdgeDeploymentPlanName
-                - Stages
       responses:
         "200":
           description: Success
@@ -2256,8 +2249,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: Array of key-value pairs. You can use tags to categorize your Amazon Web Services resources in different ways, for example, by purpose, owner, or environment. For more information, see Tagging your Amazon Web Services Resources.
               required:
-                - Name
-                - Type
                 - RoleArn
                 - EndpointName
                 - ModelVariants
@@ -2437,7 +2428,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: Tags consisting of key-value pairs used to manage metadata for the MLflow App.
               required:
-                - Name
                 - ArtifactStoreUri
                 - RoleArn
       responses:
@@ -2663,7 +2653,6 @@ paths:
                   description: Key-value pairs used to manage metadata for model cards.
               required:
                 - ModelCardName
-                - Content
                 - ModelCardStatus
       responses:
         "200":
@@ -3275,10 +3264,7 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: Each tag consists of a key and an optional value. Tag keys must be unique per resource.
               required:
-                - Name
-                - Type
                 - ExecutionRoleArn
-                - Tier
                 - AuthType
       responses:
         "200":
@@ -3317,8 +3303,6 @@ paths:
                 SessionExpirationDurationInSeconds:
                   $ref: "#/components/schemas/SessionExpirationDurationInSeconds"
                   description: Indicates how long the Amazon SageMaker Partner AI App session can be accessed for after logging in.
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -4232,7 +4216,6 @@ paths:
               required:
                 - WorkteamName
                 - MemberDefinitions
-                - Description
       responses:
         "200":
           description: Success
@@ -5325,8 +5308,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/InferenceExperimentName"
                   description: The name of the inference experiment you want to delete.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -5358,8 +5339,6 @@ paths:
                 Arn:
                   $ref: "#/components/schemas/MlflowAppArn"
                   description: The ARN of the MLflow App to delete.
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -5775,8 +5754,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
                   description: A unique token that guarantees that the call to this API is idempotent.
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -7517,8 +7494,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/InferenceExperimentName"
                   description: The name of the inference experiment to describe.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -7649,8 +7624,6 @@ paths:
                 Arn:
                   $ref: "#/components/schemas/MlflowAppArn"
                   description: The ARN of the MLflow App for which to get information.
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -8117,8 +8090,6 @@ paths:
                 IncludeAvailableUpgrade:
                   $ref: "#/components/schemas/Boolean"
                   description: When set to TRUE, the response includes available upgrade information for the SageMaker Partner AI App. Default is FALSE.
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -9477,7 +9448,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAliasesResponse"
+                $ref: "#/components/schemas/ListAliasesOutputDisplay"
   /ListAppImageConfigs:
     post:
       operationId: ListAppImageConfigs
@@ -16131,8 +16102,6 @@ paths:
                 ShadowModeConfig:
                   $ref: "#/components/schemas/ShadowModeConfig"
                   description: The configuration of ShadowMode inference experiment type. Use this field to specify a production variant which takes all the inference requests, and a shadow variant to which Amazon SageMaker replicates a percentage of the inference requests. For the shadow variant also specify the percentage of requests that Amazon SageMaker replicates.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -16182,8 +16151,6 @@ paths:
                 AccountDefaultStatus:
                   $ref: "#/components/schemas/AccountDefaultStatus"
                   description: Indicates whether this this MLflow App is the default for the account.
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -16594,8 +16561,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
                   description: Each tag consists of a key and an optional value. Tag keys must be unique per resource.
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -37365,15 +37330,19 @@ components:
         - AlgorithmArn
         - CreationTime
         - AlgorithmStatus
-    ListAliasesResponse:
+    ListAliasesRowDisplay:
       type: object
       properties:
-        SageMakerImageVersionAliases:
-          $ref: "#/components/schemas/SageMakerImageVersionAliases"
+        sage_maker_image_version_alias:
+          type: string
           description: A list of SageMaker AI image version aliases.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: A token for getting the next set of aliases, if more aliases exist.
+    ListAliasesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAliasesRowDisplay"
     AppImageConfigSortKey:
       type: string
       enum:
@@ -44160,6 +44129,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -44213,6 +44189,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -44305,6 +44288,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_trial_component:
@@ -44331,10 +44321,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/trial_components/methods/update_trial_component"
         delete:
           - $ref: "#/components/x-stackQL-resources/trial_components/methods/delete_trial_component"
-    cluster_node_volumes:
-      id: aws.sagemaker.cluster_node_volumes
-      name: cluster_node_volumes
-      title: cluster_node_volumes
+    cluster_nodes:
+      id: aws.sagemaker.cluster_nodes
+      name: cluster_nodes
+      title: cluster_nodes
       methods:
         attach_cluster_node_volume:
           operation:
@@ -44342,6 +44332,72 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_add_cluster_nodes:
+          operation:
+            $ref: "#/paths/~1BatchAddClusterNodes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_cluster_nodes:
+          operation:
+            $ref: "#/paths/~1BatchDeleteClusterNodes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_reboot_cluster_nodes:
+          operation:
+            $ref: "#/paths/~1BatchRebootClusterNodes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_replace_cluster_nodes:
+          operation:
+            $ref: "#/paths/~1BatchReplaceClusterNodes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_cluster_node:
+          operation:
+            $ref: "#/paths/~1DescribeClusterNode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.NodeDetails
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -44362,11 +44418,33 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_cluster_nodes:
+          operation:
+            $ref: "#/paths/~1ListClusterNodes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ClusterNodeSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/cluster_nodes/methods/describe_cluster_node"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/cluster_node_volumes/methods/attach_cluster_node_volume"
+          - $ref: "#/components/x-stackQL-resources/cluster_nodes/methods/attach_cluster_node_volume"
         delete: []
     ai_benchmark_jobs:
       id: aws.sagemaker.ai_benchmark_jobs
@@ -44419,6 +44497,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AIBenchmarkJobs
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_ai_benchmark_job:
+          operation:
+            $ref: "#/paths/~1StopAIBenchmarkJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -44491,6 +44589,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_ai_recommendation_job:
+          operation:
+            $ref: "#/paths/~1StopAIRecommendationJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -44558,6 +44676,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -44625,6 +44750,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_action:
@@ -44705,6 +44837,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -44771,6 +44910,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -44837,6 +44983,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_app_image_config:
@@ -44918,6 +45071,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_artifact:
@@ -44981,6 +45141,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.AutoMLJobSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_auto_ml_job:
+          operation:
+            $ref: "#/paths/~1StopAutoMLJob/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -45090,11 +45269,44 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_cluster_health_check:
+          operation:
+            $ref: "#/paths/~1StartClusterHealthCheck/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_cluster:
           operation:
             $ref: "#/paths/~1UpdateCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_cluster_software:
+          operation:
+            $ref: "#/paths/~1UpdateClusterSoftware/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -45170,6 +45382,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_cluster_scheduler_config:
@@ -45250,6 +45469,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_code_repository:
@@ -45330,6 +45556,25 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_compilation_job:
+          operation:
+            $ref: "#/paths/~1StopCompilationJob/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -45396,6 +45641,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_compute_quota:
@@ -45477,6 +45729,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_context:
@@ -45557,6 +45816,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -45622,6 +45888,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_device_fleet:
@@ -45701,6 +45974,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_domain:
@@ -45744,9 +46024,33 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_edge_deployment_stage:
+          operation:
+            $ref: "#/paths/~1CreateEdgeDeploymentStage/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_edge_deployment_plan:
           operation:
             $ref: "#/paths/~1DeleteEdgeDeploymentPlan/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_edge_deployment_stage:
+          operation:
+            $ref: "#/paths/~1DeleteEdgeDeploymentStage/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -45781,6 +46085,37 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_edge_deployment_stage:
+          operation:
+            $ref: "#/paths/~1StartEdgeDeploymentStage/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_edge_deployment_stage:
+          operation:
+            $ref: "#/paths/~1StopEdgeDeploymentStage/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -45789,45 +46124,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/edge_deployment_plans/methods/list_edge_deployment_plans"
         insert:
           - $ref: "#/components/x-stackQL-resources/edge_deployment_plans/methods/create_edge_deployment_plan"
+          - $ref: "#/components/x-stackQL-resources/edge_deployment_plans/methods/create_edge_deployment_stage"
         update: []
         delete:
+          - $ref: "#/components/x-stackQL-resources/edge_deployment_plans/methods/delete_edge_deployment_stage"
           - $ref: "#/components/x-stackQL-resources/edge_deployment_plans/methods/delete_edge_deployment_plan"
-    edge_deployment_stages:
-      id: aws.sagemaker.edge_deployment_stages
-      name: edge_deployment_stages
-      title: edge_deployment_stages
-      methods:
-        create_edge_deployment_stage:
-          operation:
-            $ref: "#/paths/~1CreateEdgeDeploymentStage/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_edge_deployment_stage:
-          operation:
-            $ref: "#/paths/~1DeleteEdgeDeploymentStage/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/edge_deployment_stages/methods/create_edge_deployment_stage"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/edge_deployment_stages/methods/delete_edge_deployment_stage"
     edge_packaging_jobs:
       id: aws.sagemaker.edge_packaging_jobs
       name: edge_packaging_jobs
@@ -45865,6 +46166,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.EdgePackagingJobSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_edge_packaging_job:
+          operation:
+            $ref: "#/paths/~1StopEdgePackagingJob/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -45935,11 +46255,31 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_endpoint:
           operation:
             $ref: "#/paths/~1UpdateEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_endpoint_weights_and_capacities:
+          operation:
+            $ref: "#/paths/~1UpdateEndpointWeightsAndCapacities/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -45958,6 +46298,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/create_endpoint"
         update:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/update_endpoint"
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/update_endpoint_weights_and_capacities"
         delete:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/delete_endpoint"
     endpoint_configs:
@@ -46015,6 +46356,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -46082,6 +46430,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_experiment:
@@ -46162,6 +46517,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_feature_group:
@@ -46243,6 +46605,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -46297,6 +46666,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        import_hub_content:
+          operation:
+            $ref: "#/paths/~1ImportHubContent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_hubs:
           operation:
             $ref: "#/paths/~1ListHubs/post"
@@ -46333,10 +46715,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/hubs/methods/update_hub"
         delete:
           - $ref: "#/components/x-stackQL-resources/hubs/methods/delete_hub"
-    hub_content_presigned_urls:
-      id: aws.sagemaker.hub_content_presigned_urls
-      name: hub_content_presigned_urls
-      title: hub_content_presigned_urls
+    hub_contents:
+      id: aws.sagemaker.hub_contents
+      name: hub_contents
+      title: hub_contents
       methods:
         create_hub_content_presigned_urls:
           operation:
@@ -46349,19 +46731,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/hub_content_presigned_urls/methods/create_hub_content_presigned_urls"
-        update: []
-        delete: []
-    hub_content_references:
-      id: aws.sagemaker.hub_content_references
-      name: hub_content_references
-      title: hub_content_references
-      methods:
         create_hub_content_reference:
           operation:
             $ref: "#/paths/~1CreateHubContentReference/post"
@@ -46375,11 +46753,62 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_hub_content:
+          operation:
+            $ref: "#/paths/~1DeleteHubContent/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_hub_content_reference:
           operation:
             $ref: "#/paths/~1DeleteHubContentReference/post"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_hub_content:
+          operation:
+            $ref: "#/paths/~1DescribeHubContent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_hub_contents:
+          operation:
+            $ref: "#/paths/~1ListHubContents/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_hub_content:
+          operation:
+            $ref: "#/paths/~1UpdateHubContent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -46401,13 +46830,18 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/describe_hub_content"
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/list_hub_contents"
         insert:
-          - $ref: "#/components/x-stackQL-resources/hub_content_references/methods/create_hub_content_reference"
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/create_hub_content_presigned_urls"
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/create_hub_content_reference"
         update:
-          - $ref: "#/components/x-stackQL-resources/hub_content_references/methods/update_hub_content_reference"
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/update_hub_content"
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/update_hub_content_reference"
         delete:
-          - $ref: "#/components/x-stackQL-resources/hub_content_references/methods/delete_hub_content_reference"
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/delete_hub_content"
+          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/delete_hub_content_reference"
     human_task_uis:
       id: aws.sagemaker.human_task_uis
       name: human_task_uis
@@ -46464,6 +46898,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -46525,6 +46966,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.HyperParameterTuningJobSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_hyper_parameter_tuning_job:
+          operation:
+            $ref: "#/paths/~1StopHyperParameterTuningJob/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -46597,6 +47057,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_image:
@@ -46678,6 +47145,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_image_version:
@@ -46757,11 +47231,31 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_inference_component:
           operation:
             $ref: "#/paths/~1UpdateInferenceComponent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_inference_component_runtime_config:
+          operation:
+            $ref: "#/paths/~1UpdateInferenceComponentRuntimeConfig/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -46779,6 +47273,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/inference_components/methods/create_inference_component"
         update:
+          - $ref: "#/components/x-stackQL-resources/inference_components/methods/update_inference_component_runtime_config"
           - $ref: "#/components/x-stackQL-resources/inference_components/methods/update_inference_component"
         delete:
           - $ref: "#/components/x-stackQL-resources/inference_components/methods/delete_inference_component"
@@ -46838,6 +47333,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_inference_experiment:
@@ -46856,7 +47358,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/inference_experiments/methods/describe_inference_experiment"
-          - $ref: "#/components/x-stackQL-resources/inference_experiments/methods/list_inference_experiments"
         insert:
           - $ref: "#/components/x-stackQL-resources/inference_experiments/methods/create_inference_experiment"
         update:
@@ -46906,6 +47407,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -46954,6 +47462,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.LabelingJobSummaryList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_labeling_job:
+          operation:
+            $ref: "#/paths/~1StopLabelingJob/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -47025,6 +47552,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_mlflow_app:
@@ -47043,7 +47577,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/mlflow_apps/methods/describe_mlflow_app"
-          - $ref: "#/components/x-stackQL-resources/mlflow_apps/methods/list_mlflow_apps"
         insert:
           - $ref: "#/components/x-stackQL-resources/mlflow_apps/methods/create_mlflow_app"
         update:
@@ -47106,6 +47639,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_mlflow_tracking_server:
@@ -47186,6 +47726,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -47252,6 +47799,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -47318,6 +47872,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_model_card:
@@ -47386,6 +47947,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -47451,6 +48019,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -47517,6 +48092,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_model_package:
@@ -47597,6 +48179,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -47663,6 +48252,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -47729,6 +48325,37 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_monitoring_schedule:
+          operation:
+            $ref: "#/paths/~1StartMonitoringSchedule/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_monitoring_schedule:
+          operation:
+            $ref: "#/paths/~1StopMonitoringSchedule/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_monitoring_schedule:
@@ -47762,6 +48389,19 @@ components:
         create_notebook_instance:
           operation:
             $ref: "#/paths/~1CreateNotebookInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_presigned_notebook_instance_url:
+          operation:
+            $ref: "#/paths/~1CreatePresignedNotebookInstanceUrl/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -47809,6 +48449,37 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_notebook_instance:
+          operation:
+            $ref: "#/paths/~1StartNotebookInstance/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_notebook_instance:
+          operation:
+            $ref: "#/paths/~1StopNotebookInstance/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_notebook_instance:
@@ -47830,6 +48501,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/notebook_instances/methods/list_notebook_instances"
         insert:
           - $ref: "#/components/x-stackQL-resources/notebook_instances/methods/create_notebook_instance"
+          - $ref: "#/components/x-stackQL-resources/notebook_instances/methods/create_presigned_notebook_instance_url"
         update:
           - $ref: "#/components/x-stackQL-resources/notebook_instances/methods/update_notebook_instance"
         delete:
@@ -47889,6 +48561,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_notebook_instance_lifecycle_config:
@@ -47969,6 +48648,25 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_optimization_job:
+          operation:
+            $ref: "#/paths/~1StopOptimizationJob/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -47988,6 +48686,19 @@ components:
         create_partner_app:
           operation:
             $ref: "#/paths/~1CreatePartnerApp/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_partner_app_presigned_url:
+          operation:
+            $ref: "#/paths/~1CreatePartnerAppPresignedUrl/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -48036,6 +48747,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_partner_app:
@@ -48054,37 +48772,13 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/partner_apps/methods/describe_partner_app"
-          - $ref: "#/components/x-stackQL-resources/partner_apps/methods/list_partner_apps"
         insert:
           - $ref: "#/components/x-stackQL-resources/partner_apps/methods/create_partner_app"
+          - $ref: "#/components/x-stackQL-resources/partner_apps/methods/create_partner_app_presigned_url"
         update:
           - $ref: "#/components/x-stackQL-resources/partner_apps/methods/update_partner_app"
         delete:
           - $ref: "#/components/x-stackQL-resources/partner_apps/methods/delete_partner_app"
-    partner_app_presigned_urls:
-      id: aws.sagemaker.partner_app_presigned_urls
-      name: partner_app_presigned_urls
-      title: partner_app_presigned_urls
-      methods:
-        create_partner_app_presigned_url:
-          operation:
-            $ref: "#/paths/~1CreatePartnerAppPresignedUrl/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/partner_app_presigned_urls/methods/create_partner_app_presigned_url"
-        update: []
-        delete: []
     pipelines:
       id: aws.sagemaker.pipelines
       name: pipelines
@@ -48141,6 +48835,39 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_pipeline_execution:
+          operation:
+            $ref: "#/paths/~1StartPipelineExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_pipeline_execution:
+          operation:
+            $ref: "#/paths/~1StopPipelineExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_pipeline:
@@ -48166,10 +48893,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/pipelines/methods/update_pipeline"
         delete:
           - $ref: "#/components/x-stackQL-resources/pipelines/methods/delete_pipeline"
-    presigned_domain_urls:
-      id: aws.sagemaker.presigned_domain_urls
-      name: presigned_domain_urls
-      title: presigned_domain_urls
+    user_profiles:
+      id: aws.sagemaker.user_profiles
+      name: user_profiles
+      title: user_profiles
       methods:
         create_presigned_domain_url:
           operation:
@@ -48184,12 +48911,88 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_user_profile:
+          operation:
+            $ref: "#/paths/~1CreateUserProfile/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_user_profile:
+          operation:
+            $ref: "#/paths/~1DeleteUserProfile/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_user_profile:
+          operation:
+            $ref: "#/paths/~1DescribeUserProfile/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_user_profiles:
+          operation:
+            $ref: "#/paths/~1ListUserProfiles/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.UserProfiles
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_profile:
+          operation:
+            $ref: "#/paths/~1UpdateUserProfile/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/describe_user_profile"
+          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/list_user_profiles"
         insert:
-          - $ref: "#/components/x-stackQL-resources/presigned_domain_urls/methods/create_presigned_domain_url"
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/create_user_profile"
+        update:
+          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/update_user_profile"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/delete_user_profile"
     presigned_mlflow_app_urls:
       id: aws.sagemaker.presigned_mlflow_app_urls
       name: presigned_mlflow_app_urls
@@ -48236,30 +49039,6 @@ components:
         select: []
         insert:
           - $ref: "#/components/x-stackQL-resources/presigned_mlflow_tracking_server_urls/methods/create_presigned_mlflow_tracking_server_url"
-        update: []
-        delete: []
-    presigned_notebook_instance_urls:
-      id: aws.sagemaker.presigned_notebook_instance_urls
-      name: presigned_notebook_instance_urls
-      title: presigned_notebook_instance_urls
-      methods:
-        create_presigned_notebook_instance_url:
-          operation:
-            $ref: "#/paths/~1CreatePresignedNotebookInstanceUrl/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/presigned_notebook_instance_urls/methods/create_presigned_notebook_instance_url"
         update: []
         delete: []
     processing_jobs:
@@ -48312,6 +49091,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ProcessingJobSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_processing_job:
+          operation:
+            $ref: "#/paths/~1StopProcessingJob/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48462,6 +49260,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_space:
@@ -48542,6 +49347,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -48603,6 +49415,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TrainingJobSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_training_job:
+          operation:
+            $ref: "#/paths/~1StopTrainingJob/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48676,6 +49507,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -48724,6 +49562,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TransformJobSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        stop_transform_job:
+          operation:
+            $ref: "#/paths/~1StopTransformJob/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48795,6 +49652,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_trial:
@@ -48820,86 +49684,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/trials/methods/update_trial"
         delete:
           - $ref: "#/components/x-stackQL-resources/trials/methods/delete_trial"
-    user_profiles:
-      id: aws.sagemaker.user_profiles
-      name: user_profiles
-      title: user_profiles
-      methods:
-        create_user_profile:
-          operation:
-            $ref: "#/paths/~1CreateUserProfile/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_user_profile:
-          operation:
-            $ref: "#/paths/~1DeleteUserProfile/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_user_profile:
-          operation:
-            $ref: "#/paths/~1DescribeUserProfile/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_user_profiles:
-          operation:
-            $ref: "#/paths/~1ListUserProfiles/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.UserProfiles
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_user_profile:
-          operation:
-            $ref: "#/paths/~1UpdateUserProfile/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/describe_user_profile"
-          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/list_user_profiles"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/create_user_profile"
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/update_user_profile"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/user_profiles/methods/delete_user_profile"
     workforces:
       id: aws.sagemaker.workforces
       name: workforces
@@ -48937,6 +49721,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Workforce
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -48956,6 +49741,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_workforce:
@@ -49018,6 +49810,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Workteam
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -49037,6 +49830,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_workteam:
@@ -49062,71 +49862,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/workteams/methods/update_workteam"
         delete:
           - $ref: "#/components/x-stackQL-resources/workteams/methods/delete_workteam"
-    hub_contents:
-      id: aws.sagemaker.hub_contents
-      name: hub_contents
-      title: hub_contents
-      methods:
-        delete_hub_content:
-          operation:
-            $ref: "#/paths/~1DeleteHubContent/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_hub_content:
-          operation:
-            $ref: "#/paths/~1DescribeHubContent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_hub_contents:
-          operation:
-            $ref: "#/paths/~1ListHubContents/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_hub_content:
-          operation:
-            $ref: "#/paths/~1UpdateHubContent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/describe_hub_content"
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/list_hub_contents"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/update_hub_content"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/hub_contents/methods/delete_hub_content"
     model_package_group_policies:
       id: aws.sagemaker.model_package_group_policies
       name: model_package_group_policies
@@ -49221,6 +49956,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_devices:
@@ -49268,6 +50010,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EventDetails
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -49287,50 +50030,19 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_events/methods/describe_cluster_event"
           - $ref: "#/components/x-stackQL-resources/cluster_events/methods/list_cluster_events"
-        insert: []
-        update: []
-        delete: []
-    cluster_nodes:
-      id: aws.sagemaker.cluster_nodes
-      name: cluster_nodes
-      title: cluster_nodes
-      methods:
-        describe_cluster_node:
-          operation:
-            $ref: "#/paths/~1DescribeClusterNode/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_cluster_nodes:
-          operation:
-            $ref: "#/paths/~1ListClusterNodes/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ClusterNodeSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/cluster_nodes/methods/describe_cluster_node"
         insert: []
         update: []
         delete: []
@@ -49401,6 +50113,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49464,6 +50183,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        retry_pipeline_execution:
+          operation:
+            $ref: "#/paths/~1RetryPipelineExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_pipeline_execution:
@@ -49522,6 +50261,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SubscribedWorkteam
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -49541,6 +50281,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49567,6 +50314,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49706,12 +50460,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.SageMakerImageVersionAliases
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAliasesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SageMakerImageVersionAliases" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"sage_maker_image_version_alias": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49737,6 +50504,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49786,6 +50560,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49811,6 +50592,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49836,6 +50624,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49861,6 +50656,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49886,6 +50688,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49911,6 +50720,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_monitoring_alert:
@@ -49950,6 +50766,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -49970,6 +50793,39 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.PipelineExecutionSteps
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        send_pipeline_execution_step_failure:
+          operation:
+            $ref: "#/paths/~1SendPipelineExecutionStepFailure/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_pipeline_execution_step_success:
+          operation:
+            $ref: "#/paths/~1SendPipelineExecutionStepSuccess/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -50000,6 +50856,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -50025,6 +50888,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_pipeline_version:
@@ -50064,6 +50934,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -50089,6 +50966,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -50114,6 +50998,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -50139,6 +51030,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -50170,76 +51068,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/training_plan_offerings/methods/search_training_plan_offerings"
         insert: []
         update: []
-        delete: []
-    cluster_softwares:
-      id: aws.sagemaker.cluster_softwares
-      name: cluster_softwares
-      title: cluster_softwares
-      methods:
-        update_cluster_software:
-          operation:
-            $ref: "#/paths/~1UpdateClusterSoftware/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_softwares/methods/update_cluster_software"
-        delete: []
-    endpoint_weights_and_capacities:
-      id: aws.sagemaker.endpoint_weights_and_capacities
-      name: endpoint_weights_and_capacities
-      title: endpoint_weights_and_capacities
-      methods:
-        update_endpoint_weights_and_capacities:
-          operation:
-            $ref: "#/paths/~1UpdateEndpointWeightsAndCapacities/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/endpoint_weights_and_capacities/methods/update_endpoint_weights_and_capacities"
-        delete: []
-    inference_component_runtime_configs:
-      id: aws.sagemaker.inference_component_runtime_configs
-      name: inference_component_runtime_configs
-      title: inference_component_runtime_configs
-      methods:
-        update_inference_component_runtime_config:
-          operation:
-            $ref: "#/paths/~1UpdateInferenceComponentRuntimeConfig/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/inference_component_runtime_configs/methods/update_inference_component_runtime_config"
         delete: []

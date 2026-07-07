@@ -1552,14 +1552,25 @@ components:
           $ref: "#/components/schemas/SafeString"
           description: The subscriber endpoint to which exception messages are posted.
   x-stackQL-resources:
-    aws_log_sources:
-      id: aws.securitylake.aws_log_sources
-      name: aws_log_sources
-      title: aws_log_sources
+    log_sources:
+      id: aws.securitylake.log_sources
+      name: log_sources
+      title: log_sources
       methods:
         create_aws_log_source:
           operation:
             $ref: "#/paths/~1v1~1datalake~1logsources~1aws/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_custom_log_source:
+          operation:
+            $ref: "#/paths/~1v1~1datalake~1logsources~1custom/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1579,29 +1590,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/aws_log_sources/methods/create_aws_log_source"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/aws_log_sources/methods/delete_aws_log_source"
-    custom_log_sources:
-      id: aws.securitylake.custom_log_sources
-      name: custom_log_sources
-      title: custom_log_sources
-      methods:
-        create_custom_log_source:
-          operation:
-            $ref: "#/paths/~1v1~1datalake~1logsources~1custom/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         delete_custom_log_source:
           operation:
             $ref: "#/paths/~1v1~1datalake~1logsources~1custom~1{source_name}/delete"
@@ -1610,13 +1598,35 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        list_log_sources:
+          operation:
+            $ref: "#/paths/~1v1~1datalake~1logsources~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.sources
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/log_sources/methods/list_log_sources"
         insert:
-          - $ref: "#/components/x-stackQL-resources/custom_log_sources/methods/create_custom_log_source"
+          - $ref: "#/components/x-stackQL-resources/log_sources/methods/create_custom_log_source"
+          - $ref: "#/components/x-stackQL-resources/log_sources/methods/create_aws_log_source"
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/custom_log_sources/methods/delete_custom_log_source"
+          - $ref: "#/components/x-stackQL-resources/log_sources/methods/delete_aws_log_source"
+          - $ref: "#/components/x-stackQL-resources/log_sources/methods/delete_custom_log_source"
     data_lakes:
       id: aws.securitylake.data_lakes
       name: data_lakes
@@ -1655,6 +1665,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        deregister_data_lake_delegated_administrator:
+          operation:
+            $ref: "#/paths/~1v1~1datalake~1delegate/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        register_data_lake_delegated_administrator:
+          operation:
+            $ref: "#/paths/~1v1~1datalake~1delegate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_data_lakes:
           operation:
             $ref: "#/paths/~1v1~1datalakes/get"
@@ -1668,10 +1695,12 @@ components:
           - $ref: "#/components/x-stackQL-resources/data_lakes/methods/list_data_lakes"
         insert:
           - $ref: "#/components/x-stackQL-resources/data_lakes/methods/create_data_lake"
+          - $ref: "#/components/x-stackQL-resources/data_lakes/methods/register_data_lake_delegated_administrator"
         update:
           - $ref: "#/components/x-stackQL-resources/data_lakes/methods/update_data_lake"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_lakes/methods/delete_data_lake"
+          - $ref: "#/components/x-stackQL-resources/data_lakes/methods/deregister_data_lake_delegated_administrator"
     data_lake_exception_subscriptions:
       id: aws.securitylake.data_lake_exception_subscriptions
       name: data_lake_exception_subscriptions
@@ -1786,44 +1815,14 @@ components:
             objectKey: $.subscribers
           request:
             nativeCasing: pascal
-        delete_subscriber:
-          operation:
-            $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_subscriber:
-          operation:
-            $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_subscriber:
-          operation:
-            $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
           config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/subscribers/methods/get_subscriber"
-          - $ref: "#/components/x-stackQL-resources/subscribers/methods/list_subscribers"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/subscribers/methods/create_subscriber"
-        update:
-          - $ref: "#/components/x-stackQL-resources/subscribers/methods/update_subscriber"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/subscribers/methods/delete_subscriber"
-    subscriber_notifications:
-      id: aws.securitylake.subscriber_notifications
-      name: subscriber_notifications
-      title: subscriber_notifications
-      methods:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         create_subscriber_notification:
           operation:
             $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}~1notification/post"
@@ -1852,28 +1851,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/subscriber_notifications/methods/create_subscriber_notification"
-        update:
-          - $ref: "#/components/x-stackQL-resources/subscriber_notifications/methods/update_subscriber_notification"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/subscriber_notifications/methods/delete_subscriber_notification"
-    data_lake_delegated_administrators:
-      id: aws.securitylake.data_lake_delegated_administrators
-      name: data_lake_delegated_administrators
-      title: data_lake_delegated_administrators
-      methods:
-        deregister_data_lake_delegated_administrator:
+        delete_subscriber:
           operation:
-            $ref: "#/paths/~1v1~1datalake~1delegate/delete"
+            $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-        register_data_lake_delegated_administrator:
+        get_subscriber:
           operation:
-            $ref: "#/paths/~1v1~1datalake~1delegate/post"
+            $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.subscriber
+        update_subscriber:
+          operation:
+            $ref: "#/paths/~1v1~1subscribers~1{subscriber_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1883,12 +1876,17 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/get_subscriber"
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/list_subscribers"
         insert:
-          - $ref: "#/components/x-stackQL-resources/data_lake_delegated_administrators/methods/register_data_lake_delegated_administrator"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/create_subscriber"
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/create_subscriber_notification"
+        update:
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/update_subscriber_notification"
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/update_subscriber"
         delete:
-          - $ref: "#/components/x-stackQL-resources/data_lake_delegated_administrators/methods/deregister_data_lake_delegated_administrator"
+          - $ref: "#/components/x-stackQL-resources/subscribers/methods/delete_subscriber"
     data_lake_sources:
       id: aws.securitylake.data_lake_sources
       name: data_lake_sources
@@ -1904,6 +1902,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1927,6 +1932,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1935,33 +1947,10 @@ components:
         insert: []
         update: []
         delete: []
-    log_sources:
-      id: aws.securitylake.log_sources
-      name: log_sources
-      title: log_sources
-      methods:
-        list_log_sources:
-          operation:
-            $ref: "#/paths/~1v1~1datalake~1logsources~1list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.sources
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/log_sources/methods/list_log_sources"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.securitylake.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.securitylake.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1969,17 +1958,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.securitylake.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
@@ -2000,9 +1978,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -701,6 +701,50 @@ components:
           $ref: "#/components/schemas/PrimaryEmailUpdateStatus"
           description: The status of the primary email update request.
   x-stackQL-resources:
+    primary_emails:
+      id: aws.account.primary_emails
+      name: primary_emails
+      title: primary_emails
+      methods:
+        accept_primary_email_update:
+          operation:
+            $ref: "#/paths/~1acceptPrimaryEmailUpdate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_primary_email:
+          operation:
+            $ref: "#/paths/~1getPrimaryEmail/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_primary_email_update:
+          operation:
+            $ref: "#/paths/~1startPrimaryEmailUpdate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/primary_emails/methods/get_primary_email"
+        insert: []
+        update: []
+        delete: []
     alternate_contacts:
       id: aws.account.alternate_contacts
       name: alternate_contacts
@@ -722,6 +766,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AlternateContact
           request:
             nativeCasing: pascal
           config:
@@ -746,6 +791,56 @@ components:
           - $ref: "#/components/x-stackQL-resources/alternate_contacts/methods/put_alternate_contact"
         delete:
           - $ref: "#/components/x-stackQL-resources/alternate_contacts/methods/delete_alternate_contact"
+    regions:
+      id: aws.account.regions
+      name: regions
+      title: regions
+      methods:
+        disable_region:
+          operation:
+            $ref: "#/paths/~1disableRegion/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_region:
+          operation:
+            $ref: "#/paths/~1enableRegion/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_regions:
+          operation:
+            $ref: "#/paths/~1listRegions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Regions
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/regions/methods/list_regions"
+        insert: []
+        update: []
+        delete: []
     account_informations:
       id: aws.account.account_informations
       name: account_informations
@@ -779,6 +874,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ContactInformation
           request:
             nativeCasing: pascal
           config:
@@ -824,28 +920,6 @@ components:
         insert: []
         update: []
         delete: []
-    primary_emails:
-      id: aws.account.primary_emails
-      name: primary_emails
-      title: primary_emails
-      methods:
-        get_primary_email:
-          operation:
-            $ref: "#/paths/~1getPrimaryEmail/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/primary_emails/methods/get_primary_email"
-        insert: []
-        update: []
-        delete: []
     region_opt_status:
       id: aws.account.region_opt_status
       name: region_opt_status
@@ -865,29 +939,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/region_opt_status/methods/get_region_opt_status"
-        insert: []
-        update: []
-        delete: []
-    regions:
-      id: aws.account.regions
-      name: regions
-      title: regions
-      methods:
-        list_regions:
-          operation:
-            $ref: "#/paths/~1listRegions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Regions
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/regions/methods/list_regions"
         insert: []
         update: []
         delete: []

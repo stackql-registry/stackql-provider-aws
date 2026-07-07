@@ -64,7 +64,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCheckLayerAvailabilityResponse'
-      x-stackql-resource: batch_check_layer_availability
+      x-stackql-resource: repositories
       x-stackql-method: batch_check_layer_availability
       x-stackql-verb: EXEC
   /BatchDeleteImage:
@@ -112,7 +112,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteImageResponse'
-      x-stackql-resource: batch_delete_image
+      x-stackql-resource: repositories
       x-stackql-method: batch_delete_image
       x-stackql-verb: EXEC
   /CompleteLayerUpload:
@@ -164,7 +164,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompleteLayerUploadResponse'
-      x-stackql-resource: complete_layer_upload
+      x-stackql-resource: repositories
       x-stackql-method: complete_layer_upload
       x-stackql-verb: EXEC
   /CreateRepository:
@@ -356,6 +356,9 @@ paths:
       x-stackql-method: describe_image_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageTagDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeImages:
     post:
       operationId: DescribeImages
@@ -418,6 +421,9 @@ paths:
       x-stackql-method: describe_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeRegistries:
     post:
       operationId: DescribeRegistries
@@ -465,6 +471,9 @@ paths:
       x-stackql-method: describe_registries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.registries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeRepositories:
     post:
       operationId: DescribeRepositories
@@ -521,6 +530,9 @@ paths:
       x-stackql-method: describe_repositories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.repositories
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetAuthorizationToken:
     post:
       operationId: GetAuthorizationToken
@@ -553,6 +565,7 @@ paths:
       x-stackql-resource: authorization_tokens
       x-stackql-method: get_authorization_token
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.authorizationData
   /GetRegistryCatalogData:
     post:
       operationId: GetRegistryCatalogData
@@ -583,6 +596,7 @@ paths:
       x-stackql-resource: registry_catalog_datas
       x-stackql-method: get_registry_catalog_data
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.registryCatalogData
   /GetRepositoryCatalogData:
     post:
       operationId: GetRepositoryCatalogData
@@ -624,6 +638,7 @@ paths:
       x-stackql-resource: repository_catalog_datas
       x-stackql-method: get_repository_catalog_data
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.catalogData
   /GetRepositoryPolicy:
     post:
       operationId: GetRepositoryPolicy
@@ -706,7 +721,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateLayerUploadResponse'
-      x-stackql-resource: initiate_layer_upload
+      x-stackql-resource: repositories
       x-stackql-method: initiate_layer_upload
       x-stackql-verb: EXEC
   /ListTagsForResource:
@@ -743,7 +758,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutImage:
@@ -979,7 +994,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1020,7 +1035,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UploadLayerPart:
@@ -1081,7 +1096,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadLayerPartResponse'
-      x-stackql-resource: upload_layer_part
+      x-stackql-resource: repositories
       x-stackql-method: upload_layer_part
       x-stackql-verb: EXEC
 components:

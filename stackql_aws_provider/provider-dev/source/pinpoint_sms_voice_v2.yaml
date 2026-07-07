@@ -71,7 +71,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateOriginationIdentityResult'
-      x-stackql-resource: origination_identities
+      x-stackql-resource: pools
       x-stackql-method: associate_origination_identity
       x-stackql-verb: UPDATE
   /AssociateProtectConfiguration:
@@ -264,7 +264,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateEventDestinationResult'
-      x-stackql-resource: event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: create_event_destination
       x-stackql-verb: INSERT
   /CreateNotifyConfiguration:
@@ -784,7 +784,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAccountDefaultProtectConfigurationResult'
-      x-stackql-resource: account_default_protect_configurations
+      x-stackql-resource: protect_configurations
       x-stackql-method: delete_account_default_protect_configuration
       x-stackql-verb: DELETE
   /DeleteConfigurationSet:
@@ -864,7 +864,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteDefaultMessageTypeResult'
-      x-stackql-resource: default_message_types
+      x-stackql-resource: configuration_sets
       x-stackql-method: delete_default_message_type
       x-stackql-verb: DELETE
   /DeleteDefaultSenderId:
@@ -904,7 +904,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteDefaultSenderIdResult'
-      x-stackql-resource: default_sender_ids
+      x-stackql-resource: sender_ids
       x-stackql-method: delete_default_sender_id
       x-stackql-verb: DELETE
   /DeleteEventDestination:
@@ -949,7 +949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteEventDestinationResult'
-      x-stackql-resource: event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: delete_event_destination
       x-stackql-verb: DELETE
   /DeleteKeyword:
@@ -1631,6 +1631,9 @@ paths:
       x-stackql-method: describe_account_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountAttributes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAccountLimits:
     post:
       operationId: DescribeAccountLimits
@@ -1674,6 +1677,9 @@ paths:
       x-stackql-method: describe_account_limits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountLimits
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeConfigurationSets:
     post:
       operationId: DescribeConfigurationSets
@@ -1723,6 +1729,9 @@ paths:
       x-stackql-method: describe_configuration_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationSets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeKeywords:
     post:
       operationId: DescribeKeywords
@@ -1780,6 +1789,9 @@ paths:
       x-stackql-method: describe_keywords
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Keywords
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeNotifyConfigurations:
     post:
       operationId: DescribeNotifyConfigurations
@@ -1829,6 +1841,9 @@ paths:
       x-stackql-method: describe_notify_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotifyConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeNotifyTemplates:
     post:
       operationId: DescribeNotifyTemplates
@@ -1878,6 +1893,9 @@ paths:
       x-stackql-method: describe_notify_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotifyTemplates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeOptOutLists:
     post:
       operationId: DescribeOptOutLists
@@ -1930,6 +1948,9 @@ paths:
       x-stackql-method: describe_opt_out_lists
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OptOutLists
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeOptedOutNumbers:
     post:
       operationId: DescribeOptedOutNumbers
@@ -1987,6 +2008,9 @@ paths:
       x-stackql-method: describe_opted_out_numbers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OptedOutNumbers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribePhoneNumbers:
     post:
       operationId: DescribePhoneNumbers
@@ -2043,6 +2067,9 @@ paths:
       x-stackql-method: describe_phone_numbers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PhoneNumbers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribePools:
     post:
       operationId: DescribePools
@@ -2099,6 +2126,9 @@ paths:
       x-stackql-method: describe_pools
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Pools
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeProtectConfigurations:
     post:
       operationId: DescribeProtectConfigurations
@@ -2145,6 +2175,9 @@ paths:
       x-stackql-method: describe_protect_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProtectConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRcsAgentCountryLaunchStatus:
     post:
       operationId: DescribeRcsAgentCountryLaunchStatus
@@ -2195,6 +2228,9 @@ paths:
       x-stackql-method: describe_rcs_agent_country_launch_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CountryLaunchStatus
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRcsAgents:
     post:
       operationId: DescribeRcsAgents
@@ -2249,6 +2285,9 @@ paths:
       x-stackql-method: describe_rcs_agents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RcsAgents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegistrationAttachments:
     post:
       operationId: DescribeRegistrationAttachments
@@ -2295,6 +2334,9 @@ paths:
       x-stackql-method: describe_registration_attachments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegistrationAttachments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegistrationFieldDefinitions:
     post:
       operationId: DescribeRegistrationFieldDefinitions
@@ -2347,6 +2389,9 @@ paths:
       x-stackql-method: describe_registration_field_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegistrationFieldDefinitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegistrationFieldValues:
     post:
       operationId: DescribeRegistrationFieldValues
@@ -2400,6 +2445,9 @@ paths:
       x-stackql-method: describe_registration_field_values
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegistrationFieldValues
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegistrationSectionDefinitions:
     post:
       operationId: DescribeRegistrationSectionDefinitions
@@ -2449,6 +2497,9 @@ paths:
       x-stackql-method: describe_registration_section_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegistrationSectionDefinitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegistrationTypeDefinitions:
     post:
       operationId: DescribeRegistrationTypeDefinitions
@@ -2496,6 +2547,9 @@ paths:
       x-stackql-method: describe_registration_type_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegistrationTypeDefinitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegistrationVersions:
     post:
       operationId: DescribeRegistrationVersions
@@ -2546,6 +2600,9 @@ paths:
       x-stackql-method: describe_registration_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegistrationVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeRegistrations:
     post:
       operationId: DescribeRegistrations
@@ -2591,6 +2648,9 @@ paths:
       x-stackql-method: describe_registrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Registrations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSenderIds:
     post:
       operationId: DescribeSenderIds
@@ -2645,6 +2705,9 @@ paths:
       x-stackql-method: describe_sender_ids
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SenderIds
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSpendLimits:
     post:
       operationId: DescribeSpendLimits
@@ -2687,6 +2750,9 @@ paths:
       x-stackql-method: describe_spend_limits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SpendLimits
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeVerifiedDestinationNumbers:
     post:
       operationId: DescribeVerifiedDestinationNumbers
@@ -2735,6 +2801,9 @@ paths:
       x-stackql-method: describe_verified_destination_numbers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VerifiedDestinationNumbers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DisassociateOriginationIdentity:
     post:
       operationId: DisassociateOriginationIdentity
@@ -2787,7 +2856,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateOriginationIdentityResult'
-      x-stackql-resource: origination_identities
+      x-stackql-resource: pools
       x-stackql-method: disassociate_origination_identity
       x-stackql-verb: UPDATE
   /DisassociateProtectConfiguration:
@@ -2863,7 +2932,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DiscardRegistrationVersionResult'
-      x-stackql-resource: discard_registration_version
+      x-stackql-resource: registrations
       x-stackql-method: discard_registration_version
       x-stackql-verb: EXEC
   /GetProtectConfigurationCountryRuleSet:
@@ -2992,6 +3061,9 @@ paths:
       x-stackql-method: list_notify_countries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotifyCountries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPoolOriginationIdentities:
     post:
       operationId: ListPoolOriginationIdentities
@@ -3041,6 +3113,9 @@ paths:
       x-stackql-method: list_pool_origination_identities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OriginationIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProtectConfigurationRuleSetNumberOverrides:
     post:
       operationId: ListProtectConfigurationRuleSetNumberOverrides
@@ -3088,6 +3163,9 @@ paths:
       x-stackql-method: list_protect_configuration_rule_set_number_overrides
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RuleSetNumberOverrides
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRegistrationAssociations:
     post:
       operationId: ListRegistrationAssociations
@@ -3135,6 +3213,9 @@ paths:
       x-stackql-method: list_registration_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RegistrationAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -3168,7 +3249,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResult'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutKeyword:
@@ -3728,7 +3809,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDestinationNumberVerificationCodeResult'
-      x-stackql-resource: destination_number_verification_code
+      x-stackql-resource: verified_destination_numbers
       x-stackql-method: send_destination_number_verification_code
       x-stackql-verb: EXEC
   /SendMediaMessage:
@@ -3868,7 +3949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendNotifyTextMessageResult'
-      x-stackql-resource: notify_text_message
+      x-stackql-resource: notify_configurations
       x-stackql-method: send_notify_text_message
       x-stackql-verb: EXEC
   /SendNotifyVoiceMessage:
@@ -3937,7 +4018,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendNotifyVoiceMessageResult'
-      x-stackql-resource: notify_voice_message
+      x-stackql-resource: notify_configurations
       x-stackql-method: send_notify_voice_message
       x-stackql-verb: EXEC
   /SendTextMessage:
@@ -4143,7 +4224,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetAccountDefaultProtectConfigurationResult'
-      x-stackql-resource: account_default_protect_configurations
+      x-stackql-resource: protect_configurations
       x-stackql-method: set_account_default_protect_configuration
       x-stackql-verb: UPDATE
   /SetDefaultMessageFeedbackEnabled:
@@ -4183,7 +4264,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetDefaultMessageFeedbackEnabledResult'
-      x-stackql-resource: default_message_feedback_enableds
+      x-stackql-resource: configuration_sets
       x-stackql-method: set_default_message_feedback_enabled
       x-stackql-verb: UPDATE
   /SetDefaultMessageType:
@@ -4228,7 +4309,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetDefaultMessageTypeResult'
-      x-stackql-resource: default_message_types
+      x-stackql-resource: configuration_sets
       x-stackql-method: set_default_message_type
       x-stackql-verb: UPDATE
   /SetDefaultSenderId:
@@ -4274,7 +4355,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetDefaultSenderIdResult'
-      x-stackql-resource: default_sender_ids
+      x-stackql-resource: sender_ids
       x-stackql-method: set_default_sender_id
       x-stackql-verb: UPDATE
   /SetMediaMessageSpendLimitOverride:
@@ -4462,7 +4543,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitRegistrationVersionResult'
-      x-stackql-resource: registration_version
+      x-stackql-resource: registrations
       x-stackql-method: submit_registration_version
       x-stackql-verb: EXEC
   /TagResource:
@@ -4504,7 +4585,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -4545,7 +4626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateEventDestination:
@@ -4606,7 +4687,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEventDestinationResult'
-      x-stackql-resource: event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_event_destination
       x-stackql-verb: UPDATE
   /UpdateNotifyConfiguration:
@@ -5026,7 +5107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyDestinationNumberResult'
-      x-stackql-resource: destination_number
+      x-stackql-resource: verified_destination_numbers
       x-stackql-method: verify_destination_number
       x-stackql-verb: EXEC
 components:

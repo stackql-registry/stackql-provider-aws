@@ -48,7 +48,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: groups
       x-stackql-method: associate_resource
       x-stackql-verb: UPDATE
   /canary:
@@ -221,6 +221,7 @@ paths:
       x-stackql-resource: canaries
       x-stackql-method: get_canary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Canary
     patch:
       operationId: UpdateCanary
       description: 'Updates the configuration of a canary that has already been created. For multibrowser canaries, you can
@@ -329,6 +330,7 @@ paths:
       x-stackql-resource: groups
       x-stackql-method: get_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Group
   /canaries:
     post:
       operationId: DescribeCanaries
@@ -452,7 +454,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: groups
       x-stackql-method: disassociate_resource
       x-stackql-verb: UPDATE
   /canary/{name}/runs:
@@ -553,10 +555,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListGroupResourcesResponse'
+                $ref: '#/components/schemas/ListGroupResourcesOutputDisplay'
       x-stackql-resource: group_resources
       x-stackql-method: list_group_resources
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListGroupResourcesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Resources" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /groups:
     post:
       operationId: ListGroups
@@ -603,7 +610,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -641,7 +648,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -668,7 +675,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /canary/{name}/start:
@@ -744,7 +751,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCanaryDryRunResponse'
-      x-stackql-resource: canary_dry_run
+      x-stackql-resource: canaries
       x-stackql-method: start_canary_dry_run
       x-stackql-verb: EXEC
   /canary/{name}/stop:
@@ -1752,20 +1759,19 @@ components:
         Arn:
           $ref: '#/components/schemas/GroupArn'
           description: The ARN of the group.
-    ListGroupResourcesResponse:
+    ListGroupResourcesRowDisplay:
       type: object
       properties:
-        Resources:
-          $ref: '#/components/schemas/StringList'
+        resource:
+          type: string
           description: An array of ARNs. These ARNs are for the canaries that are associated with the group.
-        NextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: A token that indicates that there is more data available. You can use this token in a subsequent ListGroupResources
-            operation to retrieve the next set of results.
-    StringList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListGroupResourcesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListGroupResourcesRowDisplay'
     ListGroupsResponse:
       type: object
       properties:

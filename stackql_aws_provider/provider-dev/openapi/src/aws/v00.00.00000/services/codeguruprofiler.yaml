@@ -1519,10 +1519,10 @@ components:
       required:
         - profilingGroup
   x-stackQL-resources:
-    notification_channels:
-      id: aws.codeguruprofiler.notification_channels
-      name: notification_channels
-      title: notification_channels
+    profiling_groups:
+      id: aws.codeguruprofiler.profiling_groups
+      name: profiling_groups
+      title: profiling_groups
       methods:
         add_notification_channels:
           operation:
@@ -1535,44 +1535,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        remove_notification_channel:
+        configure_agent:
           operation:
-            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1notificationConfiguration~1{channel_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/notification_channels/methods/add_notification_channels"
-          - $ref: "#/components/x-stackQL-resources/notification_channels/methods/remove_notification_channel"
-        delete: []
-    notification_configurations:
-      id: aws.codeguruprofiler.notification_configurations
-      name: notification_configurations
-      title: notification_configurations
-      methods:
-        get_notification_configuration:
-          operation:
-            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1notificationConfiguration/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/notification_configurations/methods/get_notification_configuration"
-        insert: []
-        update: []
-        delete: []
-    frame_metric_datas:
-      id: aws.codeguruprofiler.frame_metric_datas
-      name: frame_metric_datas
-      title: frame_metric_datas
-      methods:
-        batch_get_frame_metric_data:
-          operation:
-            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1frames~1-~1metrics/post"
+            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1configureAgent/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1581,17 +1546,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/frame_metric_datas/methods/batch_get_frame_metric_data"
-        insert: []
-        update: []
-        delete: []
-    profiling_groups:
-      id: aws.codeguruprofiler.profiling_groups
-      name: profiling_groups
-      title: profiling_groups
-      methods:
         create_profiling_group:
           operation:
             $ref: "#/paths/~1profilingGroups/post"
@@ -1623,11 +1577,59 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.profilingGroup
         update_profiling_group:
           operation:
             $ref: "#/paths/~1profilingGroups~1{profiling_group_name}/put"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        post_agent_profile:
+          operation:
+            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1agentProfile/post"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_permission:
+          operation:
+            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1policy~1{action_group}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_permission:
+          operation:
+            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1policy~1{action_group}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        remove_notification_channel:
+          operation:
+            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1notificationConfiguration~1{channel_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        submit_feedback:
+          operation:
+            $ref: "#/paths/~1internal~1profilingGroups~1{profiling_group_name}~1anomalies~1{anomaly_instance_id}~1feedback/post"
+          response:
+            openAPIDocKey: "204"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -1641,9 +1643,54 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/create_profiling_group"
         update:
+          - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/remove_permission"
+          - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/add_notification_channels"
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/update_profiling_group"
+          - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/remove_notification_channel"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/put_permission"
         delete:
           - $ref: "#/components/x-stackQL-resources/profiling_groups/methods/delete_profiling_group"
+    notification_configurations:
+      id: aws.codeguruprofiler.notification_configurations
+      name: notification_configurations
+      title: notification_configurations
+      methods:
+        get_notification_configuration:
+          operation:
+            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1notificationConfiguration/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.notificationConfiguration
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/notification_configurations/methods/get_notification_configuration"
+        insert: []
+        update: []
+        delete: []
+    frame_metric_datas:
+      id: aws.codeguruprofiler.frame_metric_datas
+      name: frame_metric_datas
+      title: frame_metric_datas
+      methods:
+        batch_get_frame_metric_data:
+          operation:
+            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1frames~1-~1metrics/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/frame_metric_datas/methods/batch_get_frame_metric_data"
+        insert: []
+        update: []
+        delete: []
     findings_report_account_summaries:
       id: aws.codeguruprofiler.findings_report_account_summaries
       name: findings_report_account_summaries
@@ -1751,16 +1798,24 @@ components:
             objectKey: $.profileTimes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profile_times/methods/list_profile_times"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.codeguruprofiler.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.codeguruprofiler.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1768,17 +1823,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.codeguruprofiler.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1799,41 +1843,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    permissions:
-      id: aws.codeguruprofiler.permissions
-      name: permissions
-      title: permissions
-      methods:
-        put_permission:
-          operation:
-            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1policy~1{action_group}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        remove_permission:
-          operation:
-            $ref: "#/paths/~1profilingGroups~1{profiling_group_name}~1policy~1{action_group}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/remove_permission"
-        replace:
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/put_permission"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

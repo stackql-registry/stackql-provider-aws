@@ -41,7 +41,6 @@ paths:
                 MetricDefinitions:
                   $ref: "#/components/schemas/MetricDefinitionsRequest"
               required:
-                - Destination
                 - MetricDefinitions
       responses:
         "200":
@@ -152,7 +151,6 @@ paths:
                 MetricDefinitionId:
                   $ref: "#/components/schemas/MetricDefinitionId"
               required:
-                - Destination
                 - MetricDefinition
                 - MetricDefinitionId
       responses:
@@ -192,8 +190,6 @@ paths:
                   $ref: "#/components/schemas/DeobfuscationConfiguration"
                 Platform:
                   $ref: "#/components/schemas/AppMonitorPlatform"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -425,8 +421,6 @@ paths:
                   $ref: "#/components/schemas/DestinationArn"
                 IamRoleArn:
                   $ref: "#/components/schemas/IamRoleArn"
-              required:
-                - Destination
       responses:
         "200":
           description: Success
@@ -468,7 +462,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetAppMonitorDataResponse"
+                $ref: "#/components/schemas/GetAppMonitorDataOutputDisplay"
   /appmonitors:
     post:
       operationId: ListAppMonitors
@@ -530,8 +524,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1105,21 +1097,19 @@ components:
       maximum: 100
     Token:
       type: string
-    GetAppMonitorDataResponse:
+    GetAppMonitorDataRowDisplay:
       type: object
       properties:
-        Events:
-          $ref: "#/components/schemas/EventDataList"
+        event:
+          type: string
           description: The events that RUM collected that match your request.
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: A token that you can use in a subsequent operation to retrieve the next set of results.
-    EventDataList:
-      type: array
-      items:
-        $ref: "#/components/schemas/EventData"
-    EventData:
-      type: string
+    GetAppMonitorDataOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetAppMonitorDataRowDisplay"
     GetResourcePolicyResponse:
       type: object
       properties:
@@ -1327,6 +1317,23 @@ components:
       name: rum_metric_definitions
       title: rum_metric_definitions
       methods:
+        batch_create_rum_metric_definitions:
+          operation:
+            $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metrics/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_rum_metric_definitions:
+          operation:
+            $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metrics/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         batch_get_rum_metric_definitions:
           operation:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metrics/get"
@@ -1336,6 +1343,14 @@ components:
             objectKey: $.MetricDefinitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_rum_metric_definition:
           operation:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metrics/patch"
@@ -1382,6 +1397,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AppMonitor
         update_app_monitor:
           operation:
             $ref: "#/paths/~1appmonitor~1{name}/patch"
@@ -1402,6 +1418,14 @@ components:
             objectKey: $.AppMonitorSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/app_monitors/methods/get_app_monitor"
@@ -1473,6 +1497,14 @@ components:
             objectKey: $.Destinations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         put_rum_metrics_destination:
           operation:
             $ref: "#/paths/~1rummetrics~1{app_monitor_name}~1metricsdestination/post"
@@ -1504,10 +1536,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Events
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetAppMonitorDataOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Events" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"event": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1516,10 +1561,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.rum.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.rum.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1527,17 +1572,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.rum.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1558,11 +1592,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     rum_events:
       id: aws.rum.rum_events

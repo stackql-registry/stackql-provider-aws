@@ -73,7 +73,6 @@ paths:
                   $ref: "#/components/schemas/GenericString"
                   description: The trigger mode for the workflow execution.
               required:
-                - Name
                 - DefinitionS3Location
                 - RoleArn
       responses:
@@ -532,7 +531,6 @@ paths:
                   description: A map of tags to add to the resource. Each tag consists of a key-value pair.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -1385,6 +1383,39 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_workflow_run:
+          operation:
+            $ref: "#/paths/~1StartWorkflowRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_workflow_run:
+          operation:
+            $ref: "#/paths/~1StopWorkflowRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_workflow:
@@ -1440,6 +1471,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1479,6 +1517,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1488,10 +1533,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.mwaa_serverless.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mwaa_serverless.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1506,42 +1551,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    workflow_versions:
-      id: aws.mwaa_serverless.workflow_versions
-      name: workflow_versions
-      title: workflow_versions
-      methods:
-        list_workflow_versions:
-          operation:
-            $ref: "#/paths/~1ListWorkflowVersions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.WorkflowVersions
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workflow_versions/methods/list_workflow_versions"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mwaa_serverless.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1569,9 +1578,42 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    workflow_versions:
+      id: aws.mwaa_serverless.workflow_versions
+      name: workflow_versions
+      title: workflow_versions
+      methods:
+        list_workflow_versions:
+          operation:
+            $ref: "#/paths/~1ListWorkflowVersions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.WorkflowVersions
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/workflow_versions/methods/list_workflow_versions"
+        insert: []
+        update: []
         delete: []

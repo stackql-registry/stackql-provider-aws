@@ -168,6 +168,9 @@ paths:
       x-stackql-method: list_workflow_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowDefinitionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workflow-definitions/{workflow_definition_name}/workflow-runs:
     put:
       operationId: CreateWorkflowRun
@@ -249,6 +252,9 @@ paths:
       x-stackql-method: list_workflow_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowRunSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workflow-definitions/{workflow_definition_name}:
     delete:
       operationId: DeleteWorkflowDefinition
@@ -391,6 +397,9 @@ paths:
       x-stackql-method: list_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     put:
       operationId: UpdateWorkflowRun
       description: Updates the configuration or state of an active workflow run.
@@ -477,7 +486,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeActStepResponse'
-      x-stackql-resource: act_step
+      x-stackql-resource: acts
       x-stackql-method: invoke_act_step
       x-stackql-verb: EXEC
   /workflow-definitions/{workflow_definition_name}/acts:
@@ -535,6 +544,9 @@ paths:
       x-stackql-method: list_acts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /models:
     post:
       operationId: ListModels

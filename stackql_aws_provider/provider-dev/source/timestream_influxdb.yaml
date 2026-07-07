@@ -508,6 +508,9 @@ paths:
       x-stackql-method: list_db_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDbInstances:
     post:
       operationId: ListDbInstances
@@ -549,6 +552,9 @@ paths:
       x-stackql-method: list_db_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDbInstancesForCluster:
     post:
       operationId: ListDbInstancesForCluster
@@ -595,6 +601,9 @@ paths:
       x-stackql-method: list_db_instances_for_cluster
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDbParameterGroups:
     post:
       operationId: ListDbParameterGroups
@@ -636,6 +645,9 @@ paths:
       x-stackql-method: list_db_parameter_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -669,7 +681,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /RebootDbCluster:
@@ -708,7 +720,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootDbClusterOutput'
-      x-stackql-resource: db_cluster
+      x-stackql-resource: db_clusters
       x-stackql-method: reboot_db_cluster
       x-stackql-verb: EXEC
   /RebootDbInstance:
@@ -781,7 +793,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -817,7 +829,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateDbCluster:

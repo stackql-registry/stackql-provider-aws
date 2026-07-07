@@ -126,6 +126,9 @@ paths:
       x-stackql-method: list_gateway_routes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.gatewayRoutes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/meshes:
     put:
       operationId: CreateMesh
@@ -195,6 +198,9 @@ paths:
       x-stackql-method: list_meshes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.meshes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/meshes/{mesh_name}/virtualRouter/{virtual_router_name}/routes:
     put:
       operationId: CreateRoute
@@ -304,6 +310,9 @@ paths:
       x-stackql-method: list_routes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.routes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/meshes/{mesh_name}/virtualGateways:
     put:
       operationId: CreateVirtualGateway
@@ -401,6 +410,9 @@ paths:
       x-stackql-method: list_virtual_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.virtualGateways
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/meshes/{mesh_name}/virtualNodes:
     put:
       operationId: CreateVirtualNode
@@ -507,6 +519,9 @@ paths:
       x-stackql-method: list_virtual_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.virtualNodes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/meshes/{mesh_name}/virtualRouters:
     put:
       operationId: CreateVirtualRouter
@@ -605,6 +620,9 @@ paths:
       x-stackql-method: list_virtual_routers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.virtualRouters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/meshes/{mesh_name}/virtualServices:
     put:
       operationId: CreateVirtualService
@@ -702,6 +720,9 @@ paths:
       x-stackql-method: list_virtual_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.virtualServices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/meshes/{mesh_name}/virtualGateway/{virtual_gateway_name}/gatewayRoutes/{gateway_route_name}:
     delete:
       operationId: DeleteGatewayRoute
@@ -783,6 +804,7 @@ paths:
       x-stackql-resource: gateway_routes
       x-stackql-method: describe_gateway_route
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.gatewayRoute
     put:
       operationId: UpdateGatewayRoute
       description: Updates an existing gateway route that is associated to a specified virtual gateway in a service mesh.
@@ -886,6 +908,7 @@ paths:
       x-stackql-resource: meshes
       x-stackql-method: describe_mesh
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.mesh
     put:
       operationId: UpdateMesh
       description: Updates an existing service mesh.
@@ -998,6 +1021,7 @@ paths:
       x-stackql-resource: routes
       x-stackql-method: describe_route
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.route
     put:
       operationId: UpdateRoute
       description: Updates an existing route for a specified service mesh and virtual router.
@@ -1121,6 +1145,7 @@ paths:
       x-stackql-resource: virtual_gateways
       x-stackql-method: describe_virtual_gateway
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.virtualGateway
     put:
       operationId: UpdateVirtualGateway
       description: Updates an existing virtual gateway in a specified service mesh.
@@ -1238,6 +1263,7 @@ paths:
       x-stackql-resource: virtual_nodes
       x-stackql-method: describe_virtual_node
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.virtualNode
     put:
       operationId: UpdateVirtualNode
       description: Updates an existing virtual node in a specified service mesh.
@@ -1355,6 +1381,7 @@ paths:
       x-stackql-resource: virtual_routers
       x-stackql-method: describe_virtual_router
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.virtualRouter
     put:
       operationId: UpdateVirtualRouter
       description: Updates an existing virtual router in a specified service mesh.
@@ -1471,6 +1498,7 @@ paths:
       x-stackql-resource: virtual_services
       x-stackql-method: describe_virtual_service
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.virtualService
     put:
       operationId: UpdateVirtualService
       description: Updates an existing virtual service in a specified service mesh.
@@ -1554,10 +1582,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v20190125/tag:
     put:
       operationId: TagResource
@@ -1589,7 +1620,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /v20190125/untag:
@@ -1621,7 +1652,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

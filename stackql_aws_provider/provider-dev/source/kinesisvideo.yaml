@@ -236,6 +236,7 @@ paths:
       x-stackql-resource: image_generation_configurations
       x-stackql-method: describe_image_generation_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ImageGenerationConfiguration
   /describeMappedResourceConfiguration:
     post:
       operationId: DescribeMappedResourceConfiguration
@@ -268,6 +269,9 @@ paths:
       x-stackql-method: describe_mapped_resource_configuration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MappedResourceConfigurationList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /describeMediaStorageConfiguration:
     post:
       operationId: DescribeMediaStorageConfiguration
@@ -294,6 +298,7 @@ paths:
       x-stackql-resource: media_storage_configurations
       x-stackql-method: describe_media_storage_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MediaStorageConfiguration
   /describeNotificationConfiguration:
     post:
       operationId: DescribeNotificationConfiguration
@@ -320,6 +325,7 @@ paths:
       x-stackql-resource: notification_configurations
       x-stackql-method: describe_notification_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.NotificationConfiguration
   /describeSignalingChannel:
     post:
       operationId: DescribeSignalingChannel
@@ -347,6 +353,7 @@ paths:
       x-stackql-resource: signaling_channels
       x-stackql-method: describe_signaling_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelInfo
   /describeStream:
     post:
       operationId: DescribeStream
@@ -374,6 +381,7 @@ paths:
       x-stackql-resource: streams
       x-stackql-method: describe_stream
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.StreamInfo
   /describeStreamStorageConfiguration:
     post:
       operationId: DescribeStreamStorageConfiguration
@@ -502,6 +510,9 @@ paths:
       x-stackql-method: list_edge_agent_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EdgeConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /listSignalingChannels:
     post:
       operationId: ListSignalingChannels
@@ -532,6 +543,9 @@ paths:
       x-stackql-method: list_signaling_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChannelInfoList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /listStreams:
     post:
       operationId: ListStreams
@@ -562,6 +576,9 @@ paths:
       x-stackql-method: list_streams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StreamInfoList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -587,7 +604,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /listTagsForStream:
@@ -616,7 +633,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForStreamOutput'
-      x-stackql-resource: tags_for_streams
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_stream
       x-stackql-verb: SELECT
   /startEdgeConfigurationUpdate:
@@ -656,7 +673,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEdgeConfigurationUpdateOutput'
-      x-stackql-resource: edge_configuration_update
+      x-stackql-resource: edge_configurations
       x-stackql-method: start_edge_configuration_update
       x-stackql-verb: EXEC
   /TagResource:
@@ -688,7 +705,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /tagStream:
@@ -722,7 +739,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagStreamOutput'
-      x-stackql-resource: streams
+      x-stackql-resource: tags
       x-stackql-method: tag_stream
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -752,7 +769,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /untagStream:
@@ -784,7 +801,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagStreamOutput'
-      x-stackql-resource: streams
+      x-stackql-resource: tags
       x-stackql-method: untag_stream
       x-stackql-verb: UPDATE
   /updateDataRetention:

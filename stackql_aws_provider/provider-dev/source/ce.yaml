@@ -328,6 +328,7 @@ paths:
       x-stackql-resource: cost_category_definitions
       x-stackql-method: describe_cost_category_definition
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CostCategory
   /GetAnomalies:
     post:
       operationId: GetAnomalies
@@ -386,6 +387,9 @@ paths:
       x-stackql-method: get_anomalies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Anomalies
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /GetAnomalyMonitors:
     post:
       operationId: GetAnomalyMonitors
@@ -429,6 +433,9 @@ paths:
       x-stackql-method: get_anomaly_monitors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnomalyMonitors
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /GetAnomalySubscriptions:
     post:
       operationId: GetAnomalySubscriptions
@@ -475,6 +482,9 @@ paths:
       x-stackql-method: get_anomaly_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnomalySubscriptions
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /GetApproximateUsageRecords:
     post:
       operationId: GetApproximateUsageRecords
@@ -709,6 +719,9 @@ paths:
       x-stackql-method: get_cost_and_usage_comparisons
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CostAndUsageComparisons
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /GetCostAndUsageWithResources:
     post:
       operationId: GetCostAndUsageWithResources
@@ -932,6 +945,9 @@ paths:
       x-stackql-method: get_cost_comparison_drivers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CostComparisonDrivers
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /GetCostForecast:
     post:
       operationId: GetCostForecast
@@ -1282,6 +1298,9 @@ paths:
       x-stackql-method: get_reservation_purchase_recommendation
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Recommendations
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /GetReservationUtilization:
     post:
       operationId: GetReservationUtilization
@@ -1412,6 +1431,9 @@ paths:
       x-stackql-method: get_rightsizing_recommendation
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RightsizingRecommendations
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /GetSavingsPlanPurchaseRecommendationDetails:
     post:
       operationId: GetSavingsPlanPurchaseRecommendationDetails
@@ -1891,6 +1913,9 @@ paths:
       x-stackql-method: list_commitment_purchase_analyses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnalysisSummaryList
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListCostAllocationTagBackfillHistory:
     post:
       operationId: ListCostAllocationTagBackfillHistory
@@ -1930,6 +1955,9 @@ paths:
       x-stackql-method: list_cost_allocation_tag_backfill_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackfillRequests
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCostAllocationTags:
     post:
       operationId: ListCostAllocationTags
@@ -1982,6 +2010,9 @@ paths:
       x-stackql-method: list_cost_allocation_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CostAllocationTags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCostCategoryDefinitions:
     post:
       operationId: ListCostCategoryDefinitions
@@ -2034,6 +2065,9 @@ paths:
       x-stackql-method: list_cost_category_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CostCategoryReferences
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCostCategoryResourceAssociations:
     post:
       operationId: ListCostCategoryResourceAssociations
@@ -2078,6 +2112,9 @@ paths:
       x-stackql-method: list_cost_category_resource_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CostCategoryResourceAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSavingsPlansPurchaseRecommendationGeneration:
     post:
       operationId: ListSavingsPlansPurchaseRecommendationGeneration
@@ -2122,6 +2159,9 @@ paths:
       x-stackql-method: list_savings_plans_purchase_recommendation_generation
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GenerationSummaryList
+      x-stackql-pagination-request-token-key: NextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2155,7 +2195,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ProvideAnomalyFeedback:
@@ -2195,7 +2235,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProvideAnomalyFeedbackResponse'
-      x-stackql-resource: provide_anomaly_feedback
+      x-stackql-resource: anomalies
       x-stackql-method: provide_anomaly_feedback
       x-stackql-verb: EXEC
   /StartCommitmentPurchaseAnalysis:
@@ -2271,7 +2311,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCostAllocationTagBackfillResponse'
-      x-stackql-resource: cost_allocation_tag_backfill
+      x-stackql-resource: cost_allocation_tags
       x-stackql-method: start_cost_allocation_tag_backfill
       x-stackql-verb: EXEC
   /StartSavingsPlansPurchaseRecommendationGeneration:
@@ -2304,7 +2344,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSavingsPlansPurchaseRecommendationGenerationResponse'
-      x-stackql-resource: savings_plans_purchase_recommendation_generation
+      x-stackql-resource: savings_plans_purchase_recommendations
       x-stackql-method: start_savings_plans_purchase_recommendation_generation
       x-stackql-verb: EXEC
   /TagResource:
@@ -2355,7 +2395,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2397,7 +2437,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAnomalyMonitor:
@@ -2549,7 +2589,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateCostAllocationTagsStatusResponse'
-      x-stackql-resource: cost_allocation_tags_status
+      x-stackql-resource: cost_allocation_tags
       x-stackql-method: update_cost_allocation_tags_status
       x-stackql-verb: UPDATE
   /UpdateCostCategoryDefinition:

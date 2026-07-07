@@ -50,7 +50,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelBatchJobExecutionResponse'
-      x-stackql-resource: batch_job_execution
+      x-stackql-resource: applications
       x-stackql-method: cancel_batch_job_execution
       x-stackql-verb: EXEC
   /applications:
@@ -136,6 +136,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.applications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/dataset-export-task:
     post:
       operationId: CreateDataSetExportTask
@@ -278,6 +281,9 @@ paths:
       x-stackql-method: list_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deployments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /environments:
     post:
       operationId: CreateEnvironment
@@ -373,6 +379,9 @@ paths:
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}:
     delete:
       operationId: DeleteApplication
@@ -475,7 +484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteApplicationFromEnvironmentResponse'
-      x-stackql-resource: application_from_environments
+      x-stackql-resource: environments
       x-stackql-method: delete_application_from_environment
       x-stackql-verb: DELETE
   /environments/{environment_id}:
@@ -771,6 +780,9 @@ paths:
       x-stackql-method: list_application_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.applicationVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/batch-job-definitions:
     get:
       operationId: ListBatchJobDefinitions
@@ -814,6 +826,9 @@ paths:
       x-stackql-method: list_batch_job_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.batchJobDefinitions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/batch-job-executions:
     get:
       operationId: ListBatchJobExecutions
@@ -878,6 +893,9 @@ paths:
       x-stackql-method: list_batch_job_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.batchJobExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/batch-job-executions/{execution_id}/steps:
     get:
       operationId: ListBatchJobRestartPoints
@@ -948,6 +966,9 @@ paths:
       x-stackql-method: list_data_set_export_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataSetExportTasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/dataset-import-tasks:
     get:
       operationId: ListDataSetImportHistory
@@ -983,6 +1004,9 @@ paths:
       x-stackql-method: list_data_set_import_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataSetImportTasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/datasets:
     get:
       operationId: ListDataSets
@@ -1032,6 +1056,9 @@ paths:
       x-stackql-method: list_data_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataSets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /engine-versions:
     get:
       operationId: ListEngineVersions
@@ -1067,6 +1094,9 @@ paths:
       x-stackql-method: list_engine_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.engineVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1085,7 +1115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1116,7 +1146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1142,7 +1172,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /applications/{application_id}/start:
@@ -1163,7 +1193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartApplicationResponse'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: start_application
       x-stackql-verb: EXEC
   /applications/{application_id}/batch-job:
@@ -1200,7 +1230,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBatchJobResponse'
-      x-stackql-resource: batch_job
+      x-stackql-resource: applications
       x-stackql-method: start_batch_job
       x-stackql-verb: EXEC
   /applications/{application_id}/stop:
@@ -1230,7 +1260,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopApplicationResponse'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: stop_application
       x-stackql-verb: EXEC
 components:

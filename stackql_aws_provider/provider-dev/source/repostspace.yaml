@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAddChannelRoleToAccessorsOutput'
-      x-stackql-resource: batch_add_channel_role_to_accessors
+      x-stackql-resource: channels
       x-stackql-method: batch_add_channel_role_to_accessors
       x-stackql-verb: EXEC
     patch:
@@ -94,7 +94,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchRemoveChannelRoleFromAccessorsOutput'
-      x-stackql-resource: batch_remove_channel_role_from_accessors
+      x-stackql-resource: channels
       x-stackql-method: batch_remove_channel_role_from_accessors
       x-stackql-verb: EXEC
   /spaces/{space_id}/roles:
@@ -129,7 +129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAddRoleOutput'
-      x-stackql-resource: batch_add_role
+      x-stackql-resource: spaces
       x-stackql-method: batch_add_role
       x-stackql-verb: EXEC
     patch:
@@ -163,7 +163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchRemoveRoleOutput'
-      x-stackql-resource: batch_remove_role
+      x-stackql-resource: spaces
       x-stackql-method: batch_remove_role
       x-stackql-verb: EXEC
   /spaces/{space_id}/channels:
@@ -234,6 +234,9 @@ paths:
       x-stackql-method: list_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.channels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /spaces:
     post:
       operationId: CreateSpace
@@ -305,6 +308,9 @@ paths:
       x-stackql-method: list_spaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.spaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /spaces/{space_id}:
     delete:
       operationId: DeleteSpace
@@ -393,7 +399,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: admins
+      x-stackql-resource: spaces
       x-stackql-method: deregister_admin
       x-stackql-verb: DELETE
     post:
@@ -415,7 +421,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: admins
+      x-stackql-resource: spaces
       x-stackql-method: register_admin
       x-stackql-verb: INSERT
   /spaces/{space_id}/channels/{channel_id}:
@@ -503,7 +509,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -537,7 +543,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -563,7 +569,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /spaces/{space_id}/invite:
@@ -597,7 +603,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: invites
+      x-stackql-resource: spaces
       x-stackql-method: send_invites
       x-stackql-verb: EXEC
 components:

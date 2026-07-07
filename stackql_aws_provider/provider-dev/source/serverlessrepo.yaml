@@ -101,6 +101,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Applications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_id}/versions/{semantic_version}:
     put:
       operationId: CreateApplicationVersion
@@ -194,7 +197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCloudFormationChangeSetResponse'
-      x-stackql-resource: cloud_formation_change_sets
+      x-stackql-resource: applications
       x-stackql-method: create_cloud_formation_change_set
       x-stackql-verb: INSERT
   /applications/{application_id}/templates:
@@ -429,6 +432,9 @@ paths:
       x-stackql-method: list_application_dependencies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Dependencies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_id}/versions:
     get:
       operationId: ListApplicationVersions
@@ -463,6 +469,9 @@ paths:
       x-stackql-method: list_application_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_id}/unshare:
     post:
       operationId: UnshareApplication
@@ -489,7 +498,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: unshare_application
+      x-stackql-resource: applications
       x-stackql-method: unshare_application
       x-stackql-verb: EXEC
 components:

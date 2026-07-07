@@ -302,6 +302,9 @@ paths:
       x-stackql-method: get_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Images
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /getMediaForFragmentList:
     post:
       operationId: GetMediaForFragmentList
@@ -387,6 +390,9 @@ paths:
       x-stackql-method: list_fragments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Fragments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

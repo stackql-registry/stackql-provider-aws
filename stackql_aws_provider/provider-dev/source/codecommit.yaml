@@ -55,7 +55,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: approval_rule_template_with_repositories
+      x-stackql-resource: repositories
       x-stackql-method: associate_approval_rule_template_with_repository
       x-stackql-verb: UPDATE
   /BatchAssociateApprovalRuleTemplateWithRepositories:
@@ -96,7 +96,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateApprovalRuleTemplateWithRepositoriesOutput'
-      x-stackql-resource: batch_associate_approval_rule_template_with_repositories
+      x-stackql-resource: repositories
       x-stackql-method: batch_associate_approval_rule_template_with_repositories
       x-stackql-verb: EXEC
   /BatchDescribeMergeConflicts:
@@ -170,7 +170,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDescribeMergeConflictsOutput'
-      x-stackql-resource: batch_describe_merge_conflicts
+      x-stackql-resource: merge_conflicts
       x-stackql-method: batch_describe_merge_conflicts
       x-stackql-verb: EXEC
   /BatchDisassociateApprovalRuleTemplateFromRepositories:
@@ -211,7 +211,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput'
-      x-stackql-resource: batch_disassociate_approval_rule_template_from_repositories
+      x-stackql-resource: repositories
       x-stackql-method: batch_disassociate_approval_rule_template_from_repositories
       x-stackql-verb: EXEC
   /BatchGetCommits:
@@ -573,7 +573,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePullRequestApprovalRuleOutput'
-      x-stackql-resource: pull_request_approval_rules
+      x-stackql-resource: pull_requests
       x-stackql-method: create_pull_request_approval_rule
       x-stackql-verb: INSERT
   /CreateRepository:
@@ -711,7 +711,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateUnreferencedMergeCommitOutput'
-      x-stackql-resource: unreferenced_merge_commits
+      x-stackql-resource: merge_commits
       x-stackql-method: create_unreferenced_merge_commit
       x-stackql-verb: INSERT
   /DeleteApprovalRuleTemplate:
@@ -825,7 +825,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteCommentContentOutput'
-      x-stackql-resource: comment_contents
+      x-stackql-resource: comments
       x-stackql-method: delete_comment_content
       x-stackql-verb: DELETE
   /DeleteFile:
@@ -940,7 +940,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeletePullRequestApprovalRuleOutput'
-      x-stackql-resource: pull_request_approval_rules
+      x-stackql-resource: pull_requests
       x-stackql-method: delete_pull_request_approval_rule
       x-stackql-verb: DELETE
   /DeleteRepository:
@@ -1104,6 +1104,9 @@ paths:
       x-stackql-method: describe_pull_request_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pullRequestEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DisassociateApprovalRuleTemplateFromRepository:
     post:
       operationId: DisassociateApprovalRuleTemplateFromRepository
@@ -1139,7 +1142,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: approval_rule_template_from_repositories
+      x-stackql-resource: repositories
       x-stackql-method: disassociate_approval_rule_template_from_repository
       x-stackql-verb: UPDATE
   /EvaluatePullRequestApprovalRules:
@@ -1180,7 +1183,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvaluatePullRequestApprovalRulesOutput'
-      x-stackql-resource: evaluate_pull_request_approval_rules
+      x-stackql-resource: pull_requests
       x-stackql-method: evaluate_pull_request_approval_rules
       x-stackql-verb: EXEC
   /GetApprovalRuleTemplate:
@@ -1219,6 +1222,7 @@ paths:
       x-stackql-resource: approval_rule_templates
       x-stackql-method: get_approval_rule_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.approvalRuleTemplate
   /GetBlob:
     post:
       operationId: GetBlob
@@ -1296,6 +1300,7 @@ paths:
       x-stackql-resource: branches
       x-stackql-method: get_branch
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.branch
   /GetComment:
     post:
       operationId: GetComment
@@ -1335,6 +1340,7 @@ paths:
       x-stackql-resource: comments
       x-stackql-method: get_comment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.comment
   /GetCommentReactions:
     post:
       operationId: GetCommentReactions
@@ -1436,6 +1442,9 @@ paths:
       x-stackql-method: get_comments_for_compared_commit
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commentsForComparedCommitData
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetCommentsForPullRequest:
     post:
       operationId: GetCommentsForPullRequest
@@ -1495,6 +1504,9 @@ paths:
       x-stackql-method: get_comments_for_pull_request
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commentsForPullRequestData
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetCommit:
     post:
       operationId: GetCommit
@@ -1535,6 +1547,7 @@ paths:
       x-stackql-resource: commits
       x-stackql-method: get_commit
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.commit
   /GetDifferences:
     post:
       operationId: GetDifferences
@@ -1598,6 +1611,9 @@ paths:
       x-stackql-method: get_differences
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.differences
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetFile:
     post:
       operationId: GetFile
@@ -1907,6 +1923,7 @@ paths:
       x-stackql-resource: pull_requests
       x-stackql-method: get_pull_request
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.pullRequest
   /GetPullRequestApprovalStates:
     post:
       operationId: GetPullRequestApprovalStates
@@ -2031,6 +2048,7 @@ paths:
       x-stackql-resource: repositories
       x-stackql-method: get_repository
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.repositoryMetadata
   /GetRepositoryTriggers:
     post:
       operationId: GetRepositoryTriggers
@@ -2102,10 +2120,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListApprovalRuleTemplatesOutput'
+                $ref: '#/components/schemas/ListApprovalRuleTemplatesOutputDisplay'
       x-stackql-resource: approval_rule_templates
       x-stackql-method: list_approval_rule_templates
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListApprovalRuleTemplatesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "approvalRuleTemplateNames" -}}{"line_items": [{{- if eq (kindOf $lst)
+        "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"approval_rule_template_name": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]}'
   /ListAssociatedApprovalRuleTemplatesForRepository:
     post:
       operationId: ListAssociatedApprovalRuleTemplatesForRepository
@@ -2144,10 +2168,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryOutput'
+                $ref: '#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay'
       x-stackql-resource: associated_approval_rule_templates_for_repositories
       x-stackql-method: list_associated_approval_rule_templates_for_repository
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "approvalRuleTemplateNames" -}}{"line_items": [{{- if eq (kindOf $lst)
+        "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"approval_rule_template_name": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]}'
   /ListBranches:
     post:
       operationId: ListBranches
@@ -2183,11 +2213,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListBranchesOutput'
+                $ref: '#/components/schemas/ListBranchesOutputDisplay'
       x-stackql-resource: branches
       x-stackql-method: list_branches
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.branches
+      x-stackql-responseEnvelope: ListBranchesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "branches" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"branche": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListFileCommitHistory:
     post:
       operationId: ListFileCommitHistory
@@ -2286,11 +2324,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPullRequestsOutput'
+                $ref: '#/components/schemas/ListPullRequestsOutputDisplay'
       x-stackql-resource: pull_requests
       x-stackql-method: list_pull_requests
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.pullRequestIds
+      x-stackql-responseEnvelope: ListPullRequestsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "pullRequestIds" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pull_request_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRepositories:
     post:
       operationId: ListRepositories
@@ -2334,6 +2380,9 @@ paths:
       x-stackql-method: list_repositories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.repositories
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRepositoriesForApprovalRuleTemplate:
     post:
       operationId: ListRepositoriesForApprovalRuleTemplate
@@ -2373,10 +2422,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutput'
+                $ref: '#/components/schemas/ListRepositoriesForApprovalRuleTemplateOutputDisplay'
       x-stackql-resource: repositories_for_approval_rule_templates
       x-stackql-method: list_repositories_for_approval_rule_template
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListRepositoriesForApprovalRuleTemplateOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "repositoryNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"repository_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2415,7 +2469,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /MergeBranchesByFastForward:
@@ -2464,7 +2518,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeBranchesByFastForwardOutput'
-      x-stackql-resource: merge_branches_by_fast_forward
+      x-stackql-resource: repositories
       x-stackql-method: merge_branches_by_fast_forward
       x-stackql-verb: EXEC
   /MergeBranchesBySquash:
@@ -2543,7 +2597,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeBranchesBySquashOutput'
-      x-stackql-resource: merge_branches_by_squash
+      x-stackql-resource: repositories
       x-stackql-method: merge_branches_by_squash
       x-stackql-verb: EXEC
   /MergeBranchesByThreeWay:
@@ -2621,7 +2675,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeBranchesByThreeWayOutput'
-      x-stackql-resource: merge_branches_by_three_way
+      x-stackql-resource: repositories
       x-stackql-method: merge_branches_by_three_way
       x-stackql-verb: EXEC
   /MergePullRequestByFastForward:
@@ -2668,7 +2722,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergePullRequestByFastForwardOutput'
-      x-stackql-resource: merge_pull_request_by_fast_forward
+      x-stackql-resource: pull_requests
       x-stackql-method: merge_pull_request_by_fast_forward
       x-stackql-verb: EXEC
   /MergePullRequestBySquash:
@@ -2743,7 +2797,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergePullRequestBySquashOutput'
-      x-stackql-resource: merge_pull_request_by_squash
+      x-stackql-resource: pull_requests
       x-stackql-method: merge_pull_request_by_squash
       x-stackql-verb: EXEC
   /MergePullRequestByThreeWay:
@@ -2819,7 +2873,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergePullRequestByThreeWayOutput'
-      x-stackql-resource: merge_pull_request_by_three_way
+      x-stackql-resource: pull_requests
       x-stackql-method: merge_pull_request_by_three_way
       x-stackql-verb: EXEC
   /OverridePullRequestApprovalRules:
@@ -2863,7 +2917,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: override_pull_request_approval_rules
+      x-stackql-resource: pull_requests
       x-stackql-method: override_pull_request_approval_rules
       x-stackql-verb: EXEC
   /PostCommentForComparedCommit:
@@ -2919,7 +2973,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostCommentForComparedCommitOutput'
-      x-stackql-resource: post_comment_for_compared_commit
+      x-stackql-resource: repositories
       x-stackql-method: post_comment_for_compared_commit
       x-stackql-verb: EXEC
   /PostCommentForPullRequest:
@@ -2983,7 +3037,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PostCommentForPullRequestOutput'
-      x-stackql-resource: post_comment_for_pull_request
+      x-stackql-resource: pull_requests
       x-stackql-method: post_comment_for_pull_request
       x-stackql-verb: EXEC
   /PostCommentReply:
@@ -3217,7 +3271,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestRepositoryTriggers:
@@ -3296,7 +3350,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateApprovalRuleTemplateContent:
@@ -3342,7 +3396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateApprovalRuleTemplateContentOutput'
-      x-stackql-resource: approval_rule_template_contents
+      x-stackql-resource: approval_rule_templates
       x-stackql-method: update_approval_rule_template_content
       x-stackql-verb: UPDATE
   /UpdateApprovalRuleTemplateDescription:
@@ -3382,7 +3436,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateApprovalRuleTemplateDescriptionOutput'
-      x-stackql-resource: approval_rule_template_descriptions
+      x-stackql-resource: approval_rule_templates
       x-stackql-method: update_approval_rule_template_description
       x-stackql-verb: UPDATE
   /UpdateApprovalRuleTemplateName:
@@ -3422,7 +3476,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateApprovalRuleTemplateNameOutput'
-      x-stackql-resource: approval_rule_template_names
+      x-stackql-resource: approval_rule_templates
       x-stackql-method: update_approval_rule_template_name
       x-stackql-verb: UPDATE
   /UpdateComment:
@@ -3501,7 +3555,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: default_branches
+      x-stackql-resource: branches
       x-stackql-method: update_default_branch
       x-stackql-verb: UPDATE
   /UpdatePullRequestApprovalRuleContent:
@@ -3561,7 +3615,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePullRequestApprovalRuleContentOutput'
-      x-stackql-resource: pull_request_approval_rule_contents
+      x-stackql-resource: pull_requests
       x-stackql-method: update_pull_request_approval_rule_content
       x-stackql-verb: UPDATE
   /UpdatePullRequestApprovalState:
@@ -3643,7 +3697,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePullRequestDescriptionOutput'
-      x-stackql-resource: pull_request_descriptions
+      x-stackql-resource: pull_requests
       x-stackql-method: update_pull_request_description
       x-stackql-verb: UPDATE
   /UpdatePullRequestStatus:
@@ -3684,7 +3738,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePullRequestStatusOutput'
-      x-stackql-resource: pull_request_status
+      x-stackql-resource: pull_requests
       x-stackql-method: update_pull_request_status
       x-stackql-verb: UPDATE
   /UpdatePullRequestTitle:
@@ -3724,7 +3778,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePullRequestTitleOutput'
-      x-stackql-resource: pull_request_titles
+      x-stackql-resource: pull_requests
       x-stackql-method: update_pull_request_title
       x-stackql-verb: UPDATE
   /UpdateRepositoryDescription:
@@ -3763,7 +3817,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: repository_descriptions
+      x-stackql-resource: repositories
       x-stackql-method: update_repository_description
       x-stackql-verb: UPDATE
   /UpdateRepositoryEncryptionKey:
@@ -3806,7 +3860,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRepositoryEncryptionKeyOutput'
-      x-stackql-resource: repository_encryption_keys
+      x-stackql-resource: repositories
       x-stackql-method: update_repository_encryption_key
       x-stackql-verb: UPDATE
   /UpdateRepositoryName:
@@ -3845,7 +3899,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: repository_names
+      x-stackql-resource: repositories
       x-stackql-method: update_repository_name
       x-stackql-verb: UPDATE
 components:
@@ -5796,39 +5850,46 @@ components:
       - updateReference
       - createReference
       - deleteReference
-    ListApprovalRuleTemplatesOutput:
+    ListApprovalRuleTemplatesRowDisplay:
       type: object
       properties:
-        approvalRuleTemplateNames:
-          $ref: '#/components/schemas/ApprovalRuleTemplateNameList'
+        approval_rule_template_name:
+          type: string
           description: The names of all the approval rule templates found in the Amazon Web Services Region for your Amazon
             Web Services account.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: An enumeration token that allows the operation to batch the next results of the operation.
-    ApprovalRuleTemplateNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ApprovalRuleTemplateName'
-    ListAssociatedApprovalRuleTemplatesForRepositoryOutput:
+    ListApprovalRuleTemplatesOutputDisplay:
       type: object
       properties:
-        approvalRuleTemplateNames:
-          $ref: '#/components/schemas/ApprovalRuleTemplateNameList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListApprovalRuleTemplatesRowDisplay'
+    ListAssociatedApprovalRuleTemplatesForRepositoryRowDisplay:
+      type: object
+      properties:
+        approval_rule_template_name:
+          type: string
           description: The names of all approval rule templates associated with the repository.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: An enumeration token that allows the operation to batch the next results of the operation.
-    ListBranchesOutput:
-      description: Represents the output of a list branches operation.
+    ListAssociatedApprovalRuleTemplatesForRepositoryOutputDisplay:
       type: object
       properties:
-        branches:
-          $ref: '#/components/schemas/BranchNameList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssociatedApprovalRuleTemplatesForRepositoryRowDisplay'
+    ListBranchesRowDisplay:
+      type: object
+      properties:
+        branche:
+          type: string
           description: The list of branch names.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: An enumeration token that returns the batch of the results.
+    ListBranchesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListBranchesRowDisplay'
     ListFileCommitHistoryResponse:
       type: object
       properties:
@@ -5866,21 +5927,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/RevisionId'
-    ListPullRequestsOutput:
+    ListPullRequestsRowDisplay:
       type: object
       properties:
-        pullRequestIds:
-          $ref: '#/components/schemas/PullRequestIdList'
+        pull_request_id:
+          type: string
           description: The system-generated IDs of the pull requests.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: An enumeration token that allows the operation to batch the next results of the operation.
-      required:
-      - pullRequestIds
-    PullRequestIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PullRequestId'
+    ListPullRequestsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPullRequestsRowDisplay'
     SortByEnum:
       type: string
       enum:
@@ -5917,15 +5976,19 @@ components:
         repositoryId:
           $ref: '#/components/schemas/RepositoryId'
           description: The ID associated with the repository.
-    ListRepositoriesForApprovalRuleTemplateOutput:
+    ListRepositoriesForApprovalRuleTemplateRowDisplay:
       type: object
       properties:
-        repositoryNames:
-          $ref: '#/components/schemas/RepositoryNameList'
+        repository_name:
+          type: string
           description: A list of repository names that are associated with the specified approval rule template.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: An enumeration token that allows the operation to batch the next results of the operation.
+    ListRepositoriesForApprovalRuleTemplateOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListRepositoriesForApprovalRuleTemplateRowDisplay'
     ResourceArn:
       type: string
     ListTagsForResourceOutput:

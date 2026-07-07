@@ -234,6 +234,9 @@ paths:
       x-stackql-method: list_retained_messages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.retainedTopics
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /topics/{topic}:
     post:
       operationId: Publish

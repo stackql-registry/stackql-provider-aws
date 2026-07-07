@@ -6040,6 +6040,14 @@ components:
             objectKey: $.invocationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/invocations/methods/list_invocations"
@@ -6072,6 +6080,14 @@ components:
             objectKey: $.sessionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_session:
           operation:
             $ref: "#/paths/~1sessions~1{session_identifier}~1/delete"
@@ -6087,6 +6103,34 @@ components:
         update_session:
           operation:
             $ref: "#/paths/~1sessions~1{session_identifier}~1/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        end_session:
+          operation:
+            $ref: "#/paths/~1sessions~1{session_identifier}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        invoke_agent:
+          operation:
+            $ref: "#/paths/~1agents~1{agent_id}~1agentAliases~1{agent_alias_id}~1sessions~1{session_id}~1text/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        invoke_inline_agent:
+          operation:
+            $ref: "#/paths/~1agents~1{session_id}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6127,6 +6171,14 @@ components:
             objectKey: $.memoryContents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agent_memories/methods/get_agent_memory"
@@ -6171,6 +6223,14 @@ components:
             objectKey: $.flowExecutionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_executions/methods/get_flow_execution"
@@ -6189,6 +6249,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.invocationStep
           request:
             nativeCasing: pascal
           config:
@@ -6204,6 +6265,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_invocation_step:
@@ -6240,16 +6308,24 @@ components:
             objectKey: $.flowExecutionEvents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_execution_events/methods/list_flow_execution_events"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.bedrock_agent_runtime.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.bedrock_agent_runtime.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6257,17 +6333,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.bedrock_agent_runtime.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -6288,9 +6353,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

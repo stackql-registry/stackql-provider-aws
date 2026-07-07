@@ -45,7 +45,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAwsLogSourceResponse'
-      x-stackql-resource: aws_log_sources
+      x-stackql-resource: log_sources
       x-stackql-method: create_aws_log_source
       x-stackql-verb: INSERT
   /v1/datalake/logsources/custom:
@@ -82,7 +82,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCustomLogSourceResponse'
-      x-stackql-resource: custom_log_sources
+      x-stackql-resource: log_sources
       x-stackql-method: create_custom_log_source
       x-stackql-verb: INSERT
   /v1/datalake:
@@ -363,6 +363,9 @@ paths:
       x-stackql-method: list_subscribers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.subscribers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/subscribers/{subscriber_id}/notification:
     post:
       operationId: CreateSubscriberNotification
@@ -393,7 +396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSubscriberNotificationResponse'
-      x-stackql-resource: subscriber_notifications
+      x-stackql-resource: subscribers
       x-stackql-method: create_subscriber_notification
       x-stackql-verb: INSERT
     delete:
@@ -413,7 +416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteSubscriberNotificationResponse'
-      x-stackql-resource: subscriber_notifications
+      x-stackql-resource: subscribers
       x-stackql-method: delete_subscriber_notification
       x-stackql-verb: DELETE
     put:
@@ -445,7 +448,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSubscriberNotificationResponse'
-      x-stackql-resource: subscriber_notifications
+      x-stackql-resource: subscribers
       x-stackql-method: update_subscriber_notification
       x-stackql-verb: UPDATE
   /v1/datalake/logsources/aws/delete:
@@ -475,7 +478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAwsLogSourceResponse'
-      x-stackql-resource: aws_log_sources
+      x-stackql-resource: log_sources
       x-stackql-method: delete_aws_log_source
       x-stackql-verb: DELETE
   /v1/datalake/logsources/custom/{source_name}:
@@ -504,7 +507,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteCustomLogSourceResponse'
-      x-stackql-resource: custom_log_sources
+      x-stackql-resource: log_sources
       x-stackql-method: delete_custom_log_source
       x-stackql-verb: DELETE
   /v1/datalake/delete:
@@ -610,6 +613,7 @@ paths:
       x-stackql-resource: subscribers
       x-stackql-method: get_subscriber
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.subscriber
     put:
       operationId: UpdateSubscriber
       description: Updates an existing subscription for the given Amazon Security Lake account ID. You can update a subscriber
@@ -660,7 +664,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterDataLakeDelegatedAdministratorResponse'
-      x-stackql-resource: data_lake_delegated_administrators
+      x-stackql-resource: data_lakes
       x-stackql-method: deregister_data_lake_delegated_administrator
       x-stackql-verb: DELETE
     post:
@@ -687,7 +691,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterDataLakeDelegatedAdministratorResponse'
-      x-stackql-resource: data_lake_delegated_administrators
+      x-stackql-resource: data_lakes
       x-stackql-method: register_data_lake_delegated_administrator
       x-stackql-verb: INSERT
   /v1/datalake/sources:
@@ -720,6 +724,9 @@ paths:
       x-stackql-method: get_data_lake_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataLakeSources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/datalake/exceptions:
     post:
       operationId: ListDataLakeExceptions
@@ -749,6 +756,9 @@ paths:
       x-stackql-method: list_data_lake_exceptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.exceptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/datalakes:
     get:
       operationId: ListDataLakes
@@ -804,6 +814,9 @@ paths:
       x-stackql-method: list_log_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -824,7 +837,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -861,7 +874,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -889,7 +902,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

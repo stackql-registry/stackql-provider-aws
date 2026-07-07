@@ -4725,10 +4725,10 @@ components:
           $ref: "#/components/schemas/PipelineDeclaration"
           description: The structure of the updated pipeline.
   x-stackQL-resources:
-    custom_action_types:
-      id: aws.codepipeline.custom_action_types
-      name: custom_action_types
-      title: custom_action_types
+    action_types:
+      id: aws.codepipeline.action_types
+      name: action_types
+      title: action_types
       methods:
         create_custom_action_type:
           operation:
@@ -4755,13 +4755,89 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_action_type:
+          operation:
+            $ref: "#/paths/~1GetActionType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.actionType
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_action_types:
+          operation:
+            $ref: "#/paths/~1ListActionTypes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.actionTypes
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        poll_for_jobs:
+          operation:
+            $ref: "#/paths/~1PollForJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        poll_for_third_party_jobs:
+          operation:
+            $ref: "#/paths/~1PollForThirdPartyJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_action_type:
+          operation:
+            $ref: "#/paths/~1UpdateActionType/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/action_types/methods/get_action_type"
+          - $ref: "#/components/x-stackQL-resources/action_types/methods/list_action_types"
         insert:
-          - $ref: "#/components/x-stackQL-resources/custom_action_types/methods/create_custom_action_type"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/action_types/methods/create_custom_action_type"
+        update:
+          - $ref: "#/components/x-stackQL-resources/action_types/methods/update_action_type"
         delete:
-          - $ref: "#/components/x-stackQL-resources/custom_action_types/methods/delete_custom_action_type"
+          - $ref: "#/components/x-stackQL-resources/action_types/methods/delete_custom_action_type"
     pipelines:
       id: aws.codepipeline.pipelines
       name: pipelines
@@ -4783,6 +4859,30 @@ components:
         delete_pipeline:
           operation:
             $ref: "#/paths/~1DeletePipeline/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_stage_transition:
+          operation:
+            $ref: "#/paths/~1DisableStageTransition/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_stage_transition:
+          operation:
+            $ref: "#/paths/~1EnableStageTransition/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -4817,6 +4917,78 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        put_action_revision:
+          operation:
+            $ref: "#/paths/~1PutActionRevision/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_approval_result:
+          operation:
+            $ref: "#/paths/~1PutApprovalResult/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        rollback_stage:
+          operation:
+            $ref: "#/paths/~1RollbackStage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_pipeline_execution:
+          operation:
+            $ref: "#/paths/~1StartPipelineExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_pipeline_execution:
+          operation:
+            $ref: "#/paths/~1StopPipelineExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_pipeline:
@@ -4840,6 +5012,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/pipelines/methods/create_pipeline"
         update:
           - $ref: "#/components/x-stackQL-resources/pipelines/methods/update_pipeline"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/pipelines/methods/put_approval_result"
+          - $ref: "#/components/x-stackQL-resources/pipelines/methods/put_action_revision"
         delete:
           - $ref: "#/components/x-stackQL-resources/pipelines/methods/delete_pipeline"
     webhooks:
@@ -4850,6 +5025,19 @@ components:
         delete_webhook:
           operation:
             $ref: "#/paths/~1DeleteWebhook/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deregister_webhook_with_third_party:
+          operation:
+            $ref: "#/paths/~1DeregisterWebhookWithThirdParty/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4872,38 +5060,18 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_webhook:
           operation:
             $ref: "#/paths/~1PutWebhook/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/webhooks/methods/list_webhooks"
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/webhooks/methods/put_webhook"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/webhooks/methods/delete_webhook"
-    webhook_with_third_parties:
-      id: aws.codepipeline.webhook_with_third_parties
-      name: webhook_with_third_parties
-      title: webhook_with_third_parties
-      methods:
-        deregister_webhook_with_third_party:
-          operation:
-            $ref: "#/paths/~1DeregisterWebhookWithThirdParty/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4928,64 +5096,16 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/webhook_with_third_parties/methods/register_webhook_with_third_party"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/webhook_with_third_parties/methods/deregister_webhook_with_third_party"
-    action_types:
-      id: aws.codepipeline.action_types
-      name: action_types
-      title: action_types
-      methods:
-        get_action_type:
-          operation:
-            $ref: "#/paths/~1GetActionType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_action_types:
-          operation:
-            $ref: "#/paths/~1ListActionTypes/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.actionTypes
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_action_type:
-          operation:
-            $ref: "#/paths/~1UpdateActionType/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/action_types/methods/get_action_type"
-          - $ref: "#/components/x-stackQL-resources/action_types/methods/list_action_types"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/action_types/methods/update_action_type"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/webhooks/methods/list_webhooks"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/webhooks/methods/register_webhook_with_third_party"
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/webhooks/methods/put_webhook"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/webhooks/methods/delete_webhook"
+          - $ref: "#/components/x-stackQL-resources/webhooks/methods/deregister_webhook_with_third_party"
     job_details:
       id: aws.codepipeline.job_details
       name: job_details
@@ -4997,6 +5117,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.jobDetails
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5021,6 +5142,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.pipelineExecution
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5035,6 +5157,38 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.pipelineExecutionSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        override_stage_condition:
+          operation:
+            $ref: "#/paths/~1OverrideStageCondition/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        retry_stage_execution:
+          operation:
+            $ref: "#/paths/~1RetryStageExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5084,6 +5238,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.jobDetails
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5114,6 +5269,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5139,6 +5301,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5164,6 +5333,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5196,10 +5372,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.codepipeline.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.codepipeline.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5213,63 +5389,48 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1UntagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
-        update: []
-        delete: []
-    action_revisions:
-      id: aws.codepipeline.action_revisions
-      name: action_revisions
-      title: action_revisions
-      methods:
-        put_action_revision:
-          operation:
-            $ref: "#/paths/~1PutActionRevision/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/action_revisions/methods/put_action_revision"
-        delete: []
-    approval_results:
-      id: aws.codepipeline.approval_results
-      name: approval_results
-      title: approval_results
-      methods:
-        put_approval_result:
-          operation:
-            $ref: "#/paths/~1PutApprovalResult/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/approval_results/methods/put_approval_result"
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     job_failure_results:
       id: aws.codepipeline.job_failure_results
@@ -5366,42 +5527,4 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/third_party_job_success_results/methods/put_third_party_job_success_result"
-        delete: []
-    resources:
-      id: aws.codepipeline.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1TagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1UntagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
         delete: []

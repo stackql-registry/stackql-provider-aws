@@ -2655,8 +2655,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -2669,11 +2667,28 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags"
         delete: []
-    load_balancer_to_subnets:
-      id: aws.elb.load_balancer_to_subnets
-      name: load_balancer_to_subnets
-      title: load_balancer_to_subnets
+    load_balancers:
+      id: aws.elb.load_balancers
+      name: load_balancers
+      title: load_balancers
       methods:
+        apply_security_groups_to_load_balancer:
+          operation:
+            $ref: "#/paths/~1?Action=ApplySecurityGroupsToLoadBalancer&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ApplySecurityGroupsToLoadBalancerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         attach_load_balancer_to_subnets:
           operation:
             $ref: "#/paths/~1?Action=AttachLoadBalancerToSubnets&Version=2012-06-01/get"
@@ -2693,17 +2708,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_to_subnets/methods/attach_load_balancer_to_subnets"
-        delete: []
-    app_cookie_stickiness_policies:
-      id: aws.elb.app_cookie_stickiness_policies
-      name: app_cookie_stickiness_policies
-      title: app_cookie_stickiness_policies
-      methods:
+        configure_health_check:
+          operation:
+            $ref: "#/paths/~1?Action=ConfigureHealthCheck&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ConfigureHealthCheckOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         create_app_cookie_stickiness_policy:
           operation:
             $ref: "#/paths/~1?Action=CreateAppCookieStickinessPolicy&Version=2012-06-01/get"
@@ -2723,17 +2744,6 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/app_cookie_stickiness_policies/methods/create_app_cookie_stickiness_policy"
-        update: []
-        delete: []
-    lb_cookie_stickiness_policies:
-      id: aws.elb.lb_cookie_stickiness_policies
-      name: lb_cookie_stickiness_policies
-      title: lb_cookie_stickiness_policies
-      methods:
         create_lb_cookie_stickiness_policy:
           operation:
             $ref: "#/paths/~1?Action=CreateLBCookieStickinessPolicy&Version=2012-06-01/get"
@@ -2753,17 +2763,6 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/lb_cookie_stickiness_policies/methods/create_lb_cookie_stickiness_policy"
-        update: []
-        delete: []
-    load_balancers:
-      id: aws.elb.load_balancers
-      name: load_balancers
-      title: load_balancers
-      methods:
         create_load_balancer:
           operation:
             $ref: "#/paths/~1?Action=CreateLoadBalancer&Version=2012-06-01/get"
@@ -2783,57 +2782,6 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-        delete_load_balancer:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteLoadBalancer&Version=2012-06-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_load_balancers:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeLoadBalancers&Version=2012-06-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeLoadBalancersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/describe_load_balancers"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_load_balancer"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/delete_load_balancer"
-    load_balancer_listeners:
-      id: aws.elb.load_balancer_listeners
-      name: load_balancer_listeners
-      title: load_balancer_listeners
-      methods:
         create_load_balancer_listeners:
           operation:
             $ref: "#/paths/~1?Action=CreateLoadBalancerListeners&Version=2012-06-01/get"
@@ -2843,6 +2791,23 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/CreateLoadBalancerListenersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_load_balancer:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteLoadBalancer&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteLoadBalancerOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -2872,13 +2837,145 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        deregister_instances_from_load_balancer:
+          operation:
+            $ref: "#/paths/~1?Action=DeregisterInstancesFromLoadBalancer&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeregisterInstancesFromLoadBalancerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_load_balancers:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeLoadBalancers&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeLoadBalancersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        detach_load_balancer_from_subnets:
+          operation:
+            $ref: "#/paths/~1?Action=DetachLoadBalancerFromSubnets&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DetachLoadBalancerFromSubnetsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        disable_availability_zones_for_load_balancer:
+          operation:
+            $ref: "#/paths/~1?Action=DisableAvailabilityZonesForLoadBalancer&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableAvailabilityZonesForLoadBalancerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_availability_zones_for_load_balancer:
+          operation:
+            $ref: "#/paths/~1?Action=EnableAvailabilityZonesForLoadBalancer&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableAvailabilityZonesForLoadBalancerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        register_instances_with_load_balancer:
+          operation:
+            $ref: "#/paths/~1?Action=RegisterInstancesWithLoadBalancer&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RegisterInstancesWithLoadBalancerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_load_balancer_listener_ssl_certificate:
+          operation:
+            $ref: "#/paths/~1?Action=SetLoadBalancerListenerSSLCertificate&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/describe_load_balancers"
         insert:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_listeners/methods/create_load_balancer_listeners"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_app_cookie_stickiness_policy"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_lb_cookie_stickiness_policy"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_load_balancer"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/register_instances_with_load_balancer"
+        update:
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/set_load_balancer_listener_ssl_certificate"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/attach_load_balancer_to_subnets"
         delete:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_listeners/methods/delete_load_balancer_listeners"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/delete_load_balancer_listeners"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/delete_load_balancer"
     load_balancer_policies:
       id: aws.elb.load_balancer_policies
       name: load_balancer_policies
@@ -2941,28 +3038,34 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/describe_load_balancer_policies"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/create_load_balancer_policy"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/delete_load_balancer_policy"
-    instances_from_load_balancers:
-      id: aws.elb.instances_from_load_balancers
-      name: instances_from_load_balancers
-      title: instances_from_load_balancers
-      methods:
-        deregister_instances_from_load_balancer:
+        set_load_balancer_policies_for_backend_server:
           operation:
-            $ref: "#/paths/~1?Action=DeregisterInstancesFromLoadBalancer&Version=2012-06-01/get"
+            $ref: "#/paths/~1?Action=SetLoadBalancerPoliciesForBackendServer&Version=2012-06-01/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/DeregisterInstancesFromLoadBalancerOutputDisplay"
+              $ref: "#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_load_balancer_policies_of_listener:
+          operation:
+            $ref: "#/paths/~1?Action=SetLoadBalancerPoliciesOfListener&Version=2012-06-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -2974,11 +3077,15 @@ components:
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
-        insert: []
-        update: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/describe_load_balancer_policies"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/create_load_balancer_policy"
+        update:
+          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/set_load_balancer_policies_for_backend_server"
+          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/set_load_balancer_policies_of_listener"
         delete:
-          - $ref: "#/components/x-stackQL-resources/instances_from_load_balancers/methods/deregister_instances_from_load_balancer"
+          - $ref: "#/components/x-stackQL-resources/load_balancer_policies/methods/delete_load_balancer_policy"
     account_limits:
       id: aws.elb.account_limits
       name: account_limits
@@ -3118,154 +3225,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/load_balancer_policy_types/methods/describe_load_balancer_policy_types"
         insert: []
         update: []
-        delete: []
-    load_balancer_from_subnets:
-      id: aws.elb.load_balancer_from_subnets
-      name: load_balancer_from_subnets
-      title: load_balancer_from_subnets
-      methods:
-        detach_load_balancer_from_subnets:
-          operation:
-            $ref: "#/paths/~1?Action=DetachLoadBalancerFromSubnets&Version=2012-06-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DetachLoadBalancerFromSubnetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_from_subnets/methods/detach_load_balancer_from_subnets"
-        delete: []
-    instances_with_load_balancers:
-      id: aws.elb.instances_with_load_balancers
-      name: instances_with_load_balancers
-      title: instances_with_load_balancers
-      methods:
-        register_instances_with_load_balancer:
-          operation:
-            $ref: "#/paths/~1?Action=RegisterInstancesWithLoadBalancer&Version=2012-06-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RegisterInstancesWithLoadBalancerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/instances_with_load_balancers/methods/register_instances_with_load_balancer"
-        update: []
-        delete: []
-    load_balancer_listener_ssl_certificates:
-      id: aws.elb.load_balancer_listener_ssl_certificates
-      name: load_balancer_listener_ssl_certificates
-      title: load_balancer_listener_ssl_certificates
-      methods:
-        set_load_balancer_listener_ssl_certificate:
-          operation:
-            $ref: "#/paths/~1?Action=SetLoadBalancerListenerSSLCertificate&Version=2012-06-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_listener_ssl_certificates/methods/set_load_balancer_listener_ssl_certificate"
-        delete: []
-    load_balancer_policies_for_backend_servers:
-      id: aws.elb.load_balancer_policies_for_backend_servers
-      name: load_balancer_policies_for_backend_servers
-      title: load_balancer_policies_for_backend_servers
-      methods:
-        set_load_balancer_policies_for_backend_server:
-          operation:
-            $ref: "#/paths/~1?Action=SetLoadBalancerPoliciesForBackendServer&Version=2012-06-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_policies_for_backend_servers/methods/set_load_balancer_policies_for_backend_server"
-        delete: []
-    load_balancer_policies_of_listeners:
-      id: aws.elb.load_balancer_policies_of_listeners
-      name: load_balancer_policies_of_listeners
-      title: load_balancer_policies_of_listeners
-      methods:
-        set_load_balancer_policies_of_listener:
-          operation:
-            $ref: "#/paths/~1?Action=SetLoadBalancerPoliciesOfListener&Version=2012-06-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_policies_of_listeners/methods/set_load_balancer_policies_of_listener"
         delete: []

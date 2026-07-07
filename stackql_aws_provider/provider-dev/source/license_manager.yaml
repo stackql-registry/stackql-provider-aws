@@ -51,7 +51,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptGrantResponse'
-      x-stackql-resource: grant
+      x-stackql-resource: grants
       x-stackql-method: accept_grant
       x-stackql-verb: EXEC
   /CheckInLicense:
@@ -145,7 +145,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckoutBorrowLicenseResponse'
-      x-stackql-resource: checkout_borrow_license
+      x-stackql-resource: licenses
       x-stackql-method: checkout_borrow_license
       x-stackql-verb: EXEC
   /CheckoutLicense:
@@ -327,7 +327,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateGrantVersionResponse'
-      x-stackql-resource: grant_versions
+      x-stackql-resource: grants
       x-stackql-method: create_grant_version
       x-stackql-verb: INSERT
   /CreateLicense:
@@ -635,7 +635,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateLicenseConversionTaskForResourceResponse'
-      x-stackql-resource: license_conversion_task_for_resources
+      x-stackql-resource: license_conversion_tasks
       x-stackql-method: create_license_conversion_task_for_resource
       x-stackql-verb: INSERT
   /CreateLicenseManagerReportGenerator:
@@ -1212,6 +1212,7 @@ paths:
       x-stackql-resource: grants
       x-stackql-method: get_grant
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Grant
   /GetLicense:
     post:
       operationId: GetLicense
@@ -1251,6 +1252,7 @@ paths:
       x-stackql-resource: licenses
       x-stackql-method: get_license
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.License
   /GetLicenseAssetGroup:
     post:
       operationId: GetLicenseAssetGroup
@@ -1287,6 +1289,7 @@ paths:
       x-stackql-resource: license_asset_groups
       x-stackql-method: get_license_asset_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LicenseAssetGroup
   /GetLicenseAssetRuleset:
     post:
       operationId: GetLicenseAssetRuleset
@@ -1323,6 +1326,7 @@ paths:
       x-stackql-resource: license_asset_rulesets
       x-stackql-method: get_license_asset_ruleset
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LicenseAssetRuleset
   /GetLicenseConfiguration:
     post:
       operationId: GetLicenseConfiguration
@@ -1431,6 +1435,7 @@ paths:
       x-stackql-resource: license_manager_report_generators
       x-stackql-method: get_license_manager_report_generator
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ReportGenerator
   /GetLicenseUsage:
     post:
       operationId: GetLicenseUsage
@@ -1467,6 +1472,7 @@ paths:
       x-stackql-resource: license_usages
       x-stackql-method: get_license_usage
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LicenseUsage
   /GetServiceSettings:
     post:
       operationId: GetServiceSettings
@@ -1588,6 +1594,9 @@ paths:
       x-stackql-method: list_associations_for_license_configuration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseConfigurationAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDistributedGrants:
     post:
       operationId: ListDistributedGrants
@@ -1804,6 +1813,9 @@ paths:
       x-stackql-method: list_license_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLicenseConfigurationsForOrganization:
     post:
       operationId: ListLicenseConfigurationsForOrganization
@@ -1970,6 +1982,9 @@ paths:
       x-stackql-method: list_license_specifications_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseSpecifications
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLicenseVersions:
     post:
       operationId: ListLicenseVersions
@@ -2278,6 +2293,9 @@ paths:
       x-stackql-method: list_resource_inventory
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceInventoryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2312,7 +2330,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTokens:
@@ -2408,6 +2426,9 @@ paths:
       x-stackql-method: list_usage_for_license_configuration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LicenseConfigurationUsageList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /RejectGrant:
     post:
       operationId: RejectGrant
@@ -2441,7 +2462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectGrantResponse'
-      x-stackql-resource: grant
+      x-stackql-resource: grants
       x-stackql-method: reject_grant
       x-stackql-verb: EXEC
   /TagResource:
@@ -2486,7 +2507,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2526,7 +2547,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateLicenseAssetGroup:

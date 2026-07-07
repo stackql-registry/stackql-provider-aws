@@ -51,8 +51,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
                   description: The tags to add to the namespace. Each tag consists of a key and an optional value that you define. Tags keys can be up to 128 characters in length, and tag values can be up to 256 characters in length.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -100,7 +98,6 @@ paths:
                   $ref: "#/components/schemas/PrivateDnsNamespaceProperties"
                   description: Properties for the private DNS namespace.
               required:
-                - Name
                 - Vpc
       responses:
         "200":
@@ -145,8 +142,6 @@ paths:
                 Properties:
                   $ref: "#/components/schemas/PublicDnsNamespaceProperties"
                   description: Properties for the public DNS namespace.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -202,8 +197,6 @@ paths:
                 Type:
                   $ref: "#/components/schemas/ServiceTypeOption"
                   description: If present, specifies that the service instances are only discoverable using the DiscoverInstances API operation. No DNS records is registered for the service instances. The only valid value is HTTP.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -235,8 +228,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/Arn"
                   description: The ID or Amazon Resource Name (ARN) of the namespace that you want to delete.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -268,8 +259,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/Arn"
                   description: The ID or Amazon Resource Name (ARN) of the service that you want to delete. If the namespace associated with the service is shared with your Amazon Web Services account, specify the service ARN. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -546,8 +535,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/Arn"
                   description: The ID or Amazon Resource Name (ARN) of the namespace that you want to get information about. For namespaces shared with your Amazon Web Services account, specify the namespace ARN. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -615,8 +602,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/Arn"
                   description: The ID or Amazon Resource Name (ARN) of the service that you want to get settings for. For services created by consumers in a shared namespace, specify the service ARN. For more information about shared namespaces, see Cross-account Cloud Map namespace sharing in the Cloud Map Developer Guide.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -876,7 +861,6 @@ paths:
               required:
                 - ServiceId
                 - InstanceId
-                - Attributes
       responses:
         "200":
           description: Success
@@ -913,7 +897,6 @@ paths:
                   description: The tags to add to the specified resource. Specifying the tag key is required. You can set the value of a tag to an empty string, but you can't set the value of a tag to null.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -988,9 +971,6 @@ paths:
                 Namespace:
                   $ref: "#/components/schemas/HttpNamespaceChange"
                   description: Updated properties for the the HTTP namespace.
-              required:
-                - Id
-                - Namespace
       responses:
         "200":
           description: Success
@@ -1065,9 +1045,6 @@ paths:
                 Namespace:
                   $ref: "#/components/schemas/PrivateDnsNamespaceChange"
                   description: Updated properties for the private DNS namespace.
-              required:
-                - Id
-                - Namespace
       responses:
         "200":
           description: Success
@@ -1105,9 +1082,6 @@ paths:
                 Namespace:
                   $ref: "#/components/schemas/PublicDnsNamespaceChange"
                   description: Updated properties for the public DNS namespace.
-              required:
-                - Id
-                - Namespace
       responses:
         "200":
           description: Success
@@ -1142,9 +1116,6 @@ paths:
                 Service:
                   $ref: "#/components/schemas/ServiceChange"
                   description: A complex type that contains the new settings for the service. You can specify a maximum of 30 attributes (key-value pairs).
-              required:
-                - Id
-                - Service
       responses:
         "200":
           description: Success
@@ -2203,10 +2174,10 @@ components:
     UpdateServiceAttributesResponse:
       type: object
   x-stackQL-resources:
-    http_namespaces:
-      id: aws.servicediscovery.http_namespaces
-      name: http_namespaces
-      title: http_namespaces
+    namespaces:
+      id: aws.servicediscovery.namespaces
+      name: namespaces
+      title: namespaces
       methods:
         create_http_namespace:
           operation:
@@ -2219,6 +2190,93 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_private_dns_namespace:
+          operation:
+            $ref: "#/paths/~1CreatePrivateDnsNamespace/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_public_dns_namespace:
+          operation:
+            $ref: "#/paths/~1CreatePublicDnsNamespace/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_namespace:
+          operation:
+            $ref: "#/paths/~1DeleteNamespace/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        discover_instances_revision:
+          operation:
+            $ref: "#/paths/~1DiscoverInstancesRevision/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_namespace:
+          operation:
+            $ref: "#/paths/~1GetNamespace/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Namespace
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_namespaces:
+          operation:
+            $ref: "#/paths/~1ListNamespaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Namespaces
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_http_namespace:
@@ -2234,59 +2292,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/http_namespaces/methods/create_http_namespace"
-        update:
-          - $ref: "#/components/x-stackQL-resources/http_namespaces/methods/update_http_namespace"
-        delete: []
-    private_dns_namespaces:
-      id: aws.servicediscovery.private_dns_namespaces
-      name: private_dns_namespaces
-      title: private_dns_namespaces
-      methods:
-        create_private_dns_namespace:
-          operation:
-            $ref: "#/paths/~1CreatePrivateDnsNamespace/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         update_private_dns_namespace:
           operation:
             $ref: "#/paths/~1UpdatePrivateDnsNamespace/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/private_dns_namespaces/methods/create_private_dns_namespace"
-        update:
-          - $ref: "#/components/x-stackQL-resources/private_dns_namespaces/methods/update_private_dns_namespace"
-        delete: []
-    public_dns_namespaces:
-      id: aws.servicediscovery.public_dns_namespaces
-      name: public_dns_namespaces
-      title: public_dns_namespaces
-      methods:
-        create_public_dns_namespace:
-          operation:
-            $ref: "#/paths/~1CreatePublicDnsNamespace/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2311,12 +2319,15 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/namespaces/methods/get_namespace"
         insert:
-          - $ref: "#/components/x-stackQL-resources/public_dns_namespaces/methods/create_public_dns_namespace"
+          - $ref: "#/components/x-stackQL-resources/namespaces/methods/create_private_dns_namespace"
+          - $ref: "#/components/x-stackQL-resources/namespaces/methods/create_http_namespace"
         update:
-          - $ref: "#/components/x-stackQL-resources/public_dns_namespaces/methods/update_public_dns_namespace"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/namespaces/methods/update_http_namespace"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/namespaces/methods/delete_namespace"
     services:
       id: aws.servicediscovery.services
       name: services
@@ -2354,6 +2365,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Service
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2373,6 +2385,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_service:
@@ -2391,66 +2410,12 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/services/methods/get_service"
-          - $ref: "#/components/x-stackQL-resources/services/methods/list_services"
         insert:
           - $ref: "#/components/x-stackQL-resources/services/methods/create_service"
         update:
           - $ref: "#/components/x-stackQL-resources/services/methods/update_service"
         delete:
           - $ref: "#/components/x-stackQL-resources/services/methods/delete_service"
-    namespaces:
-      id: aws.servicediscovery.namespaces
-      name: namespaces
-      title: namespaces
-      methods:
-        delete_namespace:
-          operation:
-            $ref: "#/paths/~1DeleteNamespace/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_namespace:
-          operation:
-            $ref: "#/paths/~1GetNamespace/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_namespaces:
-          operation:
-            $ref: "#/paths/~1ListNamespaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Namespaces
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/namespaces/methods/get_namespace"
-          - $ref: "#/components/x-stackQL-resources/namespaces/methods/list_namespaces"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/namespaces/methods/delete_namespace"
     service_attributes:
       id: aws.servicediscovery.service_attributes
       name: service_attributes
@@ -2475,6 +2440,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ServiceAttributes
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2521,6 +2487,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        discover_instances:
+          operation:
+            $ref: "#/paths/~1DiscoverInstances/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_instance:
           operation:
             $ref: "#/paths/~1GetInstance/post"
@@ -2546,6 +2525,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_instance:
@@ -2561,13 +2547,26 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_instance_custom_health_status:
+          operation:
+            $ref: "#/paths/~1UpdateInstanceCustomHealthStatus/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instances/methods/get_instance"
           - $ref: "#/components/x-stackQL-resources/instances/methods/list_instances"
         insert:
           - $ref: "#/components/x-stackQL-resources/instances/methods/register_instance"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/update_instance_custom_health_status"
         delete:
           - $ref: "#/components/x-stackQL-resources/instances/methods/deregister_instance"
     instances_health_status:
@@ -2605,6 +2604,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Operation
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2624,6 +2624,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2633,10 +2640,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.servicediscovery.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.servicediscovery.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2651,17 +2658,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.servicediscovery.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2689,32 +2685,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    instance_custom_health_status:
-      id: aws.servicediscovery.instance_custom_health_status
-      name: instance_custom_health_status
-      title: instance_custom_health_status
-      methods:
-        update_instance_custom_health_status:
-          operation:
-            $ref: "#/paths/~1UpdateInstanceCustomHealthStatus/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/instance_custom_health_status/methods/update_instance_custom_health_status"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

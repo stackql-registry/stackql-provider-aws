@@ -1525,7 +1525,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DescribeApplicableIndividualAssessmentsResponse"
+                $ref: "#/components/schemas/DescribeApplicableIndividualAssessmentsOutputDisplay"
   /DescribeCertificates:
     post:
       operationId: DescribeCertificates
@@ -3225,7 +3225,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DescribeSchemasResponse"
+                $ref: "#/components/schemas/DescribeSchemasOutputDisplay"
   /DescribeTableStatistics:
     post:
       operationId: DescribeTableStatistics
@@ -7949,19 +7949,19 @@ components:
         Max:
           $ref: "#/components/schemas/Long"
           description: The maximum allowed value for the quota.
-    DescribeApplicableIndividualAssessmentsResponse:
+    DescribeApplicableIndividualAssessmentsRowDisplay:
       type: object
       properties:
-        IndividualAssessmentNames:
-          $ref: "#/components/schemas/IndividualAssessmentNameList"
+        individual_assessment_name:
+          type: string
           description: List of names for the individual assessments supported by the premigration assessment run that you start based on the specified request parameters. For more information on the available individual assessments, including compatibility with different migration task configurations, see Working with premigration assessment runs in the Database Migration Service User Guide.
-        Marker:
-          $ref: "#/components/schemas/String"
-          description: Pagination token returned for you to pass to a subsequent request. If you pass this token as the Marker value in a subsequent request, the response includes only records beyond the marker, up to the value specified in the request by MaxRecords.
-    IndividualAssessmentNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    DescribeApplicableIndividualAssessmentsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/DescribeApplicableIndividualAssessmentsRowDisplay"
     FilterList:
       type: array
       items:
@@ -9406,19 +9406,19 @@ components:
         FullLoadFinishDate:
           $ref: "#/components/schemas/TStamp"
           description: The date the replication full load was finished.
-    DescribeSchemasResponse:
+    DescribeSchemasRowDisplay:
       type: object
       properties:
-        Marker:
-          $ref: "#/components/schemas/String"
-          description: An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by MaxRecords.
-        Schemas:
-          $ref: "#/components/schemas/SchemaList"
+        schema:
+          type: string
           description: The described schema.
-    SchemaList:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    DescribeSchemasOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/DescribeSchemasRowDisplay"
     DescribeTableStatisticsResponse:
       type: object
       properties:
@@ -9757,10 +9757,10 @@ components:
           $ref: "#/components/schemas/String"
           description: A string that indicates how many event subscriptions were migrated and how many remain to be migrated.
   x-stackQL-resources:
-    tags_to_resources:
-      id: aws.dms.tags_to_resources
-      name: tags_to_resources
-      title: tags_to_resources
+    tags:
+      id: aws.dms.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_resource:
           operation:
@@ -9775,12 +9775,456 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1ListTagsForResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_tags_from_resource:
+          operation:
+            $ref: "#/paths/~1RemoveTagsFromResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_resources/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags_from_resource"
         delete: []
+    replication_instances:
+      id: aws.dms.replication_instances
+      name: replication_instances
+      title: replication_instances
+      methods:
+        apply_pending_maintenance_action:
+          operation:
+            $ref: "#/paths/~1ApplyPendingMaintenanceAction/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_replication_instance:
+          operation:
+            $ref: "#/paths/~1CreateReplicationInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_replication_instance:
+          operation:
+            $ref: "#/paths/~1DeleteReplicationInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_replication_instances:
+          operation:
+            $ref: "#/paths/~1DescribeReplicationInstances/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ReplicationInstances
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        modify_replication_instance:
+          operation:
+            $ref: "#/paths/~1ModifyReplicationInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        test_connection:
+          operation:
+            $ref: "#/paths/~1TestConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/describe_replication_instances"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/create_replication_instance"
+        update:
+          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/modify_replication_instance"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/delete_replication_instance"
+    recommendations:
+      id: aws.dms.recommendations
+      name: recommendations
+      title: recommendations
+      methods:
+        batch_start_recommendations:
+          operation:
+            $ref: "#/paths/~1BatchStartRecommendations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_recommendations:
+          operation:
+            $ref: "#/paths/~1DescribeRecommendations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_recommendations:
+          operation:
+            $ref: "#/paths/~1StartRecommendations/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/recommendations/methods/describe_recommendations"
+        insert: []
+        update: []
+        delete: []
+    metadata_models:
+      id: aws.dms.metadata_models
+      name: metadata_models
+      title: metadata_models
+      methods:
+        cancel_metadata_model_conversion:
+          operation:
+            $ref: "#/paths/~1CancelMetadataModelConversion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_metadata_model_creation:
+          operation:
+            $ref: "#/paths/~1CancelMetadataModelCreation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_metadata_model:
+          operation:
+            $ref: "#/paths/~1DescribeMetadataModel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        export_metadata_model_assessment:
+          operation:
+            $ref: "#/paths/~1ExportMetadataModelAssessment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_metadata_model_assessment:
+          operation:
+            $ref: "#/paths/~1StartMetadataModelAssessment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_metadata_model_conversion:
+          operation:
+            $ref: "#/paths/~1StartMetadataModelConversion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_metadata_model_creation:
+          operation:
+            $ref: "#/paths/~1StartMetadataModelCreation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_metadata_model_export_as_script:
+          operation:
+            $ref: "#/paths/~1StartMetadataModelExportAsScript/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_metadata_model_export_to_target:
+          operation:
+            $ref: "#/paths/~1StartMetadataModelExportToTarget/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_metadata_model_import:
+          operation:
+            $ref: "#/paths/~1StartMetadataModelImport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/metadata_models/methods/describe_metadata_model"
+        insert: []
+        update: []
+        delete: []
+    replication_tasks:
+      id: aws.dms.replication_tasks
+      name: replication_tasks
+      title: replication_tasks
+      methods:
+        cancel_replication_task_assessment_run:
+          operation:
+            $ref: "#/paths/~1CancelReplicationTaskAssessmentRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_replication_task:
+          operation:
+            $ref: "#/paths/~1CreateReplicationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_replication_task:
+          operation:
+            $ref: "#/paths/~1DeleteReplicationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_replication_tasks:
+          operation:
+            $ref: "#/paths/~1DescribeReplicationTasks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ReplicationTasks
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        modify_replication_task:
+          operation:
+            $ref: "#/paths/~1ModifyReplicationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reload_tables:
+          operation:
+            $ref: "#/paths/~1ReloadTables/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_replication_task_assessment:
+          operation:
+            $ref: "#/paths/~1StartReplicationTaskAssessment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_replication_task_assessment_run:
+          operation:
+            $ref: "#/paths/~1StartReplicationTaskAssessmentRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/describe_replication_tasks"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/create_replication_task"
+        update:
+          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/modify_replication_task"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/delete_replication_task"
     data_migrations:
       id: aws.dms.data_migrations
       name: data_migrations
@@ -9824,11 +10268,44 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_data_migration:
           operation:
             $ref: "#/paths/~1ModifyDataMigration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_data_migration:
+          operation:
+            $ref: "#/paths/~1StartDataMigration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_data_migration:
+          operation:
+            $ref: "#/paths/~1StopDataMigration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9957,6 +10434,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_endpoint:
@@ -10024,6 +10508,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_event_subscription:
@@ -10222,6 +10713,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_extension_pack_association:
+          operation:
+            $ref: "#/paths/~1StartExtensionPackAssociation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/migration_projects/methods/describe_migration_projects"
@@ -10288,6 +10792,45 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        reload_replication_tables:
+          operation:
+            $ref: "#/paths/~1ReloadReplicationTables/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_replication:
+          operation:
+            $ref: "#/paths/~1StartReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_replication:
+          operation:
+            $ref: "#/paths/~1StopReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/replication_configs/methods/describe_replication_configs"
@@ -10297,73 +10840,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/replication_configs/methods/modify_replication_config"
         delete:
           - $ref: "#/components/x-stackQL-resources/replication_configs/methods/delete_replication_config"
-    replication_instances:
-      id: aws.dms.replication_instances
-      name: replication_instances
-      title: replication_instances
-      methods:
-        create_replication_instance:
-          operation:
-            $ref: "#/paths/~1CreateReplicationInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_replication_instance:
-          operation:
-            $ref: "#/paths/~1DeleteReplicationInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_replication_instances:
-          operation:
-            $ref: "#/paths/~1DescribeReplicationInstances/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ReplicationInstances
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        modify_replication_instance:
-          operation:
-            $ref: "#/paths/~1ModifyReplicationInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/describe_replication_instances"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/create_replication_instance"
-        update:
-          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/modify_replication_instance"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/replication_instances/methods/delete_replication_instance"
     replication_subnet_groups:
       id: aws.dms.replication_subnet_groups
       name: replication_subnet_groups
@@ -10407,6 +10883,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_replication_subnet_group:
@@ -10431,73 +10914,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/replication_subnet_groups/methods/modify_replication_subnet_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/replication_subnet_groups/methods/delete_replication_subnet_group"
-    replication_tasks:
-      id: aws.dms.replication_tasks
-      name: replication_tasks
-      title: replication_tasks
-      methods:
-        create_replication_task:
-          operation:
-            $ref: "#/paths/~1CreateReplicationTask/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_replication_task:
-          operation:
-            $ref: "#/paths/~1DeleteReplicationTask/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_replication_tasks:
-          operation:
-            $ref: "#/paths/~1DescribeReplicationTasks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ReplicationTasks
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        modify_replication_task:
-          operation:
-            $ref: "#/paths/~1ModifyReplicationTask/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/describe_replication_tasks"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/create_replication_task"
-        update:
-          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/modify_replication_task"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/replication_tasks/methods/delete_replication_task"
     certificates:
       id: aws.dms.certificates
       name: certificates
@@ -10523,6 +10939,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Certificates
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        import_certificate:
+          operation:
+            $ref: "#/paths/~1ImportCertificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10567,6 +11003,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10687,6 +11130,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeApplicableIndividualAssessmentsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "IndividualAssessmentNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"individual_assessment_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -10779,6 +11229,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10852,6 +11309,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10965,30 +11429,6 @@ components:
         insert: []
         update: []
         delete: []
-    metadata_models:
-      id: aws.dms.metadata_models
-      name: metadata_models
-      title: metadata_models
-      methods:
-        describe_metadata_model:
-          operation:
-            $ref: "#/paths/~1DescribeMetadataModel/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/metadata_models/methods/describe_metadata_model"
-        insert: []
-        update: []
-        delete: []
     metadata_model_assessments:
       id: aws.dms.metadata_model_assessments
       name: metadata_model_assessments
@@ -11030,6 +11470,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11079,6 +11526,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11176,6 +11630,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11232,42 +11693,6 @@ components:
         insert: []
         update: []
         delete: []
-    recommendations:
-      id: aws.dms.recommendations
-      name: recommendations
-      title: recommendations
-      methods:
-        describe_recommendations:
-          operation:
-            $ref: "#/paths/~1DescribeRecommendations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        start_recommendations:
-          operation:
-            $ref: "#/paths/~1StartRecommendations/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/recommendations/methods/describe_recommendations"
-        insert: []
-        update: []
-        delete: []
     refresh_schemas_status:
       id: aws.dms.refresh_schemas_status
       name: refresh_schemas_status
@@ -11279,6 +11704,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RefreshSchemasStatus
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11357,6 +11783,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11407,6 +11840,58 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        move_replication_task:
+          operation:
+            $ref: "#/paths/~1MoveReplicationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reboot_replication_instance:
+          operation:
+            $ref: "#/paths/~1RebootReplicationInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_replication_task:
+          operation:
+            $ref: "#/paths/~1StartReplicationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_replication_task:
+          operation:
+            $ref: "#/paths/~1StopReplicationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/replications/methods/describe_replications"
@@ -11424,12 +11909,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Schemas
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeSchemasOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Schemas" -}}{{- $tok := index . "Marker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "Marker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         refresh_schemas:
@@ -11468,6 +11966,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11499,54 +12004,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/target_selection_rules/methods/get_target_selection_rules"
         insert: []
         update: []
-        delete: []
-    tags_for_resources:
-      id: aws.dms.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1ListTagsForResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    tags_from_resources:
-      id: aws.dms.tags_from_resources
-      name: tags_from_resources
-      title: tags_from_resources
-      methods:
-        remove_tags_from_resource:
-          operation:
-            $ref: "#/paths/~1RemoveTagsFromResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_resources/methods/remove_tags_from_resource"
         delete: []
     subscriptions_to_event_bridges:
       id: aws.dms.subscriptions_to_event_bridges

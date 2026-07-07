@@ -5,7 +5,7 @@ info:
   description: AWS Comprehend Medical
   x-serviceName: comprehendmedical
   x-serviceAlias: comprehendmedical
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2018-10-30'
   x-endpointPrefix: comprehendmedical
   x-targetPrefix: ComprehendMedical_20181030
@@ -56,6 +56,7 @@ paths:
       x-stackql-resource: entities_detection_v2_jobs
       x-stackql-method: describe_entities_detection_v2_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ComprehendMedicalAsyncJobProperties
   /DescribeICD10CMInferenceJob:
     post:
       operationId: DescribeICD10CMInferenceJob
@@ -94,6 +95,7 @@ paths:
       x-stackql-resource: icd10_cm_inference_jobs
       x-stackql-method: describe_icd10_cm_inference_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ComprehendMedicalAsyncJobProperties
   /DescribePHIDetectionJob:
     post:
       operationId: DescribePHIDetectionJob
@@ -132,6 +134,7 @@ paths:
       x-stackql-resource: phi_detection_jobs
       x-stackql-method: describe_phi_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ComprehendMedicalAsyncJobProperties
   /DescribeRxNormInferenceJob:
     post:
       operationId: DescribeRxNormInferenceJob
@@ -170,6 +173,7 @@ paths:
       x-stackql-resource: rx_norm_inference_jobs
       x-stackql-method: describe_rx_norm_inference_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ComprehendMedicalAsyncJobProperties
   /DescribeSNOMEDCTInferenceJob:
     post:
       operationId: DescribeSNOMEDCTInferenceJob
@@ -208,6 +212,7 @@ paths:
       x-stackql-resource: snomedct_inference_jobs
       x-stackql-method: describe_snomedct_inference_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ComprehendMedicalAsyncJobProperties
   /DetectEntities:
     post:
       operationId: DetectEntities

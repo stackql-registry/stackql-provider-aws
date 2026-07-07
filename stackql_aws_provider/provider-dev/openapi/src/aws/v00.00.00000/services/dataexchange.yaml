@@ -109,7 +109,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/MapOf__string"
               required:
-                - Name
                 - GrantDistributionScope
                 - ReceiverPrincipal
                 - SourceDataSetId
@@ -165,8 +164,6 @@ paths:
                   $ref: "#/components/schemas/MapOf__string"
               required:
                 - AssetType
-                - Description
-                - Name
       responses:
         "201":
           description: Success
@@ -221,9 +218,6 @@ paths:
                   $ref: "#/components/schemas/Event"
                 Tags:
                   $ref: "#/components/schemas/MapOf__string"
-              required:
-                - Action
-                - Event
       responses:
         "201":
           description: Success
@@ -278,9 +272,6 @@ paths:
                   $ref: "#/components/schemas/RequestDetails"
                 Type:
                   $ref: "#/components/schemas/Type"
-              required:
-                - Details
-                - Type
       responses:
         "201":
           description: Success
@@ -467,8 +458,6 @@ paths:
               properties:
                 Name:
                   $ref: "#/components/schemas/AssetName"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -821,8 +810,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/MapOf__string"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -3402,16 +3389,86 @@ components:
           $ref: "#/components/schemas/Timestamp"
           description: The date and time that the revision was revoked, in ISO 8601 format.
   x-stackQL-resources:
+    data_grants:
+      id: aws.dataexchange.data_grants
+      name: data_grants
+      title: data_grants
+      methods:
+        accept_data_grant:
+          operation:
+            $ref: "#/paths/~1v1~1data-grants~1{data_grant_arn}~1accept/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_data_grant:
+          operation:
+            $ref: "#/paths/~1v1~1data-grants/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_data_grants:
+          operation:
+            $ref: "#/paths/~1v1~1data-grants/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DataGrantSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_data_grant:
+          operation:
+            $ref: "#/paths/~1v1~1data-grants~1{data_grant_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_data_grant:
+          operation:
+            $ref: "#/paths/~1v1~1data-grants~1{data_grant_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/data_grants/methods/get_data_grant"
+          - $ref: "#/components/x-stackQL-resources/data_grants/methods/list_data_grants"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/data_grants/methods/create_data_grant"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/data_grants/methods/delete_data_grant"
     jobs:
       id: aws.dataexchange.jobs
       name: jobs
       title: jobs
       methods:
+        cancel_job:
+          operation:
+            $ref: "#/paths/~1v1~1jobs~1{job_id}/delete"
+          response:
+            openAPIDocKey: "204"
         get_job:
           operation:
             $ref: "#/paths/~1v1~1jobs~1{job_id}/get"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+        start_job:
+          operation:
+            $ref: "#/paths/~1v1~1jobs~1{job_id}/patch"
+          response:
+            openAPIDocKey: "202"
             mediaType: application/json
         create_job:
           operation:
@@ -3433,6 +3490,14 @@ components:
             objectKey: $.Jobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
@@ -3441,51 +3506,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/create_job"
         update: []
         delete: []
-    data_grants:
-      id: aws.dataexchange.data_grants
-      name: data_grants
-      title: data_grants
-      methods:
-        create_data_grant:
-          operation:
-            $ref: "#/paths/~1v1~1data-grants/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_data_grants:
-          operation:
-            $ref: "#/paths/~1v1~1data-grants/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.DataGrantSummaries
-          request:
-            nativeCasing: pascal
-        delete_data_grant:
-          operation:
-            $ref: "#/paths/~1v1~1data-grants~1{data_grant_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_data_grant:
-          operation:
-            $ref: "#/paths/~1v1~1data-grants~1{data_grant_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/data_grants/methods/get_data_grant"
-          - $ref: "#/components/x-stackQL-resources/data_grants/methods/list_data_grants"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/data_grants/methods/create_data_grant"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/data_grants/methods/delete_data_grant"
     data_sets:
       id: aws.dataexchange.data_sets
       name: data_sets
@@ -3511,6 +3531,14 @@ components:
             objectKey: $.DataSets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_data_set:
           operation:
             $ref: "#/paths/~1v1~1data-sets~1{data_set_id}/delete"
@@ -3527,6 +3555,17 @@ components:
             $ref: "#/paths/~1v1~1data-sets~1{data_set_id}/patch"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_data_set_notification:
+          operation:
+            $ref: "#/paths/~1v1~1data-sets~1{data_set_id}~1notification/post"
+          response:
+            openAPIDocKey: "202"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -3568,6 +3607,14 @@ components:
             objectKey: $.EventActions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_event_action:
           operation:
             $ref: "#/paths/~1v1~1event-actions~1{event_action_id}/delete"
@@ -3673,6 +3720,14 @@ components:
             objectKey: $.Revisions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_set_revisions/methods/list_data_set_revisions"
@@ -3734,6 +3789,14 @@ components:
             objectKey: $.DataGrantSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/received_data_grants/methods/get_received_data_grant"
@@ -3755,16 +3818,24 @@ components:
             objectKey: $.Assets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/revision_assets/methods/list_revision_assets"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.dataexchange.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.dataexchange.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3772,17 +3843,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.dataexchange.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3801,9 +3861,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

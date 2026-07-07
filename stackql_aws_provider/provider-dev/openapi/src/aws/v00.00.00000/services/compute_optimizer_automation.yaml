@@ -5,7 +5,7 @@ info:
   description: Compute Optimizer Automation
   x-serviceName: aco-automation
   x-serviceAlias: compute_optimizer_automation
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: "2025-09-22"
   x-endpointPrefix: aco-automation
   x-targetPrefix: ComputeOptimizerAutomationService
@@ -2242,6 +2242,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2253,6 +2255,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2265,7 +2269,16 @@ components:
             objectKey: $.accounts
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2288,6 +2301,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2299,6 +2314,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2310,6 +2327,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2322,7 +2341,16 @@ components:
             objectKey: $.automationRules
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_automation_rule:
@@ -2333,6 +2361,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2359,6 +2389,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2371,7 +2403,16 @@ components:
             objectKey: $.automationEvents
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2394,6 +2435,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2405,6 +2448,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2429,7 +2474,16 @@ components:
             objectKey: $.automationEventSteps
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2452,7 +2506,16 @@ components:
             objectKey: $.automationEventSummaries
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2475,7 +2538,16 @@ components:
             objectKey: $.previewResults
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2498,7 +2570,16 @@ components:
             objectKey: $.previewResultSummaries
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2521,7 +2602,16 @@ components:
             objectKey: $.recommendedActionSummaries
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2544,6 +2634,28 @@ components:
             objectKey: $.recommendedActions
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_automation_event:
+          operation:
+            $ref: "#/paths/~1StartAutomationEvent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2553,10 +2665,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.compute_optimizer_automation.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.compute_optimizer_automation.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2566,20 +2678,11 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.compute_optimizer_automation.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2588,6 +2691,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2599,13 +2704,16 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

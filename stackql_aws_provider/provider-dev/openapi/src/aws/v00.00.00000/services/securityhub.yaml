@@ -439,8 +439,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/NonEmptyString"
               required:
-                - Name
-                - Description
                 - Id
       responses:
         "200":
@@ -549,10 +547,7 @@ paths:
                   $ref: "#/components/schemas/ClientToken"
               required:
                 - RuleName
-                - Description
                 - RuleOrder
-                - Criteria
-                - Actions
       responses:
         "200":
           description: Success
@@ -581,7 +576,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - ConfigurationPolicy
       responses:
         "200":
@@ -615,7 +609,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
               required:
-                - Name
                 - Provider
       responses:
         "200":
@@ -703,8 +696,6 @@ paths:
                 GroupByAttribute:
                   $ref: "#/components/schemas/NonEmptyString"
               required:
-                - Name
-                - Filters
                 - GroupByAttribute
       responses:
         "200":
@@ -1602,7 +1593,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListEnabledProductsForImportResponse"
+                $ref: "#/components/schemas/ListEnabledProductsForImportOutputDisplay"
   /organization/admin/enable:
     post:
       operationId: EnableOrganizationAdminAccount
@@ -1950,7 +1941,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetFindingsV2Response"
+                $ref: "#/components/schemas/GetFindingsV2OutputDisplay"
   /insights/results/{insight_arn}:
     get:
       operationId: GetInsightResults
@@ -2426,8 +2417,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -17569,21 +17558,19 @@ components:
       type: integer
       format: int64
       minimum: 0
-    GetFindingsV2Response:
+    GetFindingsV2RowDisplay:
       type: object
       properties:
-        Findings:
-          $ref: "#/components/schemas/OcsfFindingsList"
+        finding:
+          type: object
           description: An array of security findings returned by the operation.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token to use to request the next page of results. Otherwise, this parameter is null.
-    OcsfFindingsList:
-      type: array
-      items:
-        $ref: "#/components/schemas/OcsfFinding"
-    OcsfFinding:
+    GetFindingsV2OutputDisplay:
       type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetFindingsV2RowDisplay"
     GetInsightResultsResponse:
       type: object
       properties:
@@ -18483,19 +18470,19 @@ components:
         ConnectorStatus:
           $ref: "#/components/schemas/ConnectorStatus"
           description: The status for the connectorV2.
-    ListEnabledProductsForImportResponse:
+    ListEnabledProductsForImportRowDisplay:
       type: object
       properties:
-        ProductSubscriptions:
-          $ref: "#/components/schemas/ProductSubscriptionArnList"
+        product_subscription:
+          type: string
           description: The list of ARNs for the resources that represent your subscriptions to products.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token to use to request the next page of results.
-    ProductSubscriptionArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/NonEmptyString"
+    ListEnabledProductsForImportOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListEnabledProductsForImportRowDisplay"
     ListFindingAggregatorsResponse:
       type: object
       properties:
@@ -18803,6 +18790,79 @@ components:
     UpdateStandardsControlResponse:
       type: object
   x-stackQL-resources:
+    invitations:
+      id: aws.securityhub.invitations
+      name: invitations
+      title: invitations
+      methods:
+        accept_administrator_invitation:
+          operation:
+            $ref: "#/paths/~1administrator/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        accept_invitation:
+          operation:
+            $ref: "#/paths/~1master/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        decline_invitations:
+          operation:
+            $ref: "#/paths/~1invitations~1decline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_invitations:
+          operation:
+            $ref: "#/paths/~1invitations~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_invitations:
+          operation:
+            $ref: "#/paths/~1invitations/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Invitations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/invitations/methods/delete_invitations"
     administrator_accounts:
       id: aws.securityhub.administrator_accounts
       name: administrator_accounts
@@ -18814,11 +18874,19 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Administrator
+        disassociate_from_administrator_account:
+          operation:
+            $ref: "#/paths/~1administrator~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/get_administrator_account"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/disassociate_from_administrator_account"
         delete: []
     master_accounts:
       id: aws.securityhub.master_accounts
@@ -18831,20 +18899,50 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Master
+        disassociate_from_master_account:
+          operation:
+            $ref: "#/paths/~1master~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/master_accounts/methods/get_master_account"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/master_accounts/methods/disassociate_from_master_account"
         delete: []
     automation_rules:
       id: aws.securityhub.automation_rules
       name: automation_rules
       title: automation_rules
       methods:
+        batch_delete_automation_rules:
+          operation:
+            $ref: "#/paths/~1automationrules~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         batch_get_automation_rules:
           operation:
             $ref: "#/paths/~1automationrules~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_automation_rules:
+          operation:
+            $ref: "#/paths/~1automationrules~1update/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -18878,6 +18976,56 @@ components:
           - $ref: "#/components/x-stackQL-resources/automation_rules/methods/list_automation_rules"
         insert:
           - $ref: "#/components/x-stackQL-resources/automation_rules/methods/create_automation_rule"
+        update: []
+        delete: []
+    standards:
+      id: aws.securityhub.standards
+      name: standards
+      title: standards
+      methods:
+        batch_disable_standards:
+          operation:
+            $ref: "#/paths/~1standards~1deregister/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_enable_standards:
+          operation:
+            $ref: "#/paths/~1standards~1register/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_standards:
+          operation:
+            $ref: "#/paths/~1standards/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Standards
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/standards/methods/describe_standards"
+        insert: []
         update: []
         delete: []
     configuration_policy_associations:
@@ -18917,6 +19065,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -18977,6 +19132,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_update_standards_control_associations:
+          operation:
+            $ref: "#/paths/~1associations/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_standards_control_associations:
           operation:
             $ref: "#/paths/~1associations/get"
@@ -18986,12 +19152,84 @@ components:
             objectKey: $.StandardsControlAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/standards_control_associations/methods/batch_get_standards_control_associations"
           - $ref: "#/components/x-stackQL-resources/standards_control_associations/methods/list_standards_control_associations"
         insert: []
         update: []
+        delete: []
+    findings:
+      id: aws.securityhub.findings
+      name: findings
+      title: findings
+      methods:
+        batch_import_findings:
+          operation:
+            $ref: "#/paths/~1findings~1import/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_findings:
+          operation:
+            $ref: "#/paths/~1findings~1batchupdate/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_findings:
+          operation:
+            $ref: "#/paths/~1findings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Findings
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_findings:
+          operation:
+            $ref: "#/paths/~1findings/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/get_findings"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/update_findings"
         delete: []
     action_targets:
       id: aws.securityhub.action_targets
@@ -19036,6 +19274,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -19191,6 +19436,36 @@ components:
             objectKey: $.ConfigurationPolicySummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_configuration_policy_association:
+          operation:
+            $ref: "#/paths/~1configurationPolicyAssociation~1associate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_configuration_policy_disassociation:
+          operation:
+            $ref: "#/paths/~1configurationPolicyAssociation~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_policies/methods/get_configuration_policy"
@@ -19255,8 +19530,8 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/get_connector_v2"
         insert:
-          - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/create_connector_v2"
           - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/register_connector_v2"
+          - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/create_connector_v2"
         update:
           - $ref: "#/components/x-stackQL-resources/connector_v2s/methods/update_connector_v2"
         delete:
@@ -19317,6 +19592,14 @@ components:
             objectKey: $.FindingAggregators
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_finding_aggregator:
           operation:
             $ref: "#/paths/~1findingAggregator~1update/patch"
@@ -19381,6 +19664,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -19417,6 +19707,14 @@ components:
             objectKey: $.Members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_members:
           operation:
             $ref: "#/paths/~1members~1delete/post"
@@ -19442,6 +19740,17 @@ components:
         get_members:
           operation:
             $ref: "#/paths/~1members~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        invite_members:
+          operation:
+            $ref: "#/paths/~1members~1invite/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -19482,38 +19791,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/ticket_v2s/methods/create_ticket_v2"
         update: []
         delete: []
-    invitations:
-      id: aws.securityhub.invitations
-      name: invitations
-      title: invitations
-      methods:
-        delete_invitations:
-          operation:
-            $ref: "#/paths/~1invitations~1delete/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_invitations:
-          operation:
-            $ref: "#/paths/~1invitations/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Invitations
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/invitations/methods/delete_invitations"
     hubs:
       id: aws.securityhub.hubs
       name: hubs
@@ -19598,6 +19875,14 @@ components:
             objectKey: $.Products
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/products/methods/describe_products"
@@ -19618,6 +19903,14 @@ components:
             objectKey: $.ProductsV2
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/products_v2s/methods/describe_products_v2"
@@ -19641,26 +19934,6 @@ components:
         insert: []
         update: []
         delete: []
-    standards:
-      id: aws.securityhub.standards
-      name: standards
-      title: standards
-      methods:
-        describe_standards:
-          operation:
-            $ref: "#/paths/~1standards/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Standards
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/standards/methods/describe_standards"
-        insert: []
-        update: []
-        delete: []
     standards_controls:
       id: aws.securityhub.standards_controls
       name: standards_controls
@@ -19675,6 +19948,14 @@ components:
             objectKey: $.Controls
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_standards_control:
           operation:
             $ref: "#/paths/~1standards~1control~1{standards_control_arn}/patch"
@@ -19693,40 +19974,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/standards_controls/methods/update_standards_control"
         delete: []
-    from_administrator_accounts:
-      id: aws.securityhub.from_administrator_accounts
-      name: from_administrator_accounts
-      title: from_administrator_accounts
-      methods:
-        disassociate_from_administrator_account:
-          operation:
-            $ref: "#/paths/~1administrator~1disassociate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/from_administrator_accounts/methods/disassociate_from_administrator_account"
-        delete: []
-    from_master_accounts:
-      id: aws.securityhub.from_master_accounts
-      name: from_master_accounts
-      title: from_master_accounts
-      methods:
-        disassociate_from_master_account:
-          operation:
-            $ref: "#/paths/~1master~1disassociate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/from_master_accounts/methods/disassociate_from_master_account"
-        delete: []
     enabled_products_for_imports:
       id: aws.securityhub.enabled_products_for_imports
       name: enabled_products_for_imports
@@ -19738,9 +19985,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ProductSubscriptions
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListEnabledProductsForImportOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ProductSubscriptions" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"product_subscription": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/enabled_products_for_imports/methods/list_enabled_products_for_import"
@@ -19761,6 +20022,14 @@ components:
             objectKey: $.RecommendationSteps
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommended_policy_v2s/methods/get_recommended_policy_v2"
@@ -19782,6 +20051,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -19805,6 +20081,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -19835,41 +20118,6 @@ components:
         insert: []
         update: []
         delete: []
-    findings:
-      id: aws.securityhub.findings
-      name: findings
-      title: findings
-      methods:
-        get_findings:
-          operation:
-            $ref: "#/paths/~1findings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Findings
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_findings:
-          operation:
-            $ref: "#/paths/~1findings/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/get_findings"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/update_findings"
-        delete: []
     findings_trends_v2s:
       id: aws.securityhub.findings_trends_v2s
       name: findings_trends_v2s
@@ -19885,6 +20133,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -19904,10 +20159,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Findings
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetFindingsV2OutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Findings" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -19927,6 +20195,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.InsightResults
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/insight_results/methods/get_insight_results"
@@ -19987,6 +20256,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -20010,6 +20286,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -20029,6 +20312,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SecurityControlDefinition
           request:
             nativeCasing: pascal
         list_security_control_definitions:
@@ -20040,6 +20324,14 @@ components:
             objectKey: $.SecurityControlDefinitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_control_definitions/methods/get_security_control_definition"
@@ -20061,6 +20353,14 @@ components:
             objectKey: $.AggregatorsV2
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/aggregators_v2s/methods/list_aggregators_v2"
@@ -20100,16 +20400,24 @@ components:
             objectKey: $.AdminAccounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.securityhub.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.securityhub.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -20117,17 +20425,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.securityhub.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -20148,9 +20445,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

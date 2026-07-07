@@ -439,7 +439,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteSlackWorkspaceAuthorizationResult'
-      x-stackql-resource: slack_workspace_authorizations
+      x-stackql-resource: slack_workspaces
       x-stackql-method: delete_slack_workspace_authorization
       x-stackql-verb: DELETE
   /describe-chime-webhook-configurations:
@@ -471,6 +471,9 @@ paths:
       x-stackql-method: describe_chime_webhook_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WebhookConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /describe-slack-channel-configurations:
     post:
       operationId: DescribeSlackChannelConfigurations
@@ -500,6 +503,9 @@ paths:
       x-stackql-method: describe_slack_channel_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SlackChannelConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /describe-slack-user-identities:
     post:
       operationId: DescribeSlackUserIdentities
@@ -529,6 +535,9 @@ paths:
       x-stackql-method: describe_slack_user_identities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SlackUserIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /describe-slack-workspaces:
     post:
       operationId: DescribeSlackWorkspaces
@@ -556,6 +565,9 @@ paths:
       x-stackql-method: describe_slack_workspaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SlackWorkspaces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /disassociate-from-configuration:
     post:
       operationId: DisassociateFromConfiguration
@@ -600,6 +612,7 @@ paths:
       x-stackql-resource: account_preferences
       x-stackql-method: get_account_preferences
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccountPreferences
   /get-custom-action:
     post:
       operationId: GetCustomAction
@@ -626,6 +639,7 @@ paths:
       x-stackql-resource: custom_actions
       x-stackql-method: get_custom_action
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CustomAction
   /get-ms-teams-channel-configuration:
     post:
       operationId: GetMicrosoftTeamsChannelConfiguration
@@ -652,6 +666,7 @@ paths:
       x-stackql-resource: microsoft_teams_channel_configurations
       x-stackql-method: get_microsoft_teams_channel_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelConfiguration
   /list-associations:
     post:
       operationId: ListAssociations
@@ -683,6 +698,9 @@ paths:
       x-stackql-method: list_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Associations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-custom-actions:
     post:
       operationId: ListCustomActions
@@ -705,11 +723,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListCustomActionsResult'
+                $ref: '#/components/schemas/ListCustomActionsOutputDisplay'
       x-stackql-resource: custom_actions
       x-stackql-method: list_custom_actions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.CustomActions
+      x-stackql-responseEnvelope: ListCustomActionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "CustomActions" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"custom_action": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-ms-teams-channel-configurations:
     post:
       operationId: ListMicrosoftTeamsChannelConfigurations
@@ -739,6 +765,9 @@ paths:
       x-stackql-method: list_microsoft_teams_channel_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TeamChannelConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-ms-teams-configured-teams:
     post:
       operationId: ListMicrosoftTeamsConfiguredTeams
@@ -766,6 +795,9 @@ paths:
       x-stackql-method: list_microsoft_teams_configured_teams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfiguredTeams
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-ms-teams-user-identities:
     post:
       operationId: ListMicrosoftTeamsUserIdentities
@@ -795,6 +827,9 @@ paths:
       x-stackql-method: list_microsoft_teams_user_identities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TeamsUserIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-tags-for-resource:
     post:
       operationId: ListTagsForResource
@@ -819,7 +854,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /tag-resource:
@@ -849,7 +884,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /untag-resource:
@@ -879,7 +914,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /update-account-preferences:
@@ -1763,28 +1798,19 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: '[\x20-\x7F]+'
-    ListCustomActionsResult:
+    ListCustomActionsRowDisplay:
       type: object
       properties:
-        CustomActions:
-          $ref: '#/components/schemas/CustomActionArnList'
+        custom_action:
+          type: string
           description: A list of custom actions.
-        NextToken:
-          $ref: '#/components/schemas/ListCustomActionsResultNextTokenString'
-          description: An optional token returned from a prior request. Use this token for pagination of results from this
-            action. If this parameter is specified, the response includes only results beyond the token, up to the value specified
-            by MaxResults.
-      required:
-      - CustomActions
-    CustomActionArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/CustomActionArn'
-    ListCustomActionsResultNextTokenString:
-      type: string
-      minLength: 1
-      maxLength: 1024
-      pattern: '[\x20-\x7F]+'
+    ListCustomActionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCustomActionsRowDisplay'
     ListTeamsChannelConfigurationsResult:
       type: object
       properties:

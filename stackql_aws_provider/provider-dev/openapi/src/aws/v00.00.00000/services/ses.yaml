@@ -626,7 +626,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: The identity to be removed from the list of identities for the Amazon Web Services account.
           schema:
             $ref: "#/components/schemas/Identity"
@@ -668,7 +668,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: "The identity that is associated with the policy to delete. You can specify the identity by using its name or by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com. To successfully call this operation, you must own the identity."
           schema:
             $ref: "#/components/schemas/Identity"
@@ -1297,7 +1297,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: "The identity for which the policies are retrieved. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com. To successfully call this operation, you must own the identity."
           schema:
             $ref: "#/components/schemas/Identity"
@@ -1641,7 +1641,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: "The identity that is associated with the policy for which the policies are listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com. To successfully call this operation, you must own the identity."
           schema:
             $ref: "#/components/schemas/Identity"
@@ -1888,7 +1888,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: "The identity to which that the policy applies. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com. To successfully call this operation, you must own the identity."
           schema:
             $ref: "#/components/schemas/Identity"
@@ -2536,7 +2536,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: The identity for which DKIM signing should be enabled or disabled.
           schema:
             $ref: "#/components/schemas/Identity"
@@ -2584,7 +2584,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: "The identity for which to set bounce and complaint notification forwarding. Examples: user@example.com, example.com."
           schema:
             $ref: "#/components/schemas/Identity"
@@ -2632,7 +2632,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: "The identity for which to enable or disable headers in notifications. Examples: user@example.com, example.com."
           schema:
             $ref: "#/components/schemas/Identity"
@@ -2686,7 +2686,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: The verified identity.
           schema:
             $ref: "#/components/schemas/Identity"
@@ -2740,7 +2740,7 @@ paths:
       parameters:
         - name: Identity
           in: query
-          required: true
+          required: false
           description: "The identity (email address or domain) for the Amazon SNS topic. You can only specify a verified identity for this parameter. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). The following examples are all valid identities: sender@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com."
           schema:
             $ref: "#/components/schemas/Identity"
@@ -4715,7 +4715,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/IdentityDisplay"
+            $ref: "#/components/schemas/ListIdentitiesRowDisplay"
     ListIdentitiesRequest:
       description: Represents a request to return a list of all identities (email addresses and domains) that you have attempted to verify under your Amazon Web Services account, regardless of verification status.
       type: object
@@ -4729,6 +4729,12 @@ components:
         MaxItems:
           $ref: "#/components/schemas/MaxItems"
           description: The maximum number of identities per page. Possible values are 1-1000 inclusive.
+    ListIdentitiesRowDisplay:
+      type: object
+      properties:
+        identity:
+          type: string
+          description: A list of identities.
     PolicyNameDisplay:
       type: object
       properties: {}
@@ -4738,7 +4744,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/PolicyNameDisplay"
+            $ref: "#/components/schemas/ListIdentityPoliciesRowDisplay"
     ListIdentityPoliciesRequest:
       description: Represents a request to return a list of sending authorization policies that are attached to an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the Amazon SES Developer Guide.
       type: object
@@ -4748,6 +4754,12 @@ components:
           description: "The identity that is associated with the policy for which the policies are listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com. To successfully call this operation, you must own the identity."
       required:
         - Identity
+    ListIdentityPoliciesRowDisplay:
+      type: object
+      properties:
+        policy_name:
+          type: string
+          description: A list of names of policies that apply to the specified identity.
     ReceiptFilterDisplay:
       type: object
       properties:
@@ -4824,7 +4836,13 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/AddressDisplay"
+            $ref: "#/components/schemas/ListVerifiedEmailAddressesRowDisplay"
+    ListVerifiedEmailAddressesRowDisplay:
+      type: object
+      properties:
+        verified_email_address:
+          type: string
+          description: A list of email addresses that have been verified.
     DeliveryOptions:
       description: Specifies whether messages that use the configuration set are required to use Transport Layer Security (TLS).
       type: object
@@ -5859,6 +5877,44 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        create_configuration_set_event_destination:
+          operation:
+            $ref: "#/paths/~1?Action=CreateConfigurationSetEventDestination&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_configuration_set_tracking_options:
+          operation:
+            $ref: "#/paths/~1?Action=CreateConfigurationSetTrackingOptions&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         delete_configuration_set:
           operation:
             $ref: "#/paths/~1?Action=DeleteConfigurationSet&Version=2010-12-01/get"
@@ -5873,6 +5929,42 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_configuration_set_event_destination:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteConfigurationSetEventDestination&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_configuration_set_tracking_options:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteConfigurationSetTrackingOptions&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -5916,48 +6008,15 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/describe_configuration_set"
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/list_configuration_sets"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/delete_configuration_set"
-    configuration_set_event_destinations:
-      id: aws.ses.configuration_set_event_destinations
-      name: configuration_set_event_destinations
-      title: configuration_set_event_destinations
-      methods:
-        create_configuration_set_event_destination:
+        put_configuration_set_delivery_options:
           operation:
-            $ref: "#/paths/~1?Action=CreateConfigurationSetEventDestination&Version=2010-12-01/get"
+            $ref: "#/paths/~1?Action=PutConfigurationSetDeliveryOptions&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_configuration_set_event_destination:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteConfigurationSetEventDestination&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay"
+              $ref: "#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -5987,31 +6046,11 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_event_destinations/methods/create_configuration_set_event_destination"
-        update:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_event_destinations/methods/update_configuration_set_event_destination"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_event_destinations/methods/delete_configuration_set_event_destination"
-    configuration_set_tracking_options:
-      id: aws.ses.configuration_set_tracking_options
-      name: configuration_set_tracking_options
-      title: configuration_set_tracking_options
-      methods:
-        create_configuration_set_tracking_options:
+        update_configuration_set_reputation_metrics_enabled:
           operation:
-            $ref: "#/paths/~1?Action=CreateConfigurationSetTrackingOptions&Version=2010-12-01/get"
+            $ref: "#/paths/~1?Action=UpdateConfigurationSetReputationMetricsEnabled&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -6019,20 +6058,11 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-        delete_configuration_set_tracking_options:
+        update_configuration_set_sending_enabled:
           operation:
-            $ref: "#/paths/~1?Action=DeleteConfigurationSetTrackingOptions&Version=2010-12-01/get"
+            $ref: "#/paths/~1?Action=UpdateConfigurationSetSendingEnabled&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -6058,13 +6088,22 @@ components:
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/describe_configuration_set"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/list_configuration_sets"
         insert:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_tracking_options/methods/create_configuration_set_tracking_options"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set_tracking_options"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set"
         update:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_tracking_options/methods/update_configuration_set_tracking_options"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/update_configuration_set_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/update_configuration_set_tracking_options"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/update_configuration_set_reputation_metrics_enabled"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/put_configuration_set_delivery_options"
         delete:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_tracking_options/methods/delete_configuration_set_tracking_options"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/delete_configuration_set_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/delete_configuration_set"
     custom_verification_email_templates:
       id: aws.ses.custom_verification_email_templates
       name: custom_verification_email_templates
@@ -6284,6 +6323,25 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        set_receipt_rule_position:
+          operation:
+            $ref: "#/paths/~1?Action=SetReceiptRulePosition&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetReceiptRulePositionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         update_receipt_rule:
           operation:
             $ref: "#/paths/~1?Action=UpdateReceiptRule&Version=2010-12-01/get"
@@ -6309,6 +6367,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/create_receipt_rule"
         update:
+          - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/set_receipt_rule_position"
           - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/update_receipt_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/receipt_rules/methods/delete_receipt_rule"
@@ -6483,6 +6542,40 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        send_custom_verification_email:
+          operation:
+            $ref: "#/paths/~1?Action=SendCustomVerificationEmail&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SendCustomVerificationEmailOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        test_render_template:
+          operation:
+            $ref: "#/paths/~1?Action=TestRenderTemplate&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TestRenderTemplateOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         update_template:
           operation:
             $ref: "#/paths/~1?Action=UpdateTemplate&Version=2010-12-01/get"
@@ -6546,6 +6639,26 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListIdentitiesOutputDisplay"
             transform:
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListIdentitiesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListIdentitiesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "Identities" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"identity": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"identity": {{ toJson $n }}}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_identity_dkim_enabled:
+          operation:
+            $ref: "#/paths/~1?Action=SetIdentityDkimEnabled&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetIdentityDkimEnabledOutputDisplay"
+            transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
           request:
@@ -6555,11 +6668,89 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        set_identity_feedback_forwarding_enabled:
+          operation:
+            $ref: "#/paths/~1?Action=SetIdentityFeedbackForwardingEnabled&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_identity_headers_in_notifications_enabled:
+          operation:
+            $ref: "#/paths/~1?Action=SetIdentityHeadersInNotificationsEnabled&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_identity_mail_from_domain:
+          operation:
+            $ref: "#/paths/~1?Action=SetIdentityMailFromDomain&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetIdentityMailFromDomainOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_identity_notification_topic:
+          operation:
+            $ref: "#/paths/~1?Action=SetIdentityNotificationTopic&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetIdentityNotificationTopicOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/identities/methods/list_identities"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/identities/methods/set_identity_dkim_enabled"
+          - $ref: "#/components/x-stackQL-resources/identities/methods/set_identity_feedback_forwarding_enabled"
+          - $ref: "#/components/x-stackQL-resources/identities/methods/set_identity_headers_in_notifications_enabled"
+          - $ref: "#/components/x-stackQL-resources/identities/methods/set_identity_mail_from_domain"
         delete:
           - $ref: "#/components/x-stackQL-resources/identities/methods/delete_identity"
     identity_policies:
@@ -6615,7 +6806,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListIdentityPoliciesOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListIdentityPoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListIdentityPoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "PolicyNames" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"policy_name": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -6956,7 +7148,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListVerifiedEmailAddressesOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListVerifiedEmailAddressesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListVerifiedEmailAddressesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "VerifiedEmailAddresses" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"verified_email_address": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"verified_email_address": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           config:
             queryParamTranspose:
@@ -6968,261 +7161,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/verified_email_addresses/methods/list_verified_email_addresses"
         insert: []
         update: []
-        delete: []
-    configuration_set_delivery_options:
-      id: aws.ses.configuration_set_delivery_options
-      name: configuration_set_delivery_options
-      title: configuration_set_delivery_options
-      methods:
-        put_configuration_set_delivery_options:
-          operation:
-            $ref: "#/paths/~1?Action=PutConfigurationSetDeliveryOptions&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_delivery_options/methods/put_configuration_set_delivery_options"
-        delete: []
-    identity_dkim_enableds:
-      id: aws.ses.identity_dkim_enableds
-      name: identity_dkim_enableds
-      title: identity_dkim_enableds
-      methods:
-        set_identity_dkim_enabled:
-          operation:
-            $ref: "#/paths/~1?Action=SetIdentityDkimEnabled&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityDkimEnabledOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/identity_dkim_enableds/methods/set_identity_dkim_enabled"
-        delete: []
-    identity_feedback_forwarding_enableds:
-      id: aws.ses.identity_feedback_forwarding_enableds
-      name: identity_feedback_forwarding_enableds
-      title: identity_feedback_forwarding_enableds
-      methods:
-        set_identity_feedback_forwarding_enabled:
-          operation:
-            $ref: "#/paths/~1?Action=SetIdentityFeedbackForwardingEnabled&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/identity_feedback_forwarding_enableds/methods/set_identity_feedback_forwarding_enabled"
-        delete: []
-    identity_headers_in_notifications_enableds:
-      id: aws.ses.identity_headers_in_notifications_enableds
-      name: identity_headers_in_notifications_enableds
-      title: identity_headers_in_notifications_enableds
-      methods:
-        set_identity_headers_in_notifications_enabled:
-          operation:
-            $ref: "#/paths/~1?Action=SetIdentityHeadersInNotificationsEnabled&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/identity_headers_in_notifications_enableds/methods/set_identity_headers_in_notifications_enabled"
-        delete: []
-    identity_mail_from_domains:
-      id: aws.ses.identity_mail_from_domains
-      name: identity_mail_from_domains
-      title: identity_mail_from_domains
-      methods:
-        set_identity_mail_from_domain:
-          operation:
-            $ref: "#/paths/~1?Action=SetIdentityMailFromDomain&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityMailFromDomainOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/identity_mail_from_domains/methods/set_identity_mail_from_domain"
-        delete: []
-    identity_notification_topics:
-      id: aws.ses.identity_notification_topics
-      name: identity_notification_topics
-      title: identity_notification_topics
-      methods:
-        set_identity_notification_topic:
-          operation:
-            $ref: "#/paths/~1?Action=SetIdentityNotificationTopic&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIdentityNotificationTopicOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/identity_notification_topics/methods/set_identity_notification_topic"
-        delete: []
-    receipt_rule_positions:
-      id: aws.ses.receipt_rule_positions
-      name: receipt_rule_positions
-      title: receipt_rule_positions
-      methods:
-        set_receipt_rule_position:
-          operation:
-            $ref: "#/paths/~1?Action=SetReceiptRulePosition&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetReceiptRulePositionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/receipt_rule_positions/methods/set_receipt_rule_position"
-        delete: []
-    configuration_set_reputation_metrics_enableds:
-      id: aws.ses.configuration_set_reputation_metrics_enableds
-      name: configuration_set_reputation_metrics_enableds
-      title: configuration_set_reputation_metrics_enableds
-      methods:
-        update_configuration_set_reputation_metrics_enabled:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateConfigurationSetReputationMetricsEnabled&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_reputation_metrics_enableds/methods/update_configuration_set_reputation_metrics_enabled"
-        delete: []
-    configuration_set_sending_enableds:
-      id: aws.ses.configuration_set_sending_enableds
-      name: configuration_set_sending_enableds
-      title: configuration_set_sending_enableds
-      methods:
-        update_configuration_set_sending_enabled:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateConfigurationSetSendingEnabled&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/configuration_set_sending_enableds/methods/update_configuration_set_sending_enabled"
         delete: []

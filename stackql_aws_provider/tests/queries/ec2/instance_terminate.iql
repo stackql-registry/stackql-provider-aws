@@ -1,0 +1,6 @@
+-- DELETE routed to TerminateInstances. Singleton scalar form: EC2 accepts
+-- the flat InstanceId= wire param, while JSON-array strings go to the
+-- wire verbatim (InvalidInstanceID.Malformed) - batch mutations are not
+-- supported (stackql/stackql#683), one DELETE per instance.
+DELETE FROM aws.ec2.instances
+WHERE region = '{{ region }}' AND InstanceId = '{{ instance_create.instance_id }}'

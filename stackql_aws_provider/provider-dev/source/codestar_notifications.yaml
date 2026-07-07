@@ -172,6 +172,9 @@ paths:
       x-stackql-method: list_event_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventTypes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /listNotificationRules:
     post:
       operationId: ListNotificationRules
@@ -201,6 +204,9 @@ paths:
       x-stackql-method: list_notification_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotificationRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /listTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -224,7 +230,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResult'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /listTargets:
@@ -256,6 +262,9 @@ paths:
       x-stackql-method: list_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Targets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /subscribe:
     post:
       operationId: Subscribe
@@ -315,7 +324,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /unsubscribe:
@@ -372,7 +381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /updateNotificationRule:

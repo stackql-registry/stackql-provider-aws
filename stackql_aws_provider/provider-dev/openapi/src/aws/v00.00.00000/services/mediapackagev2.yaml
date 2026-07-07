@@ -274,7 +274,6 @@ paths:
               required:
                 - HarvestedManifests
                 - ScheduleConfiguration
-                - Destination
       responses:
         "200":
           description: Success
@@ -609,8 +608,6 @@ paths:
               properties:
                 Policy:
                   $ref: "#/components/schemas/PolicyText"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -833,8 +830,6 @@ paths:
                   $ref: "#/components/schemas/PolicyText"
                 CdnAuthConfiguration:
                   $ref: "#/components/schemas/CdnAuthConfiguration"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -927,8 +922,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -3199,6 +3192,84 @@ components:
         - CreatedAt
         - ModifiedAt
   x-stackQL-resources:
+    origin_endpoints:
+      id: aws.mediapackagev2.origin_endpoints
+      name: origin_endpoints
+      title: origin_endpoints
+      methods:
+        cancel_harvest_job:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}~1harvestJob~1{harvest_job_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_origin_endpoint:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_origin_endpoints:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_origin_endpoint:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_origin_endpoint:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_origin_endpoint:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reset_origin_endpoint_state:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}~1reset/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/get_origin_endpoint"
+          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/list_origin_endpoints"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/create_origin_endpoint"
+        update:
+          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/update_origin_endpoint"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/delete_origin_endpoint"
     harvest_jobs:
       id: aws.mediapackagev2.harvest_jobs
       name: harvest_jobs
@@ -3230,6 +3301,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/harvest_jobs/methods/get_harvest_job"
@@ -3263,6 +3342,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_channel:
           operation:
             $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1/delete"
@@ -3286,6 +3373,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        reset_channel_state:
+          operation:
+            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1reset/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/get_channel"
@@ -3321,6 +3414,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_channel_group:
           operation:
             $ref: "#/paths/~1channelGroup~1{channel_group_name}/delete"
@@ -3354,64 +3455,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/channel_groups/methods/update_channel_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/channel_groups/methods/delete_channel_group"
-    origin_endpoints:
-      id: aws.mediapackagev2.origin_endpoints
-      name: origin_endpoints
-      title: origin_endpoints
-      methods:
-        create_origin_endpoint:
-          operation:
-            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_origin_endpoints:
-          operation:
-            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Items
-          request:
-            nativeCasing: pascal
-        delete_origin_endpoint:
-          operation:
-            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_origin_endpoint:
-          operation:
-            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_origin_endpoint:
-          operation:
-            $ref: "#/paths/~1channelGroup~1{channel_group_name}~1channel~1{channel_name}~1originEndpoint~1{origin_endpoint_name}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/get_origin_endpoint"
-          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/list_origin_endpoints"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/create_origin_endpoint"
-        update:
-          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/update_origin_endpoint"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/delete_origin_endpoint"
     channel_policies:
       id: aws.mediapackagev2.channel_policies
       name: channel_policies
@@ -3486,10 +3529,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/origin_endpoint_policies/methods/put_origin_endpoint_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/origin_endpoint_policies/methods/delete_origin_endpoint_policy"
-    tags_for_resources:
-      id: aws.mediapackagev2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mediapackagev2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3497,17 +3540,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mediapackagev2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3526,9 +3558,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

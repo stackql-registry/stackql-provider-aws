@@ -1134,7 +1134,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListBuildBatchesOutput"
+                $ref: "#/components/schemas/ListBuildBatchesOutputDisplay"
   /ListBuildBatchesForProject:
     post:
       operationId: ListBuildBatchesForProject
@@ -1177,7 +1177,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListBuildBatchesForProjectOutput"
+                $ref: "#/components/schemas/ListBuildBatchesForProjectOutputDisplay"
   /ListBuilds:
     post:
       operationId: ListBuilds
@@ -1211,7 +1211,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListBuildsOutput"
+                $ref: "#/components/schemas/ListBuildsOutputDisplay"
   /ListBuildsForProject:
     post:
       operationId: ListBuildsForProject
@@ -1250,7 +1250,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListBuildsForProjectOutput"
+                $ref: "#/components/schemas/ListBuildsForProjectOutputDisplay"
   /ListCommandExecutionsForSandbox:
     post:
       operationId: ListCommandExecutionsForSandbox
@@ -1359,7 +1359,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFleetsOutput"
+                $ref: "#/components/schemas/ListFleetsOutputDisplay"
   /ListProjects:
     post:
       operationId: ListProjects
@@ -1396,7 +1396,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListProjectsOutput"
+                $ref: "#/components/schemas/ListProjectsOutputDisplay"
   /ListReportGroups:
     post:
       operationId: ListReportGroups
@@ -1436,7 +1436,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListReportGroupsOutput"
+                $ref: "#/components/schemas/ListReportGroupsOutputDisplay"
   /ListReports:
     post:
       operationId: ListReports
@@ -1476,7 +1476,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListReportsOutput"
+                $ref: "#/components/schemas/ListReportsOutputDisplay"
   /ListReportsForReportGroup:
     post:
       operationId: ListReportsForReportGroup
@@ -1521,7 +1521,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListReportsForReportGroupOutput"
+                $ref: "#/components/schemas/ListReportsForReportGroupOutputDisplay"
   /ListSandboxes:
     post:
       operationId: ListSandboxes
@@ -1558,7 +1558,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSandboxesOutput"
+                $ref: "#/components/schemas/ListSandboxesOutputDisplay"
   /ListSandboxesForProject:
     post:
       operationId: ListSandboxesForProject
@@ -1600,7 +1600,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSandboxesForProjectOutput"
+                $ref: "#/components/schemas/ListSandboxesForProjectOutputDisplay"
   /ListSharedProjects:
     post:
       operationId: ListSharedProjects
@@ -1640,7 +1640,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSharedProjectsOutput"
+                $ref: "#/components/schemas/ListSharedProjectsOutputDisplay"
   /ListSharedReportGroups:
     post:
       operationId: ListSharedReportGroups
@@ -1680,7 +1680,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSharedReportGroupsOutput"
+                $ref: "#/components/schemas/ListSharedReportGroupsOutputDisplay"
   /ListSourceCredentials:
     post:
       operationId: ListSourceCredentials
@@ -4869,42 +4869,58 @@ components:
         status:
           $ref: "#/components/schemas/StatusType"
           description: The status of the batch builds to retrieve. Only batch builds that have this status will be retrieved.
-    ListBuildBatchesOutput:
+    ListBuildBatchesRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: "#/components/schemas/BuildBatchIds"
+        id:
+          type: string
           description: An array of strings that contains the batch build identifiers.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If there are more items to return, this contains a token that is passed to a subsequent call to ListBuildBatches to retrieve the next set of items.
-    ListBuildBatchesForProjectOutput:
+    ListBuildBatchesOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: "#/components/schemas/BuildBatchIds"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListBuildBatchesRowDisplay"
+    ListBuildBatchesForProjectRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
           description: An array of strings that contains the batch build identifiers.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If there are more items to return, this contains a token that is passed to a subsequent call to ListBuildBatchesForProject to retrieve the next set of items.
-    ListBuildsOutput:
+    ListBuildBatchesForProjectOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: "#/components/schemas/BuildIds"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListBuildBatchesForProjectRowDisplay"
+    ListBuildsRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
           description: A list of build IDs, with each build ID representing a single build.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next token to the call.
-    ListBuildsForProjectOutput:
+    ListBuildsOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: "#/components/schemas/BuildIds"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListBuildsRowDisplay"
+    ListBuildsForProjectRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
           description: A list of build identifiers for the specified build project, with each build ID representing a single build.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next token to the call.
+    ListBuildsForProjectOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListBuildsForProjectRowDisplay"
     SensitiveString:
       type: string
     ListCommandExecutionsForSandboxOutput:
@@ -4997,49 +5013,57 @@ components:
         - NAME
         - CREATED_TIME
         - LAST_MODIFIED_TIME
-    ListFleetsOutput:
+    ListFleetsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next token to the call.
-        fleets:
-          $ref: "#/components/schemas/FleetArns"
+        fleet:
+          type: string
           description: The list of compute fleet names.
-    FleetArns:
-      type: array
-      items:
-        $ref: "#/components/schemas/NonEmptyString"
+    ListFleetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFleetsRowDisplay"
     ProjectSortByType:
       type: string
       enum:
         - NAME
         - CREATED_TIME
         - LAST_MODIFIED_TIME
-    ListProjectsOutput:
+    ListProjectsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next token to the call.
-        projects:
-          $ref: "#/components/schemas/ProjectNames"
+        project:
+          type: string
           description: The list of build project names, with each build project name representing a single build project.
+    ListProjectsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListProjectsRowDisplay"
     ReportGroupSortByType:
       type: string
       enum:
         - NAME
         - CREATED_TIME
         - LAST_MODIFIED_TIME
-    ListReportGroupsOutput:
+    ListReportGroupsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: During a previous call, the maximum number of items that can be returned is the value specified in maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
-        reportGroups:
-          $ref: "#/components/schemas/ReportGroupArns"
+        report_group:
+          type: string
           description: The list of ARNs for the report groups in the current Amazon Web Services account.
+    ListReportGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListReportGroupsRowDisplay"
     ReportFilter:
       description: A filter used to return reports with the status specified by the input status parameter.
       type: object
@@ -5047,69 +5071,89 @@ components:
         status:
           $ref: "#/components/schemas/ReportStatusType"
           description: The status used to filter reports. You can filter using one status only.
-    ListReportsOutput:
+    ListReportsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: During a previous call, the maximum number of items that can be returned is the value specified in maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
-        reports:
-          $ref: "#/components/schemas/ReportArns"
+        report:
+          type: string
           description: The list of returned ARNs for the reports in the current Amazon Web Services account.
-    ListReportsForReportGroupOutput:
+    ListReportsOutputDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: During a previous call, the maximum number of items that can be returned is the value specified in maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
-        reports:
-          $ref: "#/components/schemas/ReportArns"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListReportsRowDisplay"
+    ListReportsForReportGroupRowDisplay:
+      type: object
+      properties:
+        report:
+          type: string
           description: The list of report ARNs.
-    ListSandboxesOutput:
+    ListReportsForReportGroupOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: "#/components/schemas/SandboxIds"
-          description: Information about the requested sandbox IDs.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: Information about the next token to get paginated results.
-    ListSandboxesForProjectOutput:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListReportsForReportGroupRowDisplay"
+    ListSandboxesRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: "#/components/schemas/SandboxIds"
+        id:
+          type: string
           description: Information about the requested sandbox IDs.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: Information about the next token to get paginated results.
+    ListSandboxesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListSandboxesRowDisplay"
+    ListSandboxesForProjectRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Information about the requested sandbox IDs.
+    ListSandboxesForProjectOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListSandboxesForProjectRowDisplay"
     SharedResourceSortByType:
       type: string
       enum:
         - ARN
         - MODIFIED_TIME
-    ListSharedProjectsOutput:
+    ListSharedProjectsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: During a previous call, the maximum number of items that can be returned is the value specified in maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
-        projects:
-          $ref: "#/components/schemas/ProjectArns"
+        project:
+          type: string
           description: The list of ARNs for the build projects shared with the current Amazon Web Services account or user.
-    ProjectArns:
-      type: array
-      items:
-        $ref: "#/components/schemas/NonEmptyString"
-    ListSharedReportGroupsOutput:
+    ListSharedProjectsOutputDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: During a previous call, the maximum number of items that can be returned is the value specified in maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
-        reportGroups:
-          $ref: "#/components/schemas/ReportGroupArns"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListSharedProjectsRowDisplay"
+    ListSharedReportGroupsRowDisplay:
+      type: object
+      properties:
+        report_group:
+          type: string
           description: The list of ARNs for the report groups shared with the current Amazon Web Services account or user.
+    ListSharedReportGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListSharedReportGroupsRowDisplay"
     ListSourceCredentialsOutput:
       type: object
       properties:
@@ -5253,6 +5297,97 @@ components:
           $ref: "#/components/schemas/Webhook"
           description: Information about a repository's webhook that is associated with a project in CodeBuild.
   x-stackQL-resources:
+    builds:
+      id: aws.codebuild.builds
+      name: builds
+      title: builds
+      methods:
+        batch_delete_builds:
+          operation:
+            $ref: "#/paths/~1BatchDeleteBuilds/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_get_builds:
+          operation:
+            $ref: "#/paths/~1BatchGetBuilds/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_builds:
+          operation:
+            $ref: "#/paths/~1ListBuilds/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListBuildsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_build_batch:
+          operation:
+            $ref: "#/paths/~1StartBuildBatch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_build_batch:
+          operation:
+            $ref: "#/paths/~1StopBuildBatch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/builds/methods/batch_get_builds"
+          - $ref: "#/components/x-stackQL-resources/builds/methods/list_builds"
+        insert: []
+        update: []
+        delete: []
     build_batches:
       id: aws.codebuild.build_batches
       name: build_batches
@@ -5290,12 +5425,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ids
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListBuildBatchesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5306,45 +5454,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/build_batches/methods/delete_build_batch"
-    builds:
-      id: aws.codebuild.builds
-      name: builds
-      title: builds
-      methods:
-        batch_get_builds:
-          operation:
-            $ref: "#/paths/~1BatchGetBuilds/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_builds:
-          operation:
-            $ref: "#/paths/~1ListBuilds/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ids
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/builds/methods/batch_get_builds"
-          - $ref: "#/components/x-stackQL-resources/builds/methods/list_builds"
-        insert: []
-        update: []
-        delete: []
     command_executions:
       id: aws.codebuild.command_executions
       name: command_executions
@@ -5419,6 +5528,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFleetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "fleets" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"fleet": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5480,9 +5596,48 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_webhook:
+          operation:
+            $ref: "#/paths/~1CreateWebhook/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_project:
           operation:
             $ref: "#/paths/~1DeleteProject/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_webhook:
+          operation:
+            $ref: "#/paths/~1DeleteWebhook/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        invalidate_project_cache:
+          operation:
+            $ref: "#/paths/~1InvalidateProjectCache/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5499,7 +5654,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.projects
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListProjectsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "projects" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"project": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_project:
+          operation:
+            $ref: "#/paths/~1UpdateProject/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5507,9 +5688,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        update_project:
+        update_project_visibility:
           operation:
-            $ref: "#/paths/~1UpdateProject/post"
+            $ref: "#/paths/~1UpdateProjectVisibility/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_webhook:
+          operation:
+            $ref: "#/paths/~1UpdateWebhook/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5526,10 +5720,14 @@ components:
           - $ref: "#/components/x-stackQL-resources/projects/methods/list_projects"
         insert:
           - $ref: "#/components/x-stackQL-resources/projects/methods/create_project"
+          - $ref: "#/components/x-stackQL-resources/projects/methods/create_webhook"
         update:
+          - $ref: "#/components/x-stackQL-resources/projects/methods/update_project_visibility"
           - $ref: "#/components/x-stackQL-resources/projects/methods/update_project"
+          - $ref: "#/components/x-stackQL-resources/projects/methods/update_webhook"
         delete:
           - $ref: "#/components/x-stackQL-resources/projects/methods/delete_project"
+          - $ref: "#/components/x-stackQL-resources/projects/methods/delete_webhook"
     report_groups:
       id: aws.codebuild.report_groups
       name: report_groups
@@ -5580,12 +5778,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.reportGroups
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListReportGroupsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "reportGroups" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report_group": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_report_group:
@@ -5648,12 +5859,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.reports
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListReportsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "reports" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5688,7 +5912,46 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ids
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSandboxesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_command_execution:
+          operation:
+            $ref: "#/paths/~1StartCommandExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_sandbox_connection:
+          operation:
+            $ref: "#/paths/~1StartSandboxConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5703,58 +5966,6 @@ components:
         insert: []
         update: []
         delete: []
-    webhooks:
-      id: aws.codebuild.webhooks
-      name: webhooks
-      title: webhooks
-      methods:
-        create_webhook:
-          operation:
-            $ref: "#/paths/~1CreateWebhook/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_webhook:
-          operation:
-            $ref: "#/paths/~1DeleteWebhook/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_webhook:
-          operation:
-            $ref: "#/paths/~1UpdateWebhook/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/webhooks/methods/create_webhook"
-        update:
-          - $ref: "#/components/x-stackQL-resources/webhooks/methods/update_webhook"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/webhooks/methods/delete_webhook"
     resource_policies:
       id: aws.codebuild.resource_policies
       name: resource_policies
@@ -5876,6 +6087,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5901,6 +6119,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5944,12 +6169,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ids
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListBuildBatchesForProjectOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5969,12 +6207,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ids
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListBuildsForProjectOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6000,6 +6251,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6043,12 +6301,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.reports
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListReportsForReportGroupOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "reports" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6068,12 +6339,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ids
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSandboxesForProjectOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6093,12 +6377,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.projects
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSharedProjectsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "projects" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"project": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6118,12 +6415,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.reportGroups
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSharedReportGroupsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "reportGroups" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report_group": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6131,28 +6441,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/shared_report_groups/methods/list_shared_report_groups"
         insert: []
         update: []
-        delete: []
-    project_visibilities:
-      id: aws.codebuild.project_visibilities
-      name: project_visibilities
-      title: project_visibilities
-      methods:
-        update_project_visibility:
-          operation:
-            $ref: "#/paths/~1UpdateProjectVisibility/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/project_visibilities/methods/update_project_visibility"
         delete: []

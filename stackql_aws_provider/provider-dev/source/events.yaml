@@ -84,7 +84,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelReplayResponse'
-      x-stackql-resource: replay
+      x-stackql-resource: replays
       x-stackql-method: cancel_replay
       x-stackql-verb: EXEC
   /CreateApiDestination:
@@ -1693,11 +1693,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRuleNamesByTargetResponse'
+                $ref: '#/components/schemas/ListRuleNamesByTargetOutputDisplay'
       x-stackql-resource: rule_names_by_targets
       x-stackql-method: list_rule_names_by_target
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.RuleNames
+      x-stackql-responseEnvelope: ListRuleNamesByTargetOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "RuleNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"rule_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRules:
     post:
       operationId: ListRules
@@ -1748,6 +1756,9 @@ paths:
       x-stackql-method: list_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1782,7 +1793,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTargetsByRule:
@@ -1836,6 +1847,9 @@ paths:
       x-stackql-method: list_targets_by_rule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Targets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutEvents:
     post:
       operationId: PutEvents
@@ -2320,7 +2334,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReplayResponse'
-      x-stackql-resource: replay
+      x-stackql-resource: replays
       x-stackql-method: start_replay
       x-stackql-verb: EXEC
   /TagResource:
@@ -2367,7 +2381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestEventPattern:
@@ -2454,7 +2468,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateApiDestination:
@@ -4380,22 +4394,19 @@ components:
       type: string
       minLength: 1
       maxLength: 1600
-    ListRuleNamesByTargetResponse:
+    ListRuleNamesByTargetRowDisplay:
       type: object
       properties:
-        RuleNames:
-          $ref: '#/components/schemas/RuleNameList'
+        rule_name:
+          type: string
           description: The names of the rules that can invoke the given target.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token indicating there are more results available. If there are no more results, no token is included
-            in the response. The value of nextToken is a unique pagination token for each page. To retrieve the next page
-            of results, make the call again using the returned token. Keep all other arguments unchanged. Using an expired
-            pagination token results in an HTTP 400 InvalidToken error.
-    RuleNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/RuleName'
+    ListRuleNamesByTargetOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListRuleNamesByTargetRowDisplay'
     ListRulesResponse:
       type: object
       properties:

@@ -138,10 +138,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListConfigurationSetsResponse'
+                $ref: '#/components/schemas/ListConfigurationSetsOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: list_configuration_sets
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListConfigurationSetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ConfigurationSets" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration_set": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /v2/email/configuration-sets/{configuration_set_name}/event-destinations:
     post:
       operationId: CreateConfigurationSetEventDestination
@@ -438,10 +443,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDedicatedIpPoolsResponse'
+                $ref: '#/components/schemas/ListDedicatedIpPoolsOutputDisplay'
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: list_dedicated_ip_pools
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListDedicatedIpPoolsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "DedicatedIpPools" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"dedicated_ip_pool": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /v2/email/deliverability-dashboard/test:
     post:
       operationId: CreateDeliverabilityTestReport
@@ -860,6 +870,9 @@ paths:
       x-stackql-method: list_multi_region_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MultiRegionEndpoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/email/tenants:
     post:
       operationId: CreateTenant
@@ -920,7 +933,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateTenantResourceAssociationResponse'
-      x-stackql-resource: tenant_resource_associations
+      x-stackql-resource: tenant_resources
       x-stackql-method: create_tenant_resource_association
       x-stackql-verb: INSERT
   /v2/email/configuration-sets/{configuration_set_name}:
@@ -1336,6 +1349,7 @@ paths:
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: get_dedicated_ip_pool
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DedicatedIpPool
   /v2/email/identities/{email_identity}:
     delete:
       operationId: DeleteEmailIdentity
@@ -1537,6 +1551,7 @@ paths:
       x-stackql-resource: suppressed_destinations
       x-stackql-method: get_suppressed_destination
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SuppressedDestination
   /v2/email/tenants/delete:
     post:
       operationId: DeleteTenant
@@ -1592,7 +1607,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteTenantResourceAssociationResponse'
-      x-stackql-resource: tenant_resource_associations
+      x-stackql-resource: tenant_resources
       x-stackql-method: delete_tenant_resource_association
       x-stackql-verb: DELETE
   /v2/email/account:
@@ -1656,6 +1671,7 @@ paths:
       x-stackql-resource: dedicated_ips
       x-stackql-method: get_dedicated_ip
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DedicatedIp
   /v2/email/dedicated-ips:
     get:
       operationId: GetDedicatedIps
@@ -1788,6 +1804,7 @@ paths:
       x-stackql-resource: domain_deliverability_campaigns
       x-stackql-method: get_domain_deliverability_campaign
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DomainDeliverabilityCampaign
   /v2/email/deliverability-dashboard/statistics-report/{domain}:
     get:
       operationId: GetDomainStatisticsReport
@@ -1849,6 +1866,7 @@ paths:
       x-stackql-resource: email_address_insights
       x-stackql-method: get_email_address_insights
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MailboxValidation
   /v2/email/identities/{email_identity}/policies:
     get:
       operationId: GetEmailIdentityPolicies
@@ -1972,6 +1990,7 @@ paths:
       x-stackql-resource: reputation_entities
       x-stackql-method: get_reputation_entity
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ReputationEntity
   /v2/email/tenants/get:
     post:
       operationId: GetTenant
@@ -1999,6 +2018,7 @@ paths:
       x-stackql-resource: tenants
       x-stackql-method: get_tenant
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Tenant
   /v2/email/contact-lists/{contact_list_name}/contacts/list:
     post:
       operationId: ListContacts
@@ -2234,6 +2254,9 @@ paths:
       x-stackql-method: list_reputation_entities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReputationEntities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/email/resources/tenants/list:
     post:
       operationId: ListResourceTenants
@@ -2267,6 +2290,9 @@ paths:
       x-stackql-method: list_resource_tenants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceTenants
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/email/suppression/addresses:
     get:
       operationId: ListSuppressedDestinations
@@ -2366,7 +2392,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2398,7 +2424,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2426,7 +2452,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v2/email/tenants/resources/list:
@@ -2464,6 +2490,9 @@ paths:
       x-stackql-method: list_tenant_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TenantResources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/email/tenants/list:
     post:
       operationId: ListTenants
@@ -2492,6 +2521,9 @@ paths:
       x-stackql-method: list_tenants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tenants
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/email/account/dedicated-ips/warmup:
     put:
       operationId: PutAccountDedicatedIpWarmupAttributes
@@ -2513,7 +2545,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountDedicatedIpWarmupAttributesResponse'
-      x-stackql-resource: account_dedicated_ip_warmup_attributes
+      x-stackql-resource: accounts
       x-stackql-method: put_account_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
   /v2/email/account/details:
@@ -2550,7 +2582,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountDetailsResponse'
-      x-stackql-resource: account_details
+      x-stackql-resource: accounts
       x-stackql-method: put_account_details
       x-stackql-verb: REPLACE
   /v2/email/account/sending:
@@ -2574,7 +2606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountSendingAttributesResponse'
-      x-stackql-resource: account_sending_attributes
+      x-stackql-resource: accounts
       x-stackql-method: put_account_sending_attributes
       x-stackql-verb: REPLACE
   /v2/email/account/suppression:
@@ -2600,7 +2632,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountSuppressionAttributesResponse'
-      x-stackql-resource: account_suppression_attributes
+      x-stackql-resource: accounts
       x-stackql-method: put_account_suppression_attributes
       x-stackql-verb: REPLACE
   /v2/email/account/vdm:
@@ -2626,7 +2658,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountVdmAttributesResponse'
-      x-stackql-resource: account_vdm_attributes
+      x-stackql-resource: accounts
       x-stackql-method: put_account_vdm_attributes
       x-stackql-verb: REPLACE
   /v2/email/configuration-sets/{configuration_set_name}/archiving-options:
@@ -2658,7 +2690,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetArchivingOptionsResponse'
-      x-stackql-resource: configuration_set_archiving_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_archiving_options
       x-stackql-verb: REPLACE
   /v2/email/configuration-sets/{configuration_set_name}/delivery-options:
@@ -2693,7 +2725,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsResponse'
-      x-stackql-resource: configuration_set_delivery_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
   /v2/email/configuration-sets/{configuration_set_name}/reputation-options:
@@ -2724,7 +2756,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetReputationOptionsResponse'
-      x-stackql-resource: configuration_set_reputation_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_reputation_options
       x-stackql-verb: REPLACE
   /v2/email/configuration-sets/{configuration_set_name}/sending:
@@ -2755,7 +2787,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetSendingOptionsResponse'
-      x-stackql-resource: configuration_set_sending_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_sending_options
       x-stackql-verb: REPLACE
   /v2/email/configuration-sets/{configuration_set_name}/suppression-options:
@@ -2787,7 +2819,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetSuppressionOptionsResponse'
-      x-stackql-resource: configuration_set_suppression_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_suppression_options
       x-stackql-verb: REPLACE
   /v2/email/configuration-sets/{configuration_set_name}/tracking-options:
@@ -2819,7 +2851,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetTrackingOptionsResponse'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_tracking_options
       x-stackql-verb: REPLACE
   /v2/email/configuration-sets/{configuration_set_name}/vdm-options:
@@ -2850,7 +2882,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetVdmOptionsResponse'
-      x-stackql-resource: configuration_set_vdm_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_vdm_options
       x-stackql-verb: REPLACE
   /v2/email/dedicated-ips/{ip}/pool:
@@ -2885,7 +2917,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutDedicatedIpInPoolResponse'
-      x-stackql-resource: dedicated_ip_in_pools
+      x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_in_pool
       x-stackql-verb: REPLACE
   /v2/email/dedicated-ip-pools/{pool_name}/scaling:
@@ -2918,7 +2950,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutDedicatedIpPoolScalingAttributesResponse'
-      x-stackql-resource: dedicated_ip_pool_scaling_attributes
+      x-stackql-resource: dedicated_ip_pools
       x-stackql-method: put_dedicated_ip_pool_scaling_attributes
       x-stackql-verb: REPLACE
   /v2/email/dedicated-ips/{ip}/warmup:
@@ -2949,7 +2981,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutDedicatedIpWarmupAttributesResponse'
-      x-stackql-resource: dedicated_ip_warmup_attributes
+      x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
   /v2/email/identities/{email_identity}/configuration-set:
@@ -2979,7 +3011,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityConfigurationSetAttributesResponse'
-      x-stackql-resource: email_identity_configuration_set_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_configuration_set_attributes
       x-stackql-verb: REPLACE
   /v2/email/identities/{email_identity}/dkim:
@@ -3009,7 +3041,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityDkimAttributesResponse'
-      x-stackql-resource: email_identity_dkim_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_dkim_attributes
       x-stackql-verb: REPLACE
   /v2/email/identities/{email_identity}/dkim/signing:
@@ -3047,7 +3079,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityDkimSigningAttributesResponse'
-      x-stackql-resource: email_identity_dkim_signing_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_dkim_signing_attributes
       x-stackql-verb: REPLACE
   /v2/email/identities/{email_identity}/feedback:
@@ -3082,7 +3114,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityFeedbackAttributesResponse'
-      x-stackql-resource: email_identity_feedback_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_feedback_attributes
       x-stackql-verb: REPLACE
   /v2/email/identities/{email_identity}/mail-from:
@@ -3114,7 +3146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityMailFromAttributesResponse'
-      x-stackql-resource: email_identity_mail_from_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_mail_from_attributes
       x-stackql-verb: REPLACE
   /v2/email/outbound-bulk-emails:
@@ -3329,7 +3361,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateReputationEntityCustomerManagedStatusResponse'
-      x-stackql-resource: reputation_entity_customer_managed_status
+      x-stackql-resource: reputation_entities
       x-stackql-method: update_reputation_entity_customer_managed_status
       x-stackql-verb: UPDATE
   /v2/email/reputation/entities/{reputation_entity_type}/{reputation_entity_reference}/policy:
@@ -3371,7 +3403,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateReputationEntityPolicyResponse'
-      x-stackql-resource: reputation_entity_policies
+      x-stackql-resource: reputation_entities
       x-stackql-method: update_reputation_entity_policy
       x-stackql-verb: UPDATE
 components:
@@ -6618,22 +6650,20 @@ components:
         SendingStatus:
           $ref: '#/components/schemas/SendingStatus'
           description: The status of sending capability for the tenant.
-    ListConfigurationSetsResponse:
-      description: A list of configuration sets in your Amazon SES account in the current Amazon Web Services Region.
+    ListConfigurationSetsRowDisplay:
       type: object
       properties:
-        ConfigurationSets:
-          $ref: '#/components/schemas/ConfigurationSetNameList'
+        configuration_set:
+          type: string
           description: An array that contains all of the configuration sets in your Amazon SES account in the current Amazon
             Web Services Region.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token that indicates that there are additional configuration sets to list. To view additional configuration
-            sets, issue another request to ListConfigurationSets, and pass this token in the NextToken parameter.
-    ConfigurationSetNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ConfigurationSetName'
+    ListConfigurationSetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListConfigurationSetsRowDisplay'
     ListContactListsResponse:
       type: object
       properties:
@@ -6753,23 +6783,20 @@ components:
           $ref: '#/components/schemas/FailureRedirectionURL'
           description: The URL that the recipient of the verification email is sent to if his or her address is not successfully
             verified.
-    ListDedicatedIpPoolsResponse:
-      description: A list of dedicated IP pools.
+    ListDedicatedIpPoolsRowDisplay:
       type: object
       properties:
-        DedicatedIpPools:
-          $ref: '#/components/schemas/ListOfDedicatedIpPools'
+        dedicated_ip_pool:
+          type: string
           description: A list of all of the dedicated IP pools that are associated with your Amazon Web Services account in
             the current Region.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token that indicates that there are additional IP pools to list. To view additional IP pools, issue
-            another request to ListDedicatedIpPools, passing this token in the NextToken parameter.
-    ListOfDedicatedIpPools:
-      description: A list of dedicated IP pools that are associated with your Amazon Web Services account.
-      type: array
-      items:
-        $ref: '#/components/schemas/PoolName'
+    ListDedicatedIpPoolsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDedicatedIpPoolsRowDisplay'
     ListDeliverabilityTestReportsResponse:
       description: A list of the predictive inbox placement test reports that are available for your account, regardless of
         whether or not those tests are complete.

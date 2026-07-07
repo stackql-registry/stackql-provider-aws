@@ -1058,6 +1058,14 @@ components:
             objectKey: $.Lexicons
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/lexicons/methods/get_lexicon"
@@ -1082,6 +1090,36 @@ components:
             objectKey: $.Voices
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_speech_synthesis_task:
+          operation:
+            $ref: "#/paths/~1v1~1synthesisTasks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        synthesize_speech:
+          operation:
+            $ref: "#/paths/~1v1~1speech/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/voices/methods/describe_voices"
@@ -1099,6 +1137,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SynthesisTask
         list_speech_synthesis_tasks:
           operation:
             $ref: "#/paths/~1v1~1synthesisTasks/get"
@@ -1108,6 +1147,14 @@ components:
             objectKey: $.SynthesisTasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/speech_synthesis_tasks/methods/get_speech_synthesis_task"

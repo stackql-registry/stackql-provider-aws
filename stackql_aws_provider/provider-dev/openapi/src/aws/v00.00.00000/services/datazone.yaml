@@ -20023,6 +20023,281 @@ components:
           $ref: "#/components/schemas/UserProfileDetails"
           description: The results of the UpdateUserProfile action.
   x-stackQL-resources:
+    domains:
+      id: aws.datazone.domains
+      name: domains
+      title: domains
+      methods:
+        accept_predictions:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1assets~1{identifier}~1accept-predictions/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        associate_governed_terms:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1associate-governed-terms/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_put_attributes_metadata:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1attributes-metadata/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_metadata_generation_run:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1metadata-generation-runs~1{identifier}~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        cancel_subscription:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions~1{identifier}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_domain:
+          operation:
+            $ref: "#/paths/~1v2~1domains/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_domains:
+          operation:
+            $ref: "#/paths/~1v2~1domains/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_domain:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{identifier}/delete"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        get_domain:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_domain:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{identifier}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_governed_terms:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1disassociate-governed-terms/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        post_lineage_event:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1lineage~1events/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_metadata_generation_run:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1metadata-generation-runs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        query_graph:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1graph~1query/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reject_predictions:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1assets~1{identifier}~1reject-predictions/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1search/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_root_domain_unit_owner:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1root-domain-unit-owner/patch"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/get_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
+        update:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/associate_governed_terms"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/update_root_domain_unit_owner"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/update_domain"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
+    subscriptions:
+      id: aws.datazone.subscriptions
+      name: subscriptions
+      title: subscriptions
+      methods:
+        accept_subscription_request:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscription-requests~1{identifier}~1accept/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_subscription:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_subscriptions:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        reject_subscription_request:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscription-requests~1{identifier}~1reject/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        revoke_subscription:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions~1{identifier}~1revoke/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/get_subscription"
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/revoke_subscription"
+        delete: []
     entity_owners:
       id: aws.datazone.entity_owners
       name: entity_owners
@@ -20048,6 +20323,14 @@ components:
             objectKey: $.owners
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         remove_entity_owner:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1removeOwner/post"
@@ -20091,6 +20374,14 @@ components:
             objectKey: $.grantList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         remove_policy_grant:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1policies~1managed~1{entity_type}~1{entity_identifier}~1removeGrant/post"
@@ -20110,10 +20401,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/policy_grants/methods/add_policy_grant"
           - $ref: "#/components/x-stackQL-resources/policy_grants/methods/remove_policy_grant"
         delete: []
-    environment_roles:
-      id: aws.datazone.environment_roles
-      name: environment_roles
-      title: environment_roles
+    environments:
+      id: aws.datazone.environments
+      name: environments
+      title: environments
       methods:
         associate_environment_role:
           operation:
@@ -20127,20 +20418,48 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/environment_roles/methods/associate_environment_role"
-        delete: []
-    governed_terms:
-      id: aws.datazone.governed_terms
-      name: governed_terms
-      title: governed_terms
-      methods:
-        associate_governed_terms:
+        create_environment:
           operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1associate-governed-terms/patch"
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_environments:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_environment:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{identifier}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_environment:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_environment:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{identifier}/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -20149,23 +20468,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        disassociate_governed_terms:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1disassociate-governed-terms/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/list_environments"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/get_environment"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/create_environment"
         update:
-          - $ref: "#/components/x-stackQL-resources/governed_terms/methods/associate_governed_terms"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/environments/methods/associate_environment_role"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
     attributes_metadatas:
       id: aws.datazone.attributes_metadatas
       name: attributes_metadatas
@@ -20210,6 +20523,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_account_pool:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1account-pools~1{identifier}/delete"
@@ -20306,6 +20627,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_asset_filter:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1assets~1{asset_identifier}~1filters~1{identifier}/delete"
@@ -20363,6 +20692,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_revisions/methods/list_asset_revisions"
@@ -20433,6 +20770,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_connection:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1connections~1{identifier}/delete"
@@ -20531,6 +20876,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_product_revisions/methods/list_data_product_revisions"
@@ -20563,6 +20916,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_data_source:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1data-sources~1{identifier}/delete"
@@ -20588,6 +20949,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_data_source_run:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1data-sources~1{data_source_identifier}~1runs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/list_data_sources"
@@ -20598,66 +20970,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/update_data_source"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/delete_data_source"
-    domains:
-      id: aws.datazone.domains
-      name: domains
-      title: domains
-      methods:
-        create_domain:
-          operation:
-            $ref: "#/paths/~1v2~1domains/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_domains:
-          operation:
-            $ref: "#/paths/~1v2~1domains/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-        delete_domain:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{identifier}/delete"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        get_domain:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_domain:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{identifier}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/get_domain"
-          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
-        update:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/update_domain"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
     domain_units:
       id: aws.datazone.domain_units
       name: domain_units
@@ -20720,69 +21032,20 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_units_for_parents/methods/list_domain_units_for_parent"
         insert: []
         update: []
         delete: []
-    environments:
-      id: aws.datazone.environments
-      name: environments
-      title: environments
-      methods:
-        create_environment:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_environments:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-        delete_environment:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{identifier}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_environment:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_environment:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{identifier}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/list_environments"
-          - $ref: "#/components/x-stackQL-resources/environments/methods/get_environment"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/create_environment"
-        update:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
     environment_actions:
       id: aws.datazone.environment_actions
       name: environment_actions
@@ -20808,6 +21071,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_environment_action:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{environment_identifier}~1actions~1{identifier}/delete"
@@ -20865,6 +21136,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_environment_blueprint:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environment-blueprints~1{identifier}/delete"
@@ -20922,6 +21201,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_environment_profile:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environment-profiles~1{identifier}/delete"
@@ -21131,6 +21418,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -21142,10 +21436,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/group_profiles/methods/update_group_profile"
         delete: []
-    listing_change_sets:
-      id: aws.datazone.listing_change_sets
-      name: listing_change_sets
-      title: listing_change_sets
+    listings:
+      id: aws.datazone.listings
+      name: listings
+      title: listings
       methods:
         create_listing_change_set:
           operation:
@@ -21158,12 +21452,48 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_listing:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1{identifier}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        get_listing:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        search_listings:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1search/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/listings/methods/get_listing"
+          - $ref: "#/components/x-stackQL-resources/listings/methods/search_listings"
         insert:
-          - $ref: "#/components/x-stackQL-resources/listing_change_sets/methods/create_listing_change_set"
+          - $ref: "#/components/x-stackQL-resources/listings/methods/create_listing_change_set"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/listings/methods/delete_listing"
     notebooks:
       id: aws.datazone.notebooks
       name: notebooks
@@ -21189,6 +21519,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_notebook:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebooks~1{identifier}/delete"
@@ -21204,6 +21542,50 @@ components:
         update_notebook:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebooks~1{identifier}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_notebook_run:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebook-runs/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_notebook_export:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebook-exports/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_notebook_import:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebook-imports/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_notebook_run:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1notebook-runs~1{identifier}~1stop/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -21247,6 +21629,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_project:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1projects~1{identifier}/delete"
@@ -21318,6 +21708,14 @@ components:
             objectKey: $.members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/project_memberships/methods/list_project_memberships"
@@ -21351,6 +21749,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_project_profile:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1project-profiles~1{identifier}/delete"
@@ -21434,6 +21840,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/rules/methods/list_rules"
@@ -21469,6 +21883,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_subscription_grant:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscription-grants~1{identifier}/delete"
@@ -21481,13 +21903,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        update_subscription_grant_status:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscription-grants~1{identifier}~1status~1{asset_identifier}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/subscription_grants/methods/get_subscription_grant"
           - $ref: "#/components/x-stackQL-resources/subscription_grants/methods/list_subscription_grants"
         insert:
           - $ref: "#/components/x-stackQL-resources/subscription_grants/methods/create_subscription_grant"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/subscription_grants/methods/update_subscription_grant_status"
         delete:
           - $ref: "#/components/x-stackQL-resources/subscription_grants/methods/delete_subscription_grant"
     subscription_requests:
@@ -21515,6 +21949,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_subscription_request:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscription-requests~1{identifier}/delete"
@@ -21565,6 +22007,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_subscription_target:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1environments~1{environment_identifier}~1subscription-targets~1{identifier}/delete"
@@ -21642,6 +22092,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -21727,6 +22184,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/environment_blueprint_configurations/methods/get_environment_blueprint_configuration"
@@ -21737,45 +22202,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/environment_blueprint_configurations/methods/put_environment_blueprint_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/environment_blueprint_configurations/methods/delete_environment_blueprint_configuration"
-    listings:
-      id: aws.datazone.listings
-      name: listings
-      title: listings
-      methods:
-        delete_listing:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1{identifier}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        get_listing:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        search_listings:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1listings~1search/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/listings/methods/get_listing"
-          - $ref: "#/components/x-stackQL-resources/listings/methods/search_listings"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/listings/methods/delete_listing"
     subscription_request_details:
       id: aws.datazone.subscription_request_details
       name: subscription_request_details
@@ -21815,6 +22241,25 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        post_time_series_data_points:
+          operation:
+            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1time-series-data-points/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_time_series_data_point:
           operation:
             $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1entities~1{entity_type}~1{entity_identifier}~1time-series-data-points~1{identifier}/get"
@@ -21851,6 +22296,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_source_runs/methods/get_data_source_run"
@@ -21912,6 +22365,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_runs/methods/get_job_run"
@@ -21939,6 +22400,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/lineage_events/methods/get_lineage_event"
@@ -21987,6 +22456,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metadata_generation_runs/methods/get_metadata_generation_run"
@@ -22031,51 +22508,20 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/notebook_runs/methods/get_notebook_run"
           - $ref: "#/components/x-stackQL-resources/notebook_runs/methods/list_notebook_runs"
         insert: []
         update: []
-        delete: []
-    subscriptions:
-      id: aws.datazone.subscriptions
-      name: subscriptions
-      title: subscriptions
-      methods:
-        get_subscription:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_subscriptions:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-        revoke_subscription:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscriptions~1{identifier}~1revoke/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/get_subscription"
-          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/list_subscriptions"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/subscriptions/methods/revoke_subscription"
         delete: []
     accounts_in_account_pools:
       id: aws.datazone.accounts_in_account_pools
@@ -22091,6 +22537,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/accounts_in_account_pools/methods/list_accounts_in_account_pool"
@@ -22111,6 +22565,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_source_run_activities/methods/list_data_source_run_activities"
@@ -22131,6 +22593,14 @@ components:
             objectKey: $.nodes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/lineage_node_histories/methods/list_lineage_node_history"
@@ -22151,16 +22621,24 @@ components:
             objectKey: $.notifications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/notifications/methods/list_notifications"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.datazone.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.datazone.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -22168,17 +22646,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.datazone.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -22199,11 +22666,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     types:
       id: aws.datazone.types
@@ -22220,6 +22688,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -22227,48 +22702,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/types/methods/search_types"
         insert: []
         update: []
-        delete: []
-    root_domain_unit_owners:
-      id: aws.datazone.root_domain_unit_owners
-      name: root_domain_unit_owners
-      title: root_domain_unit_owners
-      methods:
-        update_root_domain_unit_owner:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1root-domain-unit-owner/patch"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/root_domain_unit_owners/methods/update_root_domain_unit_owner"
-        delete: []
-    subscription_grant_status:
-      id: aws.datazone.subscription_grant_status
-      name: subscription_grant_status
-      title: subscription_grant_status
-      methods:
-        update_subscription_grant_status:
-          operation:
-            $ref: "#/paths/~1v2~1domains~1{domain_identifier}~1subscription-grants~1{identifier}~1status~1{asset_identifier}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/subscription_grant_status/methods/update_subscription_grant_status"
         delete: []

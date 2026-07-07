@@ -386,7 +386,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: operator_app
+      x-stackql-resource: agent_spaces
       x-stackql-method: disable_operator_app
       x-stackql-verb: EXEC
     post:
@@ -430,7 +430,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableOperatorAppOutput'
-      x-stackql-resource: operator_app
+      x-stackql-resource: agent_spaces
       x-stackql-method: enable_operator_app
       x-stackql-verb: EXEC
   /v1/agentspaces/{agent_space_id}/associations/{association_id}:
@@ -487,6 +487,7 @@ paths:
       x-stackql-resource: associations
       x-stackql-method: get_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.association
     patch:
       operationId: UpdateAssociation
       description: Partially updates the configuration of an existing service association for an AgentSpace. Present fields
@@ -567,6 +568,7 @@ paths:
       x-stackql-resource: backlog_tasks
       x-stackql-method: get_backlog_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.task
     patch:
       operationId: UpdateBacklogTask
       description: Update an existing backlog task.
@@ -658,6 +660,7 @@ paths:
       x-stackql-resource: recommendations
       x-stackql-method: get_recommendation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.recommendation
     patch:
       operationId: UpdateRecommendation
       description: Updates an existing recommendation with new content, status, or metadata
@@ -725,6 +728,9 @@ paths:
       x-stackql-method: list_agent_spaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentSpaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/agentspaces/{agent_space_id}/associations/list:
     post:
       operationId: ListAssociations
@@ -765,6 +771,9 @@ paths:
       x-stackql-method: list_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.associations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /backlog/agent-space/{agent_space_id}/tasks/list:
     post:
       operationId: ListBacklogTasks
@@ -804,6 +813,9 @@ paths:
       x-stackql-method: list_backlog_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/agent-space/{agent_space_id}/chat/list:
     get:
       operationId: ListChats
@@ -880,6 +892,9 @@ paths:
       x-stackql-method: list_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /backlog/agent-space/{agent_space_id}/goals/list:
     post:
       operationId: ListGoals
@@ -917,6 +932,9 @@ paths:
       x-stackql-method: list_goals
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.goals
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /journal/agent-space/{agent_space_id}/journalRecords:
     post:
       operationId: ListJournalRecords
@@ -958,6 +976,9 @@ paths:
       x-stackql-method: list_journal_records
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.records
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/agent-space/{agent_space_id}/pendingMessages:
     post:
       operationId: ListPendingMessages
@@ -1063,6 +1084,9 @@ paths:
       x-stackql-method: list_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.services
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1081,7 +1105,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1112,7 +1136,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1138,7 +1162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/agentspaces/{agent_space_id}/associations/{association_id}/webhooks/list:
@@ -1243,7 +1267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendMessageResponse'
-      x-stackql-resource: message
+      x-stackql-resource: agent_spaces
       x-stackql-method: send_message
       x-stackql-verb: EXEC
   /backlog/agent-space/{agent_space_id}/goals/{goal_id}:
@@ -1311,7 +1335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateOperatorAppIdpConfigOutput'
-      x-stackql-resource: operator_app_idp_configs
+      x-stackql-resource: operator_apps
       x-stackql-method: update_operator_app_idp_config
       x-stackql-verb: UPDATE
   /v1/private-connections/{name}/certificate:
@@ -1343,7 +1367,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePrivateConnectionCertificateOutput'
-      x-stackql-resource: private_connection_certificates
+      x-stackql-resource: private_connections
       x-stackql-method: update_private_connection_certificate
       x-stackql-verb: UPDATE
   /v1/agentspaces/{agent_space_id}/associations/validate:
@@ -1364,7 +1388,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateAwsAssociationsOutput'
-      x-stackql-resource: aws_associations
+      x-stackql-resource: associations
       x-stackql-method: validate_aws_associations
       x-stackql-verb: EXEC
 components:

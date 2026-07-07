@@ -170,7 +170,6 @@ paths:
                   description: The format of the input for an import job.
               required:
                 - AddressListId
-                - Name
                 - ImportDataFormat
       responses:
         "200":
@@ -274,7 +273,6 @@ paths:
                   description: 'The tags used to organize, track, or control access for the resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.'
               required:
                 - IngressPointName
-                - Type
                 - RuleSetId
                 - TrafficPolicyId
       responses:
@@ -327,7 +325,6 @@ paths:
                 - RelayName
                 - ServerName
                 - ServerPort
-                - Authentication
       responses:
         "200":
           description: Success
@@ -370,7 +367,6 @@ paths:
                   description: 'The tags used to organize, track, or control access for the resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.'
               required:
                 - RuleSetName
-                - Rules
       responses:
         "200":
           description: Success
@@ -1124,7 +1120,6 @@ paths:
                   description: The address to be retrieved from the address list.
               required:
                 - AddressListId
-                - Address
       responses:
         "200":
           description: Success
@@ -1995,7 +1990,6 @@ paths:
                   description: 'The tags used to organize, track, or control access for the resource. For example, { "tags": {"key1":"value1", "key2":"value2"} }.'
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -4979,6 +4973,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5046,6 +5047,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5088,6 +5096,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        deregister_member_from_address_list:
+          operation:
+            $ref: "#/paths/~1DeregisterMemberFromAddressList/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_address_list:
           operation:
             $ref: "#/paths/~1GetAddressList/post"
@@ -5113,6 +5134,52 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        register_member_to_address_list:
+          operation:
+            $ref: "#/paths/~1RegisterMemberToAddressList/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_address_list_import_job:
+          operation:
+            $ref: "#/paths/~1StartAddressListImportJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_address_list_import_job:
+          operation:
+            $ref: "#/paths/~1StopAddressListImportJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5120,9 +5187,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/address_lists/methods/get_address_list"
           - $ref: "#/components/x-stackQL-resources/address_lists/methods/list_address_lists"
         insert:
+          - $ref: "#/components/x-stackQL-resources/address_lists/methods/register_member_to_address_list"
           - $ref: "#/components/x-stackQL-resources/address_lists/methods/create_address_list"
         update: []
         delete:
+          - $ref: "#/components/x-stackQL-resources/address_lists/methods/deregister_member_from_address_list"
           - $ref: "#/components/x-stackQL-resources/address_lists/methods/delete_address_list"
     address_list_import_jobs:
       id: aws.mailmanager.address_list_import_jobs
@@ -5167,6 +5236,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5228,6 +5304,65 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Archives
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_archive_export:
+          operation:
+            $ref: "#/paths/~1StartArchiveExport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_archive_search:
+          operation:
+            $ref: "#/paths/~1StartArchiveSearch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_archive_export:
+          operation:
+            $ref: "#/paths/~1StopArchiveExport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_archive_search:
+          operation:
+            $ref: "#/paths/~1StopArchiveSearch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5314,6 +5449,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_ingress_point:
@@ -5395,6 +5537,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_relay:
@@ -5476,6 +5625,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_rule_set:
@@ -5557,6 +5713,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_traffic_policy:
@@ -5582,30 +5745,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/traffic_policies/methods/update_traffic_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/traffic_policies/methods/delete_traffic_policy"
-    member_from_address_lists:
-      id: aws.mailmanager.member_from_address_lists
-      name: member_from_address_lists
-      title: member_from_address_lists
-      methods:
-        deregister_member_from_address_list:
-          operation:
-            $ref: "#/paths/~1DeregisterMemberFromAddressList/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/member_from_address_lists/methods/deregister_member_from_address_list"
     archive_exports:
       id: aws.mailmanager.archive_exports
       name: archive_exports
@@ -5636,6 +5775,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5680,6 +5826,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Body
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -5723,6 +5870,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5797,6 +5951,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5805,10 +5966,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.mailmanager.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mailmanager.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5823,41 +5984,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    member_to_address_lists:
-      id: aws.mailmanager.member_to_address_lists
-      name: member_to_address_lists
-      title: member_to_address_lists
-      methods:
-        register_member_to_address_list:
-          operation:
-            $ref: "#/paths/~1RegisterMemberToAddressList/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/member_to_address_lists/methods/register_member_to_address_list"
-        update: []
-        delete: []
-    resources:
-      id: aws.mailmanager.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -5885,9 +6011,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

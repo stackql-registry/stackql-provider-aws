@@ -941,6 +941,50 @@ components:
       minLength: 1
       maxLength: 2000
   x-stackQL-resources:
+    attachments:
+      id: aws.connectparticipant.attachments
+      name: attachments
+      title: attachments
+      methods:
+        complete_attachment_upload:
+          operation:
+            $ref: "#/paths/~1participant~1complete-attachment-upload/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_attachment:
+          operation:
+            $ref: "#/paths/~1participant~1attachment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_attachment_upload:
+          operation:
+            $ref: "#/paths/~1participant~1start-attachment-upload/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/attachments/methods/get_attachment"
+        insert: []
+        update: []
+        delete: []
     participant_connections:
       id: aws.connectparticipant.participant_connections
       name: participant_connections
@@ -974,31 +1018,10 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.View
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/views/methods/describe_view"
-        insert: []
-        update: []
-        delete: []
-    attachments:
-      id: aws.connectparticipant.attachments
-      name: attachments
-      title: attachments
-      methods:
-        get_attachment:
-          operation:
-            $ref: "#/paths/~1participant~1attachment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/attachments/methods/get_attachment"
         insert: []
         update: []
         delete: []

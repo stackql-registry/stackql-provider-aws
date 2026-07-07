@@ -197,9 +197,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
                 Type:
                   $ref: "#/components/schemas/Type"
-              required:
-                - Content
-                - Type
       responses:
         "201":
           description: Success
@@ -404,8 +401,6 @@ paths:
                   $ref: "#/components/schemas/__string"
                 RevisionId:
                   $ref: "#/components/schemas/__string"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -748,8 +743,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -1447,6 +1440,14 @@ components:
             objectKey: $.Discoverers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_discoverer:
           operation:
             $ref: "#/paths/~1v1~1discoverers~1id~1{discoverer_id}/delete"
@@ -1469,6 +1470,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_discoverer:
+          operation:
+            $ref: "#/paths/~1v1~1discoverers~1id~1{discoverer_id}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_discoverer:
+          operation:
+            $ref: "#/paths/~1v1~1discoverers~1id~1{discoverer_id}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/discoverers/methods/describe_discoverer"
@@ -1517,6 +1530,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        export_schema:
+          operation:
+            $ref: "#/paths/~1v1~1registries~1name~1{registry_name}~1schemas~1name~1{schema_name}~1export/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         list_registries:
           operation:
             $ref: "#/paths/~1v1~1registries/get"
@@ -1526,6 +1545,14 @@ components:
             objectKey: $.Registries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/registries/methods/describe_registry"
@@ -1585,6 +1612,14 @@ components:
             objectKey: $.Schemas
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_schemas:
           operation:
             $ref: "#/paths/~1v1~1registries~1name~1{registry_name}~1schemas~1search/get"
@@ -1594,6 +1629,14 @@ components:
             objectKey: $.Schemas
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schemas/methods/describe_schema"
@@ -1664,6 +1707,14 @@ components:
             objectKey: $.SchemaVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schema_versions/methods/list_schema_versions"
@@ -1741,10 +1792,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.schemas.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.schemas.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1752,17 +1803,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.schemas.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
@@ -1781,9 +1821,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

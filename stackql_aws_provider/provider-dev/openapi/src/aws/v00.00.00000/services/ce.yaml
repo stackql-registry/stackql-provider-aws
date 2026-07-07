@@ -130,7 +130,6 @@ paths:
                   $ref: "#/components/schemas/ResourceTagList"
                   description: "An optional list of tags to associate with the specified CostCategory . You can use resource tags to control access to your cost category using IAM policies. Each tag consists of a key and a value, and each key must be unique for the resource. The following restrictions apply to resource tags: Although the maximum number of array members is 200, you can assign a maximum of 50 user-tags to one resource. The remaining are reserved for Amazon Web Services use The maximum length of a key is 128 characters The maximum length of a value is 256 characters Keys and values can only contain alphanumeric characters, spaces, and any of the following: _.:/=+@- Keys and values are case sensitive Keys and values are trimmed for any leading or trailing whitespaces Don’t use aws: as a prefix for your keys. This prefix is reserved for Amazon Web Services use"
               required:
-                - Name
                 - RuleVersion
                 - Rules
       responses:
@@ -1688,7 +1687,6 @@ paths:
                   description: Describes whether the cost anomaly was a planned activity or you considered it an anomaly.
               required:
                 - AnomalyId
-                - Feedback
       responses:
         "200":
           description: Success
@@ -5336,6 +5334,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_anomaly_monitor:
@@ -5403,6 +5408,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_anomaly_subscription:
@@ -5464,6 +5476,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CostCategory
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5483,6 +5496,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_cost_category_definition:
@@ -5520,6 +5540,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Anomalies
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        provide_anomaly_feedback:
+          operation:
+            $ref: "#/paths/~1ProvideAnomalyFeedback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5635,6 +5675,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5708,6 +5755,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5805,6 +5859,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5854,6 +5915,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5918,6 +5986,19 @@ components:
         get_savings_plans_purchase_recommendation:
           operation:
             $ref: "#/paths/~1GetSavingsPlansPurchaseRecommendation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_savings_plans_purchase_recommendation_generation:
+          operation:
+            $ref: "#/paths/~1StartSavingsPlansPurchaseRecommendationGeneration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6000,11 +6081,53 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1ListTagsForResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1UntagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/get_tags"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     usage_forecasts:
       id: aws.ce.usage_forecasts
@@ -6047,6 +6170,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6072,6 +6202,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6097,13 +6234,47 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_cost_allocation_tag_backfill:
+          operation:
+            $ref: "#/paths/~1StartCostAllocationTagBackfill/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_cost_allocation_tags_status:
+          operation:
+            $ref: "#/paths/~1UpdateCostAllocationTagsStatus/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cost_allocation_tags/methods/list_cost_allocation_tags"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/cost_allocation_tags/methods/update_cost_allocation_tags_status"
         delete: []
     cost_category_resource_associations:
       id: aws.ce.cost_category_resource_associations
@@ -6122,6 +6293,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6147,6 +6325,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextPageToken
+                location: body
+              responseToken:
+                key: $.NextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6154,90 +6339,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/savings_plans_purchase_recommendation_generations/methods/list_savings_plans_purchase_recommendation_generation"
         insert: []
         update: []
-        delete: []
-    tags_for_resources:
-      id: aws.ce.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1ListTagsForResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.ce.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1TagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1UntagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    cost_allocation_tags_status:
-      id: aws.ce.cost_allocation_tags_status
-      name: cost_allocation_tags_status
-      title: cost_allocation_tags_status
-      methods:
-        update_cost_allocation_tags_status:
-          operation:
-            $ref: "#/paths/~1UpdateCostAllocationTagsStatus/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cost_allocation_tags_status/methods/update_cost_allocation_tags_status"
         delete: []

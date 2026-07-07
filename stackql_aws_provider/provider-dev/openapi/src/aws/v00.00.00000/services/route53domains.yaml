@@ -47,7 +47,6 @@ paths:
                   description: The password that was returned by the TransferDomainToAnotherAwsAccount request.
               required:
                 - DomainName
-                - Password
       responses:
         "200":
           description: Success
@@ -2545,11 +2544,24 @@ components:
     InvoiceId:
       type: string
   x-stackQL-resources:
-    delegation_signer_to_domains:
-      id: aws.route53domains.delegation_signer_to_domains
-      name: delegation_signer_to_domains
-      title: delegation_signer_to_domains
+    domains:
+      id: aws.route53domains.domains
+      name: domains
+      title: domains
       methods:
+        accept_domain_transfer_from_another_aws_account:
+          operation:
+            $ref: "#/paths/~1AcceptDomainTransferFromAnotherAwsAccount/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         associate_delegation_signer_to_domain:
           operation:
             $ref: "#/paths/~1AssociateDelegationSignerToDomain/post"
@@ -2563,20 +2575,126 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/delegation_signer_to_domains/methods/associate_delegation_signer_to_domain"
-        delete: []
-    domains:
-      id: aws.route53domains.domains
-      name: domains
-      title: domains
-      methods:
+        cancel_domain_transfer_to_another_aws_account:
+          operation:
+            $ref: "#/paths/~1CancelDomainTransferToAnotherAwsAccount/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        check_domain_availability:
+          operation:
+            $ref: "#/paths/~1CheckDomainAvailability/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        check_domain_transferability:
+          operation:
+            $ref: "#/paths/~1CheckDomainTransferability/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_domain:
           operation:
             $ref: "#/paths/~1DeleteDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_tags_for_domain:
+          operation:
+            $ref: "#/paths/~1DeleteTagsForDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_domain_auto_renew:
+          operation:
+            $ref: "#/paths/~1DisableDomainAutoRenew/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_domain_transfer_lock:
+          operation:
+            $ref: "#/paths/~1DisableDomainTransferLock/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_delegation_signer_from_domain:
+          operation:
+            $ref: "#/paths/~1DisassociateDelegationSignerFromDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_domain_auto_renew:
+          operation:
+            $ref: "#/paths/~1EnableDomainAutoRenew/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_domain_transfer_lock:
+          operation:
+            $ref: "#/paths/~1EnableDomainTransferLock/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2599,6 +2717,25 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextPageMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        push_domain:
+          operation:
+            $ref: "#/paths/~1PushDomain/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         register_domain:
@@ -2614,22 +2751,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/register_domain"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
-    tags_for_domains:
-      id: aws.route53domains.tags_for_domains
-      name: tags_for_domains
-      title: tags_for_domains
-      methods:
-        delete_tags_for_domain:
+        reject_domain_transfer_from_another_aws_account:
           operation:
-            $ref: "#/paths/~1DeleteTagsForDomain/post"
+            $ref: "#/paths/~1RejectDomainTransferFromAnotherAwsAccount/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2640,9 +2764,87 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        list_tags_for_domain:
+        renew_domain:
           operation:
-            $ref: "#/paths/~1ListTagsForDomain/post"
+            $ref: "#/paths/~1RenewDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        retrieve_domain_auth_code:
+          operation:
+            $ref: "#/paths/~1RetrieveDomainAuthCode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        transfer_domain:
+          operation:
+            $ref: "#/paths/~1TransferDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        transfer_domain_to_another_aws_account:
+          operation:
+            $ref: "#/paths/~1TransferDomainToAnotherAwsAccount/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_domain_contact:
+          operation:
+            $ref: "#/paths/~1UpdateDomainContact/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_domain_contact_privacy:
+          operation:
+            $ref: "#/paths/~1UpdateDomainContactPrivacy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_domain_nameservers:
+          operation:
+            $ref: "#/paths/~1UpdateDomainNameservers/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2668,36 +2870,17 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_domains/methods/list_tags_for_domain"
-        insert: []
+          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/register_domain"
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_for_domains/methods/update_tags_for_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/associate_delegation_signer_to_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/disassociate_delegation_signer_from_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/update_domain_nameservers"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/update_domain_contact"
         delete:
-          - $ref: "#/components/x-stackQL-resources/tags_for_domains/methods/delete_tags_for_domain"
-    delegation_signer_from_domains:
-      id: aws.route53domains.delegation_signer_from_domains
-      name: delegation_signer_from_domains
-      title: delegation_signer_from_domains
-      methods:
-        disassociate_delegation_signer_from_domain:
-          operation:
-            $ref: "#/paths/~1DisassociateDelegationSignerFromDomain/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/delegation_signer_from_domains/methods/disassociate_delegation_signer_from_domain"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_tags_for_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
     contact_reachability_status:
       id: aws.route53domains.contact_reachability_status
       name: contact_reachability_status
@@ -2811,6 +2994,25 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextPageMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        resend_operation_authorization:
+          operation:
+            $ref: "#/paths/~1ResendOperationAuthorization/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2836,6 +3038,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextPageMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2844,14 +3053,14 @@ components:
         insert: []
         update: []
         delete: []
-    domain_contacts:
-      id: aws.route53domains.domain_contacts
-      name: domain_contacts
-      title: domain_contacts
+    tags:
+      id: aws.route53domains.tags
+      name: tags
+      title: tags
       methods:
-        update_domain_contact:
+        list_tags_for_domain:
           operation:
-            $ref: "#/paths/~1UpdateDomainContact/post"
+            $ref: "#/paths/~1ListTagsForDomain/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2863,56 +3072,8 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_domain"
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/domain_contacts/methods/update_domain_contact"
-        delete: []
-    domain_contact_privacies:
-      id: aws.route53domains.domain_contact_privacies
-      name: domain_contact_privacies
-      title: domain_contact_privacies
-      methods:
-        update_domain_contact_privacy:
-          operation:
-            $ref: "#/paths/~1UpdateDomainContactPrivacy/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/domain_contact_privacies/methods/update_domain_contact_privacy"
-        delete: []
-    domain_nameservers:
-      id: aws.route53domains.domain_nameservers
-      name: domain_nameservers
-      title: domain_nameservers
-      methods:
-        update_domain_nameservers:
-          operation:
-            $ref: "#/paths/~1UpdateDomainNameservers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/domain_nameservers/methods/update_domain_nameservers"
+        update: []
         delete: []

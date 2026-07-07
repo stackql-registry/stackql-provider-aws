@@ -402,9 +402,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
                   description: The tags of the hypervisor configuration to import.
-              required:
-                - Name
-                - Host
       responses:
         "200":
           description: Success
@@ -504,8 +501,6 @@ paths:
                 ResourceArn:
                   $ref: "#/components/schemas/ResourceArn"
                   description: The Amazon Resource Name (ARN) of the resource's tags to list.
-              required:
-                - ResourceArn
       responses:
         "200":
           description: Success
@@ -737,7 +732,6 @@ paths:
                   description: A list of tags to assign to the resource.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -780,7 +774,6 @@ paths:
                   description: The password for the hypervisor.
               required:
                 - GatewayArn
-                - Host
       responses:
         "200":
           description: Success
@@ -1574,10 +1567,10 @@ components:
           $ref: "#/components/schemas/ServerArn"
           description: The Amazon Resource Name (ARN) of the hypervisor you updated.
   x-stackQL-resources:
-    gateway_to_servers:
-      id: aws.backup_gateway.gateway_to_servers
-      name: gateway_to_servers
-      title: gateway_to_servers
+    gateways:
+      id: aws.backup_gateway.gateways
+      name: gateways
+      title: gateways
       methods:
         associate_gateway_to_server:
           operation:
@@ -1592,17 +1585,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/gateway_to_servers/methods/associate_gateway_to_server"
-        delete: []
-    gateways:
-      id: aws.backup_gateway.gateways
-      name: gateways
-      title: gateways
-      methods:
         create_gateway:
           operation:
             $ref: "#/paths/~1CreateGateway/post"
@@ -1629,12 +1611,26 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disassociate_gateway_from_server:
+          operation:
+            $ref: "#/paths/~1DisassociateGatewayFromServer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_gateway:
           operation:
             $ref: "#/paths/~1GetGateway/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Gateway
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1654,6 +1650,52 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        put_maintenance_start_time:
+          operation:
+            $ref: "#/paths/~1PutMaintenanceStartTime/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_gateway_information:
+          operation:
+            $ref: "#/paths/~1UpdateGatewayInformation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_gateway_software_now:
+          operation:
+            $ref: "#/paths/~1UpdateGatewaySoftwareNow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1662,7 +1704,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/gateways/methods/list_gateways"
         insert:
           - $ref: "#/components/x-stackQL-resources/gateways/methods/create_gateway"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/associate_gateway_to_server"
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/disassociate_gateway_from_server"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/put_maintenance_start_time"
         delete:
           - $ref: "#/components/x-stackQL-resources/gateways/methods/delete_gateway"
     hypervisors:
@@ -1689,6 +1735,20 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Hypervisor
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_hypervisor_configuration:
+          operation:
+            $ref: "#/paths/~1ImportHypervisorConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1703,6 +1763,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Hypervisors
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        test_hypervisor_configuration:
+          operation:
+            $ref: "#/paths/~1TestHypervisorConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1732,30 +1812,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/hypervisors/methods/update_hypervisor"
         delete:
           - $ref: "#/components/x-stackQL-resources/hypervisors/methods/delete_hypervisor"
-    gateway_from_servers:
-      id: aws.backup_gateway.gateway_from_servers
-      name: gateway_from_servers
-      title: gateway_from_servers
-      methods:
-        disassociate_gateway_from_server:
-          operation:
-            $ref: "#/paths/~1DisassociateGatewayFromServer/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/gateway_from_servers/methods/disassociate_gateway_from_server"
-        delete: []
     bandwidth_rate_limit_schedules:
       id: aws.backup_gateway.bandwidth_rate_limit_schedules
       name: bandwidth_rate_limit_schedules
@@ -1845,6 +1901,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VirtualMachine
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1864,6 +1921,26 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_virtual_machines_metadata_sync:
+          operation:
+            $ref: "#/paths/~1StartVirtualMachinesMetadataSync/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1873,10 +1950,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.backup_gateway.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.backup_gateway.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1891,42 +1968,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    maintenance_start_times:
-      id: aws.backup_gateway.maintenance_start_times
-      name: maintenance_start_times
-      title: maintenance_start_times
-      methods:
-        put_maintenance_start_time:
-          operation:
-            $ref: "#/paths/~1PutMaintenanceStartTime/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/maintenance_start_times/methods/put_maintenance_start_time"
-        delete: []
-    resources:
-      id: aws.backup_gateway.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1954,57 +1995,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    gateway_informations:
-      id: aws.backup_gateway.gateway_informations
-      name: gateway_informations
-      title: gateway_informations
-      methods:
-        update_gateway_information:
-          operation:
-            $ref: "#/paths/~1UpdateGatewayInformation/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/gateway_informations/methods/update_gateway_information"
-        delete: []
-    gateway_software_nows:
-      id: aws.backup_gateway.gateway_software_nows
-      name: gateway_software_nows
-      title: gateway_software_nows
-      methods:
-        update_gateway_software_now:
-          operation:
-            $ref: "#/paths/~1UpdateGatewaySoftwareNow/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/gateway_software_nows/methods/update_gateway_software_now"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

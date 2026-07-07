@@ -2681,7 +2681,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListVolumeInitiatorsOutput"
+                $ref: "#/components/schemas/ListVolumeInitiatorsOutputDisplay"
   /ListVolumeRecoveryPoints:
     post:
       operationId: ListVolumeRecoveryPoints
@@ -6049,21 +6049,19 @@ components:
         PoolEntryDate:
           $ref: "#/components/schemas/Time"
           description: The date that the tape entered the custom tape pool with tape retention lock enabled.
-    ListVolumeInitiatorsOutput:
-      description: ListVolumeInitiatorsOutput
+    ListVolumeInitiatorsRowDisplay:
       type: object
       properties:
-        Initiators:
-          $ref: "#/components/schemas/Initiators"
+        initiator:
+          type: string
           description: The host names and port numbers of all iSCSI initiators that are connected to the gateway.
-    Initiators:
-      type: array
-      items:
-        $ref: "#/components/schemas/Initiator"
-    Initiator:
-      type: string
-      minLength: 1
-      maxLength: 50
+    ListVolumeInitiatorsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListVolumeInitiatorsRowDisplay"
     ListVolumeRecoveryPointsOutput:
       type: object
       properties:
@@ -6334,6 +6332,252 @@ components:
           $ref: "#/components/schemas/VTLDeviceARN"
           description: The Amazon Resource Name (ARN) of the medium changer you have selected.
   x-stackQL-resources:
+    gateways:
+      id: aws.storagegateway.gateways
+      name: gateways
+      title: gateways
+      methods:
+        activate_gateway:
+          operation:
+            $ref: "#/paths/~1ActivateGateway/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_archival:
+          operation:
+            $ref: "#/paths/~1CancelArchival/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_retrieval:
+          operation:
+            $ref: "#/paths/~1CancelRetrieval/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_gateway:
+          operation:
+            $ref: "#/paths/~1DeleteGateway/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_gateway:
+          operation:
+            $ref: "#/paths/~1DisableGateway/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        join_domain:
+          operation:
+            $ref: "#/paths/~1JoinDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_gateways:
+          operation:
+            $ref: "#/paths/~1ListGateways/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Gateways
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        retrieve_tape_archive:
+          operation:
+            $ref: "#/paths/~1RetrieveTapeArchive/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        retrieve_tape_recovery_point:
+          operation:
+            $ref: "#/paths/~1RetrieveTapeRecoveryPoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_local_console_password:
+          operation:
+            $ref: "#/paths/~1SetLocalConsolePassword/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_smb_guest_password:
+          operation:
+            $ref: "#/paths/~1SetSMBGuestPassword/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        shutdown_gateway:
+          operation:
+            $ref: "#/paths/~1ShutdownGateway/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_availability_monitor_test:
+          operation:
+            $ref: "#/paths/~1StartAvailabilityMonitorTest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_gateway:
+          operation:
+            $ref: "#/paths/~1StartGateway/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_gateway_software_now:
+          operation:
+            $ref: "#/paths/~1UpdateGatewaySoftwareNow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_smb_local_groups:
+          operation:
+            $ref: "#/paths/~1UpdateSMBLocalGroups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_smb_security_strategy:
+          operation:
+            $ref: "#/paths/~1UpdateSMBSecurityStrategy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/list_gateways"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/set_local_console_password"
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/set_smb_guest_password"
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/update_smb_local_groups"
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/update_smb_security_strategy"
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/update_gateway_software_now"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/gateways/methods/delete_gateway"
     caches:
       id: aws.storagegateway.caches
       name: caches
@@ -6342,6 +6586,19 @@ components:
         add_cache:
           operation:
             $ref: "#/paths/~1AddCache/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_cache_report:
+          operation:
+            $ref: "#/paths/~1CancelCacheReport/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6365,6 +6622,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_cache_report:
+          operation:
+            $ref: "#/paths/~1StartCacheReport/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/caches/methods/describe_cache"
@@ -6372,10 +6642,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/caches/methods/add_cache"
         delete: []
-    tags_to_resources:
-      id: aws.storagegateway.tags_to_resources
-      name: tags_to_resources
-      title: tags_to_resources
+    tags:
+      id: aws.storagegateway.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_resource:
           operation:
@@ -6390,11 +6660,47 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1ListTagsForResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Tags
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        remove_tags_from_resource:
+          operation:
+            $ref: "#/paths/~1RemoveTagsFromResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_resources/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags_from_resource"
         delete: []
     upload_buffers:
       id: aws.storagegateway.upload_buffers
@@ -6528,6 +6834,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6595,6 +6908,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_snapshot:
+          operation:
+            $ref: "#/paths/~1CreateSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_volume:
           operation:
             $ref: "#/paths/~1DeleteVolume/post"
@@ -6633,12 +6959,20 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/volumes/methods/list_volumes"
-        insert: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/volumes/methods/create_snapshot"
         update:
           - $ref: "#/components/x-stackQL-resources/volumes/methods/attach_volume"
           - $ref: "#/components/x-stackQL-resources/volumes/methods/detach_volume"
@@ -6778,22 +7112,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/describe_smb_file_shares"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/create_smb_file_share"
-        update:
-          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/update_smb_file_share"
-        delete: []
-    snapshots:
-      id: aws.storagegateway.snapshots
-      name: snapshots
-      title: snapshots
-      methods:
-        create_snapshot:
+        update_smb_file_share_visibility:
           operation:
-            $ref: "#/paths/~1CreateSnapshot/post"
+            $ref: "#/paths/~1UpdateSMBFileShareVisibility/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6805,15 +7126,18 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/describe_smb_file_shares"
         insert:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshot"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/create_smb_file_share"
+        update:
+          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/update_smb_file_share_visibility"
+          - $ref: "#/components/x-stackQL-resources/smb_file_shares/methods/update_smb_file_share"
         delete: []
-    snapshot_from_volume_recovery_points:
-      id: aws.storagegateway.snapshot_from_volume_recovery_points
-      name: snapshot_from_volume_recovery_points
-      title: snapshot_from_volume_recovery_points
+    volume_recovery_points:
+      id: aws.storagegateway.volume_recovery_points
+      name: volume_recovery_points
+      title: volume_recovery_points
       methods:
         create_snapshot_from_volume_recovery_point:
           operation:
@@ -6828,10 +7152,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_volume_recovery_points:
+          operation:
+            $ref: "#/paths/~1ListVolumeRecoveryPoints/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/volume_recovery_points/methods/list_volume_recovery_points"
         insert:
-          - $ref: "#/components/x-stackQL-resources/snapshot_from_volume_recovery_points/methods/create_snapshot_from_volume_recovery_point"
+          - $ref: "#/components/x-stackQL-resources/volume_recovery_points/methods/create_snapshot_from_volume_recovery_point"
         update: []
         delete: []
     storedi_scsi_volumes:
@@ -6872,10 +7210,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/storedi_scsi_volumes/methods/create_storedi_scsi_volume"
         update: []
         delete: []
-    tape_with_barcodes:
-      id: aws.storagegateway.tape_with_barcodes
-      name: tape_with_barcodes
-      title: tape_with_barcodes
+    tapes:
+      id: aws.storagegateway.tapes
+      name: tapes
+      title: tapes
       methods:
         create_tape_with_barcode:
           operation:
@@ -6890,17 +7228,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/tape_with_barcodes/methods/create_tape_with_barcode"
-        update: []
-        delete: []
-    tapes:
-      id: aws.storagegateway.tapes
-      name: tapes
-      title: tapes
-      methods:
         create_tapes:
           operation:
             $ref: "#/paths/~1CreateTapes/post"
@@ -6939,6 +7266,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         list_tapes:
@@ -6953,6 +7287,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6961,6 +7302,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/tapes/methods/list_tapes"
         insert:
           - $ref: "#/components/x-stackQL-resources/tapes/methods/create_tapes"
+          - $ref: "#/components/x-stackQL-resources/tapes/methods/create_tape_with_barcode"
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/tapes/methods/delete_tape"
@@ -7092,6 +7434,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CacheReportInfo
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7111,6 +7454,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7191,6 +7541,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        evict_files_failing_upload:
+          operation:
+            $ref: "#/paths/~1EvictFilesFailingUpload/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_file_shares:
           operation:
             $ref: "#/paths/~1ListFileShares/post"
@@ -7198,6 +7561,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FileShareInfoList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        notify_when_uploaded:
+          operation:
+            $ref: "#/paths/~1NotifyWhenUploaded/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7212,45 +7595,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/file_shares/methods/delete_file_share"
-    gateways:
-      id: aws.storagegateway.gateways
-      name: gateways
-      title: gateways
-      methods:
-        delete_gateway:
-          operation:
-            $ref: "#/paths/~1DeleteGateway/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_gateways:
-          operation:
-            $ref: "#/paths/~1ListGateways/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Gateways
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/gateways/methods/list_gateways"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/gateways/methods/delete_gateway"
     snapshot_schedules:
       id: aws.storagegateway.snapshot_schedules
       name: snapshot_schedules
@@ -7333,6 +7677,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7434,6 +7785,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_file_system_association:
@@ -7574,6 +7932,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7599,13 +7964,34 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_vtl_device_type:
+          operation:
+            $ref: "#/paths/~1UpdateVTLDeviceType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vtl_devices/methods/describe_vtl_devices"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/vtl_devices/methods/update_vtl_device_type"
         delete: []
     local_disks:
       id: aws.storagegateway.local_disks
@@ -7631,31 +8017,6 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.storagegateway.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1ListTagsForResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Tags
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
     volume_initiators:
       id: aws.storagegateway.volume_initiators
       name: volume_initiators
@@ -7667,6 +8028,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListVolumeInitiatorsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Initiators" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"initiator": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7679,220 +8047,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/volume_initiators/methods/list_volume_initiators"
         insert: []
         update: []
-        delete: []
-    volume_recovery_points:
-      id: aws.storagegateway.volume_recovery_points
-      name: volume_recovery_points
-      title: volume_recovery_points
-      methods:
-        list_volume_recovery_points:
-          operation:
-            $ref: "#/paths/~1ListVolumeRecoveryPoints/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/volume_recovery_points/methods/list_volume_recovery_points"
-        insert: []
-        update: []
-        delete: []
-    tags_from_resources:
-      id: aws.storagegateway.tags_from_resources
-      name: tags_from_resources
-      title: tags_from_resources
-      methods:
-        remove_tags_from_resource:
-          operation:
-            $ref: "#/paths/~1RemoveTagsFromResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_resources/methods/remove_tags_from_resource"
-        delete: []
-    local_console_passwords:
-      id: aws.storagegateway.local_console_passwords
-      name: local_console_passwords
-      title: local_console_passwords
-      methods:
-        set_local_console_password:
-          operation:
-            $ref: "#/paths/~1SetLocalConsolePassword/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/local_console_passwords/methods/set_local_console_password"
-        delete: []
-    smb_guest_passwords:
-      id: aws.storagegateway.smb_guest_passwords
-      name: smb_guest_passwords
-      title: smb_guest_passwords
-      methods:
-        set_smb_guest_password:
-          operation:
-            $ref: "#/paths/~1SetSMBGuestPassword/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/smb_guest_passwords/methods/set_smb_guest_password"
-        delete: []
-    gateway_software_nows:
-      id: aws.storagegateway.gateway_software_nows
-      name: gateway_software_nows
-      title: gateway_software_nows
-      methods:
-        update_gateway_software_now:
-          operation:
-            $ref: "#/paths/~1UpdateGatewaySoftwareNow/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/gateway_software_nows/methods/update_gateway_software_now"
-        delete: []
-    smb_file_share_visibilities:
-      id: aws.storagegateway.smb_file_share_visibilities
-      name: smb_file_share_visibilities
-      title: smb_file_share_visibilities
-      methods:
-        update_smb_file_share_visibility:
-          operation:
-            $ref: "#/paths/~1UpdateSMBFileShareVisibility/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/smb_file_share_visibilities/methods/update_smb_file_share_visibility"
-        delete: []
-    smb_local_groups:
-      id: aws.storagegateway.smb_local_groups
-      name: smb_local_groups
-      title: smb_local_groups
-      methods:
-        update_smb_local_groups:
-          operation:
-            $ref: "#/paths/~1UpdateSMBLocalGroups/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/smb_local_groups/methods/update_smb_local_groups"
-        delete: []
-    smb_security_strategies:
-      id: aws.storagegateway.smb_security_strategies
-      name: smb_security_strategies
-      title: smb_security_strategies
-      methods:
-        update_smb_security_strategy:
-          operation:
-            $ref: "#/paths/~1UpdateSMBSecurityStrategy/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/smb_security_strategies/methods/update_smb_security_strategy"
-        delete: []
-    vtl_device_types:
-      id: aws.storagegateway.vtl_device_types
-      name: vtl_device_types
-      title: vtl_device_types
-      methods:
-        update_vtl_device_type:
-          operation:
-            $ref: "#/paths/~1UpdateVTLDeviceType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/vtl_device_types/methods/update_vtl_device_type"
         delete: []

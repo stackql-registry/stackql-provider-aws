@@ -101,6 +101,9 @@ paths:
       x-stackql-method: list_search_job_backups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-jobs/{search_job_identifier}/search-results:
     get:
       operationId: ListSearchJobResults
@@ -137,6 +140,9 @@ paths:
       x-stackql-method: list_search_job_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-jobs:
     get:
       operationId: ListSearchJobs
@@ -173,6 +179,9 @@ paths:
       x-stackql-method: list_search_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SearchJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     put:
       operationId: StartSearchJob
       description: This operation creates a search job which returns recovery points filtered by SearchScope and items filtered
@@ -251,6 +260,9 @@ paths:
       x-stackql-method: list_search_result_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ExportJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     put:
       operationId: StartSearchResultExportJob
       description: This operations starts a job to export the results of search job to a designated S3 bucket.
@@ -282,7 +294,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSearchResultExportJobOutput'
-      x-stackql-resource: search_result_export_job
+      x-stackql-resource: search_jobs
       x-stackql-method: start_search_result_export_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -303,7 +315,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -335,7 +347,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -361,7 +373,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /search-jobs/{search_job_identifier}/actions/cancel:

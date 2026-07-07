@@ -334,9 +334,6 @@ paths:
                   $ref: "#/components/schemas/RecoveryPointSelection"
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Title
-                - Description
       responses:
         "200":
           description: Success
@@ -1675,8 +1672,6 @@ paths:
                   $ref: "#/components/schemas/IAMRoleArn"
                 Index:
                   $ref: "#/components/schemas/Index"
-              required:
-                - Index
       responses:
         "200":
           description: Success
@@ -1773,7 +1768,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetSupportedResourceTypesOutput"
+                $ref: "#/components/schemas/GetSupportedResourceTypesOutputDisplay"
   /audit/backup-job-summaries:
     get:
       operationId: ListBackupJobSummaries
@@ -3117,8 +3112,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -5338,12 +5331,19 @@ components:
         - ProtectedResourceType
         - RestoreTestingPlanName
         - RestoreTestingSelectionName
-    GetSupportedResourceTypesOutput:
+    GetSupportedResourceTypesRowDisplay:
       type: object
       properties:
-        ResourceTypes:
-          $ref: "#/components/schemas/ResourceTypes"
+        resource_type:
+          type: string
           description: "Contains a string with the supported Amazon Web Services resource types: Aurora for Amazon Aurora CloudFormation for CloudFormation DocumentDB for Amazon DocumentDB (with MongoDB compatibility) DynamoDB for Amazon DynamoDB EBS for Amazon Elastic Block Store EC2 for Amazon Elastic Compute Cloud EFS for Amazon Elastic File System EKS for Amazon Elastic Kubernetes Service FSx for Amazon FSx Neptune for Amazon Neptune RDS for Amazon Relational Database Service Redshift for Amazon Redshift S3 for Amazon Simple Storage Service (Amazon S3) SAP HANA on Amazon EC2 for SAP HANA databases on Amazon Elastic Compute Cloud instances Storage Gateway for Storage Gateway Timestream for Amazon Timestream VirtualMachine for VMware virtual machines"
+    GetSupportedResourceTypesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetSupportedResourceTypesRowDisplay"
     GetTieringConfigurationOutput:
       type: object
       properties:
@@ -6956,16 +6956,66 @@ components:
           $ref: "#/components/schemas/timestamp"
           description: The date and time a tiering configuration was updated, in Unix format and Coordinated Universal Time (UTC). The value of LastUpdatedTime is accurate to milliseconds. For example, the value 1516925490.087 represents Friday, January 26, 2018 12:11:30.087AM.
   x-stackQL-resources:
-    backup_vault_mpa_approval_teams:
-      id: aws.backup.backup_vault_mpa_approval_teams
-      name: backup_vault_mpa_approval_teams
-      title: backup_vault_mpa_approval_teams
+    backup_vaults:
+      id: aws.backup.backup_vaults
+      name: backup_vaults
+      title: backup_vaults
       methods:
         associate_backup_vault_mpa_approval_team:
           operation:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1mpaApprovalTeam/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_backup_vault:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_backup_vault:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}/delete"
+          response:
+            openAPIDocKey: "200"
+        describe_backup_vault:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        create_logically_air_gapped_backup_vault:
+          operation:
+            $ref: "#/paths/~1logically-air-gapped-backup-vaults~1{backup_vault_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_backup_vault_lock_configuration:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1vault-lock/delete"
+          response:
+            openAPIDocKey: "200"
+        put_backup_vault_lock_configuration:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1vault-lock/put"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -6981,12 +7031,89 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_backup_vaults:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.BackupVaultList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/describe_backup_vault"
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/list_backup_vaults"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/create_logically_air_gapped_backup_vault"
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/create_backup_vault"
         update:
-          - $ref: "#/components/x-stackQL-resources/backup_vault_mpa_approval_teams/methods/associate_backup_vault_mpa_approval_team"
-          - $ref: "#/components/x-stackQL-resources/backup_vault_mpa_approval_teams/methods/disassociate_backup_vault_mpa_approval_team"
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/associate_backup_vault_mpa_approval_team"
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/disassociate_backup_vault_mpa_approval_team"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/put_backup_vault_lock_configuration"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/delete_backup_vault"
+    legal_holds:
+      id: aws.backup.legal_holds
+      name: legal_holds
+      title: legal_holds
+      methods:
+        cancel_legal_hold:
+          operation:
+            $ref: "#/paths/~1legal-holds~1{legal_hold_id}/delete"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+        create_legal_hold:
+          operation:
+            $ref: "#/paths/~1legal-holds~1/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_legal_holds:
+          operation:
+            $ref: "#/paths/~1legal-holds~1/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.LegalHolds
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        get_legal_hold:
+          operation:
+            $ref: "#/paths/~1legal-holds~1{legal_hold_id}~1/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/legal_holds/methods/get_legal_hold"
+          - $ref: "#/components/x-stackQL-resources/legal_holds/methods/list_legal_holds"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/legal_holds/methods/create_legal_hold"
+        update: []
         delete: []
     backup_plans:
       id: aws.backup.backup_plans
@@ -7013,6 +7140,14 @@ components:
             objectKey: $.BackupPlansList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_backup_plan:
           operation:
             $ref: "#/paths/~1backup~1plans~1{backup_plan_id}/delete"
@@ -7030,6 +7165,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        export_backup_plan_template:
+          operation:
+            $ref: "#/paths/~1backup~1plans~1{backup_plan_id}~1toTemplate~1/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_backup_plan:
           operation:
             $ref: "#/paths/~1backup~1plans~1{backup_plan_id}~1/get"
@@ -7073,6 +7214,14 @@ components:
             objectKey: $.BackupSelectionsList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_backup_selection:
           operation:
             $ref: "#/paths/~1backup~1plans~1{backup_plan_id}~1selections~1{selection_id}/delete"
@@ -7093,53 +7242,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/backup_selections/methods/delete_backup_selection"
-    backup_vaults:
-      id: aws.backup.backup_vaults
-      name: backup_vaults
-      title: backup_vaults
-      methods:
-        create_backup_vault:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_backup_vault:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}/delete"
-          response:
-            openAPIDocKey: "200"
-        describe_backup_vault:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_backup_vaults:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.BackupVaultList
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/describe_backup_vault"
-          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/list_backup_vaults"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/create_backup_vault"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/backup_vaults/methods/delete_backup_vault"
     frameworks:
       id: aws.backup.frameworks
       name: frameworks
@@ -7196,67 +7298,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/frameworks/methods/update_framework"
         delete:
           - $ref: "#/components/x-stackQL-resources/frameworks/methods/delete_framework"
-    legal_holds:
-      id: aws.backup.legal_holds
-      name: legal_holds
-      title: legal_holds
-      methods:
-        create_legal_hold:
-          operation:
-            $ref: "#/paths/~1legal-holds~1/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_legal_holds:
-          operation:
-            $ref: "#/paths/~1legal-holds~1/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.LegalHolds
-          request:
-            nativeCasing: pascal
-        get_legal_hold:
-          operation:
-            $ref: "#/paths/~1legal-holds~1{legal_hold_id}~1/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/legal_holds/methods/get_legal_hold"
-          - $ref: "#/components/x-stackQL-resources/legal_holds/methods/list_legal_holds"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/legal_holds/methods/create_legal_hold"
-        update: []
-        delete: []
-    logically_air_gapped_backup_vaults:
-      id: aws.backup.logically_air_gapped_backup_vaults
-      name: logically_air_gapped_backup_vaults
-      title: logically_air_gapped_backup_vaults
-      methods:
-        create_logically_air_gapped_backup_vault:
-          operation:
-            $ref: "#/paths/~1logically-air-gapped-backup-vaults~1{backup_vault_name}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/logically_air_gapped_backup_vaults/methods/create_logically_air_gapped_backup_vault"
-        update: []
-        delete: []
     report_plans:
       id: aws.backup.report_plans
       name: report_plans
@@ -7292,9 +7333,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ReportPlan
         update_report_plan:
           operation:
             $ref: "#/paths/~1audit~1report-plans~1{report_plan_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_report_job:
+          operation:
+            $ref: "#/paths/~1audit~1report-jobs~1{report_plan_name}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7338,6 +7391,14 @@ components:
             objectKey: $.RestoreAccessBackupVaults
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         revoke_restore_access_backup_vault:
           operation:
             $ref: "#/paths/~1logically-air-gapped-backup-vaults~1{backup_vault_name}~1restore-access-backup-vaults~1{restore_access_backup_vault_arn}/delete"
@@ -7378,6 +7439,14 @@ components:
             objectKey: $.RestoreTestingPlans
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_restore_testing_plan:
           operation:
             $ref: "#/paths/~1restore-testing~1plans~1{restore_testing_plan_name}/delete"
@@ -7389,6 +7458,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RestoreTestingPlan
         update_restore_testing_plan:
           operation:
             $ref: "#/paths/~1restore-testing~1plans~1{restore_testing_plan_name}/put"
@@ -7435,6 +7505,14 @@ components:
             objectKey: $.RestoreTestingSelections
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_restore_testing_selection:
           operation:
             $ref: "#/paths/~1restore-testing~1plans~1{restore_testing_plan_name}~1selections~1{restore_testing_selection_name}/delete"
@@ -7446,6 +7524,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RestoreTestingSelection
         update_restore_testing_selection:
           operation:
             $ref: "#/paths/~1restore-testing~1plans~1{restore_testing_plan_name}~1selections~1{restore_testing_selection_name}/put"
@@ -7495,6 +7574,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TieringConfiguration
         update_tiering_configuration:
           operation:
             $ref: "#/paths/~1tiering-configurations~1{tiering_configuration_name}/put"
@@ -7515,6 +7595,14 @@ components:
             objectKey: $.TieringConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tiering_configurations/methods/get_tiering_configuration"
@@ -7560,34 +7648,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/backup_vault_access_policies/methods/put_backup_vault_access_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/backup_vault_access_policies/methods/delete_backup_vault_access_policy"
-    backup_vault_lock_configurations:
-      id: aws.backup.backup_vault_lock_configurations
-      name: backup_vault_lock_configurations
-      title: backup_vault_lock_configurations
-      methods:
-        delete_backup_vault_lock_configuration:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1vault-lock/delete"
-          response:
-            openAPIDocKey: "200"
-        put_backup_vault_lock_configuration:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1vault-lock/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/backup_vault_lock_configurations/methods/put_backup_vault_lock_configuration"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/backup_vault_lock_configurations/methods/delete_backup_vault_lock_configuration"
     backup_vault_notifications:
       id: aws.backup.backup_vault_notifications
       name: backup_vault_notifications
@@ -7641,24 +7701,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-        disassociate_recovery_point:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}~1disassociate/post"
-          response:
-            openAPIDocKey: "200"
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/describe_recovery_point"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/disassociate_recovery_point"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/delete_recovery_point"
-    recovery_point_lifecycles:
-      id: aws.backup.recovery_point_lifecycles
-      name: recovery_point_lifecycles
-      title: recovery_point_lifecycles
-      methods:
         update_recovery_point_lifecycle:
           operation:
             $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}/post"
@@ -7670,12 +7712,68 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disassociate_recovery_point:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+        disassociate_recovery_point_from_parent:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}~1parentAssociation/delete"
+          response:
+            openAPIDocKey: "204"
+        update_recovery_point_index_settings:
+          operation:
+            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}~1index/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_copy_job:
+          operation:
+            $ref: "#/paths/~1copy-jobs/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_restore_job:
+          operation:
+            $ref: "#/paths/~1restore-jobs/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_scan_job:
+          operation:
+            $ref: "#/paths/~1scan~1job/put"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/describe_recovery_point"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/recovery_point_lifecycles/methods/update_recovery_point_lifecycle"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/disassociate_recovery_point"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/delete_recovery_point"
     backup_jobs:
       id: aws.backup.backup_jobs
       name: backup_jobs
@@ -7696,6 +7794,14 @@ components:
             objectKey: $.BackupJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_jobs/methods/describe_backup_job"
@@ -7714,6 +7820,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CopyJob
         list_copy_jobs:
           operation:
             $ref: "#/paths/~1copy-jobs~1/get"
@@ -7723,6 +7830,14 @@ components:
             objectKey: $.CopyJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/copy_jobs/methods/describe_copy_job"
@@ -7778,6 +7893,14 @@ components:
             objectKey: $.Results
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_resources/methods/describe_protected_resource"
@@ -7824,6 +7947,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ReportJob
         list_report_jobs:
           operation:
             $ref: "#/paths/~1audit~1report-jobs/get"
@@ -7859,12 +7983,32 @@ components:
             objectKey: $.RestoreJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        put_restore_validation_result:
+          operation:
+            $ref: "#/paths/~1restore-jobs~1{restore_job_id}~1validations/put"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/restore_jobs/methods/describe_restore_job"
           - $ref: "#/components/x-stackQL-resources/restore_jobs/methods/list_restore_jobs"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/restore_jobs/methods/put_restore_validation_result"
         delete: []
     scan_jobs:
       id: aws.backup.scan_jobs
@@ -7886,28 +8030,20 @@ components:
             objectKey: $.ScanJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scan_jobs/methods/describe_scan_job"
           - $ref: "#/components/x-stackQL-resources/scan_jobs/methods/list_scan_jobs"
         insert: []
         update: []
-        delete: []
-    recovery_point_from_parents:
-      id: aws.backup.recovery_point_from_parents
-      name: recovery_point_from_parents
-      title: recovery_point_from_parents
-      methods:
-        disassociate_recovery_point_from_parent:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}~1parentAssociation/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/recovery_point_from_parents/methods/disassociate_recovery_point_from_parent"
         delete: []
     backup_plan_from_jsons:
       id: aws.backup.backup_plan_from_jsons
@@ -7920,6 +8056,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.BackupPlan
           request:
             nativeCasing: pascal
           config:
@@ -7942,6 +8079,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.BackupPlanDocument
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_plan_from_templates/methods/get_backup_plan_from_template"
@@ -7964,28 +8102,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/recovery_point_index_details/methods/get_recovery_point_index_details"
         insert: []
         update: []
-        delete: []
-    recovery_point_index_settings:
-      id: aws.backup.recovery_point_index_settings
-      name: recovery_point_index_settings
-      title: recovery_point_index_settings
-      methods:
-        update_recovery_point_index_settings:
-          operation:
-            $ref: "#/paths/~1backup-vaults~1{backup_vault_name}~1recovery-points~1{recovery_point_arn}~1index/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/recovery_point_index_settings/methods/update_recovery_point_index_settings"
         delete: []
     recovery_point_restore_metadatas:
       id: aws.backup.recovery_point_restore_metadatas
@@ -8053,6 +8169,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetSupportedResourceTypesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ResourceTypes" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_type": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/supported_resource_types/methods/get_supported_resource_types"
@@ -8092,6 +8215,14 @@ components:
             objectKey: $.BackupPlanTemplatesList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_plan_templates/methods/list_backup_plan_templates"
@@ -8112,6 +8243,14 @@ components:
             objectKey: $.BackupPlanVersionsList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backup_plan_versions/methods/list_backup_plan_versions"
@@ -8151,6 +8290,14 @@ components:
             objectKey: $.IndexedRecoveryPoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/indexed_recovery_points/methods/list_indexed_recovery_points"
@@ -8171,6 +8318,14 @@ components:
             objectKey: $.Results
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/protected_resources_by_backup_vaults/methods/list_protected_resources_by_backup_vault"
@@ -8191,6 +8346,14 @@ components:
             objectKey: $.RecoveryPoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_points_by_backup_vaults/methods/list_recovery_points_by_backup_vault"
@@ -8211,6 +8374,14 @@ components:
             objectKey: $.RecoveryPoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_points_by_legal_holds/methods/list_recovery_points_by_legal_hold"
@@ -8231,6 +8402,14 @@ components:
             objectKey: $.RecoveryPoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recovery_points_by_resources/methods/list_recovery_points_by_resource"
@@ -8270,6 +8449,14 @@ components:
             objectKey: $.RestoreJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/restore_jobs_by_protected_resources/methods/list_restore_jobs_by_protected_resource"
@@ -8290,6 +8477,14 @@ components:
             objectKey: $.ScanJobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scan_job_summaries/methods/list_scan_job_summaries"
@@ -8309,39 +8504,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
-        insert: []
-        update: []
-        delete: []
-    restore_validation_results:
-      id: aws.backup.restore_validation_results
-      name: restore_validation_results
-      title: restore_validation_results
-      methods:
-        put_restore_validation_result:
-          operation:
-            $ref: "#/paths/~1restore-jobs~1{restore_job_id}~1validations/put"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/restore_validation_results/methods/put_restore_validation_result"
-        delete: []
-    resources:
-      id: aws.backup.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -8363,9 +8525,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

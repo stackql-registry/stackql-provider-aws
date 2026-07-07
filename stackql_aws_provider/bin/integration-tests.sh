@@ -8,6 +8,9 @@
 # The DESCRIBE EXTENDED tests work offline (no API call), the SELECTs
 # need credentials.
 #
+# Uses the repo-pinned Linux binary at .bin/stackql by default (run under
+# WSL / Linux); override with STACKQL=/path/to/stackql.
+#
 # Usage:
 #   bash bin/integration-tests.sh                       # run all
 #   bash bin/integration-tests.sh --describe-only       # skip SELECTs
@@ -23,7 +26,15 @@ set -uo pipefail
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BASE_DIR="$( cd "$DIR/.." && pwd )"
-STACKQL="${STACKQL:-stackql}"
+# Default to the repo-pinned binary (a Linux ELF - run this harness under
+# WSL / Linux). Override with STACKQL=/path/to/stackql to test another build.
+STACKQL="${STACKQL:-${BASE_DIR}/.bin/stackql}"
+
+if ! command -v "$STACKQL" >/dev/null 2>&1 && [[ ! -x "$STACKQL" ]]; then
+  echo "stackql binary not found at '$STACKQL'." >&2
+  echo "Place a Linux binary at ${BASE_DIR}/.bin/stackql or set STACKQL=/path/to/stackql." >&2
+  exit 2
+fi
 
 # Build the registry URL. The default uses `pwd`-style paths which work
 # transparently for:
@@ -118,10 +129,14 @@ run_test() {
   ((PASS++))
 }
 
+STACKQL_VERSION="$("$STACKQL" --version 2>/dev/null | head -1)"
+
 echo
 echo "==================================================================="
 echo "  stackql AWS provider integration tests"
 echo "==================================================================="
+echo "Binary:   $STACKQL"
+echo "Version:  ${STACKQL_VERSION:-unknown}"
 echo "Registry: $REG_PATH"
 echo "Mode:     $MODE"
 echo
@@ -620,9 +635,18 @@ run_test "DESCRIBE lambda.functions"          describe "DESCRIBE EXTENDED aws.la
 run_test "SELECT lambda.functions get + JSON_EXTRACT (arn)" select \
   "SELECT JSON_EXTRACT(Configuration, '\$.FunctionArn') AS function_arn FROM aws.lambda.functions WHERE region = 'us-east-1' AND function_name = '${AWS_LAMBDA_TEST_FN:-stackql-helloworld-fn}'" \
   "arn:aws:lambda:[a-z0-9-]+:[0-9]+:function:[A-Za-z0-9._-]+"
+# List-path DDL guard: the list method's response schema + the resource's
+# required-param union build a DIFFERENT table than the get path; a NOCASE
+# collision there (response column `role` vs create_function's required
+# `Role`) aborts CREATE TABLE with exit code 0. The harness's fatal-pattern
+# grep ("duplicate column name" et al) is what catches it.
+run_test "SELECT lambda.functions (list DDL)" select \
+  "SELECT * FROM aws.lambda.functions WHERE region = 'us-east-1'"
 
 echo "--- aws-json (POST-body protocol) ---"
 run_test "DESCRIBE dynamodb.tables"           describe "DESCRIBE EXTENDED aws.dynamodb.tables"                                         "table|Table"
+# Same list-path DDL guard for aws-json.
+run_test "SELECT dynamodb.tables (list DDL)"  select   "SELECT * FROM aws.dynamodb.tables WHERE region = 'ap-southeast-2'"
 
 echo "--- JSON column round-trip (complex value -> JSON_EXTRACT) ---"
 run_test "JSON_EXTRACT ec2.volumes.operator" select "SELECT volume_id, JSON_EXTRACT(operator, '\$.managed') AS managed FROM aws.ec2.volumes WHERE region = 'ap-southeast-2' LIMIT 2"

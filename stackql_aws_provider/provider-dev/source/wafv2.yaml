@@ -584,7 +584,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteFirewallManagerRuleGroupsResponse'
-      x-stackql-resource: firewall_manager_rule_groups
+      x-stackql-resource: rule_groups
       x-stackql-method: delete_firewall_manager_rule_groups
       x-stackql-verb: DELETE
   /DeleteIPSet:
@@ -1132,7 +1132,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateMobileSdkReleaseUrlResponse'
-      x-stackql-resource: mobile_sdk_release_url
+      x-stackql-resource: mobile_sdk_releases
       x-stackql-method: generate_mobile_sdk_release_url
       x-stackql-verb: EXEC
   /GetDecryptedAPIKey:
@@ -1278,6 +1278,7 @@ paths:
       x-stackql-resource: logging_configurations
       x-stackql-method: get_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LoggingConfiguration
   /GetManagedRuleSet:
     post:
       operationId: GetManagedRuleSet
@@ -1374,6 +1375,7 @@ paths:
       x-stackql-resource: mobile_sdk_releases
       x-stackql-method: get_mobile_sdk_release
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MobileSdkRelease
   /GetPermissionPolicy:
     post:
       operationId: GetPermissionPolicy
@@ -1822,6 +1824,7 @@ paths:
       x-stackql-resource: web_acl_for_resources
       x-stackql-method: get_web_acl_for_resource
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.WebACL
   /ListAPIKeys:
     post:
       operationId: ListAPIKeys
@@ -2283,10 +2286,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListResourcesForWebACLResponse'
+                $ref: '#/components/schemas/ListResourcesForWebACLOutputDisplay'
       x-stackql-resource: resources_for_web_acls
       x-stackql-method: list_resources_for_web_acl
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListResourcesForWebACLOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ResourceArns" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListRuleGroups:
     post:
       operationId: ListRuleGroups
@@ -2383,9 +2391,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TagInfoForResource
   /ListWebACLs:
     post:
       operationId: ListWebACLs
@@ -2557,7 +2566,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutManagedRuleSetVersionsResponse'
-      x-stackql-resource: managed_rule_set_versions
+      x-stackql-resource: managed_rule_sets
       x-stackql-method: put_managed_rule_set_versions
       x-stackql-verb: REPLACE
   /PutPermissionPolicy:
@@ -2652,7 +2661,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2694,7 +2703,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateIPSet:
@@ -2852,7 +2861,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateManagedRuleSetVersionExpiryDateResponse'
-      x-stackql-resource: managed_rule_set_version_expiry_dates
+      x-stackql-resource: managed_rule_sets
       x-stackql-method: update_managed_rule_set_version_expiry_date
       x-stackql-verb: UPDATE
   /UpdateRegexPatternSet:
@@ -7860,16 +7869,19 @@ components:
       - APP_RUNNER_SERVICE
       - VERIFIED_ACCESS_INSTANCE
       - AMPLIFY
-    ListResourcesForWebACLResponse:
+    ListResourcesForWebACLRowDisplay:
       type: object
       properties:
-        ResourceArns:
-          $ref: '#/components/schemas/ResourceArns'
+        resource_arn:
+          type: string
           description: The array of Amazon Resource Names (ARNs) of the associated resources.
-    ResourceArns:
-      type: array
-      items:
-        $ref: '#/components/schemas/ResourceArn'
+    ListResourcesForWebACLOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListResourcesForWebACLRowDisplay'
     ListRuleGroupsResponse:
       type: object
       properties:

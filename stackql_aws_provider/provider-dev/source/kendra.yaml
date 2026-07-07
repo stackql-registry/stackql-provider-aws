@@ -61,7 +61,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateEntitiesToExperienceResponse'
-      x-stackql-resource: entities_to_experiences
+      x-stackql-resource: experiences
       x-stackql-method: associate_entities_to_experience
       x-stackql-verb: UPDATE
   /AssociatePersonasToEntities:
@@ -109,7 +109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociatePersonasToEntitiesResponse'
-      x-stackql-resource: personas_to_entities
+      x-stackql-resource: indexes
       x-stackql-method: associate_personas_to_entities
       x-stackql-verb: UPDATE
   /BatchDeleteDocument:
@@ -156,7 +156,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDocumentResponse'
-      x-stackql-resource: batch_delete_document
+      x-stackql-resource: indexes
       x-stackql-method: batch_delete_document
       x-stackql-verb: EXEC
   /BatchDeleteFeaturedResultsSet:
@@ -197,7 +197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteFeaturedResultsSetResponse'
-      x-stackql-resource: batch_delete_featured_results_set
+      x-stackql-resource: featured_results_sets
       x-stackql-method: batch_delete_featured_results_set
       x-stackql-verb: EXEC
   /BatchGetDocumentStatus:
@@ -301,7 +301,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutDocumentResponse'
-      x-stackql-resource: batch_put_document
+      x-stackql-resource: indexes
       x-stackql-method: batch_put_document
       x-stackql-verb: EXEC
   /ClearQuerySuggestions:
@@ -337,7 +337,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: clear_query_suggestions
+      x-stackql-resource: query_suggestions
       x-stackql-method: clear_query_suggestions
       x-stackql-verb: EXEC
   /CreateAccessControlConfiguration:
@@ -1709,7 +1709,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateEntitiesFromExperienceResponse'
-      x-stackql-resource: entities_from_experiences
+      x-stackql-resource: experiences
       x-stackql-method: disassociate_entities_from_experience
       x-stackql-verb: UPDATE
   /DisassociatePersonasFromEntities:
@@ -1756,7 +1756,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociatePersonasFromEntitiesResponse'
-      x-stackql-resource: personas_from_entities
+      x-stackql-resource: indexes
       x-stackql-method: disassociate_personas_from_entities
       x-stackql-verb: UPDATE
   /GetQuerySuggestions:
@@ -2434,7 +2434,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListThesauri:
@@ -2669,7 +2669,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryResult'
-      x-stackql-resource: query
+      x-stackql-resource: indexes
       x-stackql-method: query
       x-stackql-verb: EXEC
   /Retrieve:
@@ -2759,7 +2759,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveResult'
-      x-stackql-resource: retrieve
+      x-stackql-resource: indexes
       x-stackql-method: retrieve
       x-stackql-verb: EXEC
   /StartDataSourceSyncJob:
@@ -2802,7 +2802,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceSyncJobResponse'
-      x-stackql-resource: data_source_sync_job
+      x-stackql-resource: data_sources
       x-stackql-method: start_data_source_sync_job
       x-stackql-verb: EXEC
   /StopDataSourceSyncJob:
@@ -2838,7 +2838,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: data_source_sync_job
+      x-stackql-resource: data_sources
       x-stackql-method: stop_data_source_sync_job
       x-stackql-verb: EXEC
   /SubmitFeedback:
@@ -2883,7 +2883,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: feedback
+      x-stackql-resource: indexes
       x-stackql-method: submit_feedback
       x-stackql-verb: EXEC
   /TagResource:
@@ -2927,7 +2927,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2970,7 +2970,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAccessControlConfiguration:

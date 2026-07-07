@@ -101,7 +101,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateGatewayOutput'
-      x-stackql-resource: gateway
+      x-stackql-resource: gateways
       x-stackql-method: activate_gateway
       x-stackql-verb: EXEC
   /AddCache:
@@ -193,7 +193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddTagsToResourceOutput'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
   /AddUploadBuffer:
@@ -503,7 +503,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelArchivalOutput'
-      x-stackql-resource: archival
+      x-stackql-resource: gateways
       x-stackql-method: cancel_archival
       x-stackql-verb: EXEC
   /CancelCacheReport:
@@ -542,7 +542,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelCacheReportOutput'
-      x-stackql-resource: cache_report
+      x-stackql-resource: caches
       x-stackql-method: cancel_cache_report
       x-stackql-verb: EXEC
   /CancelRetrieval:
@@ -583,7 +583,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelRetrievalOutput'
-      x-stackql-resource: retrieval
+      x-stackql-resource: gateways
       x-stackql-method: cancel_retrieval
       x-stackql-verb: EXEC
   /CreateCachediSCSIVolume:
@@ -1081,7 +1081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSnapshotOutput'
-      x-stackql-resource: snapshots
+      x-stackql-resource: volumes
       x-stackql-method: create_snapshot
       x-stackql-verb: INSERT
   /CreateSnapshotFromVolumeRecoveryPoint:
@@ -1138,7 +1138,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSnapshotFromVolumeRecoveryPointOutput'
-      x-stackql-resource: snapshot_from_volume_recovery_points
+      x-stackql-resource: volume_recovery_points
       x-stackql-method: create_snapshot_from_volume_recovery_point
       x-stackql-verb: INSERT
   /CreateStorediSCSIVolume:
@@ -1358,7 +1358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateTapeWithBarcodeOutput'
-      x-stackql-resource: tape_with_barcodes
+      x-stackql-resource: tapes
       x-stackql-method: create_tape_with_barcode
       x-stackql-verb: INSERT
   /CreateTapes:
@@ -2094,6 +2094,7 @@ paths:
       x-stackql-resource: cache_reports
       x-stackql-method: describe_cache_report
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CacheReportInfo
   /DescribeCachediSCSIVolumes:
     post:
       operationId: DescribeCachediSCSIVolumes
@@ -2514,6 +2515,9 @@ paths:
       x-stackql-method: describe_tape_archives
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TapeArchives
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeTapeRecoveryPoints:
     post:
       operationId: DescribeTapeRecoveryPoints
@@ -2561,6 +2565,9 @@ paths:
       x-stackql-method: describe_tape_recovery_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TapeRecoveryPointInfos
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeTapes:
     post:
       operationId: DescribeTapes
@@ -2615,6 +2622,9 @@ paths:
       x-stackql-method: describe_tapes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tapes
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeUploadBuffer:
     post:
       operationId: DescribeUploadBuffer
@@ -2700,6 +2710,9 @@ paths:
       x-stackql-method: describe_vtl_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VTLDevices
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /DescribeWorkingStorage:
     post:
       operationId: DescribeWorkingStorage
@@ -2818,7 +2831,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableGatewayOutput'
-      x-stackql-resource: gateway
+      x-stackql-resource: gateways
       x-stackql-method: disable_gateway
       x-stackql-verb: EXEC
   /DisassociateFileSystem:
@@ -2914,7 +2927,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvictFilesFailingUploadOutput'
-      x-stackql-resource: evict_files_failing_upload
+      x-stackql-resource: file_shares
       x-stackql-method: evict_files_failing_upload
       x-stackql-verb: EXEC
   /JoinDomain:
@@ -2986,7 +2999,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/JoinDomainOutput'
-      x-stackql-resource: join_domain
+      x-stackql-resource: gateways
       x-stackql-method: join_domain
       x-stackql-verb: EXEC
   /ListAutomaticTapeCreationPolicies:
@@ -3061,6 +3074,9 @@ paths:
       x-stackql-method: list_cache_reports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CacheReportList
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListFileShares:
     post:
       operationId: ListFileShares
@@ -3106,6 +3122,9 @@ paths:
       x-stackql-method: list_file_shares
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FileShareInfoList
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListFileSystemAssociations:
     post:
       operationId: ListFileSystemAssociations
@@ -3150,6 +3169,9 @@ paths:
       x-stackql-method: list_file_system_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FileSystemAssociationSummaryList
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListGateways:
     post:
       operationId: ListGateways
@@ -3193,6 +3215,9 @@ paths:
       x-stackql-method: list_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Gateways
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListLocalDisks:
     post:
       operationId: ListLocalDisks
@@ -3273,10 +3298,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListTapePools:
     post:
       operationId: ListTapePools
@@ -3323,6 +3351,9 @@ paths:
       x-stackql-method: list_tape_pools
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PoolInfos
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListTapes:
     post:
       operationId: ListTapes
@@ -3369,6 +3400,9 @@ paths:
       x-stackql-method: list_tapes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TapeInfos
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListVolumeInitiators:
     post:
       operationId: ListVolumeInitiators
@@ -3403,10 +3437,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListVolumeInitiatorsOutput'
+                $ref: '#/components/schemas/ListVolumeInitiatorsOutputDisplay'
       x-stackql-resource: volume_initiators
       x-stackql-method: list_volume_initiators
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListVolumeInitiatorsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Initiators" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"initiator": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListVolumeRecoveryPoints:
     post:
       operationId: ListVolumeRecoveryPoints
@@ -3492,6 +3531,9 @@ paths:
       x-stackql-method: list_volumes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VolumeInfos
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /NotifyWhenUploaded:
     post:
       operationId: NotifyWhenUploaded
@@ -3530,7 +3572,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyWhenUploadedOutput'
-      x-stackql-resource: when_uploaded
+      x-stackql-resource: file_shares
       x-stackql-method: notify_when_uploaded
       x-stackql-verb: EXEC
   /RefreshCache:
@@ -3638,7 +3680,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveTagsFromResourceOutput'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
   /ResetCache:
@@ -3728,7 +3770,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveTapeArchiveOutput'
-      x-stackql-resource: retrieve_tape_archive
+      x-stackql-resource: gateways
       x-stackql-method: retrieve_tape_archive
       x-stackql-verb: EXEC
   /RetrieveTapeRecoveryPoint:
@@ -3772,7 +3814,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveTapeRecoveryPointOutput'
-      x-stackql-resource: retrieve_tape_recovery_point
+      x-stackql-resource: gateways
       x-stackql-method: retrieve_tape_recovery_point
       x-stackql-verb: EXEC
   /SetLocalConsolePassword:
@@ -3813,7 +3855,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetLocalConsolePasswordOutput'
-      x-stackql-resource: local_console_passwords
+      x-stackql-resource: gateways
       x-stackql-method: set_local_console_password
       x-stackql-verb: UPDATE
   /SetSMBGuestPassword:
@@ -3854,7 +3896,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetSMBGuestPasswordOutput'
-      x-stackql-resource: smb_guest_passwords
+      x-stackql-resource: gateways
       x-stackql-method: set_smb_guest_password
       x-stackql-verb: UPDATE
   /ShutdownGateway:
@@ -3899,7 +3941,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ShutdownGatewayOutput'
-      x-stackql-resource: shutdown_gateway
+      x-stackql-resource: gateways
       x-stackql-method: shutdown_gateway
       x-stackql-verb: EXEC
   /StartAvailabilityMonitorTest:
@@ -3937,7 +3979,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAvailabilityMonitorTestOutput'
-      x-stackql-resource: availability_monitor_test
+      x-stackql-resource: gateways
       x-stackql-method: start_availability_monitor_test
       x-stackql-verb: EXEC
   /StartCacheReport:
@@ -4018,7 +4060,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCacheReportOutput'
-      x-stackql-resource: cache_report
+      x-stackql-resource: caches
       x-stackql-method: start_cache_report
       x-stackql-verb: EXEC
   /StartGateway:
@@ -4058,7 +4100,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartGatewayOutput'
-      x-stackql-resource: gateway
+      x-stackql-resource: gateways
       x-stackql-method: start_gateway
       x-stackql-verb: EXEC
   /UpdateAutomaticTapeCreationPolicy:
@@ -4384,7 +4426,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateGatewaySoftwareNowOutput'
-      x-stackql-resource: gateway_software_nows
+      x-stackql-resource: gateways
       x-stackql-method: update_gateway_software_now
       x-stackql-verb: UPDATE
   /UpdateMaintenanceStartTime:
@@ -4756,7 +4798,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSMBFileShareVisibilityOutput'
-      x-stackql-resource: smb_file_share_visibilities
+      x-stackql-resource: smb_file_shares
       x-stackql-method: update_smb_file_share_visibility
       x-stackql-verb: UPDATE
   /UpdateSMBLocalGroups:
@@ -4797,7 +4839,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSMBLocalGroupsOutput'
-      x-stackql-resource: smb_local_groups
+      x-stackql-resource: gateways
       x-stackql-method: update_smb_local_groups
       x-stackql-verb: UPDATE
   /UpdateSMBSecurityStrategy:
@@ -4850,7 +4892,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSMBSecurityStrategyOutput'
-      x-stackql-resource: smb_security_strategies
+      x-stackql-resource: gateways
       x-stackql-method: update_smb_security_strategy
       x-stackql-verb: UPDATE
   /UpdateSnapshotSchedule:
@@ -4952,7 +4994,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateVTLDeviceTypeOutput'
-      x-stackql-resource: vtl_device_types
+      x-stackql-resource: vtl_devices
       x-stackql-method: update_vtl_device_type
       x-stackql-verb: UPDATE
 components:
@@ -7465,21 +7507,19 @@ components:
         PoolEntryDate:
           $ref: '#/components/schemas/Time'
           description: The date that the tape entered the custom tape pool with tape retention lock enabled.
-    ListVolumeInitiatorsOutput:
-      description: ListVolumeInitiatorsOutput
+    ListVolumeInitiatorsRowDisplay:
       type: object
       properties:
-        Initiators:
-          $ref: '#/components/schemas/Initiators'
+        initiator:
+          type: string
           description: The host names and port numbers of all iSCSI initiators that are connected to the gateway.
-    Initiators:
-      type: array
-      items:
-        $ref: '#/components/schemas/Initiator'
-    Initiator:
-      type: string
-      minLength: 1
-      maxLength: 50
+    ListVolumeInitiatorsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListVolumeInitiatorsRowDisplay'
     ListVolumeRecoveryPointsOutput:
       type: object
       properties:

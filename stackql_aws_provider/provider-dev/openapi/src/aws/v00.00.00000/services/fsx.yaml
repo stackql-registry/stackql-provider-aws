@@ -49,7 +49,6 @@ paths:
                   description: "An array of one or more DNS alias names to associate with the file system. The alias name has to comply with the following formatting requirements: Formatted as a fully-qualified domain name (FQDN), hostname.domain , for example, accounting.corp.example.com. Can contain alphanumeric characters and the hyphen (-). Cannot start or end with a hyphen. Can start with a numeric. For DNS alias names, Amazon FSx stores alphabetic characters as lowercase letters (a-z), regardless of how you specify them: as uppercase letters, lowercase letters, or the corresponding letters in escape codes."
               required:
                 - FileSystemId
-                - Aliases
       responses:
         "200":
           description: Success
@@ -604,7 +603,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
               required:
-                - Name
                 - VolumeId
       responses:
         "200":
@@ -654,7 +652,6 @@ paths:
                   description: "The security style of the root volume of the SVM. Specify one of the following values: UNIX if the file system is managed by a UNIX administrator, the majority of users are NFS clients, and an application accessing the data uses a UNIX user as the service account. NTFS if the file system is managed by a Microsoft Windows administrator, the majority of users are SMB clients, and an application accessing the data uses a Microsoft Windows user as the service account. MIXED This is an advanced setting. For more information, see Volume security style in the Amazon FSx for NetApp ONTAP User Guide."
               required:
                 - FileSystemId
-                - Name
       responses:
         "200":
           description: Success
@@ -701,7 +698,6 @@ paths:
                   description: Specifies the configuration to use when creating the OpenZFS volume.
               required:
                 - VolumeType
-                - Name
       responses:
         "200":
           description: Success
@@ -1452,8 +1448,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/S3AccessPointAttachmentName"
                   description: The name of the S3 access point attachment that you want to delete.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1492,7 +1486,6 @@ paths:
                   description: An array of one or more DNS alias names to disassociate, or remove, from the file system.
               required:
                 - FileSystemId
-                - Aliases
       responses:
         "200":
           description: Success
@@ -1922,7 +1915,6 @@ paths:
                   $ref: "#/components/schemas/SnapshotId"
                   description: The ID of the snapshot that you want to update, in the format fsvolsnap-0123456789abcdef0.
               required:
-                - Name
                 - SnapshotId
       responses:
         "200":
@@ -6019,6 +6011,93 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/file_system_aliases/methods/associate_file_system_aliases"
         delete: []
+    snapshots:
+      id: aws.fsx.snapshots
+      name: snapshots
+      title: snapshots
+      methods:
+        copy_snapshot_and_update_volume:
+          operation:
+            $ref: "#/paths/~1CopySnapshotAndUpdateVolume/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_snapshot:
+          operation:
+            $ref: "#/paths/~1CreateSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_snapshot:
+          operation:
+            $ref: "#/paths/~1DeleteSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_snapshots:
+          operation:
+            $ref: "#/paths/~1DescribeSnapshots/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Snapshots
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_snapshot:
+          operation:
+            $ref: "#/paths/~1UpdateSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/describe_snapshots"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshot"
+        update:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/update_snapshot"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/snapshots/methods/delete_snapshot"
     and_attach_s3_access_points:
       id: aws.fsx.and_attach_s3_access_points
       name: and_attach_s3_access_points
@@ -6061,6 +6140,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_file_system_from_backup:
+          operation:
+            $ref: "#/paths/~1CreateFileSystemFromBackup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_volume_from_backup:
+          operation:
+            $ref: "#/paths/~1CreateVolumeFromBackup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_backup:
           operation:
             $ref: "#/paths/~1DeleteBackup/post"
@@ -6086,12 +6191,21 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backups/methods/describe_backups"
         insert:
+          - $ref: "#/components/x-stackQL-resources/backups/methods/create_file_system_from_backup"
+          - $ref: "#/components/x-stackQL-resources/backups/methods/create_volume_from_backup"
           - $ref: "#/components/x-stackQL-resources/backups/methods/create_backup"
         update: []
         delete:
@@ -6309,6 +6423,39 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        release_file_system_nfs_v3_locks:
+          operation:
+            $ref: "#/paths/~1ReleaseFileSystemNfsV3Locks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_misconfigured_state_recovery:
+          operation:
+            $ref: "#/paths/~1StartMisconfiguredStateRecovery/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_file_system:
@@ -6333,97 +6480,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/file_systems/methods/update_file_system"
         delete:
           - $ref: "#/components/x-stackQL-resources/file_systems/methods/delete_file_system"
-    file_system_from_backups:
-      id: aws.fsx.file_system_from_backups
-      name: file_system_from_backups
-      title: file_system_from_backups
-      methods:
-        create_file_system_from_backup:
-          operation:
-            $ref: "#/paths/~1CreateFileSystemFromBackup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/file_system_from_backups/methods/create_file_system_from_backup"
-        update: []
-        delete: []
-    snapshots:
-      id: aws.fsx.snapshots
-      name: snapshots
-      title: snapshots
-      methods:
-        create_snapshot:
-          operation:
-            $ref: "#/paths/~1CreateSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_snapshot:
-          operation:
-            $ref: "#/paths/~1DeleteSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_snapshots:
-          operation:
-            $ref: "#/paths/~1DescribeSnapshots/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Snapshots
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_snapshot:
-          operation:
-            $ref: "#/paths/~1UpdateSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/describe_snapshots"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/create_snapshot"
-        update:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/update_snapshot"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/snapshots/methods/delete_snapshot"
     storage_virtual_machines:
       id: aws.fsx.storage_virtual_machines
       name: storage_virtual_machines
@@ -6467,6 +6523,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_storage_virtual_machine:
@@ -6534,6 +6597,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        restore_volume_from_snapshot:
+          operation:
+            $ref: "#/paths/~1RestoreVolumeFromSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_volume:
@@ -6558,30 +6641,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/volumes/methods/update_volume"
         delete:
           - $ref: "#/components/x-stackQL-resources/volumes/methods/delete_volume"
-    volume_from_backups:
-      id: aws.fsx.volume_from_backups
-      name: volume_from_backups
-      title: volume_from_backups
-      methods:
-        create_volume_from_backup:
-          operation:
-            $ref: "#/paths/~1CreateVolumeFromBackup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/volume_from_backups/methods/create_volume_from_backup"
-        update: []
-        delete: []
     s3_access_point_attachments:
       id: aws.fsx.s3_access_point_attachments
       name: s3_access_point_attachments
@@ -6599,6 +6658,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6669,10 +6735,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/and_delete_s3_access_points/methods/detach_and_delete_s3_access_point"
         delete: []
-    tags_for_resources:
-      id: aws.fsx.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.fsx.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6686,43 +6752,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    file_system_nfs_v3_locks:
-      id: aws.fsx.file_system_nfs_v3_locks
-      name: file_system_nfs_v3_locks
-      title: file_system_nfs_v3_locks
-      methods:
-        release_file_system_nfs_v3_locks:
-          operation:
-            $ref: "#/paths/~1ReleaseFileSystemNfsV3Locks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/file_system_nfs_v3_locks/methods/release_file_system_nfs_v3_locks"
-        delete: []
-    resources:
-      id: aws.fsx.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -6750,9 +6788,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

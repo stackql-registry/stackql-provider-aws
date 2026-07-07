@@ -5,7 +5,7 @@ info:
   description: AWS Compute Optimizer
   x-serviceName: compute-optimizer
   x-serviceAlias: compute_optimizer
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2019-11-01'
   x-endpointPrefix: compute-optimizer
   x-targetPrefix: ComputeOptimizerService
@@ -116,6 +116,9 @@ paths:
       x-stackql-method: describe_recommendation_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendationExportJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ExportAutoScalingGroupRecommendations:
     post:
       operationId: ExportAutoScalingGroupRecommendations
@@ -1116,6 +1119,9 @@ paths:
       x-stackql-method: get_enrollment_statuses_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accountEnrollmentStatuses
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetIdleRecommendations:
     post:
       operationId: GetIdleRecommendations
@@ -1229,6 +1235,9 @@ paths:
       x-stackql-method: get_lambda_function_recommendations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.lambdaFunctionRecommendations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetLicenseRecommendations:
     post:
       operationId: GetLicenseRecommendations
@@ -1447,6 +1456,9 @@ paths:
       x-stackql-method: get_recommendation_preferences
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendationPreferencesDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetRecommendationSummaries:
     post:
       operationId: GetRecommendationSummaries
@@ -1496,6 +1508,9 @@ paths:
       x-stackql-method: get_recommendation_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /PutRecommendationPreferences:
     post:
       operationId: PutRecommendationPreferences

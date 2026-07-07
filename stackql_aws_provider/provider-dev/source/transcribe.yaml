@@ -724,6 +724,7 @@ paths:
       x-stackql-resource: language_models
       x-stackql-method: describe_language_model
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LanguageModel
   /GetCallAnalyticsCategory:
     post:
       operationId: GetCallAnalyticsCategory
@@ -762,6 +763,7 @@ paths:
       x-stackql-resource: call_analytics_categories
       x-stackql-method: get_call_analytics_category
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CategoryProperties
   /GetCallAnalyticsJob:
     post:
       operationId: GetCallAnalyticsJob
@@ -803,6 +805,7 @@ paths:
       x-stackql-resource: call_analytics_jobs
       x-stackql-method: get_call_analytics_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CallAnalyticsJob
   /GetMedicalScribeJob:
     post:
       operationId: GetMedicalScribeJob
@@ -842,6 +845,7 @@ paths:
       x-stackql-resource: medical_scribe_jobs
       x-stackql-method: get_medical_scribe_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MedicalScribeJob
   /GetMedicalTranscriptionJob:
     post:
       operationId: GetMedicalTranscriptionJob
@@ -881,6 +885,7 @@ paths:
       x-stackql-resource: medical_transcription_jobs
       x-stackql-method: get_medical_transcription_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MedicalTranscriptionJob
   /GetMedicalVocabulary:
     post:
       operationId: GetMedicalVocabulary
@@ -961,6 +966,7 @@ paths:
       x-stackql-resource: transcription_jobs
       x-stackql-method: get_transcription_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TranscriptionJob
   /GetVocabulary:
     post:
       operationId: GetVocabulary
@@ -1379,7 +1385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTranscriptionJobs:
@@ -1628,7 +1634,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCallAnalyticsJobResponse'
-      x-stackql-resource: call_analytics_job
+      x-stackql-resource: call_analytics_jobs
       x-stackql-method: start_call_analytics_job
       x-stackql-verb: EXEC
   /StartMedicalScribeJob:
@@ -1734,7 +1740,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMedicalScribeJobResponse'
-      x-stackql-resource: medical_scribe_job
+      x-stackql-resource: medical_scribe_jobs
       x-stackql-method: start_medical_scribe_job
       x-stackql-verb: EXEC
   /StartMedicalTranscriptionJob:
@@ -1870,7 +1876,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMedicalTranscriptionJobResponse'
-      x-stackql-resource: medical_transcription_job
+      x-stackql-resource: medical_transcription_jobs
       x-stackql-method: start_medical_transcription_job
       x-stackql-verb: EXEC
   /StartTranscriptionJob:
@@ -2075,7 +2081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTranscriptionJobResponse'
-      x-stackql-resource: transcription_job
+      x-stackql-resource: transcription_jobs
       x-stackql-method: start_transcription_job
       x-stackql-verb: EXEC
   /TagResource:
@@ -2120,7 +2126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2164,7 +2170,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCallAnalyticsCategory:

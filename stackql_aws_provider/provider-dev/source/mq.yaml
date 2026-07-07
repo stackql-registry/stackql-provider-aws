@@ -123,6 +123,9 @@ paths:
       x-stackql-method: list_brokers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BrokerSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/configurations:
     post:
       operationId: CreateConfiguration

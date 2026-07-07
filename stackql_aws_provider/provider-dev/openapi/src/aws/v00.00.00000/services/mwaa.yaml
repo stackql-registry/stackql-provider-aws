@@ -291,7 +291,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListEnvironmentsOutput"
+                $ref: "#/components/schemas/ListEnvironmentsOutputDisplay"
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -329,8 +329,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -908,21 +906,19 @@ components:
       type: integer
       minimum: 1
       maximum: 25
-    ListEnvironmentsOutput:
+    ListEnvironmentsRowDisplay:
       type: object
       properties:
-        Environments:
-          $ref: "#/components/schemas/EnvironmentList"
+        environment:
+          type: string
           description: Returns a list of Amazon MWAA environments.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: Retrieves the next page of the results.
-      required:
-        - Environments
-    EnvironmentList:
-      type: array
-      items:
-        $ref: "#/components/schemas/EnvironmentName"
+    ListEnvironmentsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListEnvironmentsRowDisplay"
     ListTagsForResourceOutput:
       type: object
       properties:
@@ -1104,6 +1100,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Environment
         update_environment:
           operation:
             $ref: "#/paths/~1environments~1{name}/patch"
@@ -1121,9 +1118,34 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Environments
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListEnvironmentsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Environments" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"environment": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        publish_metrics:
+          operation:
+            $ref: "#/paths/~1metrics~1environments~1{environment_name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/environments/methods/get_environment"
@@ -1151,10 +1173,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/web_login_tokens/methods/create_web_login_token"
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.mwaa.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mwaa.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1162,17 +1184,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mwaa.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1193,9 +1204,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

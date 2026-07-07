@@ -607,6 +607,9 @@ paths:
       x-stackql-method: list_identity_pools
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IdentityPools
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -642,7 +645,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /LookupDeveloperIdentity:
@@ -761,7 +764,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MergeDeveloperIdentitiesResponse'
-      x-stackql-resource: merge_developer_identities
+      x-stackql-resource: developer_identities
       x-stackql-method: merge_developer_identities
       x-stackql-verb: EXEC
   /SetIdentityPoolRoles:
@@ -898,7 +901,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UnlinkDeveloperIdentity:
@@ -945,7 +948,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: unlink_developer_identity
+      x-stackql-resource: identity_pools
       x-stackql-method: unlink_developer_identity
       x-stackql-verb: EXEC
   /UnlinkIdentity:
@@ -987,7 +990,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: unlink_identity
+      x-stackql-resource: identities
       x-stackql-method: unlink_identity
       x-stackql-verb: EXEC
   /UntagResource:
@@ -1028,7 +1031,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateIdentityPool:

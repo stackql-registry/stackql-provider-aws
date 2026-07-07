@@ -3102,6 +3102,14 @@ components:
             objectKey: $.bots
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bot_versions/methods/get_bot_versions"
@@ -3140,6 +3148,14 @@ components:
             objectKey: $.intents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/intent_versions/methods/get_intent_versions"
@@ -3178,6 +3194,14 @@ components:
             objectKey: $.slotTypes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/slot_type_versions/methods/get_slot_type_versions"
@@ -3196,6 +3220,11 @@ components:
             $ref: "#/paths/~1bots~1{name}/delete"
           response:
             openAPIDocKey: "204"
+        delete_utterances:
+          operation:
+            $ref: "#/paths/~1bots~1{bot_name}~1utterances~1{user_id}/delete"
+          response:
+            openAPIDocKey: "204"
         get_bot:
           operation:
             $ref: "#/paths/~1bots~1{name}~1versions~1{versionoralias}/get"
@@ -3211,6 +3240,14 @@ components:
             objectKey: $.bots
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         put_bot:
           operation:
             $ref: "#/paths/~1bots~1{name}~1versions~1$LATEST/put"
@@ -3231,6 +3268,7 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/bots/methods/put_bot"
         delete:
+          - $ref: "#/components/x-stackQL-resources/bots/methods/delete_utterances"
           - $ref: "#/components/x-stackQL-resources/bots/methods/delete_bot"
     bot_alias:
       id: aws.lex_models.bot_alias
@@ -3293,6 +3331,14 @@ components:
             objectKey: $.botChannelAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bot_channel_associations/methods/get_bot_channel_association"
@@ -3326,6 +3372,14 @@ components:
             objectKey: $.intents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         put_intent:
           operation:
             $ref: "#/paths/~1intents~1{name}~1versions~1$LATEST/put"
@@ -3372,6 +3426,14 @@ components:
             objectKey: $.slotTypes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         put_slot_type:
           operation:
             $ref: "#/paths/~1slottypes~1{name}~1versions~1$LATEST/put"
@@ -3393,22 +3455,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/slot_types/methods/put_slot_type"
         delete:
           - $ref: "#/components/x-stackQL-resources/slot_types/methods/delete_slot_type"
-    utterances:
-      id: aws.lex_models.utterances
-      name: utterances
-      title: utterances
-      methods:
-        delete_utterances:
-          operation:
-            $ref: "#/paths/~1bots~1{bot_name}~1utterances~1{user_id}/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/utterances/methods/delete_utterances"
     bot_aliases:
       id: aws.lex_models.bot_aliases
       name: bot_aliases
@@ -3423,6 +3469,14 @@ components:
             objectKey: $.BotAliases
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bot_aliases/methods/get_bot_aliases"
@@ -3449,6 +3503,14 @@ components:
             objectKey: $.intents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/builtin_intents/methods/get_builtin_intent"
@@ -3470,6 +3532,14 @@ components:
             objectKey: $.slotTypes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/builtin_slot_types/methods/get_builtin_slot_types"
@@ -3557,10 +3627,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.lex_models.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.lex_models.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3568,17 +3638,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.lex_models.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3599,9 +3658,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

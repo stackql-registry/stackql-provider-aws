@@ -135,7 +135,6 @@ paths:
                   description: The identifier for the resource. You can specify the primary identifier, or any secondary identifier defined for the resource type in its resource schema. You can only specify one identifier. Primary identifiers can be specified as a string or JSON; secondary identifiers must be specified as JSON. For compound primary identifiers (that is, one that consists of multiple resource properties strung together), to specify the primary identifier as a string, list the property values in the order they are specified in the primary identifier definition, separated by |. For more information, see Identifying resources in the Amazon Web Services Cloud Control API User Guide.
               required:
                 - TypeName
-                - Identifier
       responses:
         "200":
           description: Success
@@ -178,7 +177,6 @@ paths:
                   description: The identifier for the resource. You can specify the primary identifier, or any secondary identifier defined for the resource type in its resource schema. You can only specify one identifier. Primary identifiers can be specified as a string or JSON; secondary identifiers must be specified as JSON. For compound primary identifiers (that is, one that consists of multiple resource properties strung together), to specify the primary identifier as a string, list the property values in the order they are specified in the primary identifier definition, separated by |. For more information, see Identifying resources in the Amazon Web Services Cloud Control API User Guide.
               required:
                 - TypeName
-                - Identifier
       responses:
         "200":
           description: Success
@@ -345,7 +343,6 @@ paths:
                   description: A JavaScript Object Notation (JSON) document listing the patch operations that represent the updates to apply to the current resource properties. For details, see Composing the patch document in the Amazon Web Services Cloud Control API User Guide.
               required:
                 - TypeName
-                - Identifier
                 - PatchDocument
       responses:
         "200":
@@ -689,6 +686,19 @@ components:
       name: resources
       title: resources
       methods:
+        cancel_resource_request:
+          operation:
+            $ref: "#/paths/~1CancelResourceRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_resource:
           operation:
             $ref: "#/paths/~1CreateResource/post"
@@ -740,6 +750,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_resource:
@@ -758,7 +775,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resources/methods/get_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
         insert:
           - $ref: "#/components/x-stackQL-resources/resources/methods/create_resource"
         update:
@@ -806,6 +822,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

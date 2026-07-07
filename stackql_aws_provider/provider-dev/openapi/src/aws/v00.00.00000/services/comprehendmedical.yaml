@@ -5,7 +5,7 @@ info:
   description: AWS Comprehend Medical
   x-serviceName: comprehendmedical
   x-serviceAlias: comprehendmedical
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: "2018-10-30"
   x-endpointPrefix: comprehendmedical
   x-targetPrefix: ComprehendMedical_20181030
@@ -2094,8 +2094,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ComprehendMedicalAsyncJobProperties
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2107,6 +2110,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2128,8 +2133,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ComprehendMedicalAsyncJobProperties
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2141,6 +2149,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2162,8 +2172,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ComprehendMedicalAsyncJobProperties
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2175,6 +2188,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2196,8 +2211,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ComprehendMedicalAsyncJobProperties
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2209,6 +2227,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2230,8 +2250,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ComprehendMedicalAsyncJobProperties
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2243,6 +2266,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive

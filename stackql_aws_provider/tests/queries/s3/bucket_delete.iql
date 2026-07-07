@@ -1,0 +1,1 @@
+DELETE FROM aws.s3.buckets WHERE region = '{{ global_region }}' AND bucket = '{{ bucket_prefix }}-{{ caller_identity.account }}'

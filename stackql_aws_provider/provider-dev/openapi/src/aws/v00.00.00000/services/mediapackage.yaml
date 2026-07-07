@@ -64,8 +64,6 @@ paths:
                   $ref: "#/components/schemas/__string"
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -120,7 +118,6 @@ paths:
                   $ref: "#/components/schemas/__string"
               required:
                 - EndTime
-                - Id
                 - OriginEndpointId
                 - S3Destination
                 - StartTime
@@ -208,7 +205,6 @@ paths:
                   $ref: "#/components/schemas/__listOf__string"
               required:
                 - ChannelId
-                - Id
       responses:
         "200":
           description: Success
@@ -438,8 +434,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -1602,6 +1596,14 @@ components:
             objectKey: $.Channels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_channel:
           operation:
             $ref: "#/paths/~1channels~1{id}/delete"
@@ -1660,6 +1662,14 @@ components:
             objectKey: $.HarvestJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         describe_harvest_job:
           operation:
             $ref: "#/paths/~1harvest_jobs~1{id}/get"
@@ -1699,6 +1709,14 @@ components:
             objectKey: $.OriginEndpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_origin_endpoint:
           operation:
             $ref: "#/paths/~1origin_endpoints~1{id}/delete"
@@ -1732,10 +1750,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/update_origin_endpoint"
         delete:
           - $ref: "#/components/x-stackQL-resources/origin_endpoints/methods/delete_origin_endpoint"
-    tags_for_resources:
-      id: aws.mediapackage.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mediapackage.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1743,17 +1761,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mediapackage.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
@@ -1772,9 +1779,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

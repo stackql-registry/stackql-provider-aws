@@ -1000,6 +1000,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.campaign
         list_campaigns:
           operation:
             $ref: "#/paths/~1campaigns-summary/post"
@@ -1007,6 +1008,43 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.campaignSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_campaign_dialer_config:
+          operation:
+            $ref: "#/paths/~1campaigns~1{id}~1dialer-config/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_campaign_name:
+          operation:
+            $ref: "#/paths/~1campaigns~1{id}~1name/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_campaign_outbound_call_config:
+          operation:
+            $ref: "#/paths/~1campaigns~1{id}~1outbound-call-config/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -1018,7 +1056,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/campaigns/methods/list_campaigns"
         insert:
           - $ref: "#/components/x-stackQL-resources/campaigns/methods/create_campaign"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_dialer_config"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_name"
+          - $ref: "#/components/x-stackQL-resources/campaigns/methods/update_campaign_outbound_call_config"
         delete:
           - $ref: "#/components/x-stackQL-resources/campaigns/methods/delete_campaign"
     connect_instance_configs:
@@ -1037,6 +1078,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.connectInstanceConfig
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connect_instance_configs/methods/get_connect_instance_config"
@@ -1071,6 +1113,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.connectInstanceOnboardingJobStatus
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instance_onboarding_job_status/methods/get_instance_onboarding_job_status"
@@ -1116,10 +1159,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.connectcampaigns.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.connectcampaigns.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1127,17 +1170,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.connectcampaigns.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{arn}/post"
@@ -1156,11 +1188,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     dial_request_batches:
       id: aws.connectcampaigns.dial_request_batches
@@ -1184,67 +1217,4 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/dial_request_batches/methods/put_dial_request_batch"
-        delete: []
-    campaign_dialer_configs:
-      id: aws.connectcampaigns.campaign_dialer_configs
-      name: campaign_dialer_configs
-      title: campaign_dialer_configs
-      methods:
-        update_campaign_dialer_config:
-          operation:
-            $ref: "#/paths/~1campaigns~1{id}~1dialer-config/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_dialer_configs/methods/update_campaign_dialer_config"
-        delete: []
-    campaign_names:
-      id: aws.connectcampaigns.campaign_names
-      name: campaign_names
-      title: campaign_names
-      methods:
-        update_campaign_name:
-          operation:
-            $ref: "#/paths/~1campaigns~1{id}~1name/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_names/methods/update_campaign_name"
-        delete: []
-    campaign_outbound_call_configs:
-      id: aws.connectcampaigns.campaign_outbound_call_configs
-      name: campaign_outbound_call_configs
-      title: campaign_outbound_call_configs
-      methods:
-        update_campaign_outbound_call_config:
-          operation:
-            $ref: "#/paths/~1campaigns~1{id}~1outbound-call-config/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/campaign_outbound_call_configs/methods/update_campaign_outbound_call_config"
         delete: []

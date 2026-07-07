@@ -425,8 +425,6 @@ paths:
                   $ref: "#/components/schemas/Integer"
                   description: The Qualification value to use for automatically granted Qualifications. This parameter is used only if the AutoGranted parameter is true.
               required:
-                - Name
-                - Description
                 - QualificationTypeStatus
       responses:
         "200":
@@ -464,7 +462,6 @@ paths:
                   description: A message explaining the reason for blocking the Worker. This parameter enables you to keep track of your Workers. The Worker does not see this message.
               required:
                 - WorkerId
-                - Reason
       responses:
         "200":
           description: Success
@@ -2508,10 +2505,131 @@ components:
           $ref: "#/components/schemas/QualificationType"
           description: Contains a QualificationType data structure.
   x-stackQL-resources:
-    qualification_with_workers:
-      id: aws.mturk.qualification_with_workers
-      name: qualification_with_workers
-      title: qualification_with_workers
+    qualification_requests:
+      id: aws.mturk.qualification_requests
+      name: qualification_requests
+      title: qualification_requests
+      methods:
+        accept_qualification_request:
+          operation:
+            $ref: "#/paths/~1AcceptQualificationRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_qualification_requests:
+          operation:
+            $ref: "#/paths/~1ListQualificationRequests/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.QualificationRequests
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reject_qualification_request:
+          operation:
+            $ref: "#/paths/~1RejectQualificationRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/qualification_requests/methods/list_qualification_requests"
+        insert: []
+        update: []
+        delete: []
+    assignments:
+      id: aws.mturk.assignments
+      name: assignments
+      title: assignments
+      methods:
+        approve_assignment:
+          operation:
+            $ref: "#/paths/~1ApproveAssignment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_assignment:
+          operation:
+            $ref: "#/paths/~1GetAssignment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_assignment:
+          operation:
+            $ref: "#/paths/~1RejectAssignment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_bonus:
+          operation:
+            $ref: "#/paths/~1SendBonus/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/assignments/methods/get_assignment"
+        insert: []
+        update: []
+        delete: []
+    qualification_types:
+      id: aws.mturk.qualification_types
+      name: qualification_types
+      title: qualification_types
       methods:
         associate_qualification_with_worker:
           operation:
@@ -2526,16 +2644,108 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_qualification_type:
+          operation:
+            $ref: "#/paths/~1CreateQualificationType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_qualification_type:
+          operation:
+            $ref: "#/paths/~1DeleteQualificationType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_qualification_from_worker:
+          operation:
+            $ref: "#/paths/~1DisassociateQualificationFromWorker/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_qualification_type:
+          operation:
+            $ref: "#/paths/~1GetQualificationType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.QualificationType
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_qualification_types:
+          operation:
+            $ref: "#/paths/~1ListQualificationTypes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.QualificationTypes
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_qualification_type:
+          operation:
+            $ref: "#/paths/~1UpdateQualificationType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/get_qualification_type"
+          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/list_qualification_types"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/create_qualification_type"
         update:
-          - $ref: "#/components/x-stackQL-resources/qualification_with_workers/methods/associate_qualification_with_worker"
-        delete: []
-    additional_assignments_for_hits:
-      id: aws.mturk.additional_assignments_for_hits
-      name: additional_assignments_for_hits
-      title: additional_assignments_for_hits
+          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/associate_qualification_with_worker"
+          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/update_qualification_type"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/delete_qualification_type"
+    assignments_for_hits:
+      id: aws.mturk.assignments_for_hits
+      name: assignments_for_hits
+      title: assignments_for_hits
       methods:
         create_additional_assignments_for_hit:
           operation:
@@ -2550,10 +2760,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_assignments_for_hit:
+          operation:
+            $ref: "#/paths/~1ListAssignmentsForHIT/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Assignments
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/assignments_for_hits/methods/list_assignments_for_hit"
         insert:
-          - $ref: "#/components/x-stackQL-resources/additional_assignments_for_hits/methods/create_additional_assignments_for_hit"
+          - $ref: "#/components/x-stackQL-resources/assignments_for_hits/methods/create_additional_assignments_for_hit"
         update: []
         delete: []
     hits:
@@ -2564,6 +2796,32 @@ components:
         create_hit:
           operation:
             $ref: "#/paths/~1CreateHIT/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_hit_type:
+          operation:
+            $ref: "#/paths/~1CreateHITType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_hit_with_hit_type:
+          operation:
+            $ref: "#/paths/~1CreateHITWithHITType/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2593,6 +2851,46 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.HIT
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_expiration_for_hit:
+          operation:
+            $ref: "#/paths/~1UpdateExpirationForHIT/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_hit_review_status:
+          operation:
+            $ref: "#/paths/~1UpdateHITReviewStatus/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_hit_type_of_hit:
+          operation:
+            $ref: "#/paths/~1UpdateHITTypeOfHIT/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2605,138 +2903,14 @@ components:
           - $ref: "#/components/x-stackQL-resources/hits/methods/get_hit"
         insert:
           - $ref: "#/components/x-stackQL-resources/hits/methods/create_hit"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/hits/methods/create_hit_type"
+          - $ref: "#/components/x-stackQL-resources/hits/methods/create_hit_with_hit_type"
+        update:
+          - $ref: "#/components/x-stackQL-resources/hits/methods/update_expiration_for_hit"
+          - $ref: "#/components/x-stackQL-resources/hits/methods/update_hit_type_of_hit"
+          - $ref: "#/components/x-stackQL-resources/hits/methods/update_hit_review_status"
         delete:
           - $ref: "#/components/x-stackQL-resources/hits/methods/delete_hit"
-    hit_types:
-      id: aws.mturk.hit_types
-      name: hit_types
-      title: hit_types
-      methods:
-        create_hit_type:
-          operation:
-            $ref: "#/paths/~1CreateHITType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/hit_types/methods/create_hit_type"
-        update: []
-        delete: []
-    hit_with_hit_types:
-      id: aws.mturk.hit_with_hit_types
-      name: hit_with_hit_types
-      title: hit_with_hit_types
-      methods:
-        create_hit_with_hit_type:
-          operation:
-            $ref: "#/paths/~1CreateHITWithHITType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/hit_with_hit_types/methods/create_hit_with_hit_type"
-        update: []
-        delete: []
-    qualification_types:
-      id: aws.mturk.qualification_types
-      name: qualification_types
-      title: qualification_types
-      methods:
-        create_qualification_type:
-          operation:
-            $ref: "#/paths/~1CreateQualificationType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_qualification_type:
-          operation:
-            $ref: "#/paths/~1DeleteQualificationType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_qualification_type:
-          operation:
-            $ref: "#/paths/~1GetQualificationType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_qualification_types:
-          operation:
-            $ref: "#/paths/~1ListQualificationTypes/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.QualificationTypes
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_qualification_type:
-          operation:
-            $ref: "#/paths/~1UpdateQualificationType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/get_qualification_type"
-          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/list_qualification_types"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/create_qualification_type"
-        update:
-          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/update_qualification_type"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/qualification_types/methods/delete_qualification_type"
     worker_blocks:
       id: aws.mturk.worker_blocks
       name: worker_blocks
@@ -2780,6 +2954,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2790,30 +2971,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/worker_blocks/methods/delete_worker_block"
-    qualification_from_workers:
-      id: aws.mturk.qualification_from_workers
-      name: qualification_from_workers
-      title: qualification_from_workers
-      methods:
-        disassociate_qualification_from_worker:
-          operation:
-            $ref: "#/paths/~1DisassociateQualificationFromWorker/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/qualification_from_workers/methods/disassociate_qualification_from_worker"
-        delete: []
     account_balances:
       id: aws.mturk.account_balances
       name: account_balances
@@ -2835,30 +2992,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/account_balances/methods/get_account_balance"
-        insert: []
-        update: []
-        delete: []
-    assignments:
-      id: aws.mturk.assignments
-      name: assignments
-      title: assignments
-      methods:
-        get_assignment:
-          operation:
-            $ref: "#/paths/~1GetAssignment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/assignments/methods/get_assignment"
         insert: []
         update: []
         delete: []
@@ -2897,6 +3030,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Qualification
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2907,31 +3041,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/qualification_scores/methods/get_qualification_score"
-        insert: []
-        update: []
-        delete: []
-    assignments_for_hits:
-      id: aws.mturk.assignments_for_hits
-      name: assignments_for_hits
-      title: assignments_for_hits
-      methods:
-        list_assignments_for_hit:
-          operation:
-            $ref: "#/paths/~1ListAssignmentsForHIT/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Assignments
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/assignments_for_hits/methods/list_assignments_for_hit"
         insert: []
         update: []
         delete: []
@@ -2952,6 +3061,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2977,6 +3093,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3002,36 +3125,18 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/hi_ts_for_qualification_types/methods/list_hi_ts_for_qualification_type"
-        insert: []
-        update: []
-        delete: []
-    qualification_requests:
-      id: aws.mturk.qualification_requests
-      name: qualification_requests
-      title: qualification_requests
-      methods:
-        list_qualification_requests:
-          operation:
-            $ref: "#/paths/~1ListQualificationRequests/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.QualificationRequests
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/qualification_requests/methods/list_qualification_requests"
         insert: []
         update: []
         delete: []
@@ -3076,6 +3181,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3101,6 +3213,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3108,78 +3227,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/workers_with_qualification_types/methods/list_workers_with_qualification_type"
         insert: []
         update: []
-        delete: []
-    expiration_for_hits:
-      id: aws.mturk.expiration_for_hits
-      name: expiration_for_hits
-      title: expiration_for_hits
-      methods:
-        update_expiration_for_hit:
-          operation:
-            $ref: "#/paths/~1UpdateExpirationForHIT/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/expiration_for_hits/methods/update_expiration_for_hit"
-        delete: []
-    hit_review_status:
-      id: aws.mturk.hit_review_status
-      name: hit_review_status
-      title: hit_review_status
-      methods:
-        update_hit_review_status:
-          operation:
-            $ref: "#/paths/~1UpdateHITReviewStatus/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/hit_review_status/methods/update_hit_review_status"
-        delete: []
-    hit_type_of_hits:
-      id: aws.mturk.hit_type_of_hits
-      name: hit_type_of_hits
-      title: hit_type_of_hits
-      methods:
-        update_hit_type_of_hit:
-          operation:
-            $ref: "#/paths/~1UpdateHITTypeOfHIT/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/hit_type_of_hits/methods/update_hit_type_of_hit"
         delete: []
     notification_settings:
       id: aws.mturk.notification_settings

@@ -151,6 +151,7 @@ paths:
       x-stackql-resource: service_settings
       x-stackql-method: get_service_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ServiceSettings
     put:
       operationId: UpdateServiceSettings
       description: Updates settings configured for Quick Setup.
@@ -199,6 +200,9 @@ paths:
       x-stackql-method: list_configuration_managers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationManagersList
+      x-stackql-pagination-request-token-key: StartingToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /listConfigurations:
     post:
       operationId: ListConfigurations
@@ -233,6 +237,9 @@ paths:
       x-stackql-method: list_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationsList
+      x-stackql-pagination-request-token-key: StartingToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /listQuickSetupTypes:
     get:
       operationId: ListQuickSetupTypes
@@ -266,7 +273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     put:
@@ -293,7 +300,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -315,7 +322,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /configurationDefinition/{manager_arn}/{id}:
@@ -353,7 +360,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: configuration_definitions
+      x-stackql-resource: configurations
       x-stackql-method: update_configuration_definition
       x-stackql-verb: UPDATE
 components:

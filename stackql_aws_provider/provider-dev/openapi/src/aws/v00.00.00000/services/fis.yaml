@@ -1978,6 +1978,14 @@ components:
             objectKey: $.experimentTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_experiment_template:
           operation:
             $ref: "#/paths/~1experimentTemplates~1{id}/delete"
@@ -1990,6 +1998,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.experimentTemplate
         update_experiment_template:
           operation:
             $ref: "#/paths/~1experimentTemplates~1{id}/patch"
@@ -2039,6 +2048,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.targetAccountConfiguration
         update_target_account_configuration:
           operation:
             $ref: "#/paths/~1experimentTemplates~1{id}~1targetAccountConfigurations~1{account_id}/patch"
@@ -2059,6 +2069,14 @@ components:
             objectKey: $.targetAccountConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/target_account_configurations/methods/get_target_account_configuration"
@@ -2080,6 +2098,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.action
         list_actions:
           operation:
             $ref: "#/paths/~1actions/get"
@@ -2089,6 +2108,14 @@ components:
             objectKey: $.actions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/actions/methods/get_action"
@@ -2107,6 +2134,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.experiment
         list_experiments:
           operation:
             $ref: "#/paths/~1experiments/get"
@@ -2116,6 +2144,14 @@ components:
             objectKey: $.experiments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/experiments/methods/get_experiment"
@@ -2134,6 +2170,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.targetAccountConfiguration
         list_experiment_target_account_configurations:
           operation:
             $ref: "#/paths/~1experiments~1{id}~1targetAccountConfigurations/get"
@@ -2160,11 +2197,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.safetyLever
+        update_safety_lever_state:
+          operation:
+            $ref: "#/paths/~1safetyLevers~1{id}~1state/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/safety_levers/methods/get_safety_lever"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/safety_levers/methods/update_safety_lever_state"
         delete: []
     target_resource_types:
       id: aws.fis.target_resource_types
@@ -2177,6 +2227,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.targetResourceType
         list_target_resource_types:
           operation:
             $ref: "#/paths/~1targetResourceTypes/get"
@@ -2186,6 +2237,14 @@ components:
             objectKey: $.targetResourceTypes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/target_resource_types/methods/get_target_resource_type"
@@ -2207,16 +2266,24 @@ components:
             objectKey: $.resolvedTargets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/experiment_resolved_targets/methods/list_experiment_resolved_targets"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.fis.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.fis.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2224,17 +2291,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.fis.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2255,31 +2311,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    safety_lever_states:
-      id: aws.fis.safety_lever_states
-      name: safety_lever_states
-      title: safety_lever_states
-      methods:
-        update_safety_lever_state:
-          operation:
-            $ref: "#/paths/~1safetyLevers~1{id}~1state/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/safety_lever_states/methods/update_safety_lever_state"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

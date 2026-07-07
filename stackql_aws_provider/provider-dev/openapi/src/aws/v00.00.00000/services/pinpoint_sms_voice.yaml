@@ -60,7 +60,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListConfigurationSetsResponse"
+                $ref: "#/components/schemas/ListConfigurationSetsOutputDisplay"
   /v1/sms-voice/configuration-sets/{configuration_set_name}/event-destinations:
     post:
       operationId: CreateConfigurationSetEventDestination
@@ -364,23 +364,19 @@ components:
           description: A name that identifies the event destination configuration.
         SnsDestination:
           $ref: "#/components/schemas/SnsDestination"
-    ListConfigurationSetsResponse:
-      description: An object that contains information about the configuration sets for your account in the current region.
+    ListConfigurationSetsRowDisplay:
       type: object
       properties:
-        ConfigurationSets:
-          $ref: "#/components/schemas/ConfigurationSets"
+        configuration_set:
+          type: string
           description: An object that contains a list of configuration sets for your account in the current region.
-        NextToken:
-          $ref: "#/components/schemas/NextTokenString"
-          description: A token returned from a previous call to ListConfigurationSets to indicate the position in the list of configuration sets.
-    ConfigurationSets:
-      description: An array that contains all of the configuration sets in your Amazon Pinpoint account in the current AWS Region.
-      type: array
-      items:
-        $ref: "#/components/schemas/WordCharactersWithDelimiters"
-    NextTokenString:
-      type: string
+    ListConfigurationSetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListConfigurationSetsRowDisplay"
     VoiceMessageContent:
       description: An object that contains a voice message and information about the recipient that you want to send it to.
       type: object
@@ -457,6 +453,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListConfigurationSetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ConfigurationSets" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration_set": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
         delete_configuration_set:

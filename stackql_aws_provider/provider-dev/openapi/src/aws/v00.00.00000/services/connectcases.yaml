@@ -3589,6 +3589,14 @@ components:
             objectKey: $.caseRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/case_rules/methods/batch_get_case_rule"
@@ -3661,6 +3669,36 @@ components:
           - $ref: "#/components/x-stackQL-resources/fields/methods/update_field"
         delete:
           - $ref: "#/components/x-stackQL-resources/fields/methods/delete_field"
+    field_options:
+      id: aws.connectcases.field_options
+      name: field_options
+      title: field_options
+      methods:
+        batch_put_field_options:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1fields~1{field_id}~1options/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_field_options:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_id}~1fields~1{field_id}~1options-list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/field_options/methods/list_field_options"
+        insert: []
+        update: []
+        delete: []
     cases:
       id: aws.connectcases.cases
       name: cases
@@ -3715,6 +3753,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3872,6 +3917,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3973,6 +4025,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.eventBridge
         put_case_event_configuration:
           operation:
             $ref: "#/paths/~1domains~1{domain_id}~1case-event-configuration/put"
@@ -4014,29 +4067,10 @@ components:
         insert: []
         update: []
         delete: []
-    field_options:
-      id: aws.connectcases.field_options
-      name: field_options
-      title: field_options
-      methods:
-        list_field_options:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_id}~1fields~1{field_id}~1options-list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/field_options/methods/list_field_options"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.connectcases.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.connectcases.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4044,17 +4078,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.connectcases.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{arn}/post"
@@ -4073,11 +4096,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     all_related_items:
       id: aws.connectcases.all_related_items
@@ -4094,6 +4118,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

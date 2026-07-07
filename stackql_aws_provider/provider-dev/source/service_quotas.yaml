@@ -47,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateServiceQuotaTemplateResponse'
-      x-stackql-resource: service_quota_templates
+      x-stackql-resource: service_quotas
       x-stackql-method: associate_service_quota_template
       x-stackql-verb: UPDATE
   /CreateSupportCase:
@@ -162,7 +162,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateServiceQuotaTemplateResponse'
-      x-stackql-resource: service_quota_templates
+      x-stackql-resource: service_quotas
       x-stackql-method: disassociate_service_quota_template
       x-stackql-verb: UPDATE
   /GetAWSDefaultServiceQuota:
@@ -207,6 +207,7 @@ paths:
       x-stackql-resource: aws_default_service_quotas
       x-stackql-method: get_aws_default_service_quota
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Quota
   /GetAssociationForServiceQuotaTemplate:
     post:
       operationId: GetAssociationForServiceQuotaTemplate
@@ -355,6 +356,7 @@ paths:
       x-stackql-resource: requested_service_quota_changes
       x-stackql-method: get_requested_service_quota_change
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RequestedQuota
   /GetServiceQuota:
     post:
       operationId: GetServiceQuota
@@ -401,6 +403,7 @@ paths:
       x-stackql-resource: service_quotas
       x-stackql-method: get_service_quota
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Quota
   /GetServiceQuotaIncreaseRequestFromTemplate:
     post:
       operationId: GetServiceQuotaIncreaseRequestFromTemplate
@@ -447,6 +450,7 @@ paths:
       x-stackql-resource: service_quota_increase_request_from_templates
       x-stackql-method: get_service_quota_increase_request_from_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ServiceQuotaIncreaseRequestInTemplate
   /ListAWSDefaultServiceQuotas:
     post:
       operationId: ListAWSDefaultServiceQuotas
@@ -500,6 +504,9 @@ paths:
       x-stackql-method: list_aws_default_service_quotas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Quotas
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRequestedServiceQuotaChangeHistory:
     post:
       operationId: ListRequestedServiceQuotaChangeHistory
@@ -559,6 +566,9 @@ paths:
       x-stackql-method: list_requested_service_quota_change_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RequestedQuotas
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRequestedServiceQuotaChangeHistoryByQuota:
     post:
       operationId: ListRequestedServiceQuotaChangeHistoryByQuota
@@ -624,6 +634,9 @@ paths:
       x-stackql-method: list_requested_service_quota_change_history_by_quota
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RequestedQuotas
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListServiceQuotaIncreaseRequestsInTemplate:
     post:
       operationId: ListServiceQuotaIncreaseRequestsInTemplate
@@ -677,6 +690,9 @@ paths:
       x-stackql-method: list_service_quota_increase_requests_in_template
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceQuotaIncreaseRequestInTemplateList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListServiceQuotas:
     post:
       operationId: ListServiceQuotas
@@ -739,6 +755,9 @@ paths:
       x-stackql-method: list_service_quotas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Quotas
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListServices:
     post:
       operationId: ListServices
@@ -785,6 +804,9 @@ paths:
       x-stackql-method: list_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Services
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -820,7 +842,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutServiceQuotaIncreaseRequestIntoTemplate:
@@ -870,7 +892,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutServiceQuotaIncreaseRequestIntoTemplateResponse'
-      x-stackql-resource: service_quota_increase_request_into_templates
+      x-stackql-resource: service_quotas
       x-stackql-method: put_service_quota_increase_request_into_template
       x-stackql-verb: REPLACE
   /RequestServiceQuotaIncrease:
@@ -1085,7 +1107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1127,7 +1149,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAutoManagement:

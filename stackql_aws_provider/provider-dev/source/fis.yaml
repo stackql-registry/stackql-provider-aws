@@ -99,6 +99,9 @@ paths:
       x-stackql-method: list_experiment_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.experimentTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /experimentTemplates/{id}/targetAccountConfigurations/{account_id}:
     post:
       operationId: CreateTargetAccountConfiguration
@@ -195,6 +198,7 @@ paths:
       x-stackql-resource: target_account_configurations
       x-stackql-method: get_target_account_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.targetAccountConfiguration
     patch:
       operationId: UpdateTargetAccountConfiguration
       description: Updates the target account configuration for the specified experiment template.
@@ -273,6 +277,7 @@ paths:
       x-stackql-resource: experiment_templates
       x-stackql-method: get_experiment_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.experimentTemplate
     patch:
       operationId: UpdateExperimentTemplate
       description: Updates the specified experiment template.
@@ -337,6 +342,7 @@ paths:
       x-stackql-resource: actions
       x-stackql-method: get_action
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.action
   /experiments/{id}:
     get:
       operationId: GetExperiment
@@ -358,6 +364,7 @@ paths:
       x-stackql-resource: experiments
       x-stackql-method: get_experiment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.experiment
     delete:
       operationId: StopExperiment
       description: Stops the specified experiment.
@@ -405,6 +412,7 @@ paths:
       x-stackql-resource: experiment_target_account_configurations
       x-stackql-method: get_experiment_target_account_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.targetAccountConfiguration
   /safetyLevers/{id}:
     get:
       operationId: GetSafetyLever
@@ -426,6 +434,7 @@ paths:
       x-stackql-resource: safety_levers
       x-stackql-method: get_safety_lever
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.safetyLever
   /targetResourceTypes/{resource_type}:
     get:
       operationId: GetTargetResourceType
@@ -447,6 +456,7 @@ paths:
       x-stackql-resource: target_resource_types
       x-stackql-method: get_target_resource_type
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.targetResourceType
   /actions:
     get:
       operationId: ListActions
@@ -476,6 +486,9 @@ paths:
       x-stackql-method: list_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /experiments/{id}/resolvedTargets:
     get:
       operationId: ListExperimentResolvedTargets
@@ -517,6 +530,9 @@ paths:
       x-stackql-method: list_experiment_resolved_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resolvedTargets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /experiments/{id}/targetAccountConfigurations:
     get:
       operationId: ListExperimentTargetAccountConfigurations
@@ -579,6 +595,9 @@ paths:
       x-stackql-method: list_experiments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.experiments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartExperiment
       description: Starts running an experiment from the specified experiment template.
@@ -629,7 +648,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -660,7 +679,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -686,7 +705,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /experimentTemplates/{id}/targetAccountConfigurations:
@@ -724,6 +743,9 @@ paths:
       x-stackql-method: list_target_account_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.targetAccountConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /targetResourceTypes:
     get:
       operationId: ListTargetResourceTypes
@@ -753,6 +775,9 @@ paths:
       x-stackql-method: list_target_resource_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.targetResourceTypes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /safetyLevers/{id}/state:
     patch:
       operationId: UpdateSafetyLeverState
@@ -782,7 +807,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSafetyLeverStateResponse'
-      x-stackql-resource: safety_lever_states
+      x-stackql-resource: safety_levers
       x-stackql-method: update_safety_lever_state
       x-stackql-verb: UPDATE
 components:

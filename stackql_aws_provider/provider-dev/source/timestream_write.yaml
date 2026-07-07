@@ -288,6 +288,7 @@ paths:
       x-stackql-resource: batch_load_tasks
       x-stackql-method: describe_batch_load_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BatchLoadTaskDescription
   /DescribeDatabase:
     post:
       operationId: DescribeDatabase
@@ -325,6 +326,7 @@ paths:
       x-stackql-resource: databases
       x-stackql-method: describe_database
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Database
   /DescribeEndpoints:
     post:
       operationId: DescribeEndpoints
@@ -401,6 +403,7 @@ paths:
       x-stackql-resource: tables
       x-stackql-method: describe_table
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Table
   /ListBatchLoadTasks:
     post:
       operationId: ListBatchLoadTasks
@@ -562,7 +565,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ResumeBatchLoadTask:
@@ -639,7 +642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -681,7 +684,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateDatabase:
@@ -853,7 +856,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WriteRecordsResponse'
-      x-stackql-resource: write_records
+      x-stackql-resource: databases
       x-stackql-method: write_records
       x-stackql-verb: EXEC
 components:

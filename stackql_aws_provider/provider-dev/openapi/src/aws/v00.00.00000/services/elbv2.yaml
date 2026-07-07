@@ -3045,13 +3045,28 @@ components:
       type: string
       enum:
         - CRL
+    TrustStoreRevocationDisplay:
+      type: object
+      properties:
+        TrustStoreArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the trust store.
+        RevocationId:
+          type: integer
+          description: The revocation ID of the revocation file.
+        RevocationType:
+          type: string
+          description: The type of revocation file.
+        NumberOfRevokedEntries:
+          type: integer
+          description: The number of revoked certificates.
     AddTrustStoreRevocationsOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/AddTrustStoreRevocationsOutputDisplay"
+            $ref: "#/components/schemas/TrustStoreRevocationDisplay"
     AddTrustStoreRevocationsInput:
       type: object
       properties:
@@ -5417,8 +5432,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -5516,7 +5529,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/AddTrustStoreRevocationsOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $s := separator ", " -}}{{- $n := index . "AddTrustStoreRevocationsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "AddTrustStoreRevocationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "TrustStoreRevocations" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson $n }}{{- end -}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -5723,12 +5737,89 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        modify_ip_pools:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyIpPools&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyIpPoolsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_ip_address_type:
+          operation:
+            $ref: "#/paths/~1?Action=SetIpAddressType&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetIpAddressTypeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_security_groups:
+          operation:
+            $ref: "#/paths/~1?Action=SetSecurityGroups&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetSecurityGroupsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_subnets:
+          operation:
+            $ref: "#/paths/~1?Action=SetSubnets&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetSubnetsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/describe_load_balancers"
         insert:
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_load_balancer"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/set_ip_address_type"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/set_security_groups"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/modify_ip_pools"
         delete:
           - $ref: "#/components/x-stackQL-resources/load_balancers/methods/delete_load_balancer"
     rules:
@@ -5812,6 +5903,25 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        set_rule_priorities:
+          operation:
+            $ref: "#/paths/~1?Action=SetRulePriorities&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetRulePrioritiesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/rules/methods/describe_rules"
@@ -5819,6 +5929,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/rules/methods/create_rule"
         update:
           - $ref: "#/components/x-stackQL-resources/rules/methods/modify_rule"
+          - $ref: "#/components/x-stackQL-resources/rules/methods/set_rule_priorities"
         delete:
           - $ref: "#/components/x-stackQL-resources/rules/methods/delete_rule"
     target_groups:
@@ -5854,6 +5965,25 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/DeleteTargetGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        deregister_targets:
+          operation:
+            $ref: "#/paths/~1?Action=DeregisterTargets&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeregisterTargetsOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -5902,14 +6032,35 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        register_targets:
+          operation:
+            $ref: "#/paths/~1?Action=RegisterTargets&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RegisterTargetsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/target_groups/methods/describe_target_groups"
         insert:
+          - $ref: "#/components/x-stackQL-resources/target_groups/methods/register_targets"
           - $ref: "#/components/x-stackQL-resources/target_groups/methods/create_target_group"
         update:
           - $ref: "#/components/x-stackQL-resources/target_groups/methods/modify_target_group"
         delete:
+          - $ref: "#/components/x-stackQL-resources/target_groups/methods/deregister_targets"
           - $ref: "#/components/x-stackQL-resources/target_groups/methods/delete_target_group"
     trust_stores:
       id: aws.elbv2.trust_stores
@@ -6001,10 +6152,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/trust_stores/methods/modify_trust_store"
         delete:
           - $ref: "#/components/x-stackQL-resources/trust_stores/methods/delete_trust_store"
-    shared_trust_store_associations:
-      id: aws.elbv2.shared_trust_store_associations
-      name: shared_trust_store_associations
-      title: shared_trust_store_associations
+    trust_store_associations:
+      id: aws.elbv2.trust_store_associations
+      name: trust_store_associations
+      title: trust_store_associations
       methods:
         delete_shared_trust_store_association:
           operation:
@@ -6025,62 +6176,32 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        describe_trust_store_associations:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeTrustStoreAssociations&Version=2015-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeTrustStoreAssociationsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/trust_store_associations/methods/describe_trust_store_associations"
         insert: []
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/shared_trust_store_associations/methods/delete_shared_trust_store_association"
-    targets:
-      id: aws.elbv2.targets
-      name: targets
-      title: targets
-      methods:
-        deregister_targets:
-          operation:
-            $ref: "#/paths/~1?Action=DeregisterTargets&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeregisterTargetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        register_targets:
-          operation:
-            $ref: "#/paths/~1?Action=RegisterTargets&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RegisterTargetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/targets/methods/register_targets"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/targets/methods/deregister_targets"
+          - $ref: "#/components/x-stackQL-resources/trust_store_associations/methods/delete_shared_trust_store_association"
     account_limits:
       id: aws.elbv2.account_limits
       name: account_limits
@@ -6371,36 +6492,6 @@ components:
         insert: []
         update: []
         delete: []
-    trust_store_associations:
-      id: aws.elbv2.trust_store_associations
-      name: trust_store_associations
-      title: trust_store_associations
-      methods:
-        describe_trust_store_associations:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeTrustStoreAssociations&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeTrustStoreAssociationsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/trust_store_associations/methods/describe_trust_store_associations"
-        insert: []
-        update: []
-        delete: []
     resource_policies:
       id: aws.elbv2.resource_policies
       name: resource_policies
@@ -6490,154 +6581,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/trust_store_revocation_contents/methods/get_trust_store_revocation_content"
         insert: []
         update: []
-        delete: []
-    ip_pools:
-      id: aws.elbv2.ip_pools
-      name: ip_pools
-      title: ip_pools
-      methods:
-        modify_ip_pools:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyIpPools&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyIpPoolsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/ip_pools/methods/modify_ip_pools"
-        delete: []
-    ip_address_types:
-      id: aws.elbv2.ip_address_types
-      name: ip_address_types
-      title: ip_address_types
-      methods:
-        set_ip_address_type:
-          operation:
-            $ref: "#/paths/~1?Action=SetIpAddressType&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetIpAddressTypeOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/ip_address_types/methods/set_ip_address_type"
-        delete: []
-    rule_priorities:
-      id: aws.elbv2.rule_priorities
-      name: rule_priorities
-      title: rule_priorities
-      methods:
-        set_rule_priorities:
-          operation:
-            $ref: "#/paths/~1?Action=SetRulePriorities&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetRulePrioritiesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/rule_priorities/methods/set_rule_priorities"
-        delete: []
-    security_groups:
-      id: aws.elbv2.security_groups
-      name: security_groups
-      title: security_groups
-      methods:
-        set_security_groups:
-          operation:
-            $ref: "#/paths/~1?Action=SetSecurityGroups&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetSecurityGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/security_groups/methods/set_security_groups"
-        delete: []
-    subnets:
-      id: aws.elbv2.subnets
-      name: subnets
-      title: subnets
-      methods:
-        set_subnets:
-          operation:
-            $ref: "#/paths/~1?Action=SetSubnets&Version=2015-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetSubnetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/subnets/methods/set_subnets"
         delete: []

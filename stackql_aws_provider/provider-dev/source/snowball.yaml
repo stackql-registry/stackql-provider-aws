@@ -5,7 +5,7 @@ info:
   description: Amazon Import/Export Snowball
   x-serviceName: snowball
   x-serviceAlias: snowball
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2016-06-30'
   x-endpointPrefix: snowball
   x-targetPrefix: AWSIESnowballJobManagementService
@@ -52,7 +52,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelClusterResult'
-      x-stackql-resource: cluster
+      x-stackql-resource: clusters
       x-stackql-method: cancel_cluster
       x-stackql-verb: EXEC
   /CancelJob:
@@ -89,7 +89,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobResult'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
   /CreateAddress:
@@ -508,6 +508,7 @@ paths:
       x-stackql-resource: address
       x-stackql-method: describe_address
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Address
   /DescribeAddresses:
     post:
       operationId: DescribeAddresses
@@ -549,6 +550,9 @@ paths:
       x-stackql-method: describe_addresses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Addresses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeCluster:
     post:
       operationId: DescribeCluster
@@ -586,6 +590,7 @@ paths:
       x-stackql-resource: clusters
       x-stackql-method: describe_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ClusterMetadata
   /DescribeJob:
     post:
       operationId: DescribeJob
@@ -861,6 +866,9 @@ paths:
       x-stackql-method: list_cluster_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobListEntries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListClusters:
     post:
       operationId: ListClusters
@@ -901,6 +909,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterListEntries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCompatibleImages:
     post:
       operationId: ListCompatibleImages
@@ -945,6 +956,9 @@ paths:
       x-stackql-method: list_compatible_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CompatibleImages
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListJobs:
     post:
       operationId: ListJobs
@@ -987,6 +1001,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobListEntries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLongTermPricing:
     post:
       operationId: ListLongTermPricing
@@ -1026,6 +1043,9 @@ paths:
       x-stackql-method: list_long_term_pricing
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LongTermPricingEntries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPickupLocations:
     post:
       operationId: ListPickupLocations
@@ -1289,7 +1309,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateJobShipmentStateResult'
-      x-stackql-resource: job_shipment_states
+      x-stackql-resource: jobs
       x-stackql-method: update_job_shipment_state
       x-stackql-verb: UPDATE
   /UpdateLongTermPricing:

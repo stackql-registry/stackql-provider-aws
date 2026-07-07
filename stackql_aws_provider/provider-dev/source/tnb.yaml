@@ -93,6 +93,9 @@ paths:
       x-stackql-method: list_sol_function_packages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.functionPackages
+      x-stackql-pagination-request-token-key: nextpage_opaque_marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /sol/nslcm/v1/ns_instances:
     post:
       operationId: CreateSolNetworkInstance
@@ -158,6 +161,9 @@ paths:
       x-stackql-method: list_sol_network_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.networkInstances
+      x-stackql-pagination-request-token-key: nextpage_opaque_marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /sol/nsd/v1/ns_descriptors:
     post:
       operationId: CreateSolNetworkPackage
@@ -217,6 +223,9 @@ paths:
       x-stackql-method: list_sol_network_packages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.networkPackages
+      x-stackql-pagination-request-token-key: nextpage_opaque_marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /sol/vnfpkgm/v1/vnf_packages/{vnf_pkg_id}:
     delete:
       operationId: DeleteSolFunctionPackage
@@ -715,6 +724,9 @@ paths:
       x-stackql-method: list_sol_function_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.functionInstances
+      x-stackql-pagination-request-token-key: nextpage_opaque_marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /sol/nslcm/v1/ns_lcm_op_occs:
     get:
       operationId: ListSolNetworkOperations
@@ -750,6 +762,9 @@ paths:
       x-stackql-method: list_sol_network_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.networkOperations
+      x-stackql-pagination-request-token-key: nextpage_opaque_marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -768,7 +783,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -801,7 +816,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -829,7 +844,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /sol/nslcm/v1/ns_instances/{ns_instance_id}/terminate:
@@ -942,7 +957,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateSolFunctionPackageContentOutput'
-      x-stackql-resource: sol_function_package_content
+      x-stackql-resource: sol_function_packages
       x-stackql-method: validate_sol_function_package_content
       x-stackql-verb: EXEC
   /sol/nsd/v1/ns_descriptors/{nsd_info_id}/nsd_content/validate:
@@ -982,7 +997,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateSolNetworkPackageContentOutput'
-      x-stackql-resource: sol_network_package_content
+      x-stackql-resource: sol_network_packages
       x-stackql-method: validate_sol_network_package_content
       x-stackql-verb: EXEC
 components:

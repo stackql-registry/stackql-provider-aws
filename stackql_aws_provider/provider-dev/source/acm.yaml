@@ -62,7 +62,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_to_certificates
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_certificate
       x-stackql-verb: UPDATE
   /DeleteCertificate:
@@ -147,6 +147,7 @@ paths:
       x-stackql-resource: certificates
       x-stackql-method: describe_certificate
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Certificate
   /ExportCertificate:
     post:
       operationId: ExportCertificate
@@ -219,6 +220,7 @@ paths:
       x-stackql-resource: account_configurations
       x-stackql-method: get_account_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExpiryEvents
   /GetCertificate:
     post:
       operationId: GetCertificate
@@ -385,6 +387,9 @@ paths:
       x-stackql-method: list_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CertificateSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForCertificate:
     post:
       operationId: ListTagsForCertificate
@@ -422,7 +427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForCertificateResponse'
-      x-stackql-resource: tags_for_certificates
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_certificate
       x-stackql-verb: SELECT
   /PutAccountConfiguration:
@@ -505,7 +510,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_from_certificates
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_certificate
       x-stackql-verb: UPDATE
   /RenewCertificate:
@@ -706,7 +711,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resend_validation_email
+      x-stackql-resource: certificates
       x-stackql-method: resend_validation_email
       x-stackql-verb: EXEC
   /RevokeCertificate:
@@ -805,6 +810,9 @@ paths:
       x-stackql-method: search_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /UpdateCertificateOptions:
     post:
       operationId: UpdateCertificateOptions
@@ -843,7 +851,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_options
+      x-stackql-resource: certificates
       x-stackql-method: update_certificate_options
       x-stackql-verb: UPDATE
 components:

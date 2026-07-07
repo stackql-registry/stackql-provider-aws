@@ -1163,6 +1163,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.alarm
           request:
             nativeCasing: pascal
         list_alarms:
@@ -1171,8 +1172,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/alarms/methods/describe_alarm"
@@ -1190,6 +1189,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.detector
           request:
             nativeCasing: pascal
         list_detectors:
@@ -1198,8 +1198,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/detectors/methods/describe_detector"

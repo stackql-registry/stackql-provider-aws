@@ -82,7 +82,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddTagsToResourceResult'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
   /AssociateOpsItemRelatedItem:
@@ -214,7 +214,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMaintenanceWindowExecutionResult'
-      x-stackql-resource: maintenance_window_execution
+      x-stackql-resource: maintenance_windows
       x-stackql-method: cancel_maintenance_window_execution
       x-stackql-verb: EXEC
   /CreateActivation:
@@ -520,7 +520,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAssociationBatchResult'
-      x-stackql-resource: association_batches
+      x-stackql-resource: associations
       x-stackql-method: create_association_batch
       x-stackql-verb: INSERT
   /CreateDocument:
@@ -1678,7 +1678,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterTargetFromMaintenanceWindowResult'
-      x-stackql-resource: target_from_maintenance_windows
+      x-stackql-resource: maintenance_windows
       x-stackql-method: deregister_target_from_maintenance_window
       x-stackql-verb: DELETE
   /DeregisterTaskFromMaintenanceWindow:
@@ -1718,7 +1718,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterTaskFromMaintenanceWindowResult'
-      x-stackql-resource: task_from_maintenance_windows
+      x-stackql-resource: maintenance_windows
       x-stackql-method: deregister_task_from_maintenance_window
       x-stackql-verb: DELETE
   /DescribeActivations:
@@ -1765,6 +1765,9 @@ paths:
       x-stackql-method: describe_activations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActivationList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAssociation:
     post:
       operationId: DescribeAssociation
@@ -1811,6 +1814,7 @@ paths:
       x-stackql-resource: associations
       x-stackql-method: describe_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AssociationDescription
   /DescribeAssociationExecutionTargets:
     post:
       operationId: DescribeAssociationExecutionTargets
@@ -1863,6 +1867,9 @@ paths:
       x-stackql-method: describe_association_execution_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssociationExecutionTargets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAssociationExecutions:
     post:
       operationId: DescribeAssociationExecutions
@@ -1911,6 +1918,9 @@ paths:
       x-stackql-method: describe_association_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssociationExecutions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAutomationExecutions:
     post:
       operationId: DescribeAutomationExecutions
@@ -1953,6 +1963,9 @@ paths:
       x-stackql-method: describe_automation_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AutomationExecutionMetadataList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAutomationStepExecutions:
     post:
       operationId: DescribeAutomationStepExecutions
@@ -2004,6 +2017,9 @@ paths:
       x-stackql-method: describe_automation_step_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StepExecutions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAvailablePatches:
     post:
       operationId: DescribeAvailablePatches
@@ -2060,6 +2076,9 @@ paths:
       x-stackql-method: describe_available_patches
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Patches
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeDocument:
     post:
       operationId: DescribeDocument
@@ -2105,6 +2124,7 @@ paths:
       x-stackql-resource: documents
       x-stackql-method: describe_document
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Document
   /DescribeDocumentPermission:
     post:
       operationId: DescribeDocumentPermission
@@ -2198,6 +2218,9 @@ paths:
       x-stackql-method: describe_effective_instance_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Associations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeEffectivePatchesForPatchBaseline:
     post:
       operationId: DescribeEffectivePatchesForPatchBaseline
@@ -2242,6 +2265,9 @@ paths:
       x-stackql-method: describe_effective_patches_for_patch_baseline
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EffectivePatches
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInstanceAssociationsStatus:
     post:
       operationId: DescribeInstanceAssociationsStatus
@@ -2286,6 +2312,9 @@ paths:
       x-stackql-method: describe_instance_associations_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceAssociationStatusInfos
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInstanceInformation:
     post:
       operationId: DescribeInstanceInformation
@@ -2341,6 +2370,9 @@ paths:
       x-stackql-method: describe_instance_information
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceInformationList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInstancePatchStates:
     post:
       operationId: DescribeInstancePatchStates
@@ -2384,6 +2416,9 @@ paths:
       x-stackql-method: describe_instance_patch_states
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstancePatchStates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInstancePatchStatesForPatchGroup:
     post:
       operationId: DescribeInstancePatchStatesForPatchGroup
@@ -2431,6 +2466,9 @@ paths:
       x-stackql-method: describe_instance_patch_states_for_patch_group
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstancePatchStates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInstancePatches:
     post:
       operationId: DescribeInstancePatches
@@ -2482,6 +2520,9 @@ paths:
       x-stackql-method: describe_instance_patches
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Patches
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInstanceProperties:
     post:
       operationId: DescribeInstanceProperties
@@ -2528,6 +2569,9 @@ paths:
       x-stackql-method: describe_instance_properties
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceProperties
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInventoryDeletions:
     post:
       operationId: DescribeInventoryDeletions
@@ -2571,6 +2615,9 @@ paths:
       x-stackql-method: describe_inventory_deletions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InventoryDeletions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindowExecutionTaskInvocations:
     post:
       operationId: DescribeMaintenanceWindowExecutionTaskInvocations
@@ -2625,6 +2672,9 @@ paths:
       x-stackql-method: describe_maintenance_window_execution_task_invocations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WindowExecutionTaskInvocationIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindowExecutionTasks:
     post:
       operationId: DescribeMaintenanceWindowExecutionTasks
@@ -2673,6 +2723,9 @@ paths:
       x-stackql-method: describe_maintenance_window_execution_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WindowExecutionTaskIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindowExecutions:
     post:
       operationId: DescribeMaintenanceWindowExecutions
@@ -2723,6 +2776,9 @@ paths:
       x-stackql-method: describe_maintenance_window_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WindowExecutions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindowSchedule:
     post:
       operationId: DescribeMaintenanceWindowSchedule
@@ -2775,6 +2831,9 @@ paths:
       x-stackql-method: describe_maintenance_window_schedule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ScheduledWindowExecutions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindowTargets:
     post:
       operationId: DescribeMaintenanceWindowTargets
@@ -2823,6 +2882,9 @@ paths:
       x-stackql-method: describe_maintenance_window_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Targets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindowTasks:
     post:
       operationId: DescribeMaintenanceWindowTasks
@@ -2873,6 +2935,9 @@ paths:
       x-stackql-method: describe_maintenance_window_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tasks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindows:
     post:
       operationId: DescribeMaintenanceWindows
@@ -2916,6 +2981,9 @@ paths:
       x-stackql-method: describe_maintenance_windows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WindowIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMaintenanceWindowsForTarget:
     post:
       operationId: DescribeMaintenanceWindowsForTarget
@@ -2964,6 +3032,9 @@ paths:
       x-stackql-method: describe_maintenance_windows_for_target
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WindowIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeOpsItems:
     post:
       operationId: DescribeOpsItems
@@ -3018,6 +3089,9 @@ paths:
       x-stackql-method: describe_ops_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OpsItemSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeParameters:
     post:
       operationId: DescribeParameters
@@ -3080,6 +3154,9 @@ paths:
       x-stackql-method: describe_parameters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parameters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribePatchBaselines:
     post:
       operationId: DescribePatchBaselines
@@ -3123,6 +3200,9 @@ paths:
       x-stackql-method: describe_patch_baselines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BaselineIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribePatchGroupState:
     post:
       operationId: DescribePatchGroupState
@@ -3202,6 +3282,9 @@ paths:
       x-stackql-method: describe_patch_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Mappings
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribePatchProperties:
     post:
       operationId: DescribePatchProperties
@@ -3258,11 +3341,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DescribePatchPropertiesResult'
+                $ref: '#/components/schemas/DescribePatchPropertiesOutputDisplay'
       x-stackql-resource: patch_properties
       x-stackql-method: describe_patch_properties
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Properties
+      x-stackql-responseEnvelope: DescribePatchPropertiesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Properties" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"property": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSessions:
     post:
       operationId: DescribeSessions
@@ -3311,6 +3402,9 @@ paths:
       x-stackql-method: describe_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Sessions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DisassociateOpsItemRelatedItem:
     post:
       operationId: DisassociateOpsItemRelatedItem
@@ -3427,6 +3521,7 @@ paths:
       x-stackql-resource: automation_executions
       x-stackql-method: get_automation_execution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AutomationExecution
   /GetCalendarState:
     post:
       operationId: GetCalendarState
@@ -3793,6 +3888,9 @@ paths:
       x-stackql-method: get_inventory
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetInventorySchema:
     post:
       operationId: GetInventorySchema
@@ -3843,6 +3941,9 @@ paths:
       x-stackql-method: get_inventory_schema
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Schemas
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetMaintenanceWindow:
     post:
       operationId: GetMaintenanceWindow
@@ -4086,6 +4187,7 @@ paths:
       x-stackql-resource: ops_items
       x-stackql-method: get_ops_item
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.OpsItem
   /GetOpsMetadata:
     post:
       operationId: GetOpsMetadata
@@ -4183,6 +4285,9 @@ paths:
       x-stackql-method: get_ops_summary
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetParameter:
     post:
       operationId: GetParameter
@@ -4229,6 +4334,7 @@ paths:
       x-stackql-resource: parameters
       x-stackql-method: get_parameter
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Parameter
   /GetParameterHistory:
     post:
       operationId: GetParameterHistory
@@ -4282,6 +4388,9 @@ paths:
       x-stackql-method: get_parameter_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parameters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetParameters:
     post:
       operationId: GetParameters
@@ -4397,6 +4506,9 @@ paths:
       x-stackql-method: get_parameters_by_path
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parameters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetPatchBaseline:
     post:
       operationId: GetPatchBaseline
@@ -4519,6 +4631,9 @@ paths:
       x-stackql-method: get_resource_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Policies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetServiceSetting:
     post:
       operationId: GetServiceSetting
@@ -4566,6 +4681,7 @@ paths:
       x-stackql-resource: service_settings
       x-stackql-method: get_service_setting
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ServiceSetting
   /LabelParameterVersion:
     post:
       operationId: LabelParameterVersion
@@ -4668,6 +4784,9 @@ paths:
       x-stackql-method: list_association_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssociationVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAssociations:
     post:
       operationId: ListAssociations
@@ -4715,6 +4834,9 @@ paths:
       x-stackql-method: list_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Associations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCommandInvocations:
     post:
       operationId: ListCommandInvocations
@@ -4771,6 +4893,9 @@ paths:
       x-stackql-method: list_command_invocations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CommandInvocations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCommands:
     post:
       operationId: ListCommands
@@ -4822,6 +4947,9 @@ paths:
       x-stackql-method: list_commands
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Commands
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListComplianceItems:
     post:
       operationId: ListComplianceItems
@@ -4874,6 +5002,9 @@ paths:
       x-stackql-method: list_compliance_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComplianceItems
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListComplianceSummaries:
     post:
       operationId: ListComplianceSummaries
@@ -4919,6 +5050,9 @@ paths:
       x-stackql-method: list_compliance_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComplianceSummaryItems
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDocumentMetadataHistory:
     post:
       operationId: ListDocumentMetadataHistory
@@ -5016,6 +5150,9 @@ paths:
       x-stackql-method: list_document_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DocumentVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDocuments:
     post:
       operationId: ListDocuments
@@ -5067,6 +5204,9 @@ paths:
       x-stackql-method: list_documents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DocumentIdentifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInventoryEntries:
     post:
       operationId: ListInventoryEntries
@@ -5165,6 +5305,9 @@ paths:
       x-stackql-method: list_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Nodes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListNodesSummary:
     post:
       operationId: ListNodesSummary
@@ -5217,11 +5360,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListNodesSummaryResult'
+                $ref: '#/components/schemas/ListNodesSummaryOutputDisplay'
       x-stackql-resource: nodes_summaries
       x-stackql-method: list_nodes_summary
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Summary
+      x-stackql-responseEnvelope: ListNodesSummaryOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Summary" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"summary": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOpsItemEvents:
     post:
       operationId: ListOpsItemEvents
@@ -5265,6 +5416,9 @@ paths:
       x-stackql-method: list_ops_item_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Summaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOpsItemRelatedItems:
     post:
       operationId: ListOpsItemRelatedItems
@@ -5311,6 +5465,9 @@ paths:
       x-stackql-method: list_ops_item_related_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Summaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOpsMetadata:
     post:
       operationId: ListOpsMetadata
@@ -5354,6 +5511,9 @@ paths:
       x-stackql-method: list_ops_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OpsMetadataList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceComplianceSummaries:
     post:
       operationId: ListResourceComplianceSummaries
@@ -5397,6 +5557,9 @@ paths:
       x-stackql-method: list_resource_compliance_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceComplianceSummaryItems
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceDataSync:
     post:
       operationId: ListResourceDataSync
@@ -5446,6 +5609,9 @@ paths:
       x-stackql-method: list_resource_data_sync
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceDataSyncItems
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -5484,7 +5650,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResult'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ModifyDocumentPermission:
@@ -6029,7 +6195,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterTargetWithMaintenanceWindowResult'
-      x-stackql-resource: target_with_maintenance_windows
+      x-stackql-resource: maintenance_windows
       x-stackql-method: register_target_with_maintenance_window
       x-stackql-verb: INSERT
   /RegisterTaskWithMaintenanceWindow:
@@ -6150,7 +6316,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterTaskWithMaintenanceWindowResult'
-      x-stackql-resource: task_with_maintenance_windows
+      x-stackql-resource: maintenance_windows
       x-stackql-method: register_task_with_maintenance_window
       x-stackql-verb: INSERT
   /RemoveTagsFromResource:
@@ -6204,7 +6370,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveTagsFromResourceResult'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
   /ResetServiceSetting:
@@ -6338,7 +6504,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendAutomationSignalResult'
-      x-stackql-resource: automation_signal
+      x-stackql-resource: automation_executions
       x-stackql-method: send_automation_signal
       x-stackql-verb: EXEC
   /SendCommand:
@@ -6537,7 +6703,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAssociationsOnceResult'
-      x-stackql-resource: associations_once
+      x-stackql-resource: associations
       x-stackql-method: start_associations_once
       x-stackql-verb: EXEC
   /StartAutomationExecution:
@@ -6733,7 +6899,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartChangeRequestExecutionResult'
-      x-stackql-resource: change_request_execution
+      x-stackql-resource: documents
       x-stackql-method: start_change_request_execution
       x-stackql-verb: EXEC
   /StartExecutionPreview:
@@ -6777,7 +6943,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartExecutionPreviewResponse'
-      x-stackql-resource: execution_preview
+      x-stackql-resource: documents
       x-stackql-method: start_execution_preview
       x-stackql-verb: EXEC
   /StartSession:
@@ -7184,7 +7350,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAssociationStatusResult'
-      x-stackql-resource: association_status
+      x-stackql-resource: associations
       x-stackql-method: update_association_status
       x-stackql-verb: UPDATE
   /UpdateDocument:
@@ -7290,7 +7456,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDocumentDefaultVersionResult'
-      x-stackql-resource: document_default_versions
+      x-stackql-resource: documents
       x-stackql-method: update_document_default_version
       x-stackql-verb: UPDATE
   /UpdateDocumentMetadata:
@@ -7336,7 +7502,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDocumentMetadataResponse'
-      x-stackql-resource: document_metadatas
+      x-stackql-resource: documents
       x-stackql-method: update_document_metadata
       x-stackql-verb: UPDATE
   /UpdateMaintenanceWindow:
@@ -12751,22 +12917,19 @@ components:
       enum:
       - OS
       - APPLICATION
-    DescribePatchPropertiesResult:
+    DescribePatchPropertiesRowDisplay:
       type: object
       properties:
-        Properties:
-          $ref: '#/components/schemas/PatchPropertiesList'
+        property:
+          type: object
           description: A list of the properties for patches matching the filter request parameters.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token for the next set of items to return. (You use this token in the next call.)
-    PatchPropertiesList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PatchPropertyEntry'
-    PatchPropertyEntry:
+    DescribePatchPropertiesOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DescribePatchPropertiesRowDisplay'
     SessionState:
       type: string
       enum:
@@ -16110,24 +16273,20 @@ components:
       - PlatformVersion
       - Region
       - ResourceType
-    ListNodesSummaryResult:
+    ListNodesSummaryRowDisplay:
       type: object
       properties:
-        Summary:
-          $ref: '#/components/schemas/NodeSummaryList'
+        summary:
+          type: object
           description: A collection of objects reporting information about your managed nodes, such as the count of nodes
             by operating system.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use when requesting the next set of items. If there are no additional items to return,
-            the string is empty.
-    NodeSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/NodeSummary'
-    NodeSummary:
+    ListNodesSummaryOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListNodesSummaryRowDisplay'
     OpsItemEventFilters:
       type: array
       items:

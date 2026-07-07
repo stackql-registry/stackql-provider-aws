@@ -1,0 +1,5 @@
+-- Terminate the sweep's find (idempotent on already-terminated
+-- instances; skipped automatically when the sweep exported nothing).
+-- Singleton scalar form - batch mutations are unsupported (stackql#683).
+DELETE FROM aws.ec2.instances
+WHERE region = '{{ region }}' AND InstanceId = '{{ instance_sweep.stray_id }}'

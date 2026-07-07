@@ -82,6 +82,9 @@ paths:
       x-stackql-method: list_assistants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assistantSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/associations:
     post:
       operationId: CreateAssistantAssociation
@@ -156,6 +159,9 @@ paths:
       x-stackql-method: list_assistant_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assistantAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/contents:
     post:
       operationId: CreateContent
@@ -237,6 +243,9 @@ paths:
       x-stackql-method: list_contents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases:
     post:
       operationId: CreateKnowledgeBase
@@ -310,6 +319,9 @@ paths:
       x-stackql-method: list_knowledge_bases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.knowledgeBaseSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/quickResponses:
     post:
       operationId: CreateQuickResponse
@@ -399,6 +411,9 @@ paths:
       x-stackql-method: list_quick_responses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.quickResponseSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/sessions:
     post:
       operationId: CreateSession
@@ -479,6 +494,7 @@ paths:
       x-stackql-resource: assistants
       x-stackql-method: get_assistant
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.assistant
   /assistants/{assistant_id}/associations/{assistant_association_id}:
     delete:
       operationId: DeleteAssistantAssociation
@@ -534,6 +550,7 @@ paths:
       x-stackql-resource: assistant_associations
       x-stackql-method: get_assistant_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.assistantAssociation
   /knowledgeBases/{knowledge_base_id}/contents/{content_id}:
     delete:
       operationId: DeleteContent
@@ -589,6 +606,7 @@ paths:
       x-stackql-resource: contents
       x-stackql-method: get_content
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.content
     post:
       operationId: UpdateContent
       description: Updates information about the content.
@@ -689,6 +707,7 @@ paths:
       x-stackql-resource: import_jobs
       x-stackql-method: get_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.importJob
   /knowledgeBases/{knowledge_base_id}:
     delete:
       operationId: DeleteKnowledgeBase
@@ -734,6 +753,7 @@ paths:
       x-stackql-resource: knowledge_bases
       x-stackql-method: get_knowledge_base
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.knowledgeBase
   /knowledgeBases/{knowledge_base_id}/quickResponses/{quick_response_id}:
     delete:
       operationId: DeleteQuickResponse
@@ -788,6 +808,7 @@ paths:
       x-stackql-resource: quick_responses
       x-stackql-method: get_quick_response
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.quickResponse
     post:
       operationId: UpdateQuickResponse
       description: Updates an existing Wisdom quick response.
@@ -874,6 +895,7 @@ paths:
       x-stackql-resource: content_summaries
       x-stackql-method: get_content_summary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.contentSummary
   /assistants/{assistant_id}/sessions/{session_id}/recommendations:
     get:
       operationId: GetRecommendations
@@ -945,6 +967,7 @@ paths:
       x-stackql-resource: sessions
       x-stackql-method: get_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.session
   /knowledgeBases/{knowledge_base_id}/importJobs:
     get:
       operationId: ListImportJobs
@@ -981,6 +1004,9 @@ paths:
       x-stackql-method: list_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.importJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartImportJob
       description: Start an asynchronous job to import Wisdom resources from an uploaded source file. Before calling this
@@ -1023,7 +1049,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImportJobResponse'
-      x-stackql-resource: import_job
+      x-stackql-resource: knowledge_bases
       x-stackql-method: start_import_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -1044,7 +1070,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1075,7 +1101,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1101,7 +1127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /assistants/{assistant_id}/sessions/{session_id}/recommendations/notify:
@@ -1141,7 +1167,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotifyRecommendationsReceivedResponse'
-      x-stackql-resource: recommendations_received
+      x-stackql-resource: recommendations
       x-stackql-method: notify_recommendations_received
       x-stackql-verb: EXEC
   /assistants/{assistant_id}/query:
@@ -1178,9 +1204,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryAssistantResponse'
-      x-stackql-resource: query_assistant
+      x-stackql-resource: assistants
       x-stackql-method: query_assistant
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/templateUri:
     delete:
       operationId: RemoveKnowledgeBaseTemplateUri
@@ -1200,7 +1229,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveKnowledgeBaseTemplateUriResponse'
-      x-stackql-resource: knowledge_base_template_uris
+      x-stackql-resource: knowledge_bases
       x-stackql-method: remove_knowledge_base_template_uri
       x-stackql-verb: UPDATE
     post:
@@ -1234,7 +1263,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateKnowledgeBaseTemplateUriResponse'
-      x-stackql-resource: knowledge_base_template_uris
+      x-stackql-resource: knowledge_bases
       x-stackql-method: update_knowledge_base_template_uri
       x-stackql-verb: UPDATE
   /knowledgeBases/{knowledge_base_id}/search:
@@ -1285,6 +1314,9 @@ paths:
       x-stackql-method: search_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/search/quickResponses:
     post:
       operationId: SearchQuickResponses
@@ -1334,6 +1366,9 @@ paths:
       x-stackql-method: search_quick_responses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.results
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assistants/{assistant_id}/searchSessions:
     post:
       operationId: SearchSessions
@@ -1380,6 +1415,9 @@ paths:
       x-stackql-method: search_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgeBases/{knowledge_base_id}/upload:
     post:
       operationId: StartContentUpload
@@ -1414,7 +1452,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContentUploadResponse'
-      x-stackql-resource: content_upload
+      x-stackql-resource: contents
       x-stackql-method: start_content_upload
       x-stackql-verb: EXEC
 components:

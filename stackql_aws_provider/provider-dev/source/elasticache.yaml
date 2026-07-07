@@ -58,7 +58,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AddTagsToResourceOutputDisplay'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AddTagsToResourceOutputDisplay
@@ -86,7 +86,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddTagsToResourceMessage'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AddTagsToResourceOutputDisplay
@@ -132,7 +132,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AuthorizeCacheSecurityGroupIngressOutputDisplay'
-      x-stackql-resource: cache_security_group_ingress
+      x-stackql-resource: cache_security_groups
       x-stackql-method: authorize_cache_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeCacheSecurityGroupIngressOutputDisplay
@@ -155,7 +155,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AuthorizeCacheSecurityGroupIngressMessage'
-      x-stackql-resource: cache_security_group_ingress
+      x-stackql-resource: cache_security_groups
       x-stackql-method: authorize_cache_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AuthorizeCacheSecurityGroupIngressOutputDisplay
@@ -199,7 +199,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchApplyUpdateActionOutputDisplay'
-      x-stackql-resource: batch_apply_update_action
+      x-stackql-resource: service_updates
       x-stackql-method: batch_apply_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchApplyUpdateActionOutputDisplay
@@ -221,7 +221,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchApplyUpdateActionMessage'
-      x-stackql-resource: batch_apply_update_action
+      x-stackql-resource: service_updates
       x-stackql-method: batch_apply_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchApplyUpdateActionOutputDisplay
@@ -265,7 +265,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/BatchStopUpdateActionOutputDisplay'
-      x-stackql-resource: batch_stop_update_action
+      x-stackql-resource: service_updates
       x-stackql-method: batch_stop_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchStopUpdateActionOutputDisplay
@@ -287,7 +287,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/BatchStopUpdateActionMessage'
-      x-stackql-resource: batch_stop_update_action
+      x-stackql-resource: service_updates
       x-stackql-method: batch_stop_update_action
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: BatchStopUpdateActionOutputDisplay
@@ -325,7 +325,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CompleteMigrationOutputDisplay'
-      x-stackql-resource: complete_migration
+      x-stackql-resource: replication_groups
       x-stackql-method: complete_migration
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CompleteMigrationOutputDisplay
@@ -346,7 +346,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CompleteMigrationMessage'
-      x-stackql-resource: complete_migration
+      x-stackql-resource: replication_groups
       x-stackql-method: complete_migration
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CompleteMigrationOutputDisplay
@@ -400,7 +400,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CopyServerlessCacheSnapshotOutputDisplay'
-      x-stackql-resource: serverless_cache_snapshot
+      x-stackql-resource: serverless_caches
       x-stackql-method: copy_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyServerlessCacheSnapshotOutputDisplay
@@ -422,7 +422,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CopyServerlessCacheSnapshotRequest'
-      x-stackql-resource: serverless_cache_snapshot
+      x-stackql-resource: serverless_caches
       x-stackql-method: copy_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: CopyServerlessCacheSnapshotOutputDisplay
@@ -2104,7 +2104,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DecreaseNodeGroupsInGlobalReplicationGroupOutputDisplay'
-      x-stackql-resource: decrease_node_groups_in_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: decrease_node_groups_in_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DecreaseNodeGroupsInGlobalReplicationGroupOutputDisplay
@@ -2125,7 +2125,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DecreaseNodeGroupsInGlobalReplicationGroupMessage'
-      x-stackql-resource: decrease_node_groups_in_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: decrease_node_groups_in_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DecreaseNodeGroupsInGlobalReplicationGroupOutputDisplay
@@ -2189,7 +2189,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DecreaseReplicaCountOutputDisplay'
-      x-stackql-resource: decrease_replica_count
+      x-stackql-resource: replication_groups
       x-stackql-method: decrease_replica_count
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DecreaseReplicaCountOutputDisplay
@@ -2212,7 +2212,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DecreaseReplicaCountMessage'
-      x-stackql-resource: decrease_replica_count
+      x-stackql-resource: replication_groups
       x-stackql-method: decrease_replica_count
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DecreaseReplicaCountOutputDisplay
@@ -4576,7 +4576,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ExportServerlessCacheSnapshotOutputDisplay'
-      x-stackql-resource: serverless_cache_snapshot
+      x-stackql-resource: serverless_caches
       x-stackql-method: export_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ExportServerlessCacheSnapshotOutputDisplay
@@ -4598,7 +4598,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ExportServerlessCacheSnapshotRequest'
-      x-stackql-resource: serverless_cache_snapshot
+      x-stackql-resource: serverless_caches
       x-stackql-method: export_serverless_cache_snapshot
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ExportServerlessCacheSnapshotOutputDisplay
@@ -4642,7 +4642,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/FailoverGlobalReplicationGroupOutputDisplay'
-      x-stackql-resource: failover_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: failover_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverGlobalReplicationGroupOutputDisplay
@@ -4664,7 +4664,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/FailoverGlobalReplicationGroupMessage'
-      x-stackql-resource: failover_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: failover_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: FailoverGlobalReplicationGroupOutputDisplay
@@ -4715,7 +4715,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/IncreaseNodeGroupsInGlobalReplicationGroupOutputDisplay'
-      x-stackql-resource: increase_node_groups_in_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: increase_node_groups_in_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: IncreaseNodeGroupsInGlobalReplicationGroupOutputDisplay
@@ -4736,7 +4736,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/IncreaseNodeGroupsInGlobalReplicationGroupMessage'
-      x-stackql-resource: increase_node_groups_in_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: increase_node_groups_in_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: IncreaseNodeGroupsInGlobalReplicationGroupOutputDisplay
@@ -4792,7 +4792,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/IncreaseReplicaCountOutputDisplay'
-      x-stackql-resource: increase_replica_count
+      x-stackql-resource: replication_groups
       x-stackql-method: increase_replica_count
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: IncreaseReplicaCountOutputDisplay
@@ -4815,7 +4815,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/IncreaseReplicaCountMessage'
-      x-stackql-resource: increase_replica_count
+      x-stackql-resource: replication_groups
       x-stackql-method: increase_replica_count
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: IncreaseReplicaCountOutputDisplay
@@ -4863,6 +4863,11 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAllowedNodeTypeModificationsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListAllowedNodeTypeModificationsResponse" -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "ListAllowedNodeTypeModificationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{-
+        if eq (kindOf $n) "map" -}}"scale_up_modifications": {{ toJson (index $n "ScaleUpModifications") }}, "scale_down_modifications":
+        {{ toJson (index $n "ScaleDownModifications") }}{{- end -}}}]}'
     post:
       operationId: POST_ListAllowedNodeTypeModifications
       description: Lists all available node types that you can scale with your cluster's replication group's current node
@@ -4886,6 +4891,11 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAllowedNodeTypeModificationsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListAllowedNodeTypeModificationsResponse" -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "ListAllowedNodeTypeModificationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{-
+        if eq (kindOf $n) "map" -}}"scale_up_modifications": {{ toJson (index $n "ScaleUpModifications") }}, "scale_down_modifications":
+        {{ toJson (index $n "ScaleDownModifications") }}{{- end -}}}]}'
   /?Action=ListTagsForResource&Version=2015-02-02:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4918,7 +4928,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -4943,7 +4953,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ListTagsForResourceMessage'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -5768,7 +5778,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyReplicationGroupShardConfigurationOutputDisplay'
-      x-stackql-resource: replication_group_shard_configurations
+      x-stackql-resource: replication_groups
       x-stackql-method: modify_replication_group_shard_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyReplicationGroupShardConfigurationOutputDisplay
@@ -5790,7 +5800,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyReplicationGroupShardConfigurationMessage'
-      x-stackql-resource: replication_group_shard_configurations
+      x-stackql-resource: replication_groups
       x-stackql-method: modify_replication_group_shard_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyReplicationGroupShardConfigurationOutputDisplay
@@ -6116,7 +6126,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PurchaseReservedCacheNodesOfferingOutputDisplay'
-      x-stackql-resource: purchase_reserved_cache_nodes_offering
+      x-stackql-resource: reserved_cache_nodes_offerings
       x-stackql-method: purchase_reserved_cache_nodes_offering
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PurchaseReservedCacheNodesOfferingOutputDisplay
@@ -6138,7 +6148,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PurchaseReservedCacheNodesOfferingMessage'
-      x-stackql-resource: purchase_reserved_cache_nodes_offering
+      x-stackql-resource: reserved_cache_nodes_offerings
       x-stackql-method: purchase_reserved_cache_nodes_offering
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: PurchaseReservedCacheNodesOfferingOutputDisplay
@@ -6175,7 +6185,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RebalanceSlotsInGlobalReplicationGroupOutputDisplay'
-      x-stackql-resource: rebalance_slots_in_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: rebalance_slots_in_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebalanceSlotsInGlobalReplicationGroupOutputDisplay
@@ -6196,7 +6206,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RebalanceSlotsInGlobalReplicationGroupMessage'
-      x-stackql-resource: rebalance_slots_in_global_replication_group
+      x-stackql-resource: global_replication_groups
       x-stackql-method: rebalance_slots_in_global_replication_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebalanceSlotsInGlobalReplicationGroupOutputDisplay
@@ -6241,7 +6251,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RebootCacheClusterOutputDisplay'
-      x-stackql-resource: cache_cluster
+      x-stackql-resource: cache_clusters
       x-stackql-method: reboot_cache_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootCacheClusterOutputDisplay
@@ -6269,7 +6279,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RebootCacheClusterMessage'
-      x-stackql-resource: cache_cluster
+      x-stackql-resource: cache_clusters
       x-stackql-method: reboot_cache_cluster
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RebootCacheClusterOutputDisplay
@@ -6311,7 +6321,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RemoveTagsFromResourceOutputDisplay'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RemoveTagsFromResourceOutputDisplay
@@ -6335,7 +6345,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveTagsFromResourceMessage'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RemoveTagsFromResourceOutputDisplay
@@ -6382,7 +6392,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetCacheParameterGroupOutputDisplay'
-      x-stackql-resource: cache_parameter_group
+      x-stackql-resource: cache_parameters
       x-stackql-method: reset_cache_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetCacheParameterGroupOutputDisplay
@@ -6405,7 +6415,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetCacheParameterGroupMessage'
-      x-stackql-resource: cache_parameter_group
+      x-stackql-resource: cache_parameters
       x-stackql-method: reset_cache_parameter_group
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetCacheParameterGroupOutputDisplay
@@ -6450,7 +6460,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RevokeCacheSecurityGroupIngressOutputDisplay'
-      x-stackql-resource: cache_security_group_ingress
+      x-stackql-resource: cache_security_groups
       x-stackql-method: revoke_cache_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeCacheSecurityGroupIngressOutputDisplay
@@ -6472,7 +6482,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RevokeCacheSecurityGroupIngressMessage'
-      x-stackql-resource: cache_security_group_ingress
+      x-stackql-resource: cache_security_groups
       x-stackql-method: revoke_cache_security_group_ingress
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: RevokeCacheSecurityGroupIngressOutputDisplay
@@ -6510,7 +6520,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StartMigrationOutputDisplay'
-      x-stackql-resource: migration
+      x-stackql-resource: replication_groups
       x-stackql-method: start_migration
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartMigrationOutputDisplay
@@ -6531,7 +6541,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StartMigrationMessage'
-      x-stackql-resource: migration
+      x-stackql-resource: replication_groups
       x-stackql-method: start_migration
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StartMigrationOutputDisplay
@@ -6586,7 +6596,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/TestFailoverOutputDisplay'
-      x-stackql-resource: failover
+      x-stackql-resource: replication_groups
       x-stackql-method: test_failover
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestFailoverOutputDisplay
@@ -6623,7 +6633,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TestFailoverMessage'
-      x-stackql-resource: failover
+      x-stackql-resource: replication_groups
       x-stackql-method: test_failover
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestFailoverOutputDisplay
@@ -6660,7 +6670,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/TestMigrationOutputDisplay'
-      x-stackql-resource: migration
+      x-stackql-resource: replication_groups
       x-stackql-method: test_migration
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestMigrationOutputDisplay
@@ -6681,7 +6691,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TestMigrationMessage'
-      x-stackql-resource: migration
+      x-stackql-resource: replication_groups
       x-stackql-method: test_migration
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestMigrationOutputDisplay
@@ -10097,7 +10107,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/StringDisplay'
+            $ref: '#/components/schemas/ListAllowedNodeTypeModificationsRowDisplay'
     ListAllowedNodeTypeModificationsMessage:
       description: The input parameters for the ListAllowedNodeTypeModifications operation.
       type: object
@@ -10112,6 +10122,19 @@ components:
           description: The name of the replication group want to scale up to a larger node type. ElastiCache uses the replication
             group id to identify the current node type being used by this replication group, and from that to create a list
             of node types you can scale up to. You must provide a value for either the CacheClusterId or the ReplicationGroupId.
+    ListAllowedNodeTypeModificationsRowDisplay:
+      type: object
+      properties:
+        scale_up_modifications:
+          type: array
+          description: A string list, each element of which specifies a cache node type which you can use to scale your cluster
+            or replication group. When scaling up a Valkey or Redis OSS cluster or replication group using ModifyCacheCluster
+            or ModifyReplicationGroup, use a value from this list for the CacheNodeType parameter.
+        scale_down_modifications:
+          type: array
+          description: A string list, each element of which specifies a cache node type which you can use to scale your cluster
+            or replication group. When scaling down a Valkey or Redis OSS cluster or replication group using ModifyCacheCluster
+            or ModifyReplicationGroup, use a value from this list for the CacheNodeType parameter.
     TagDisplay:
       type: object
       properties:

@@ -1049,6 +1049,17 @@ components:
       name: clusters
       title: clusters
       methods:
+        copy_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1cluster-snapshot~1{snapshot_arn}~1copy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_cluster:
           operation:
             $ref: "#/paths/~1cluster/post"
@@ -1072,6 +1083,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.cluster
         update_cluster:
           operation:
             $ref: "#/paths/~1cluster~1{cluster_arn}/put"
@@ -1092,6 +1104,37 @@ components:
             objectKey: $.clusters
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        restore_cluster_from_snapshot:
+          operation:
+            $ref: "#/paths/~1cluster-snapshot~1{snapshot_arn}~1restore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_cluster:
+          operation:
+            $ref: "#/paths/~1cluster~1{cluster_arn}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_cluster:
+          operation:
+            $ref: "#/paths/~1cluster~1{cluster_arn}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/get_cluster"
@@ -1130,6 +1173,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.snapshot
         list_cluster_snapshots:
           operation:
             $ref: "#/paths/~1cluster-snapshots/get"
@@ -1139,6 +1183,14 @@ components:
             objectKey: $.snapshots
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/get_cluster_snapshot"
@@ -1159,6 +1211,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.resourcePendingMaintenanceAction
         list_pending_maintenance_actions:
           operation:
             $ref: "#/paths/~1pending-actions/get"
@@ -1168,6 +1221,14 @@ components:
             objectKey: $.resourcePendingMaintenanceActions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pending_maintenance_actions/methods/get_pending_maintenance_action"
@@ -1175,10 +1236,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.docdb_elastic.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.docdb_elastic.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1186,17 +1247,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.docdb_elastic.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1217,9 +1267,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

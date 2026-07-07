@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociatePermissionResponse'
-      x-stackql-resource: permissions
+      x-stackql-resource: applications
       x-stackql-method: associate_permission
       x-stackql-verb: UPDATE
     get:
@@ -117,7 +117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDocumentResponse'
-      x-stackql-resource: batch_delete_document
+      x-stackql-resource: applications
       x-stackql-method: batch_delete_document
       x-stackql-verb: EXEC
   /applications/{application_id}/indices/{index_id}/documents:
@@ -163,7 +163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutDocumentResponse'
-      x-stackql-resource: batch_put_document
+      x-stackql-resource: applications
       x-stackql-method: batch_put_document
       x-stackql-verb: EXEC
   /applications/{application_id}/subscriptions/{subscription_id}:
@@ -191,7 +191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelSubscriptionResponse'
-      x-stackql-resource: subscription
+      x-stackql-resource: subscriptions
       x-stackql-method: cancel_subscription
       x-stackql-verb: EXEC
     put:
@@ -290,7 +290,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChatOutput'
-      x-stackql-resource: chat
+      x-stackql-resource: applications
       x-stackql-method: chat
       x-stackql-verb: EXEC
     get:
@@ -334,6 +334,9 @@ paths:
       x-stackql-method: list_conversations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.conversations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/conversations?sync:
     post:
       operationId: ChatSync
@@ -391,7 +394,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChatSyncOutput'
-      x-stackql-resource: chat_sync
+      x-stackql-resource: applications
       x-stackql-method: chat_sync
       x-stackql-verb: EXEC
   /applications/{application_id}/index/{index_id}/users/{user_id}/documents/{document_id}/check-document-access:
@@ -442,7 +445,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckDocumentAccessResponse'
-      x-stackql-resource: check_document_access
+      x-stackql-resource: applications
       x-stackql-method: check_document_access
       x-stackql-verb: EXEC
   /applications/{application_id}/experiences/{web_experience_id}/anonymous-url:
@@ -479,7 +482,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAnonymousWebExperienceUrlResponse'
-      x-stackql-resource: anonymous_web_experience_urls
+      x-stackql-resource: web_experiences
       x-stackql-method: create_anonymous_web_experience_url
       x-stackql-verb: INSERT
   /applications:
@@ -572,6 +575,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.applications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/chatresponseconfigurations:
     post:
       operationId: CreateChatResponseConfiguration
@@ -651,6 +657,9 @@ paths:
       x-stackql-method: list_chat_response_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.chatResponseConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/dataaccessors:
     post:
       operationId: CreateDataAccessor
@@ -734,6 +743,9 @@ paths:
       x-stackql-method: list_data_accessors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataAccessors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/indices/{index_id}/datasources:
     post:
       operationId: CreateDataSource
@@ -833,6 +845,9 @@ paths:
       x-stackql-method: list_data_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataSources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/indices:
     post:
       operationId: CreateIndex
@@ -912,6 +927,9 @@ paths:
       x-stackql-method: list_indices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.indices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/plugins:
     post:
       operationId: CreatePlugin
@@ -992,6 +1010,9 @@ paths:
       x-stackql-method: list_plugins
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.plugins
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/retrievers:
     post:
       operationId: CreateRetriever
@@ -1070,6 +1091,9 @@ paths:
       x-stackql-method: list_retrievers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.retrievers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/subscriptions:
     post:
       operationId: CreateSubscription
@@ -1145,6 +1169,9 @@ paths:
       x-stackql-method: list_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.subscriptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/users:
     post:
       operationId: CreateUser
@@ -1266,6 +1293,9 @@ paths:
       x-stackql-method: list_web_experiences
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.webExperiences
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}:
     delete:
       operationId: DeleteApplication
@@ -1449,6 +1479,9 @@ paths:
       x-stackql-method: get_chat_controls_configuration
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.topicConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     patch:
       operationId: UpdateChatControlsConfiguration
       description: Updates a set of chat controls configured for an existing Amazon Q Business application.
@@ -1670,6 +1703,9 @@ paths:
       x-stackql-method: list_messages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.messages
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/dataaccessors/{data_accessor_id}:
     delete:
       operationId: DeleteDataAccessor
@@ -2481,7 +2517,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociatePermissionResponse'
-      x-stackql-resource: permissions
+      x-stackql-resource: applications
       x-stackql-method: disassociate_permission
       x-stackql-verb: UPDATE
   /applications/{application_id}/index/{index_id}/documents/{document_id}/content:
@@ -2626,6 +2662,9 @@ paths:
       x-stackql-method: list_attachments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.attachments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/indices/{index_id}/datasources/{data_source_id}/syncjobs:
     get:
       operationId: ListDataSourceSyncJobs
@@ -2691,6 +2730,9 @@ paths:
       x-stackql-method: list_data_source_sync_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.history
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/index/{index_id}/documents:
     get:
       operationId: ListDocuments
@@ -2738,6 +2780,9 @@ paths:
       x-stackql-method: list_documents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.documentDetailList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/indices/{index_id}/groups:
     get:
       operationId: ListGroups
@@ -2792,6 +2837,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     put:
       operationId: PutGroup
       description: Create, or updates, a mapping of users—who have access to a document—to groups. You can also map sub groups
@@ -2887,6 +2935,9 @@ paths:
       x-stackql-method: list_plugin_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /pluginTypes/{plugin_type}/actions:
     get:
       operationId: ListPluginTypeActions
@@ -2922,6 +2973,9 @@ paths:
       x-stackql-method: list_plugin_type_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /pluginTypeMetadata:
     get:
       operationId: ListPluginTypeMetadata
@@ -2951,6 +3005,9 @@ paths:
       x-stackql-method: list_plugin_type_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2971,7 +3028,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -3003,7 +3060,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3031,7 +3088,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /applications/{application_id}/conversations/{conversation_id}/messages/{message_id}/feedback:
@@ -3077,7 +3134,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: feedbacks
+      x-stackql-resource: conversations
       x-stackql-method: put_feedback
       x-stackql-verb: REPLACE
   /applications/{application_id}/relevant-content:
@@ -3126,6 +3183,9 @@ paths:
       x-stackql-method: search_relevant_content
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relevantContent
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application_id}/indices/{index_id}/datasources/{data_source_id}/startsync:
     post:
       operationId: StartDataSourceSyncJob
@@ -3157,7 +3217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataSourceSyncJobResponse'
-      x-stackql-resource: data_source_sync_job
+      x-stackql-resource: data_sources
       x-stackql-method: start_data_source_sync_job
       x-stackql-verb: EXEC
   /applications/{application_id}/indices/{index_id}/datasources/{data_source_id}/stopsync:
@@ -3190,7 +3250,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDataSourceSyncJobResponse'
-      x-stackql-resource: data_source_sync_job
+      x-stackql-resource: data_sources
       x-stackql-method: stop_data_source_sync_job
       x-stackql-verb: EXEC
 components:

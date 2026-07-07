@@ -2468,7 +2468,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetActiveNamesResult"
+                $ref: "#/components/schemas/GetActiveNamesOutputDisplay"
   /GetAlarms:
     post:
       operationId: GetAlarms
@@ -2902,7 +2902,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetContainerAPIMetadataResult"
+                $ref: "#/components/schemas/GetContainerAPIMetadataOutputDisplay"
   /GetContainerImages:
     post:
       operationId: GetContainerImages
@@ -4433,7 +4433,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetRelationalDatabaseLogStreamsResult"
+                $ref: "#/components/schemas/GetRelationalDatabaseLogStreamsOutputDisplay"
   /GetRelationalDatabaseMasterUserPassword:
     post:
       operationId: GetRelationalDatabaseMasterUserPassword
@@ -7941,15 +7941,19 @@ components:
         operations:
           $ref: "#/components/schemas/OperationList"
           description: An array of objects that describe the result of the action, such as the status of the request, the timestamp of the request, and the resources affected by the request.
-    GetActiveNamesResult:
+    GetActiveNamesRowDisplay:
       type: object
       properties:
-        activeNames:
-          $ref: "#/components/schemas/StringList"
+        active_name:
+          type: string
           description: The list of active names returned by the get active names request.
-        nextPageToken:
-          $ref: "#/components/schemas/string"
-          description: The token to advance to the next page of results from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another GetActiveNames request and specify the next page token using the pageToken parameter.
+    GetActiveNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetActiveNamesRowDisplay"
     GetAlarmsResult:
       type: object
       properties:
@@ -8622,19 +8626,19 @@ components:
         - PendingVerification
         - Valid
         - Invalid
-    GetContainerAPIMetadataResult:
+    GetContainerAPIMetadataRowDisplay:
       type: object
       properties:
         metadata:
-          $ref: "#/components/schemas/ContainerServiceMetadataEntryList"
+          type: object
           description: Metadata about Lightsail containers, such as the current version of the Lightsail Control (lightsailctl) plugin.
-    ContainerServiceMetadataEntryList:
-      type: array
-      items:
-        $ref: "#/components/schemas/ContainerServiceMetadataEntry"
-    ContainerServiceMetadataEntry:
+    GetContainerAPIMetadataOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetContainerAPIMetadataRowDisplay"
     GetContainerImagesResult:
       type: object
       properties:
@@ -10545,12 +10549,19 @@ components:
         message:
           $ref: "#/components/schemas/string"
           description: The message of the database log event.
-    GetRelationalDatabaseLogStreamsResult:
+    GetRelationalDatabaseLogStreamsRowDisplay:
       type: object
       properties:
-        logStreams:
-          $ref: "#/components/schemas/StringList"
+        log_stream:
+          type: string
           description: An object describing the result of your get relational database log streams request.
+    GetRelationalDatabaseLogStreamsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetRelationalDatabaseLogStreamsRowDisplay"
     RelationalDatabasePasswordVersion:
       type: string
       enum:
@@ -11177,6 +11188,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.staticIp
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11196,6 +11208,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         release_static_ip:
@@ -11220,10 +11239,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/static_ips/methods/attach_static_ip"
           - $ref: "#/components/x-stackQL-resources/static_ips/methods/allocate_static_ip"
         delete: []
-    certificate_to_distributions:
-      id: aws.lightsail.certificate_to_distributions
-      name: certificate_to_distributions
-      title: certificate_to_distributions
+    distributions:
+      id: aws.lightsail.distributions
+      name: distributions
+      title: distributions
       methods:
         attach_certificate_to_distribution:
           operation:
@@ -11238,12 +11257,94 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_distribution:
+          operation:
+            $ref: "#/paths/~1CreateDistribution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_distribution:
+          operation:
+            $ref: "#/paths/~1DeleteDistribution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detach_certificate_from_distribution:
+          operation:
+            $ref: "#/paths/~1DetachCertificateFromDistribution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_distributions:
+          operation:
+            $ref: "#/paths/~1GetDistributions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reset_distribution_cache:
+          operation:
+            $ref: "#/paths/~1ResetDistributionCache/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_distribution:
+          operation:
+            $ref: "#/paths/~1UpdateDistribution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/get_distributions"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/create_distribution"
         update:
-          - $ref: "#/components/x-stackQL-resources/certificate_to_distributions/methods/attach_certificate_to_distribution"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/attach_certificate_to_distribution"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/update_distribution"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/delete_distribution"
     disks:
       id: aws.lightsail.disks
       name: disks
@@ -11265,6 +11366,19 @@ components:
         create_disk:
           operation:
             $ref: "#/paths/~1CreateDisk/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_disk_from_snapshot:
+          operation:
+            $ref: "#/paths/~1CreateDiskFromSnapshot/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -11307,6 +11421,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.disk
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11326,6 +11441,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11339,10 +11461,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/disks/methods/detach_disk"
         delete:
           - $ref: "#/components/x-stackQL-resources/disks/methods/delete_disk"
-    instances_to_load_balancers:
-      id: aws.lightsail.instances_to_load_balancers
-      name: instances_to_load_balancers
-      title: instances_to_load_balancers
+    load_balancers:
+      id: aws.lightsail.load_balancers
+      name: load_balancers
+      title: load_balancers
       methods:
         attach_instances_to_load_balancer:
           operation:
@@ -11357,12 +11479,104 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_load_balancer:
+          operation:
+            $ref: "#/paths/~1CreateLoadBalancer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_load_balancer:
+          operation:
+            $ref: "#/paths/~1DeleteLoadBalancer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detach_instances_from_load_balancer:
+          operation:
+            $ref: "#/paths/~1DetachInstancesFromLoadBalancer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_load_balancer:
+          operation:
+            $ref: "#/paths/~1GetLoadBalancer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.loadBalancer
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_load_balancers:
+          operation:
+            $ref: "#/paths/~1GetLoadBalancers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.loadBalancers
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_load_balancer_attribute:
+          operation:
+            $ref: "#/paths/~1UpdateLoadBalancerAttribute/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/get_load_balancer"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/get_load_balancers"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_load_balancer"
         update:
-          - $ref: "#/components/x-stackQL-resources/instances_to_load_balancers/methods/attach_instances_to_load_balancer"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/update_load_balancer_attribute"
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/attach_instances_to_load_balancer"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/delete_load_balancer"
     load_balancer_tls_certificates:
       id: aws.lightsail.load_balancer_tls_certificates
       name: load_balancer_tls_certificates
@@ -11429,6 +11643,216 @@ components:
           - $ref: "#/components/x-stackQL-resources/load_balancer_tls_certificates/methods/attach_load_balancer_tls_certificate"
         delete:
           - $ref: "#/components/x-stackQL-resources/load_balancer_tls_certificates/methods/delete_load_balancer_tls_certificate"
+    instances:
+      id: aws.lightsail.instances
+      name: instances
+      title: instances
+      methods:
+        close_instance_public_ports:
+          operation:
+            $ref: "#/paths/~1CloseInstancePublicPorts/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_instances:
+          operation:
+            $ref: "#/paths/~1CreateInstances/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_instances_from_snapshot:
+          operation:
+            $ref: "#/paths/~1CreateInstancesFromSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_instance:
+          operation:
+            $ref: "#/paths/~1DeleteInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_known_host_keys:
+          operation:
+            $ref: "#/paths/~1DeleteKnownHostKeys/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_instance:
+          operation:
+            $ref: "#/paths/~1GetInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.instance
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_instances:
+          operation:
+            $ref: "#/paths/~1GetInstances/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.instances
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        open_instance_public_ports:
+          operation:
+            $ref: "#/paths/~1OpenInstancePublicPorts/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_instance_public_ports:
+          operation:
+            $ref: "#/paths/~1PutInstancePublicPorts/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reboot_instance:
+          operation:
+            $ref: "#/paths/~1RebootInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        setup_instance_https:
+          operation:
+            $ref: "#/paths/~1SetupInstanceHttps/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_instance:
+          operation:
+            $ref: "#/paths/~1StartInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_instance:
+          operation:
+            $ref: "#/paths/~1StopInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_instance_metadata_options:
+          operation:
+            $ref: "#/paths/~1UpdateInstanceMetadataOptions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/get_instance"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/get_instances"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/create_instances"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/create_instances_from_snapshot"
+        update:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/setup_instance_https"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/update_instance_metadata_options"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/put_instance_public_ports"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/delete_instance"
     buckets:
       id: aws.lightsail.buckets
       name: buckets
@@ -11473,6 +11897,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        set_resource_access_for_bucket:
+          operation:
+            $ref: "#/paths/~1SetResourceAccessForBucket/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_bucket:
           operation:
             $ref: "#/paths/~1UpdateBucket/post"
@@ -11492,6 +11929,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/buckets/methods/create_bucket"
         update:
+          - $ref: "#/components/x-stackQL-resources/buckets/methods/set_resource_access_for_bucket"
           - $ref: "#/components/x-stackQL-resources/buckets/methods/update_bucket"
         delete:
           - $ref: "#/components/x-stackQL-resources/buckets/methods/delete_bucket"
@@ -11667,6 +12105,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        send_contact_method_verification:
+          operation:
+            $ref: "#/paths/~1SendContactMethodVerification/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/contact_methods/methods/get_contact_methods"
@@ -11683,6 +12134,19 @@ components:
         create_container_service:
           operation:
             $ref: "#/paths/~1CreateContainerService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_container_service_registry_login:
+          operation:
+            $ref: "#/paths/~1CreateContainerServiceRegistryLogin/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -11737,6 +12201,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/container_services/methods/get_container_services"
         insert:
           - $ref: "#/components/x-stackQL-resources/container_services/methods/create_container_service"
+          - $ref: "#/components/x-stackQL-resources/container_services/methods/create_container_service_registry_login"
         update:
           - $ref: "#/components/x-stackQL-resources/container_services/methods/update_container_service"
         delete:
@@ -11779,54 +12244,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/container_service_deployments/methods/create_container_service_deployment"
         update: []
         delete: []
-    container_service_registry_logins:
-      id: aws.lightsail.container_service_registry_logins
-      name: container_service_registry_logins
-      title: container_service_registry_logins
-      methods:
-        create_container_service_registry_login:
-          operation:
-            $ref: "#/paths/~1CreateContainerServiceRegistryLogin/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/container_service_registry_logins/methods/create_container_service_registry_login"
-        update: []
-        delete: []
-    disk_from_snapshots:
-      id: aws.lightsail.disk_from_snapshots
-      name: disk_from_snapshots
-      title: disk_from_snapshots
-      methods:
-        create_disk_from_snapshot:
-          operation:
-            $ref: "#/paths/~1CreateDiskFromSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/disk_from_snapshots/methods/create_disk_from_snapshot"
-        update: []
-        delete: []
     disk_snapshots:
       id: aws.lightsail.disk_snapshots
       name: disk_snapshots
@@ -11864,6 +12281,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.diskSnapshot
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -11883,6 +12301,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -11894,72 +12319,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/disk_snapshots/methods/delete_disk_snapshot"
-    distributions:
-      id: aws.lightsail.distributions
-      name: distributions
-      title: distributions
-      methods:
-        create_distribution:
-          operation:
-            $ref: "#/paths/~1CreateDistribution/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_distribution:
-          operation:
-            $ref: "#/paths/~1DeleteDistribution/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_distributions:
-          operation:
-            $ref: "#/paths/~1GetDistributions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_distribution:
-          operation:
-            $ref: "#/paths/~1UpdateDistribution/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/get_distributions"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/create_distribution"
-        update:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/update_distribution"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/delete_distribution"
     domains:
       id: aws.lightsail.domains
       name: domains
@@ -11968,6 +12327,19 @@ components:
         create_domain:
           operation:
             $ref: "#/paths/~1CreateDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_domain_entry:
+          operation:
+            $ref: "#/paths/~1CreateDomainEntry/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -11991,12 +12363,26 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_domain_entry:
+          operation:
+            $ref: "#/paths/~1DeleteDomainEntry/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_domain:
           operation:
             $ref: "#/paths/~1GetDomain/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.domain
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12016,46 +12402,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/get_domain"
-          - $ref: "#/components/x-stackQL-resources/domains/methods/get_domains"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
-    domain_entries:
-      id: aws.lightsail.domain_entries
-      name: domain_entries
-      title: domain_entries
-      methods:
-        create_domain_entry:
-          operation:
-            $ref: "#/paths/~1CreateDomainEntry/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_domain_entry:
-          operation:
-            $ref: "#/paths/~1DeleteDomainEntry/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_domain_entry:
@@ -12072,13 +12425,17 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/get_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/get_domains"
         insert:
-          - $ref: "#/components/x-stackQL-resources/domain_entries/methods/create_domain_entry"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain_entry"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
         update:
-          - $ref: "#/components/x-stackQL-resources/domain_entries/methods/update_domain_entry"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/update_domain_entry"
         delete:
-          - $ref: "#/components/x-stackQL-resources/domain_entries/methods/delete_domain_entry"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain_entry"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
     gui_session_access_details:
       id: aws.lightsail.gui_session_access_details
       name: gui_session_access_details
@@ -12140,6 +12497,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.instanceSnapshot
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12159,6 +12517,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12170,97 +12535,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/instance_snapshots/methods/delete_instance_snapshot"
-    instances:
-      id: aws.lightsail.instances
-      name: instances
-      title: instances
-      methods:
-        create_instances:
-          operation:
-            $ref: "#/paths/~1CreateInstances/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_instance:
-          operation:
-            $ref: "#/paths/~1DeleteInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_instance:
-          operation:
-            $ref: "#/paths/~1GetInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_instances:
-          operation:
-            $ref: "#/paths/~1GetInstances/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.instances
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/instances/methods/get_instance"
-          - $ref: "#/components/x-stackQL-resources/instances/methods/get_instances"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/instances/methods/create_instances"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/instances/methods/delete_instance"
-    instances_from_snapshots:
-      id: aws.lightsail.instances_from_snapshots
-      name: instances_from_snapshots
-      title: instances_from_snapshots
-      methods:
-        create_instances_from_snapshot:
-          operation:
-            $ref: "#/paths/~1CreateInstancesFromSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/instances_from_snapshots/methods/create_instances_from_snapshot"
-        update: []
-        delete: []
     key_pairs:
       id: aws.lightsail.key_pairs
       name: key_pairs
@@ -12298,6 +12572,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.keyPair
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12317,6 +12592,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        import_key_pair:
+          operation:
+            $ref: "#/paths/~1ImportKeyPair/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12328,73 +12623,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/key_pairs/methods/delete_key_pair"
-    load_balancers:
-      id: aws.lightsail.load_balancers
-      name: load_balancers
-      title: load_balancers
-      methods:
-        create_load_balancer:
-          operation:
-            $ref: "#/paths/~1CreateLoadBalancer/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_load_balancer:
-          operation:
-            $ref: "#/paths/~1DeleteLoadBalancer/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_load_balancer:
-          operation:
-            $ref: "#/paths/~1GetLoadBalancer/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_load_balancers:
-          operation:
-            $ref: "#/paths/~1GetLoadBalancers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.loadBalancers
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/get_load_balancer"
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/get_load_balancers"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/create_load_balancer"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/load_balancers/methods/delete_load_balancer"
     relational_databases:
       id: aws.lightsail.relational_databases
       name: relational_databases
@@ -12403,6 +12631,19 @@ components:
         create_relational_database:
           operation:
             $ref: "#/paths/~1CreateRelationalDatabase/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_relational_database_from_snapshot:
+          operation:
+            $ref: "#/paths/~1CreateRelationalDatabaseFromSnapshot/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -12432,6 +12673,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.relationalDatabase
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12446,6 +12688,52 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.relationalDatabases
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reboot_relational_database:
+          operation:
+            $ref: "#/paths/~1RebootRelationalDatabase/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_relational_database:
+          operation:
+            $ref: "#/paths/~1StartRelationalDatabase/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_relational_database:
+          operation:
+            $ref: "#/paths/~1StopRelationalDatabase/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12472,34 +12760,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/relational_databases/methods/get_relational_databases"
         insert:
           - $ref: "#/components/x-stackQL-resources/relational_databases/methods/create_relational_database"
+          - $ref: "#/components/x-stackQL-resources/relational_databases/methods/create_relational_database_from_snapshot"
         update:
           - $ref: "#/components/x-stackQL-resources/relational_databases/methods/update_relational_database"
         delete:
           - $ref: "#/components/x-stackQL-resources/relational_databases/methods/delete_relational_database"
-    relational_database_from_snapshots:
-      id: aws.lightsail.relational_database_from_snapshots
-      name: relational_database_from_snapshots
-      title: relational_database_from_snapshots
-      methods:
-        create_relational_database_from_snapshot:
-          operation:
-            $ref: "#/paths/~1CreateRelationalDatabaseFromSnapshot/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/relational_database_from_snapshots/methods/create_relational_database_from_snapshot"
-        update: []
-        delete: []
     relational_database_snapshots:
       id: aws.lightsail.relational_database_snapshots
       name: relational_database_snapshots
@@ -12537,6 +12802,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.relationalDatabaseSnapshot
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -12556,6 +12822,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12601,6 +12874,19 @@ components:
         put_alarm:
           operation:
             $ref: "#/paths/~1PutAlarm/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        test_alarm:
+          operation:
+            $ref: "#/paths/~1TestAlarm/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -12710,78 +12996,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/container_images/methods/delete_container_image"
-    known_host_keys:
-      id: aws.lightsail.known_host_keys
-      name: known_host_keys
-      title: known_host_keys
-      methods:
-        delete_known_host_keys:
-          operation:
-            $ref: "#/paths/~1DeleteKnownHostKeys/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/known_host_keys/methods/delete_known_host_keys"
-    certificate_from_distributions:
-      id: aws.lightsail.certificate_from_distributions
-      name: certificate_from_distributions
-      title: certificate_from_distributions
-      methods:
-        detach_certificate_from_distribution:
-          operation:
-            $ref: "#/paths/~1DetachCertificateFromDistribution/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/certificate_from_distributions/methods/detach_certificate_from_distribution"
-        delete: []
-    instances_from_load_balancers:
-      id: aws.lightsail.instances_from_load_balancers
-      name: instances_from_load_balancers
-      title: instances_from_load_balancers
-      methods:
-        detach_instances_from_load_balancer:
-          operation:
-            $ref: "#/paths/~1DetachInstancesFromLoadBalancer/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/instances_from_load_balancers/methods/detach_instances_from_load_balancer"
-        delete: []
     active_names:
       id: aws.lightsail.active_names
       name: active_names
@@ -12793,12 +13007,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.activeNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetActiveNamesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "activeNames" -}}{{- $tok := index . "nextPageToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"active_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextPageToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12824,6 +13051,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12911,6 +13145,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12936,6 +13177,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -12955,6 +13203,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetContainerAPIMetadataOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "metadata" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"metadata": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -13167,6 +13422,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -13186,6 +13448,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.accessDetails
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -13258,6 +13521,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.state
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -13330,6 +13594,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.operation
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -13349,6 +13614,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -13423,6 +13695,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -13448,6 +13727,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -13473,6 +13759,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -13516,6 +13809,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetRelationalDatabaseLogStreamsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "logStreams" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"log_stream": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -13594,6 +13894,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: pageToken
+                location: body
+              responseToken:
+                key: $.nextPageToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_relational_database_parameters:
@@ -13640,31 +13947,6 @@ components:
         insert: []
         update: []
         delete: []
-    instance_public_ports:
-      id: aws.lightsail.instance_public_ports
-      name: instance_public_ports
-      title: instance_public_ports
-      methods:
-        put_instance_public_ports:
-          operation:
-            $ref: "#/paths/~1PutInstancePublicPorts/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/instance_public_ports/methods/put_instance_public_ports"
-        delete: []
     ip_address_types:
       id: aws.lightsail.ip_address_types
       name: ip_address_types
@@ -13689,58 +13971,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/ip_address_types/methods/set_ip_address_type"
         delete: []
-    resource_access_for_buckets:
-      id: aws.lightsail.resource_access_for_buckets
-      name: resource_access_for_buckets
-      title: resource_access_for_buckets
-      methods:
-        set_resource_access_for_bucket:
-          operation:
-            $ref: "#/paths/~1SetResourceAccessForBucket/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resource_access_for_buckets/methods/set_resource_access_for_bucket"
-        delete: []
-    up_instance_https:
-      id: aws.lightsail.up_instance_https
-      name: up_instance_https
-      title: up_instance_https
-      methods:
-        setup_instance_https:
-          operation:
-            $ref: "#/paths/~1SetupInstanceHttps/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/up_instance_https/methods/setup_instance_https"
-        delete: []
-    resources:
-      id: aws.lightsail.resources
-      name: resources
-      title: resources
+    tags:
+      id: aws.lightsail.tags
+      name: tags
+      title: tags
       methods:
         tag_resource:
           operation:
@@ -13772,54 +14006,6 @@ components:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    instance_metadata_options:
-      id: aws.lightsail.instance_metadata_options
-      name: instance_metadata_options
-      title: instance_metadata_options
-      methods:
-        update_instance_metadata_options:
-          operation:
-            $ref: "#/paths/~1UpdateInstanceMetadataOptions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/instance_metadata_options/methods/update_instance_metadata_options"
-        delete: []
-    load_balancer_attributes:
-      id: aws.lightsail.load_balancer_attributes
-      name: load_balancer_attributes
-      title: load_balancer_attributes
-      methods:
-        update_load_balancer_attribute:
-          operation:
-            $ref: "#/paths/~1UpdateLoadBalancerAttribute/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/load_balancer_attributes/methods/update_load_balancer_attribute"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

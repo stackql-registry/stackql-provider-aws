@@ -7012,16 +7012,19 @@ components:
           description: The ID of the extension publisher. If you don't supply a PublisherId, and you have registered as an extension publisher, DescribePublisher returns information about your own publisher account.
     ResourceScanId:
       type: string
-    ResourceTypeDisplay:
+    ScanFilterDisplay:
       type: object
-      properties: {}
+      properties:
+        Types:
+          type: string
+          description: An array of strings where each string represents an Amazon Web Services resource type you want to scan. Each string defines the resource type using the format AWS::ServiceName::ResourceType, for example, AWS::DynamoDB::Table. For the full list of supported resource types, see the Resource type support table in the CloudFormation User Guide. To scan all resource types within a service, you can use a wildcard, represented by an asterisk (*). You can place an asterisk at only the end of the string, for example, AWS::S3::*.
     DescribeResourceScanOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/ResourceTypeDisplay"
+            $ref: "#/components/schemas/ScanFilterDisplay"
     DescribeResourceScanInput:
       type: object
       properties:
@@ -7204,7 +7207,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/StackIdDisplay"
+            $ref: "#/components/schemas/DescribeStackRefactorRowDisplay"
     DescribeStackRefactorInput:
       type: object
       properties:
@@ -7213,6 +7216,30 @@ components:
           description: The ID associated with the stack refactor created from the CreateStackRefactor action.
       required:
         - StackRefactorId
+    DescribeStackRefactorRowDisplay:
+      type: object
+      properties:
+        description:
+          type: string
+          description: A description to help you identify the refactor.
+        stack_refactor_id:
+          type: string
+          description: The ID associated with the stack refactor created from the CreateStackRefactor action.
+        stack_ids:
+          type: array
+          description: The unique ID for each stack.
+        execution_status:
+          type: string
+          description: The stack refactor execution operation status that's provided after calling the ExecuteStackRefactor action.
+        execution_status_reason:
+          type: string
+          description: A detailed explanation for the stack refactor ExecutionStatus.
+        status:
+          type: string
+          description: The stack refactor operation status that's provided after calling the CreateStackRefactor action.
+        status_reason:
+          type: string
+          description: A detailed explanation for the stack refactor operation Status.
     StackResourceDetailDisplay:
       type: object
       properties:
@@ -8231,7 +8258,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/StackNameDisplay"
+            $ref: "#/components/schemas/ListImportsRowDisplay"
     ListImportsInput:
       type: object
       properties:
@@ -8243,6 +8270,12 @@ components:
           description: The token for the next set of items to return. (You received this token from a previous call.)
       required:
         - ExportName
+    ListImportsRowDisplay:
+      type: object
+      properties:
+        import:
+          type: string
+          description: A list of stack names that are importing the specified exported output value.
     ScannedResourceIdentifiers:
       type: array
       items:
@@ -9018,7 +9051,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/RegistrationTokenDisplay"
+            $ref: "#/components/schemas/ListTypeRegistrationsRowDisplay"
     ListTypeRegistrationsInput:
       type: object
       properties:
@@ -9040,6 +9073,12 @@ components:
         NextToken:
           $ref: "#/components/schemas/NextToken"
           description: The token for the next set of items to return. (You received this token from a previous call.)
+    ListTypeRegistrationsRowDisplay:
+      type: object
+      properties:
+        registration_token:
+          type: string
+          description: A list of extension registration tokens. Use DescribeTypeRegistration to return detailed information about a type registration request.
     DeprecatedStatus:
       type: string
       enum:
@@ -9895,6 +9934,231 @@ components:
         insert: []
         update: []
         delete: []
+    stacks:
+      id: aws.cloudformation.stacks
+      name: stacks
+      title: stacks
+      methods:
+        cancel_update_stack:
+          operation:
+            $ref: "#/paths/~1?Action=CancelUpdateStack&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        continue_update_rollback:
+          operation:
+            $ref: "#/paths/~1?Action=ContinueUpdateRollback&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ContinueUpdateRollbackOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_stack:
+          operation:
+            $ref: "#/paths/~1?Action=CreateStack&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateStackOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_stack:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteStack&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_stacks:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeStacks&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeStacksOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        detect_stack_drift:
+          operation:
+            $ref: "#/paths/~1?Action=DetectStackDrift&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DetectStackDriftOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        detect_stack_resource_drift:
+          operation:
+            $ref: "#/paths/~1?Action=DetectStackResourceDrift&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DetectStackResourceDriftOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        import_stacks_to_stack_set:
+          operation:
+            $ref: "#/paths/~1?Action=ImportStacksToStackSet&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ImportStacksToStackSetOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        list_stacks:
+          operation:
+            $ref: "#/paths/~1?Action=ListStacks&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListStacksOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        rollback_stack:
+          operation:
+            $ref: "#/paths/~1?Action=RollbackStack&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RollbackStackOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        signal_resource:
+          operation:
+            $ref: "#/paths/~1?Action=SignalResource&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        update_stack:
+          operation:
+            $ref: "#/paths/~1?Action=UpdateStack&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateStackOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        update_termination_protection:
+          operation:
+            $ref: "#/paths/~1?Action=UpdateTerminationProtection&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateTerminationProtectionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/stacks/methods/describe_stacks"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/stacks/methods/create_stack"
+        update:
+          - $ref: "#/components/x-stackQL-resources/stacks/methods/update_termination_protection"
+          - $ref: "#/components/x-stackQL-resources/stacks/methods/update_stack"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/stacks/methods/delete_stack"
     change_sets:
       id: aws.cloudformation.change_sets
       name: change_sets
@@ -9952,6 +10216,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        execute_change_set:
+          operation:
+            $ref: "#/paths/~1?Action=ExecuteChangeSet&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ExecuteChangeSetOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10052,8 +10333,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10107,108 +10386,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/generated_templates/methods/update_generated_template"
         delete:
           - $ref: "#/components/x-stackQL-resources/generated_templates/methods/delete_generated_template"
-    stacks:
-      id: aws.cloudformation.stacks
-      name: stacks
-      title: stacks
-      methods:
-        create_stack:
-          operation:
-            $ref: "#/paths/~1?Action=CreateStack&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateStackOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_stack:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteStack&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_stacks:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeStacks&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeStacksOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        list_stacks:
-          operation:
-            $ref: "#/paths/~1?Action=ListStacks&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListStacksOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        update_stack:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateStack&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateStackOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/stacks/methods/describe_stacks"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/stacks/methods/create_stack"
-        update:
-          - $ref: "#/components/x-stackQL-resources/stacks/methods/update_stack"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/stacks/methods/delete_stack"
     stack_instances:
       id: aws.cloudformation.stack_instances
       name: stack_instances
@@ -10353,10 +10530,21 @@ components:
             schema_override:
               $ref: "#/components/schemas/DescribeStackRefactorOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "DescribeStackRefactorResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DescribeStackRefactorResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n) "map" -}}"description": {{ toJson (index $n "Description") }}, "stack_refactor_id": {{ toJson (index $n "StackRefactorId") }}, "stack_ids": {{ toJson (index $n "StackIds") }}, "execution_status": {{ toJson (index $n "ExecutionStatus") }}, "execution_status_reason": {{ toJson (index $n "ExecutionStatusReason") }}, "status": {{ toJson (index $n "Status") }}, "status_reason": {{ toJson (index $n "StatusReason") }}{{- end -}}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        execute_stack_refactor:
+          operation:
+            $ref: "#/paths/~1?Action=ExecuteStackRefactor&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10451,6 +10639,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        detect_stack_set_drift:
+          operation:
+            $ref: "#/paths/~1?Action=DetectStackSetDrift&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DetectStackSetDriftOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         list_stack_sets:
           operation:
             $ref: "#/paths/~1?Action=ListStackSets&Version=2010-05-15/get"
@@ -10465,6 +10670,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        stop_stack_set_operation:
+          operation:
+            $ref: "#/paths/~1?Action=StopStackSetOperation&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StopStackSetOperationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10554,8 +10776,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -10580,12 +10800,52 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        set_type_configuration:
+          operation:
+            $ref: "#/paths/~1?Action=SetTypeConfiguration&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetTypeConfigurationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        set_type_default_version:
+          operation:
+            $ref: "#/paths/~1?Action=SetTypeDefaultVersion&Version=2010-05-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SetTypeDefaultVersionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/types/methods/describe_type"
         insert:
           - $ref: "#/components/x-stackQL-resources/types/methods/register_type"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/types/methods/set_type_configuration"
+          - $ref: "#/components/x-stackQL-resources/types/methods/set_type_default_version"
         delete:
           - $ref: "#/components/x-stackQL-resources/types/methods/deregister_type"
     account_limits:
@@ -11022,7 +11282,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListTypeRegistrationsOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListTypeRegistrationsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListTypeRegistrationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "RegistrationTokenList" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"registration_token": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"registration_token": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -11074,8 +11335,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -11235,7 +11494,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListImportsOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListImportsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListImportsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "Imports" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"import": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"import": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -11459,94 +11719,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/type_versions/methods/list_type_versions"
         insert: []
         update: []
-        delete: []
-    type_configurations:
-      id: aws.cloudformation.type_configurations
-      name: type_configurations
-      title: type_configurations
-      methods:
-        set_type_configuration:
-          operation:
-            $ref: "#/paths/~1?Action=SetTypeConfiguration&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetTypeConfigurationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/type_configurations/methods/set_type_configuration"
-        delete: []
-    type_default_versions:
-      id: aws.cloudformation.type_default_versions
-      name: type_default_versions
-      title: type_default_versions
-      methods:
-        set_type_default_version:
-          operation:
-            $ref: "#/paths/~1?Action=SetTypeDefaultVersion&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/SetTypeDefaultVersionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/type_default_versions/methods/set_type_default_version"
-        delete: []
-    termination_protections:
-      id: aws.cloudformation.termination_protections
-      name: termination_protections
-      title: termination_protections
-      methods:
-        update_termination_protection:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateTerminationProtection&Version=2010-05-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateTerminationProtectionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/termination_protections/methods/update_termination_protection"
         delete: []

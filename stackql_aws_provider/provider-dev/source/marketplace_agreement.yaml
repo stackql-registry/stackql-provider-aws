@@ -58,7 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptAgreementCancellationRequestOutput'
-      x-stackql-resource: agreement_cancellation_request
+      x-stackql-resource: agreements
       x-stackql-method: accept_agreement_cancellation_request
       x-stackql-verb: EXEC
   /AcceptAgreementPaymentRequest:
@@ -105,7 +105,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptAgreementPaymentRequestOutput'
-      x-stackql-resource: agreement_payment_request
+      x-stackql-resource: agreements
       x-stackql-method: accept_agreement_payment_request
       x-stackql-verb: EXEC
   /AcceptAgreementRequest:
@@ -145,7 +145,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptAgreementRequestOutput'
-      x-stackql-resource: agreement_request
+      x-stackql-resource: agreements
       x-stackql-method: accept_agreement_request
       x-stackql-verb: EXEC
   /BatchCreateBillingAdjustmentRequest:
@@ -222,7 +222,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelAgreementOutput'
-      x-stackql-resource: agreement
+      x-stackql-resource: agreements
       x-stackql-method: cancel_agreement
       x-stackql-verb: EXEC
   /CancelAgreementCancellationRequest:
@@ -269,7 +269,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelAgreementCancellationRequestOutput'
-      x-stackql-resource: agreement_cancellation_request
+      x-stackql-resource: agreements
       x-stackql-method: cancel_agreement_cancellation_request
       x-stackql-verb: EXEC
   /CancelAgreementPaymentRequest:
@@ -312,7 +312,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelAgreementPaymentRequestOutput'
-      x-stackql-resource: agreement_payment_request
+      x-stackql-resource: agreements
       x-stackql-method: cancel_agreement_payment_request
       x-stackql-verb: EXEC
   /CreateAgreementRequest:
@@ -372,7 +372,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAgreementRequestOutput'
-      x-stackql-resource: agreement_requests
+      x-stackql-resource: agreements
       x-stackql-method: create_agreement_request
       x-stackql-verb: INSERT
   /DescribeAgreement:
@@ -495,6 +495,9 @@ paths:
       x-stackql-method: get_agreement_entitlements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agreementEntitlements
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetAgreementPaymentRequest:
     post:
       operationId: GetAgreementPaymentRequest
@@ -587,6 +590,9 @@ paths:
       x-stackql-method: get_agreement_terms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.acceptedTerms
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetBillingAdjustmentRequest:
     post:
       operationId: GetBillingAdjustmentRequest
@@ -686,6 +692,9 @@ paths:
       x-stackql-method: list_agreement_cancellation_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAgreementCharges:
     post:
       operationId: ListAgreementCharges
@@ -734,6 +743,9 @@ paths:
       x-stackql-method: list_agreement_charges
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAgreementInvoiceLineItems:
     post:
       operationId: ListAgreementInvoiceLineItems
@@ -798,6 +810,9 @@ paths:
       x-stackql-method: list_agreement_invoice_line_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agreementInvoiceLineItemGroupSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAgreementPaymentRequests:
     post:
       operationId: ListAgreementPaymentRequests
@@ -858,6 +873,9 @@ paths:
       x-stackql-method: list_agreement_payment_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillingAdjustmentRequests:
     post:
       operationId: ListBillingAdjustmentRequests
@@ -915,6 +933,9 @@ paths:
       x-stackql-method: list_billing_adjustment_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /RejectAgreementCancellationRequest:
     post:
       operationId: RejectAgreementCancellationRequest
@@ -960,7 +981,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectAgreementCancellationRequestOutput'
-      x-stackql-resource: agreement_cancellation_request
+      x-stackql-resource: agreements
       x-stackql-method: reject_agreement_cancellation_request
       x-stackql-verb: EXEC
   /RejectAgreementPaymentRequest:
@@ -1007,7 +1028,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectAgreementPaymentRequestOutput'
-      x-stackql-resource: agreement_payment_request
+      x-stackql-resource: agreements
       x-stackql-method: reject_agreement_payment_request
       x-stackql-verb: EXEC
   /SearchAgreements:
@@ -1089,6 +1110,9 @@ paths:
       x-stackql-method: search_agreements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agreementViewSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /SendAgreementCancellationRequest:
     post:
       operationId: SendAgreementCancellationRequest
@@ -1133,7 +1157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendAgreementCancellationRequestOutput'
-      x-stackql-resource: agreement_cancellation_request
+      x-stackql-resource: agreements
       x-stackql-method: send_agreement_cancellation_request
       x-stackql-verb: EXEC
   /SendAgreementPaymentRequest:
@@ -1194,7 +1218,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendAgreementPaymentRequestOutput'
-      x-stackql-resource: agreement_payment_request
+      x-stackql-resource: agreements
       x-stackql-method: send_agreement_payment_request
       x-stackql-verb: EXEC
   /UpdatePurchaseOrders:

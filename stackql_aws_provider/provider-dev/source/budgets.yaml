@@ -187,7 +187,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateNotificationResponse'
-      x-stackql-resource: notifications
+      x-stackql-resource: budgets
       x-stackql-method: create_notification
       x-stackql-verb: INSERT
   /CreateSubscriber:
@@ -236,7 +236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSubscriberResponse'
-      x-stackql-resource: subscribers
+      x-stackql-resource: budgets
       x-stackql-method: create_subscriber
       x-stackql-verb: INSERT
   /DeleteBudget:
@@ -364,7 +364,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteNotificationResponse'
-      x-stackql-resource: notifications
+      x-stackql-resource: budgets
       x-stackql-method: delete_notification
       x-stackql-verb: DELETE
   /DeleteSubscriber:
@@ -412,7 +412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteSubscriberResponse'
-      x-stackql-resource: subscribers
+      x-stackql-resource: budgets
       x-stackql-method: delete_subscriber
       x-stackql-verb: DELETE
   /DescribeBudget:
@@ -461,6 +461,7 @@ paths:
       x-stackql-resource: budgets
       x-stackql-method: describe_budget
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Budget
   /DescribeBudgetAction:
     post:
       operationId: DescribeBudgetAction
@@ -552,6 +553,9 @@ paths:
       x-stackql-method: describe_budget_action_histories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActionHistories
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeBudgetActionsForAccount:
     post:
       operationId: DescribeBudgetActionsForAccount
@@ -592,6 +596,9 @@ paths:
       x-stackql-method: describe_budget_actions_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Actions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeBudgetActionsForBudget:
     post:
       operationId: DescribeBudgetActionsForBudget
@@ -635,6 +642,9 @@ paths:
       x-stackql-method: describe_budget_actions_for_budget
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Actions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeBudgetNotificationsForAccount:
     post:
       operationId: DescribeBudgetNotificationsForAccount
@@ -676,6 +686,9 @@ paths:
       x-stackql-method: describe_budget_notifications_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BudgetNotificationsForAccount
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeBudgetPerformanceHistory:
     post:
       operationId: DescribeBudgetPerformanceHistory
@@ -722,6 +735,10 @@ paths:
       x-stackql-resource: budget_performance_histories
       x-stackql-method: describe_budget_performance_history
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BudgetPerformanceHistory
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeBudgets:
     post:
       operationId: DescribeBudgets
@@ -772,6 +789,9 @@ paths:
       x-stackql-method: describe_budgets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Budgets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeNotificationsForBudget:
     post:
       operationId: DescribeNotificationsForBudget
@@ -821,6 +841,9 @@ paths:
       x-stackql-method: describe_notifications_for_budget
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Notifications
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSubscribersForNotification:
     post:
       operationId: DescribeSubscribersForNotification
@@ -873,6 +896,9 @@ paths:
       x-stackql-method: describe_subscribers_for_notification
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Subscribers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ExecuteBudgetAction:
     post:
       operationId: ExecuteBudgetAction
@@ -916,7 +942,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExecuteBudgetActionResponse'
-      x-stackql-resource: execute_budget_action
+      x-stackql-resource: budgets
       x-stackql-method: execute_budget_action
       x-stackql-verb: EXEC
   /ListTagsForResource:
@@ -952,7 +978,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /TagResource:
@@ -992,7 +1018,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1032,7 +1058,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateBudget:
@@ -1183,7 +1209,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNotificationResponse'
-      x-stackql-resource: notifications
+      x-stackql-resource: budgets
       x-stackql-method: update_notification
       x-stackql-verb: UPDATE
   /UpdateSubscriber:
@@ -1235,7 +1261,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSubscriberResponse'
-      x-stackql-resource: subscribers
+      x-stackql-resource: budgets
       x-stackql-method: update_subscriber
       x-stackql-verb: UPDATE
 components:

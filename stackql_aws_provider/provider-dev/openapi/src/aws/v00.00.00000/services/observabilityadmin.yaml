@@ -63,7 +63,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMapInput"
               required:
-                - Encryption
                 - RoleArn
       responses:
         "200":
@@ -91,7 +90,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMapInput"
               required:
-                - Name
                 - Configuration
       responses:
         "200":
@@ -189,8 +187,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/ResourceArn"
-              required:
-                - Arn
       responses:
         "204":
           description: Success
@@ -292,8 +288,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/ResourceArn"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -716,7 +710,6 @@ paths:
                   $ref: "#/components/schemas/TagMapInput"
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -2363,12 +2356,18 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/s3_table_integrations/methods/get_s3_table_integration"
-          - $ref: "#/components/x-stackQL-resources/s3_table_integrations/methods/list_s3_table_integrations"
         insert:
           - $ref: "#/components/x-stackQL-resources/s3_table_integrations/methods/create_s3_table_integration"
         update: []
@@ -2407,6 +2406,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Pipeline
           request:
             nativeCasing: pascal
           config:
@@ -2422,11 +2422,29 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_telemetry_pipeline:
           operation:
             $ref: "#/paths/~1UpdateTelemetryPipeline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_telemetry_pipeline_configuration:
+          operation:
+            $ref: "#/paths/~1ValidateTelemetryPipelineConfiguration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2492,6 +2510,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_telemetry_rule:
@@ -2638,6 +2663,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2661,6 +2693,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2684,6 +2723,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2692,10 +2738,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.observabilityadmin.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.observabilityadmin.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2708,40 +2754,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    telemetry_rules_for_organizations:
-      id: aws.observabilityadmin.telemetry_rules_for_organizations
-      name: telemetry_rules_for_organizations
-      title: telemetry_rules_for_organizations
-      methods:
-        list_telemetry_rules_for_organization:
-          operation:
-            $ref: "#/paths/~1ListTelemetryRulesForOrganization/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.TelemetryRuleSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/telemetry_rules_for_organizations/methods/list_telemetry_rules_for_organization"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.observabilityadmin.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2763,9 +2775,40 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    telemetry_rules_for_organizations:
+      id: aws.observabilityadmin.telemetry_rules_for_organizations
+      name: telemetry_rules_for_organizations
+      title: telemetry_rules_for_organizations
+      methods:
+        list_telemetry_rules_for_organization:
+          operation:
+            $ref: "#/paths/~1ListTelemetryRulesForOrganization/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.TelemetryRuleSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/telemetry_rules_for_organizations/methods/list_telemetry_rules_for_organization"
+        insert: []
+        update: []
         delete: []

@@ -63,7 +63,7 @@ paths:
           description: The ID of the endpoint.
         - name: outpostId
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/OutpostId"
           description: The ID of the Outposts.
@@ -412,6 +412,14 @@ components:
             objectKey: $.Endpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/list_endpoints"
@@ -434,6 +442,14 @@ components:
             objectKey: $.Outposts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outposts_with_s3s/methods/list_outposts_with_s3"
@@ -454,6 +470,14 @@ components:
             objectKey: $.Endpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/shared_endpoints/methods/list_shared_endpoints"

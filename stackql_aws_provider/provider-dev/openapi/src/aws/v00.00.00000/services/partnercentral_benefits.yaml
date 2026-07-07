@@ -102,7 +102,6 @@ paths:
                   $ref: "#/components/schemas/AssociateBenefitApplicationResourceInputResourceArnString"
                   description: The Amazon Resource Name (ARN) of the AWS resource to associate with the benefit application.
               required:
-                - Catalog
                 - BenefitApplicationIdentifier
                 - ResourceArn
       responses:
@@ -146,7 +145,6 @@ paths:
                   $ref: "#/components/schemas/CancelBenefitApplicationInputReasonString"
                   description: A descriptive reason explaining why the benefit application is being cancelled.
               required:
-                - Catalog
                 - ClientToken
                 - Identifier
       responses:
@@ -211,7 +209,6 @@ paths:
                   $ref: "#/components/schemas/CreateBenefitApplicationInputFileDetailsList"
                   description: Supporting documents and files attached to the benefit application.
               required:
-                - Catalog
                 - ClientToken
                 - BenefitIdentifier
       responses:
@@ -252,7 +249,6 @@ paths:
                   $ref: "#/components/schemas/DisassociateBenefitApplicationResourceInputResourceArnString"
                   description: The Amazon Resource Name (ARN) of the AWS resource to disassociate from the benefit application.
               required:
-                - Catalog
                 - BenefitApplicationIdentifier
                 - ResourceArn
       responses:
@@ -290,7 +286,6 @@ paths:
                   $ref: "#/components/schemas/GetBenefitInputIdentifierString"
                   description: The unique identifier of the benefit to retrieve.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -327,7 +322,6 @@ paths:
                   $ref: "#/components/schemas/BenefitAllocationIdentifier"
                   description: The unique identifier of the benefit allocation to retrieve.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -364,7 +358,6 @@ paths:
                   $ref: "#/components/schemas/BenefitApplicationIdentifier"
                   description: The unique identifier of the benefit application to retrieve.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -415,8 +408,6 @@ paths:
                 NextToken:
                   $ref: "#/components/schemas/ListBenefitAllocationsInputNextTokenString"
                   description: A pagination token to retrieve the next set of results from a previous request.
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -475,8 +466,6 @@ paths:
                 NextToken:
                   $ref: "#/components/schemas/ListBenefitApplicationsInputNextTokenString"
                   description: A pagination token to retrieve the next set of results from a previous request.
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -523,8 +512,6 @@ paths:
                 NextToken:
                   $ref: "#/components/schemas/ListBenefitsInputNextTokenString"
                   description: A pagination token to retrieve the next set of results from a previous request.
-              required:
-                - Catalog
       responses:
         "200":
           description: Success
@@ -637,7 +624,6 @@ paths:
                   $ref: "#/components/schemas/BenefitApplicationIdentifier"
                   description: The unique identifier of the benefit application to submit.
               required:
-                - Catalog
                 - Identifier
       responses:
         "200":
@@ -769,10 +755,8 @@ paths:
                   $ref: "#/components/schemas/UpdateBenefitApplicationInputFileDetailsList"
                   description: Updated supporting documents and files attached to the benefit application.
               required:
-                - Catalog
                 - ClientToken
                 - Identifier
-                - Revision
       responses:
         "200":
           description: Success
@@ -1893,10 +1877,10 @@ components:
           $ref: "#/components/schemas/String"
           description: The new revision number of the benefit application after the update.
   x-stackQL-resources:
-    benefit_application_resources:
-      id: aws.partnercentral_benefits.benefit_application_resources
-      name: benefit_application_resources
-      title: benefit_application_resources
+    benefit_applications:
+      id: aws.partnercentral_benefits.benefit_applications
+      name: benefit_applications
+      title: benefit_applications
       methods:
         associate_benefit_application_resource:
           operation:
@@ -1911,9 +1895,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        disassociate_benefit_application_resource:
+        create_benefit_application:
           operation:
-            $ref: "#/paths/~1DisassociateBenefitApplicationResource/post"
+            $ref: "#/paths/~1CreateBenefitApplication/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1924,20 +1908,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/benefit_application_resources/methods/associate_benefit_application_resource"
-        delete: []
-    benefit_applications:
-      id: aws.partnercentral_benefits.benefit_applications
-      name: benefit_applications
-      title: benefit_applications
-      methods:
-        create_benefit_application:
+        disassociate_benefit_application_resource:
           operation:
-            $ref: "#/paths/~1CreateBenefitApplication/post"
+            $ref: "#/paths/~1DisassociateBenefitApplicationResource/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1973,6 +1946,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_benefit_application:
@@ -1995,6 +1975,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/benefit_applications/methods/create_benefit_application"
         update:
+          - $ref: "#/components/x-stackQL-resources/benefit_applications/methods/associate_benefit_application_resource"
           - $ref: "#/components/x-stackQL-resources/benefit_applications/methods/update_benefit_application"
         delete: []
     benefits:
@@ -2002,6 +1983,19 @@ components:
       name: benefits
       title: benefits
       methods:
+        cancel_benefit_application:
+          operation:
+            $ref: "#/paths/~1CancelBenefitApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_benefit:
           operation:
             $ref: "#/paths/~1GetBenefit/post"
@@ -2022,6 +2016,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.BenefitSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        submit_benefit_application:
+          operation:
+            $ref: "#/paths/~1SubmitBenefitApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2066,6 +2080,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2075,10 +2096,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.partnercentral_benefits.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.partnercentral_benefits.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2093,17 +2114,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.partnercentral_benefits.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2131,9 +2141,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

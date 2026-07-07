@@ -157,6 +157,7 @@ paths:
       x-stackql-resource: configuration_check_operations
       x-stackql-method: get_configuration_check_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ConfigurationCheckOperation
   /get-database:
     post:
       operationId: GetDatabase
@@ -213,6 +214,7 @@ paths:
       x-stackql-resource: operations
       x-stackql-method: get_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Operation
   /get-resource-permission:
     post:
       operationId: GetResourcePermission
@@ -270,6 +272,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Applications
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-components:
     post:
       operationId: ListComponents
@@ -299,6 +304,9 @@ paths:
       x-stackql-method: list_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Components
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-configuration-check-definitions:
     post:
       operationId: ListConfigurationCheckDefinitions
@@ -326,6 +334,9 @@ paths:
       x-stackql-method: list_configuration_check_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationChecks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-configuration-check-operations:
     post:
       operationId: ListConfigurationCheckOperations
@@ -361,6 +372,9 @@ paths:
       x-stackql-method: list_configuration_check_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationCheckOperations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-databases:
     post:
       operationId: ListDatabases
@@ -392,6 +406,9 @@ paths:
       x-stackql-method: list_databases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Databases
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-operation-events:
     post:
       operationId: ListOperationEvents
@@ -426,6 +443,9 @@ paths:
       x-stackql-method: list_operation_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OperationEvents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-operations:
     post:
       operationId: ListOperations
@@ -459,6 +479,9 @@ paths:
       x-stackql-method: list_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Operations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-sub-check-results:
     post:
       operationId: ListSubCheckResults
@@ -490,6 +513,9 @@ paths:
       x-stackql-method: list_sub_check_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SubCheckResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-sub-check-rule-results:
     post:
       operationId: ListSubCheckRuleResults
@@ -521,6 +547,9 @@ paths:
       x-stackql-method: list_sub_check_rule_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RuleResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -539,7 +568,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -570,7 +599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -596,7 +625,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /put-resource-permission:
@@ -701,7 +730,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartApplicationOutput'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: start_application
       x-stackql-verb: EXEC
   /start-application-refresh:
@@ -727,7 +756,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartApplicationRefreshOutput'
-      x-stackql-resource: application_refresh
+      x-stackql-resource: applications
       x-stackql-method: start_application_refresh
       x-stackql-verb: EXEC
   /start-configuration-checks:
@@ -755,7 +784,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConfigurationChecksOutput'
-      x-stackql-resource: configuration_checks
+      x-stackql-resource: applications
       x-stackql-method: start_configuration_checks
       x-stackql-verb: EXEC
   /stop-application:
@@ -786,7 +815,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopApplicationOutput'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: stop_application
       x-stackql-verb: EXEC
   /update-application-settings:
@@ -820,7 +849,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateApplicationSettingsOutput'
-      x-stackql-resource: application_settings
+      x-stackql-resource: applications
       x-stackql-method: update_application_settings
       x-stackql-verb: UPDATE
 components:

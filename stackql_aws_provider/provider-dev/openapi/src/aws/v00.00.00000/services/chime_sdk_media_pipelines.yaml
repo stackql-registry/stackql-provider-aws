@@ -714,7 +714,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceARN
-                - Tags
       responses:
         "204":
           description: Success
@@ -2746,6 +2745,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MediaCapturePipeline
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/media_capture_pipelines/methods/get_media_capture_pipeline"
@@ -2777,10 +2777,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/media_concatenation_pipelines/methods/create_media_concatenation_pipeline"
         update: []
         delete: []
-    media_insights_pipelines:
-      id: aws.chime_sdk_media_pipelines.media_insights_pipelines
-      name: media_insights_pipelines
-      title: media_insights_pipelines
+    media_insights_pipeline_configurations:
+      id: aws.chime_sdk_media_pipelines.media_insights_pipeline_configurations
+      name: media_insights_pipeline_configurations
+      title: media_insights_pipeline_configurations
       methods:
         create_media_insights_pipeline:
           operation:
@@ -2793,17 +2793,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/media_insights_pipelines/methods/create_media_insights_pipeline"
-        update: []
-        delete: []
-    media_insights_pipeline_configurations:
-      id: aws.chime_sdk_media_pipelines.media_insights_pipeline_configurations
-      name: media_insights_pipeline_configurations
-      title: media_insights_pipeline_configurations
-      methods:
         create_media_insights_pipeline_configuration:
           operation:
             $ref: "#/paths/~1media-insights-pipeline-configurations/post"
@@ -2834,6 +2823,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MediaInsightsPipelineConfiguration
         update_media_insights_pipeline_configuration:
           operation:
             $ref: "#/paths/~1media-insights-pipeline-configurations~1{identifier}/put"
@@ -2851,6 +2841,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/media_insights_pipeline_configurations/methods/list_media_insights_pipeline_configurations"
         insert:
           - $ref: "#/components/x-stackQL-resources/media_insights_pipeline_configurations/methods/create_media_insights_pipeline_configuration"
+          - $ref: "#/components/x-stackQL-resources/media_insights_pipeline_configurations/methods/create_media_insights_pipeline"
         update:
           - $ref: "#/components/x-stackQL-resources/media_insights_pipeline_configurations/methods/update_media_insights_pipeline_configuration"
         delete:
@@ -2912,6 +2903,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.KinesisVideoStreamPoolConfiguration
         update_media_pipeline_kinesis_video_stream_pool:
           operation:
             $ref: "#/paths/~1media-pipeline-kinesis-video-stream-pools~1{identifier}/put"
@@ -2971,6 +2963,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MediaPipeline
         list_media_pipelines:
           operation:
             $ref: "#/paths/~1sdk-media-pipelines/get"
@@ -2998,6 +2991,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SpeakerSearchTask
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/speaker_search_tasks/methods/get_speaker_search_task"
@@ -3015,16 +3009,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VoiceToneAnalysisTask
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/voice_tone_analysis_tasks/methods/get_voice_tone_analysis_task"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.chime_sdk_media_pipelines.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.chime_sdk_media_pipelines.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3034,17 +3029,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.chime_sdk_media_pipelines.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
@@ -3068,11 +3052,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     media_insights_pipeline_status:
       id: aws.chime_sdk_media_pipelines.media_insights_pipeline_status

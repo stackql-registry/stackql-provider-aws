@@ -691,11 +691,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDeadLetterSourceQueuesResult'
+                $ref: '#/components/schemas/ListDeadLetterSourceQueuesOutputDisplay'
       x-stackql-resource: dead_letter_source_queues
       x-stackql-method: list_dead_letter_source_queues
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.queueUrls
+      x-stackql-responseEnvelope: ListDeadLetterSourceQueuesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "queueUrls" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"queue_url": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMessageMoveTasks:
     post:
       operationId: ListMessageMoveTasks
@@ -823,11 +831,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListQueuesResult'
+                $ref: '#/components/schemas/ListQueuesOutputDisplay'
       x-stackql-resource: queues
       x-stackql-method: list_queues
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.QueueUrls
+      x-stackql-responseEnvelope: ListQueuesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "QueueUrls" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"queue_url": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PurgeQueue:
     post:
       operationId: PurgeQueue
@@ -1422,7 +1438,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queues
+      x-stackql-resource: tags
       x-stackql-method: tag_queue
       x-stackql-verb: UPDATE
   /UntagQueue:
@@ -1460,7 +1476,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queues
+      x-stackql-resource: tags
       x-stackql-method: untag_queue
       x-stackql-verb: UPDATE
 components:
@@ -1711,24 +1727,20 @@ components:
       type: string
     BoxedInteger:
       type: integer
-    ListDeadLetterSourceQueuesResult:
-      description: A list of your dead letter source queues.
+    ListDeadLetterSourceQueuesRowDisplay:
       type: object
       properties:
-        queueUrls:
-          $ref: '#/components/schemas/QueueUrlList'
+        queue_url:
+          type: string
           description: A list of source queue URLs that have the RedrivePolicy queue attribute configured with a dead-letter
             queue.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: Pagination token to include in the next request. Token value is null if there are no additional results
-            to request, or if you did not set MaxResults in the request.
-      required:
-      - queueUrls
-    QueueUrlList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListDeadLetterSourceQueuesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDeadLetterSourceQueuesRowDisplay'
     ListMessageMoveTasksResult:
       type: object
       properties:
@@ -1786,17 +1798,19 @@ components:
           type: object
           properties: {}
           description: The list of all tags added to the specified queue.
-    ListQueuesResult:
-      description: A list of your queues.
+    ListQueuesRowDisplay:
       type: object
       properties:
-        QueueUrls:
-          $ref: '#/components/schemas/QueueUrlList'
+        queue_url:
+          type: string
           description: A list of queue URLs, up to 1,000 entries, or the value of MaxResults that you sent in the request.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: Pagination token to include in the next request. Token value is null if there are no additional results
-            to request, or if you did not set MaxResults in the request.
+    ListQueuesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListQueuesRowDisplay'
     MessageSystemAttributeList:
       type: array
       items:

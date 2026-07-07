@@ -120,7 +120,6 @@ paths:
                   $ref: "#/components/schemas/ApiDestinationInvocationRateLimitPerSecond"
                   description: The maximum number of requests per second to send to the HTTP invocation endpoint.
               required:
-                - Name
                 - ConnectionArn
                 - InvocationEndpoint
                 - HttpMethod
@@ -220,7 +219,6 @@ paths:
                   $ref: "#/components/schemas/KmsKeyIdentifier"
                   description: The identifier of the KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN. If you do not specify a customer managed key identifier, EventBridge uses an Amazon Web Services owned key to encrypt the connection. For more information, see Identify and view keys in the Key Management Service Developer Guide.
               required:
-                - Name
                 - AuthorizationType
                 - AuthParameters
       responses:
@@ -270,7 +268,6 @@ paths:
                   $ref: "#/components/schemas/IamRoleArn"
                   description: The ARN of the role used for replication.
               required:
-                - Name
                 - RoutingConfig
                 - EventBuses
       responses:
@@ -321,8 +318,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
                   description: Tags to associate with the event bus.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -358,7 +353,6 @@ paths:
                   $ref: "#/components/schemas/AccountId"
                   description: The Amazon Web Services account ID that is permitted to create a matching partner event bus for this partner event source.
               required:
-                - Name
                 - Account
       responses:
         "200":
@@ -453,8 +447,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ApiDestinationName"
                   description: The name of the destination to delete.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -519,8 +511,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ConnectionName"
                   description: The name of the connection to delete.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -552,8 +542,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/EndpointName"
                   description: The name of the endpoint you want to delete. For example, "Name":"us-east-2-custom_bus_A-endpoint"..
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -585,8 +573,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/EventBusName"
                   description: The name of the event bus to delete.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -618,7 +604,6 @@ paths:
                   $ref: "#/components/schemas/AccountId"
                   description: The Amazon Web Services account ID of the Amazon Web Services customer that the event source was created for.
               required:
-                - Name
                 - Account
       responses:
         "200":
@@ -653,8 +638,6 @@ paths:
                 Force:
                   $ref: "#/components/schemas/Boolean"
                   description: If this is a managed rule, created by an Amazon Web Services service on your behalf, you must specify Force as True to delete the rule. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using DescribeRule or ListRules and checking the ManagedBy field of the response.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -682,8 +665,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ApiDestinationName"
                   description: The name of the API destination to retrieve.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -748,8 +729,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/ConnectionName"
                   description: The name of the connection to retrieve.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -784,8 +763,6 @@ paths:
                 HomeRegion:
                   $ref: "#/components/schemas/HomeRegion"
                   description: 'The primary Region of the endpoint you want to get information about. For example "HomeRegion": "us-east-1".'
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -848,8 +825,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/EventSourceName"
                   description: The name of the partner event source to display the details of.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -881,8 +856,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/EventSourceName"
                   description: The name of the event source to display.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -950,8 +923,6 @@ paths:
                 EventBusName:
                   $ref: "#/components/schemas/EventBusNameOrArn"
                   description: The name or ARN of the event bus associated with the rule. If you omit this, the default event bus is used.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1422,7 +1393,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRuleNamesByTargetResponse"
+                $ref: "#/components/schemas/ListRuleNamesByTargetOutputDisplay"
   /ListRules:
     post:
       operationId: ListRules
@@ -1565,8 +1536,6 @@ paths:
                 EndpointId:
                   $ref: "#/components/schemas/EndpointId"
                   description: The URL subdomain of the endpoint. For example, if the URL for Endpoint is https://abcde.veo.endpoints.event.amazonaws.com, then the EndpointId is abcde.veo. When using Java, you must include auth-crt on the class path.
-              required:
-                - Entries
       responses:
         "200":
           description: Success
@@ -1598,8 +1567,6 @@ paths:
                 Entries:
                   $ref: "#/components/schemas/PutPartnerEventsRequestEntryList"
                   description: The list of events to write to the event bus.
-              required:
-                - Entries
       responses:
         "200":
           description: Success
@@ -1694,8 +1661,6 @@ paths:
                 EventBusName:
                   $ref: "#/components/schemas/EventBusNameOrArn"
                   description: The name or ARN of the event bus to associate with this rule. If you omit this, the default event bus is used.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1863,7 +1828,6 @@ paths:
                 - EventSourceArn
                 - EventStartTime
                 - EventEndTime
-                - Destination
       responses:
         "200":
           description: Success
@@ -1900,7 +1864,6 @@ paths:
                   description: The list of key-value pairs to associate with the resource.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -2021,8 +1984,6 @@ paths:
                 InvocationRateLimitPerSecond:
                   $ref: "#/components/schemas/ApiDestinationInvocationRateLimitPerSecond"
                   description: The maximum number of invocations per second to send to the API destination.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -2114,8 +2075,6 @@ paths:
                 KmsKeyIdentifier:
                   $ref: "#/components/schemas/KmsKeyIdentifier"
                   description: The identifier of the KMS customer managed key for EventBridge to use, if you choose to use a customer managed key to encrypt this connection. The identifier can be the key Amazon Resource Name (ARN), KeyId, key alias, or key alias ARN. If you do not specify a customer managed key identifier, EventBridge uses an Amazon Web Services owned key to encrypt the connection. For more information, see Identify and view keys in the Key Management Service Developer Guide.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -2162,8 +2121,6 @@ paths:
                 RoleArn:
                   $ref: "#/components/schemas/IamRoleArn"
                   description: The ARN of the role used by event replication for this request.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -3769,19 +3726,19 @@ components:
       type: string
       minLength: 1
       maxLength: 1600
-    ListRuleNamesByTargetResponse:
+    ListRuleNamesByTargetRowDisplay:
       type: object
       properties:
-        RuleNames:
-          $ref: "#/components/schemas/RuleNameList"
+        rule_name:
+          type: string
           description: The names of the rules that can invoke the given target.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: A token indicating there are more results available. If there are no more results, no token is included in the response. The value of nextToken is a unique pagination token for each page. To retrieve the next page of results, make the call again using the returned token. Keep all other arguments unchanged. Using an expired pagination token results in an HTTP 400 InvalidToken error.
-    RuleNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/RuleName"
+    ListRuleNamesByTargetOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRuleNamesByTargetRowDisplay"
     ListRulesResponse:
       type: object
       properties:
@@ -4761,6 +4718,70 @@ components:
           $ref: "#/components/schemas/LogConfig"
           description: The logging configuration settings for the event bus. For more information, see Configuring logs for event buses in the EventBridge User Guide.
   x-stackQL-resources:
+    replays:
+      id: aws.events.replays
+      name: replays
+      title: replays
+      methods:
+        cancel_replay:
+          operation:
+            $ref: "#/paths/~1CancelReplay/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_replay:
+          operation:
+            $ref: "#/paths/~1DescribeReplay/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_replays:
+          operation:
+            $ref: "#/paths/~1ListReplays/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_replay:
+          operation:
+            $ref: "#/paths/~1StartReplay/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/replays/methods/describe_replay"
+          - $ref: "#/components/x-stackQL-resources/replays/methods/list_replays"
+        insert: []
+        update: []
+        delete: []
     api_destinations:
       id: aws.events.api_destinations
       name: api_destinations
@@ -4834,7 +4855,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/api_destinations/methods/describe_api_destination"
-          - $ref: "#/components/x-stackQL-resources/api_destinations/methods/list_api_destinations"
         insert:
           - $ref: "#/components/x-stackQL-resources/api_destinations/methods/create_api_destination"
         update:
@@ -4994,7 +5014,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connections/methods/describe_connection"
-          - $ref: "#/components/x-stackQL-resources/connections/methods/list_connections"
         insert:
           - $ref: "#/components/x-stackQL-resources/connections/methods/create_connection"
         update:
@@ -5074,7 +5093,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/describe_endpoint"
-          - $ref: "#/components/x-stackQL-resources/endpoints/methods/list_endpoints"
         insert:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/create_endpoint"
         update:
@@ -5204,8 +5222,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/partner_event_sources/methods/describe_partner_event_source"
           - $ref: "#/components/x-stackQL-resources/partner_event_sources/methods/list_partner_event_sources"
+          - $ref: "#/components/x-stackQL-resources/partner_event_sources/methods/describe_partner_event_source"
         insert:
           - $ref: "#/components/x-stackQL-resources/partner_event_sources/methods/create_partner_event_source"
         update: []
@@ -5253,6 +5271,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_rule:
@@ -5271,7 +5296,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/rules/methods/describe_rule"
-          - $ref: "#/components/x-stackQL-resources/rules/methods/list_rules"
         insert: []
         update: []
         replace:
@@ -5312,45 +5336,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/event_sources/methods/describe_event_source"
-          - $ref: "#/components/x-stackQL-resources/event_sources/methods/list_event_sources"
-        insert: []
-        update: []
-        delete: []
-    replays:
-      id: aws.events.replays
-      name: replays
-      title: replays
-      methods:
-        describe_replay:
-          operation:
-            $ref: "#/paths/~1DescribeReplay/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_replays:
-          operation:
-            $ref: "#/paths/~1ListReplays/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/replays/methods/describe_replay"
-          - $ref: "#/components/x-stackQL-resources/replays/methods/list_replays"
         insert: []
         update: []
         delete: []
@@ -5413,12 +5398,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.RuleNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRuleNamesByTargetOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "RuleNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"rule_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5427,10 +5425,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.events.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.events.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5445,11 +5443,39 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1UntagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     targets_by_rules:
       id: aws.events.targets_by_rules
@@ -5468,6 +5494,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5601,42 +5634,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/targets/methods/remove_targets"
         replace:
           - $ref: "#/components/x-stackQL-resources/targets/methods/put_targets"
-        delete: []
-    resources:
-      id: aws.events.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1TagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1UntagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
         delete: []

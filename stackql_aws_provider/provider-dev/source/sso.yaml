@@ -51,6 +51,7 @@ paths:
       x-stackql-resource: role_credentials
       x-stackql-method: get_role_credentials
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.roleCredentials
   /assignment/roles:
     get:
       operationId: ListAccountRoles
@@ -92,6 +93,9 @@ paths:
       x-stackql-method: list_account_roles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.roleList
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /assignment/accounts:
     get:
       operationId: ListAccounts
@@ -129,6 +133,9 @@ paths:
       x-stackql-method: list_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accountList
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /logout:
     post:
       operationId: Logout

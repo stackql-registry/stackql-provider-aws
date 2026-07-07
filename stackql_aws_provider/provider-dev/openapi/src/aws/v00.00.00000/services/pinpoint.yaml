@@ -8700,6 +8700,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ApplicationsResponse
           request:
             nativeCasing: pascal
         delete_app:
@@ -8714,6 +8715,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ApplicationResponse
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/apps/methods/get_app"
@@ -8745,6 +8747,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CampaignsResponse
           request:
             nativeCasing: pascal
         delete_campaign:
@@ -8759,6 +8762,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CampaignResponse
         update_campaign:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1campaigns~1{campaign-id}/put"
@@ -8810,6 +8814,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EmailTemplateResponse
           request:
             nativeCasing: pascal
         update_email_template:
@@ -8854,6 +8859,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ExportJobsResponse
           request:
             nativeCasing: pascal
         get_export_job:
@@ -8862,6 +8868,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ExportJobResponse
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/export_jobs/methods/get_export_job"
@@ -8892,6 +8899,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ImportJobsResponse
           request:
             nativeCasing: pascal
         get_import_job:
@@ -8900,6 +8908,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ImportJobResponse
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_jobs/methods/get_import_job"
@@ -8938,6 +8947,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.InAppTemplateResponse
           request:
             nativeCasing: pascal
         update_in_app_template:
@@ -8982,6 +8992,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneysResponse
           request:
             nativeCasing: pascal
         delete_journey:
@@ -8996,9 +9007,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneyResponse
         update_journey:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1journeys~1{journey-id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_journey_state:
+          operation:
+            $ref: "#/paths/~1v1~1apps~1{application-id}~1journeys~1{journey-id}~1state/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9015,6 +9038,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/journeys/methods/create_journey"
         update:
           - $ref: "#/components/x-stackQL-resources/journeys/methods/update_journey"
+          - $ref: "#/components/x-stackQL-resources/journeys/methods/update_journey_state"
         delete:
           - $ref: "#/components/x-stackQL-resources/journeys/methods/delete_journey"
     push_templates:
@@ -9047,6 +9071,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PushNotificationTemplateResponse
           request:
             nativeCasing: pascal
         update_push_template:
@@ -9091,6 +9116,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ListRecommenderConfigurationsResponse
           request:
             nativeCasing: pascal
         delete_recommender_configuration:
@@ -9105,6 +9131,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RecommenderConfigurationResponse
         update_recommender_configuration:
           operation:
             $ref: "#/paths/~1v1~1recommenders~1{recommender-id}/put"
@@ -9148,6 +9175,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SegmentsResponse
           request:
             nativeCasing: pascal
         delete_segment:
@@ -9162,6 +9190,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SegmentResponse
         update_segment:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1segments~1{segment-id}/put"
@@ -9213,6 +9242,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SMSTemplateResponse
           request:
             nativeCasing: pascal
         update_sms_template:
@@ -9265,6 +9295,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VoiceTemplateResponse
           request:
             nativeCasing: pascal
         update_voice_template:
@@ -9304,6 +9335,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ADMChannelResponse
         update_adm_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1adm/put"
@@ -9340,6 +9372,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.APNSChannelResponse
         update_apns_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1apns/put"
@@ -9376,6 +9409,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.APNSSandboxChannelResponse
         update_apns_sandbox_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1apns_sandbox/put"
@@ -9412,6 +9446,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.APNSVoipChannelResponse
         update_apns_voip_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1apns_voip/put"
@@ -9448,6 +9483,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.APNSVoipSandboxChannelResponse
         update_apns_voip_sandbox_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1apns_voip_sandbox/put"
@@ -9484,6 +9520,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.BaiduChannelResponse
         update_baidu_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1baidu/put"
@@ -9520,6 +9557,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EmailChannelResponse
         update_email_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1email/put"
@@ -9556,9 +9594,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EndpointResponse
         update_endpoint:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1endpoints~1{endpoint-id}/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_endpoints_batch:
+          operation:
+            $ref: "#/paths/~1v1~1apps~1{application-id}~1endpoints/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
@@ -9573,6 +9623,7 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/update_endpoint"
+          - $ref: "#/components/x-stackQL-resources/endpoints/methods/update_endpoints_batch"
         delete:
           - $ref: "#/components/x-stackQL-resources/endpoints/methods/delete_endpoint"
     event_streams:
@@ -9592,6 +9643,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EventStream
         put_event_stream:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1eventstream/post"
@@ -9629,6 +9681,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GCMChannelResponse
         update_gcm_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1gcm/put"
@@ -9665,6 +9718,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SMSChannelResponse
         update_sms_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1sms/put"
@@ -9701,6 +9755,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EndpointsResponse
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/user_endpoints/methods/get_user_endpoints"
@@ -9725,6 +9780,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VoiceChannelResponse
         update_voice_channel:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1channels~1voice/put"
@@ -9755,6 +9811,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ApplicationDateRangeKpiResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9774,6 +9831,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ApplicationSettingsResource
         update_application_settings:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1settings/put"
@@ -9803,6 +9861,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ActivitiesResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9822,6 +9881,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CampaignDateRangeKpiResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9841,12 +9901,14 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CampaignResponse
         get_campaign_versions:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1campaigns~1{campaign-id}~1versions/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CampaignsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9867,6 +9929,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelsResponse
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/get_channels"
@@ -9884,6 +9947,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.InAppMessagesResponse
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/in_app_messages/methods/get_in_app_messages"
@@ -9901,6 +9965,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneyDateRangeKpiResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9920,6 +9985,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneyExecutionActivityMetricsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9939,6 +10005,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneyExecutionMetricsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9958,6 +10025,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneyRunExecutionActivityMetricsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9977,6 +10045,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneyRunExecutionMetricsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -9996,6 +10065,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JourneyRunsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -10015,6 +10085,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ExportJobsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -10034,6 +10105,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ImportJobsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -10053,12 +10125,14 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SegmentResponse
         get_segment_versions:
           operation:
             $ref: "#/paths/~1v1~1apps~1{application-id}~1segments~1{segment-id}~1versions/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SegmentsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -10068,10 +10142,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.pinpoint.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.pinpoint.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -10079,17 +10153,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.pinpoint.resources
-      name: resources
-      title: resources
-      methods:
+            objectKey: $.TagsModel
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource-arn}/post"
@@ -10108,11 +10172,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     template_versions:
       id: aws.pinpoint.template_versions
@@ -10125,6 +10190,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TemplateVersionsResponse
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -10144,13 +10210,26 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TemplatesResponse
           request:
             nativeCasing: pascal
+        update_template_active_version:
+          operation:
+            $ref: "#/paths/~1v1~1templates~1{template-name}~1{template-type}~1active-version/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/templates/methods/list_templates"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/templates/methods/update_template_active_version"
         delete: []
     events:
       id: aws.pinpoint.events
@@ -10196,70 +10275,4 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/attributes/methods/remove_attributes"
-        delete: []
-    endpoints_batches:
-      id: aws.pinpoint.endpoints_batches
-      name: endpoints_batches
-      title: endpoints_batches
-      methods:
-        update_endpoints_batch:
-          operation:
-            $ref: "#/paths/~1v1~1apps~1{application-id}~1endpoints/put"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/endpoints_batches/methods/update_endpoints_batch"
-        delete: []
-    journey_states:
-      id: aws.pinpoint.journey_states
-      name: journey_states
-      title: journey_states
-      methods:
-        update_journey_state:
-          operation:
-            $ref: "#/paths/~1v1~1apps~1{application-id}~1journeys~1{journey-id}~1state/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/journey_states/methods/update_journey_state"
-        delete: []
-    template_active_versions:
-      id: aws.pinpoint.template_active_versions
-      name: template_active_versions
-      title: template_active_versions
-      methods:
-        update_template_active_version:
-          operation:
-            $ref: "#/paths/~1v1~1templates~1{template-name}~1{template-type}~1active-version/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/template_active_versions/methods/update_template_active_version"
         delete: []

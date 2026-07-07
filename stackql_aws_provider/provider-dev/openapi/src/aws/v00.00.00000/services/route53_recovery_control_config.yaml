@@ -440,7 +440,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAssociatedRoute53HealthChecksResponse"
+                $ref: "#/components/schemas/ListAssociatedRoute53HealthChecksOutputDisplay"
   /controlpanels:
     get:
       operationId: ListControlPanels
@@ -568,8 +568,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/__mapOf__stringMin0Max256PatternS"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1007,28 +1005,19 @@ components:
       type: integer
       minimum: 1
       maximum: 1000
-    ListAssociatedRoute53HealthChecksResponse:
+    ListAssociatedRoute53HealthChecksRowDisplay:
       type: object
       properties:
-        HealthCheckIds:
-          $ref: "#/components/schemas/__listOf__stringMax36PatternS"
+        health_check_id:
+          type: string
           description: Identifiers for the health checks.
-        NextToken:
-          $ref: "#/components/schemas/__stringMin1Max8096PatternS"
-          description: Next token for listing health checks.
-    __listOf__stringMax36PatternS:
-      type: array
-      items:
-        $ref: "#/components/schemas/__stringMax36PatternS"
-    __stringMax36PatternS:
-      type: string
-      maxLength: 36
-      pattern: ^\S+$
-    __stringMin1Max8096PatternS:
-      type: string
-      minLength: 1
-      maxLength: 8096
-      pattern: "[\\S]*"
+    ListAssociatedRoute53HealthChecksOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAssociatedRoute53HealthChecksRowDisplay"
     ListClustersResponse:
       type: object
       properties:
@@ -1042,6 +1031,11 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Cluster"
+    __stringMin1Max8096PatternS:
+      type: string
+      minLength: 1
+      maxLength: 8096
+      pattern: "[\\S]*"
     ListControlPanelsResponse:
       type: object
       properties:
@@ -1193,6 +1187,14 @@ components:
             objectKey: $.Clusters
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_cluster:
           operation:
             $ref: "#/paths/~1cluster/put"
@@ -1216,6 +1218,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Cluster
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_cluster"
@@ -1265,6 +1268,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ControlPanel
         list_control_panels:
           operation:
             $ref: "#/paths/~1controlpanels/get"
@@ -1274,6 +1278,14 @@ components:
             objectKey: $.ControlPanels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/control_panels/methods/describe_control_panel"
@@ -1323,6 +1335,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RoutingControl
         list_routing_controls:
           operation:
             $ref: "#/paths/~1controlpanel~1{control_panel_arn}~1routingcontrols/get"
@@ -1332,6 +1345,14 @@ components:
             objectKey: $.RoutingControls
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/routing_controls/methods/describe_routing_control"
@@ -1390,6 +1411,14 @@ components:
             objectKey: $.SafetyRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/safety_rules/methods/describe_safety_rule"
@@ -1428,19 +1457,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.HealthCheckIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAssociatedRoute53HealthChecksOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "HealthCheckIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"health_check_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_route53_health_checks/methods/list_associated_route53_health_checks"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.route53_recovery_control_config.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.route53_recovery_control_config.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1448,17 +1491,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.route53_recovery_control_config.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1479,9 +1511,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

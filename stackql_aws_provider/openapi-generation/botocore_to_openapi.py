@@ -542,6 +542,38 @@ def infer_stackql_tags(
                     if member_shape.get("type") == "list":
                         tags["x-stackql-objectKey"] = f"$.{result_key}"
 
+    # Singleton-struct unwrap (rest-json / aws-json only; the XML protocols
+    # unwrap via Display regime (b)). A Get*/Describe* select whose output
+    # is a single wrapper member ({Table: TableDescription}) otherwise
+    # projects ONE object-typed column (`table`) - useless as a SQL
+    # surface. Point objectKey at the wrapper member so stackql projects
+    # the inner structure's fields as columns. Fires only when exactly one
+    # non-metadata member exists AND it is a structure with named members
+    # (bare map shapes excluded - no stable columns; multi-member outputs
+    # like GetFunction keep today's shape).
+    if (
+        verb == "SELECT"
+        and "x-stackql-objectKey" not in tags
+        and protocol in ("rest-json", "json")
+        and output_shape
+        and shapes
+    ):
+        _META_MEMBERS = {
+            "ResponseMetadata", "NextToken", "nextToken", "NextMarker",
+            "nextMarker", "Marker", "marker", "IsTruncated",
+        }
+        unwrap_cands = [
+            (m, d) for m, d in (output_shape.get("members") or {}).items()
+            if m not in _META_MEMBERS
+        ]
+        if len(unwrap_cands) == 1:
+            mname, mdef = unwrap_cands[0]
+            mshape = shapes.get(mdef["shape"]) or {}
+            if mshape.get("type") == "structure" and mshape.get("members"):
+                # rule 4a `items` rename carries into the JSONPath.
+                key = "items_" if mname == "items" else mname
+                tags["x-stackql-objectKey"] = f"$.{key}"
+
     return tags
 
 
@@ -582,23 +614,37 @@ def _aws_header_params_block() -> dict:
     return block
 
 
-def _flatten_input_to_query_params(input_shape: dict, walker: SchemaWalker) -> list[dict]:
+def _flatten_input_to_query_params(
+    input_shape: dict, walker: SchemaWalker, protocol: str = "query"
+) -> list[dict]:
     """For query/ec2 protocols, top-level structure members become query params.
 
     AWS query serialisation actually flattens nested structures and lists with
     dot-and-index notation; we represent the public surface as one parameter
     per top-level member referencing the underlying shape. This matches the
     pattern used by ref/ec2.yaml.
+
+    Param NAME must be the SERIALISED wire name, because any-sdk's
+    AWSCanonical transpose uses it verbatim as the fan-out base key
+    (TagSpecifications with locationName TagSpecification goes to the wire
+    as `TagSpecification.1.<...>`; sending `TagSpecifications.1` draws
+    UnknownParameter from EC2). Botocore's serialisers: ec2 protocol uses
+    upper-first locationName when present (maxResults -> MaxResults, so
+    names stay Pascal), plain query protocol uses locationName verbatim,
+    both fall back to the member name.
     """
     params: list[dict] = []
     if not input_shape or input_shape.get("type") != "structure":
         return params
     required = set(input_shape.get("required") or [])
     for name, mdef in (input_shape.get("members") or {}).items():
+        wire = mdef.get("locationName") or name
+        if protocol == "ec2" and wire:
+            wire = wire[0].upper() + wire[1:]
         schema = walker.ref(mdef["shape"])
         params.append(
             {
-                "name": name,
+                "name": wire,
                 "in": "query",
                 "required": name in required,
                 "description": clean_description(mdef.get("documentation")),
@@ -610,6 +656,63 @@ def _flatten_input_to_query_params(input_shape: dict, walker: SchemaWalker) -> l
         if not p.get("description"):
             p.pop("description", None)
     return params
+
+
+def _pagination_breadcrumbs(
+    op_def: dict,
+    paginator: dict | None,
+    shapes: dict,
+    protocol: str,
+) -> dict:
+    """x-stackql-pagination-* breadcrumbs for a paginated list op, or {}.
+
+    Gated to rest-json / aws-json: their responses reach stackql untransformed,
+    so `config.pagination.responseToken` ($.<OutputToken>) resolves against the
+    raw JSON body. The XML protocols (query/ec2/rest-xml) route through the
+    schema-driven walker, which currently drops sibling scalars (the response
+    token) from its output - emission for those lifts once the any-sdk
+    passthrough fix lands (any-sdk issue #117).
+
+    Only simple paginators are wired: single string input_token/output_token,
+    both plain member names (composite / jmespath tokens like
+    `Contents[-1].Key` or `NextToken || Fallback` are skipped), the input
+    token located somewhere the pagination machinery can inject (query string
+    or body) and the output token a top-level output member.
+    """
+    if protocol not in ("rest-json", "json") or not paginator:
+        return {}
+    input_token = paginator.get("input_token")
+    output_token = paginator.get("output_token")
+    if not isinstance(input_token, str) or not isinstance(output_token, str):
+        return {}
+    if not re.fullmatch(r"[A-Za-z0-9]+", input_token) or not re.fullmatch(r"[A-Za-z0-9]+", output_token):
+        return {}
+    input_ref = op_def.get("input")
+    output_ref = op_def.get("output")
+    if not input_ref or not output_ref:
+        return {}
+    in_members = (shapes.get(input_ref["shape"]) or {}).get("members") or {}
+    out_members = (shapes.get(output_ref["shape"]) or {}).get("members") or {}
+    if input_token not in in_members or output_token not in out_members:
+        return {}
+    mdef = in_members[input_token]
+    location = mdef.get("location")
+    if protocol == "json":
+        req_key, req_loc = input_token, "body"
+    elif location == "querystring":
+        req_key, req_loc = (mdef.get("locationName") or input_token), "query"
+    elif location is None:
+        req_key, req_loc = input_token, "body"
+    else:
+        # header / uri tokens: no injection support.
+        return {}
+    return {
+        "x-stackql-pagination-request-token-key": req_key,
+        "x-stackql-pagination-request-token-location": req_loc,
+        # JSON response bodies key members by member name (locationName is
+        # an XML-serialisation concern), so the JSONPath is the member name.
+        "x-stackql-pagination-response-token-key": f"$.{output_token}",
+    }
 
 
 def _rest_param(name: str, location: str, mdef: dict, walker: SchemaWalker, required: bool) -> dict:
@@ -760,6 +863,19 @@ def _build_rest_op_block(
             walker, op_name, output_ref["shape"], paginator
         )
 
+    # ----- x-stackql tags -----
+    output_shape = walker.shapes[output_ref["shape"]] if output_ref else None
+    stack_tags = infer_stackql_tags(op_name, output_shape, paginator, walker.shapes, protocol)
+
+    # rest-json scalar-list explode (rest-xml keeps the zero-column
+    # demotion backstop - its wrapper conventions differ per shape).
+    explode: dict = {}
+    if protocol == "rest-json" and stack_tags.get("x-stackql-verb") == "SELECT":
+        explode = _json_scalar_explode(walker, op_name, op_def, paginator)
+        if explode:
+            stack_tags.pop("x-stackql-objectKey", None)
+            stack_tags.update(explode)
+
     if output_ref:
         if rest_xml_display_list_name:
             response_block["content"] = {
@@ -769,15 +885,21 @@ def _build_rest_op_block(
                     }
                 }
             }
+        elif explode:
+            # Rule-16 column convergence: path-level schema -> envelope.
+            response_block["content"] = {
+                "application/json": {
+                    "schema": {
+                        "$ref": f"#/components/schemas/{explode['x-stackql-responseEnvelope']}"
+                    }
+                }
+            }
         else:
             response_block["content"] = {
                 "application/json": {"schema": walker.ref(output_ref["shape"])}
             }
     op_block["responses"] = {response_code: response_block}
 
-    # ----- x-stackql tags -----
-    output_shape = walker.shapes[output_ref["shape"]] if output_ref else None
-    stack_tags = infer_stackql_tags(op_name, output_shape, paginator, walker.shapes, protocol)
     # rest-xml: stamp the response envelope as the synthesised Display
     # wrapper. Stage 2 reads these to set `schema_override`, the
     # schema-driven XML transform, and `objectKey: $.line_items`.
@@ -785,6 +907,7 @@ def _build_rest_op_block(
         stack_tags["x-stackql-responseEnvelope"] = rest_xml_display_list_name
         stack_tags["x-stackql-responseObjectKey"] = "$.line_items"
     op_block.update(stack_tags)
+    op_block.update(_pagination_breadcrumbs(op_def, paginator, walker.shapes, protocol))
 
     return request_uri, method, op_block, []
 
@@ -862,16 +985,35 @@ def _build_awsjson_op_block(
             },
         }
 
-    response_block: dict = {"description": "Success"}
     output_ref = op_def.get("output")
+    output_shape = walker.shapes[output_ref["shape"]] if output_ref else None
+    stack_tags = infer_stackql_tags(op_name, output_shape, paginator, walker.shapes, "json")
+
+    # Scalar-list explode: the raw objectKey would land on an array of
+    # bare scalars (zero columns); replace it with the template transform
+    # + faux-column envelope.
+    explode: dict = {}
+    if stack_tags.get("x-stackql-verb") == "SELECT":
+        explode = _json_scalar_explode(walker, op_name, op_def, paginator)
+        if explode:
+            stack_tags.pop("x-stackql-objectKey", None)
+            stack_tags.update(explode)
+
+    response_block: dict = {"description": "Success"}
     if output_ref:
-        response_block["content"] = {
-            "application/json": {"schema": walker.ref(output_ref["shape"])},
-        }
+        # Rule-16 column convergence: exploded ops point the path-level
+        # response schema at the envelope so DDL column inference sees only
+        # the faux column, not the raw scalar-array member.
+        schema_ref = (
+            {"$ref": f"#/components/schemas/{explode['x-stackql-responseEnvelope']}"}
+            if explode
+            else walker.ref(output_ref["shape"])
+        )
+        response_block["content"] = {"application/json": {"schema": schema_ref}}
     op_block["responses"] = {"200": response_block}
 
-    output_shape = walker.shapes[output_ref["shape"]] if output_ref else None
-    op_block.update(infer_stackql_tags(op_name, output_shape, paginator, walker.shapes, "json"))
+    op_block.update(stack_tags)
+    op_block.update(_pagination_breadcrumbs(op_def, paginator, walker.shapes, "json"))
 
     # The wire-level URI for every aws-json op is `/`, with X-Amz-Target
     # selecting the operation. But we can't key the OpenAPI `paths` map on
@@ -903,6 +1045,501 @@ def _wire_name(member_name: str, mdef: dict) -> str:
     when not declared).
     """
     return mdef.get("locationName") or member_name
+
+
+def _scalar_list_target(
+    op_name: str, output_shape: dict | None, shapes: dict, paginator: dict | None
+) -> tuple[str | None, dict | None, dict | None]:
+    """The (member_name, member_def, list_shape) whose element is a bare
+    scalar, when that list is the op's row source; else (None, None, None).
+
+    Bare scalar lists (ListTables -> [TableName], ListQueues -> [QueueUrl])
+    have no named columns to project - the explode transform turns each
+    element into a row under a faux singular column instead of the method
+    losing its SELECT surface.
+    """
+    if not output_shape or output_shape.get("type") != "structure":
+        return None, None, None
+    members = output_shape.get("members") or {}
+    candidate = None
+    if paginator and paginator.get("result_key"):
+        # Authoritative: the paginator names the list as THE payload. These
+        # ops previously carried objectKey $.<result_key> -> zero columns ->
+        # demoted; exploding is a strict improvement even when sibling
+        # members exist (they were unreachable anyway).
+        rk = paginator["result_key"]
+        candidate = rk if isinstance(rk, str) else (rk[0] if isinstance(rk, list) and rk else None)
+        if candidate not in members:
+            candidate = None
+    if candidate is None:
+        # Fallback: only when the scalar list is the WHOLE payload (sole
+        # non-metadata member). Ops with useful scalar siblings (e.g.
+        # DescribeContributorInsights' status fields next to its rule-name
+        # list) already project a healthy multi-column row - exploding
+        # them would throw the siblings away.
+        if not any(
+            op_name.startswith(p)
+            for p in ("List", "Describe", "BatchGet", "Search", "Lookup", "Get")
+        ):
+            return None, None, None
+        _META = {
+            "ResponseMetadata", "NextToken", "nextToken", "NextMarker",
+            "nextMarker", "Marker", "marker", "IsTruncated", "MaxResults",
+        }
+        payload_members = [(m, d) for m, d in members.items() if m not in _META]
+        if len(payload_members) != 1:
+            return None, None, None
+        candidate = payload_members[0][0]
+        if (shapes.get(payload_members[0][1]["shape"]) or {}).get("type") != "list":
+            return None, None, None
+    mdef = members[candidate]
+    lshape = shapes.get(mdef["shape"]) or {}
+    if lshape.get("type") != "list":
+        return None, None, None
+    eshape = shapes.get((lshape.get("member") or {}).get("shape") or "") or {}
+    etype = eshape.get("type")
+    # Explode-eligible: any element that projects NO named columns - bare
+    # scalars, `document` shapes (arbitrary JSON), maps, nested lists, and
+    # empty structures. toJson renders them all. Struct elements with named
+    # members take the normal row-shape path instead.
+    columnless = (
+        etype in SCALAR_DISPLAY_TYPES
+        or etype in ("document", "map", "list")
+        or (etype == "structure" and not eshape.get("members"))
+    )
+    if not columnless:
+        return None, None, None
+    return candidate, mdef, lshape
+
+
+def _register_scalar_display(
+    walker: "SchemaWalker",
+    op_name: str,
+    member_name: str,
+    mdef: dict,
+    elem_type: str,
+    doc: str,
+) -> tuple[str, str]:
+    """Register the faux row + envelope Display schemas for a scalar-list
+    explode. Returns (envelope_name, column_name). The envelope reuses the
+    <OpName>OutputDisplay naming so path-level response refs and rule-16
+    column convergence work unchanged."""
+    col = _singularise(_to_snake(member_name))
+    row_name = f"{op_name}RowDisplay"
+    env_name = f"{op_name}OutputDisplay"
+    _COMPLEX_DISPLAY = {"document": "object", "map": "object", "structure": "object", "list": "array"}
+    prop: dict = {
+        "type": SCALAR_DISPLAY_TYPES.get(elem_type) or _COMPLEX_DISPLAY.get(elem_type, "string")
+    }
+    if doc:
+        prop["description"] = doc
+    # `XxxList`-named members (ContributorInsightsRuleList) singularise by
+    # dropping the suffix rather than the plural 's'.
+    if col.endswith("_list") and len(col) > 5:
+        col = col[: -len("_list")]
+    walker.emitted[row_name] = {"type": "object", "properties": {col: prop}}
+    walker.emitted[env_name] = {
+        "type": "object",
+        "properties": {
+            "line_items": {
+                "type": "array",
+                "items": {"$ref": f"#/components/schemas/{row_name}"},
+            },
+        },
+    }
+    return env_name, col
+
+
+def _json_scalar_explode(
+    walker: "SchemaWalker", op_name: str, op_def: dict, paginator: dict | None
+) -> dict:
+    """Explode breadcrumbs for a rest-json / aws-json scalar-list select.
+
+    Emits a golang_template_json_v0.3.0 transform that reshapes the raw
+    body ({"TableNames": ["a","b"], ...}) into
+    {"line_items": [{"table_name": "a"}, ...]}, carrying the paginator's
+    output token through as a sibling so multi-page traversal still works
+    whichever body (raw or processed) the token extractor reads.
+    """
+    output_ref = op_def.get("output")
+    if not output_ref:
+        return {}
+    oshape = walker.shapes.get(output_ref["shape"]) or {}
+    member, mdef, lshape = _scalar_list_target(op_name, oshape, walker.shapes, paginator)
+    if not member:
+        return {}
+    elem_type = (
+        walker.shapes.get((lshape.get("member") or {}).get("shape") or "") or {}
+    ).get("type") or "string"
+    doc = clean_description(mdef.get("documentation"))
+    env_name, col = _register_scalar_display(walker, op_name, member, mdef, elem_type, doc)
+    tok = None
+    if paginator and isinstance(paginator.get("output_token"), str):
+        if paginator["output_token"] in (oshape.get("members") or {}):
+            tok = paginator["output_token"]
+    body = '{{- $lst := index . "' + member + '" -}}'
+    if tok:
+        body += '{{- $tok := index . "' + tok + '" -}}'
+    body += (
+        '{"line_items": ['
+        '{{- if eq (kindOf $lst) "slice" -}}'
+        '{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}'
+        '{"' + col + '": {{ toJson $v }}}'
+        '{{- end -}}{{- end -}}'
+        ']'
+    )
+    if tok:
+        body += '{{- if $tok }}, "' + tok + '": {{ toJson $tok }}{{- end }}'
+    body += '}'
+    return {
+        "x-stackql-responseEnvelope": env_name,
+        "x-stackql-responseObjectKey": "$.line_items",
+        "x-stackql-transform-type": "golang_template_json_v0.3.0",
+        "x-stackql-transform-body": body,
+    }
+
+
+def _xml_scalar_explode(
+    walker: "SchemaWalker",
+    op_name: str,
+    op_def: dict,
+    paginator: dict | None,
+    protocol: str,
+) -> dict:
+    """Explode breadcrumbs for a query/ec2 scalar-list select.
+
+    The schema-driven XML walker has no row shape to project for scalar
+    lists (the Display comes out empty), so these ops get a
+    golang_template_mxj_v0.3.0 transform instead: navigate the mxj-decoded
+    response (<Op>Response [-> <Op>Result] -> <ListMember> [-> <inner>]),
+    defend against mxj's single-element collapse (one <member> decodes to
+    a string, not a slice), and emit {"line_items": [{"<col>": v}, ...]}.
+    rest-xml is deliberately NOT handled here (its wrapper conventions
+    differ per shape); the zero-column demotion remains its backstop.
+    """
+    output_ref = op_def.get("output")
+    if not output_ref:
+        return {}
+    oshape = walker.shapes.get(output_ref["shape"]) or {}
+    member, mdef, lshape = _scalar_list_target(op_name, oshape, walker.shapes, paginator)
+    if not member:
+        return {}
+    doc = clean_description(mdef.get("documentation"))
+    env_name, col = _register_scalar_display(walker, op_name, member, mdef, "string", doc)
+    member_wire = _wire_name(member, mdef)
+    inner = (lshape.get("member") or {}).get("locationName") or "member"
+    flattened = bool(lshape.get("flattened"))
+    resp_el = f"{op_name}Response"
+    result_el = None
+    if protocol == "query":
+        result_el = output_ref.get("resultWrapper") or f"{op_name}Result"
+    step = '{{- if eq (kindOf $n) "map" }}{{ $n = index $n "%s" }}{{ else }}{{ $n = "" }}{{ end -}}'
+    body = '{{- $n := index . "' + resp_el + '" -}}'
+    if result_el:
+        body += step % result_el
+    body += step % member_wire
+    if not flattened:
+        body += (
+            '{{- if eq (kindOf $n) "map" }}{{ $n = index $n "' + inner + '" }}'
+            '{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}'
+        )
+    body += (
+        '{"line_items": ['
+        '{{- if eq (kindOf $n) "slice" -}}'
+        '{{- range $i, $v := $n -}}{{- if $i }},{{ end }}'
+        '{"' + col + '": {{ toJson $v }}}'
+        '{{- end -}}'
+        '{{- else if and (eq (kindOf $n) "string") $n -}}'
+        '{"' + col + '": {{ toJson $n }}}'
+        '{{- end -}}'
+        ']}'
+    )
+    return {
+        "x-stackql-responseEnvelope": env_name,
+        "x-stackql-responseObjectKey": "$.line_items",
+        "x-stackql-transform-type": "golang_template_mxj_v0.3.0",
+        "x-stackql-transform-body": body,
+    }
+
+
+def _xml_nested_list_rows(
+    walker: "SchemaWalker",
+    op_name: str,
+    op_def: dict,
+    paginator: dict | None,
+    protocol: str,
+) -> dict:
+    """Nested-list unwrap for query/ec2 selects whose payload wraps the real
+    rows one level deep: DescribeInstances returns Reservations[] each
+    carrying Instances[] - the noun says the INNER elements are the rows.
+    The schema-driven walker stops at the outer list (rows become
+    reservation wrappers with no instance_id column), so these ops get a
+    generated mxj template that flattens outer x inner - defending against
+    mxj single-element collapse at BOTH levels - and emits each inner
+    element verbatim ({{ toJson }}: keys are wire names, which Display
+    extraction resolves via GetWireName).
+    """
+    output_ref = op_def.get("output")
+    if not output_ref:
+        return {}
+    oshape = walker.shapes.get(output_ref["shape"]) or {}
+    candidate, outer_wire, outer_item, outer_elem_name, _ = _pick_row_shape(
+        oshape, walker.shapes, paginator, op_name
+    )
+    if not candidate or not outer_elem_name:
+        return {}
+    # Only when the paginator names the OUTER list as the payload. Without
+    # this gate, elb/elbv2 DescribeTags (TagDescriptions[].Tags[]) also
+    # match - but there the outer element's siblings (LoadBalancerName)
+    # are the join key, and discarding them would gut the rows.
+    rk = (paginator or {}).get("result_key")
+    rk = rk if isinstance(rk, str) else (rk[0] if isinstance(rk, list) and rk else None)
+    if rk != candidate:
+        return {}
+    outer_elem = walker.shapes.get(outer_elem_name) or {}
+    if outer_elem.get("type") != "structure":
+        return {}
+    noun = ""
+    for prefix, _v in VERB_PREFIXES:
+        if op_name.startswith(prefix) and len(op_name) > len(prefix):
+            noun = op_name[len(prefix):]
+            break
+    if not noun or candidate == noun:
+        return {}
+    inner_mdef = (outer_elem.get("members") or {}).get(noun)
+    if not inner_mdef:
+        return {}
+    inner_shape = walker.shapes.get(inner_mdef["shape"]) or {}
+    if inner_shape.get("type") != "list":
+        return {}
+    inner_elem_mdef = inner_shape.get("member") or {}
+    inner_elem = walker.shapes.get(inner_elem_mdef.get("shape") or "") or {}
+    if inner_elem.get("type") != "structure" or not inner_elem.get("members"):
+        return {}
+
+    # Displays: rows are the INNER elements.
+    row_display_name = f"{inner_elem_mdef['shape']}Display"
+    if row_display_name not in walker.emitted:
+        display_props, _ = _build_row_template_body(inner_elem, walker.shapes)
+        walker.emitted[row_display_name] = {"type": "object", "properties": display_props}
+    env_name = f"{op_name}OutputDisplay"
+    walker.emitted[env_name] = {
+        "type": "object",
+        "properties": {
+            "line_items": {
+                "type": "array",
+                "items": {"$ref": f"#/components/schemas/{row_display_name}"},
+            },
+        },
+    }
+
+    inner_wire = _wire_name(noun, inner_mdef)
+    inner_item = inner_elem_mdef.get("locationName") or "item"
+    resp_el = f"{op_name}Response"
+    result_el = None
+    if protocol == "query":
+        result_el = output_ref.get("resultWrapper") or f"{op_name}Result"
+    step = '{{- if eq (kindOf $n) "map" }}{{ $n = index $n "%s" }}{{ else }}{{ $n = "" }}{{ end -}}'
+    # Per-outer-item emit block (inner list w/ single-collapse defence).
+    emit = (
+        '{{- $i := index %s "' + inner_wire + '" -}}'
+        '{{- if eq (kindOf $i) "map" -}}{{- $i = index $i "' + inner_item + '" -}}{{- end -}}'
+        '{{- if eq (kindOf $i) "slice" -}}{{- range $x := $i }}{{ call $s }}{{ toJson $x }}{{ end -}}'
+        '{{- else if eq (kindOf $i) "map" -}}{{ call $s }}{{ toJson $i }}{{- end -}}'
+    )
+    body = '{{- $s := separator ", " -}}'
+    body += '{{- $n := index . "' + resp_el + '" -}}'
+    if result_el:
+        body += step % result_el
+    body += step % outer_wire
+    body += step % (outer_item or "item")
+    body += '{"line_items": ['
+    body += (
+        '{{- if eq (kindOf $n) "slice" -}}'
+        '{{- range $o := $n -}}'
+        '{{- if eq (kindOf $o) "map" -}}' + (emit % "$o") + '{{- end -}}'
+        '{{- end -}}'
+        '{{- else if eq (kindOf $n) "map" -}}' + (emit % "$n") + '{{- end -}}'
+    )
+    body += ']}'
+    return {
+        "x-stackql-responseEnvelope": env_name,
+        "x-stackql-responseObjectKey": "$.line_items",
+        "x-stackql-transform-type": "golang_template_mxj_v0.3.0",
+        "x-stackql-transform-body": body,
+    }
+
+
+def _xml_noun_list_template(
+    walker: "SchemaWalker",
+    op_name: str,
+    op_def: dict,
+    paginator: dict | None,
+    protocol: str,
+) -> dict:
+    """Exact-wire-name row template for create-ish ops returning a
+    noun-matched list (RunInstances -> Reservation.Instances, wire element
+    `instancesSet`). The schema-driven walker locates row containers by
+    naming convention (singular + Set: volumeSet, reservationSet) and
+    misses the odd plural containers - RunInstances RETURNING came back as
+    one all-null row. These ops are exactly the non-list-op branch of the
+    row-shape picker (no List/Describe/... prefix, no paginator), so
+    templating them never touches a working describe path.
+    """
+    if any(op_name.startswith(p) for p in ("List", "Describe", "BatchGet", "Search", "Lookup")):
+        return {}
+    if paginator and paginator.get("result_key"):
+        return {}
+    output_ref = op_def.get("output")
+    if not output_ref:
+        return {}
+    oshape = walker.shapes.get(output_ref["shape"]) or {}
+    if oshape.get("type") != "structure":
+        return {}
+    noun = ""
+    for prefix, _v in VERB_PREFIXES:
+        if op_name.startswith(prefix) and len(op_name) > len(prefix):
+            noun = op_name[len(prefix):]
+            break
+    if not noun:
+        return {}
+    mdef = (oshape.get("members") or {}).get(noun)
+    if not mdef:
+        return {}
+    lshape = walker.shapes.get(mdef["shape"]) or {}
+    if lshape.get("type") != "list":
+        return {}
+    elem_mdef = lshape.get("member") or {}
+    elem = walker.shapes.get(elem_mdef.get("shape") or "") or {}
+    if elem.get("type") != "structure" or not elem.get("members"):
+        return {}
+
+    row_display_name = f"{elem_mdef['shape']}Display"
+    if row_display_name not in walker.emitted:
+        display_props, _ = _build_row_template_body(elem, walker.shapes)
+        walker.emitted[row_display_name] = {"type": "object", "properties": display_props}
+    env_name = f"{op_name}OutputDisplay"
+    walker.emitted[env_name] = {
+        "type": "object",
+        "properties": {
+            "line_items": {
+                "type": "array",
+                "items": {"$ref": f"#/components/schemas/{row_display_name}"},
+            },
+        },
+    }
+
+    list_wire = _wire_name(noun, mdef)
+    item_tag = elem_mdef.get("locationName") or "item"
+    flattened = bool(lshape.get("flattened"))
+    resp_el = f"{op_name}Response"
+    result_el = None
+    if protocol == "query":
+        result_el = output_ref.get("resultWrapper") or f"{op_name}Result"
+    step = '{{- if eq (kindOf $n) "map" }}{{ $n = index $n "%s" }}{{ else }}{{ $n = "" }}{{ end -}}'
+    body = '{{- $s := separator ", " -}}'
+    body += '{{- $n := index . "' + resp_el + '" -}}'
+    if result_el:
+        body += step % result_el
+    body += step % list_wire
+    if not flattened:
+        body += (
+            '{{- if eq (kindOf $n) "map" }}{{ $n = index $n "' + item_tag + '" }}'
+            '{{ else }}{{ $n = "" }}{{ end -}}'
+        )
+    body += (
+        '{"line_items": ['
+        '{{- if eq (kindOf $n) "slice" -}}'
+        '{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}'
+        '{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson $n }}'
+        '{{- end -}}'
+        ']}'
+    )
+    return {
+        "x-stackql-responseEnvelope": env_name,
+        "x-stackql-responseObjectKey": "$.line_items",
+        "x-stackql-transform-type": "golang_template_mxj_v0.3.0",
+        "x-stackql-transform-body": body,
+    }
+
+
+def _xml_single_row_projection(
+    walker: "SchemaWalker",
+    op_name: str,
+    op_def: dict,
+    protocol: str,
+) -> dict:
+    """Single-row projection for query/ec2 selects whose Display row came
+    out EMPTY and the scalar-list explode did not apply (multi-member
+    outputs mixing scalars and scalar lists - DescribeLoggingStatus,
+    DescribeAllowedNodeTypeModifications). Projects ONE row with every
+    non-metadata top-level output member as a toJson'd column, via a
+    golang_template_mxj transform. Without this, the method loses SELECT
+    and its resource is usually pruned.
+    """
+    output_ref = op_def.get("output")
+    if not output_ref:
+        return {}
+    oshape = walker.shapes.get(output_ref["shape"]) or {}
+    if oshape.get("type") != "structure":
+        return {}
+    _META = {
+        "ResponseMetadata", "NextToken", "nextToken", "NextMarker",
+        "nextMarker", "Marker", "marker", "IsTruncated", "MaxResults",
+    }
+    members = [(m, d) for m, d in (oshape.get("members") or {}).items() if m not in _META]
+    if not members:
+        return {}
+    _COMPLEX_DISPLAY = {"document": "object", "map": "object", "structure": "object", "list": "array"}
+    row_name = f"{op_name}RowDisplay"
+    env_name = f"{op_name}OutputDisplay"
+    props: dict = {}
+    cells: list[str] = []
+    for mname, mdef in members:
+        mshape = walker.shapes.get(mdef["shape"]) or {}
+        mtype = mshape.get("type")
+        col = _to_snake(mname)
+        props[col] = {
+            "type": SCALAR_DISPLAY_TYPES.get(mtype) or _COMPLEX_DISPLAY.get(mtype, "string")
+        }
+        doc = clean_description(mdef.get("documentation"))
+        if doc:
+            props[col]["description"] = doc
+        wire = _wire_name(mname, mdef)
+        cells.append('"' + col + '": {{ toJson (index $n "' + wire + '") }}')
+    walker.emitted[row_name] = {"type": "object", "properties": props}
+    walker.emitted[env_name] = {
+        "type": "object",
+        "properties": {
+            "line_items": {
+                "type": "array",
+                "items": {"$ref": f"#/components/schemas/{row_name}"},
+            },
+        },
+    }
+    resp_el = f"{op_name}Response"
+    result_el = None
+    if protocol == "query":
+        result_el = output_ref.get("resultWrapper") or f"{op_name}Result"
+    body = '{{- $n := index . "' + resp_el + '" -}}'
+    if result_el:
+        body += (
+            '{{- if eq (kindOf $n) "map" }}{{ $n = index $n "' + result_el + '" }}'
+            '{{ else }}{{ $n = "" }}{{ end -}}'
+        )
+    body += (
+        '{"line_items": [{'
+        '{{- if eq (kindOf $n) "map" -}}'
+        + ", ".join(cells)
+        + '{{- end -}}'
+        '}]}'
+    )
+    return {
+        "x-stackql-responseEnvelope": env_name,
+        "x-stackql-responseObjectKey": "$.line_items",
+        "x-stackql-transform-type": "golang_template_mxj_v0.3.0",
+        "x-stackql-transform-body": body,
+    }
 
 
 def _scalar_template_expr(member_name: str, mdef: dict, shapes: dict) -> tuple[str, str]:
@@ -990,6 +1627,7 @@ def _go_quote(s: str) -> str:
 def _pick_row_shape(
     output_shape: dict, shapes: dict, paginator: dict | None,
     op_name: str = "",
+    output_shape_name: str = "",
 ) -> tuple[str | None, str | None, str | None, str | None, str | None]:
     """Decide which member of the output shape carries the row data.
 
@@ -1040,6 +1678,22 @@ def _pick_row_shape(
     )
     is_list_op = has_result_key or any(op_name.startswith(p) for p in _LIST_OP_PREFIXES)
 
+    # Attribute-bag describes: an unpaginated Describe* whose OUTPUT SHAPE
+    # NAME equals the op noun (DescribeInstanceAttribute -> InstanceAttribute)
+    # returns a single entity bag, not rows - its incidental list members
+    # (BlockDeviceMappings) are attribute VALUES. Treating it as a list op
+    # projects zero rows for every scalar attribute query. Exactly three
+    # ops match across the provider: DescribeInstanceAttribute,
+    # DescribeImageAttribute, DescribeLoggingStatus.
+    if is_list_op and not has_result_key and output_shape_name:
+        _bag_noun = ""
+        for _pfx in _LIST_OP_PREFIXES:
+            if op_name.startswith(_pfx) and len(op_name) > len(_pfx):
+                _bag_noun = op_name[len(_pfx):]
+                break
+        if _bag_noun and _bag_noun == output_shape_name:
+            is_list_op = False
+
     # ----- regime (a): list response (only when is_list_op) -----
     if is_list_op:
         candidate = None
@@ -1048,10 +1702,24 @@ def _pick_row_shape(
             candidate = rk if isinstance(rk, str) else (rk[0] if isinstance(rk, list) and rk else None)
         if not (candidate and candidate in members and shapes.get(members[candidate]["shape"], {}).get("type") == "list"):
             candidate = None
+            # Prefer list members whose ELEMENTS are structures with named
+            # members - a scalar-element list yields an empty Display row
+            # (elasticbeanstalk's ListAvailableSolutionStacks carries both
+            # SolutionStacks [string] and SolutionStackDetails [struct]:
+            # the struct list is the projectable one).
+            fallback = None
             for mname, mdef in members.items():
-                if shapes.get(mdef["shape"], {}).get("type") == "list":
+                mshape = shapes.get(mdef["shape"], {})
+                if mshape.get("type") != "list":
+                    continue
+                eshape = shapes.get((mshape.get("member") or {}).get("shape") or "") or {}
+                if eshape.get("type") == "structure" and eshape.get("members"):
                     candidate = mname
                     break
+                if fallback is None:
+                    fallback = mname
+            if candidate is None:
+                candidate = fallback
         if candidate:
             list_mdef = members[candidate]
             list_shape = shapes[list_mdef["shape"]]
@@ -1080,6 +1748,27 @@ def _pick_row_shape(
         for mname, mdef in structure_members:
             if mname == noun:
                 return None, None, None, mdef["shape"], _wire_name(mname, mdef)
+        # Noun-matched LIST member with struct elements: RunInstances'
+        # noun is `Instances` and the output (Reservation) carries
+        # `Instances: [Instance]` - the rows are the elements, not the
+        # reservation wrapper (whose singleton-direct projection has no
+        # instance_id and breaks INSERT ... RETURNING instance_id).
+        for mname, mdef in members.items():
+            if mname != noun:
+                continue
+            mshape = shapes.get(mdef["shape"], {})
+            if mshape.get("type") != "list":
+                continue
+            elem_mdef = mshape.get("member") or {}
+            eshape = shapes.get(elem_mdef.get("shape") or "") or {}
+            if eshape.get("type") == "structure" and eshape.get("members"):
+                return (
+                    mname,
+                    _wire_name(mname, mdef),
+                    elem_mdef.get("locationName") or "item",
+                    elem_mdef.get("shape"),
+                    None,
+                )
     if len(structure_members) == 1 and len(members) == 1:
         mname, mdef = structure_members[0]
         return None, None, None, mdef["shape"], _wire_name(mname, mdef)
@@ -1159,7 +1848,7 @@ def _register_display_schemas(
     """
     output_shape = walker.shapes.get(output_shape_name) or {}
     _row_member, _list_wire, _inner_wire, elem_shape_name, unwrap_wire = _pick_row_shape(
-        output_shape, walker.shapes, paginator, op_name
+        output_shape, walker.shapes, paginator, op_name, output_shape_name
     )
 
     if elem_shape_name:
@@ -1306,7 +1995,11 @@ def _build_query_op_block(
     path_key = f"/?Action={op_name}&Version={api_version}"
 
     # Build query params from input top-level structure members.
-    query_params = _flatten_input_to_query_params(input_shape or {}, walker) if input_shape else []
+    query_params = (
+        _flatten_input_to_query_params(input_shape or {}, walker, protocol)
+        if input_shape
+        else []
+    )
 
     # Synthesise `<RowShape>Display` + `<OpName>OutputDisplay` schemas.
     # Stackql uses them for column inference (DESCRIBE EXTENDED) and the
@@ -1393,6 +2086,39 @@ def _build_query_op_block(
     if display_list_name:
         stack_tags["x-stackql-responseEnvelope"] = display_list_name
         stack_tags["x-stackql-responseObjectKey"] = "$.line_items"
+        # Scalar-list explode: the schema-driven walker has no row shape
+        # for bare scalar lists (empty Display -> zero columns -> demoted
+        # SELECT). Overwrite the envelope with a faux single-column row
+        # and emit an mxj template transform instead of the walker.
+        if stack_tags.get("x-stackql-verb") == "SELECT":
+            explode = _xml_scalar_explode(walker, op_name, op_def, paginator, protocol)
+            if not explode:
+                # Reservation-wrapper pattern: rows live one list deeper
+                # (DescribeInstances -> Reservations[].Instances[]).
+                explode = _xml_nested_list_rows(walker, op_name, op_def, paginator, protocol)
+            if explode:
+                stack_tags.update(explode)
+            else:
+                # Last resort before the zero-column backstop demotes the
+                # method: if the synthesised row Display came out EMPTY
+                # (multi-member output mixing scalars and scalar lists),
+                # project the whole output as a single row instead.
+                env = walker.emitted.get(display_list_name) or {}
+                items_ref = (
+                    ((env.get("properties") or {}).get("line_items") or {}).get("items") or {}
+                ).get("$ref", "")
+                row_schema = walker.emitted.get(items_ref.split("/")[-1]) or {}
+                if not (row_schema.get("properties") or {}):
+                    single = _xml_single_row_projection(walker, op_name, op_def, protocol)
+                    if single:
+                        stack_tags.update(single)
+        # Any verb: create-ish ops returning a noun-matched list need the
+        # exact-wire-name template (walker naming conventions miss plural
+        # containers like RunInstances' instancesSet - RETURNING nulls).
+        if "x-stackql-transform-type" not in stack_tags:
+            noun_list = _xml_noun_list_template(walker, op_name, op_def, paginator, protocol)
+            if noun_list:
+                stack_tags.update(noun_list)
     get_block.update(stack_tags)
     post_block.update(stack_tags)
 
@@ -1434,10 +2160,28 @@ def _service_endpoint_template(metadata: dict, service_name: str) -> list[dict]:
     ]
 
 
+# Effective-protocol resolution, mirroring botocore's
+# PRIORITY_ORDERED_SUPPORTED_PROTOCOLS. Newer smithy models declare
+# `metadata.protocol: smithy-rpc-v2-cbor` while ALSO listing a protocol we
+# emit in `metadata.protocols` (e.g. cloudwatch: [smithy-rpc-v2-cbor, json,
+# query]). Trusting the legacy singular field routes those services through
+# the unknown-protocol fallback, which emits aws-json paths but stamps the
+# cbor name into x-protocol - and stage 2 keys the request.mediaType /
+# request.base stamps off `x-protocol: json`, so the body schema never binds
+# at runtime and required body fields vanish from RequiredParams.
+PROTOCOL_PRIORITY = ["json", "rest-json", "rest-xml", "query", "ec2"]
+
+
+def resolve_protocol(metadata: dict) -> str:
+    legacy = metadata.get("protocol") or "query"
+    declared = metadata.get("protocols") or [legacy]
+    return next((p for p in PROTOCOL_PRIORITY if p in declared), legacy)
+
+
 def build_service_openapi(service_name: str) -> dict:
     model, paginators, version = load_service(service_name)
     metadata = model.get("metadata") or {}
-    protocol = metadata.get("protocol") or "query"
+    protocol = resolve_protocol(metadata)
     shapes = model.get("shapes") or {}
     operations = model.get("operations") or {}
     walker = SchemaWalker(shapes)
@@ -1498,6 +2242,126 @@ def build_service_openapi(service_name: str) -> dict:
             )
             entry = paths.setdefault(path_key, {})
             entry[http_method] = op_block
+
+    # --- resource co-location pass (rule 7 refinement) ---
+    # Verb-prefix noun stripping strands mutation ops in select-less orphan
+    # resources: TagResource -> `resources`, AssociateApplicationFleet ->
+    # `application_fleets` (entity: `fleets`), UpdateCertificateOptions ->
+    # `certificate_options` (entity: `certificates`). Left alone, ~18% of
+    # the provider's resources are non-selectable naming fallout. Three
+    # relocation rules, applied to the x-stackql-resource breadcrumbs:
+    #   1. Tag plumbing (Tag*/Untag*/AddTags*/RemoveTags*/ListTags*) -> the
+    #      service's `tags` resource (usually selectable via ListTags*).
+    #   2. Full-suffix merge: a non-selectable resource whose name ends
+    #      with a selectable sibling's name folds into it (longest match).
+    #   3. Leading-token merge: pluralised leading tokens name a selectable
+    #      sibling (`certificate_options` -> `certificates`).
+    _HTTP_VERBS = {"get", "post", "put", "patch", "delete", "head", "options", "trace"}
+
+    def _iter_op_blocks():
+        for _pk, _item in paths.items():
+            for _vk, _blk in _item.items():
+                if _vk in _HTTP_VERBS and isinstance(_blk, dict):
+                    yield _blk
+
+    # Any op literally named Tag*/Untag* is tagging (AWS has no other
+    # Tag-prefixed verbs); AddTags*/RemoveTags*/ListTags* cover the older
+    # phrasing. `ListTagOptions` (servicecatalog's TagOption ENTITY) does
+    # not match - the regex requires the plural `Tags`.
+    _TAG_OP_RE = re.compile(
+        r"^(GET_|POST_)?((Tag|Untag)[A-Z]\w*|AddTags\w*|RemoveTags\w*|ListTags\w*)$"
+    )
+    for blk in _iter_op_blocks():
+        op_id = blk.get("operationId") or ""
+        if _TAG_OP_RE.match(op_id) and blk.get("x-stackql-resource"):
+            blk["x-stackql-resource"] = "tags"
+
+    res_verbs: dict[str, set] = {}
+    for blk in _iter_op_blocks():
+        r = blk.get("x-stackql-resource")
+        if r:
+            res_verbs.setdefault(r, set()).add(blk.get("x-stackql-verb"))
+    selectable = {r for r, vs in res_verbs.items() if "SELECT" in vs}
+
+    res_ops: dict[str, list] = {}
+    for blk in _iter_op_blocks():
+        r = blk.get("x-stackql-resource")
+        if r:
+            res_ops.setdefault(r, []).append(blk)
+
+    # Rule 4 helper - identifier-based rehoming. The required identifier
+    # params name the thing an op operates ON: SetDesiredCapacity requires
+    # AutoScalingGroupName -> auto_scaling_groups; CreateRoute requires
+    # RouteTableId -> route_tables. Only rehomes when EVERY op of the
+    # orphan agrees on the same selectable target (no splitting), taking
+    # the longest (most specific) name on ties.
+    _ID_WIRE_RE = re.compile(r"^(\w+?)(Name|Names|Id|Ids|ID|Arn|ARN|Identifier)$")
+    _ID_SNAKE_RE = re.compile(r"^(\w+?)_(name|id|arn|identifier)s?$")
+
+    def _required_param_names(blk) -> list[str]:
+        names = []
+        for p in blk.get("parameters") or []:
+            if isinstance(p, dict) and p.get("required") and not str(p.get("name", "")).startswith("X-Amz-"):
+                names.append(str(p["name"]))
+        content = ((blk.get("requestBody") or {}).get("content")) or {}
+        for mt_block in content.values():
+            sch = (mt_block or {}).get("schema") or {}
+            for rn in sch.get("required") or []:
+                if isinstance(rn, str):
+                    names.append(rn)
+        return names
+
+    def _identifier_targets(blk, self_resource: str) -> set[str]:
+        targets = set()
+        for pname in _required_param_names(blk):
+            m = _ID_WIRE_RE.match(pname) or _ID_SNAKE_RE.match(pname)
+            if not m:
+                continue
+            cand = _pluralise(_to_snake(m.group(1)))
+            if cand != self_resource and cand in selectable:
+                targets.add(cand)
+        return targets
+
+    remap: dict[str, str] = {}
+    for r in res_verbs:
+        if r in selectable or r == "tags":
+            continue
+        target = None
+        for s in sorted(selectable, key=len, reverse=True):
+            if r != s and r.endswith("_" + s):
+                target = s
+                break
+        if target is None:
+            toks = r.split("_")
+            for i in range(len(toks) - 1, 0, -1):
+                cand = _pluralise("_".join(toks[:i]))
+                if cand != r and cand in selectable:
+                    target = cand
+                    break
+        if target is None:
+            # Rule 4: identifier-based rehoming (unanimous across ops).
+            # Query/ec2 ops appear twice (GET with typed params, POST with
+            # an opaque form body) - group by base operationId and union
+            # the pair's targets, else the empty POST twin vetoes every
+            # query-protocol rehoming.
+            by_op: dict[str, set] = {}
+            for blk in res_ops.get(r) or []:
+                base = re.sub(r"^(GET_|POST_)", "", str(blk.get("operationId") or ""))
+                by_op.setdefault(base, set()).update(_identifier_targets(blk, r))
+            common: set[str] | None = None
+            for t in by_op.values():
+                common = set(t) if common is None else (common & t)
+                if not common:
+                    break
+            if common:
+                target = sorted(common, key=lambda s: (-len(s), s))[0]
+        if target:
+            remap[r] = target
+    if remap:
+        for blk in _iter_op_blocks():
+            r = blk.get("x-stackql-resource")
+            if r in remap:
+                blk["x-stackql-resource"] = remap[r]
 
     # --- collision-demotion pass (rule 17) ---
     # Stackql builds the CREATE TABLE column set as `response columns +

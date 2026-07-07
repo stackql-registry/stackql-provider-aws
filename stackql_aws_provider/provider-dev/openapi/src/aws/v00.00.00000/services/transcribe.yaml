@@ -1515,7 +1515,6 @@ paths:
                   description: Adds one or more custom tags, each in the form of a key:value pair, to the specified resource. To learn more about using tags with Amazon Transcribe, refer to Tagging resources.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -3587,6 +3586,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CategoryProperties
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3666,6 +3666,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.LanguageModel
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3956,6 +3957,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CallAnalyticsJob
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3966,6 +3968,19 @@ components:
         list_call_analytics_jobs:
           operation:
             $ref: "#/paths/~1ListCallAnalyticsJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_call_analytics_job:
+          operation:
+            $ref: "#/paths/~1StartCallAnalyticsJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4007,6 +4022,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MedicalScribeJob
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4017,6 +4033,19 @@ components:
         list_medical_scribe_jobs:
           operation:
             $ref: "#/paths/~1ListMedicalScribeJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_medical_scribe_job:
+          operation:
+            $ref: "#/paths/~1StartMedicalScribeJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4058,6 +4087,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MedicalTranscriptionJob
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4068,6 +4098,19 @@ components:
         list_medical_transcription_jobs:
           operation:
             $ref: "#/paths/~1ListMedicalTranscriptionJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_medical_transcription_job:
+          operation:
+            $ref: "#/paths/~1StartMedicalTranscriptionJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4109,6 +4152,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TranscriptionJob
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4129,6 +4173,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_transcription_job:
+          operation:
+            $ref: "#/paths/~1StartTranscriptionJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transcription_jobs/methods/get_transcription_job"
@@ -4137,10 +4194,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/transcription_jobs/methods/delete_transcription_job"
-    tags_for_resources:
-      id: aws.transcribe.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.transcribe.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4155,17 +4212,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.transcribe.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -4193,9 +4239,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

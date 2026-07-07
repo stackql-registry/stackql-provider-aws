@@ -1,0 +1,140 @@
+--- 
+title: access_point_policy_status
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - access_point_policy_status
+  - s3control
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists an <code>access_point_policy_status</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="access_point_policy_status" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.s3control.access_point_policy_status" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="get_access_point_policy_status"
+    values={[
+        { label: 'get_access_point_policy_status', value: 'get_access_point_policy_status' }
+    ]}
+>
+<TabItem value="get_access_point_policy_status">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="IsPublic" /></td>
+    <td><code>boolean</code></td>
+    <td></td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#get_access_point_policy_status"><CopyableCode code="get_access_point_policy_status" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-x-amz-account-id"><code>x-amz-account-id</code></a>, <a href="#parameter-name"><code>name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>This operation is not supported by directory buckets. Indicates whether the specified access point currently has a policy that allows public access. For more information about public access through access points, see Managing Data Access with Amazon S3 access points in the Amazon S3 User Guide.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-name">
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the access point whose policy status you want to retrieve.</td>
+</tr>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-x-amz-account-id">
+    <td><CopyableCode code="x-amz-account-id" /></td>
+    <td><code>string</code></td>
+    <td>The account ID for the account that owns the specified access point.</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="get_access_point_policy_status"
+    values={[
+        { label: 'get_access_point_policy_status', value: 'get_access_point_policy_status' }
+    ]}
+>
+<TabItem value="get_access_point_policy_status">
+
+This operation is not supported by directory buckets. Indicates whether the specified access point currently has a policy that allows public access. For more information about public access through access points, see Managing Data Access with Amazon S3 access points in the Amazon S3 User Guide.
+
+```sql
+SELECT
+IsPublic
+FROM aws.s3control.access_point_policy_status
+WHERE `x-amz-account-id` = '{{ x-amz-account-id }}' -- required
+AND name = '{{ name }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>

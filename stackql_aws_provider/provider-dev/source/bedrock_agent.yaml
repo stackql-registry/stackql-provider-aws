@@ -102,6 +102,9 @@ paths:
       x-stackql-method: list_agent_collaborators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentCollaboratorSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/{agent_id}/agentversions/{agent_version}/knowledgebases/:
     put:
       operationId: AssociateAgentKnowledgeBase
@@ -185,6 +188,9 @@ paths:
       x-stackql-method: list_agent_knowledge_bases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentKnowledgeBaseSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/:
     put:
       operationId: CreateAgent
@@ -276,6 +282,9 @@ paths:
       x-stackql-method: list_agents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/{agent_id}/agentversions/{agent_version}/actiongroups/:
     put:
       operationId: CreateAgentActionGroup
@@ -376,6 +385,9 @@ paths:
       x-stackql-method: list_agent_action_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actionGroupSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/{agent_id}/agentaliases/:
     put:
       operationId: CreateAgentAlias
@@ -448,6 +460,9 @@ paths:
       x-stackql-method: list_agent_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentAliasSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgebases/{knowledge_base_id}/datasources/:
     put:
       operationId: CreateDataSource
@@ -527,6 +542,9 @@ paths:
       x-stackql-method: list_data_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataSourceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /flows/:
     post:
       operationId: CreateFlow
@@ -600,6 +618,9 @@ paths:
       x-stackql-method: list_flows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.flowSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /flows/{flow_identifier}/aliases:
     post:
       operationId: CreateFlowAlias
@@ -680,6 +701,9 @@ paths:
       x-stackql-method: list_flow_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.flowAliasSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /flows/{flow_identifier}/versions:
     post:
       operationId: CreateFlowVersion
@@ -750,6 +774,9 @@ paths:
       x-stackql-method: list_flow_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.flowVersionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgebases/:
     put:
       operationId: CreateKnowledgeBase
@@ -827,6 +854,9 @@ paths:
       x-stackql-method: list_knowledge_bases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.knowledgeBaseSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /prompts/:
     post:
       operationId: CreatePrompt
@@ -906,6 +936,9 @@ paths:
       x-stackql-method: list_prompts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.promptSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /prompts/{prompt_identifier}/versions:
     post:
       operationId: CreatePromptVersion
@@ -938,7 +971,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePromptVersionResponse'
-      x-stackql-resource: prompt_versions
+      x-stackql-resource: prompts
       x-stackql-method: create_prompt_version
       x-stackql-verb: INSERT
   /agents/{agent_id}/:
@@ -989,6 +1022,7 @@ paths:
       x-stackql-resource: agents
       x-stackql-method: get_agent
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.agent
     post:
       operationId: PrepareAgent
       description: Creates a DRAFT version of the agent that can be used for internal testing.
@@ -1006,7 +1040,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepareAgentResponse'
-      x-stackql-resource: prepare_agent
+      x-stackql-resource: agents
       x-stackql-method: prepare_agent
       x-stackql-verb: EXEC
     put:
@@ -1138,6 +1172,7 @@ paths:
       x-stackql-resource: agent_action_groups
       x-stackql-method: get_agent_action_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.agentActionGroup
     put:
       operationId: UpdateAgentActionGroup
       description: Updates the configuration for an action group for an agent.
@@ -1248,6 +1283,7 @@ paths:
       x-stackql-resource: agent_alias
       x-stackql-method: get_agent_alias
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.agentAlias
     put:
       operationId: UpdateAgentAlias
       description: Updates configurations for an alias of an agent.
@@ -1351,6 +1387,7 @@ paths:
       x-stackql-resource: agent_versions
       x-stackql-method: get_agent_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.agentVersion
   /knowledgebases/{knowledge_base_id}/datasources/{data_source_id}:
     delete:
       operationId: DeleteDataSource
@@ -1404,6 +1441,7 @@ paths:
       x-stackql-resource: data_sources
       x-stackql-method: get_data_source
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dataSource
     put:
       operationId: UpdateDataSource
       description: Updates the configurations for a data source connector. You can't change the chunkingConfiguration after
@@ -1520,7 +1558,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PrepareFlowResponse'
-      x-stackql-resource: prepare_flow
+      x-stackql-resource: flows
       x-stackql-method: prepare_flow
       x-stackql-verb: EXEC
     put:
@@ -1766,6 +1804,7 @@ paths:
       x-stackql-resource: knowledge_bases
       x-stackql-method: get_knowledge_base
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.knowledgeBase
     put:
       operationId: UpdateKnowledgeBase
       description: 'Updates the configuration of a knowledge base with the fields that you specify. Because all fields will
@@ -2016,6 +2055,7 @@ paths:
       x-stackql-resource: agent_collaborators
       x-stackql-method: get_agent_collaborator
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.agentCollaborator
     put:
       operationId: UpdateAgentCollaborator
       description: Updates an agent's collaborator.
@@ -2132,6 +2172,7 @@ paths:
       x-stackql-resource: agent_knowledge_bases
       x-stackql-method: get_agent_knowledge_base
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.agentKnowledgeBase
     put:
       operationId: UpdateAgentKnowledgeBase
       description: Updates the configuration for a knowledge base that has been associated with an agent.
@@ -2209,6 +2250,7 @@ paths:
       x-stackql-resource: ingestion_jobs
       x-stackql-method: get_ingestion_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ingestionJob
   /knowledgebases/{knowledge_base_id}/datasources/{data_source_id}/documents/getDocuments:
     post:
       operationId: GetKnowledgeBaseDocuments
@@ -2288,7 +2330,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IngestKnowledgeBaseDocumentsResponse'
-      x-stackql-resource: ingest_knowledge_base_documents
+      x-stackql-resource: knowledge_base_documents
       x-stackql-method: ingest_knowledge_base_documents
       x-stackql-verb: EXEC
     post:
@@ -2330,6 +2372,9 @@ paths:
       x-stackql-method: list_knowledge_base_documents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.documentDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/{agent_id}/agentversions/:
     post:
       operationId: ListAgentVersions
@@ -2363,6 +2408,9 @@ paths:
       x-stackql-method: list_agent_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentVersionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgebases/{knowledge_base_id}/datasources/{data_source_id}/ingestionjobs/:
     post:
       operationId: ListIngestionJobs
@@ -2406,6 +2454,9 @@ paths:
       x-stackql-method: list_ingestion_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ingestionJobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
     put:
       operationId: StartIngestionJob
       description: Begins a data ingestion job. Data sources are ingested into your knowledge base so that Large Language
@@ -2441,7 +2492,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartIngestionJobResponse'
-      x-stackql-resource: ingestion_job
+      x-stackql-resource: knowledge_bases
       x-stackql-method: start_ingestion_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -2462,7 +2513,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2494,7 +2545,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2520,7 +2571,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /knowledgebases/{knowledge_base_id}/datasources/{data_source_id}/ingestionjobs/{ingestion_job_id}/stop:
@@ -2554,7 +2605,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopIngestionJobResponse'
-      x-stackql-resource: ingestion_job
+      x-stackql-resource: knowledge_bases
       x-stackql-method: stop_ingestion_job
       x-stackql-verb: EXEC
   /flows/validate-definition:
@@ -2580,7 +2631,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateFlowDefinitionResponse'
-      x-stackql-resource: flow_definition
+      x-stackql-resource: flows
       x-stackql-method: validate_flow_definition
       x-stackql-verb: EXEC
 components:

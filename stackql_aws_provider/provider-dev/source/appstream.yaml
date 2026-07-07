@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateAppBlockBuilderAppBlockResult'
-      x-stackql-resource: app_block_builder_app_blocks
+      x-stackql-resource: app_blocks
       x-stackql-method: associate_app_block_builder_app_block
       x-stackql-verb: UPDATE
   /AssociateApplicationFleet:
@@ -95,7 +95,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateApplicationFleetResult'
-      x-stackql-resource: application_fleets
+      x-stackql-resource: fleets
       x-stackql-method: associate_application_fleet
       x-stackql-verb: UPDATE
   /AssociateApplicationToEntitlement:
@@ -139,7 +139,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateApplicationToEntitlementResult'
-      x-stackql-resource: application_to_entitlements
+      x-stackql-resource: entitlements
       x-stackql-method: associate_application_to_entitlement
       x-stackql-verb: UPDATE
   /AssociateFleet:
@@ -228,7 +228,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateSoftwareToImageBuilderResult'
-      x-stackql-resource: software_to_image_builders
+      x-stackql-resource: image_builders
       x-stackql-method: associate_software_to_image_builder
       x-stackql-verb: UPDATE
   /BatchAssociateUserStack:
@@ -536,7 +536,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAppBlockBuilderStreamingURLResult'
-      x-stackql-resource: app_block_builder_streaming_urls
+      x-stackql-resource: app_block_builders
       x-stackql-method: create_app_block_builder_streaming_url
       x-stackql-verb: INSERT
   /CreateApplication:
@@ -1113,7 +1113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateImageBuilderStreamingURLResult'
-      x-stackql-resource: image_builder_streaming_urls
+      x-stackql-resource: image_builders
       x-stackql-method: create_image_builder_streaming_url
       x-stackql-verb: INSERT
   /CreateImportedImage:
@@ -1193,7 +1193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateImportedImageResult'
-      x-stackql-resource: imported_images
+      x-stackql-resource: images
       x-stackql-method: create_imported_image
       x-stackql-verb: INSERT
   /CreateStack:
@@ -1338,7 +1338,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateStreamingURLResult'
-      x-stackql-resource: streaming_urls
+      x-stackql-resource: fleets
       x-stackql-method: create_streaming_url
       x-stackql-verb: INSERT
   /CreateThemeForStack:
@@ -1459,7 +1459,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateUpdatedImageResult'
-      x-stackql-resource: updated_images
+      x-stackql-resource: images
       x-stackql-method: create_updated_image
       x-stackql-verb: INSERT
   /CreateUsageReportSubscription:
@@ -2323,6 +2323,9 @@ paths:
       x-stackql-method: describe_directory_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DirectoryConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeEntitlements:
     post:
       operationId: DescribeEntitlements
@@ -2408,6 +2411,9 @@ paths:
       x-stackql-method: describe_fleets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Fleets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeImageBuilders:
     post:
       operationId: DescribeImageBuilders
@@ -2451,6 +2457,9 @@ paths:
       x-stackql-method: describe_image_builders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ImageBuilders
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeImagePermissions:
     post:
       operationId: DescribeImagePermissions
@@ -2548,6 +2557,9 @@ paths:
       x-stackql-method: describe_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Images
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSessions:
     post:
       operationId: DescribeSessions
@@ -2609,6 +2621,9 @@ paths:
       x-stackql-method: describe_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Sessions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSoftwareAssociations:
     post:
       operationId: DescribeSoftwareAssociations
@@ -2692,6 +2707,9 @@ paths:
       x-stackql-method: describe_stacks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Stacks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeThemeForStack:
     post:
       operationId: DescribeThemeForStack
@@ -2729,6 +2747,7 @@ paths:
       x-stackql-resource: theme_for_stacks
       x-stackql-method: describe_theme_for_stack
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Theme
   /DescribeUsageReportSubscriptions:
     post:
       operationId: DescribeUsageReportSubscriptions
@@ -2818,6 +2837,9 @@ paths:
       x-stackql-method: describe_user_stack_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserStackAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeUsers:
     post:
       operationId: DescribeUsers
@@ -2862,6 +2884,9 @@ paths:
       x-stackql-method: describe_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DisableUser:
     post:
       operationId: DisableUser
@@ -2900,7 +2925,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableUserResult'
-      x-stackql-resource: user
+      x-stackql-resource: users
       x-stackql-method: disable_user
       x-stackql-verb: EXEC
   /DisassociateAppBlockBuilderAppBlock:
@@ -2940,7 +2965,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateAppBlockBuilderAppBlockResult'
-      x-stackql-resource: app_block_builder_app_blocks
+      x-stackql-resource: app_blocks
       x-stackql-method: disassociate_app_block_builder_app_block
       x-stackql-verb: UPDATE
   /DisassociateApplicationFleet:
@@ -2980,7 +3005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateApplicationFleetResult'
-      x-stackql-resource: application_fleets
+      x-stackql-resource: fleets
       x-stackql-method: disassociate_application_fleet
       x-stackql-verb: UPDATE
   /DisassociateApplicationFromEntitlement:
@@ -3024,7 +3049,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateApplicationFromEntitlementResult'
-      x-stackql-resource: application_from_entitlements
+      x-stackql-resource: entitlements
       x-stackql-method: disassociate_application_from_entitlement
       x-stackql-verb: UPDATE
   /DisassociateFleet:
@@ -3113,7 +3138,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateSoftwareFromImageBuilderResult'
-      x-stackql-resource: software_from_image_builders
+      x-stackql-resource: image_builders
       x-stackql-method: disassociate_software_from_image_builder
       x-stackql-verb: UPDATE
   /DrainSessionInstance:
@@ -3151,7 +3176,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DrainSessionInstanceResult'
-      x-stackql-resource: drain_session_instance
+      x-stackql-resource: sessions
       x-stackql-method: drain_session_instance
       x-stackql-verb: EXEC
   /EnableUser:
@@ -3194,7 +3219,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableUserResult'
-      x-stackql-resource: user
+      x-stackql-resource: users
       x-stackql-method: enable_user
       x-stackql-verb: EXEC
   /ExpireSession:
@@ -3230,7 +3255,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExpireSessionResult'
-      x-stackql-resource: expire_session
+      x-stackql-resource: sessions
       x-stackql-method: expire_session
       x-stackql-verb: EXEC
   /GetExportImageTask:
@@ -3268,6 +3293,7 @@ paths:
       x-stackql-resource: export_image_tasks
       x-stackql-method: get_export_image_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExportImageTask
   /ListAssociatedFleets:
     post:
       operationId: ListAssociatedFleets
@@ -3304,11 +3330,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssociatedFleetsResult'
+                $ref: '#/components/schemas/ListAssociatedFleetsOutputDisplay'
       x-stackql-resource: associated_fleets
       x-stackql-method: list_associated_fleets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Names
+      x-stackql-responseEnvelope: ListAssociatedFleetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Names" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"name": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAssociatedStacks:
     post:
       operationId: ListAssociatedStacks
@@ -3345,11 +3379,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssociatedStacksResult'
+                $ref: '#/components/schemas/ListAssociatedStacksOutputDisplay'
       x-stackql-resource: associated_stacks
       x-stackql-method: list_associated_stacks
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Names
+      x-stackql-responseEnvelope: ListAssociatedStacksOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Names" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"name": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEntitledApplications:
     post:
       operationId: ListEntitledApplications
@@ -3475,7 +3517,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /StartAppBlockBuilder:
@@ -3513,7 +3555,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAppBlockBuilderResult'
-      x-stackql-resource: app_block_builder
+      x-stackql-resource: app_blocks
       x-stackql-method: start_app_block_builder
       x-stackql-verb: EXEC
   /StartFleet:
@@ -3589,7 +3631,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImageBuilderResult'
-      x-stackql-resource: image_builder
+      x-stackql-resource: images
       x-stackql-method: start_image_builder
       x-stackql-verb: EXEC
   /StartSoftwareDeploymentToImageBuilder:
@@ -3628,7 +3670,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSoftwareDeploymentToImageBuilderResult'
-      x-stackql-resource: software_deployment_to_image_builder
+      x-stackql-resource: image_builders
       x-stackql-method: start_software_deployment_to_image_builder
       x-stackql-verb: EXEC
   /StopAppBlockBuilder:
@@ -3665,7 +3707,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopAppBlockBuilderResult'
-      x-stackql-resource: app_block_builder
+      x-stackql-resource: app_blocks
       x-stackql-method: stop_app_block_builder
       x-stackql-verb: EXEC
   /StopFleet:
@@ -3737,7 +3779,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopImageBuilderResult'
-      x-stackql-resource: image_builder
+      x-stackql-resource: images
       x-stackql-method: stop_image_builder
       x-stackql-verb: EXEC
   /TagResource:
@@ -3784,7 +3826,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3826,7 +3868,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAppBlockBuilder:
@@ -6894,26 +6936,32 @@ components:
         ExportImageTask:
           $ref: '#/components/schemas/ExportImageTask'
           description: Information about the export image task, including its current state, created date, and any error details.
-    ListAssociatedFleetsResult:
+    ListAssociatedFleetsRowDisplay:
       type: object
       properties:
-        Names:
-          $ref: '#/components/schemas/StringList'
+        name:
+          type: string
           description: The name of the fleet.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination token to use to retrieve the next page of results for this operation. If there are no
-            more pages, this value is null.
-    ListAssociatedStacksResult:
+    ListAssociatedFleetsOutputDisplay:
       type: object
       properties:
-        Names:
-          $ref: '#/components/schemas/StringList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssociatedFleetsRowDisplay'
+    ListAssociatedStacksRowDisplay:
+      type: object
+      properties:
+        name:
+          type: string
           description: The name of the stack.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination token to use to retrieve the next page of results for this operation. If there are no
-            more pages, this value is null.
+    ListAssociatedStacksOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssociatedStacksRowDisplay'
     ListEntitledApplicationsResult:
       type: object
       properties:

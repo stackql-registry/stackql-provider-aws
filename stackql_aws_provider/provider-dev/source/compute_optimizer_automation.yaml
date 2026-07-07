@@ -5,7 +5,7 @@ info:
   description: Compute Optimizer Automation
   x-serviceName: aco-automation
   x-serviceAlias: compute_optimizer_automation
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2025-09-22'
   x-endpointPrefix: aco-automation
   x-targetPrefix: ComputeOptimizerAutomationService
@@ -365,6 +365,9 @@ paths:
       x-stackql-method: list_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAutomationEventSteps:
     post:
       operationId: ListAutomationEventSteps
@@ -410,6 +413,9 @@ paths:
       x-stackql-method: list_automation_event_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.automationEventSteps
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAutomationEventSummaries:
     post:
       operationId: ListAutomationEventSummaries
@@ -461,6 +467,9 @@ paths:
       x-stackql-method: list_automation_event_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.automationEventSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAutomationEvents:
     post:
       operationId: ListAutomationEvents
@@ -509,6 +518,9 @@ paths:
       x-stackql-method: list_automation_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.automationEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAutomationRulePreview:
     post:
       operationId: ListAutomationRulePreview
@@ -566,6 +578,9 @@ paths:
       x-stackql-method: list_automation_rule_preview
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.previewResults
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAutomationRulePreviewSummaries:
     post:
       operationId: ListAutomationRulePreviewSummaries
@@ -619,6 +634,9 @@ paths:
       x-stackql-method: list_automation_rule_preview_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.previewResultSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAutomationRules:
     post:
       operationId: ListAutomationRules
@@ -660,6 +678,9 @@ paths:
       x-stackql-method: list_automation_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.automationRules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRecommendedActionSummaries:
     post:
       operationId: ListRecommendedActionSummaries
@@ -705,6 +726,9 @@ paths:
       x-stackql-method: list_recommended_action_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendedActionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRecommendedActions:
     post:
       operationId: ListRecommendedActions
@@ -748,6 +772,9 @@ paths:
       x-stackql-method: list_recommended_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendedActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -781,7 +808,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /RollbackAutomationEvent:
@@ -865,7 +892,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAutomationEventResponse'
-      x-stackql-resource: automation_event
+      x-stackql-resource: recommended_actions
       x-stackql-method: start_automation_event
       x-stackql-verb: EXEC
   /TagResource:
@@ -914,7 +941,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -963,7 +990,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAutomationRule:

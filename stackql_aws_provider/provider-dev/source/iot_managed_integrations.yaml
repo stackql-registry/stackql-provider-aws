@@ -85,6 +85,9 @@ paths:
       x-stackql-method: list_account_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /cloud-connectors:
     post:
       operationId: CreateCloudConnector
@@ -159,6 +162,9 @@ paths:
       x-stackql-method: list_cloud_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /connector-destinations:
     post:
       operationId: CreateConnectorDestination
@@ -232,6 +238,9 @@ paths:
       x-stackql-method: list_connector_destinations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConnectorDestinationList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /credential-lockers:
     post:
       operationId: CreateCredentialLocker
@@ -287,6 +296,9 @@ paths:
       x-stackql-method: list_credential_lockers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /destinations:
     post:
       operationId: CreateDestination
@@ -356,6 +368,9 @@ paths:
       x-stackql-method: list_destinations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DestinationList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /event-log-configurations:
     post:
       operationId: CreateEventLogConfiguration
@@ -416,6 +431,9 @@ paths:
       x-stackql-method: list_event_log_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventLogConfigurationList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /managed-things:
     post:
       operationId: CreateManagedThing
@@ -560,6 +578,9 @@ paths:
       x-stackql-method: list_managed_things
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /notification-configurations:
     post:
       operationId: CreateNotificationConfiguration
@@ -621,6 +642,9 @@ paths:
       x-stackql-method: list_notification_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotificationConfigurationList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /ota-tasks:
     post:
       operationId: CreateOtaTask
@@ -697,6 +721,9 @@ paths:
       x-stackql-method: list_ota_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tasks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /ota-task-configurations:
     post:
       operationId: CreateOtaTaskConfiguration
@@ -754,6 +781,9 @@ paths:
       x-stackql-method: list_ota_task_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /provisioning-profiles:
     post:
       operationId: CreateProvisioningProfile
@@ -818,6 +848,9 @@ paths:
       x-stackql-method: list_provisioning_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /account-associations/{account_association_id}:
     delete:
       operationId: DeleteAccountAssociation
@@ -1814,7 +1847,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: runtime_log_configuration
+      x-stackql-resource: managed_things
       x-stackql-method: reset_runtime_log_configuration
       x-stackql-verb: EXEC
   /schema-versions/{type}/{schema_versioned_id}:
@@ -1890,6 +1923,9 @@ paths:
       x-stackql-method: list_device_discoveries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: StartDeviceDiscovery
       description: This API is used to start device discovery for hub-connected and third-party-connected devices. The authentication
@@ -1972,6 +2008,9 @@ paths:
       x-stackql-method: list_discovered_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /managed-thing-associations:
     get:
       operationId: ListManagedThingAccountAssociations
@@ -2013,6 +2052,9 @@ paths:
       x-stackql-method: list_managed_thing_account_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /managed-thing-schemas/{identifier}:
     get:
       operationId: ListManagedThingSchemas
@@ -2059,6 +2101,9 @@ paths:
       x-stackql-method: list_managed_thing_schemas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /ota-tasks/{identifier}/devices:
     get:
       operationId: ListOtaTaskExecutions
@@ -2093,6 +2138,9 @@ paths:
       x-stackql-method: list_ota_task_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ExecutionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /schema-versions/{type}:
     get:
       operationId: ListSchemaVersions
@@ -2151,6 +2199,9 @@ paths:
       x-stackql-method: list_schema_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2169,7 +2220,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2200,7 +2251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2226,7 +2277,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /managed-thing-associations/register:
@@ -2345,7 +2396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendManagedThingCommandResponse'
-      x-stackql-resource: managed_thing_command
+      x-stackql-resource: managed_things
       x-stackql-method: send_managed_thing_command
       x-stackql-verb: EXEC
   /account-associations/{account_association_id}/refresh:
@@ -2366,7 +2417,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAccountAssociationRefreshResponse'
-      x-stackql-resource: account_association_refresh
+      x-stackql-resource: account_associations
       x-stackql-method: start_account_association_refresh
       x-stackql-verb: EXEC
 components:

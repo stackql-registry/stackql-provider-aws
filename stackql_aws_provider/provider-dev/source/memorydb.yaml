@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateClusterResponse'
-      x-stackql-resource: batch_update_cluster
+      x-stackql-resource: clusters
       x-stackql-method: batch_update_cluster
       x-stackql-verb: EXEC
   /CopySnapshot:
@@ -857,6 +857,9 @@ paths:
       x-stackql-method: describe_ac_ls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ACLs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeClusters:
     post:
       operationId: DescribeClusters
@@ -907,6 +910,9 @@ paths:
       x-stackql-method: describe_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Clusters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeEngineVersions:
     post:
       operationId: DescribeEngineVersions
@@ -962,6 +968,9 @@ paths:
       x-stackql-method: describe_engine_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EngineVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeEvents:
     post:
       operationId: DescribeEvents
@@ -1025,6 +1034,9 @@ paths:
       x-stackql-method: describe_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMultiRegionClusters:
     post:
       operationId: DescribeMultiRegionClusters
@@ -1069,6 +1081,9 @@ paths:
       x-stackql-method: describe_multi_region_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MultiRegionClusters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMultiRegionParameterGroups:
     post:
       operationId: DescribeMultiRegionParameterGroups
@@ -1206,6 +1221,9 @@ paths:
       x-stackql-method: describe_parameter_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ParameterGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeParameters:
     post:
       operationId: DescribeParameters
@@ -1253,6 +1271,9 @@ paths:
       x-stackql-method: describe_parameters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parameters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeReservedNodes:
     post:
       operationId: DescribeReservedNodes
@@ -1314,6 +1335,9 @@ paths:
       x-stackql-method: describe_reserved_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReservedNodes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeReservedNodesOfferings:
     post:
       operationId: DescribeReservedNodesOfferings
@@ -1370,6 +1394,9 @@ paths:
       x-stackql-method: describe_reserved_nodes_offerings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReservedNodesOfferings
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeServiceUpdates:
     post:
       operationId: DescribeServiceUpdates
@@ -1421,6 +1448,9 @@ paths:
       x-stackql-method: describe_service_updates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ServiceUpdates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSnapshots:
     post:
       operationId: DescribeSnapshots
@@ -1480,6 +1510,9 @@ paths:
       x-stackql-method: describe_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Snapshots
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeSubnetGroups:
     post:
       operationId: DescribeSubnetGroups
@@ -1526,6 +1559,9 @@ paths:
       x-stackql-method: describe_subnet_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SubnetGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeUsers:
     post:
       operationId: DescribeUsers
@@ -1574,6 +1610,9 @@ paths:
       x-stackql-method: describe_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /FailoverShard:
     post:
       operationId: FailoverShard
@@ -1614,7 +1653,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FailoverShardResponse'
-      x-stackql-resource: failover_shard
+      x-stackql-resource: clusters
       x-stackql-method: failover_shard
       x-stackql-verb: EXEC
   /ListAllowedMultiRegionClusterUpdates:
@@ -1776,7 +1815,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PurchaseReservedNodesOfferingResponse'
-      x-stackql-resource: purchase_reserved_nodes_offering
+      x-stackql-resource: reserved_nodes_offerings
       x-stackql-method: purchase_reserved_nodes_offering
       x-stackql-verb: EXEC
   /ResetParameterGroup:
@@ -1823,7 +1862,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetParameterGroupResponse'
-      x-stackql-resource: parameter_group
+      x-stackql-resource: parameters
       x-stackql-method: reset_parameter_group
       x-stackql-verb: EXEC
   /TagResource:
@@ -1871,7 +1910,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1919,7 +1958,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateACL:

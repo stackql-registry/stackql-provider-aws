@@ -374,7 +374,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DescribeConfigurationsResponse"
+                $ref: "#/components/schemas/DescribeConfigurationsOutputDisplay"
   /DescribeContinuousExports:
     post:
       operationId: DescribeContinuousExports
@@ -692,7 +692,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListConfigurationsResponse"
+                $ref: "#/components/schemas/ListConfigurationsOutputDisplay"
   /ListServerNeighbors:
     post:
       operationId: ListServerNeighbors
@@ -1442,19 +1442,19 @@ components:
       type: integer
     WarningText:
       type: string
-    DescribeConfigurationsResponse:
+    DescribeConfigurationsRowDisplay:
       type: object
       properties:
-        configurations:
-          $ref: "#/components/schemas/DescribeConfigurationsAttributes"
+        configuration:
+          type: object
           description: A key in the response map. The value is an array of data.
-    DescribeConfigurationsAttributes:
-      type: array
-      items:
-        $ref: "#/components/schemas/DescribeConfigurationsAttribute"
-    DescribeConfigurationsAttribute:
+    DescribeConfigurationsOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/DescribeConfigurationsRowDisplay"
     ContinuousExportIds:
       type: array
       items:
@@ -2007,22 +2007,19 @@ components:
       enum:
         - ASC
         - DESC
-    ListConfigurationsResponse:
+    ListConfigurationsRowDisplay:
       type: object
       properties:
-        configurations:
-          $ref: "#/components/schemas/Configurations"
+        configuration:
+          type: object
           description: Returns configuration details, including the configuration ID, attribute names, and attribute values.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: Token to retrieve the next set of results. For example, if your call to ListConfigurations returned 100 items, but you set ListConfigurationsRequest$maxResults to 10, you received a set of 10 results along with this token. Use this token in the next query to retrieve the next set of 10.
-    Configurations:
-      type: array
-      items:
-        $ref: "#/components/schemas/Configuration"
-    Configuration:
+    ListConfigurationsOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListConfigurationsRowDisplay"
     ListServerNeighborsResponse:
       type: object
       properties:
@@ -2256,10 +2253,10 @@ components:
     UpdateApplicationResponse:
       type: object
   x-stackQL-resources:
-    configuration_items_to_applications:
-      id: aws.discovery.configuration_items_to_applications
-      name: configuration_items_to_applications
-      title: configuration_items_to_applications
+    configurations:
+      id: aws.discovery.configurations
+      name: configurations
+      title: configurations
       methods:
         associate_configuration_items_to_application:
           operation:
@@ -2274,11 +2271,211 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_configurations:
+          operation:
+            $ref: "#/paths/~1DescribeConfigurations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeConfigurationsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "configurations" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_configuration_items_from_application:
+          operation:
+            $ref: "#/paths/~1DisassociateConfigurationItemsFromApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        export_configurations:
+          operation:
+            $ref: "#/paths/~1ExportConfigurations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+        list_configurations:
+          operation:
+            $ref: "#/paths/~1ListConfigurations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListConfigurationsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "configurations" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_batch_delete_configuration_task:
+          operation:
+            $ref: "#/paths/~1StartBatchDeleteConfigurationTask/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/configurations/methods/describe_configurations"
+          - $ref: "#/components/x-stackQL-resources/configurations/methods/list_configurations"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/configuration_items_to_applications/methods/associate_configuration_items_to_application"
+          - $ref: "#/components/x-stackQL-resources/configurations/methods/associate_configuration_items_to_application"
+        delete: []
+    agents:
+      id: aws.discovery.agents
+      name: agents
+      title: agents
+      methods:
+        batch_delete_agents:
+          operation:
+            $ref: "#/paths/~1BatchDeleteAgents/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_agents:
+          operation:
+            $ref: "#/paths/~1DescribeAgents/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.agentsInfo
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_data_collection_by_agent_ids:
+          operation:
+            $ref: "#/paths/~1StartDataCollectionByAgentIds/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_data_collection_by_agent_ids:
+          operation:
+            $ref: "#/paths/~1StopDataCollectionByAgentIds/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/agents/methods/describe_agents"
+        insert: []
+        update: []
+        delete: []
+    import_tasks:
+      id: aws.discovery.import_tasks
+      name: import_tasks
+      title: import_tasks
+      methods:
+        batch_delete_import_data:
+          operation:
+            $ref: "#/paths/~1BatchDeleteImportData/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_import_tasks:
+          operation:
+            $ref: "#/paths/~1DescribeImportTasks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.tasks
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/import_tasks/methods/describe_import_tasks"
+        insert: []
+        update: []
         delete: []
     applications:
       id: aws.discovery.applications
@@ -2375,6 +2572,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2385,31 +2589,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/tags/methods/delete_tags"
-    agents:
-      id: aws.discovery.agents
-      name: agents
-      title: agents
-      methods:
-        describe_agents:
-          operation:
-            $ref: "#/paths/~1DescribeAgents/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.agentsInfo
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/agents/methods/describe_agents"
-        insert: []
-        update: []
-        delete: []
     batch_delete_configuration_tasks:
       id: aws.discovery.batch_delete_configuration_tasks
       name: batch_delete_configuration_tasks
@@ -2421,6 +2600,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.task
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2431,54 +2611,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_delete_configuration_tasks/methods/describe_batch_delete_configuration_task"
-        insert: []
-        update: []
-        delete: []
-    configurations:
-      id: aws.discovery.configurations
-      name: configurations
-      title: configurations
-      methods:
-        describe_configurations:
-          operation:
-            $ref: "#/paths/~1DescribeConfigurations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        export_configurations:
-          operation:
-            $ref: "#/paths/~1ExportConfigurations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-        list_configurations:
-          operation:
-            $ref: "#/paths/~1ListConfigurations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.configurations
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/configurations/methods/describe_configurations"
-          - $ref: "#/components/x-stackQL-resources/configurations/methods/list_configurations"
         insert: []
         update: []
         delete: []
@@ -2499,6 +2631,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2524,6 +2663,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2549,6 +2695,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2556,55 +2709,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/export_tasks/methods/describe_export_tasks"
         insert: []
         update: []
-        delete: []
-    import_tasks:
-      id: aws.discovery.import_tasks
-      name: import_tasks
-      title: import_tasks
-      methods:
-        describe_import_tasks:
-          operation:
-            $ref: "#/paths/~1DescribeImportTasks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.tasks
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/import_tasks/methods/describe_import_tasks"
-        insert: []
-        update: []
-        delete: []
-    configuration_items_from_applications:
-      id: aws.discovery.configuration_items_from_applications
-      name: configuration_items_from_applications
-      title: configuration_items_from_applications
-      methods:
-        disassociate_configuration_items_from_application:
-          operation:
-            $ref: "#/paths/~1DisassociateConfigurationItemsFromApplication/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/configuration_items_from_applications/methods/disassociate_configuration_items_from_application"
         delete: []
     discovery_summaries:
       id: aws.discovery.discovery_summaries

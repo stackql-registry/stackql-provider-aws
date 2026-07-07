@@ -75,6 +75,9 @@ paths:
       x-stackql-method: list_notification_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Channels
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /insights/{id}:
     delete:
       operationId: DeleteInsight
@@ -212,6 +215,7 @@ paths:
       x-stackql-resource: event_sources_configs
       x-stackql-method: describe_event_sources_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EventSources
     put:
       operationId: UpdateEventSourcesConfig
       description: Enables or disables integration with a service that can be integrated with DevOps Guru. The one service
@@ -261,6 +265,7 @@ paths:
       x-stackql-resource: feedbacks
       x-stackql-method: describe_feedback
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.InsightFeedback
     put:
       operationId: PutFeedback
       description: Collects customer feedback about the specified insight.
@@ -379,6 +384,9 @@ paths:
       x-stackql-method: describe_organization_resource_collection_health
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CloudFormation
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/health/resource-collection/{resource_collection_type}:
     get:
       operationId: DescribeResourceCollectionHealth
@@ -417,6 +425,9 @@ paths:
       x-stackql-method: describe_resource_collection_health
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CloudFormation
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /service-integrations:
     get:
       operationId: DescribeServiceIntegration
@@ -434,6 +445,7 @@ paths:
       x-stackql-resource: service_integrations
       x-stackql-method: describe_service_integration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ServiceIntegration
     put:
       operationId: UpdateServiceIntegration
       description: Enables or disables integration with a service that can be integrated with DevOps Guru. The one service
@@ -485,6 +497,9 @@ paths:
       x-stackql-method: get_cost_estimation
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Costs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     put:
       operationId: StartCostEstimation
       description: Starts the creation of an estimate of the monthly cost to analyze your Amazon Web Services resources.
@@ -545,6 +560,10 @@ paths:
       x-stackql-resource: resource_collections
       x-stackql-method: get_resource_collection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResourceCollection
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /anomalies/insight/{insight_id}:
     post:
       operationId: ListAnomaliesForInsight
@@ -584,6 +603,9 @@ paths:
       x-stackql-method: list_anomalies_for_insight
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReactiveAnomalies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-log-anomalies:
     post:
       operationId: ListAnomalousLogGroups
@@ -614,6 +636,9 @@ paths:
       x-stackql-resource: anomalous_log_groups
       x-stackql-method: list_anomalous_log_groups
       x-stackql-verb: SELECT
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /events:
     post:
       operationId: ListEvents
@@ -648,6 +673,9 @@ paths:
       x-stackql-method: list_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /insights:
     post:
       operationId: ListInsights
@@ -680,6 +708,9 @@ paths:
       x-stackql-method: list_insights
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProactiveInsights
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /monitoredResources:
     post:
       operationId: ListMonitoredResources
@@ -709,6 +740,9 @@ paths:
       x-stackql-method: list_monitored_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MonitoredResourceIdentifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /organization/insights:
     post:
       operationId: ListOrganizationInsights
@@ -744,6 +778,9 @@ paths:
       x-stackql-method: list_organization_insights
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProactiveInsights
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /recommendations:
     post:
       operationId: ListRecommendations
@@ -778,6 +815,9 @@ paths:
       x-stackql-method: list_recommendations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Recommendations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /channels/{id}:
     delete:
       operationId: RemoveNotificationChannel
@@ -839,6 +879,9 @@ paths:
       x-stackql-method: search_insights
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProactiveInsights
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /organization/insights/search:
     post:
       operationId: SearchOrganizationInsights
@@ -881,6 +924,9 @@ paths:
       x-stackql-method: search_organization_insights
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProactiveInsights
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /resource-collections:
     put:
       operationId: UpdateResourceCollection

@@ -107,7 +107,6 @@ paths:
                 Audiences:
                   $ref: "#/components/schemas/Audiences"
               required:
-                - Outputs
                 - PlaybackMode
       responses:
         "200":
@@ -175,8 +174,6 @@ paths:
                   $ref: "#/components/schemas/TimeShiftConfiguration"
                 Audiences:
                   $ref: "#/components/schemas/Audiences"
-              required:
-                - Outputs
       responses:
         "200":
           description: Success
@@ -798,8 +795,6 @@ paths:
               properties:
                 Policy:
                   $ref: "#/components/schemas/__string"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -1183,8 +1178,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -1285,8 +1278,6 @@ paths:
                   $ref: "#/components/schemas/AdDecisionServerConfiguration"
                 FunctionMapping:
                   $ref: "#/components/schemas/FunctionMapping"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -3787,6 +3778,17 @@ components:
       name: channels
       title: channels
       methods:
+        configure_logs_for_channel:
+          operation:
+            $ref: "#/paths/~1configureLogs~1channel/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_channel:
           operation:
             $ref: "#/paths/~1channel~1{channel_name}/post"
@@ -3830,6 +3832,26 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_channel:
+          operation:
+            $ref: "#/paths/~1channel~1{channel_name}~1start/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_channel:
+          operation:
+            $ref: "#/paths/~1channel~1{channel_name}~1stop/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/describe_channel"
@@ -3840,6 +3862,72 @@ components:
           - $ref: "#/components/x-stackQL-resources/channels/methods/update_channel"
         delete:
           - $ref: "#/components/x-stackQL-resources/channels/methods/delete_channel"
+    playback_configurations:
+      id: aws.mediatailor.playback_configurations
+      name: playback_configurations
+      title: playback_configurations
+      methods:
+        configure_logs_for_playback_configuration:
+          operation:
+            $ref: "#/paths/~1configureLogs~1playbackConfiguration/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_playback_configuration:
+          operation:
+            $ref: "#/paths/~1playbackConfiguration~1{name}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        get_playback_configuration:
+          operation:
+            $ref: "#/paths/~1playbackConfiguration~1{name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_playback_configurations:
+          operation:
+            $ref: "#/paths/~1playbackConfigurations/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        put_playback_configuration:
+          operation:
+            $ref: "#/paths/~1playbackConfiguration/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/get_playback_configuration"
+          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/list_playback_configurations"
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/put_playback_configuration"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/delete_playback_configuration"
     live_sources:
       id: aws.mediatailor.live_sources
       name: live_sources
@@ -3888,6 +3976,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/live_sources/methods/describe_live_source"
@@ -3936,6 +4032,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4043,6 +4146,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/source_locations/methods/describe_source_location"
@@ -4101,6 +4212,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vod_sources/methods/describe_vod_source"
@@ -4185,6 +4304,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/functions/methods/get_function"
@@ -4195,53 +4322,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/functions/methods/put_function"
         delete:
           - $ref: "#/components/x-stackQL-resources/functions/methods/delete_function"
-    playback_configurations:
-      id: aws.mediatailor.playback_configurations
-      name: playback_configurations
-      title: playback_configurations
-      methods:
-        delete_playback_configuration:
-          operation:
-            $ref: "#/paths/~1playbackConfiguration~1{name}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        get_playback_configuration:
-          operation:
-            $ref: "#/paths/~1playbackConfiguration~1{name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_playback_configurations:
-          operation:
-            $ref: "#/paths/~1playbackConfigurations/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Items
-          request:
-            nativeCasing: pascal
-        put_playback_configuration:
-          operation:
-            $ref: "#/paths/~1playbackConfiguration/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/get_playback_configuration"
-          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/list_playback_configurations"
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/put_playback_configuration"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/playback_configurations/methods/delete_playback_configuration"
     channel_schedules:
       id: aws.mediatailor.channel_schedules
       name: channel_schedules
@@ -4256,6 +4336,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_schedules/methods/get_channel_schedule"
@@ -4276,16 +4364,24 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/alerts/methods/list_alerts"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.mediatailor.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mediatailor.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4293,17 +4389,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mediatailor.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -4322,9 +4407,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

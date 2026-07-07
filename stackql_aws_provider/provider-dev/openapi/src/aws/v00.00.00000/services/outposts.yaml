@@ -139,7 +139,6 @@ paths:
                 SupportedHardwareType:
                   $ref: "#/components/schemas/SupportedHardwareType"
               required:
-                - Name
                 - SiteId
       responses:
         "200":
@@ -244,8 +243,6 @@ paths:
                   $ref: "#/components/schemas/Address"
                 RackPhysicalProperties:
                   $ref: "#/components/schemas/RackPhysicalProperties"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -637,7 +634,6 @@ paths:
                   $ref: "#/components/schemas/Address"
               required:
                 - AddressType
-                - Address
       responses:
         "200":
           description: Success
@@ -916,8 +912,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -2738,77 +2732,17 @@ components:
         Site:
           $ref: "#/components/schemas/Site"
   x-stackQL-resources:
-    capacity_tasks:
-      id: aws.outposts.capacity_tasks
-      name: capacity_tasks
-      title: capacity_tasks
-      methods:
-        get_capacity_task:
-          operation:
-            $ref: "#/paths/~1outposts~1{outpost_id}~1capacity~1{capacity_task_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_capacity_tasks:
-          operation:
-            $ref: "#/paths/~1capacity~1tasks/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.CapacityTasks
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/capacity_tasks/methods/get_capacity_task"
-          - $ref: "#/components/x-stackQL-resources/capacity_tasks/methods/list_capacity_tasks"
-        insert: []
-        update: []
-        delete: []
-    orders:
-      id: aws.outposts.orders
-      name: orders
-      title: orders
-      methods:
-        create_order:
-          operation:
-            $ref: "#/paths/~1orders/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_order:
-          operation:
-            $ref: "#/paths/~1orders~1{order_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_orders:
-          operation:
-            $ref: "#/paths/~1list-orders/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Orders
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/orders/methods/get_order"
-          - $ref: "#/components/x-stackQL-resources/orders/methods/list_orders"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/orders/methods/create_order"
-        update: []
-        delete: []
     outposts:
       id: aws.outposts.outposts
       name: outposts
       title: outposts
       methods:
+        cancel_capacity_task:
+          operation:
+            $ref: "#/paths/~1outposts~1{outpost_id}~1capacity~1{capacity_task_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         create_outpost:
           operation:
             $ref: "#/paths/~1outposts/post"
@@ -2829,6 +2763,25 @@ components:
             objectKey: $.Outposts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        create_renewal:
+          operation:
+            $ref: "#/paths/~1renewals/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_outpost:
           operation:
             $ref: "#/paths/~1outposts~1{outpost_id}/delete"
@@ -2841,9 +2794,32 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Outpost
         update_outpost:
           operation:
             $ref: "#/paths/~1outposts~1{outpost_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_capacity_task:
+          operation:
+            $ref: "#/paths/~1outposts~1{outpost_id}~1capacity/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_outpost_decommission:
+          operation:
+            $ref: "#/paths/~1outposts~1{outpost_id}~1decommission/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2857,19 +2833,61 @@ components:
           - $ref: "#/components/x-stackQL-resources/outposts/methods/get_outpost"
           - $ref: "#/components/x-stackQL-resources/outposts/methods/list_outposts"
         insert:
+          - $ref: "#/components/x-stackQL-resources/outposts/methods/create_renewal"
           - $ref: "#/components/x-stackQL-resources/outposts/methods/create_outpost"
         update:
           - $ref: "#/components/x-stackQL-resources/outposts/methods/update_outpost"
         delete:
           - $ref: "#/components/x-stackQL-resources/outposts/methods/delete_outpost"
-    renewals:
-      id: aws.outposts.renewals
-      name: renewals
-      title: renewals
+    capacity_tasks:
+      id: aws.outposts.capacity_tasks
+      name: capacity_tasks
+      title: capacity_tasks
       methods:
-        create_renewal:
+        get_capacity_task:
           operation:
-            $ref: "#/paths/~1renewals/post"
+            $ref: "#/paths/~1outposts~1{outpost_id}~1capacity~1{capacity_task_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_capacity_tasks:
+          operation:
+            $ref: "#/paths/~1capacity~1tasks/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.CapacityTasks
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/capacity_tasks/methods/get_capacity_task"
+          - $ref: "#/components/x-stackQL-resources/capacity_tasks/methods/list_capacity_tasks"
+        insert: []
+        update: []
+        delete: []
+    orders:
+      id: aws.outposts.orders
+      name: orders
+      title: orders
+      methods:
+        cancel_order:
+          operation:
+            $ref: "#/paths/~1orders~1{order_id}~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_order:
+          operation:
+            $ref: "#/paths/~1orders/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2878,10 +2896,36 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_order:
+          operation:
+            $ref: "#/paths/~1orders~1{order_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Order
+        list_orders:
+          operation:
+            $ref: "#/paths/~1list-orders/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Orders
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/orders/methods/get_order"
+          - $ref: "#/components/x-stackQL-resources/orders/methods/list_orders"
         insert:
-          - $ref: "#/components/x-stackQL-resources/renewals/methods/create_renewal"
+          - $ref: "#/components/x-stackQL-resources/orders/methods/create_order"
         update: []
         delete: []
     sites:
@@ -2909,6 +2953,14 @@ components:
             objectKey: $.Sites
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_site:
           operation:
             $ref: "#/paths/~1sites~1{site_id}/delete"
@@ -2921,9 +2973,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Site
         update_site:
           operation:
             $ref: "#/paths/~1sites~1{site_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_site_rack_physical_properties:
+          operation:
+            $ref: "#/paths/~1sites~1{site_id}~1rackPhysicalProperties/patch"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2953,6 +3017,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CatalogItem
         list_catalog_items:
           operation:
             $ref: "#/paths/~1catalog~1items/get"
@@ -2962,6 +3027,14 @@ components:
             objectKey: $.CatalogItems
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/catalog_items/methods/get_catalog_item"
@@ -3000,6 +3073,14 @@ components:
             objectKey: $.Subscriptions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outpost_billing_informations/methods/get_outpost_billing_information"
@@ -3020,6 +3101,14 @@ components:
             objectKey: $.InstanceTypes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outpost_instance_types/methods/get_outpost_instance_types"
@@ -3040,6 +3129,14 @@ components:
             objectKey: $.InstanceTypes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outpost_supported_instance_types/methods/get_outpost_supported_instance_types"
@@ -3108,6 +3205,14 @@ components:
             objectKey: $.AssetInstances
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_instances/methods/list_asset_instances"
@@ -3128,6 +3233,25 @@ components:
             objectKey: $.Assets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_connection:
+          operation:
+            $ref: "#/paths/~1connections/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assets/methods/list_assets"
@@ -3148,16 +3272,24 @@ components:
             objectKey: $.BlockingInstances
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/blocking_instances_for_capacity_tasks/methods/list_blocking_instances_for_capacity_task"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.outposts.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.outposts.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3165,17 +3297,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.outposts.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3196,31 +3317,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    site_rack_physical_properties:
-      id: aws.outposts.site_rack_physical_properties
-      name: site_rack_physical_properties
-      title: site_rack_physical_properties
-      methods:
-        update_site_rack_physical_properties:
-          operation:
-            $ref: "#/paths/~1sites~1{site_id}~1rackPhysicalProperties/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/site_rack_physical_properties/methods/update_site_rack_physical_properties"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

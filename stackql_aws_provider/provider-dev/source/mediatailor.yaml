@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfigureLogsForChannelResponse'
-      x-stackql-resource: configure_logs_for_channel
+      x-stackql-resource: channels
       x-stackql-method: configure_logs_for_channel
       x-stackql-verb: EXEC
   /configureLogs/playbackConfiguration:
@@ -77,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfigureLogsForPlaybackConfigurationResponse'
-      x-stackql-resource: configure_logs_for_playback_configuration
+      x-stackql-resource: playback_configurations
       x-stackql-method: configure_logs_for_playback_configuration
       x-stackql-verb: EXEC
   /channel/{channel_name}:
@@ -1093,6 +1093,9 @@ paths:
       x-stackql-method: get_channel_schedule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /alerts:
     get:
       operationId: ListAlerts
@@ -1136,6 +1139,9 @@ paths:
       x-stackql-method: list_alerts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /channels:
     get:
       operationId: ListChannels
@@ -1173,6 +1179,9 @@ paths:
       x-stackql-method: list_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /functions:
     get:
       operationId: ListFunctions
@@ -1211,6 +1220,9 @@ paths:
       x-stackql-method: list_functions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /sourceLocation/{source_location_name}/liveSources:
     get:
       operationId: ListLiveSources
@@ -1254,6 +1266,9 @@ paths:
       x-stackql-method: list_live_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /playbackConfigurations:
     get:
       operationId: ListPlaybackConfigurations
@@ -1292,6 +1307,9 @@ paths:
       x-stackql-method: list_playback_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prefetchSchedule/{playback_configuration_name}:
     post:
       operationId: ListPrefetchSchedules
@@ -1329,6 +1347,9 @@ paths:
       x-stackql-method: list_prefetch_schedules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /sourceLocations:
     get:
       operationId: ListSourceLocations
@@ -1367,6 +1388,9 @@ paths:
       x-stackql-method: list_source_locations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1387,7 +1411,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1415,7 +1439,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1437,7 +1461,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /sourceLocation/{source_location_name}/vodSources:
@@ -1483,6 +1507,9 @@ paths:
       x-stackql-method: list_vod_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /playbackConfiguration:
     put:
       operationId: PutPlaybackConfiguration
@@ -1563,7 +1590,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartChannelResponse'
-      x-stackql-resource: channel
+      x-stackql-resource: channels
       x-stackql-method: start_channel
       x-stackql-verb: EXEC
   /channel/{channel_name}/stop:
@@ -1585,7 +1612,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopChannelResponse'
-      x-stackql-resource: channel
+      x-stackql-resource: channels
       x-stackql-method: stop_channel
       x-stackql-verb: EXEC
 components:

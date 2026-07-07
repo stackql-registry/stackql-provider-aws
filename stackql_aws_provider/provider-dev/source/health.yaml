@@ -64,11 +64,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DescribeAffectedAccountsForOrganizationResponse'
+                $ref: '#/components/schemas/DescribeAffectedAccountsForOrganizationOutputDisplay'
       x-stackql-resource: affected_accounts_for_organizations
       x-stackql-method: describe_affected_accounts_for_organization
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.affectedAccounts
+      x-stackql-responseEnvelope: DescribeAffectedAccountsForOrganizationOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "affectedAccounts" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"affected_account": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeAffectedEntities:
     post:
       operationId: DescribeAffectedEntities
@@ -125,6 +133,9 @@ paths:
       x-stackql-method: describe_affected_entities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeAffectedEntitiesForOrganization:
     post:
       operationId: DescribeAffectedEntitiesForOrganization
@@ -184,6 +195,9 @@ paths:
       x-stackql-method: describe_affected_entities_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeEntityAggregates:
     post:
       operationId: DescribeEntityAggregates
@@ -310,6 +324,9 @@ paths:
       x-stackql-method: describe_event_aggregates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.eventAggregates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeEventDetails:
     post:
       operationId: DescribeEventDetails
@@ -464,6 +481,9 @@ paths:
       x-stackql-method: describe_event_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.eventTypes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeEvents:
     post:
       operationId: DescribeEvents
@@ -521,6 +541,9 @@ paths:
       x-stackql-method: describe_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeEventsForOrganization:
     post:
       operationId: DescribeEventsForOrganization
@@ -578,6 +601,9 @@ paths:
       x-stackql-method: describe_events_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeHealthServiceStatusForOrganization:
     post:
       operationId: DescribeHealthServiceStatusForOrganization
@@ -716,39 +742,19 @@ components:
       type: integer
       minimum: 10
       maximum: 100
-    DescribeAffectedAccountsForOrganizationResponse:
+    DescribeAffectedAccountsForOrganizationRowDisplay:
       type: object
       properties:
-        affectedAccounts:
-          $ref: '#/components/schemas/affectedAccountsList'
+        affected_account:
+          type: string
           description: A JSON set of elements of the affected accounts.
-        eventScopeCode:
-          $ref: '#/components/schemas/eventScopeCode'
-          description: This parameter specifies if the Health event is a public Amazon Web Services service event or an account-specific
-            event. If the eventScopeCode value is PUBLIC, then the affectedAccounts value is always empty. If the eventScopeCode
-            value is ACCOUNT_SPECIFIC, then the affectedAccounts value lists the affected Amazon Web Services accounts in
-            your organization. For example, if an event affects a service such as Amazon Elastic Compute Cloud and you have
-            Amazon Web Services accounts that use that service, those account IDs appear in the response. If the eventScopeCode
-            value is NONE, then the eventArn that you specified in the request is invalid or doesn't exist.
-        nextToken:
-          $ref: '#/components/schemas/nextToken'
-          description: If the results of a search are large, only a portion of the results are returned, and a nextToken pagination
-            token is returned in the response. To retrieve the next batch of results, reissue the search request and include
-            the returned token. When all results have been returned, the response does not contain a pagination token value.
-    affectedAccountsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/accountId'
-    accountId:
-      type: string
-      maxLength: 12
-      pattern: ^\S+$
-    eventScopeCode:
-      type: string
-      enum:
-      - PUBLIC
-      - ACCOUNT_SPECIFIC
-      - NONE
+    DescribeAffectedAccountsForOrganizationOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DescribeAffectedAccountsForOrganizationRowDisplay'
     EntityFilter:
       description: The values to use to filter results from the DescribeAffectedEntities operation.
       type: object
@@ -895,6 +901,10 @@ components:
           description: Additional metadata about the affected entity.
     entityUrl:
       type: string
+    accountId:
+      type: string
+      maxLength: 12
+      pattern: ^\S+$
     OrganizationEntityFiltersList:
       type: array
       items:
@@ -1324,6 +1334,12 @@ components:
       minLength: 3
       maxLength: 100
       pattern: '[a-zA-Z0-9\_\-]{3,100}'
+    eventScopeCode:
+      type: string
+      enum:
+      - PUBLIC
+      - ACCOUNT_SPECIFIC
+      - NONE
     EventDescription:
       description: The detailed description of the event. Included in the information returned by the DescribeEventDetails
         operation.

@@ -175,6 +175,9 @@ paths:
       x-stackql-method: get_stream
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.shards
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListStreams:
     post:
       operationId: ListStreams
@@ -226,6 +229,9 @@ paths:
       x-stackql-method: list_streams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.streams
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

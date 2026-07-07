@@ -238,7 +238,6 @@ paths:
               required:
                 - InstanceArn
                 - ApplicationProviderArn
-                - Name
       responses:
         "200":
           description: Success
@@ -451,7 +450,6 @@ paths:
                   description: Specifies tags to be attached to the new trusted token issuer configuration.
               required:
                 - InstanceArn
-                - Name
                 - TrustedTokenIssuerType
                 - TrustedTokenIssuerConfiguration
       responses:
@@ -576,7 +574,6 @@ paths:
                   description: Specifies the name of the access scope to remove from the application.
               required:
                 - ApplicationArn
-                - Scope
       responses:
         "200":
           description: Success
@@ -1399,7 +1396,6 @@ paths:
                   description: Specifies the name of the access scope for which you want the authorized targets.
               required:
                 - ApplicationArn
-                - Scope
       responses:
         "200":
           description: Success
@@ -1847,7 +1843,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAccountsForProvisionedPermissionSetResponse"
+                $ref: "#/components/schemas/ListAccountsForProvisionedPermissionSetOutputDisplay"
   /ListApplicationAccessScopes:
     post:
       operationId: ListApplicationAccessScopes
@@ -2324,7 +2320,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPermissionSetsResponse"
+                $ref: "#/components/schemas/ListPermissionSetsOutputDisplay"
   /ListPermissionSetsProvisionedToAccount:
     post:
       operationId: ListPermissionSetsProvisionedToAccount
@@ -2370,7 +2366,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPermissionSetsProvisionedToAccountResponse"
+                $ref: "#/components/schemas/ListPermissionSetsProvisionedToAccountOutputDisplay"
   /ListRegions:
     post:
       operationId: ListRegions
@@ -2563,7 +2559,6 @@ paths:
                   $ref: "#/components/schemas/ApplicationArn"
                   description: Specifies the ARN of the application with the access scope with the targets to add or update.
               required:
-                - Scope
                 - ApplicationArn
       responses:
         "200":
@@ -2675,7 +2670,6 @@ paths:
               required:
                 - ApplicationArn
                 - GrantType
-                - Grant
       responses:
         "200":
           description: Success
@@ -4181,19 +4175,19 @@ components:
       enum:
         - LATEST_PERMISSION_SET_PROVISIONED
         - LATEST_PERMISSION_SET_NOT_PROVISIONED
-    ListAccountsForProvisionedPermissionSetResponse:
+    ListAccountsForProvisionedPermissionSetRowDisplay:
       type: object
       properties:
-        AccountIds:
-          $ref: "#/components/schemas/AccountList"
+        account_id:
+          type: string
           description: The list of Amazon Web Services AccountIds.
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
-    AccountList:
-      type: array
-      items:
-        $ref: "#/components/schemas/AccountId"
+    ListAccountsForProvisionedPermissionSetOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAccountsForProvisionedPermissionSetRowDisplay"
     ListApplicationAccessScopesRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -4530,28 +4524,32 @@ components:
         CreatedDate:
           $ref: "#/components/schemas/Date"
           description: The date that the permission set was created.
-    ListPermissionSetsResponse:
+    ListPermissionSetsRowDisplay:
       type: object
       properties:
-        PermissionSets:
-          $ref: "#/components/schemas/PermissionSetList"
+        permission_set:
+          type: string
           description: Defines the level of access on an Amazon Web Services account.
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
-    PermissionSetList:
-      type: array
-      items:
-        $ref: "#/components/schemas/PermissionSetArn"
-    ListPermissionSetsProvisionedToAccountResponse:
+    ListPermissionSetsOutputDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: The pagination token for the list API. Initially the value is null. Use the output of previous API calls to make subsequent calls.
-        PermissionSets:
-          $ref: "#/components/schemas/PermissionSetList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPermissionSetsRowDisplay"
+    ListPermissionSetsProvisionedToAccountRowDisplay:
+      type: object
+      properties:
+        permission_set:
+          type: string
           description: Defines the level of access that an Amazon Web Services account has.
+    ListPermissionSetsProvisionedToAccountOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPermissionSetsProvisionedToAccountRowDisplay"
     ListRegionsResponse:
       type: object
       properties:
@@ -4746,6 +4744,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         remove_region:
@@ -4769,10 +4774,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/regions/methods/add_region"
         delete: []
-    customer_managed_policy_reference_to_permission_sets:
-      id: aws.sso_admin.customer_managed_policy_reference_to_permission_sets
-      name: customer_managed_policy_reference_to_permission_sets
-      title: customer_managed_policy_reference_to_permission_sets
+    permission_sets:
+      id: aws.sso_admin.permission_sets
+      name: permission_sets
+      title: permission_sets
       methods:
         attach_customer_managed_policy_reference_to_permission_set:
           operation:
@@ -4787,17 +4792,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/customer_managed_policy_reference_to_permission_sets/methods/attach_customer_managed_policy_reference_to_permission_set"
-        delete: []
-    managed_policy_to_permission_sets:
-      id: aws.sso_admin.managed_policy_to_permission_sets
-      name: managed_policy_to_permission_sets
-      title: managed_policy_to_permission_sets
-      methods:
         attach_managed_policy_to_permission_set:
           operation:
             $ref: "#/paths/~1AttachManagedPolicyToPermissionSet/post"
@@ -4811,12 +4805,193 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_permission_set:
+          operation:
+            $ref: "#/paths/~1CreatePermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_inline_policy_from_permission_set:
+          operation:
+            $ref: "#/paths/~1DeleteInlinePolicyFromPermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_permission_set:
+          operation:
+            $ref: "#/paths/~1DeletePermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_permissions_boundary_from_permission_set:
+          operation:
+            $ref: "#/paths/~1DeletePermissionsBoundaryFromPermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_permission_set:
+          operation:
+            $ref: "#/paths/~1DescribePermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.PermissionSet
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detach_customer_managed_policy_reference_from_permission_set:
+          operation:
+            $ref: "#/paths/~1DetachCustomerManagedPolicyReferenceFromPermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detach_managed_policy_from_permission_set:
+          operation:
+            $ref: "#/paths/~1DetachManagedPolicyFromPermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_permission_sets:
+          operation:
+            $ref: "#/paths/~1ListPermissionSets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPermissionSetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "PermissionSets" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"permission_set": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        provision_permission_set:
+          operation:
+            $ref: "#/paths/~1ProvisionPermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_inline_policy_to_permission_set:
+          operation:
+            $ref: "#/paths/~1PutInlinePolicyToPermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_permissions_boundary_to_permission_set:
+          operation:
+            $ref: "#/paths/~1PutPermissionsBoundaryToPermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_permission_set:
+          operation:
+            $ref: "#/paths/~1UpdatePermissionSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/describe_permission_set"
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/list_permission_sets"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/create_permission_set"
         update:
-          - $ref: "#/components/x-stackQL-resources/managed_policy_to_permission_sets/methods/attach_managed_policy_to_permission_set"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/attach_customer_managed_policy_reference_to_permission_set"
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/attach_managed_policy_to_permission_set"
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/provision_permission_set"
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/update_permission_set"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/put_inline_policy_to_permission_set"
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/put_permissions_boundary_to_permission_set"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/delete_permission_set"
     account_assignments:
       id: aws.sso_admin.account_assignments
       name: account_assignments
@@ -4860,6 +5035,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4926,6 +5108,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_application:
@@ -5007,6 +5196,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5074,6 +5270,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_instance:
@@ -5165,101 +5368,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/instance_access_control_attribute_configurations/methods/update_instance_access_control_attribute_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/instance_access_control_attribute_configurations/methods/delete_instance_access_control_attribute_configuration"
-    permission_sets:
-      id: aws.sso_admin.permission_sets
-      name: permission_sets
-      title: permission_sets
-      methods:
-        create_permission_set:
-          operation:
-            $ref: "#/paths/~1CreatePermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_permission_set:
-          operation:
-            $ref: "#/paths/~1DeletePermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_permission_set:
-          operation:
-            $ref: "#/paths/~1DescribePermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_permission_sets:
-          operation:
-            $ref: "#/paths/~1ListPermissionSets/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.PermissionSets
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        provision_permission_set:
-          operation:
-            $ref: "#/paths/~1ProvisionPermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_permission_set:
-          operation:
-            $ref: "#/paths/~1UpdatePermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/describe_permission_set"
-          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/list_permission_sets"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/create_permission_set"
-        update:
-          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/provision_permission_set"
-          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/update_permission_set"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/permission_sets/methods/delete_permission_set"
     trusted_token_issuers:
       id: aws.sso_admin.trusted_token_issuers
       name: trusted_token_issuers
@@ -5316,6 +5424,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_trusted_token_issuer:
@@ -5383,6 +5498,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_application_access_scope:
@@ -5400,7 +5522,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_access_scopes/methods/get_application_access_scope"
-          - $ref: "#/components/x-stackQL-resources/application_access_scopes/methods/list_application_access_scopes"
         insert: []
         update: []
         replace:
@@ -5430,6 +5551,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AuthenticationMethod
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5449,6 +5571,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_application_authentication_method:
@@ -5496,6 +5625,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Grant
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5515,6 +5645,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_application_grant:
@@ -5539,54 +5676,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/application_grants/methods/put_application_grant"
         delete:
           - $ref: "#/components/x-stackQL-resources/application_grants/methods/delete_application_grant"
-    inline_policy_from_permission_sets:
-      id: aws.sso_admin.inline_policy_from_permission_sets
-      name: inline_policy_from_permission_sets
-      title: inline_policy_from_permission_sets
-      methods:
-        delete_inline_policy_from_permission_set:
-          operation:
-            $ref: "#/paths/~1DeleteInlinePolicyFromPermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/inline_policy_from_permission_sets/methods/delete_inline_policy_from_permission_set"
-    permissions_boundary_from_permission_sets:
-      id: aws.sso_admin.permissions_boundary_from_permission_sets
-      name: permissions_boundary_from_permission_sets
-      title: permissions_boundary_from_permission_sets
-      methods:
-        delete_permissions_boundary_from_permission_set:
-          operation:
-            $ref: "#/paths/~1DeletePermissionsBoundaryFromPermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/permissions_boundary_from_permission_sets/methods/delete_permissions_boundary_from_permission_set"
     account_assignment_creation_status:
       id: aws.sso_admin.account_assignment_creation_status
       name: account_assignment_creation_status
@@ -5598,6 +5687,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AccountAssignmentCreationStatus
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5617,6 +5707,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5637,6 +5734,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AccountAssignmentDeletionStatus
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5656,6 +5754,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5695,6 +5800,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5715,6 +5827,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PermissionSetProvisioningStatus
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5734,6 +5847,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5742,54 +5862,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/permission_set_provisioning_status/methods/list_permission_set_provisioning_status"
         insert: []
         update: []
-        delete: []
-    customer_managed_policy_reference_from_permission_sets:
-      id: aws.sso_admin.customer_managed_policy_reference_from_permission_sets
-      name: customer_managed_policy_reference_from_permission_sets
-      title: customer_managed_policy_reference_from_permission_sets
-      methods:
-        detach_customer_managed_policy_reference_from_permission_set:
-          operation:
-            $ref: "#/paths/~1DetachCustomerManagedPolicyReferenceFromPermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/customer_managed_policy_reference_from_permission_sets/methods/detach_customer_managed_policy_reference_from_permission_set"
-        delete: []
-    managed_policy_from_permission_sets:
-      id: aws.sso_admin.managed_policy_from_permission_sets
-      name: managed_policy_from_permission_sets
-      title: managed_policy_from_permission_sets
-      methods:
-        detach_managed_policy_from_permission_set:
-          operation:
-            $ref: "#/paths/~1DetachManagedPolicyFromPermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/managed_policy_from_permission_sets/methods/detach_managed_policy_from_permission_set"
         delete: []
     application_assignment_configurations:
       id: aws.sso_admin.application_assignment_configurations
@@ -5904,6 +5976,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PermissionsBoundary
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5934,6 +6007,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5953,12 +6033,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.AccountIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAccountsForProvisionedPermissionSetOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "AccountIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"account_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5984,6 +6077,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6009,6 +6109,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6034,6 +6141,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6053,12 +6167,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.PermissionSets
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPermissionSetsProvisionedToAccountOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "PermissionSets" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"permission_set": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6067,10 +6194,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.sso_admin.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.sso_admin.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6084,69 +6211,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    inline_policy_to_permission_sets:
-      id: aws.sso_admin.inline_policy_to_permission_sets
-      name: inline_policy_to_permission_sets
-      title: inline_policy_to_permission_sets
-      methods:
-        put_inline_policy_to_permission_set:
-          operation:
-            $ref: "#/paths/~1PutInlinePolicyToPermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/inline_policy_to_permission_sets/methods/put_inline_policy_to_permission_set"
-        delete: []
-    permissions_boundary_to_permission_sets:
-      id: aws.sso_admin.permissions_boundary_to_permission_sets
-      name: permissions_boundary_to_permission_sets
-      title: permissions_boundary_to_permission_sets
-      methods:
-        put_permissions_boundary_to_permission_set:
-          operation:
-            $ref: "#/paths/~1PutPermissionsBoundaryToPermissionSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/permissions_boundary_to_permission_sets/methods/put_permissions_boundary_to_permission_set"
-        delete: []
-    resources:
-      id: aws.sso_admin.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -6174,9 +6247,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

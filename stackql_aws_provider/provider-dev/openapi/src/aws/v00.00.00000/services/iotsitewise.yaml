@@ -3182,7 +3182,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListProjectAssetsResponse"
+                $ref: "#/components/schemas/ListProjectAssetsOutputDisplay"
   /tags:
     get:
       operationId: ListTagsForResource
@@ -8074,21 +8074,19 @@ components:
         - name
         - startUrl
         - status
-    ListProjectAssetsResponse:
+    ListProjectAssetsRowDisplay:
       type: object
       properties:
-        assetIds:
-          $ref: "#/components/schemas/AssetIDs"
+        asset_id:
+          type: string
           description: A list that contains the IDs of each asset associated with the project.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token for the next set of results, or null if there are no additional results.
-      required:
-        - assetIds
-    AssetIDs:
-      type: array
-      items:
-        $ref: "#/components/schemas/ID"
+    ListProjectAssetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListProjectAssetsRowDisplay"
     ListProjectsResponse:
       type: object
       properties:
@@ -8409,6 +8407,14 @@ components:
             objectKey: $.assetSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_asset:
           operation:
             $ref: "#/paths/~1assets~1{asset_id}/delete"
@@ -8457,10 +8463,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/assets/methods/update_asset"
         delete:
           - $ref: "#/components/x-stackQL-resources/assets/methods/delete_asset"
-    time_series_to_asset_properties:
-      id: aws.iotsitewise.time_series_to_asset_properties
-      name: time_series_to_asset_properties
-      title: time_series_to_asset_properties
+    asset_properties:
+      id: aws.iotsitewise.asset_properties
+      name: asset_properties
+      title: asset_properties
       methods:
         associate_time_series_to_asset_property:
           operation:
@@ -8472,11 +8478,113 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_asset_property:
+          operation:
+            $ref: "#/paths/~1assets~1{asset_id}~1properties~1{property_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_asset_property:
+          operation:
+            $ref: "#/paths/~1assets~1{asset_id}~1properties~1{property_id}/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_time_series_from_asset_property:
+          operation:
+            $ref: "#/paths/~1timeseries~1disassociate~1/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_asset_properties:
+          operation:
+            $ref: "#/paths/~1assets~1{asset_id}~1properties/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.assetPropertySummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/asset_properties/methods/describe_asset_property"
+          - $ref: "#/components/x-stackQL-resources/asset_properties/methods/list_asset_properties"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/time_series_to_asset_properties/methods/associate_time_series_to_asset_property"
+          - $ref: "#/components/x-stackQL-resources/asset_properties/methods/associate_time_series_to_asset_property"
+          - $ref: "#/components/x-stackQL-resources/asset_properties/methods/update_asset_property"
+        delete: []
+    project_assets:
+      id: aws.iotsitewise.project_assets
+      name: project_assets
+      title: project_assets
+      methods:
+        batch_associate_project_assets:
+          operation:
+            $ref: "#/paths/~1projects~1{project_id}~1assets~1associate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_project_assets:
+          operation:
+            $ref: "#/paths/~1projects~1{project_id}~1assets~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_project_assets:
+          operation:
+            $ref: "#/paths/~1projects~1{project_id}~1assets/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListProjectAssetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "assetIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"asset_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/project_assets/methods/list_project_assets"
+        insert: []
+        update: []
         delete: []
     asset_property_aggregates:
       id: aws.iotsitewise.asset_property_aggregates
@@ -8503,6 +8611,14 @@ components:
             objectKey: $.aggregatedValues
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_property_aggregates/methods/get_asset_property_aggregates"
@@ -8532,6 +8648,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.propertyValue
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -8566,6 +8683,14 @@ components:
             objectKey: $.assetPropertyValueHistory
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_property_value_histories/methods/batch_get_asset_property_value_history"
@@ -8598,6 +8723,14 @@ components:
             objectKey: $.accessPolicySummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_access_policy:
           operation:
             $ref: "#/paths/~1access-policies~1{access_policy_id}/delete"
@@ -8658,6 +8791,14 @@ components:
             objectKey: $.assetModelSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_asset_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}/delete"
@@ -8720,6 +8861,14 @@ components:
             objectKey: $.assetModelCompositeModelSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_asset_model_composite_model:
           operation:
             $ref: "#/paths/~1asset-models~1{asset_model_id}~1composite-models~1{asset_model_composite_model_id}/delete"
@@ -8782,6 +8931,14 @@ components:
             objectKey: $.jobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         describe_bulk_import_job:
           operation:
             $ref: "#/paths/~1jobs~1{job_id}/get"
@@ -8821,6 +8978,14 @@ components:
             objectKey: $.computationModelSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_computation_model:
           operation:
             $ref: "#/paths/~1computation-models~1{computation_model_id}/delete"
@@ -8883,6 +9048,14 @@ components:
             objectKey: $.dashboardSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_dashboard:
           operation:
             $ref: "#/paths/~1dashboards~1{dashboard_id}/delete"
@@ -8943,6 +9116,14 @@ components:
             objectKey: $.datasetSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_dataset:
           operation:
             $ref: "#/paths/~1datasets~1{dataset_id}/delete"
@@ -9003,6 +9184,14 @@ components:
             objectKey: $.gatewaySummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_gateway:
           operation:
             $ref: "#/paths/~120200301~1gateways~1{gateway_id}/delete"
@@ -9059,6 +9248,14 @@ components:
             objectKey: $.portalSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_portal:
           operation:
             $ref: "#/paths/~1portals~1{portal_id}/delete"
@@ -9119,6 +9316,14 @@ components:
             objectKey: $.projectSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_project:
           operation:
             $ref: "#/paths/~1projects~1{project_id}/delete"
@@ -9223,8 +9428,14 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TimeSeriesSummaries
-          request:
-            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/time_series/methods/describe_time_series"
@@ -9252,6 +9463,14 @@ components:
             objectKey: $.actionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/actions/methods/list_actions"
@@ -9275,44 +9494,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/asset_composite_models/methods/describe_asset_composite_model"
         insert: []
         update: []
-        delete: []
-    asset_properties:
-      id: aws.iotsitewise.asset_properties
-      name: asset_properties
-      title: asset_properties
-      methods:
-        describe_asset_property:
-          operation:
-            $ref: "#/paths/~1assets~1{asset_id}~1properties~1{property_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_asset_property:
-          operation:
-            $ref: "#/paths/~1assets~1{asset_id}~1properties~1{property_id}/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_asset_properties:
-          operation:
-            $ref: "#/paths/~1assets~1{asset_id}~1properties/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.assetPropertySummaries
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/asset_properties/methods/describe_asset_property"
-          - $ref: "#/components/x-stackQL-resources/asset_properties/methods/list_asset_properties"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/asset_properties/methods/update_asset_property"
         delete: []
     computation_model_execution_summaries:
       id: aws.iotsitewise.computation_model_execution_summaries
@@ -9383,6 +9564,14 @@ components:
             objectKey: $.executionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/executions/methods/list_executions"
@@ -9430,6 +9619,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.loggingOptions
         put_logging_options:
           operation:
             $ref: "#/paths/~1logging/put"
@@ -9479,27 +9669,6 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/storage_configurations/methods/put_storage_configuration"
         delete: []
-    time_series_from_asset_properties:
-      id: aws.iotsitewise.time_series_from_asset_properties
-      name: time_series_from_asset_properties
-      title: time_series_from_asset_properties
-      methods:
-        disassociate_time_series_from_asset_property:
-          operation:
-            $ref: "#/paths/~1timeseries~1disassociate~1/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/time_series_from_asset_properties/methods/disassociate_time_series_from_asset_property"
-        delete: []
     interpolated_asset_property_values:
       id: aws.iotsitewise.interpolated_asset_property_values
       name: interpolated_asset_property_values
@@ -9514,6 +9683,14 @@ components:
             objectKey: $.interpolatedAssetPropertyValues
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/interpolated_asset_property_values/methods/get_interpolated_asset_property_values"
@@ -9534,6 +9711,14 @@ components:
             objectKey: $.assetModelPropertySummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_model_properties/methods/list_asset_model_properties"
@@ -9554,6 +9739,14 @@ components:
             objectKey: $.assetRelationshipSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_relationships/methods/list_asset_relationships"
@@ -9574,6 +9767,14 @@ components:
             objectKey: $.assetSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_assets/methods/list_associated_assets"
@@ -9594,6 +9795,14 @@ components:
             objectKey: $.compositionRelationshipSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/composition_relationships/methods/list_composition_relationships"
@@ -9615,6 +9824,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9637,6 +9853,14 @@ components:
             objectKey: $.computationModelResolveToResourceSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/computation_model_resolve_to_resources/methods/list_computation_model_resolve_to_resources"
@@ -9657,36 +9881,24 @@ components:
             objectKey: $.interfaceRelationshipSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/interface_relationships/methods/list_interface_relationships"
         insert: []
         update: []
         delete: []
-    project_assets:
-      id: aws.iotsitewise.project_assets
-      name: project_assets
-      title: project_assets
-      methods:
-        list_project_assets:
-          operation:
-            $ref: "#/paths/~1projects~1{project_id}~1assets/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.assetIds
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/project_assets/methods/list_project_assets"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.iotsitewise.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.iotsitewise.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9696,17 +9908,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.iotsitewise.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags/post"
@@ -9727,9 +9928,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

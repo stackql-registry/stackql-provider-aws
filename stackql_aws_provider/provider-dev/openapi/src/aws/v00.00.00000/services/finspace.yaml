@@ -4050,6 +4050,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.environment
         update_environment:
           operation:
             $ref: "#/paths/~1environment~1{environment_id}/put"
@@ -4147,13 +4148,37 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        update_kx_cluster_code_configuration:
+          operation:
+            $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1configuration~1code/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_kx_cluster_databases:
+          operation:
+            $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1configuration~1databases/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/kx_clusters/methods/get_kx_cluster"
           - $ref: "#/components/x-stackQL-resources/kx_clusters/methods/list_kx_clusters"
         insert:
           - $ref: "#/components/x-stackQL-resources/kx_clusters/methods/create_kx_cluster"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/kx_clusters/methods/update_kx_cluster_code_configuration"
+          - $ref: "#/components/x-stackQL-resources/kx_clusters/methods/update_kx_cluster_databases"
         delete:
           - $ref: "#/components/x-stackQL-resources/kx_clusters/methods/delete_kx_cluster"
     kx_databases:
@@ -4299,6 +4324,14 @@ components:
             objectKey: $.environments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_kx_environment:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}/delete"
@@ -4316,6 +4349,17 @@ components:
         update_kx_environment:
           operation:
             $ref: "#/paths/~1kx~1environments~1{environment_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_kx_environment_network:
+          operation:
+            $ref: "#/paths/~1kx~1environments~1{environment_id}~1network/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4544,10 +4588,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.finspace.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.finspace.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4555,17 +4599,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.finspace.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -4586,75 +4619,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    kx_cluster_code_configurations:
-      id: aws.finspace.kx_cluster_code_configurations
-      name: kx_cluster_code_configurations
-      title: kx_cluster_code_configurations
-      methods:
-        update_kx_cluster_code_configuration:
-          operation:
-            $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1configuration~1code/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/kx_cluster_code_configurations/methods/update_kx_cluster_code_configuration"
-        delete: []
-    kx_cluster_databases:
-      id: aws.finspace.kx_cluster_databases
-      name: kx_cluster_databases
-      title: kx_cluster_databases
-      methods:
-        update_kx_cluster_databases:
-          operation:
-            $ref: "#/paths/~1kx~1environments~1{environment_id}~1clusters~1{cluster_name}~1configuration~1databases/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/kx_cluster_databases/methods/update_kx_cluster_databases"
-        delete: []
-    kx_environment_networks:
-      id: aws.finspace.kx_environment_networks
-      name: kx_environment_networks
-      title: kx_environment_networks
-      methods:
-        update_kx_environment_network:
-          operation:
-            $ref: "#/paths/~1kx~1environments~1{environment_id}~1network/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/kx_environment_networks/methods/update_kx_environment_network"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

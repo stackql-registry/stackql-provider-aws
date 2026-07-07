@@ -105,6 +105,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Applications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /dataIntegrations:
     post:
       operationId: CreateDataIntegration
@@ -180,6 +183,9 @@ paths:
       x-stackql-method: list_data_integrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataIntegrations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /dataIntegrations/{identifier}/associations:
     post:
       operationId: CreateDataIntegrationAssociation
@@ -256,6 +262,9 @@ paths:
       x-stackql-method: list_data_integration_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataIntegrationAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /eventIntegrations:
     post:
       operationId: CreateEventIntegration
@@ -324,6 +333,9 @@ paths:
       x-stackql-method: list_event_integrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventIntegrations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_identifier}:
     delete:
       operationId: DeleteApplication
@@ -599,6 +611,9 @@ paths:
       x-stackql-method: list_application_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /eventIntegrations/{name}/associations:
     get:
       operationId: ListEventIntegrationAssociations
@@ -634,6 +649,9 @@ paths:
       x-stackql-method: list_event_integration_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventIntegrationAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -652,7 +670,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -683,7 +701,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -709,7 +727,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /dataIntegrations/{identifier}/associations/{data_integration_association_identifier}:

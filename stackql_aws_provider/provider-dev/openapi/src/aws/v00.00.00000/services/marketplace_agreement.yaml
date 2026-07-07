@@ -2884,11 +2884,89 @@ components:
     UpdatePurchaseOrdersOutput:
       type: object
   x-stackQL-resources:
-    agreement_requests:
-      id: aws.marketplace_agreement.agreement_requests
-      name: agreement_requests
-      title: agreement_requests
+    agreements:
+      id: aws.marketplace_agreement.agreements
+      name: agreements
+      title: agreements
       methods:
+        accept_agreement_cancellation_request:
+          operation:
+            $ref: "#/paths/~1AcceptAgreementCancellationRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        accept_agreement_payment_request:
+          operation:
+            $ref: "#/paths/~1AcceptAgreementPaymentRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        accept_agreement_request:
+          operation:
+            $ref: "#/paths/~1AcceptAgreementRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_agreement:
+          operation:
+            $ref: "#/paths/~1CancelAgreement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_agreement_cancellation_request:
+          operation:
+            $ref: "#/paths/~1CancelAgreementCancellationRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_agreement_payment_request:
+          operation:
+            $ref: "#/paths/~1CancelAgreementPaymentRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_agreement_request:
           operation:
             $ref: "#/paths/~1CreateAgreementRequest/post"
@@ -2902,20 +2980,35 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/agreement_requests/methods/create_agreement_request"
-        update: []
-        delete: []
-    agreements:
-      id: aws.marketplace_agreement.agreements
-      name: agreements
-      title: agreements
-      methods:
         describe_agreement:
           operation:
             $ref: "#/paths/~1DescribeAgreement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_agreement_cancellation_request:
+          operation:
+            $ref: "#/paths/~1RejectAgreementCancellationRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_agreement_payment_request:
+          operation:
+            $ref: "#/paths/~1RejectAgreementPaymentRequest/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2938,13 +3031,47 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        send_agreement_cancellation_request:
+          operation:
+            $ref: "#/paths/~1SendAgreementCancellationRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_agreement_payment_request:
+          operation:
+            $ref: "#/paths/~1SendAgreementPaymentRequest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agreements/methods/describe_agreement"
           - $ref: "#/components/x-stackQL-resources/agreements/methods/search_agreements"
-        insert: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/agreements/methods/create_agreement_request"
         update: []
         delete: []
     agreement_cancellation_requests:
@@ -2977,6 +3104,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3003,6 +3137,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3041,6 +3182,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3067,6 +3215,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3105,6 +3260,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3131,6 +3293,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3156,6 +3325,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

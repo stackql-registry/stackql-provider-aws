@@ -115,7 +115,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ApplySecurityGroupsToLoadBalancerOutputDisplay'
-      x-stackql-resource: apply_security_groups_to_load_balancer
+      x-stackql-resource: load_balancers
       x-stackql-method: apply_security_groups_to_load_balancer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ApplySecurityGroupsToLoadBalancerOutputDisplay
@@ -138,7 +138,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ApplySecurityGroupsToLoadBalancerInput'
-      x-stackql-resource: apply_security_groups_to_load_balancer
+      x-stackql-resource: load_balancers
       x-stackql-method: apply_security_groups_to_load_balancer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ApplySecurityGroupsToLoadBalancerOutputDisplay
@@ -177,7 +177,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/AttachLoadBalancerToSubnetsOutputDisplay'
-      x-stackql-resource: load_balancer_to_subnets
+      x-stackql-resource: load_balancers
       x-stackql-method: attach_load_balancer_to_subnets
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AttachLoadBalancerToSubnetsOutputDisplay
@@ -200,7 +200,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AttachLoadBalancerToSubnetsInput'
-      x-stackql-resource: load_balancer_to_subnets
+      x-stackql-resource: load_balancers
       x-stackql-method: attach_load_balancer_to_subnets
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AttachLoadBalancerToSubnetsOutputDisplay
@@ -238,7 +238,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ConfigureHealthCheckOutputDisplay'
-      x-stackql-resource: configure_health_check
+      x-stackql-resource: load_balancers
       x-stackql-method: configure_health_check
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ConfigureHealthCheckOutputDisplay
@@ -260,7 +260,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ConfigureHealthCheckInput'
-      x-stackql-resource: configure_health_check
+      x-stackql-resource: load_balancers
       x-stackql-method: configure_health_check
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ConfigureHealthCheckOutputDisplay
@@ -310,7 +310,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateAppCookieStickinessPolicyOutputDisplay'
-      x-stackql-resource: app_cookie_stickiness_policies
+      x-stackql-resource: load_balancers
       x-stackql-method: create_app_cookie_stickiness_policy
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAppCookieStickinessPolicyOutputDisplay
@@ -337,7 +337,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateAppCookieStickinessPolicyInput'
-      x-stackql-resource: app_cookie_stickiness_policies
+      x-stackql-resource: load_balancers
       x-stackql-method: create_app_cookie_stickiness_policy
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateAppCookieStickinessPolicyOutputDisplay
@@ -391,7 +391,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateLBCookieStickinessPolicyOutputDisplay'
-      x-stackql-resource: lb_cookie_stickiness_policies
+      x-stackql-resource: load_balancers
       x-stackql-method: create_lb_cookie_stickiness_policy
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateLBCookieStickinessPolicyOutputDisplay
@@ -420,7 +420,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateLBCookieStickinessPolicyInput'
-      x-stackql-resource: lb_cookie_stickiness_policies
+      x-stackql-resource: load_balancers
       x-stackql-method: create_lb_cookie_stickiness_policy
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateLBCookieStickinessPolicyOutputDisplay
@@ -566,7 +566,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateLoadBalancerListenersOutputDisplay'
-      x-stackql-resource: load_balancer_listeners
+      x-stackql-resource: load_balancers
       x-stackql-method: create_load_balancer_listeners
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateLoadBalancerListenersOutputDisplay
@@ -589,7 +589,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateLoadBalancerListenerInput'
-      x-stackql-resource: load_balancer_listeners
+      x-stackql-resource: load_balancers
       x-stackql-method: create_load_balancer_listeners
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateLoadBalancerListenersOutputDisplay
@@ -761,7 +761,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeleteLoadBalancerListenersOutputDisplay'
-      x-stackql-resource: load_balancer_listeners
+      x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer_listeners
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteLoadBalancerListenersOutputDisplay
@@ -782,7 +782,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteLoadBalancerListenerInput'
-      x-stackql-resource: load_balancer_listeners
+      x-stackql-resource: load_balancers
       x-stackql-method: delete_load_balancer_listeners
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteLoadBalancerListenersOutputDisplay
@@ -882,7 +882,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeregisterInstancesFromLoadBalancerOutputDisplay'
-      x-stackql-resource: instances_from_load_balancers
+      x-stackql-resource: load_balancers
       x-stackql-method: deregister_instances_from_load_balancer
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeregisterInstancesFromLoadBalancerOutputDisplay
@@ -906,7 +906,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeregisterEndPointsInput'
-      x-stackql-resource: instances_from_load_balancers
+      x-stackql-resource: load_balancers
       x-stackql-method: deregister_instances_from_load_balancer
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeregisterInstancesFromLoadBalancerOutputDisplay
@@ -1366,7 +1366,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DetachLoadBalancerFromSubnetsOutputDisplay'
-      x-stackql-resource: load_balancer_from_subnets
+      x-stackql-resource: load_balancers
       x-stackql-method: detach_load_balancer_from_subnets
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DetachLoadBalancerFromSubnetsOutputDisplay
@@ -1389,7 +1389,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DetachLoadBalancerFromSubnetsInput'
-      x-stackql-resource: load_balancer_from_subnets
+      x-stackql-resource: load_balancers
       x-stackql-method: detach_load_balancer_from_subnets
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DetachLoadBalancerFromSubnetsOutputDisplay
@@ -1431,7 +1431,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DisableAvailabilityZonesForLoadBalancerOutputDisplay'
-      x-stackql-resource: availability_zones_for_load_balancer
+      x-stackql-resource: load_balancers
       x-stackql-method: disable_availability_zones_for_load_balancer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableAvailabilityZonesForLoadBalancerOutputDisplay
@@ -1457,7 +1457,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveAvailabilityZonesInput'
-      x-stackql-resource: availability_zones_for_load_balancer
+      x-stackql-resource: load_balancers
       x-stackql-method: disable_availability_zones_for_load_balancer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableAvailabilityZonesForLoadBalancerOutputDisplay
@@ -1497,7 +1497,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/EnableAvailabilityZonesForLoadBalancerOutputDisplay'
-      x-stackql-resource: availability_zones_for_load_balancer
+      x-stackql-resource: load_balancers
       x-stackql-method: enable_availability_zones_for_load_balancer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableAvailabilityZonesForLoadBalancerOutputDisplay
@@ -1521,7 +1521,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddAvailabilityZonesInput'
-      x-stackql-resource: availability_zones_for_load_balancer
+      x-stackql-resource: load_balancers
       x-stackql-method: enable_availability_zones_for_load_balancer
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableAvailabilityZonesForLoadBalancerOutputDisplay
@@ -1634,7 +1634,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RegisterInstancesWithLoadBalancerOutputDisplay'
-      x-stackql-resource: instances_with_load_balancers
+      x-stackql-resource: load_balancers
       x-stackql-method: register_instances_with_load_balancer
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: RegisterInstancesWithLoadBalancerOutputDisplay
@@ -1665,7 +1665,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RegisterEndPointsInput'
-      x-stackql-resource: instances_with_load_balancers
+      x-stackql-resource: load_balancers
       x-stackql-method: register_instances_with_load_balancer
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: RegisterInstancesWithLoadBalancerOutputDisplay
@@ -1768,7 +1768,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetLoadBalancerListenerSSLCertificateOutputDisplay'
-      x-stackql-resource: load_balancer_listener_ssl_certificates
+      x-stackql-resource: load_balancers
       x-stackql-method: set_load_balancer_listener_ssl_certificate
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetLoadBalancerListenerSSLCertificateOutputDisplay
@@ -1791,7 +1791,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetLoadBalancerListenerSSLCertificateInput'
-      x-stackql-resource: load_balancer_listener_ssl_certificates
+      x-stackql-resource: load_balancers
       x-stackql-method: set_load_balancer_listener_ssl_certificate
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetLoadBalancerListenerSSLCertificateOutputDisplay
@@ -1841,7 +1841,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetLoadBalancerPoliciesForBackendServerOutputDisplay'
-      x-stackql-resource: load_balancer_policies_for_backend_servers
+      x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_for_backend_server
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetLoadBalancerPoliciesForBackendServerOutputDisplay
@@ -1869,7 +1869,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetLoadBalancerPoliciesForBackendServerInput'
-      x-stackql-resource: load_balancer_policies_for_backend_servers
+      x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_for_backend_server
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetLoadBalancerPoliciesForBackendServerOutputDisplay
@@ -1916,7 +1916,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetLoadBalancerPoliciesOfListenerOutputDisplay'
-      x-stackql-resource: load_balancer_policies_of_listeners
+      x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_of_listener
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetLoadBalancerPoliciesOfListenerOutputDisplay
@@ -1940,7 +1940,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetLoadBalancerPoliciesOfListenerInput'
-      x-stackql-resource: load_balancer_policies_of_listeners
+      x-stackql-resource: load_balancer_policies
       x-stackql-method: set_load_balancer_policies_of_listener
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetLoadBalancerPoliciesOfListenerOutputDisplay

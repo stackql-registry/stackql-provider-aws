@@ -79,7 +79,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateManagedNotificationAccountContactResponse'
-      x-stackql-resource: managed_notification_account_contacts
+      x-stackql-resource: managed_notification_configurations
       x-stackql-method: associate_managed_notification_account_contact
       x-stackql-verb: UPDATE
   /channels/associate-managed-notification/{channel_arn}:
@@ -113,7 +113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateManagedNotificationAdditionalChannelResponse'
-      x-stackql-resource: managed_notification_additional_channels
+      x-stackql-resource: channels
       x-stackql-method: associate_managed_notification_additional_channel
       x-stackql-verb: UPDATE
   /organizational-units/associate/{organizational_unit_id}:
@@ -219,6 +219,9 @@ paths:
       x-stackql-method: list_event_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.eventRules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /notification-configurations:
     post:
       operationId: CreateNotificationConfiguration
@@ -310,6 +313,9 @@ paths:
       x-stackql-method: list_notification_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.notificationConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /event-rules/{arn}:
     delete:
       operationId: DeleteEventRule
@@ -522,6 +528,7 @@ paths:
       x-stackql-resource: notifications_access_for_organizations
       x-stackql-method: get_notifications_access_for_organization
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.notificationsAccessForOrganization
   /channels/disassociate/{arn}:
     post:
       operationId: DisassociateChannel
@@ -584,7 +591,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateManagedNotificationAccountContactResponse'
-      x-stackql-resource: managed_notification_account_contacts
+      x-stackql-resource: managed_notification_configurations
       x-stackql-method: disassociate_managed_notification_account_contact
       x-stackql-verb: UPDATE
   /channels/disassociate-managed-notification/{channel_arn}:
@@ -617,7 +624,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateManagedNotificationAdditionalChannelResponse'
-      x-stackql-resource: managed_notification_additional_channels
+      x-stackql-resource: channels
       x-stackql-method: disassociate_managed_notification_additional_channel
       x-stackql-verb: UPDATE
   /organizational-units/disassociate/{organizational_unit_id}:
@@ -791,11 +798,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListChannelsResponse'
+                $ref: '#/components/schemas/ListChannelsOutputDisplay'
       x-stackql-resource: channels
       x-stackql-method: list_channels
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.channels
+      x-stackql-responseEnvelope: ListChannelsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "channels" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"channel": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /channels/list-managed-notification-channel-associations:
     get:
       operationId: ListManagedNotificationChannelAssociations
@@ -832,6 +847,9 @@ paths:
       x-stackql-method: list_managed_notification_channel_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.channelAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-managed-notification-child-events/{aggregate_managed_notification_event_arn}:
     get:
       operationId: ListManagedNotificationChildEvents
@@ -899,6 +917,9 @@ paths:
       x-stackql-method: list_managed_notification_child_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.managedNotificationChildEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /managed-notification-configurations:
     get:
       operationId: ListManagedNotificationConfigurations
@@ -935,6 +956,9 @@ paths:
       x-stackql-method: list_managed_notification_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.managedNotificationConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /managed-notification-events:
     get:
       operationId: ListManagedNotificationEvents
@@ -1002,6 +1026,9 @@ paths:
       x-stackql-method: list_managed_notification_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.managedNotificationEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-member-accounts:
     get:
       operationId: ListMemberAccounts
@@ -1054,6 +1081,9 @@ paths:
       x-stackql-method: list_member_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.memberAccounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /notification-events:
     get:
       operationId: ListNotificationEvents
@@ -1133,6 +1163,9 @@ paths:
       x-stackql-method: list_notification_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.notificationEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /notification-hubs:
     get:
       operationId: ListNotificationHubs
@@ -1161,6 +1194,9 @@ paths:
       x-stackql-method: list_notification_hubs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.notificationHubs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: RegisterNotificationHub
       description: Registers a NotificationConfiguration in the specified Region. There is a maximum of one NotificationConfiguration
@@ -1216,11 +1252,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOrganizationalUnitsResponse'
+                $ref: '#/components/schemas/ListOrganizationalUnitsOutputDisplay'
       x-stackql-resource: organizational_units
       x-stackql-method: list_organizational_units
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.organizationalUnits
+      x-stackql-responseEnvelope: ListOrganizationalUnitsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "organizationalUnits" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"organizational_unit": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{arn}:
     get:
       operationId: ListTagsForResource
@@ -1241,7 +1285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1273,7 +1317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1300,7 +1344,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:
@@ -2232,22 +2276,19 @@ components:
       minLength: 1
       maxLength: 4096
       pattern: '[\w+-/=]+'
-    ListChannelsResponse:
+    ListChannelsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A pagination token. If a non-null pagination token is returned in a result, pass its value in another
-            request to retrieve more entries.
-        channels:
-          $ref: '#/components/schemas/Channels'
+        channel:
+          type: string
           description: A list of Channels.
-      required:
-      - channels
-    Channels:
-      type: array
-      items:
-        $ref: '#/components/schemas/ChannelArn'
+    ListChannelsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListChannelsRowDisplay'
     ListEventRulesRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -2908,21 +2949,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListOrganizationalUnitsResponse:
+    ListOrganizationalUnitsRowDisplay:
       type: object
       properties:
-        organizationalUnits:
-          $ref: '#/components/schemas/OrganizationalUnits'
+        organizational_unit:
+          type: string
           description: The list of organizational units that match the specified criteria.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use for the next page of results. If there are no additional results, this value is null.
-      required:
-      - organizationalUnits
-    OrganizationalUnits:
-      type: array
-      items:
-        $ref: '#/components/schemas/OrganizationalUnitId'
+    ListOrganizationalUnitsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListOrganizationalUnitsRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

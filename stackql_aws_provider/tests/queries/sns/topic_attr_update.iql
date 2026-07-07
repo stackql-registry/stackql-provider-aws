@@ -1,0 +1,3 @@
+UPDATE aws.sns.topic_attributes
+SET AttributeValue = 'stackql-smoke-display'
+WHERE region = '{{ region }}' AND TopicArn = '{{ topic_find.topic_arn }}' AND AttributeName = 'DisplayName'

@@ -7803,7 +7803,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/StringDisplay"
+            $ref: "#/components/schemas/ListAllowedNodeTypeModificationsRowDisplay"
     ListAllowedNodeTypeModificationsMessage:
       description: The input parameters for the ListAllowedNodeTypeModifications operation.
       type: object
@@ -7814,6 +7814,15 @@ components:
         ReplicationGroupId:
           $ref: "#/components/schemas/String"
           description: The name of the replication group want to scale up to a larger node type. ElastiCache uses the replication group id to identify the current node type being used by this replication group, and from that to create a list of node types you can scale up to. You must provide a value for either the CacheClusterId or the ReplicationGroupId.
+    ListAllowedNodeTypeModificationsRowDisplay:
+      type: object
+      properties:
+        scale_up_modifications:
+          type: array
+          description: A string list, each element of which specifies a cache node type which you can use to scale your cluster or replication group. When scaling up a Valkey or Redis OSS cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup, use a value from this list for the CacheNodeType parameter.
+        scale_down_modifications:
+          type: array
+          description: A string list, each element of which specifies a cache node type which you can use to scale your cluster or replication group. When scaling down a Valkey or Redis OSS cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup, use a value from this list for the CacheNodeType parameter.
     TagDisplay:
       type: object
       properties:
@@ -8493,10 +8502,10 @@ components:
         - ReplicationGroupId
         - CustomerNodeEndpointList
   x-stackQL-resources:
-    tags_to_resources:
-      id: aws.elasticache.tags_to_resources
-      name: tags_to_resources
-      title: tags_to_resources
+    tags:
+      id: aws.elasticache.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_resource:
           operation:
@@ -8517,16 +8526,56 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1?Action=ListTagsForResource&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTagsForResourceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        remove_tags_from_resource:
+          operation:
+            $ref: "#/paths/~1?Action=RemoveTagsFromResource&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RemoveTagsFromResourceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_resources/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags_from_resource"
         delete: []
-    cache_security_group_ingress:
-      id: aws.elasticache.cache_security_group_ingress
-      name: cache_security_group_ingress
-      title: cache_security_group_ingress
+    cache_security_groups:
+      id: aws.elasticache.cache_security_groups
+      name: cache_security_groups
+      title: cache_security_groups
       methods:
         authorize_cache_security_group_ingress:
           operation:
@@ -8537,6 +8586,56 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/AuthorizeCacheSecurityGroupIngressOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_cache_security_group:
+          operation:
+            $ref: "#/paths/~1?Action=CreateCacheSecurityGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateCacheSecurityGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_cache_security_group:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteCacheSecurityGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_cache_security_groups:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeCacheSecurityGroups&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeCacheSecurityGroupsOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -8559,6 +8658,71 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/cache_security_groups/methods/describe_cache_security_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/cache_security_groups/methods/create_cache_security_group"
+        update:
+          - $ref: "#/components/x-stackQL-resources/cache_security_groups/methods/authorize_cache_security_group_ingress"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/cache_security_groups/methods/delete_cache_security_group"
+    service_updates:
+      id: aws.elasticache.service_updates
+      name: service_updates
+      title: service_updates
+      methods:
+        batch_apply_update_action:
+          operation:
+            $ref: "#/paths/~1?Action=BatchApplyUpdateAction&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BatchApplyUpdateActionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        batch_stop_update_action:
+          operation:
+            $ref: "#/paths/~1?Action=BatchStopUpdateAction&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BatchStopUpdateActionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_service_updates:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeServiceUpdates&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeServiceUpdatesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -8567,11 +8731,347 @@ components:
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/service_updates/methods/describe_service_updates"
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cache_security_group_ingress/methods/authorize_cache_security_group_ingress"
+        update: []
         delete: []
+    replication_groups:
+      id: aws.elasticache.replication_groups
+      name: replication_groups
+      title: replication_groups
+      methods:
+        complete_migration:
+          operation:
+            $ref: "#/paths/~1?Action=CompleteMigration&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CompleteMigrationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_replication_group:
+          operation:
+            $ref: "#/paths/~1?Action=CreateReplicationGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateReplicationGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        decrease_replica_count:
+          operation:
+            $ref: "#/paths/~1?Action=DecreaseReplicaCount&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DecreaseReplicaCountOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_replication_group:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteReplicationGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteReplicationGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_replication_groups:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeReplicationGroups&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeReplicationGroupsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        increase_replica_count:
+          operation:
+            $ref: "#/paths/~1?Action=IncreaseReplicaCount&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/IncreaseReplicaCountOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_replication_group:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyReplicationGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyReplicationGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_replication_group_shard_configuration:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyReplicationGroupShardConfiguration&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyReplicationGroupShardConfigurationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        start_migration:
+          operation:
+            $ref: "#/paths/~1?Action=StartMigration&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/StartMigrationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        test_failover:
+          operation:
+            $ref: "#/paths/~1?Action=TestFailover&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TestFailoverOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        test_migration:
+          operation:
+            $ref: "#/paths/~1?Action=TestMigration&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TestMigrationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/describe_replication_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/create_replication_group"
+        update:
+          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/modify_replication_group_shard_configuration"
+          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/modify_replication_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/delete_replication_group"
+    serverless_caches:
+      id: aws.elasticache.serverless_caches
+      name: serverless_caches
+      title: serverless_caches
+      methods:
+        copy_serverless_cache_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=CopyServerlessCacheSnapshot&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyServerlessCacheSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_serverless_cache:
+          operation:
+            $ref: "#/paths/~1?Action=CreateServerlessCache&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateServerlessCacheOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_serverless_cache:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteServerlessCache&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteServerlessCacheOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_serverless_caches:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeServerlessCaches&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeServerlessCachesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        export_serverless_cache_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=ExportServerlessCacheSnapshot&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ExportServerlessCacheSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_serverless_cache:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyServerlessCache&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyServerlessCacheOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/describe_serverless_caches"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/create_serverless_cache"
+        update:
+          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/modify_serverless_cache"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/delete_serverless_cache"
     cache_clusters:
       id: aws.elasticache.cache_clusters
       name: cache_clusters
@@ -8648,6 +9148,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reboot_cache_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=RebootCacheCluster&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RebootCacheClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -8745,69 +9262,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/cache_parameter_groups/methods/modify_cache_parameter_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/cache_parameter_groups/methods/delete_cache_parameter_group"
-    cache_security_groups:
-      id: aws.elasticache.cache_security_groups
-      name: cache_security_groups
-      title: cache_security_groups
-      methods:
-        create_cache_security_group:
-          operation:
-            $ref: "#/paths/~1?Action=CreateCacheSecurityGroup&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateCacheSecurityGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_cache_security_group:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteCacheSecurityGroup&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_cache_security_groups:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeCacheSecurityGroups&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeCacheSecurityGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/cache_security_groups/methods/describe_cache_security_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/cache_security_groups/methods/create_cache_security_group"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/cache_security_groups/methods/delete_cache_security_group"
     cache_subnet_groups:
       id: aws.elasticache.cache_subnet_groups
       name: cache_subnet_groups
@@ -8915,6 +9369,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        decrease_node_groups_in_global_replication_group:
+          operation:
+            $ref: "#/paths/~1?Action=DecreaseNodeGroupsInGlobalReplicationGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DecreaseNodeGroupsInGlobalReplicationGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         delete_global_replication_group:
           operation:
             $ref: "#/paths/~1?Action=DeleteGlobalReplicationGroup&Version=2015-02-02/get"
@@ -8972,6 +9443,40 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        failover_global_replication_group:
+          operation:
+            $ref: "#/paths/~1?Action=FailoverGlobalReplicationGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/FailoverGlobalReplicationGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        increase_node_groups_in_global_replication_group:
+          operation:
+            $ref: "#/paths/~1?Action=IncreaseNodeGroupsInGlobalReplicationGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/IncreaseNodeGroupsInGlobalReplicationGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         modify_global_replication_group:
           operation:
             $ref: "#/paths/~1?Action=ModifyGlobalReplicationGroup&Version=2015-02-02/get"
@@ -8991,6 +9496,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        rebalance_slots_in_global_replication_group:
+          operation:
+            $ref: "#/paths/~1?Action=RebalanceSlotsInGlobalReplicationGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RebalanceSlotsInGlobalReplicationGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/global_replication_groups/methods/describe_global_replication_groups"
@@ -9001,186 +9523,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/global_replication_groups/methods/modify_global_replication_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/global_replication_groups/methods/delete_global_replication_group"
-    replication_groups:
-      id: aws.elasticache.replication_groups
-      name: replication_groups
-      title: replication_groups
-      methods:
-        create_replication_group:
-          operation:
-            $ref: "#/paths/~1?Action=CreateReplicationGroup&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateReplicationGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_replication_group:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteReplicationGroup&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteReplicationGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_replication_groups:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeReplicationGroups&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeReplicationGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        modify_replication_group:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyReplicationGroup&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyReplicationGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/describe_replication_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/create_replication_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/modify_replication_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/replication_groups/methods/delete_replication_group"
-    serverless_caches:
-      id: aws.elasticache.serverless_caches
-      name: serverless_caches
-      title: serverless_caches
-      methods:
-        create_serverless_cache:
-          operation:
-            $ref: "#/paths/~1?Action=CreateServerlessCache&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateServerlessCacheOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_serverless_cache:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteServerlessCache&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteServerlessCacheOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_serverless_caches:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeServerlessCaches&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeServerlessCachesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        modify_serverless_cache:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyServerlessCache&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyServerlessCacheOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/describe_serverless_caches"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/create_serverless_cache"
-        update:
-          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/modify_serverless_cache"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/serverless_caches/methods/delete_serverless_cache"
     serverless_cache_snapshots:
       id: aws.elasticache.serverless_cache_snapshots
       name: serverless_cache_snapshots
@@ -9555,6 +9897,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        reset_cache_parameter_group:
+          operation:
+            $ref: "#/paths/~1?Action=ResetCacheParameterGroup&Version=2015-02-02/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResetCacheParameterGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cache_parameters/methods/describe_cache_parameters"
@@ -9675,31 +10034,18 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/reserved_cache_nodes_offerings/methods/describe_reserved_cache_nodes_offerings"
-        insert: []
-        update: []
-        delete: []
-    service_updates:
-      id: aws.elasticache.service_updates
-      name: service_updates
-      title: service_updates
-      methods:
-        describe_service_updates:
+        purchase_reserved_cache_nodes_offering:
           operation:
-            $ref: "#/paths/~1?Action=DescribeServiceUpdates&Version=2015-02-02/get"
+            $ref: "#/paths/~1?Action=PurchaseReservedCacheNodesOffering&Version=2015-02-02/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/DescribeServiceUpdatesOutputDisplay"
+              $ref: "#/components/schemas/PurchaseReservedCacheNodesOfferingOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -9707,7 +10053,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/service_updates/methods/describe_service_updates"
+          - $ref: "#/components/x-stackQL-resources/reserved_cache_nodes_offerings/methods/describe_reserved_cache_nodes_offerings"
         insert: []
         update: []
         delete: []
@@ -9756,7 +10102,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListAllowedNodeTypeModificationsOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListAllowedNodeTypeModificationsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListAllowedNodeTypeModificationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n) "map" -}}"scale_up_modifications": {{ toJson (index $n "ScaleUpModifications") }}, "scale_down_modifications": {{ toJson (index $n "ScaleDownModifications") }}{{- end -}}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -9770,94 +10117,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/allowed_node_type_modifications/methods/list_allowed_node_type_modifications"
         insert: []
         update: []
-        delete: []
-    tags_for_resources:
-      id: aws.elasticache.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1?Action=ListTagsForResource&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListTagsForResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    replication_group_shard_configurations:
-      id: aws.elasticache.replication_group_shard_configurations
-      name: replication_group_shard_configurations
-      title: replication_group_shard_configurations
-      methods:
-        modify_replication_group_shard_configuration:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyReplicationGroupShardConfiguration&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyReplicationGroupShardConfigurationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/replication_group_shard_configurations/methods/modify_replication_group_shard_configuration"
-        delete: []
-    tags_from_resources:
-      id: aws.elasticache.tags_from_resources
-      name: tags_from_resources
-      title: tags_from_resources
-      methods:
-        remove_tags_from_resource:
-          operation:
-            $ref: "#/paths/~1?Action=RemoveTagsFromResource&Version=2015-02-02/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RemoveTagsFromResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_resources/methods/remove_tags_from_resource"
         delete: []

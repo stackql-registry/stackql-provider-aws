@@ -1,0 +1,6 @@
+-- ModifyInstanceAttribute via the generic Attribute/Value pair - one of
+-- the few instance attributes modifiable while running. We terminate via
+-- the API regardless, so shutdown-behavior=terminate is side-effect free.
+UPDATE aws.ec2.instance_attributes
+SET Attribute = 'instanceInitiatedShutdownBehavior', Value = 'terminate'
+WHERE region = '{{ region }}' AND instance_id = '{{ instance_create.instance_id }}'

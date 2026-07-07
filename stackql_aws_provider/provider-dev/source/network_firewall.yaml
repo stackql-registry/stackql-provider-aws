@@ -288,7 +288,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AttachRuleGroupsToProxyConfigurationResponse'
-      x-stackql-resource: rule_groups_to_proxy_configurations
+      x-stackql-resource: proxy_configurations
       x-stackql-method: attach_rule_groups_to_proxy_configuration
       x-stackql-verb: UPDATE
   /CreateFirewall:
@@ -2025,7 +2025,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetachRuleGroupsFromProxyConfigurationResponse'
-      x-stackql-resource: rule_groups_from_proxy_configurations
+      x-stackql-resource: proxy_configurations
       x-stackql-method: detach_rule_groups_from_proxy_configuration
       x-stackql-verb: UPDATE
   /DisassociateAvailabilityZones:
@@ -2200,6 +2200,9 @@ paths:
       x-stackql-method: get_analysis_report_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnalysisReportResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAnalysisReports:
     post:
       operationId: ListAnalysisReports
@@ -2251,6 +2254,9 @@ paths:
       x-stackql-method: list_analysis_reports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnalysisReports
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFirewallPolicies:
     post:
       operationId: ListFirewallPolicies
@@ -2295,6 +2301,9 @@ paths:
       x-stackql-method: list_firewall_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FirewallPolicies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFirewalls:
     post:
       operationId: ListFirewalls
@@ -2344,6 +2353,9 @@ paths:
       x-stackql-method: list_firewalls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Firewalls
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFlowOperationResults:
     post:
       operationId: ListFlowOperationResults
@@ -2410,6 +2422,9 @@ paths:
       x-stackql-method: list_flow_operation_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Flows
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFlowOperations:
     post:
       operationId: ListFlowOperations
@@ -2475,6 +2490,9 @@ paths:
       x-stackql-method: list_flow_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FlowOperations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProxies:
     post:
       operationId: ListProxies
@@ -2519,6 +2537,9 @@ paths:
       x-stackql-method: list_proxies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Proxies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProxyConfigurations:
     post:
       operationId: ListProxyConfigurations
@@ -2563,6 +2584,9 @@ paths:
       x-stackql-method: list_proxy_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProxyConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProxyRuleGroups:
     post:
       operationId: ListProxyRuleGroups
@@ -2607,6 +2631,9 @@ paths:
       x-stackql-method: list_proxy_rule_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProxyRuleGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRuleGroups:
     post:
       operationId: ListRuleGroups
@@ -2666,6 +2693,9 @@ paths:
       x-stackql-method: list_rule_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RuleGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTLSInspectionConfigurations:
     post:
       operationId: ListTLSInspectionConfigurations
@@ -2710,6 +2740,9 @@ paths:
       x-stackql-method: list_tls_inspection_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TLSInspectionConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2758,10 +2791,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListVpcEndpointAssociations:
     post:
       operationId: ListVpcEndpointAssociations
@@ -2811,6 +2847,9 @@ paths:
       x-stackql-method: list_vpc_endpoint_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VpcEndpointAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutResourcePolicy:
     post:
       operationId: PutResourcePolicy
@@ -3016,7 +3055,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFlowCaptureResponse'
-      x-stackql-resource: flow_capture
+      x-stackql-resource: firewalls
       x-stackql-method: start_flow_capture
       x-stackql-verb: EXEC
   /StartFlowFlush:
@@ -3075,7 +3114,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFlowFlushResponse'
-      x-stackql-resource: flow_flush
+      x-stackql-resource: firewalls
       x-stackql-method: start_flow_flush
       x-stackql-verb: EXEC
   /TagResource:
@@ -3118,7 +3157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3161,7 +3200,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAvailabilityZoneChangeProtection:
@@ -3274,7 +3313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFirewallAnalysisSettingsResponse'
-      x-stackql-resource: firewall_analysis_settings
+      x-stackql-resource: firewalls
       x-stackql-method: update_firewall_analysis_settings
       x-stackql-verb: UPDATE
   /UpdateFirewallDeleteProtection:
@@ -3333,7 +3372,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFirewallDeleteProtectionResponse'
-      x-stackql-resource: firewall_delete_protections
+      x-stackql-resource: firewalls
       x-stackql-method: update_firewall_delete_protection
       x-stackql-verb: UPDATE
   /UpdateFirewallDescription:
@@ -3388,7 +3427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFirewallDescriptionResponse'
-      x-stackql-resource: firewall_descriptions
+      x-stackql-resource: firewalls
       x-stackql-method: update_firewall_description
       x-stackql-verb: UPDATE
   /UpdateFirewallEncryptionConfiguration:
@@ -3439,7 +3478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFirewallEncryptionConfigurationResponse'
-      x-stackql-resource: firewall_encryption_configurations
+      x-stackql-resource: firewalls
       x-stackql-method: update_firewall_encryption_configuration
       x-stackql-verb: UPDATE
   /UpdateFirewallPolicy:
@@ -3568,7 +3607,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFirewallPolicyChangeProtectionResponse'
-      x-stackql-resource: firewall_policy_change_protections
+      x-stackql-resource: firewall_policies
       x-stackql-method: update_firewall_policy_change_protection
       x-stackql-verb: UPDATE
   /UpdateLoggingConfiguration:
@@ -3867,7 +3906,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateProxyRuleGroupPrioritiesResponse'
-      x-stackql-resource: proxy_rule_group_priorities
+      x-stackql-resource: proxy_rule_groups
       x-stackql-method: update_proxy_rule_group_priorities
       x-stackql-verb: UPDATE
   /UpdateProxyRulePriorities:
@@ -3926,7 +3965,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateProxyRulePrioritiesResponse'
-      x-stackql-resource: proxy_rule_priorities
+      x-stackql-resource: proxy_rules
       x-stackql-method: update_proxy_rule_priorities
       x-stackql-verb: UPDATE
   /UpdateRuleGroup:

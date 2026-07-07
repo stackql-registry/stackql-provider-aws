@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptAccountLinkInvitationResult'
-      x-stackql-resource: account_link_invitation
+      x-stackql-resource: account_links
       x-stackql-method: accept_account_link_invitation
       x-stackql-verb: EXEC
   /AssociateConnectionAlias:
@@ -177,7 +177,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateWorkspaceApplicationResult'
-      x-stackql-resource: workspace_applications
+      x-stackql-resource: applications
       x-stackql-method: associate_workspace_application
       x-stackql-verb: UPDATE
   /AuthorizeIpRules:
@@ -273,7 +273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyWorkspaceImageResult'
-      x-stackql-resource: workspace_image
+      x-stackql-resource: workspaces
       x-stackql-method: copy_workspace_image
       x-stackql-verb: EXEC
   /CreateAccountLinkInvitation:
@@ -312,7 +312,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateAccountLinkInvitationResult'
-      x-stackql-resource: account_link_invitations
+      x-stackql-resource: account_links
       x-stackql-method: create_account_link_invitation
       x-stackql-verb: INSERT
   /CreateConnectClientAddIn:
@@ -491,7 +491,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateStandbyWorkspacesResult'
-      x-stackql-resource: standby_workspaces
+      x-stackql-resource: workspaces
       x-stackql-method: create_standby_workspaces
       x-stackql-verb: INSERT
   /CreateTags:
@@ -586,7 +586,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateUpdatedWorkspaceImageResult'
-      x-stackql-resource: updated_workspace_images
+      x-stackql-resource: workspace_images
       x-stackql-method: create_updated_workspace_image
       x-stackql-verb: INSERT
   /CreateWorkspaceBundle:
@@ -836,7 +836,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteAccountLinkInvitationResult'
-      x-stackql-resource: account_link_invitations
+      x-stackql-resource: account_links
       x-stackql-method: delete_account_link_invitation
       x-stackql-verb: DELETE
   /DeleteClientBranding:
@@ -1151,7 +1151,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeployWorkspaceApplicationsResult'
-      x-stackql-resource: deploy_workspace_applications
+      x-stackql-resource: applications
       x-stackql-method: deploy_workspace_applications
       x-stackql-verb: EXEC
   /DeregisterWorkspaceDirectory:
@@ -1266,6 +1266,9 @@ paths:
       x-stackql-method: describe_account_modifications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountModifications
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeApplicationAssociations:
     post:
       operationId: DescribeApplicationAssociations
@@ -1732,6 +1735,9 @@ paths:
       x-stackql-method: describe_ip_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Result
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeTags:
     post:
       operationId: DescribeTags
@@ -1853,6 +1859,9 @@ paths:
       x-stackql-method: describe_workspace_bundles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Bundles
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeWorkspaceDirectories:
     post:
       operationId: DescribeWorkspaceDirectories
@@ -1901,6 +1910,9 @@ paths:
       x-stackql-method: describe_workspace_directories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Directories
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeWorkspaceImagePermissions:
     post:
       operationId: DescribeWorkspaceImagePermissions
@@ -1991,6 +2003,9 @@ paths:
       x-stackql-method: describe_workspace_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Images
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeWorkspaceSnapshots:
     post:
       operationId: DescribeWorkspaceSnapshots
@@ -2086,6 +2101,9 @@ paths:
       x-stackql-method: describe_workspaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Workspaces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeWorkspacesConnectionStatus:
     post:
       operationId: DescribeWorkspacesConnectionStatus
@@ -2125,6 +2143,9 @@ paths:
       x-stackql-method: describe_workspaces_connection_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkspacesConnectionStatus
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeWorkspacesPoolSessions:
     post:
       operationId: DescribeWorkspacesPoolSessions
@@ -2332,7 +2353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateWorkspaceApplicationResult'
-      x-stackql-resource: workspace_applications
+      x-stackql-resource: applications
       x-stackql-method: disassociate_workspace_application
       x-stackql-verb: UPDATE
   /GetAccountLink:
@@ -2372,6 +2393,7 @@ paths:
       x-stackql-resource: account_links
       x-stackql-method: get_account_link
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccountLink
   /ImportClientBranding:
     post:
       operationId: ImportClientBranding
@@ -2566,7 +2588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportWorkspaceImageResult'
-      x-stackql-resource: workspace_image
+      x-stackql-resource: workspaces
       x-stackql-method: import_workspace_image
       x-stackql-verb: EXEC
   /ListAccountLinks:
@@ -2611,6 +2633,9 @@ paths:
       x-stackql-method: list_account_links
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccountLinks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAvailableManagementCidrRanges:
     post:
       operationId: ListAvailableManagementCidrRanges
@@ -2656,11 +2681,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAvailableManagementCidrRangesResult'
+                $ref: '#/components/schemas/ListAvailableManagementCidrRangesOutputDisplay'
       x-stackql-resource: available_management_cidr_ranges
       x-stackql-method: list_available_management_cidr_ranges
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ManagementCidrRanges
+      x-stackql-responseEnvelope: ListAvailableManagementCidrRangesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ManagementCidrRanges" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"management_cidr_range": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /MigrateWorkspace:
     post:
       operationId: MigrateWorkspace
@@ -3033,7 +3066,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ModifyWorkspaceAccessPropertiesResult'
-      x-stackql-resource: workspace_access_properties
+      x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_access_properties
       x-stackql-verb: UPDATE
   /ModifyWorkspaceCreationProperties:
@@ -3073,7 +3106,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ModifyWorkspaceCreationPropertiesResult'
-      x-stackql-resource: workspace_creation_properties
+      x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_creation_properties
       x-stackql-verb: UPDATE
   /ModifyWorkspaceProperties:
@@ -3118,7 +3151,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ModifyWorkspacePropertiesResult'
-      x-stackql-resource: workspace_properties
+      x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_properties
       x-stackql-verb: UPDATE
   /ModifyWorkspaceState:
@@ -3161,7 +3194,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ModifyWorkspaceStateResult'
-      x-stackql-resource: workspace_states
+      x-stackql-resource: workspaces
       x-stackql-method: modify_workspace_state
       x-stackql-verb: UPDATE
   /RebootWorkspaces:
@@ -3238,7 +3271,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebuildWorkspacesResult'
-      x-stackql-resource: rebuild_workspaces
+      x-stackql-resource: workspaces
       x-stackql-method: rebuild_workspaces
       x-stackql-verb: EXEC
   /RegisterWorkspaceDirectory:
@@ -3355,7 +3388,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectAccountLinkInvitationResult'
-      x-stackql-resource: account_link_invitation
+      x-stackql-resource: account_links
       x-stackql-method: reject_account_link_invitation
       x-stackql-verb: EXEC
   /RestoreWorkspace:
@@ -3508,7 +3541,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWorkspacesPoolResult'
-      x-stackql-resource: workspaces_pool
+      x-stackql-resource: workspaces
       x-stackql-method: start_workspaces_pool
       x-stackql-verb: EXEC
   /StopWorkspaces:
@@ -3582,7 +3615,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopWorkspacesPoolResult'
-      x-stackql-resource: workspaces_pool
+      x-stackql-resource: workspaces
       x-stackql-method: stop_workspaces_pool
       x-stackql-verb: EXEC
   /TerminateWorkspaces:
@@ -3836,7 +3869,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRulesOfIpGroupResult'
-      x-stackql-resource: rules_of_ip_groups
+      x-stackql-resource: ip_groups
       x-stackql-method: update_rules_of_ip_group
       x-stackql-verb: UPDATE
   /UpdateWorkspaceBundle:
@@ -7180,20 +7213,19 @@ components:
       type: integer
       minimum: 1
       maximum: 5
-    ListAvailableManagementCidrRangesResult:
+    ListAvailableManagementCidrRangesRowDisplay:
       type: object
       properties:
-        ManagementCidrRanges:
-          $ref: '#/components/schemas/DedicatedTenancyCidrRangeList'
+        management_cidr_range:
+          type: string
           description: The list of available IP address ranges, specified as IPv4 CIDR blocks.
-        NextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: The token to use to retrieve the next page of results. This value is null when there are no more results
-            to return.
-    DedicatedTenancyCidrRangeList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DedicatedTenancyManagementCidrRange'
+    ListAvailableManagementCidrRangesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAvailableManagementCidrRangesRowDisplay'
     MigrateWorkspaceResult:
       type: object
       properties:

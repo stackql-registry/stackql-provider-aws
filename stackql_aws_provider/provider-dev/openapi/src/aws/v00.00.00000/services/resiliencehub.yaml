@@ -1239,7 +1239,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListMetricsResponse"
+                $ref: "#/components/schemas/ListMetricsOutputDisplay"
   /list-recommendation-templates:
     get:
       operationId: ListRecommendationTemplates
@@ -3978,25 +3978,19 @@ components:
           description: Indicates the order in which you want to sort the metrics. By default, the list is sorted in ascending order. To sort the list in descending order, set this field to False.
       required:
         - field
-    ListMetricsResponse:
+    ListMetricsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: Token for the next set of results, or null if there are no more results.
-        rows:
-          $ref: "#/components/schemas/RowList"
+        row:
+          type: array
           description: Specifies all the list of metric values for each row of metrics.
-      required:
-        - rows
-    RowList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Row"
-    Row:
-      type: array
-      items:
-        $ref: "#/components/schemas/String255"
+    ListMetricsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListMetricsRowDisplay"
     RecommendationTemplateStatusList:
       type: array
       items:
@@ -4571,9 +4565,28 @@ components:
             objectKey: $.groupingRecommendations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         reject_resource_grouping_recommendations:
           operation:
             $ref: "#/paths/~1reject-resource-grouping-recommendations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_resource_grouping_recommendation_task:
+          operation:
+            $ref: "#/paths/~1start-resource-grouping-recommendation-task/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4588,14 +4601,25 @@ components:
         insert: []
         update: []
         delete: []
-    draft_app_version_resource_mappings:
-      id: aws.resiliencehub.draft_app_version_resource_mappings
-      name: draft_app_version_resource_mappings
-      title: draft_app_version_resource_mappings
+    app_version_resource_mappings:
+      id: aws.resiliencehub.app_version_resource_mappings
+      name: app_version_resource_mappings
+      title: app_version_resource_mappings
       methods:
         add_draft_app_version_resource_mappings:
           operation:
             $ref: "#/paths/~1add-draft-app-version-resource-mappings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_app_version_resource_mappings:
+          operation:
+            $ref: "#/paths/~1list-app-version-resource-mappings/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4616,17 +4640,29 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/app_version_resource_mappings/methods/list_app_version_resource_mappings"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/draft_app_version_resource_mappings/methods/add_draft_app_version_resource_mappings"
-          - $ref: "#/components/x-stackQL-resources/draft_app_version_resource_mappings/methods/remove_draft_app_version_resource_mappings"
+          - $ref: "#/components/x-stackQL-resources/app_version_resource_mappings/methods/add_draft_app_version_resource_mappings"
+          - $ref: "#/components/x-stackQL-resources/app_version_resource_mappings/methods/remove_draft_app_version_resource_mappings"
         delete: []
     apps:
       id: aws.resiliencehub.apps
       name: apps
       title: apps
       methods:
+        batch_update_recommendation_status:
+          operation:
+            $ref: "#/paths/~1batch-update-recommendation-status/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_app:
           operation:
             $ref: "#/paths/~1create-app/post"
@@ -4655,6 +4691,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.app
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_resources_to_draft_app_version:
+          operation:
+            $ref: "#/paths/~1import-resources-to-draft-app-version/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4668,6 +4716,28 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        publish_app_version:
+          operation:
+            $ref: "#/paths/~1publish-app-version/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_app_assessment:
+          operation:
+            $ref: "#/paths/~1start-app-assessment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_app:
           operation:
             $ref: "#/paths/~1update-app/post"
@@ -4808,6 +4878,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        resolve_app_version_resources:
+          operation:
+            $ref: "#/paths/~1resolve-app-version-resources/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_app_version_resource:
           operation:
             $ref: "#/paths/~1update-app-version-resource/post"
@@ -4904,6 +4985,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.policy
           request:
             nativeCasing: pascal
           config:
@@ -4960,6 +5042,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.assessment
           request:
             nativeCasing: pascal
           config:
@@ -5099,11 +5182,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        put_draft_app_version_template:
+          operation:
+            $ref: "#/paths/~1put-draft-app-version-template/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/app_version_templates/methods/describe_app_version_template"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/app_version_templates/methods/put_draft_app_version_template"
         delete: []
     draft_app_version_resources_import_status:
       id: aws.resiliencehub.draft_app_version_resources_import_status
@@ -5230,6 +5326,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5282,28 +5385,6 @@ components:
         insert: []
         update: []
         delete: []
-    app_version_resource_mappings:
-      id: aws.resiliencehub.app_version_resource_mappings
-      name: app_version_resource_mappings
-      title: app_version_resource_mappings
-      methods:
-        list_app_version_resource_mappings:
-          operation:
-            $ref: "#/paths/~1list-app-version-resource-mappings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/app_version_resource_mappings/methods/list_app_version_resource_mappings"
-        insert: []
-        update: []
-        delete: []
     metrics:
       id: aws.resiliencehub.metrics
       name: metrics
@@ -5315,7 +5396,31 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.rows
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListMetricsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "rows" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"row": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_metrics_export:
+          operation:
+            $ref: "#/paths/~1start-metrics-export/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5368,10 +5473,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.resiliencehub.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.resiliencehub.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5379,17 +5484,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.resiliencehub.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -5410,11 +5504,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     test_recommendations:
       id: aws.resiliencehub.test_recommendations
@@ -5459,27 +5554,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/unsupported_app_version_resources/methods/list_unsupported_app_version_resources"
         insert: []
         update: []
-        delete: []
-    draft_app_version_templates:
-      id: aws.resiliencehub.draft_app_version_templates
-      name: draft_app_version_templates
-      title: draft_app_version_templates
-      methods:
-        put_draft_app_version_template:
-          operation:
-            $ref: "#/paths/~1put-draft-app-version-template/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/draft_app_version_templates/methods/put_draft_app_version_template"
         delete: []

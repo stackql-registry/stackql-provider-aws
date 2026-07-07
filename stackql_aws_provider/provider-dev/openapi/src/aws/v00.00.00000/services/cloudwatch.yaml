@@ -5,7 +5,7 @@ info:
   description: Amazon CloudWatch
   x-serviceName: monitoring
   x-serviceAlias: cloudwatch
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: "2010-08-01"
   x-endpointPrefix: monitoring
   x-targetPrefix: GraniteServiceVersion20100801
@@ -212,8 +212,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/MetricStreamName"
                   description: The name of the metric stream to delete.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -881,8 +879,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/MetricStreamName"
                   description: The name of the metric stream to retrieve information about.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1224,9 +1220,6 @@ paths:
                 ExpireDate:
                   $ref: "#/components/schemas/Timestamp"
                   description: The date and time when the mute rule expires and is no longer evaluated, specified as a timestamp in ISO 8601 format (for example, 2026-12-31T23:59:59Z). After this time, the rule status becomes EXPIRED and will no longer mute the targeted alarms.
-              required:
-                - Name
-                - Rule
       responses:
         "200":
           description: Success
@@ -1646,7 +1639,6 @@ paths:
                   $ref: "#/components/schemas/IncludeLinkedAccountsMetrics"
                   description: If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts in the metric stream.
               required:
-                - Name
                 - FirehoseArn
                 - RoleArn
                 - OutputFormat
@@ -1846,7 +1838,6 @@ paths:
                   description: The list of key-value pairs to associate with the alarm.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -3739,6 +3730,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3750,6 +3743,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3762,7 +3757,16 @@ components:
             objectKey: $.AlarmMuteRuleSummaries
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_alarm_mute_rule:
@@ -3772,6 +3776,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3797,6 +3803,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3809,6 +3817,75 @@ components:
             objectKey: $.MetricAlarms
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        disable_alarm_actions:
+          operation:
+            $ref: "#/paths/~1DisableAlarmActions/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_alarm_actions:
+          operation:
+            $ref: "#/paths/~1EnableAlarmActions/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_composite_alarm:
+          operation:
+            $ref: "#/paths/~1PutCompositeAlarm/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_metric_alarm:
+          operation:
+            $ref: "#/paths/~1PutMetricAlarm/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_alarm_state:
+          operation:
+            $ref: "#/paths/~1SetAlarmState/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3816,7 +3893,11 @@ components:
         select:
           - $ref: "#/components/x-stackQL-resources/alarms/methods/describe_alarms"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/alarms/methods/set_alarm_state"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/alarms/methods/put_composite_alarm"
+          - $ref: "#/components/x-stackQL-resources/alarms/methods/put_metric_alarm"
         delete:
           - $ref: "#/components/x-stackQL-resources/alarms/methods/delete_alarms"
     anomaly_detectors:
@@ -3832,6 +3913,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3844,7 +3927,16 @@ components:
             objectKey: $.AnomalyDetectors
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_anomaly_detector:
@@ -3855,6 +3947,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3880,6 +3974,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3891,6 +3987,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3903,7 +4001,16 @@ components:
             objectKey: $.DashboardEntries
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_dashboard:
@@ -3914,6 +4021,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3940,6 +4049,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3951,6 +4062,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3962,6 +4075,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3973,6 +4088,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -3984,6 +4101,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4009,6 +4128,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4020,6 +4141,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4031,6 +4154,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4042,6 +4167,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4053,6 +4180,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4064,13 +4193,14 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metric_streams/methods/get_metric_stream"
-          - $ref: "#/components/x-stackQL-resources/metric_streams/methods/list_metric_streams"
         insert: []
         update: []
         replace:
@@ -4090,6 +4220,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4113,7 +4245,16 @@ components:
             objectKey: $.AlarmHistoryItems
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4135,6 +4276,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4157,6 +4300,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4180,7 +4325,16 @@ components:
             objectKey: $.MetricDataResults
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_metric_data:
@@ -4190,6 +4344,8 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4214,6 +4370,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4236,6 +4394,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4258,6 +4418,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4280,6 +4442,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4291,6 +4455,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4316,7 +4482,16 @@ components:
             objectKey: $.Metrics
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4325,10 +4500,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.cloudwatch.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.cloudwatch.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4338,85 +4513,11 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    composite_alarms:
-      id: aws.cloudwatch.composite_alarms
-      name: composite_alarms
-      title: composite_alarms
-      methods:
-        put_composite_alarm:
-          operation:
-            $ref: "#/paths/~1PutCompositeAlarm/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/composite_alarms/methods/put_composite_alarm"
-        delete: []
-    metric_alarms:
-      id: aws.cloudwatch.metric_alarms
-      name: metric_alarms
-      title: metric_alarms
-      methods:
-        put_metric_alarm:
-          operation:
-            $ref: "#/paths/~1PutMetricAlarm/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/metric_alarms/methods/put_metric_alarm"
-        delete: []
-    alarm_states:
-      id: aws.cloudwatch.alarm_states
-      name: alarm_states
-      title: alarm_states
-      methods:
-        set_alarm_state:
-          operation:
-            $ref: "#/paths/~1SetAlarmState/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/alarm_states/methods/set_alarm_state"
-        delete: []
-    resources:
-      id: aws.cloudwatch.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -4425,6 +4526,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -4436,13 +4539,16 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

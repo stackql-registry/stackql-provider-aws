@@ -291,7 +291,6 @@ paths:
                   description: The requested alias. The alias must be unique amongst all aliases in Amazon Web Services. This operation throws an EntityAlreadyExistsException error if the alias already exists.
               required:
                 - DirectoryId
-                - Alias
       responses:
         "200":
           description: Success
@@ -435,9 +434,7 @@ paths:
                   $ref: "#/components/schemas/NetworkType"
                   description: The network type for your directory. Simple AD supports IPv4 and Dual-stack only.
               required:
-                - Name
                 - Password
-                - Size
       responses:
         "200":
           description: Success
@@ -1663,7 +1660,6 @@ paths:
                   description: The type of client authentication to disable. Currently the only parameter "SmartCard" is supported.
               required:
                 - DirectoryId
-                - Type
       responses:
         "200":
           description: Success
@@ -1733,7 +1729,6 @@ paths:
                   description: The type of LDAP security to enable. Currently only the value Client is supported.
               required:
                 - DirectoryId
-                - Type
       responses:
         "200":
           description: Success
@@ -1879,7 +1874,6 @@ paths:
                   description: The type of client authentication to enable. Currently only the value SmartCard is supported. Smart card authentication in AD Connector requires that you enable Kerberos Constrained Delegation for the Service User to the LDAP service in your self-managed AD.
               required:
                 - DirectoryId
-                - Type
       responses:
         "200":
           description: Success
@@ -1949,7 +1943,6 @@ paths:
                   description: The type of LDAP security to enable. Currently only the value Client is supported.
               required:
                 - DirectoryId
-                - Type
       responses:
         "200":
           description: Success
@@ -2734,7 +2727,6 @@ paths:
                 - DirectoryId
                 - CreateSnapshotBeforeSchemaExtension
                 - LdifContent
-                - Description
       responses:
         "200":
           description: Success
@@ -5390,6 +5382,64 @@ components:
           $ref: "#/components/schemas/TrustId"
           description: The unique Trust ID of the trust relationship that was verified.
   x-stackQL-resources:
+    shared_directories:
+      id: aws.ds.shared_directories
+      name: shared_directories
+      title: shared_directories
+      methods:
+        accept_shared_directory:
+          operation:
+            $ref: "#/paths/~1AcceptSharedDirectory/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_shared_directories:
+          operation:
+            $ref: "#/paths/~1DescribeSharedDirectories/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.SharedDirectories
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reject_shared_directory:
+          operation:
+            $ref: "#/paths/~1RejectSharedDirectory/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/shared_directories/methods/describe_shared_directories"
+        insert: []
+        update: []
+        delete: []
     ip_routes:
       id: aws.ds.ip_routes
       name: ip_routes
@@ -5420,6 +5470,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         remove_ip_routes:
@@ -5473,6 +5530,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         remove_region:
@@ -5496,10 +5560,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/regions/methods/add_region"
           - $ref: "#/components/x-stackQL-resources/regions/methods/remove_region"
         delete: []
-    tags_to_resources:
-      id: aws.ds.tags_to_resources
-      name: tags_to_resources
-      title: tags_to_resources
+    tags:
+      id: aws.ds.tags
+      name: tags
+      title: tags
       methods:
         add_tags_to_resource:
           operation:
@@ -5514,17 +5578,66 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1ListTagsForResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Tags
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        remove_tags_from_resource:
+          operation:
+            $ref: "#/paths/~1RemoveTagsFromResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_to_resources/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags_to_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags_from_resource"
         delete: []
-    alias:
-      id: aws.ds.alias
-      name: alias
-      title: alias
+    directories:
+      id: aws.ds.directories
+      name: directories
+      title: directories
       methods:
+        cancel_schema_extension:
+          operation:
+            $ref: "#/paths/~1CancelSchemaExtension/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_alias:
           operation:
             $ref: "#/paths/~1CreateAlias/post"
@@ -5538,17 +5651,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/alias/methods/create_alias"
-        update: []
-        delete: []
-    computers:
-      id: aws.ds.computers
-      name: computers
-      title: computers
-      methods:
         create_computer:
           operation:
             $ref: "#/paths/~1CreateComputer/post"
@@ -5562,12 +5664,273 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_directory:
+          operation:
+            $ref: "#/paths/~1CreateDirectory/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_directory:
+          operation:
+            $ref: "#/paths/~1DeleteDirectory/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_directories:
+          operation:
+            $ref: "#/paths/~1DescribeDirectories/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DirectoryDescriptions
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        disable_ca_enrollment_policy:
+          operation:
+            $ref: "#/paths/~1DisableCAEnrollmentPolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_client_authentication:
+          operation:
+            $ref: "#/paths/~1DisableClientAuthentication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_ldaps:
+          operation:
+            $ref: "#/paths/~1DisableLDAPS/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_radius:
+          operation:
+            $ref: "#/paths/~1DisableRadius/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disable_sso:
+          operation:
+            $ref: "#/paths/~1DisableSso/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_ca_enrollment_policy:
+          operation:
+            $ref: "#/paths/~1EnableCAEnrollmentPolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_client_authentication:
+          operation:
+            $ref: "#/paths/~1EnableClientAuthentication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_ldaps:
+          operation:
+            $ref: "#/paths/~1EnableLDAPS/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_radius:
+          operation:
+            $ref: "#/paths/~1EnableRadius/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_sso:
+          operation:
+            $ref: "#/paths/~1EnableSso/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reset_user_password:
+          operation:
+            $ref: "#/paths/~1ResetUserPassword/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        share_directory:
+          operation:
+            $ref: "#/paths/~1ShareDirectory/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_schema_extension:
+          operation:
+            $ref: "#/paths/~1StartSchemaExtension/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        unshare_directory:
+          operation:
+            $ref: "#/paths/~1UnshareDirectory/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_directory_setup:
+          operation:
+            $ref: "#/paths/~1UpdateDirectorySetup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_radius:
+          operation:
+            $ref: "#/paths/~1UpdateRadius/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/directories/methods/describe_directories"
         insert:
-          - $ref: "#/components/x-stackQL-resources/computers/methods/create_computer"
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/directories/methods/create_computer"
+          - $ref: "#/components/x-stackQL-resources/directories/methods/create_alias"
+          - $ref: "#/components/x-stackQL-resources/directories/methods/create_directory"
+        update:
+          - $ref: "#/components/x-stackQL-resources/directories/methods/update_directory_setup"
+          - $ref: "#/components/x-stackQL-resources/directories/methods/update_radius"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/directories/methods/delete_directory"
     conditional_forwarders:
       id: aws.ds.conditional_forwarders
       name: conditional_forwarders
@@ -5634,59 +5997,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/conditional_forwarders/methods/update_conditional_forwarder"
         delete:
           - $ref: "#/components/x-stackQL-resources/conditional_forwarders/methods/delete_conditional_forwarder"
-    directories:
-      id: aws.ds.directories
-      name: directories
-      title: directories
-      methods:
-        create_directory:
-          operation:
-            $ref: "#/paths/~1CreateDirectory/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_directory:
-          operation:
-            $ref: "#/paths/~1DeleteDirectory/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_directories:
-          operation:
-            $ref: "#/paths/~1DescribeDirectories/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.DirectoryDescriptions
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/directories/methods/describe_directories"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/directories/methods/create_directory"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/directories/methods/delete_directory"
     hybrid_ads:
       id: aws.ds.hybrid_ads
       name: hybrid_ads
@@ -5768,6 +6078,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5845,6 +6162,26 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        restore_from_snapshot:
+          operation:
+            $ref: "#/paths/~1RestoreFromSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5898,11 +6235,31 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_trust:
           operation:
             $ref: "#/paths/~1UpdateTrust/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        verify_trust:
+          operation:
+            $ref: "#/paths/~1VerifyTrust/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5965,6 +6322,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5999,6 +6363,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Certificate
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6018,6 +6383,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_certificate:
@@ -6135,6 +6507,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6210,13 +6589,34 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_number_of_domain_controllers:
+          operation:
+            $ref: "#/paths/~1UpdateNumberOfDomainControllers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_controllers/methods/describe_domain_controllers"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/domain_controllers/methods/update_number_of_domain_controllers"
         delete: []
     hybrid_ad_updates:
       id: aws.ds.hybrid_ad_updates
@@ -6229,6 +6629,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.UpdateActivities
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6259,6 +6660,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6305,31 +6713,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/settings/methods/update_settings"
         delete: []
-    shared_directories:
-      id: aws.ds.shared_directories
-      name: shared_directories
-      title: shared_directories
-      methods:
-        describe_shared_directories:
-          operation:
-            $ref: "#/paths/~1DescribeSharedDirectories/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.SharedDirectories
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/shared_directories/methods/describe_shared_directories"
-        insert: []
-        update: []
-        delete: []
     update_directories:
       id: aws.ds.update_directories
       name: update_directories
@@ -6347,6 +6730,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6354,56 +6744,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/update_directories/methods/describe_update_directory"
         insert: []
         update: []
-        delete: []
-    radius:
-      id: aws.ds.radius
-      name: radius
-      title: radius
-      methods:
-        disable_radius:
-          operation:
-            $ref: "#/paths/~1DisableRadius/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        enable_radius:
-          operation:
-            $ref: "#/paths/~1EnableRadius/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_radius:
-          operation:
-            $ref: "#/paths/~1UpdateRadius/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/radius/methods/update_radius"
         delete: []
     directory_limits:
       id: aws.ds.directory_limits
@@ -6416,6 +6756,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DirectoryLimits
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6440,6 +6781,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SnapshotLimits
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6470,6 +6812,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6477,101 +6826,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/schema_extensions/methods/list_schema_extensions"
         insert: []
         update: []
-        delete: []
-    tags_for_resources:
-      id: aws.ds.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1ListTagsForResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Tags
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    tags_from_resources:
-      id: aws.ds.tags_from_resources
-      name: tags_from_resources
-      title: tags_from_resources
-      methods:
-        remove_tags_from_resource:
-          operation:
-            $ref: "#/paths/~1RemoveTagsFromResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/tags_from_resources/methods/remove_tags_from_resource"
-        delete: []
-    directory_setups:
-      id: aws.ds.directory_setups
-      name: directory_setups
-      title: directory_setups
-      methods:
-        update_directory_setup:
-          operation:
-            $ref: "#/paths/~1UpdateDirectorySetup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/directory_setups/methods/update_directory_setup"
-        delete: []
-    number_of_domain_controllers:
-      id: aws.ds.number_of_domain_controllers
-      name: number_of_domain_controllers
-      title: number_of_domain_controllers
-      methods:
-        update_number_of_domain_controllers:
-          operation:
-            $ref: "#/paths/~1UpdateNumberOfDomainControllers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/number_of_domain_controllers/methods/update_number_of_domain_controllers"
         delete: []

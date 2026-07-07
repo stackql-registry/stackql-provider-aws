@@ -1757,6 +1757,12 @@ components:
       name: memberships
       title: memberships
       methods:
+        cancel_membership:
+          operation:
+            $ref: "#/paths/~1v1~1membership~1{membership_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_membership:
           operation:
             $ref: "#/paths/~1v1~1membership~1{membership_id}/get"
@@ -1784,6 +1790,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_membership:
@@ -1811,6 +1824,12 @@ components:
       name: cases
       title: cases
       methods:
+        close_case:
+          operation:
+            $ref: "#/paths/~1v1~1cases~1{case_id}~1close-case/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         create_case:
           operation:
             $ref: "#/paths/~1v1~1create-case/post"
@@ -1838,11 +1857,51 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        send_feedback:
+          operation:
+            $ref: "#/paths/~1v1~1cases~1{case_id}~1feedback~1{result_id}~1send-feedback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_case:
           operation:
             $ref: "#/paths/~1v1~1cases~1{case_id}~1update-case/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_case_status:
+          operation:
+            $ref: "#/paths/~1v1~1cases~1{case_id}~1update-case-status/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_resolver_type:
+          operation:
+            $ref: "#/paths/~1v1~1cases~1{case_id}~1update-resolver-type/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1858,12 +1917,14 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/cases/methods/create_case"
         update:
+          - $ref: "#/components/x-stackQL-resources/cases/methods/update_case_status"
+          - $ref: "#/components/x-stackQL-resources/cases/methods/update_resolver_type"
           - $ref: "#/components/x-stackQL-resources/cases/methods/update_case"
         delete: []
-    case_comments:
-      id: aws.security_ir.case_comments
-      name: case_comments
-      title: case_comments
+    comments:
+      id: aws.security_ir.comments
+      name: comments
+      title: comments
       methods:
         create_case_comment:
           operation:
@@ -1874,6 +1935,25 @@ components:
           request:
             nativeCasing: pascal
           config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_comments:
+          operation:
+            $ref: "#/paths/~1v1~1cases~1{case_id}~1list-comments/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_case_comment:
@@ -1888,11 +1968,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/comments/methods/list_comments"
         insert:
-          - $ref: "#/components/x-stackQL-resources/case_comments/methods/create_case_comment"
+          - $ref: "#/components/x-stackQL-resources/comments/methods/create_case_comment"
         update:
-          - $ref: "#/components/x-stackQL-resources/case_comments/methods/update_case_comment"
+          - $ref: "#/components/x-stackQL-resources/comments/methods/update_case_comment"
         delete: []
     case_attachment_download_urls:
       id: aws.security_ir.case_attachment_download_urls
@@ -1948,34 +2029,18 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/case_edits/methods/list_case_edits"
-        insert: []
-        update: []
-        delete: []
-    comments:
-      id: aws.security_ir.comments
-      name: comments
-      title: comments
-      methods:
-        list_comments:
-          operation:
-            $ref: "#/paths/~1v1~1cases~1{case_id}~1list-comments/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/comments/methods/list_comments"
         insert: []
         update: []
         delete: []
@@ -1993,16 +2058,24 @@ components:
             objectKey: $.investigationActions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/investigations/methods/list_investigations"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.security_ir.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.security_ir.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2010,17 +2083,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.security_ir.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
@@ -2041,53 +2103,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    case_status:
-      id: aws.security_ir.case_status
-      name: case_status
-      title: case_status
-      methods:
-        update_case_status:
-          operation:
-            $ref: "#/paths/~1v1~1cases~1{case_id}~1update-case-status/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/case_status/methods/update_case_status"
-        delete: []
-    resolver_types:
-      id: aws.security_ir.resolver_types
-      name: resolver_types
-      title: resolver_types
-      methods:
-        update_resolver_type:
-          operation:
-            $ref: "#/paths/~1v1~1cases~1{case_id}~1update-resolver-type/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resolver_types/methods/update_resolver_type"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

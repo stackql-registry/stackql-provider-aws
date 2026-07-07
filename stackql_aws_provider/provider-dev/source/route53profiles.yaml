@@ -84,7 +84,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateResourceToProfileResponse'
-      x-stackql-resource: resource_to_profiles
+      x-stackql-resource: profiles
       x-stackql-method: associate_resource_to_profile
       x-stackql-verb: UPDATE
   /profile:
@@ -161,6 +161,7 @@ paths:
       x-stackql-resource: profiles
       x-stackql-method: get_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Profile
   /profileassociation/Profileid/{profile_id}/resourceid/{resource_id}:
     delete:
       operationId: DisassociateProfile
@@ -212,7 +213,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateResourceFromProfileResponse'
-      x-stackql-resource: resource_from_profiles
+      x-stackql-resource: profiles
       x-stackql-method: disassociate_resource_from_profile
       x-stackql-verb: UPDATE
   /profileassociation/{profile_association_id}:
@@ -237,6 +238,7 @@ paths:
       x-stackql-resource: profile_associations
       x-stackql-method: get_profile_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ProfileAssociation
   /profileresourceassociation/{profile_resource_association_id}:
     get:
       operationId: GetProfileResourceAssociation
@@ -258,6 +260,7 @@ paths:
       x-stackql-resource: profile_resource_associations
       x-stackql-method: get_profile_resource_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ProfileResourceAssociation
     patch:
       operationId: UpdateProfileResourceAssociation
       description: Updates the specified Route 53 Profile resourse association.
@@ -334,6 +337,9 @@ paths:
       x-stackql-method: list_profile_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProfileAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /profileresourceassociations/profileid/{profile_id}:
     get:
       operationId: ListProfileResourceAssociations
@@ -379,6 +385,9 @@ paths:
       x-stackql-method: list_profile_resource_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProfileResourceAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /profiles:
     get:
       operationId: ListProfiles
@@ -412,6 +421,9 @@ paths:
       x-stackql-method: list_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProfileSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -430,7 +442,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -461,7 +473,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -487,7 +499,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

@@ -33,7 +33,6 @@ paths:
                 SloIds:
                   $ref: "#/components/schemas/ServiceLevelObjectiveIds"
               required:
-                - Timestamp
                 - SloIds
       responses:
         "200":
@@ -99,8 +98,6 @@ paths:
                   $ref: "#/components/schemas/Boolean"
                 AutoInvestigationEnabled:
                   $ref: "#/components/schemas/Boolean"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -322,7 +319,6 @@ paths:
                 EndTime:
                   $ref: "#/components/schemas/Timestamp"
               required:
-                - Entity
                 - StartTime
                 - EndTime
       responses:
@@ -722,7 +718,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -2601,6 +2596,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Slo
         update_service_level_objective:
           operation:
             $ref: "#/paths/~1slo~1{id}/patch"
@@ -2622,6 +2618,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2689,6 +2692,14 @@ components:
             objectKey: $.ServiceSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/services/methods/get_service"
@@ -2733,6 +2744,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2775,6 +2793,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2798,6 +2823,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2820,6 +2852,14 @@ components:
             objectKey: $.ExclusionWindows
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/service_level_objective_exclusion_windows/methods/list_service_level_objective_exclusion_windows"
@@ -2841,6 +2881,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2864,6 +2911,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2872,10 +2926,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.application_signals.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.application_signals.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2885,17 +2939,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.application_signals.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tag-resource/post"
@@ -2919,9 +2962,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

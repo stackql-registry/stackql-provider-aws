@@ -2684,6 +2684,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.alertManagerDefinition
         put_alert_manager_definition:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1alertmanager~1definition/put"
@@ -2730,6 +2731,14 @@ components:
             objectKey: $.anomalyDetectors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_anomaly_detector:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1anomalydetectors~1{anomaly_detector_id}/delete"
@@ -2743,6 +2752,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.anomalyDetector
         put_anomaly_detector:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1anomalydetectors~1{anomaly_detector_id}/put"
@@ -2794,6 +2804,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.loggingConfiguration
         update_logging_configuration:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1logging/put"
@@ -2843,6 +2854,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.queryLoggingConfiguration
         update_query_logging_configuration:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1logging~1query/put"
@@ -2888,6 +2900,14 @@ components:
             objectKey: $.ruleGroupsNamespaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_rule_groups_namespace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1rulegroupsnamespaces~1{name}/delete"
@@ -2901,6 +2921,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ruleGroupsNamespace
         put_rule_groups_namespace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1rulegroupsnamespaces~1{name}/put"
@@ -2948,6 +2969,14 @@ components:
             objectKey: $.scrapers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_scraper:
           operation:
             $ref: "#/paths/~1scrapers~1{scraper_id}/delete"
@@ -2962,6 +2991,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.scraper
         update_scraper:
           operation:
             $ref: "#/paths/~1scrapers~1{scraper_id}/put"
@@ -3008,6 +3038,14 @@ components:
             objectKey: $.workspaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}/delete"
@@ -3021,13 +3059,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.workspace
+        update_workspace_alias:
+          operation:
+            $ref: "#/paths/~1workspaces~1{workspace_id}~1alias/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspace"
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/list_workspaces"
         insert:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/update_workspace_alias"
         delete:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/delete_workspace"
     resource_policies:
@@ -3116,6 +3166,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.workspaceConfiguration
         update_workspace_configuration:
           operation:
             $ref: "#/paths/~1workspaces~1{workspace_id}~1configuration/patch"
@@ -3151,10 +3202,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.amp.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.amp.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3162,17 +3213,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.amp.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3193,30 +3233,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    workspace_alias:
-      id: aws.amp.workspace_alias
-      name: workspace_alias
-      title: workspace_alias
-      methods:
-        update_workspace_alias:
-          operation:
-            $ref: "#/paths/~1workspaces~1{workspace_id}~1alias/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_alias/methods/update_workspace_alias"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -42,7 +42,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: delegation_request
+      x-stackql-resource: delegation_requests
       x-stackql-method: accept_delegation_request
       x-stackql-verb: EXEC
     post:
@@ -61,7 +61,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AcceptDelegationRequestRequest'
-      x-stackql-resource: delegation_request
+      x-stackql-resource: delegation_requests
       x-stackql-method: accept_delegation_request
       x-stackql-verb: EXEC
   /?Action=AddClientIDToOpenIDConnectProvider&Version=2010-05-08:
@@ -95,7 +95,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: client_id_to_open_id_connect_providers
+      x-stackql-resource: open_id_connect_providers
       x-stackql-method: add_client_id_to_open_id_connect_provider
       x-stackql-verb: UPDATE
     post:
@@ -112,7 +112,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddClientIDToOpenIDConnectProviderRequest'
-      x-stackql-resource: client_id_to_open_id_connect_providers
+      x-stackql-resource: open_id_connect_providers
       x-stackql-method: add_client_id_to_open_id_connect_provider
       x-stackql-verb: UPDATE
   /?Action=AddRoleToInstanceProfile&Version=2010-05-08:
@@ -156,7 +156,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_to_instance_profiles
+      x-stackql-resource: instance_profiles
       x-stackql-method: add_role_to_instance_profile
       x-stackql-verb: UPDATE
     post:
@@ -180,7 +180,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddRoleToInstanceProfileRequest'
-      x-stackql-resource: role_to_instance_profiles
+      x-stackql-resource: instance_profiles
       x-stackql-method: add_role_to_instance_profile
       x-stackql-verb: UPDATE
   /?Action=AddUserToGroup&Version=2010-05-08:
@@ -215,7 +215,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_to_groups
+      x-stackql-resource: groups
       x-stackql-method: add_user_to_group
       x-stackql-verb: UPDATE
     post:
@@ -230,7 +230,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/AddUserToGroupRequest'
-      x-stackql-resource: user_to_groups
+      x-stackql-resource: groups
       x-stackql-method: add_user_to_group
       x-stackql-verb: UPDATE
   /?Action=AssociateDelegationRequest&Version=2010-05-08:
@@ -1565,7 +1565,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateServiceLinkedRoleOutputDisplay'
-      x-stackql-resource: service_linked_roles
+      x-stackql-resource: roles
       x-stackql-method: create_service_linked_role
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateServiceLinkedRoleOutputDisplay
@@ -1591,7 +1591,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateServiceLinkedRoleRequest'
-      x-stackql-resource: service_linked_roles
+      x-stackql-resource: roles
       x-stackql-method: create_service_linked_role
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateServiceLinkedRoleOutputDisplay
@@ -2470,7 +2470,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_permissions_boundaries
+      x-stackql-resource: roles
       x-stackql-method: delete_role_permissions_boundary
       x-stackql-verb: DELETE
     post:
@@ -2487,7 +2487,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteRolePermissionsBoundaryRequest'
-      x-stackql-resource: role_permissions_boundaries
+      x-stackql-resource: roles
       x-stackql-method: delete_role_permissions_boundary
       x-stackql-verb: DELETE
   /?Action=DeleteRolePolicy&Version=2010-05-08:
@@ -2733,7 +2733,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeleteServiceLinkedRoleOutputDisplay'
-      x-stackql-resource: service_linked_roles
+      x-stackql-resource: roles
       x-stackql-method: delete_service_linked_role
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteServiceLinkedRoleOutputDisplay
@@ -2764,7 +2764,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteServiceLinkedRoleRequest'
-      x-stackql-resource: service_linked_roles
+      x-stackql-resource: roles
       x-stackql-method: delete_service_linked_role
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteServiceLinkedRoleOutputDisplay
@@ -2950,7 +2950,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_permissions_boundaries
+      x-stackql-resource: users
       x-stackql-method: delete_user_permissions_boundary
       x-stackql-verb: DELETE
     post:
@@ -2966,7 +2966,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteUserPermissionsBoundaryRequest'
-      x-stackql-resource: user_permissions_boundaries
+      x-stackql-resource: users
       x-stackql-method: delete_user_permissions_boundary
       x-stackql-verb: DELETE
   /?Action=DeleteUserPolicy&Version=2010-05-08:
@@ -4184,6 +4184,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForCustomPolicyOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "GetContextKeysForCustomPolicyResponse" -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "GetContextKeysForCustomPolicyResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n)
+        "map" }}{{ $n = index $n "ContextKeyNames" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf
+        $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"context_key_name": {{ toJson $v }}}{{- end -}}{{-
+        else if and (eq (kindOf $n) "string") $n -}}{"context_key_name": {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_GetContextKeysForCustomPolicy
       description: Gets a list of all of the context keys referenced in the input policies. The policies are supplied as a
@@ -4211,6 +4218,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForCustomPolicyOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "GetContextKeysForCustomPolicyResponse" -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "GetContextKeysForCustomPolicyResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n)
+        "map" }}{{ $n = index $n "ContextKeyNames" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf
+        $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"context_key_name": {{ toJson $v }}}{{- end -}}{{-
+        else if and (eq (kindOf $n) "string") $n -}}{"context_key_name": {{ toJson $n }}}{{- end -}}]}'
   /?Action=GetContextKeysForPrincipalPolicy&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -4265,6 +4279,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForPrincipalPolicyOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "GetContextKeysForPrincipalPolicyResponse" -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "GetContextKeysForPrincipalPolicyResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n)
+        "map" }}{{ $n = index $n "ContextKeyNames" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf
+        $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"context_key_name": {{ toJson $v }}}{{- end -}}{{-
+        else if and (eq (kindOf $n) "string") $n -}}{"context_key_name": {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_GetContextKeysForPrincipalPolicy
       description: 'Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified
@@ -4294,6 +4315,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: GetContextKeysForPrincipalPolicyOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "GetContextKeysForPrincipalPolicyResponse" -}}{{- if eq (kindOf $n) "map"
+        }}{{ $n = index $n "GetContextKeysForPrincipalPolicyResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n)
+        "map" }}{{ $n = index $n "ContextKeyNames" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf
+        $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"context_key_name": {{ toJson $v }}}{{- end -}}{{-
+        else if and (eq (kindOf $n) "string") $n -}}{"context_key_name": {{ toJson $n }}}{{- end -}}]}'
   /?Action=GetCredentialReport&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -6009,6 +6037,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccountAliasesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListAccountAliasesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListAccountAliasesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "AccountAliases"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"account_alias": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"account_alias":
+        {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListAccountAliases
       description: 'Lists the account alias associated with the Amazon Web Services account (Note: you can have only one).
@@ -6032,6 +6067,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListAccountAliasesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListAccountAliasesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListAccountAliasesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "AccountAliases"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"account_alias": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"account_alias":
+        {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListAttachedGroupPolicies&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -6541,6 +6583,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListGroupPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListGroupPoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListGroupPoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "PolicyNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"policy_name":
+        {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListGroupPolicies
       description: Lists the names of the inline policies that are embedded in the specified IAM group. An IAM group can also
@@ -6566,6 +6615,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListGroupPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListGroupPoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListGroupPoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "PolicyNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"policy_name":
+        {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListGroups&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -7259,6 +7315,11 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListOrganizationsFeaturesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListOrganizationsFeaturesResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "ListOrganizationsFeaturesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf
+        $n) "map" -}}"organization_id": {{ toJson (index $n "OrganizationId") }}, "enabled_features": {{ toJson (index $n
+        "EnabledFeatures") }}{{- end -}}}]}'
     post:
       operationId: POST_ListOrganizationsFeatures
       description: Lists the centralized root access features enabled for your organization. For more information, see Centrally
@@ -7281,6 +7342,11 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListOrganizationsFeaturesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListOrganizationsFeaturesResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "ListOrganizationsFeaturesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf
+        $n) "map" -}}"organization_id": {{ toJson (index $n "OrganizationId") }}, "enabled_features": {{ toJson (index $n
+        "EnabledFeatures") }}{{- end -}}}]}'
   /?Action=ListPolicies&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -7697,6 +7763,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListRolePoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListRolePoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListRolePoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "PolicyNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"policy_name":
+        {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListRolePolicies
       description: Lists the names of the inline policies that are embedded in the specified IAM role. An IAM role can also
@@ -7722,6 +7795,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListRolePoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListRolePoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListRolePoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "PolicyNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"policy_name":
+        {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListRoleTags&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -8486,6 +8566,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListUserPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListUserPoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListUserPoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "PolicyNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"policy_name":
+        {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListUserPolicies
       description: Lists the names of the inline policies embedded in the specified IAM user. An IAM user can also have managed
@@ -8511,6 +8598,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListUserPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListUserPoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListUserPoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "PolicyNames"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"policy_name":
+        {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListUserTags&Version=2010-05-08:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -8861,7 +8955,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_permissions_boundaries
+      x-stackql-resource: roles
       x-stackql-method: put_role_permissions_boundary
       x-stackql-verb: REPLACE
     post:
@@ -8881,7 +8975,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PutRolePermissionsBoundaryRequest'
-      x-stackql-resource: role_permissions_boundaries
+      x-stackql-resource: roles
       x-stackql-method: put_role_permissions_boundary
       x-stackql-verb: REPLACE
   /?Action=PutRolePolicy&Version=2010-05-08:
@@ -8998,7 +9092,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_permissions_boundaries
+      x-stackql-resource: users
       x-stackql-method: put_user_permissions_boundary
       x-stackql-verb: REPLACE
     post:
@@ -9018,7 +9112,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PutUserPermissionsBoundaryRequest'
-      x-stackql-resource: user_permissions_boundaries
+      x-stackql-resource: users
       x-stackql-method: put_user_permissions_boundary
       x-stackql-verb: REPLACE
   /?Action=PutUserPolicy&Version=2010-05-08:
@@ -9124,7 +9218,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: delegation_request
+      x-stackql-resource: delegation_requests
       x-stackql-method: reject_delegation_request
       x-stackql-verb: EXEC
     post:
@@ -9141,7 +9235,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RejectDelegationRequestRequest'
-      x-stackql-resource: delegation_request
+      x-stackql-resource: delegation_requests
       x-stackql-method: reject_delegation_request
       x-stackql-verb: EXEC
   /?Action=RemoveClientIDFromOpenIDConnectProvider&Version=2010-05-08:
@@ -9177,7 +9271,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: client_id_from_open_id_connect_providers
+      x-stackql-resource: open_id_connect_providers
       x-stackql-method: remove_client_id_from_open_id_connect_provider
       x-stackql-verb: UPDATE
     post:
@@ -9194,7 +9288,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveClientIDFromOpenIDConnectProviderRequest'
-      x-stackql-resource: client_id_from_open_id_connect_providers
+      x-stackql-resource: open_id_connect_providers
       x-stackql-method: remove_client_id_from_open_id_connect_provider
       x-stackql-verb: UPDATE
   /?Action=RemoveRoleFromInstanceProfile&Version=2010-05-08:
@@ -9233,7 +9327,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: role_from_instance_profiles
+      x-stackql-resource: instance_profiles
       x-stackql-method: remove_role_from_instance_profile
       x-stackql-verb: UPDATE
     post:
@@ -9252,7 +9346,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveRoleFromInstanceProfileRequest'
-      x-stackql-resource: role_from_instance_profiles
+      x-stackql-resource: instance_profiles
       x-stackql-method: remove_role_from_instance_profile
       x-stackql-verb: UPDATE
   /?Action=RemoveUserFromGroup&Version=2010-05-08:
@@ -9287,7 +9381,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_from_groups
+      x-stackql-resource: groups
       x-stackql-method: remove_user_from_group
       x-stackql-verb: UPDATE
     post:
@@ -9302,7 +9396,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RemoveUserFromGroupRequest'
-      x-stackql-resource: user_from_groups
+      x-stackql-resource: groups
       x-stackql-method: remove_user_from_group
       x-stackql-verb: UPDATE
   /?Action=ResetServiceSpecificCredential&Version=2010-05-08:
@@ -9343,7 +9437,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ResetServiceSpecificCredentialOutputDisplay'
-      x-stackql-resource: service_specific_credential
+      x-stackql-resource: service_specific_credentials
       x-stackql-method: reset_service_specific_credential
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetServiceSpecificCredentialOutputDisplay
@@ -9366,7 +9460,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResetServiceSpecificCredentialRequest'
-      x-stackql-resource: service_specific_credential
+      x-stackql-resource: service_specific_credentials
       x-stackql-method: reset_service_specific_credential
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ResetServiceSpecificCredentialOutputDisplay
@@ -9418,7 +9512,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resync_mfa_device
+      x-stackql-resource: users
       x-stackql-method: resync_mfa_device
       x-stackql-verb: EXEC
     post:
@@ -9435,7 +9529,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ResyncMFADeviceRequest'
-      x-stackql-resource: resync_mfa_device
+      x-stackql-resource: users
       x-stackql-method: resync_mfa_device
       x-stackql-verb: EXEC
   /?Action=SendDelegationToken&Version=2010-05-08:
@@ -9464,7 +9558,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: delegation_token
+      x-stackql-resource: delegation_requests
       x-stackql-method: send_delegation_token
       x-stackql-verb: EXEC
     post:
@@ -9483,7 +9577,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SendDelegationTokenRequest'
-      x-stackql-resource: delegation_token
+      x-stackql-resource: delegation_requests
       x-stackql-method: send_delegation_token
       x-stackql-verb: EXEC
   /?Action=SetDefaultPolicyVersion&Version=2010-05-08:
@@ -9519,7 +9613,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: default_policy_versions
+      x-stackql-resource: policy_versions
       x-stackql-method: set_default_policy_version
       x-stackql-verb: UPDATE
     post:
@@ -9537,7 +9631,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetDefaultPolicyVersionRequest'
-      x-stackql-resource: default_policy_versions
+      x-stackql-resource: policy_versions
       x-stackql-method: set_default_policy_version
       x-stackql-verb: UPDATE
   /?Action=SetSecurityTokenServicePreferences&Version=2010-05-08:
@@ -10072,7 +10166,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: instance_profiles
+      x-stackql-resource: tags
       x-stackql-method: tag_instance_profile
       x-stackql-verb: UPDATE
     post:
@@ -10098,7 +10192,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagInstanceProfileRequest'
-      x-stackql-resource: instance_profiles
+      x-stackql-resource: tags
       x-stackql-method: tag_instance_profile
       x-stackql-verb: UPDATE
   /?Action=TagMFADevice&Version=2010-05-08:
@@ -10144,7 +10238,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: mfa_devices
+      x-stackql-resource: tags
       x-stackql-method: tag_mfa_device
       x-stackql-verb: UPDATE
     post:
@@ -10170,7 +10264,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagMFADeviceRequest'
-      x-stackql-resource: mfa_devices
+      x-stackql-resource: tags
       x-stackql-method: tag_mfa_device
       x-stackql-verb: UPDATE
   /?Action=TagOpenIDConnectProvider&Version=2010-05-08:
@@ -10216,7 +10310,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: open_id_connect_providers
+      x-stackql-resource: tags
       x-stackql-method: tag_open_id_connect_provider
       x-stackql-verb: UPDATE
     post:
@@ -10243,7 +10337,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagOpenIDConnectProviderRequest'
-      x-stackql-resource: open_id_connect_providers
+      x-stackql-resource: tags
       x-stackql-method: tag_open_id_connect_provider
       x-stackql-verb: UPDATE
   /?Action=TagPolicy&Version=2010-05-08:
@@ -10288,7 +10382,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: policies
+      x-stackql-resource: tags
       x-stackql-method: tag_policy
       x-stackql-verb: UPDATE
     post:
@@ -10314,7 +10408,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagPolicyRequest'
-      x-stackql-resource: policies
+      x-stackql-resource: tags
       x-stackql-method: tag_policy
       x-stackql-verb: UPDATE
   /?Action=TagRole&Version=2010-05-08:
@@ -10361,7 +10455,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: roles
+      x-stackql-resource: tags
       x-stackql-method: tag_role
       x-stackql-verb: UPDATE
     post:
@@ -10389,7 +10483,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagRoleRequest'
-      x-stackql-resource: roles
+      x-stackql-resource: tags
       x-stackql-method: tag_role
       x-stackql-verb: UPDATE
   /?Action=TagSAMLProvider&Version=2010-05-08:
@@ -10435,7 +10529,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: saml_providers
+      x-stackql-resource: tags
       x-stackql-method: tag_saml_provider
       x-stackql-verb: UPDATE
     post:
@@ -10462,7 +10556,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagSAMLProviderRequest'
-      x-stackql-resource: saml_providers
+      x-stackql-resource: tags
       x-stackql-method: tag_saml_provider
       x-stackql-verb: UPDATE
   /?Action=TagServerCertificate&Version=2010-05-08:
@@ -10510,7 +10604,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: server_certificates
+      x-stackql-resource: tags
       x-stackql-method: tag_server_certificate
       x-stackql-verb: UPDATE
     post:
@@ -10539,7 +10633,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagServerCertificateRequest'
-      x-stackql-resource: server_certificates
+      x-stackql-resource: tags
       x-stackql-method: tag_server_certificate
       x-stackql-verb: UPDATE
   /?Action=TagUser&Version=2010-05-08:
@@ -10586,7 +10680,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: users
+      x-stackql-resource: tags
       x-stackql-method: tag_user
       x-stackql-verb: UPDATE
     post:
@@ -10614,7 +10708,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TagUserRequest'
-      x-stackql-resource: users
+      x-stackql-resource: tags
       x-stackql-method: tag_user
       x-stackql-verb: UPDATE
   /?Action=UntagInstanceProfile&Version=2010-05-08:
@@ -10649,7 +10743,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: instance_profiles
+      x-stackql-resource: tags
       x-stackql-method: untag_instance_profile
       x-stackql-verb: UPDATE
     post:
@@ -10665,7 +10759,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagInstanceProfileRequest'
-      x-stackql-resource: instance_profiles
+      x-stackql-resource: tags
       x-stackql-method: untag_instance_profile
       x-stackql-verb: UPDATE
   /?Action=UntagMFADevice&Version=2010-05-08:
@@ -10701,7 +10795,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: mfa_devices
+      x-stackql-resource: tags
       x-stackql-method: untag_mfa_device
       x-stackql-verb: UPDATE
     post:
@@ -10717,7 +10811,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagMFADeviceRequest'
-      x-stackql-resource: mfa_devices
+      x-stackql-resource: tags
       x-stackql-method: untag_mfa_device
       x-stackql-verb: UPDATE
   /?Action=UntagOpenIDConnectProvider&Version=2010-05-08:
@@ -10753,7 +10847,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: open_id_connect_providers
+      x-stackql-resource: tags
       x-stackql-method: untag_open_id_connect_provider
       x-stackql-verb: UPDATE
     post:
@@ -10770,7 +10864,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagOpenIDConnectProviderRequest'
-      x-stackql-resource: open_id_connect_providers
+      x-stackql-resource: tags
       x-stackql-method: untag_open_id_connect_provider
       x-stackql-verb: UPDATE
   /?Action=UntagPolicy&Version=2010-05-08:
@@ -10805,7 +10899,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: policies
+      x-stackql-resource: tags
       x-stackql-method: untag_policy
       x-stackql-verb: UPDATE
     post:
@@ -10821,7 +10915,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagPolicyRequest'
-      x-stackql-resource: policies
+      x-stackql-resource: tags
       x-stackql-method: untag_policy
       x-stackql-verb: UPDATE
   /?Action=UntagRole&Version=2010-05-08:
@@ -10856,7 +10950,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: roles
+      x-stackql-resource: tags
       x-stackql-method: untag_role
       x-stackql-verb: UPDATE
     post:
@@ -10872,7 +10966,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagRoleRequest'
-      x-stackql-resource: roles
+      x-stackql-resource: tags
       x-stackql-method: untag_role
       x-stackql-verb: UPDATE
   /?Action=UntagSAMLProvider&Version=2010-05-08:
@@ -10908,7 +11002,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: saml_providers
+      x-stackql-resource: tags
       x-stackql-method: untag_saml_provider
       x-stackql-verb: UPDATE
     post:
@@ -10925,7 +11019,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagSAMLProviderRequest'
-      x-stackql-resource: saml_providers
+      x-stackql-resource: tags
       x-stackql-method: untag_saml_provider
       x-stackql-verb: UPDATE
   /?Action=UntagServerCertificate&Version=2010-05-08:
@@ -10962,7 +11056,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: server_certificates
+      x-stackql-resource: tags
       x-stackql-method: untag_server_certificate
       x-stackql-verb: UPDATE
     post:
@@ -10980,7 +11074,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagServerCertificateRequest'
-      x-stackql-resource: server_certificates
+      x-stackql-resource: tags
       x-stackql-method: untag_server_certificate
       x-stackql-verb: UPDATE
   /?Action=UntagUser&Version=2010-05-08:
@@ -11015,7 +11109,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: users
+      x-stackql-resource: tags
       x-stackql-method: untag_user
       x-stackql-verb: UPDATE
     post:
@@ -11031,7 +11125,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UntagUserRequest'
-      x-stackql-resource: users
+      x-stackql-resource: tags
       x-stackql-method: untag_user
       x-stackql-verb: UPDATE
   /?Action=UpdateAccessKey&Version=2010-05-08:
@@ -11261,7 +11355,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: assume_role_policies
+      x-stackql-resource: role_policies
       x-stackql-method: update_assume_role_policy
       x-stackql-verb: UPDATE
     post:
@@ -11278,7 +11372,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateAssumeRolePolicyRequest'
-      x-stackql-resource: assume_role_policies
+      x-stackql-resource: role_policies
       x-stackql-method: update_assume_role_policy
       x-stackql-verb: UPDATE
   /?Action=UpdateDelegationRequest&Version=2010-05-08:
@@ -11507,7 +11601,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: open_id_connect_provider_thumbprints
+      x-stackql-resource: open_id_connect_providers
       x-stackql-method: update_open_id_connect_provider_thumbprint
       x-stackql-verb: UPDATE
     post:
@@ -11532,7 +11626,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateOpenIDConnectProviderThumbprintRequest'
-      x-stackql-resource: open_id_connect_provider_thumbprints
+      x-stackql-resource: open_id_connect_providers
       x-stackql-method: update_open_id_connect_provider_thumbprint
       x-stackql-verb: UPDATE
   /?Action=UpdateRole&Version=2010-05-08:
@@ -11640,7 +11734,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UpdateRoleDescriptionOutputDisplay'
-      x-stackql-resource: role_descriptions
+      x-stackql-resource: roles
       x-stackql-method: update_role_description
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateRoleDescriptionOutputDisplay
@@ -11662,7 +11756,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateRoleDescriptionRequest'
-      x-stackql-resource: role_descriptions
+      x-stackql-resource: roles
       x-stackql-method: update_role_description
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateRoleDescriptionOutputDisplay
@@ -12127,7 +12221,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UploadSSHPublicKeyOutputDisplay'
-      x-stackql-resource: upload_ssh_public_key
+      x-stackql-resource: users
       x-stackql-method: upload_ssh_public_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadSSHPublicKeyOutputDisplay
@@ -12151,7 +12245,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UploadSSHPublicKeyRequest'
-      x-stackql-resource: upload_ssh_public_key
+      x-stackql-resource: users
       x-stackql-method: upload_ssh_public_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadSSHPublicKeyOutputDisplay
@@ -12248,7 +12342,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UploadServerCertificateOutputDisplay'
-      x-stackql-resource: upload_server_certificate
+      x-stackql-resource: server_certificates
       x-stackql-method: upload_server_certificate
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadServerCertificateOutputDisplay
@@ -12281,7 +12375,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UploadServerCertificateRequest'
-      x-stackql-resource: upload_server_certificate
+      x-stackql-resource: server_certificates
       x-stackql-method: upload_server_certificate
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: UploadServerCertificateOutputDisplay
@@ -14400,7 +14494,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/GetContextKeysForPolicyResponseDisplay'
+            $ref: '#/components/schemas/GetContextKeysForCustomPolicyRowDisplay'
     GetContextKeysForCustomPolicyRequest:
       type: object
       properties:
@@ -14414,13 +14508,19 @@ components:
             line feed (\u000A), and carriage return (\u000D)'
       required:
       - PolicyInputList
+    GetContextKeysForCustomPolicyRowDisplay:
+      type: object
+      properties:
+        context_key_name:
+          type: string
+          description: The list of context keys that are referenced in the input policies.
     GetContextKeysForPrincipalPolicyOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/GetContextKeysForPolicyResponseDisplay'
+            $ref: '#/components/schemas/GetContextKeysForPrincipalPolicyRowDisplay'
     GetContextKeysForPrincipalPolicyRequest:
       type: object
       properties:
@@ -14441,6 +14541,12 @@ components:
             (\u0009), line feed (\u000A), and carriage return (\u000D)'
       required:
       - PolicySourceArn
+    GetContextKeysForPrincipalPolicyRowDisplay:
+      type: object
+      properties:
+        context_key_name:
+          type: string
+          description: The list of context keys that are referenced in the input policies.
     GetCredentialReportResponseDisplay:
       type: object
       properties:
@@ -15353,7 +15459,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/accountAliasTypeDisplay'
+            $ref: '#/components/schemas/ListAccountAliasesRowDisplay'
     ListAccountAliasesRequest:
       type: object
       properties:
@@ -15369,6 +15475,12 @@ components:
             not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even
             when there are more results available. In that case, the IsTruncated response element returns true, and Marker
             contains a value to include in the subsequent call that tells the service where to continue from.
+    ListAccountAliasesRowDisplay:
+      type: object
+      properties:
+        account_alias:
+          type: string
+          description: A list of aliases associated with the account. Amazon Web Services supports only one alias per account.
     AttachedPolicyDisplay:
       type: object
       properties:
@@ -15590,7 +15702,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/policyNameTypeDisplay'
+            $ref: '#/components/schemas/ListGroupPoliciesRowDisplay'
     ListGroupPoliciesRequest:
       type: object
       properties:
@@ -15613,6 +15725,14 @@ components:
             contains a value to include in the subsequent call that tells the service where to continue from.
       required:
       - GroupName
+    ListGroupPoliciesRowDisplay:
+      type: object
+      properties:
+        policy_name:
+          type: string
+          description: 'A list of policy names. This parameter allows (through its regex pattern) a string of characters consisting
+            of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters:
+            _+=,.@-'
     pathPrefixType:
       type: string
       minLength: 1
@@ -15902,9 +16022,18 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/FeatureTypeDisplay'
+            $ref: '#/components/schemas/ListOrganizationsFeaturesRowDisplay'
     ListOrganizationsFeaturesRequest:
       type: object
+    ListOrganizationsFeaturesRowDisplay:
+      type: object
+      properties:
+        organization_id:
+          type: string
+          description: The unique identifier (ID) of an organization.
+        enabled_features:
+          type: array
+          description: Specifies the features that are currently available in your organization.
     policyScopeType:
       type: string
       enum:
@@ -16063,7 +16192,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/policyNameTypeDisplay'
+            $ref: '#/components/schemas/ListRolePoliciesRowDisplay'
     ListRolePoliciesRequest:
       type: object
       properties:
@@ -16086,6 +16215,12 @@ components:
             contains a value to include in the subsequent call that tells the service where to continue from.
       required:
       - RoleName
+    ListRolePoliciesRowDisplay:
+      type: object
+      properties:
+        policy_name:
+          type: string
+          description: A list of policy names.
     ListRoleTagsOutputDisplay:
       type: object
       properties:
@@ -16439,7 +16574,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/policyNameTypeDisplay'
+            $ref: '#/components/schemas/ListUserPoliciesRowDisplay'
     ListUserPoliciesRequest:
       type: object
       properties:
@@ -16462,6 +16597,12 @@ components:
             contains a value to include in the subsequent call that tells the service where to continue from.
       required:
       - UserName
+    ListUserPoliciesRowDisplay:
+      type: object
+      properties:
+        policy_name:
+          type: string
+          description: A list of policy names.
     ListUserTagsOutputDisplay:
       type: object
       properties:

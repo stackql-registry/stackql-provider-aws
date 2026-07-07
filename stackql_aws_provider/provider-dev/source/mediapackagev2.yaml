@@ -60,7 +60,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelHarvestJobResponse'
-      x-stackql-resource: harvest_job
+      x-stackql-resource: origin_endpoints
       x-stackql-method: cancel_harvest_job
       x-stackql-verb: EXEC
     get:
@@ -188,6 +188,9 @@ paths:
       x-stackql-method: list_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /channelGroup:
     post:
       operationId: CreateChannelGroup
@@ -254,6 +257,9 @@ paths:
       x-stackql-method: list_channel_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /channelGroup/{channel_group_name}/channel/{channel_name}/originEndpoint/{origin_endpoint_name}/harvestJob:
     post:
       operationId: CreateHarvestJob
@@ -429,6 +435,9 @@ paths:
       x-stackql-method: list_origin_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /channelGroup/{channel_group_name}/channel/{channel_name}/:
     delete:
       operationId: DeleteChannel
@@ -1041,6 +1050,9 @@ paths:
       x-stackql-method: list_harvest_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1059,7 +1071,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1091,7 +1103,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1113,7 +1125,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /channelGroup/{channel_group_name}/channel/{channel_name}/reset:
@@ -1142,7 +1154,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetChannelStateResponse'
-      x-stackql-resource: channel_state
+      x-stackql-resource: channels
       x-stackql-method: reset_channel_state
       x-stackql-verb: EXEC
   /channelGroup/{channel_group_name}/channel/{channel_name}/originEndpoint/{origin_endpoint_name}/reset:
@@ -1179,7 +1191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetOriginEndpointStateResponse'
-      x-stackql-resource: origin_endpoint_state
+      x-stackql-resource: origin_endpoints
       x-stackql-method: reset_origin_endpoint_state
       x-stackql-verb: EXEC
 components:

@@ -77,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteQueuedSavingsPlanResponse'
-      x-stackql-resource: queued_savings_plans
+      x-stackql-resource: savings_plans
       x-stackql-method: delete_queued_savings_plan
       x-stackql-verb: DELETE
   /DescribeSavingsPlanRates:
@@ -259,7 +259,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ReturnSavingsPlan:
@@ -287,7 +287,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReturnSavingsPlanResponse'
-      x-stackql-resource: return_savings_plan
+      x-stackql-resource: savings_plans
       x-stackql-method: return_savings_plan
       x-stackql-verb: EXEC
   /TagResource:
@@ -316,7 +316,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -345,7 +345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

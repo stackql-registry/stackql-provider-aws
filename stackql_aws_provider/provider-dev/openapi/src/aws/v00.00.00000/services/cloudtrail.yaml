@@ -126,10 +126,6 @@ paths:
                   description: One or more event data stores to which events arriving through a channel will be logged.
                 Tags:
                   $ref: "#/components/schemas/TagsList"
-              required:
-                - Name
-                - Source
-                - Destinations
       responses:
         "200":
           description: Success
@@ -172,8 +168,6 @@ paths:
                 Widgets:
                   $ref: "#/components/schemas/RequestWidgetList"
                   description: An array of widgets for a custom dashboard. A custom dashboard can have a maximum of ten widgets. You do not need to specify widgets for the Highlights dashboard.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -231,8 +225,6 @@ paths:
                 BillingMode:
                   $ref: "#/components/schemas/BillingMode"
                   description: "The billing mode for the event data store determines the cost for ingesting events and the default and maximum retention period for the event data store. The following are the possible values: EXTENDABLE_RETENTION_PRICING - This billing mode is generally recommended if you want a flexible retention period of up to 3653 days (about 10 years). The default retention period for this billing mode is 366 days. FIXED_RETENTION_PRICING - This billing mode is recommended if you expect to ingest more than 25 TB of event data per month and need a retention period of up to 2557 days (about 7 years). The default retention period for this billing mode is 2557 days. The default value is EXTENDABLE_RETENTION_PRICING. For more information about CloudTrail pricing, see CloudTrail Pricing and Managing CloudTrail Lake costs."
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -297,7 +289,6 @@ paths:
                 TagsList:
                   $ref: "#/components/schemas/TagsList"
               required:
-                - Name
                 - S3BucketName
       responses:
         "200":
@@ -462,8 +453,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/String"
                   description: Specifies the name or the CloudTrail ARN of the trail to be deleted. The following is the format of a trail ARN. arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1023,8 +1012,6 @@ paths:
                 Name:
                   $ref: "#/components/schemas/String"
                   description: The name or the Amazon Resource Name (ARN) of the trail for which you want to retrieve settings information.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -2349,8 +2336,6 @@ paths:
                 IsOrganizationTrail:
                   $ref: "#/components/schemas/Boolean"
                   description: Specifies whether the trail is applied to all accounts in an organization in Organizations, or only for the current Amazon Web Services account. The default is false, and cannot be true unless the call is made on behalf of an Amazon Web Services account that is the management account for an organization in Organizations. If the trail is not an organization trail and this is set to true, the trail will be created in all Amazon Web Services accounts that belong to the organization. If the trail is an organization trail and this is set to false, the trail will remain in the current Amazon Web Services account but be deleted from all member accounts in the organization. Only the management account for the organization can convert an organization trail to a non-organization trail, or convert a non-organization trail to an organization trail.
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -4524,6 +4509,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         remove_tags:
@@ -4683,6 +4675,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_dashboard_refresh:
+          operation:
+            $ref: "#/paths/~1StartDashboardRefresh/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_dashboard:
           operation:
             $ref: "#/paths/~1UpdateDashboard/post"
@@ -4753,6 +4758,32 @@ components:
         list_event_data_stores:
           operation:
             $ref: "#/paths/~1ListEventDataStores/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_event_data_store_ingestion:
+          operation:
+            $ref: "#/paths/~1StartEventDataStoreIngestion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_event_data_store_ingestion:
+          operation:
+            $ref: "#/paths/~1StopEventDataStoreIngestion/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4836,6 +4867,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Trail
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4855,6 +4887,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_trail:
@@ -4872,7 +4911,6 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/trails/methods/get_trail"
           - $ref: "#/components/x-stackQL-resources/trails/methods/describe_trails"
         insert:
           - $ref: "#/components/x-stackQL-resources/trails/methods/create_trail"
@@ -5117,6 +5155,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5230,6 +5275,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5255,6 +5307,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5304,6 +5363,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5324,6 +5390,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Events
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        restore_event_data_store:
+          operation:
+            $ref: "#/paths/~1RestoreEventDataStore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

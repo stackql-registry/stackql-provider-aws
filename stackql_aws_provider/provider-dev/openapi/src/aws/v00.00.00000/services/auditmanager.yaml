@@ -1372,7 +1372,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListKeywordsForDataSourceResponse"
+                $ref: "#/components/schemas/ListKeywordsForDataSourceOutputDisplay"
   /notifications:
     get:
       operationId: ListNotifications
@@ -3732,19 +3732,19 @@ components:
         - AWS_Security_Hub
         - AWS_API_Call
         - MANUAL
-    ListKeywordsForDataSourceResponse:
+    ListKeywordsForDataSourceRowDisplay:
       type: object
       properties:
-        keywords:
-          $ref: "#/components/schemas/Keywords"
+        keyword:
+          type: string
           description: The list of keywords for the control mapping source.
-        nextToken:
-          $ref: "#/components/schemas/Token"
-          description: The pagination token that's used to fetch the next set of results.
-    Keywords:
-      type: array
-      items:
-        $ref: "#/components/schemas/KeywordValue"
+    ListKeywordsForDataSourceOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListKeywordsForDataSourceRowDisplay"
     ListNotificationsResponse:
       type: object
       properties:
@@ -3934,14 +3934,36 @@ components:
       items:
         $ref: "#/components/schemas/NonEmptyString"
   x-stackQL-resources:
-    assessment_report_evidence_folders:
-      id: aws.auditmanager.assessment_report_evidence_folders
-      name: assessment_report_evidence_folders
-      title: assessment_report_evidence_folders
+    evidence_folders:
+      id: aws.auditmanager.evidence_folders
+      name: evidence_folders
+      title: evidence_folders
       methods:
         associate_assessment_report_evidence_folder:
           operation:
             $ref: "#/paths/~1assessments~1{assessment_id}~1associateToAssessmentReport/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_associate_assessment_report_evidence:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1batchAssociateToAssessmentReport/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_assessment_report_evidence:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1batchDisassociateFromAssessmentReport/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3961,17 +3983,58 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_evidence_folder:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1evidenceFolders~1{evidence_folder_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.evidenceFolder
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/evidence_folders/methods/get_evidence_folder"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/assessment_report_evidence_folders/methods/associate_assessment_report_evidence_folder"
+          - $ref: "#/components/x-stackQL-resources/evidence_folders/methods/associate_assessment_report_evidence_folder"
         delete: []
     assessments:
       id: aws.auditmanager.assessments
       name: assessments
       title: assessments
       methods:
+        batch_create_delegation_by_assessment:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1delegations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_delegation_by_assessment:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1delegations/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_import_evidence_to_assessment_control:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1controls~1{control_id}~1evidence/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_assessment:
           operation:
             $ref: "#/paths/~1assessments/post"
@@ -4014,6 +4077,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_assessment_control_set_status:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1status/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_assessment_status:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1status/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assessments/methods/get_assessment"
@@ -4021,7 +4106,9 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/assessments/methods/create_assessment"
         update:
+          - $ref: "#/components/x-stackQL-resources/assessments/methods/update_assessment_control_set_status"
           - $ref: "#/components/x-stackQL-resources/assessments/methods/update_assessment"
+          - $ref: "#/components/x-stackQL-resources/assessments/methods/update_assessment_status"
         delete:
           - $ref: "#/components/x-stackQL-resources/assessments/methods/delete_assessment"
     assessment_frameworks:
@@ -4060,9 +4147,40 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.framework
         update_assessment_framework:
           operation:
             $ref: "#/paths/~1assessmentFrameworks~1{framework_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_assessment_framework_share:
+          operation:
+            $ref: "#/paths/~1assessmentFrameworkShareRequests~1{request_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        update_assessment_framework_share:
+          operation:
+            $ref: "#/paths/~1assessmentFrameworkShareRequests~1{request_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_assessment_framework_share:
+          operation:
+            $ref: "#/paths/~1assessmentFrameworks~1{framework_id}~1shareRequests/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4079,7 +4197,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/create_assessment_framework"
         update:
           - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/update_assessment_framework"
+          - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/update_assessment_framework_share"
         delete:
+          - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/delete_assessment_framework_share"
           - $ref: "#/components/x-stackQL-resources/assessment_frameworks/methods/delete_assessment_framework"
     assessment_reports:
       id: aws.auditmanager.assessment_reports
@@ -4111,6 +4231,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        validate_assessment_report_integrity:
+          operation:
+            $ref: "#/paths/~1assessmentReports~1integrity/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assessment_reports/methods/list_assessment_reports"
@@ -4155,9 +4286,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.control
         update_control:
           operation:
             $ref: "#/paths/~1controls~1{control_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_assessment_control:
+          operation:
+            $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1controls~1{control_id}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4174,39 +4317,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/controls/methods/create_control"
         update:
           - $ref: "#/components/x-stackQL-resources/controls/methods/update_control"
+          - $ref: "#/components/x-stackQL-resources/controls/methods/update_assessment_control"
         delete:
           - $ref: "#/components/x-stackQL-resources/controls/methods/delete_control"
-    assessment_framework_shares:
-      id: aws.auditmanager.assessment_framework_shares
-      name: assessment_framework_shares
-      title: assessment_framework_shares
-      methods:
-        delete_assessment_framework_share:
-          operation:
-            $ref: "#/paths/~1assessmentFrameworkShareRequests~1{request_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        update_assessment_framework_share:
-          operation:
-            $ref: "#/paths/~1assessmentFrameworkShareRequests~1{request_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/assessment_framework_shares/methods/update_assessment_framework_share"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/assessment_framework_shares/methods/delete_assessment_framework_share"
     accounts:
       id: aws.auditmanager.accounts
       name: accounts
@@ -4305,6 +4418,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.preSignedUrl
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assessment_report_urls/methods/get_assessment_report_url"
@@ -4360,6 +4474,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.evidence
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/evidences/methods/get_evidence"
@@ -4401,23 +4516,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/evidence_file_upload_urls/methods/get_evidence_file_upload_url"
-        insert: []
-        update: []
-        delete: []
-    evidence_folders:
-      id: aws.auditmanager.evidence_folders
-      name: evidence_folders
-      title: evidence_folders
-      methods:
-        get_evidence_folder:
-          operation:
-            $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1evidenceFolders~1{evidence_folder_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/evidence_folders/methods/get_evidence_folder"
         insert: []
         update: []
         delete: []
@@ -4470,6 +4568,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.insights
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/insights/methods/get_insights"
@@ -4487,6 +4586,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.insights
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/insights_by_assessments/methods/get_insights_by_assessment"
@@ -4521,6 +4621,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.settings
         update_settings:
           operation:
             $ref: "#/paths/~1settings/put"
@@ -4645,6 +4746,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListKeywordsForDataSourceOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "keywords" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"keyword": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -4672,10 +4780,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.auditmanager.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.auditmanager.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4683,17 +4791,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.auditmanager.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -4714,75 +4811,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    assessment_controls:
-      id: aws.auditmanager.assessment_controls
-      name: assessment_controls
-      title: assessment_controls
-      methods:
-        update_assessment_control:
-          operation:
-            $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1controls~1{control_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/assessment_controls/methods/update_assessment_control"
-        delete: []
-    assessment_control_set_status:
-      id: aws.auditmanager.assessment_control_set_status
-      name: assessment_control_set_status
-      title: assessment_control_set_status
-      methods:
-        update_assessment_control_set_status:
-          operation:
-            $ref: "#/paths/~1assessments~1{assessment_id}~1controlSets~1{control_set_id}~1status/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/assessment_control_set_status/methods/update_assessment_control_set_status"
-        delete: []
-    assessment_status:
-      id: aws.auditmanager.assessment_status
-      name: assessment_status
-      title: assessment_status
-      methods:
-        update_assessment_status:
-          operation:
-            $ref: "#/paths/~1assessments~1{assessment_id}~1status/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/assessment_status/methods/update_assessment_status"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

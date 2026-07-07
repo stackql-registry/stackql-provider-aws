@@ -1527,6 +1527,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_whats_app_message_template_from_library:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1template~1create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_whats_app_message_template_media:
+          operation:
+            $ref: "#/paths/~1v1~1whatsapp~1template~1media/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_whats_app_message_template:
           operation:
             $ref: "#/paths/~1v1~1whatsapp~1template/delete"
@@ -1561,61 +1583,25 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.templates
-          request:
-            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/whats_app_message_templates/methods/get_whats_app_message_template"
         insert:
           - $ref: "#/components/x-stackQL-resources/whats_app_message_templates/methods/create_whats_app_message_template"
+          - $ref: "#/components/x-stackQL-resources/whats_app_message_templates/methods/create_whats_app_message_template_from_library"
+          - $ref: "#/components/x-stackQL-resources/whats_app_message_templates/methods/create_whats_app_message_template_media"
         update:
           - $ref: "#/components/x-stackQL-resources/whats_app_message_templates/methods/update_whats_app_message_template"
         delete:
           - $ref: "#/components/x-stackQL-resources/whats_app_message_templates/methods/delete_whats_app_message_template"
-    whats_app_message_template_from_libraries:
-      id: aws.socialmessaging.whats_app_message_template_from_libraries
-      name: whats_app_message_template_from_libraries
-      title: whats_app_message_template_from_libraries
-      methods:
-        create_whats_app_message_template_from_library:
-          operation:
-            $ref: "#/paths/~1v1~1whatsapp~1template~1create/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/whats_app_message_template_from_libraries/methods/create_whats_app_message_template_from_library"
-        update: []
-        delete: []
-    whats_app_message_template_medias:
-      id: aws.socialmessaging.whats_app_message_template_medias
-      name: whats_app_message_template_medias
-      title: whats_app_message_template_medias
-      methods:
-        create_whats_app_message_template_media:
-          operation:
-            $ref: "#/paths/~1v1~1whatsapp~1template~1media/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/whats_app_message_template_medias/methods/create_whats_app_message_template_media"
-        update: []
-        delete: []
     whats_app_message_medias:
       id: aws.socialmessaging.whats_app_message_medias
       name: whats_app_message_medias
@@ -1658,6 +1644,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.account
           request:
             nativeCasing: pascal
         list_linked_whats_app_business_accounts:
@@ -1669,6 +1656,14 @@ components:
             objectKey: $.linkedAccounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/linked_whats_app_business_accounts/methods/get_linked_whats_app_business_account"
@@ -1695,10 +1690,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.socialmessaging.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.socialmessaging.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1708,11 +1703,35 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1v1~1tags~1tag-resource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1v1~1tags~1untag-resource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     whats_app_template_libraries:
       id: aws.socialmessaging.whats_app_template_libraries
@@ -1729,6 +1748,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1759,38 +1785,4 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/whats_app_business_account_event_destinations/methods/put_whats_app_business_account_event_destinations"
-        delete: []
-    resources:
-      id: aws.socialmessaging.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1v1~1tags~1tag-resource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1v1~1tags~1untag-resource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
         delete: []

@@ -1276,6 +1276,144 @@ components:
       required:
         - errored
   x-stackQL-resources:
+    pipelines:
+      id: aws.datapipeline.pipelines
+      name: pipelines
+      title: pipelines
+      methods:
+        activate_pipeline:
+          operation:
+            $ref: "#/paths/~1ActivatePipeline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_pipeline:
+          operation:
+            $ref: "#/paths/~1CreatePipeline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deactivate_pipeline:
+          operation:
+            $ref: "#/paths/~1DeactivatePipeline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_pipeline:
+          operation:
+            $ref: "#/paths/~1DeletePipeline/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_pipelines:
+          operation:
+            $ref: "#/paths/~1DescribePipelines/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        evaluate_expression:
+          operation:
+            $ref: "#/paths/~1EvaluateExpression/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_pipelines:
+          operation:
+            $ref: "#/paths/~1ListPipelines/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.pipelineIdList
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: body
+              responseToken:
+                key: $.marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        set_status:
+          operation:
+            $ref: "#/paths/~1SetStatus/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        validate_pipeline_definition:
+          operation:
+            $ref: "#/paths/~1ValidatePipelineDefinition/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/pipelines/methods/describe_pipelines"
+          - $ref: "#/components/x-stackQL-resources/pipelines/methods/list_pipelines"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/pipelines/methods/create_pipeline"
+        update:
+          - $ref: "#/components/x-stackQL-resources/pipelines/methods/set_status"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/pipelines/methods/delete_pipeline"
     tags:
       id: aws.datapipeline.tags
       name: tags
@@ -1314,72 +1452,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/tags/methods/add_tags"
           - $ref: "#/components/x-stackQL-resources/tags/methods/remove_tags"
         delete: []
-    pipelines:
-      id: aws.datapipeline.pipelines
-      name: pipelines
-      title: pipelines
-      methods:
-        create_pipeline:
-          operation:
-            $ref: "#/paths/~1CreatePipeline/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_pipeline:
-          operation:
-            $ref: "#/paths/~1DeletePipeline/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_pipelines:
-          operation:
-            $ref: "#/paths/~1DescribePipelines/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_pipelines:
-          operation:
-            $ref: "#/paths/~1ListPipelines/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.pipelineIdList
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pipelines/methods/describe_pipelines"
-          - $ref: "#/components/x-stackQL-resources/pipelines/methods/list_pipelines"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/pipelines/methods/create_pipeline"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/pipelines/methods/delete_pipeline"
     objects:
       id: aws.datapipeline.objects
       name: objects
@@ -1397,6 +1469,33 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: marker
+                location: body
+              responseToken:
+                key: $.marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        query_objects:
+          operation:
+            $ref: "#/paths/~1QueryObjects/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: body
+              responseToken:
+                key: $.marker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1443,29 +1542,6 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/pipeline_definitions/methods/put_pipeline_definition"
-        delete: []
-    status:
-      id: aws.datapipeline.status
-      name: status
-      title: status
-      methods:
-        set_status:
-          operation:
-            $ref: "#/paths/~1SetStatus/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/status/methods/set_status"
         delete: []
     task_status:
       id: aws.datapipeline.task_status

@@ -1560,7 +1560,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFindingsResponse"
+                $ref: "#/components/schemas/ListFindingsOutputDisplay"
   /managed-data-identifiers/list:
     post:
       operationId: ListManagedDataIdentifiers
@@ -4798,15 +4798,19 @@ components:
         name:
           $ref: "#/components/schemas/__string"
           description: The custom name of the custom data identifier.
-    ListFindingsResponse:
+    ListFindingsRowDisplay:
       type: object
       properties:
-        findingIds:
-          $ref: "#/components/schemas/__listOf__string"
+        finding_id:
+          type: string
           description: An array of strings, where each string is the unique identifier for a finding that matches the filter criteria specified in the request.
-        nextToken:
-          $ref: "#/components/schemas/__string"
-          description: The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
+    ListFindingsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFindingsRowDisplay"
     ListFindingsFiltersResponse:
       type: object
       properties:
@@ -5342,6 +5346,80 @@ components:
     UpdateSensitivityInspectionTemplateResponse:
       type: object
   x-stackQL-resources:
+    invitations:
+      id: aws.macie2.invitations
+      name: invitations
+      title: invitations
+      methods:
+        accept_invitation:
+          operation:
+            $ref: "#/paths/~1invitations~1accept/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_invitations:
+          operation:
+            $ref: "#/paths/~1invitations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_invitations:
+          operation:
+            $ref: "#/paths/~1invitations/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.invitations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        decline_invitations:
+          operation:
+            $ref: "#/paths/~1invitations~1decline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_invitations:
+          operation:
+            $ref: "#/paths/~1invitations~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/invitations/methods/create_invitations"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/invitations/methods/delete_invitations"
     custom_data_identifiers:
       id: aws.macie2.custom_data_identifiers
       name: custom_data_identifiers
@@ -5391,12 +5469,19 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/custom_data_identifiers/methods/get_custom_data_identifier"
-          - $ref: "#/components/x-stackQL-resources/custom_data_identifiers/methods/batch_get_custom_data_identifiers"
+          - $ref: "#/components/x-stackQL-resources/custom_data_identifiers/methods/list_custom_data_identifiers"
         insert:
           - $ref: "#/components/x-stackQL-resources/custom_data_identifiers/methods/create_custom_data_identifier"
         update: []
@@ -5407,6 +5492,17 @@ components:
       name: automated_discovery_accounts
       title: automated_discovery_accounts
       methods:
+        batch_update_automated_discovery_accounts:
+          operation:
+            $ref: "#/paths/~1automated-discovery~1accounts/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_automated_discovery_accounts:
           operation:
             $ref: "#/paths/~1automated-discovery~1accounts/get"
@@ -5416,6 +5512,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/automated_discovery_accounts/methods/list_automated_discovery_accounts"
@@ -5447,6 +5551,14 @@ components:
             objectKey: $.allowLists
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_allow_list:
           operation:
             $ref: "#/paths/~1allow-lists~1{id}/delete"
@@ -5525,6 +5637,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5561,6 +5680,14 @@ components:
             objectKey: $.findingsFilterListItems
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_findings_filter:
           operation:
             $ref: "#/paths/~1findingsfilters~1{id}/delete"
@@ -5594,50 +5721,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/findings_filters/methods/update_findings_filter"
         delete:
           - $ref: "#/components/x-stackQL-resources/findings_filters/methods/delete_findings_filter"
-    invitations:
-      id: aws.macie2.invitations
-      name: invitations
-      title: invitations
-      methods:
-        create_invitations:
-          operation:
-            $ref: "#/paths/~1invitations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_invitations:
-          operation:
-            $ref: "#/paths/~1invitations/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.invitations
-          request:
-            nativeCasing: pascal
-        delete_invitations:
-          operation:
-            $ref: "#/paths/~1invitations~1delete/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/invitations/methods/create_invitations"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/invitations/methods/delete_invitations"
     members:
       id: aws.macie2.members
       name: members
@@ -5663,6 +5746,14 @@ components:
             objectKey: $.members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_member:
           operation:
             $ref: "#/paths/~1members~1{id}/delete"
@@ -5681,6 +5772,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        update_member_session:
+          operation:
+            $ref: "#/paths/~1macie~1members~1{id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/members/methods/get_member"
@@ -5688,13 +5790,14 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/members/methods/create_member"
         update:
+          - $ref: "#/components/x-stackQL-resources/members/methods/update_member_session"
           - $ref: "#/components/x-stackQL-resources/members/methods/disassociate_member"
         delete:
           - $ref: "#/components/x-stackQL-resources/members/methods/delete_member"
-    sample_findings:
-      id: aws.macie2.sample_findings
-      name: sample_findings
-      title: sample_findings
+    findings:
+      id: aws.macie2.findings
+      name: findings
+      title: findings
       methods:
         create_sample_findings:
           operation:
@@ -5707,10 +5810,48 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_findings:
+          operation:
+            $ref: "#/paths/~1findings~1describe/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_findings:
+          operation:
+            $ref: "#/paths/~1findings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFindingsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "findingIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/get_findings"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
         insert:
-          - $ref: "#/components/x-stackQL-resources/sample_findings/methods/create_sample_findings"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/create_sample_findings"
         update: []
         delete: []
     buckets:
@@ -5728,6 +5869,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5808,16 +5956,24 @@ components:
             objectKey: $.adminAccounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
         insert: []
         update: []
         delete: []
-    from_administrator_accounts:
-      id: aws.macie2.from_administrator_accounts
-      name: from_administrator_accounts
-      title: from_administrator_accounts
+    administrator_accounts:
+      id: aws.macie2.administrator_accounts
+      name: administrator_accounts
+      title: administrator_accounts
       methods:
         disassociate_from_administrator_account:
           operation:
@@ -5825,16 +5981,24 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        get_administrator_account:
+          operation:
+            $ref: "#/paths/~1administrator/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.administrator
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/get_administrator_account"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/from_administrator_accounts/methods/disassociate_from_administrator_account"
+          - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/disassociate_from_administrator_account"
         delete: []
-    from_master_accounts:
-      id: aws.macie2.from_master_accounts
-      name: from_master_accounts
-      title: from_master_accounts
+    master_accounts:
+      id: aws.macie2.master_accounts
+      name: master_accounts
+      title: master_accounts
       methods:
         disassociate_from_master_account:
           operation:
@@ -5842,28 +6006,19 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/from_master_accounts/methods/disassociate_from_master_account"
-        delete: []
-    administrator_accounts:
-      id: aws.macie2.administrator_accounts
-      name: administrator_accounts
-      title: administrator_accounts
-      methods:
-        get_administrator_account:
+        get_master_account:
           operation:
-            $ref: "#/paths/~1administrator/get"
+            $ref: "#/paths/~1master/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.master
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/get_administrator_account"
+          - $ref: "#/components/x-stackQL-resources/master_accounts/methods/get_master_account"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/master_accounts/methods/disassociate_from_master_account"
         delete: []
     automated_discovery_configurations:
       id: aws.macie2.automated_discovery_configurations
@@ -5927,6 +6082,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.configuration
         put_classification_export_configuration:
           operation:
             $ref: "#/paths/~1classification-export-configuration/put"
@@ -5977,6 +6133,14 @@ components:
             objectKey: $.classificationScopes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/classification_scopes/methods/get_classification_scope"
@@ -6007,41 +6171,6 @@ components:
         insert: []
         update: []
         delete: []
-    findings:
-      id: aws.macie2.findings
-      name: findings
-      title: findings
-      methods:
-        get_findings:
-          operation:
-            $ref: "#/paths/~1findings~1describe/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_findings:
-          operation:
-            $ref: "#/paths/~1findings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.findingIds
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/get_findings"
-          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
-        insert: []
-        update: []
-        delete: []
     findings_publication_configurations:
       id: aws.macie2.findings_publication_configurations
       name: findings_publication_configurations
@@ -6053,6 +6182,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.securityHubConfiguration
         put_findings_publication_configuration:
           operation:
             $ref: "#/paths/~1findings-publication-configuration/put"
@@ -6086,23 +6216,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/invitations_counts/methods/get_invitations_count"
-        insert: []
-        update: []
-        delete: []
-    master_accounts:
-      id: aws.macie2.master_accounts
-      name: master_accounts
-      title: master_accounts
-      methods:
-        get_master_account:
-          operation:
-            $ref: "#/paths/~1master/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/master_accounts/methods/get_master_account"
         insert: []
         update: []
         delete: []
@@ -6231,6 +6344,14 @@ components:
             objectKey: $.sensitivityInspectionTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sensitivity_inspection_templates/methods/get_sensitivity_inspection_template"
@@ -6254,6 +6375,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6296,6 +6424,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6318,6 +6453,14 @@ components:
             objectKey: $.artifacts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_profile_artifacts/methods/list_resource_profile_artifacts"
@@ -6338,6 +6481,14 @@ components:
             objectKey: $.detections
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_resource_profile_detections:
           operation:
             $ref: "#/paths/~1resource-profiles~1detections/patch"
@@ -6356,10 +6507,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/resource_profile_detections/methods/update_resource_profile_detections"
         delete: []
-    tags_for_resources:
-      id: aws.macie2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.macie2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6367,17 +6518,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.macie2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -6397,6 +6537,19 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    resources:
+      id: aws.macie2.resources
+      name: resources
+      title: resources
+      methods:
         search_resources:
           operation:
             $ref: "#/paths/~1datasources~1search-resources/post"
@@ -6407,35 +6560,18 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resources/methods/search_resources"
         insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    member_sessions:
-      id: aws.macie2.member_sessions
-      name: member_sessions
-      title: member_sessions
-      methods:
-        update_member_session:
-          operation:
-            $ref: "#/paths/~1macie~1members~1{id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/member_sessions/methods/update_member_session"
+        update: []
         delete: []

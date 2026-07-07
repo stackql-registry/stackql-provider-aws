@@ -53,7 +53,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: abort_multipart_upload
+      x-stackql-resource: vaults
       x-stackql-method: abort_multipart_upload
       x-stackql-verb: EXEC
     post:
@@ -124,7 +124,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchiveCreationOutput'
-      x-stackql-resource: complete_multipart_upload
+      x-stackql-resource: vaults
       x-stackql-method: complete_multipart_upload
       x-stackql-verb: EXEC
     get:
@@ -189,6 +189,9 @@ paths:
       x-stackql-method: list_parts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parts
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
     put:
       operationId: UploadMultipartPart
       description: 'This operation uploads a part of an archive. You can upload archive parts in any order. You can also upload
@@ -263,7 +266,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadMultipartPartOutput'
-      x-stackql-resource: upload_multipart_part
+      x-stackql-resource: vaults
       x-stackql-method: upload_multipart_part
       x-stackql-verb: EXEC
   /{account_id}/vaults/{vault_name}/lock-policy:
@@ -296,7 +299,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: abort_vault_lock
+      x-stackql-resource: vaults
       x-stackql-method: abort_vault_lock
       x-stackql-verb: EXEC
     get:
@@ -382,7 +385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateVaultLockOutput'
-      x-stackql-resource: initiate_vault_lock
+      x-stackql-resource: vaults
       x-stackql-method: initiate_vault_lock
       x-stackql-verb: EXEC
   /{account_id}/vaults/{vault_name}/tags?operation=add:
@@ -420,7 +423,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: tags_to_vaults
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_vault
       x-stackql-verb: UPDATE
   /{account_id}/vaults/{vault_name}/lock-policy/{lock_id}:
@@ -459,7 +462,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: complete_vault_lock
+      x-stackql-resource: vaults
       x-stackql-method: complete_vault_lock
       x-stackql-verb: EXEC
   /{account_id}/vaults/{vault_name}:
@@ -611,7 +614,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: archives
+      x-stackql-resource: vaults
       x-stackql-method: delete_archive
       x-stackql-verb: DELETE
   /{account_id}/vaults/{vault_name}/access-policy:
@@ -676,6 +679,7 @@ paths:
       x-stackql-resource: vault_access_policies
       x-stackql-method: get_vault_access_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.policy
     put:
       operationId: SetVaultAccessPolicy
       description: This operation configures an access policy for a vault and will overwrite an existing policy. To configure
@@ -782,6 +786,7 @@ paths:
       x-stackql-resource: vault_notifications
       x-stackql-method: get_vault_notifications
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.vaultNotificationConfig
     put:
       operationId: SetVaultNotifications
       description: 'This operation configures notifications that will be sent when specific events happen to a vault. By default,
@@ -900,6 +905,7 @@ paths:
       x-stackql-resource: data_retrieval_policies
       x-stackql-method: get_data_retrieval_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Policy
     put:
       operationId: SetDataRetrievalPolicy
       description: This operation sets and then enacts a data retrieval policy in the region specified in the PUT request.
@@ -1044,7 +1050,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateJobOutput'
-      x-stackql-resource: initiate_job
+      x-stackql-resource: vaults
       x-stackql-method: initiate_job
       x-stackql-verb: EXEC
     get:
@@ -1121,6 +1127,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobList
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /{account_id}/vaults/{vault_name}/multipart-uploads:
     post:
       operationId: InitiateMultipartUpload
@@ -1177,7 +1186,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateMultipartUploadOutput'
-      x-stackql-resource: initiate_multipart_upload
+      x-stackql-resource: vaults
       x-stackql-method: initiate_multipart_upload
       x-stackql-verb: EXEC
     get:
@@ -1239,6 +1248,9 @@ paths:
       x-stackql-method: list_multipart_uploads
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UploadsList
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /{account_id}/provisioned-capacity:
     get:
       operationId: ListProvisionedCapacity
@@ -1312,7 +1324,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForVaultOutput'
-      x-stackql-resource: tags_for_vaults
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_vault
       x-stackql-verb: SELECT
   /{account_id}/vaults:
@@ -1363,6 +1375,9 @@ paths:
       x-stackql-method: list_vaults
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VaultList
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.Marker
   /{account_id}/vaults/{vault_name}/tags?operation=remove:
     post:
       operationId: RemoveTagsFromVault
@@ -1397,7 +1412,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: tags_from_vaults
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_vault
       x-stackql-verb: UPDATE
   /{account_id}/vaults/{vault_name}/archives:
@@ -1464,7 +1479,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchiveCreationOutput'
-      x-stackql-resource: upload_archive
+      x-stackql-resource: vaults
       x-stackql-method: upload_archive
       x-stackql-verb: EXEC
 components:

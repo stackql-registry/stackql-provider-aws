@@ -1061,6 +1061,14 @@ components:
             objectKey: $.environments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_environment:
           operation:
             $ref: "#/paths/~1environments~1{id}/delete"
@@ -1075,6 +1083,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.environment
         update_environment:
           operation:
             $ref: "#/paths/~1environments~1{id}/patch"
@@ -1115,6 +1124,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.device
         update_device:
           operation:
             $ref: "#/paths/~1devices~1{id}/patch"
@@ -1146,6 +1156,14 @@ components:
             objectKey: $.devices
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/devices/methods/get_device"
@@ -1166,6 +1184,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.softwareSet
         update_software_set:
           operation:
             $ref: "#/paths/~1softwaresets~1{id}/patch"
@@ -1186,6 +1205,14 @@ components:
             objectKey: $.softwareSets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/software_sets/methods/get_software_set"
@@ -1194,10 +1221,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/software_sets/methods/update_software_set"
         delete: []
-    tags_for_resources:
-      id: aws.workspaces_thin_client.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.workspaces_thin_client.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1205,17 +1232,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.workspaces_thin_client.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1236,9 +1252,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -8776,11 +8776,113 @@ components:
       required:
         - checksum
   x-stackQL-resources:
+    sequence_stores:
+      id: aws.omics.sequence_stores
+      name: sequence_stores
+      title: sequence_stores
+      methods:
+        abort_multipart_read_set_upload:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1upload~1{upload_id}~1abort/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        complete_multipart_read_set_upload:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1upload~1{upload_id}~1complete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_sequence_store:
+          operation:
+            $ref: "#/paths/~1sequencestore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_sequence_store:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_sequence_store:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_sequence_store:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_sequence_stores:
+          operation:
+            $ref: "#/paths/~1sequencestores/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.sequenceStores
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        upload_read_set_part:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1upload~1{upload_id}~1part/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/get_sequence_store"
+          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/list_sequence_stores"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/create_sequence_store"
+        update:
+          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/update_sequence_store"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/delete_sequence_store"
     shares:
       id: aws.omics.shares
       name: shares
       title: shares
       methods:
+        accept_share:
+          operation:
+            $ref: "#/paths/~1share~1{share_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         delete_share:
           operation:
             $ref: "#/paths/~1share~1{share_id}/delete"
@@ -8793,6 +8895,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.share
         create_share:
           operation:
             $ref: "#/paths/~1share/post"
@@ -8814,6 +8917,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8825,6 +8935,70 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/shares/methods/delete_share"
+    batches:
+      id: aws.omics.batches
+      name: batches
+      title: batches
+      methods:
+        batch_delete_read_set:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1readset~1batch~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_batch:
+          operation:
+            $ref: "#/paths/~1runBatch~1{batch_id}/delete"
+          response:
+            openAPIDocKey: "202"
+        get_batch:
+          operation:
+            $ref: "#/paths/~1runBatch~1{batch_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        delete_run_batch:
+          operation:
+            $ref: "#/paths/~1runBatch~1delete/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_batch:
+          operation:
+            $ref: "#/paths/~1runBatch/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/batches/methods/get_batch"
+          - $ref: "#/components/x-stackQL-resources/batches/methods/list_batch"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/batches/methods/delete_batch"
+          - $ref: "#/components/x-stackQL-resources/batches/methods/delete_run_batch"
     annotation_import_jobs:
       id: aws.omics.annotation_import_jobs
       name: annotation_import_jobs
@@ -8846,6 +9020,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8855,6 +9036,71 @@ components:
         insert: []
         update: []
         delete: []
+    runs:
+      id: aws.omics.runs
+      name: runs
+      title: runs
+      methods:
+        cancel_run_batch:
+          operation:
+            $ref: "#/paths/~1runBatch~1cancel/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_run:
+          operation:
+            $ref: "#/paths/~1run~1{id}/delete"
+          response:
+            openAPIDocKey: "202"
+        get_run:
+          operation:
+            $ref: "#/paths/~1run~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        start_run_batch:
+          operation:
+            $ref: "#/paths/~1runBatch/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_runs:
+          operation:
+            $ref: "#/paths/~1run/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/runs/methods/get_run"
+          - $ref: "#/components/x-stackQL-resources/runs/methods/list_runs"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/runs/methods/delete_run"
     variant_import_jobs:
       id: aws.omics.variant_import_jobs
       name: variant_import_jobs
@@ -8876,6 +9122,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8936,6 +9189,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9002,6 +9262,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9039,6 +9306,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_configuration:
           operation:
             $ref: "#/paths/~1configuration~1{name}/delete"
@@ -9084,6 +9359,14 @@ components:
             objectKey: $.uploads
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/multipart_read_set_uploads/methods/list_multipart_read_set_uploads"
@@ -9129,6 +9412,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9165,6 +9455,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_run_cache:
           operation:
             $ref: "#/paths/~1runCache~1{id}/delete"
@@ -9221,6 +9519,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_run_group:
           operation:
             $ref: "#/paths/~1runGroup~1{id}/delete"
@@ -9252,67 +9558,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/run_groups/methods/update_run_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/run_groups/methods/delete_run_group"
-    sequence_stores:
-      id: aws.omics.sequence_stores
-      name: sequence_stores
-      title: sequence_stores
-      methods:
-        create_sequence_store:
-          operation:
-            $ref: "#/paths/~1sequencestore/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_sequence_store:
-          operation:
-            $ref: "#/paths/~1sequencestore~1{id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_sequence_store:
-          operation:
-            $ref: "#/paths/~1sequencestore~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_sequence_store:
-          operation:
-            $ref: "#/paths/~1sequencestore~1{id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_sequence_stores:
-          operation:
-            $ref: "#/paths/~1sequencestores/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.sequenceStores
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/get_sequence_store"
-          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/list_sequence_stores"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/create_sequence_store"
-        update:
-          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/update_sequence_store"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/sequence_stores/methods/delete_sequence_store"
     variant_stores:
       id: aws.omics.variant_stores
       name: variant_stores
@@ -9364,6 +9609,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9401,6 +9653,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_workflow:
           operation:
             $ref: "#/paths/~1workflow~1{id}/delete"
@@ -9459,6 +9719,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_workflow_version:
           operation:
             $ref: "#/paths/~1workflow~1{workflow_id}~1version~1{version_name}/delete"
@@ -9492,39 +9760,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/workflow_versions/methods/update_workflow_version"
         delete:
           - $ref: "#/components/x-stackQL-resources/workflow_versions/methods/delete_workflow_version"
-    batches:
-      id: aws.omics.batches
-      name: batches
-      title: batches
-      methods:
-        delete_batch:
-          operation:
-            $ref: "#/paths/~1runBatch~1{batch_id}/delete"
-          response:
-            openAPIDocKey: "202"
-        get_batch:
-          operation:
-            $ref: "#/paths/~1runBatch~1{batch_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_batch:
-          operation:
-            $ref: "#/paths/~1runBatch/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/batches/methods/get_batch"
-          - $ref: "#/components/x-stackQL-resources/batches/methods/list_batch"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/batches/methods/delete_batch"
     references:
       id: aws.omics.references
       name: references
@@ -9554,6 +9789,24 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_reference_import_job:
+          operation:
+            $ref: "#/paths/~1referencestore~1{reference_store_id}~1importjob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9564,63 +9817,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/references/methods/delete_reference"
-    runs:
-      id: aws.omics.runs
-      name: runs
-      title: runs
-      methods:
-        delete_run:
-          operation:
-            $ref: "#/paths/~1run~1{id}/delete"
-          response:
-            openAPIDocKey: "202"
-        get_run:
-          operation:
-            $ref: "#/paths/~1run~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_runs:
-          operation:
-            $ref: "#/paths/~1run/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/runs/methods/get_run"
-          - $ref: "#/components/x-stackQL-resources/runs/methods/list_runs"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/runs/methods/delete_run"
-    run_batches:
-      id: aws.omics.run_batches
-      name: run_batches
-      title: run_batches
-      methods:
-        delete_run_batch:
-          operation:
-            $ref: "#/paths/~1runBatch~1delete/post"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/run_batches/methods/delete_run_batch"
     s3_access_policies:
       id: aws.omics.s3_access_policies
       name: s3_access_policies
@@ -9681,6 +9877,46 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_read_set_activation_job:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1activationjob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_read_set_export_job:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1exportjob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_read_set_import_job:
+          operation:
+            $ref: "#/paths/~1sequencestore~1{sequence_store_id}~1importjob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9711,6 +9947,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9741,6 +9984,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9771,6 +10021,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9818,6 +10075,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9864,6 +10128,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/run_tasks/methods/get_run_task"
@@ -9886,6 +10158,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9908,16 +10187,24 @@ components:
             objectKey: $.runs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: startingToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/runs_in_batches/methods/list_runs_in_batch"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.omics.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.omics.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9925,17 +10212,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.omics.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -9956,9 +10232,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

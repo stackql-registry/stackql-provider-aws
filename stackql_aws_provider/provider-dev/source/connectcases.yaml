@@ -116,7 +116,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutFieldOptionsResponse'
-      x-stackql-resource: batch_put_field_options
+      x-stackql-resource: field_options
       x-stackql-method: batch_put_field_options
       x-stackql-verb: EXEC
   /domains/{domain_id}/cases:
@@ -1055,6 +1055,7 @@ paths:
       x-stackql-resource: case_event_configurations
       x-stackql-method: get_case_event_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.eventBridge
     put:
       operationId: PutCaseEventConfiguration
       description: Adds case event publishing configuration. For a complete list of fields you can add to the event message,
@@ -1123,6 +1124,9 @@ paths:
       x-stackql-method: list_case_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.caseRules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /domains/{domain_id}/list-cases-for-contact:
     post:
       operationId: ListCasesForContact
@@ -1320,7 +1324,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1347,7 +1351,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1369,7 +1373,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /domains/{domain_id}/templates-list:
@@ -1459,6 +1463,9 @@ paths:
       x-stackql-method: search_all_related_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relatedItems
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /domains/{domain_id}/cases-search:
     post:
       operationId: SearchCases
@@ -1502,6 +1509,9 @@ paths:
       x-stackql-method: search_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cases
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /domains/{domain_id}/cases/{case_id}/related-items-search:
     post:
       operationId: SearchRelatedItems
@@ -1544,6 +1554,9 @@ paths:
       x-stackql-method: search_related_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relatedItems
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

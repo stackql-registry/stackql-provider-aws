@@ -721,7 +721,6 @@ paths:
                   description: The key-value tags to assign to the application.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -1904,10 +1903,10 @@ components:
     UpdateApplicationResponse:
       type: object
   x-stackQL-resources:
-    application_cloud_watch_logging_options:
-      id: aws.kinesisanalytics.application_cloud_watch_logging_options
-      name: application_cloud_watch_logging_options
-      title: application_cloud_watch_logging_options
+    applications:
+      id: aws.kinesisanalytics.applications
+      name: applications
+      title: applications
       methods:
         add_application_cloud_watch_logging_option:
           operation:
@@ -1922,31 +1921,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_application_cloud_watch_logging_option:
-          operation:
-            $ref: "#/paths/~1DeleteApplicationCloudWatchLoggingOption/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/application_cloud_watch_logging_options/methods/add_application_cloud_watch_logging_option"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/application_cloud_watch_logging_options/methods/delete_application_cloud_watch_logging_option"
-    application_inputs:
-      id: aws.kinesisanalytics.application_inputs
-      name: application_inputs
-      title: application_inputs
-      methods:
         add_application_input:
           operation:
             $ref: "#/paths/~1AddApplicationInput/post"
@@ -1960,17 +1934,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/application_inputs/methods/add_application_input"
-        delete: []
-    application_input_processing_configurations:
-      id: aws.kinesisanalytics.application_input_processing_configurations
-      name: application_input_processing_configurations
-      title: application_input_processing_configurations
-      methods:
         add_application_input_processing_configuration:
           operation:
             $ref: "#/paths/~1AddApplicationInputProcessingConfiguration/post"
@@ -1984,31 +1947,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_application_input_processing_configuration:
-          operation:
-            $ref: "#/paths/~1DeleteApplicationInputProcessingConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/application_input_processing_configurations/methods/add_application_input_processing_configuration"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/application_input_processing_configurations/methods/delete_application_input_processing_configuration"
-    application_outputs:
-      id: aws.kinesisanalytics.application_outputs
-      name: application_outputs
-      title: application_outputs
-      methods:
         add_application_output:
           operation:
             $ref: "#/paths/~1AddApplicationOutput/post"
@@ -2022,31 +1960,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_application_output:
-          operation:
-            $ref: "#/paths/~1DeleteApplicationOutput/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/application_outputs/methods/add_application_output"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/application_outputs/methods/delete_application_output"
-    application_reference_data_sources:
-      id: aws.kinesisanalytics.application_reference_data_sources
-      name: application_reference_data_sources
-      title: application_reference_data_sources
-      methods:
         add_application_reference_data_source:
           operation:
             $ref: "#/paths/~1AddApplicationReferenceDataSource/post"
@@ -2060,31 +1973,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_application_reference_data_source:
-          operation:
-            $ref: "#/paths/~1DeleteApplicationReferenceDataSource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/application_reference_data_sources/methods/add_application_reference_data_source"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/application_reference_data_sources/methods/delete_application_reference_data_source"
-    applications:
-      id: aws.kinesisanalytics.applications
-      name: applications
-      title: applications
-      methods:
         create_application:
           operation:
             $ref: "#/paths/~1CreateApplication/post"
@@ -2111,9 +1999,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        describe_application:
+        delete_application_cloud_watch_logging_option:
           operation:
-            $ref: "#/paths/~1DescribeApplication/post"
+            $ref: "#/paths/~1DeleteApplicationCloudWatchLoggingOption/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2124,9 +2012,88 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_application_input_processing_configuration:
+          operation:
+            $ref: "#/paths/~1DeleteApplicationInputProcessingConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_application_output:
+          operation:
+            $ref: "#/paths/~1DeleteApplicationOutput/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_application_reference_data_source:
+          operation:
+            $ref: "#/paths/~1DeleteApplicationReferenceDataSource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_application:
+          operation:
+            $ref: "#/paths/~1DescribeApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ApplicationDetail
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_applications:
           operation:
             $ref: "#/paths/~1ListApplications/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_application:
+          operation:
+            $ref: "#/paths/~1StartApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_application:
+          operation:
+            $ref: "#/paths/~1StopApplication/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2157,13 +2124,22 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/applications/methods/create_application"
         update:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_input_processing_configuration"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_cloud_watch_logging_option"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_input"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_output"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/add_application_reference_data_source"
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_cloud_watch_logging_option"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_input_processing_configuration"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_output"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application_reference_data_source"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
-    tags_for_resources:
-      id: aws.kinesisanalytics.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.kinesisanalytics.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2178,17 +2154,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.kinesisanalytics.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2216,9 +2181,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

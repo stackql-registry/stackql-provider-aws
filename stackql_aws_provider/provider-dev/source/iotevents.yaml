@@ -358,6 +358,7 @@ paths:
       x-stackql-resource: detector_models
       x-stackql-method: describe_detector_model
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.detectorModel
     post:
       operationId: UpdateDetectorModel
       description: Updates a detector model. Detectors (instances) spawned by the previous version are deleted and then re-created
@@ -438,6 +439,7 @@ paths:
       x-stackql-resource: inputs
       x-stackql-method: describe_input
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.input
     put:
       operationId: UpdateInput
       description: Updates an input.
@@ -508,6 +510,7 @@ paths:
       x-stackql-resource: logging_options
       x-stackql-method: describe_logging_options
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.loggingOptions
     put:
       operationId: PutLoggingOptions
       description: Sets or updates the AWS IoT Events logging options. If you update the value of any loggingOptions field,
@@ -682,7 +685,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -713,7 +716,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -739,7 +742,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /analysis/detector-models/:

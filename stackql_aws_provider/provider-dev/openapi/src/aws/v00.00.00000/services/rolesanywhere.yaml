@@ -1380,6 +1380,33 @@ components:
             objectKey: $.profiles
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_attribute_mapping:
+          operation:
+            $ref: "#/paths/~1profiles~1{profile_id}~1mappings/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        put_attribute_mapping:
+          operation:
+            $ref: "#/paths/~1profiles~1{profile_id}~1mappings/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_profile:
           operation:
             $ref: "#/paths/~1profile~1{profile_id}/delete"
@@ -1392,6 +1419,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.profile
         update_profile:
           operation:
             $ref: "#/paths/~1profile~1{profile_id}/patch"
@@ -1403,6 +1431,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disable_profile:
+          operation:
+            $ref: "#/paths/~1profile~1{profile_id}~1disable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        enable_profile:
+          operation:
+            $ref: "#/paths/~1profile~1{profile_id}~1enable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/get_profile"
@@ -1411,7 +1451,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/create_profile"
         update:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/update_profile"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/put_attribute_mapping"
         delete:
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/delete_attribute_mapping"
           - $ref: "#/components/x-stackQL-resources/profiles/methods/delete_profile"
     trust_anchors:
       id: aws.rolesanywhere.trust_anchors
@@ -1438,6 +1481,14 @@ components:
             objectKey: $.trustAnchors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_trust_anchor:
           operation:
             $ref: "#/paths/~1trustanchor~1{trust_anchor_id}/delete"
@@ -1450,6 +1501,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.trustAnchor
         update_trust_anchor:
           operation:
             $ref: "#/paths/~1trustanchor~1{trust_anchor_id}/patch"
@@ -1461,145 +1513,18 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/get_trust_anchor"
-          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/list_trust_anchors"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/create_trust_anchor"
-        update:
-          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/update_trust_anchor"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/delete_trust_anchor"
-    attribute_mappings:
-      id: aws.rolesanywhere.attribute_mappings
-      name: attribute_mappings
-      title: attribute_mappings
-      methods:
-        delete_attribute_mapping:
+        disable_trust_anchor:
           operation:
-            $ref: "#/paths/~1profiles~1{profile_id}~1mappings/delete"
+            $ref: "#/paths/~1trustanchor~1{trust_anchor_id}~1disable/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
-        put_attribute_mapping:
+        enable_trust_anchor:
           operation:
-            $ref: "#/paths/~1profiles~1{profile_id}~1mappings/put"
+            $ref: "#/paths/~1trustanchor~1{trust_anchor_id}~1enable/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/attribute_mappings/methods/put_attribute_mapping"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/attribute_mappings/methods/delete_attribute_mapping"
-    crls:
-      id: aws.rolesanywhere.crls
-      name: crls
-      title: crls
-      methods:
-        delete_crl:
-          operation:
-            $ref: "#/paths/~1crl~1{crl_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_crl:
-          operation:
-            $ref: "#/paths/~1crl~1{crl_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_crl:
-          operation:
-            $ref: "#/paths/~1crl~1{crl_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_crls:
-          operation:
-            $ref: "#/paths/~1crls/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.crls
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/crls/methods/get_crl"
-          - $ref: "#/components/x-stackQL-resources/crls/methods/list_crls"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/crls/methods/update_crl"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/crls/methods/delete_crl"
-    subjects:
-      id: aws.rolesanywhere.subjects
-      name: subjects
-      title: subjects
-      methods:
-        get_subject:
-          operation:
-            $ref: "#/paths/~1subject~1{subject_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_subjects:
-          operation:
-            $ref: "#/paths/~1subjects/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.subjects
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/subjects/methods/get_subject"
-          - $ref: "#/components/x-stackQL-resources/subjects/methods/list_subjects"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.rolesanywhere.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1ListTagsForResource/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    notification_settings:
-      id: aws.rolesanywhere.notification_settings
-      name: notification_settings
-      title: notification_settings
-      methods:
         put_notification_settings:
           operation:
             $ref: "#/paths/~1put-notifications-settings/patch"
@@ -1623,17 +1548,121 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/get_trust_anchor"
+          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/list_trust_anchors"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/create_trust_anchor"
+        update:
+          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/update_trust_anchor"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/put_notification_settings"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/trust_anchors/methods/delete_trust_anchor"
+    crls:
+      id: aws.rolesanywhere.crls
+      name: crls
+      title: crls
+      methods:
+        delete_crl:
+          operation:
+            $ref: "#/paths/~1crl~1{crl_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_crl:
+          operation:
+            $ref: "#/paths/~1crl~1{crl_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.crl
+        update_crl:
+          operation:
+            $ref: "#/paths/~1crl~1{crl_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_crls:
+          operation:
+            $ref: "#/paths/~1crls/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.crls
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/crls/methods/get_crl"
+          - $ref: "#/components/x-stackQL-resources/crls/methods/list_crls"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/crls/methods/update_crl"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/crls/methods/delete_crl"
+    subjects:
+      id: aws.rolesanywhere.subjects
+      name: subjects
+      title: subjects
+      methods:
+        get_subject:
+          operation:
+            $ref: "#/paths/~1subject~1{subject_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.subject
+        list_subjects:
+          operation:
+            $ref: "#/paths/~1subjects/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.subjects
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/subjects/methods/get_subject"
+          - $ref: "#/components/x-stackQL-resources/subjects/methods/list_subjects"
         insert: []
         update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/notification_settings/methods/put_notification_settings"
         delete: []
-    resources:
-      id: aws.rolesanywhere.resources
-      name: resources
-      title: resources
+    tags:
+      id: aws.rolesanywhere.tags
+      name: tags
+      title: tags
       methods:
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1ListTagsForResource/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1657,9 +1686,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

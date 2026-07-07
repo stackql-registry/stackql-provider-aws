@@ -129,6 +129,9 @@ paths:
       x-stackql-method: get_free_tier_usage
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.freeTierUsages
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAccountActivities:
     post:
       operationId: ListAccountActivities
@@ -175,6 +178,9 @@ paths:
       x-stackql-method: list_account_activities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.activities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /UpgradeAccountPlan:
     post:
       operationId: UpgradeAccountPlan

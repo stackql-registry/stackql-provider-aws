@@ -48,7 +48,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptAdministratorInvitationResponse'
-      x-stackql-resource: administrator_invitation
+      x-stackql-resource: invitations
       x-stackql-method: accept_administrator_invitation
       x-stackql-verb: EXEC
     get:
@@ -66,6 +66,7 @@ paths:
       x-stackql-resource: administrator_accounts
       x-stackql-method: get_administrator_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Administrator
   /master:
     post:
       operationId: AcceptInvitation
@@ -99,7 +100,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptInvitationResponse'
-      x-stackql-resource: invitation
+      x-stackql-resource: invitations
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
     get:
@@ -121,6 +122,7 @@ paths:
       x-stackql-resource: master_accounts
       x-stackql-method: get_master_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Master
   /automationrules/delete:
     post:
       operationId: BatchDeleteAutomationRules
@@ -144,7 +146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteAutomationRulesResponse'
-      x-stackql-resource: batch_delete_automation_rules
+      x-stackql-resource: automation_rules
       x-stackql-method: batch_delete_automation_rules
       x-stackql-verb: EXEC
   /standards/deregister:
@@ -171,7 +173,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisableStandardsResponse'
-      x-stackql-resource: batch_disable_standards
+      x-stackql-resource: standards
       x-stackql-method: batch_disable_standards
       x-stackql-verb: EXEC
   /standards/register:
@@ -199,7 +201,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchEnableStandardsResponse'
-      x-stackql-resource: batch_enable_standards
+      x-stackql-resource: standards
       x-stackql-method: batch_enable_standards
       x-stackql-verb: EXEC
   /automationrules/get:
@@ -346,7 +348,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchImportFindingsResponse'
-      x-stackql-resource: batch_import_findings
+      x-stackql-resource: findings
       x-stackql-method: batch_import_findings
       x-stackql-verb: EXEC
   /automationrules/update:
@@ -372,7 +374,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateAutomationRulesResponse'
-      x-stackql-resource: batch_update_automation_rules
+      x-stackql-resource: automation_rules
       x-stackql-method: batch_update_automation_rules
       x-stackql-verb: EXEC
   /findings/batchupdate:
@@ -425,7 +427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateFindingsResponse'
-      x-stackql-resource: batch_update_findings
+      x-stackql-resource: findings
       x-stackql-method: batch_update_findings
       x-stackql-verb: EXEC
   /findingsv2/batchupdatev2:
@@ -493,7 +495,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateStandardsControlAssociationsResponse'
-      x-stackql-resource: batch_update_standards_control_associations
+      x-stackql-resource: standards_control_associations
       x-stackql-method: batch_update_standards_control_associations
       x-stackql-verb: EXEC
     get:
@@ -536,6 +538,9 @@ paths:
       x-stackql-method: list_standards_control_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StandardsControlAssociationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /actionTargets:
     post:
       operationId: CreateActionTarget
@@ -943,6 +948,9 @@ paths:
       x-stackql-method: list_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Members
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /ticketsv2:
     post:
       operationId: CreateTicketV2
@@ -1004,7 +1012,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeclineInvitationsResponse'
-      x-stackql-resource: decline_invitations
+      x-stackql-resource: invitations
       x-stackql-method: decline_invitations
       x-stackql-verb: EXEC
   /actionTargets/{action_target_arn}:
@@ -1459,6 +1467,9 @@ paths:
       x-stackql-method: describe_action_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActionTargets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts:
     get:
       operationId: DescribeHub
@@ -1644,6 +1655,9 @@ paths:
       x-stackql-method: describe_products
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Products
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /productsV2:
     get:
       operationId: DescribeProductsV2
@@ -1673,6 +1687,9 @@ paths:
       x-stackql-method: describe_products_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProductsV2
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /hubv2:
     get:
       operationId: DescribeSecurityHubV2
@@ -1757,6 +1774,9 @@ paths:
       x-stackql-method: describe_standards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Standards
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /standards/controls/{standards_subscription_arn}:
     get:
       operationId: DescribeStandardsControls
@@ -1796,6 +1816,9 @@ paths:
       x-stackql-method: describe_standards_controls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Controls
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /productSubscriptions/{product_subscription_arn}:
     delete:
       operationId: DisableImportFindingsForProduct
@@ -1860,7 +1883,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateFromAdministratorAccountResponse'
-      x-stackql-resource: from_administrator_accounts
+      x-stackql-resource: administrator_accounts
       x-stackql-method: disassociate_from_administrator_account
       x-stackql-verb: UPDATE
   /master/disassociate:
@@ -1881,7 +1904,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateFromMasterAccountResponse'
-      x-stackql-resource: from_master_accounts
+      x-stackql-resource: master_accounts
       x-stackql-method: disassociate_from_master_account
       x-stackql-verb: UPDATE
   /members/disassociate:
@@ -1964,11 +1987,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListEnabledProductsForImportResponse'
+                $ref: '#/components/schemas/ListEnabledProductsForImportOutputDisplay'
       x-stackql-resource: enabled_products_for_imports
       x-stackql-method: list_enabled_products_for_import
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ProductSubscriptions
+      x-stackql-responseEnvelope: ListEnabledProductsForImportOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ProductSubscriptions" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"product_subscription": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /organization/admin/enable:
     post:
       operationId: EnableOrganizationAdminAccount
@@ -2056,6 +2087,9 @@ paths:
       x-stackql-method: get_recommended_policy_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecommendationSteps
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /aggregatorv2/get/{aggregator_v2_arn}:
     get:
       operationId: GetAggregatorV2
@@ -2156,6 +2190,9 @@ paths:
       x-stackql-method: get_enabled_standards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StandardsSubscriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /findingAggregator/get/{finding_aggregator_arn}:
     get:
       operationId: GetFindingAggregator
@@ -2220,6 +2257,9 @@ paths:
       x-stackql-method: get_finding_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Records
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /findingsv2/statistics:
     post:
       operationId: GetFindingStatisticsV2
@@ -2289,6 +2329,9 @@ paths:
       x-stackql-method: get_findings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Findings
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
     patch:
       operationId: UpdateFindings
       description: UpdateFindings is a deprecated operation. Instead of UpdateFindings, use the BatchUpdateFindings operation.
@@ -2360,6 +2403,9 @@ paths:
       x-stackql-method: get_findings_trends_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrendsMetrics
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /findingsv2:
     post:
       operationId: GetFindingsV2
@@ -2394,11 +2440,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetFindingsV2Response'
+                $ref: '#/components/schemas/GetFindingsV2OutputDisplay'
       x-stackql-resource: findings_v2s
       x-stackql-method: get_findings_v2
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Findings
+      x-stackql-responseEnvelope: GetFindingsV2OutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Findings" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /insights/results/{insight_arn}:
     get:
       operationId: GetInsightResults
@@ -2420,6 +2474,7 @@ paths:
       x-stackql-resource: insight_results
       x-stackql-method: get_insight_results
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.InsightResults
   /insights/get:
     post:
       operationId: GetInsights
@@ -2449,6 +2504,9 @@ paths:
       x-stackql-method: get_insights
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Insights
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /invitations/count:
     get:
       operationId: GetInvitationsCount
@@ -2568,6 +2626,9 @@ paths:
       x-stackql-method: get_resources_trends_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrendsMetrics
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /resourcesv2:
     post:
       operationId: GetResourcesV2
@@ -2605,6 +2666,9 @@ paths:
       x-stackql-method: get_resources_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Resources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /securityControl/definition:
     get:
       operationId: GetSecurityControlDefinition
@@ -2628,6 +2692,7 @@ paths:
       x-stackql-resource: security_control_definitions
       x-stackql-method: get_security_control_definition
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SecurityControlDefinition
   /members/invite:
     post:
       operationId: InviteMembers
@@ -2658,7 +2723,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteMembersResponse'
-      x-stackql-resource: invite_members
+      x-stackql-resource: members
       x-stackql-method: invite_members
       x-stackql-verb: EXEC
   /aggregatorv2/list:
@@ -2690,6 +2755,9 @@ paths:
       x-stackql-method: list_aggregators_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AggregatorsV2
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /automationrules/list:
     get:
       operationId: ListAutomationRules
@@ -2781,6 +2849,9 @@ paths:
       x-stackql-method: list_configuration_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationPolicySummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /configurationPolicyAssociation/list:
     post:
       operationId: ListConfigurationPolicyAssociations
@@ -2811,6 +2882,9 @@ paths:
       x-stackql-method: list_configuration_policy_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConfigurationPolicyAssociationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /findingAggregator/list:
     get:
       operationId: ListFindingAggregators
@@ -2840,6 +2914,9 @@ paths:
       x-stackql-method: list_finding_aggregators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FindingAggregators
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /invitations:
     get:
       operationId: ListInvitations
@@ -2874,6 +2951,9 @@ paths:
       x-stackql-method: list_invitations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Invitations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /organization/admin:
     get:
       operationId: ListOrganizationAdminAccounts
@@ -2911,6 +2991,9 @@ paths:
       x-stackql-method: list_organization_admin_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AdminAccounts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /securityControls/definitions:
     get:
       operationId: ListSecurityControlDefinitions
@@ -2948,6 +3031,9 @@ paths:
       x-stackql-method: list_security_control_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SecurityControlDefinitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2966,7 +3052,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2997,7 +3083,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3024,7 +3110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /connectorsv2/register:
@@ -3084,7 +3170,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConfigurationPolicyAssociationResponse'
-      x-stackql-resource: configuration_policy_association
+      x-stackql-resource: configuration_policies
       x-stackql-method: start_configuration_policy_association
       x-stackql-verb: EXEC
   /configurationPolicyAssociation/disassociate:
@@ -3116,7 +3202,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConfigurationPolicyDisassociationResponse'
-      x-stackql-resource: configuration_policy_disassociation
+      x-stackql-resource: configuration_policies
       x-stackql-method: start_configuration_policy_disassociation
       x-stackql-verb: EXEC
   /aggregatorv2/update/{aggregator_v2_arn}:
@@ -19721,21 +19807,19 @@ components:
       type: integer
       format: int64
       minimum: 0
-    GetFindingsV2Response:
+    GetFindingsV2RowDisplay:
       type: object
       properties:
-        Findings:
-          $ref: '#/components/schemas/OcsfFindingsList'
+        finding:
+          type: object
           description: An array of security findings returned by the operation.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token to use to request the next page of results. Otherwise, this parameter is null.
-    OcsfFindingsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/OcsfFinding'
-    OcsfFinding:
+    GetFindingsV2OutputDisplay:
       type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetFindingsV2RowDisplay'
     GetInsightResultsResponse:
       type: object
       properties:
@@ -20698,19 +20782,19 @@ components:
         ConnectorStatus:
           $ref: '#/components/schemas/ConnectorStatus'
           description: The status for the connectorV2.
-    ListEnabledProductsForImportResponse:
+    ListEnabledProductsForImportRowDisplay:
       type: object
       properties:
-        ProductSubscriptions:
-          $ref: '#/components/schemas/ProductSubscriptionArnList'
+        product_subscription:
+          type: string
           description: The list of ARNs for the resources that represent your subscriptions to products.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token to use to request the next page of results.
-    ProductSubscriptionArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/NonEmptyString'
+    ListEnabledProductsForImportOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEnabledProductsForImportRowDisplay'
     ListFindingAggregatorsResponse:
       type: object
       properties:

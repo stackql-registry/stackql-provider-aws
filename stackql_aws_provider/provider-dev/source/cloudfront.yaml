@@ -84,7 +84,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateDistributionTenantWebACLOutputDisplay'
-      x-stackql-resource: distribution_tenant_web_acls
+      x-stackql-resource: distribution_tenants
       x-stackql-method: associate_distribution_tenant_web_acl
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AssociateDistributionTenantWebACLOutputDisplay
@@ -125,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateDistributionWebACLOutputDisplay'
-      x-stackql-resource: distribution_web_acls
+      x-stackql-resource: distributions
       x-stackql-method: associate_distribution_web_acl
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AssociateDistributionWebACLOutputDisplay
@@ -702,7 +702,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDistributionWithTagsOutputDisplay'
-      x-stackql-resource: distribution_with_tags
+      x-stackql-resource: tags
       x-stackql-method: create_distribution_with_tags
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateDistributionWithTagsOutputDisplay
@@ -1740,7 +1740,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateStreamingDistributionWithTagsOutputDisplay'
-      x-stackql-resource: streaming_distribution_with_tags
+      x-stackql-resource: tags
       x-stackql-method: create_streaming_distribution_with_tags
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateStreamingDistributionWithTagsOutputDisplay
@@ -3426,7 +3426,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateDistributionTenantWebACLOutputDisplay'
-      x-stackql-resource: distribution_tenant_web_acls
+      x-stackql-resource: distribution_tenants
       x-stackql-method: disassociate_distribution_tenant_web_acl
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DisassociateDistributionTenantWebACLOutputDisplay
@@ -3456,7 +3456,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateDistributionWebACLOutputDisplay'
-      x-stackql-resource: distribution_web_acls
+      x-stackql-resource: distributions
       x-stackql-method: disassociate_distribution_web_acl
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DisassociateDistributionWebACLOutputDisplay
@@ -4993,7 +4993,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -5143,7 +5143,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /2020-05-31/connection-function/{id}/test:
@@ -5262,7 +5262,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /2020-05-31/distribution/{id}/promote-staging-config:
@@ -5303,7 +5303,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDistributionWithStagingConfigOutputDisplay'
-      x-stackql-resource: distribution_with_staging_configs
+      x-stackql-resource: distributions
       x-stackql-method: update_distribution_with_staging_config
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateDistributionWithStagingConfigOutputDisplay

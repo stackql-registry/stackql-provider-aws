@@ -61,7 +61,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_to_streams
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_stream
       x-stackql-verb: UPDATE
   /CreateStream:
@@ -356,6 +356,7 @@ paths:
       x-stackql-resource: account_settings
       x-stackql-method: describe_account_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MinimumThroughputBillingCommitment
   /DescribeLimits:
     post:
       operationId: DescribeLimits
@@ -449,6 +450,7 @@ paths:
       x-stackql-resource: streams
       x-stackql-method: describe_stream
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.StreamDescription
   /DescribeStreamConsumer:
     post:
       operationId: DescribeStreamConsumer
@@ -499,6 +501,7 @@ paths:
       x-stackql-resource: stream_consumers
       x-stackql-method: describe_stream_consumer
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ConsumerDescription
   /DescribeStreamSummary:
     post:
       operationId: DescribeStreamSummary
@@ -543,6 +546,7 @@ paths:
       x-stackql-resource: stream_summaries
       x-stackql-method: describe_stream_summary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.StreamDescriptionSummary
   /DisableEnhancedMonitoring:
     post:
       operationId: DisableEnhancedMonitoring
@@ -991,6 +995,9 @@ paths:
       x-stackql-method: list_shards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Shards
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStreamConsumers:
     post:
       operationId: ListStreamConsumers
@@ -1057,6 +1064,9 @@ paths:
       x-stackql-method: list_stream_consumers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Consumers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStreams:
     post:
       operationId: ListStreams
@@ -1100,11 +1110,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListStreamsOutput'
+                $ref: '#/components/schemas/ListStreamsOutputDisplay'
       x-stackql-resource: streams
       x-stackql-method: list_streams
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.StreamNames
+      x-stackql-responseEnvelope: ListStreamsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "StreamNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"stream_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1143,7 +1161,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTagsForStream:
@@ -1194,7 +1212,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForStreamOutput'
-      x-stackql-resource: tags_for_streams
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_stream
       x-stackql-verb: SELECT
   /MergeShards:
@@ -1258,7 +1276,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: merge_shards
+      x-stackql-resource: shards
       x-stackql-method: merge_shards
       x-stackql-verb: EXEC
   /PutRecord:
@@ -1574,7 +1592,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_from_streams
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_stream
       x-stackql-verb: UPDATE
   /SplitShard:
@@ -1706,7 +1724,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: stream_encryption
+      x-stackql-resource: streams
       x-stackql-method: start_stream_encryption
       x-stackql-verb: EXEC
   /StopStreamEncryption:
@@ -1767,7 +1785,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: stream_encryption
+      x-stackql-resource: streams
       x-stackql-method: stop_stream_encryption
       x-stackql-verb: EXEC
   /SubscribeToShard:
@@ -1827,7 +1845,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubscribeToShardOutput'
-      x-stackql-resource: to_shard
+      x-stackql-resource: shards
       x-stackql-method: subscribe_to_shard
       x-stackql-verb: EXEC
   /TagResource:
@@ -1870,7 +1888,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1911,7 +1929,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAccountSettings:
@@ -2064,7 +2082,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateShardCountOutput'
-      x-stackql-resource: shard_counts
+      x-stackql-resource: shards
       x-stackql-method: update_shard_count
       x-stackql-verb: UPDATE
   /UpdateStreamMode:
@@ -2114,7 +2132,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: stream_modes
+      x-stackql-resource: streams
       x-stackql-method: update_stream_mode
       x-stackql-verb: UPDATE
   /UpdateStreamWarmThroughput:
@@ -2174,7 +2192,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateStreamWarmThroughputOutput'
-      x-stackql-resource: stream_warm_throughputs
+      x-stackql-resource: streams
       x-stackql-method: update_stream_warm_throughput
       x-stackql-verb: UPDATE
 components:
@@ -2921,54 +2939,20 @@ components:
       type: integer
       minimum: 1
       maximum: 10000
-    ListStreamsOutput:
-      description: Represents the output for ListStreams.
+    ListStreamsRowDisplay:
       type: object
       properties:
-        StreamNames:
-          $ref: '#/components/schemas/StreamNameList'
+        stream_name:
+          type: string
           description: The names of the streams that are associated with the Amazon Web Services account making the ListStreams
             request.
-        HasMoreStreams:
-          $ref: '#/components/schemas/BooleanObject'
-          description: If set to true, there are more streams available to list.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-        StreamSummaries:
-          $ref: '#/components/schemas/StreamSummaryList'
-      required:
-      - StreamNames
-      - HasMoreStreams
-    StreamNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/StreamName'
-    StreamSummaryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/StreamSummary'
-    StreamSummary:
-      description: The summary of a stream.
+    ListStreamsOutputDisplay:
       type: object
       properties:
-        StreamName:
-          $ref: '#/components/schemas/StreamName'
-          description: The name of a stream.
-        StreamARN:
-          $ref: '#/components/schemas/StreamARN'
-          description: The ARN of the stream.
-        StreamStatus:
-          $ref: '#/components/schemas/StreamStatus'
-          description: The status of the stream.
-        StreamModeDetails:
-          $ref: '#/components/schemas/StreamModeDetails'
-        StreamCreationTimestamp:
-          $ref: '#/components/schemas/Timestamp'
-          description: The timestamp at which the stream was created.
-      required:
-      - StreamName
-      - StreamARN
-      - StreamStatus
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListStreamsRowDisplay'
     ListTagsForResourceOutput:
       type: object
       properties:

@@ -438,6 +438,14 @@ components:
             objectKey: $.reportDefinitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         put_report_definition:
           operation:
             $ref: "#/paths/~1reportDefinition/post"

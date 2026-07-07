@@ -305,6 +305,7 @@ paths:
       x-stackql-resource: account_level_service_configurations
       x-stackql-method: get_account_level_service_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.OrgConfiguration
   /GetDefaultView:
     post:
       operationId: GetDefaultView
@@ -363,6 +364,7 @@ paths:
       x-stackql-resource: managed_views
       x-stackql-method: get_managed_view
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ManagedView
   /GetResourceExplorerSetup:
     post:
       operationId: GetResourceExplorerSetup
@@ -395,6 +397,9 @@ paths:
       x-stackql-method: get_resource_explorer_setup
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Regions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetServiceIndex:
     post:
       operationId: GetServiceIndex
@@ -438,6 +443,7 @@ paths:
       x-stackql-resource: service_views
       x-stackql-method: get_service_view
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.View
   /GetView:
     post:
       operationId: GetView
@@ -496,6 +502,9 @@ paths:
       x-stackql-method: list_indexes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Indexes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListIndexesForMembers:
     post:
       operationId: ListIndexesForMembers
@@ -529,6 +538,9 @@ paths:
       x-stackql-method: list_indexes_for_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Indexes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListManagedViews:
     post:
       operationId: ListManagedViews
@@ -554,11 +566,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListManagedViewsOutput'
+                $ref: '#/components/schemas/ListManagedViewsOutputDisplay'
       x-stackql-resource: managed_views
       x-stackql-method: list_managed_views
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ManagedViews
+      x-stackql-responseEnvelope: ListManagedViewsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ManagedViews" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"managed_view": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResources:
     post:
       operationId: ListResources
@@ -592,6 +612,9 @@ paths:
       x-stackql-method: list_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Resources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListServiceIndexes:
     post:
       operationId: ListServiceIndexes
@@ -622,6 +645,9 @@ paths:
       x-stackql-method: list_service_indexes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Indexes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListServiceViews:
     post:
       operationId: ListServiceViews
@@ -645,11 +671,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListServiceViewsOutput'
+                $ref: '#/components/schemas/ListServiceViewsOutputDisplay'
       x-stackql-resource: service_views
       x-stackql-method: list_service_views
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ServiceViews
+      x-stackql-responseEnvelope: ListServiceViewsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ServiceViews" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_view": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStreamingAccessForServices:
     post:
       operationId: ListStreamingAccessForServices
@@ -679,6 +713,9 @@ paths:
       x-stackql-method: list_streaming_access_for_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StreamingAccessForServices
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSupportedResourceTypes:
     post:
       operationId: ListSupportedResourceTypes
@@ -706,6 +743,9 @@ paths:
       x-stackql-method: list_supported_resource_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceTypes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -724,7 +764,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -753,7 +793,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -779,7 +819,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /ListViews:
@@ -807,11 +847,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListViewsOutput'
+                $ref: '#/components/schemas/ListViewsOutputDisplay'
       x-stackql-resource: views
       x-stackql-method: list_views
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Views
+      x-stackql-responseEnvelope: ListViewsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Views" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"view": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /Search:
     post:
       operationId: Search
@@ -850,6 +898,9 @@ paths:
       x-stackql-resource: search
       x-stackql-method: search
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /UpdateIndexType:
     post:
       operationId: UpdateIndexType
@@ -900,7 +951,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateIndexTypeOutput'
-      x-stackql-resource: index_types
+      x-stackql-resource: indexes
       x-stackql-method: update_index_type
       x-stackql-verb: UPDATE
   /UpdateView:
@@ -1599,22 +1650,19 @@ components:
       type: string
       minLength: 1
       maxLength: 1024
-    ListManagedViewsOutput:
+    ListManagedViewsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: If present, indicates that more output is available than is included in the current response. Use this
-            value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output.
-            You should repeat this until the NextToken response element comes back as null. The pagination tokens expire after
-            24 hours.
-        ManagedViews:
-          $ref: '#/components/schemas/ManagedViewArnList'
+        managed_view:
+          type: string
           description: The list of managed views available in the Amazon Web Services Region in which you called this operation.
-    ManagedViewArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListManagedViewsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListManagedViewsRowDisplay'
     ListResourcesInputMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1732,20 +1780,20 @@ components:
       type: integer
       minimum: 1
       maximum: 50
-    ListServiceViewsOutput:
+    ListServiceViewsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination token to use in a subsequent ListServiceViews request to retrieve the next set of results.
-        ServiceViews:
-          $ref: '#/components/schemas/ServiceViewArnList'
+        service_view:
+          type: string
           description: A list of Amazon Resource Names (ARNs) for the service views available in the current Amazon Web Services
             account.
-    ServiceViewArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListServiceViewsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListServiceViewsRowDisplay'
     ListStreamingAccessForServicesInputMaxResultsInteger:
       type: integer
       minimum: 1
@@ -1827,22 +1875,19 @@ components:
       type: integer
       minimum: 1
       maximum: 50
-    ListViewsOutput:
+    ListViewsRowDisplay:
       type: object
       properties:
-        Views:
-          $ref: '#/components/schemas/ViewArnList'
+        view:
+          type: string
           description: The list of views available in the Amazon Web Services Region in which you called this operation.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: If present, indicates that more output is available than is included in the current response. Use this
-            value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output.
-            You should repeat this until the NextToken response element comes back as null. The pagination tokens expire after
-            24 hours.
-    ViewArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListViewsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListViewsRowDisplay'
     QueryString:
       type: string
       minLength: 0

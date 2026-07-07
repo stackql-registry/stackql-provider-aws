@@ -9306,6 +9306,56 @@ components:
         - namespace
         - data
   x-stackQL-resources:
+    messages:
+      id: aws.qconnect.messages
+      name: messages
+      title: messages
+      methods:
+        activate_message_template:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1activate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deactivate_message_template:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1deactivate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_messages:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1sessions~1{session_id}~1messages/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.messages
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/messages/methods/list_messages"
+        insert: []
+        update: []
+        delete: []
     ai_agents:
       id: aws.qconnect.ai_agents
       name: ai_agents
@@ -9331,6 +9381,14 @@ components:
             objectKey: $.aiAgentSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ai_agent:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiagents~1{ai_agent_id}/delete"
@@ -9354,6 +9412,25 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        remove_assistant_ai_agent:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1aiagentConfiguration/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        update_assistant_ai_agent:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1aiagentConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ai_agents/methods/get_ai_agent"
@@ -9362,6 +9439,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/ai_agents/methods/create_ai_agent"
         update:
           - $ref: "#/components/x-stackQL-resources/ai_agents/methods/update_ai_agent"
+          - $ref: "#/components/x-stackQL-resources/ai_agents/methods/update_assistant_ai_agent"
+          - $ref: "#/components/x-stackQL-resources/ai_agents/methods/remove_assistant_ai_agent"
         delete:
           - $ref: "#/components/x-stackQL-resources/ai_agents/methods/delete_ai_agent"
     ai_agent_versions:
@@ -9389,6 +9468,14 @@ components:
             objectKey: $.aiAgentVersionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ai_agent_version:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiagents~1{ai_agent_id}~1versions~1{version_number}/delete"
@@ -9428,6 +9515,14 @@ components:
             objectKey: $.aiGuardrailSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ai_guardrail:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiguardrails~1{ai_guardrail_id}/delete"
@@ -9486,6 +9581,14 @@ components:
             objectKey: $.aiGuardrailVersionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ai_guardrail_version:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiguardrails~1{ai_guardrail_id}~1versions~1{version_number}/delete"
@@ -9525,6 +9628,14 @@ components:
             objectKey: $.aiPromptSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ai_prompt:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiprompts~1{ai_prompt_id}/delete"
@@ -9583,6 +9694,14 @@ components:
             objectKey: $.aiPromptVersionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ai_prompt_version:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1aiprompts~1{ai_prompt_id}~1versions~1{version_number}/delete"
@@ -9622,6 +9741,14 @@ components:
             objectKey: $.assistantSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_assistant:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}/delete"
@@ -9634,6 +9761,58 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.assistant
+        put_feedback:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1feedback/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        query_assistant:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1query/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        retrieve:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1retrieve/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_message:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1sessions~1{session_id}~1message/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assistants/methods/get_assistant"
@@ -9641,6 +9820,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/assistants/methods/create_assistant"
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/assistants/methods/put_feedback"
         delete:
           - $ref: "#/components/x-stackQL-resources/assistants/methods/delete_assistant"
     assistant_associations:
@@ -9668,6 +9849,14 @@ components:
             objectKey: $.assistantAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_assistant_association:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1associations~1{assistant_association_id}/delete"
@@ -9680,6 +9869,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.assistantAssociation
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/assistant_associations/methods/get_assistant_association"
@@ -9714,6 +9904,14 @@ components:
             objectKey: $.contentSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_content:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}/delete"
@@ -9726,6 +9924,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.content
         update_content:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}/post"
@@ -9744,6 +9943,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.contentSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_content_upload:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1upload/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -9785,6 +10002,14 @@ components:
             objectKey: $.contentAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_content_association:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1contents~1{content_id}~1associations~1{content_association_id}/delete"
@@ -9797,6 +10022,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.contentAssociation
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/content_associations/methods/get_content_association"
@@ -9831,6 +10057,14 @@ components:
             objectKey: $.knowledgeBaseSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_knowledge_base:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}/delete"
@@ -9843,13 +10077,44 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.knowledgeBase
+        start_import_job:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1importJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_knowledge_base_template_uri:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        update_knowledge_base_template_uri:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/get_knowledge_base"
           - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/list_knowledge_bases"
         insert:
           - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/create_knowledge_base"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/update_knowledge_base_template_uri"
+          - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/remove_knowledge_base_template_uri"
         delete:
           - $ref: "#/components/x-stackQL-resources/knowledge_bases/methods/delete_knowledge_base"
     message_templates:
@@ -9877,6 +10142,25 @@ components:
             objectKey: $.messageTemplateSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        create_message_template_attachment:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1attachments/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_message_template:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}/delete"
@@ -9889,9 +10173,27 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.messageTemplate
         update_message_template:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_message_template_attachment:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1attachments~1{attachment_id}/delete"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        render_message_template:
+          operation:
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1render/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9910,27 +10212,18 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/message_templates/methods/get_message_template"
-          - $ref: "#/components/x-stackQL-resources/message_templates/methods/search_message_templates"
-          - $ref: "#/components/x-stackQL-resources/message_templates/methods/list_message_templates"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/message_templates/methods/create_message_template"
-        update:
-          - $ref: "#/components/x-stackQL-resources/message_templates/methods/update_message_template"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/message_templates/methods/delete_message_template"
-    message_template_attachments:
-      id: aws.qconnect.message_template_attachments
-      name: message_template_attachments
-      title: message_template_attachments
-      methods:
-        create_message_template_attachment:
+        update_message_template_metadata:
           operation:
-            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1attachments/post"
+            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1metadata/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9939,19 +10232,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_message_template_attachment:
-          operation:
-            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1attachments~1{attachment_id}/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/get_message_template"
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/search_message_templates"
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/list_message_templates"
         insert:
-          - $ref: "#/components/x-stackQL-resources/message_template_attachments/methods/create_message_template_attachment"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/create_message_template_attachment"
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/create_message_template"
+        update:
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/update_message_template"
         delete:
-          - $ref: "#/components/x-stackQL-resources/message_template_attachments/methods/delete_message_template_attachment"
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/delete_message_template_attachment"
+          - $ref: "#/components/x-stackQL-resources/message_templates/methods/delete_message_template"
     message_template_versions:
       id: aws.qconnect.message_template_versions
       name: message_template_versions
@@ -9977,6 +10270,14 @@ components:
             objectKey: $.messageTemplateVersionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/message_template_versions/methods/list_message_template_versions"
@@ -10009,6 +10310,14 @@ components:
             objectKey: $.quickResponseSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_quick_response:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1quickResponses~1{quick_response_id}/delete"
@@ -10021,6 +10330,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.quickResponse
         update_quick_response:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1quickResponses~1{quick_response_id}/post"
@@ -10042,6 +10352,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10077,6 +10394,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.session
         update_session:
           operation:
             $ref: "#/paths/~1assistants~1{assistant_id}~1sessions~1{session_id}/post"
@@ -10098,6 +10416,24 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_session_data:
+          operation:
+            $ref: "#/paths/~1assistants~1{assistant_id}~1sessions~1{session_id}~1data/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10107,6 +10443,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/create_session"
         update:
+          - $ref: "#/components/x-stackQL-resources/sessions/methods/update_session_data"
           - $ref: "#/components/x-stackQL-resources/sessions/methods/update_session"
         delete: []
     import_jobs:
@@ -10126,6 +10463,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.importJob
         list_import_jobs:
           operation:
             $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1importJobs/get"
@@ -10135,6 +10473,14 @@ components:
             objectKey: $.importJobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/import_jobs/methods/get_import_job"
@@ -10154,6 +10500,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.contentSummary
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/content_summaries/methods/get_content_summary"
@@ -10192,29 +10539,20 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendations"
-        insert: []
-        update: []
-        delete: []
-    messages:
-      id: aws.qconnect.messages
-      name: messages
-      title: messages
-      methods:
-        list_messages:
+        notify_recommendations_received:
           operation:
-            $ref: "#/paths/~1assistants~1{assistant_id}~1sessions~1{session_id}~1messages/get"
+            $ref: "#/paths/~1assistants~1{assistant_id}~1sessions~1{session_id}~1recommendations~1notify/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.messages
           request:
             nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/messages/methods/list_messages"
+          - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendations"
         insert: []
         update: []
         delete: []
@@ -10232,6 +10570,14 @@ components:
             objectKey: $.modelSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/models/methods/list_models"
@@ -10252,16 +10598,24 @@ components:
             objectKey: $.spans
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/spans/methods/list_spans"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.qconnect.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.qconnect.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -10269,17 +10623,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.qconnect.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -10300,136 +10643,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    feedbacks:
-      id: aws.qconnect.feedbacks
-      name: feedbacks
-      title: feedbacks
-      methods:
-        put_feedback:
-          operation:
-            $ref: "#/paths/~1assistants~1{assistant_id}~1feedback/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/feedbacks/methods/put_feedback"
-        delete: []
-    assistant_ai_agents:
-      id: aws.qconnect.assistant_ai_agents
-      name: assistant_ai_agents
-      title: assistant_ai_agents
-      methods:
-        remove_assistant_ai_agent:
-          operation:
-            $ref: "#/paths/~1assistants~1{assistant_id}~1aiagentConfiguration/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        update_assistant_ai_agent:
-          operation:
-            $ref: "#/paths/~1assistants~1{assistant_id}~1aiagentConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/assistant_ai_agents/methods/update_assistant_ai_agent"
-          - $ref: "#/components/x-stackQL-resources/assistant_ai_agents/methods/remove_assistant_ai_agent"
-        delete: []
-    knowledge_base_template_uris:
-      id: aws.qconnect.knowledge_base_template_uris
-      name: knowledge_base_template_uris
-      title: knowledge_base_template_uris
-      methods:
-        remove_knowledge_base_template_uri:
-          operation:
-            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/delete"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-        update_knowledge_base_template_uri:
-          operation:
-            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1templateUri/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/knowledge_base_template_uris/methods/update_knowledge_base_template_uri"
-          - $ref: "#/components/x-stackQL-resources/knowledge_base_template_uris/methods/remove_knowledge_base_template_uri"
-        delete: []
-    message_template_metadatas:
-      id: aws.qconnect.message_template_metadatas
-      name: message_template_metadatas
-      title: message_template_metadatas
-      methods:
-        update_message_template_metadata:
-          operation:
-            $ref: "#/paths/~1knowledgeBases~1{knowledge_base_id}~1messageTemplates~1{message_template_id}~1metadata/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/message_template_metadatas/methods/update_message_template_metadata"
-        delete: []
-    session_datas:
-      id: aws.qconnect.session_datas
-      name: session_datas
-      title: session_datas
-      methods:
-        update_session_data:
-          operation:
-            $ref: "#/paths/~1assistants~1{assistant_id}~1sessions~1{session_id}~1data/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/session_datas/methods/update_session_data"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

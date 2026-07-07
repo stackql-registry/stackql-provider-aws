@@ -749,7 +749,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateWebACLMigrationStackResponse'
-      x-stackql-resource: web_acl_migration_stacks
+      x-stackql-resource: web_acls
       x-stackql-method: create_web_acl_migration_stack
       x-stackql-verb: INSERT
   /CreateXssMatchSet:
@@ -1530,6 +1530,7 @@ paths:
       x-stackql-resource: byte_match_sets
       x-stackql-method: get_byte_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ByteMatchSet
   /GetChangeToken:
     post:
       operationId: GetChangeToken
@@ -1651,6 +1652,7 @@ paths:
       x-stackql-resource: geo_match_sets
       x-stackql-method: get_geo_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.GeoMatchSet
   /GetIPSet:
     post:
       operationId: GetIPSet
@@ -1689,6 +1691,7 @@ paths:
       x-stackql-resource: ip_sets
       x-stackql-method: get_ip_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.IPSet
   /GetLoggingConfiguration:
     post:
       operationId: GetLoggingConfiguration
@@ -1728,6 +1731,7 @@ paths:
       x-stackql-resource: logging_configurations
       x-stackql-method: get_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LoggingConfiguration
   /GetPermissionPolicy:
     post:
       operationId: GetPermissionPolicy
@@ -1806,6 +1810,7 @@ paths:
       x-stackql-resource: rate_based_rules
       x-stackql-method: get_rate_based_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Rule
   /GetRateBasedRuleManagedKeys:
     post:
       operationId: GetRateBasedRuleManagedKeys
@@ -1847,10 +1852,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetRateBasedRuleManagedKeysResponse'
+                $ref: '#/components/schemas/GetRateBasedRuleManagedKeysOutputDisplay'
       x-stackql-resource: rate_based_rule_managed_keys
       x-stackql-method: get_rate_based_rule_managed_keys
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetRateBasedRuleManagedKeysOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ManagedKeys" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"managed_key": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /GetRegexMatchSet:
     post:
       operationId: GetRegexMatchSet
@@ -1890,6 +1900,7 @@ paths:
       x-stackql-resource: regex_match_sets
       x-stackql-method: get_regex_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RegexMatchSet
   /GetRegexPatternSet:
     post:
       operationId: GetRegexPatternSet
@@ -1929,6 +1940,7 @@ paths:
       x-stackql-resource: regex_pattern_sets
       x-stackql-method: get_regex_pattern_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RegexPatternSet
   /GetRule:
     post:
       operationId: GetRule
@@ -1968,6 +1980,7 @@ paths:
       x-stackql-resource: rules
       x-stackql-method: get_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Rule
   /GetRuleGroup:
     post:
       operationId: GetRuleGroup
@@ -2008,6 +2021,7 @@ paths:
       x-stackql-resource: rule_groups
       x-stackql-method: get_rule_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RuleGroup
   /GetSampledRequests:
     post:
       operationId: GetSampledRequests
@@ -2110,6 +2124,7 @@ paths:
       x-stackql-resource: size_constraint_sets
       x-stackql-method: get_size_constraint_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SizeConstraintSet
   /GetSqlInjectionMatchSet:
     post:
       operationId: GetSqlInjectionMatchSet
@@ -2150,6 +2165,7 @@ paths:
       x-stackql-resource: sql_injection_match_sets
       x-stackql-method: get_sql_injection_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SqlInjectionMatchSet
   /GetWebACL:
     post:
       operationId: GetWebACL
@@ -2189,6 +2205,7 @@ paths:
       x-stackql-resource: web_acls
       x-stackql-method: get_web_acl
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.WebACL
   /GetWebACLForResource:
     post:
       operationId: GetWebACLForResource
@@ -2231,6 +2248,7 @@ paths:
       x-stackql-resource: web_acl_for_resources
       x-stackql-method: get_web_acl_for_resource
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.WebACLSummary
   /GetXssMatchSet:
     post:
       operationId: GetXssMatchSet
@@ -2270,6 +2288,7 @@ paths:
       x-stackql-resource: xss_match_sets
       x-stackql-method: get_xss_match_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.XssMatchSet
   /ListActivatedRulesInRuleGroup:
     post:
       operationId: ListActivatedRulesInRuleGroup
@@ -2664,10 +2683,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListResourcesForWebACLResponse'
+                $ref: '#/components/schemas/ListResourcesForWebACLOutputDisplay'
       x-stackql-resource: resources_for_web_acls
       x-stackql-method: list_resources_for_web_acl
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListResourcesForWebACLOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ResourceArns" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListRuleGroups:
     post:
       operationId: ListRuleGroups
@@ -2933,9 +2957,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TagInfoForResource
   /ListWebACLs:
     post:
       operationId: ListWebACLs
@@ -3164,7 +3189,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3204,7 +3229,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateByteMatchSet:
@@ -5597,21 +5622,19 @@ components:
       minLength: 1
       maxLength: 1224
       pattern: .*\S.*
-    GetRateBasedRuleManagedKeysResponse:
+    GetRateBasedRuleManagedKeysRowDisplay:
       type: object
       properties:
-        ManagedKeys:
-          $ref: '#/components/schemas/ManagedKeys'
+        managed_key:
+          type: string
           description: An array of IP addresses that currently are blocked by the specified RateBasedRule.
-        NextMarker:
-          $ref: '#/components/schemas/NextMarker'
-          description: A null value and not currently used.
-    ManagedKeys:
-      type: array
-      items:
-        $ref: '#/components/schemas/ManagedKey'
-    ManagedKey:
-      type: string
+    GetRateBasedRuleManagedKeysOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetRateBasedRuleManagedKeysRowDisplay'
     GetRegexMatchSetResponse:
       type: object
       properties:
@@ -6093,17 +6116,20 @@ components:
       enum:
       - APPLICATION_LOAD_BALANCER
       - API_GATEWAY
-    ListResourcesForWebACLResponse:
+    ListResourcesForWebACLRowDisplay:
       type: object
       properties:
-        ResourceArns:
-          $ref: '#/components/schemas/ResourceArns'
+        resource_arn:
+          type: string
           description: An array of ARNs (Amazon Resource Names) of the resources associated with the specified web ACL. An
             array with zero elements is returned if there are no resources associated with the web ACL.
-    ResourceArns:
-      type: array
-      items:
-        $ref: '#/components/schemas/ResourceArn'
+    ListResourcesForWebACLOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListResourcesForWebACLRowDisplay'
     ListRuleGroupsResponse:
       type: object
       properties:

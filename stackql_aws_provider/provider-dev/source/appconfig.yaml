@@ -81,6 +81,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_id}/configurationprofiles:
     post:
       operationId: CreateConfigurationProfile
@@ -177,6 +180,9 @@ paths:
       x-stackql-method: list_configuration_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /deploymentstrategies:
     post:
       operationId: CreateDeploymentStrategy
@@ -249,6 +255,9 @@ paths:
       x-stackql-method: list_deployment_strategies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_id}/environments:
     post:
       operationId: CreateEnvironment
@@ -325,6 +334,9 @@ paths:
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /extensions:
     post:
       operationId: CreateExtension
@@ -411,6 +423,9 @@ paths:
       x-stackql-method: list_extensions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /extensionassociations:
     post:
       operationId: CreateExtensionAssociation
@@ -500,6 +515,9 @@ paths:
       x-stackql-method: list_extension_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_id}/configurationprofiles/{configuration_profile_id}/hostedconfigurationversions:
     post:
       operationId: CreateHostedConfigurationVersion
@@ -616,6 +634,9 @@ paths:
       x-stackql-method: list_hosted_configuration_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /applications/{application_id}:
     delete:
       operationId: DeleteApplication
@@ -1142,6 +1163,7 @@ paths:
       x-stackql-resource: account_settings
       x-stackql-method: get_account_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DeletionProtection
     patch:
       operationId: UpdateAccountSettings
       description: Updates the value of the DeletionProtection parameter.
@@ -1295,7 +1317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Deployment'
-      x-stackql-resource: deployment
+      x-stackql-resource: applications
       x-stackql-method: stop_deployment
       x-stackql-verb: EXEC
   /deploymentstrategies/{deployment_strategy_id}:
@@ -1402,6 +1424,9 @@ paths:
       x-stackql-method: list_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: next_token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: StartDeployment
       description: Starts a deployment.
@@ -1450,7 +1475,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Deployment'
-      x-stackql-resource: deployment
+      x-stackql-resource: applications
       x-stackql-method: start_deployment
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -1471,7 +1496,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResourceTags'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1500,7 +1525,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1522,7 +1547,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /applications/{application_id}/configurationprofiles/{configuration_profile_id}/validators:
@@ -1551,7 +1576,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: configuration
+      x-stackql-resource: configuration_profiles
       x-stackql-method: validate_configuration
       x-stackql-verb: EXEC
 components:

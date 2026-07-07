@@ -83,7 +83,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConnectAppAuthorizationResponse'
-      x-stackql-resource: connect_app_authorization
+      x-stackql-resource: app_authorizations
       x-stackql-method: connect_app_authorization
       x-stackql-verb: EXEC
   /appbundles/{app_bundle_identifier}/appauthorizations:
@@ -171,6 +171,9 @@ paths:
       x-stackql-method: list_app_authorizations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.appAuthorizationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /appbundles:
     post:
       operationId: CreateAppBundle
@@ -231,6 +234,9 @@ paths:
       x-stackql-method: list_app_bundles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.appBundleSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /appbundles/{app_bundle_identifier}/ingestions:
     post:
       operationId: CreateIngestion
@@ -313,6 +319,9 @@ paths:
       x-stackql-method: list_ingestions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ingestions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /appbundles/{app_bundle_identifier}/ingestions/{ingestion_identifier}/ingestiondestinations:
     post:
       operationId: CreateIngestionDestination
@@ -407,6 +416,9 @@ paths:
       x-stackql-method: list_ingestion_destinations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ingestionDestinations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /appbundles/{app_bundle_identifier}/appauthorizations/{app_authorization_identifier}:
     delete:
       operationId: DeleteAppAuthorization
@@ -464,6 +476,7 @@ paths:
       x-stackql-resource: app_authorizations
       x-stackql-method: get_app_authorization
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.appAuthorization
     patch:
       operationId: UpdateAppAuthorization
       description: Updates an app authorization within an app bundle, which allows AppFabric to connect to an application.
@@ -547,6 +560,7 @@ paths:
       x-stackql-resource: app_bundles
       x-stackql-method: get_app_bundle
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.appBundle
   /appbundles/{app_bundle_identifier}/ingestions/{ingestion_identifier}:
     delete:
       operationId: DeleteIngestion
@@ -605,6 +619,7 @@ paths:
       x-stackql-resource: ingestions
       x-stackql-method: get_ingestion
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ingestion
   ? /appbundles/{app_bundle_identifier}/ingestions/{ingestion_identifier}/ingestiondestinations/{ingestion_destination_identifier}
   : delete:
       operationId: DeleteIngestionDestination
@@ -679,6 +694,7 @@ paths:
       x-stackql-resource: ingestion_destinations
       x-stackql-method: get_ingestion_destination
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ingestionDestination
     patch:
       operationId: UpdateIngestionDestination
       description: Updates an ingestion destination, which specifies how an application's ingested data is processed by Amazon
@@ -744,7 +760,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -775,7 +791,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -801,7 +817,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /appbundles/{app_bundle_identifier}/ingestions/{ingestion_identifier}/start:
@@ -830,7 +846,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartIngestionResponse'
-      x-stackql-resource: ingestion
+      x-stackql-resource: app_bundles
       x-stackql-method: start_ingestion
       x-stackql-verb: EXEC
   /useraccess/start:
@@ -889,7 +905,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopIngestionResponse'
-      x-stackql-resource: ingestion
+      x-stackql-resource: app_bundles
       x-stackql-method: stop_ingestion
       x-stackql-verb: EXEC
 components:

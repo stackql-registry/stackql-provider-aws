@@ -753,6 +753,9 @@ paths:
       x-stackql-method: get_execution_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListActivities:
     post:
       operationId: ListActivities
@@ -801,6 +804,9 @@ paths:
       x-stackql-method: list_activities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.activities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListExecutions:
     post:
       operationId: ListExecutions
@@ -876,6 +882,9 @@ paths:
       x-stackql-method: list_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListMapRuns:
     post:
       operationId: ListMapRuns
@@ -926,6 +935,9 @@ paths:
       x-stackql-method: list_map_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.mapRuns
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListStateMachineAliases:
     post:
       operationId: ListStateMachineAliases
@@ -1081,6 +1093,9 @@ paths:
       x-stackql-method: list_state_machines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.stateMachines
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1115,7 +1130,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PublishStateMachineVersion:
@@ -1170,7 +1185,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishStateMachineVersionOutput'
-      x-stackql-resource: state_machine_version
+      x-stackql-resource: state_machines
       x-stackql-method: publish_state_machine_version
       x-stackql-verb: EXEC
   /RedriveExecution:
@@ -1231,7 +1246,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RedriveExecutionOutput'
-      x-stackql-resource: redrive_execution
+      x-stackql-resource: executions
       x-stackql-method: redrive_execution
       x-stackql-verb: EXEC
   /SendTaskFailure:
@@ -1510,7 +1525,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSyncExecutionOutput'
-      x-stackql-resource: sync_execution
+      x-stackql-resource: state_machines
       x-stackql-method: start_sync_execution
       x-stackql-verb: EXEC
   /StopExecution:
@@ -1598,7 +1613,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestState:
@@ -1725,7 +1740,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateMapRun:
@@ -1959,7 +1974,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateStateMachineDefinitionOutput'
-      x-stackql-resource: state_machine_definition
+      x-stackql-resource: state_machines
       x-stackql-method: validate_state_machine_definition
       x-stackql-verb: EXEC
 components:

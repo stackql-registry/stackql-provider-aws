@@ -71,6 +71,9 @@ paths:
       x-stackql-method: list_exports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.exportSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/StartDomainExport:
     post:
       operationId: StartDomainExport

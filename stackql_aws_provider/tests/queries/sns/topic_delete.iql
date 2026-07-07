@@ -1,0 +1,2 @@
+-- snake_case key reverse-resolves to the TopicArn wire parameter.
+DELETE FROM aws.sns.topics WHERE region = '{{ region }}' AND topic_arn = '{{ topic_find.topic_arn }}'

@@ -2179,6 +2179,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.job
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bill_of_materials_import_jobs/methods/get_bill_of_materials_import_job"
@@ -2214,6 +2215,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.flow
         update_data_integration_flow:
           operation:
             $ref: "#/paths/~1api~1data-integration~1instance~1{instance_id}~1data-integration-flows~1{name}/patch"
@@ -2234,6 +2236,14 @@ components:
             objectKey: $.flows
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_integration_flows/methods/get_data_integration_flow"
@@ -2272,6 +2282,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.dataset
         update_data_lake_dataset:
           operation:
             $ref: "#/paths/~1api~1datalake~1instance~1{instance_id}~1namespaces~1{namespace}~1datasets~1{name}/patch"
@@ -2292,6 +2303,14 @@ components:
             objectKey: $.datasets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_lake_datasets/methods/get_data_lake_dataset"
@@ -2330,6 +2349,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.namespace
         update_data_lake_namespace:
           operation:
             $ref: "#/paths/~1api~1datalake~1instance~1{instance_id}~1namespaces~1{name}/patch"
@@ -2350,6 +2370,14 @@ components:
             objectKey: $.namespaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_lake_namespaces/methods/get_data_lake_namespace"
@@ -2385,6 +2413,14 @@ components:
             objectKey: $.instances
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_instance:
           operation:
             $ref: "#/paths/~1api~1instance~1{instance_id}/delete"
@@ -2397,9 +2433,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.instance
         update_instance:
           operation:
             $ref: "#/paths/~1api~1instance~1{instance_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_data_integration_event:
+          operation:
+            $ref: "#/paths/~1api-data~1data-integration~1instance~1{instance_id}~1data-integration-events/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2429,6 +2477,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.event
         list_data_integration_events:
           operation:
             $ref: "#/paths/~1api-data~1data-integration~1instance~1{instance_id}~1data-integration-events/get"
@@ -2438,6 +2487,14 @@ components:
             objectKey: $.events
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_integration_events/methods/get_data_integration_event"
@@ -2456,6 +2513,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.flowExecution
         list_data_integration_flow_executions:
           operation:
             $ref: "#/paths/~1api-data~1data-integration~1instance~1{instance_id}~1data-integration-flows~1{flow_name}~1executions/get"
@@ -2465,6 +2523,14 @@ components:
             objectKey: $.flowExecutions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_integration_flow_executions/methods/get_data_integration_flow_execution"
@@ -2472,10 +2538,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.supplychain.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.supplychain.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2483,17 +2549,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.supplychain.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1api~1tags~1{resource_arn}/post"
@@ -2514,9 +2569,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

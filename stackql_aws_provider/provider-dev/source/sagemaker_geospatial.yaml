@@ -312,6 +312,9 @@ paths:
       x-stackql-method: list_earth_observation_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EarthObservationJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /raster-data-collections:
     get:
       operationId: ListRasterDataCollections
@@ -341,6 +344,9 @@ paths:
       x-stackql-method: list_raster_data_collections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RasterDataCollectionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -359,7 +365,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     put:
@@ -390,7 +396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -416,7 +422,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /list-vector-enrichment-jobs:
@@ -452,6 +458,9 @@ paths:
       x-stackql-method: list_vector_enrichment_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VectorEnrichmentJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-raster-data-collection:
     post:
       operationId: SearchRasterDataCollection

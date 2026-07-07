@@ -67,6 +67,7 @@ paths:
       x-stackql-resource: organization_recommendations
       x-stackql-method: get_organization_recommendation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.organizationRecommendation
   /v1/recommendations/{recommendation_identifier}:
     get:
       operationId: GetRecommendation
@@ -95,6 +96,7 @@ paths:
       x-stackql-resource: recommendations
       x-stackql-method: get_recommendation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.recommendation
   /v1/checks:
     get:
       operationId: ListChecks
@@ -149,6 +151,9 @@ paths:
       x-stackql-method: list_checks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.checkSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/organization-recommendations/{organization_recommendation_identifier}/accounts:
     get:
       operationId: ListOrganizationRecommendationAccounts
@@ -192,6 +197,9 @@ paths:
       x-stackql-method: list_organization_recommendation_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accountRecommendationLifecycleSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/organization-recommendations/{organization_recommendation_identifier}/resources:
     get:
       operationId: ListOrganizationRecommendationResources
@@ -252,6 +260,9 @@ paths:
       x-stackql-method: list_organization_recommendation_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.organizationRecommendationResourceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/organization-recommendations:
     get:
       operationId: ListOrganizationRecommendations
@@ -330,6 +341,9 @@ paths:
       x-stackql-method: list_organization_recommendations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.organizationRecommendationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/recommendations/{recommendation_identifier}/resources:
     get:
       operationId: ListRecommendationResources
@@ -390,6 +404,9 @@ paths:
       x-stackql-method: list_recommendation_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendationResourceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/recommendations:
     get:
       operationId: ListRecommendations
@@ -474,6 +491,9 @@ paths:
       x-stackql-method: list_recommendations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/organization-recommendations/{organization_recommendation_identifier}/lifecycle:
     put:
       operationId: UpdateOrganizationRecommendationLifecycle
@@ -504,7 +524,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: organization_recommendation_lifecycles
+      x-stackql-resource: organization_recommendations
       x-stackql-method: update_organization_recommendation_lifecycle
       x-stackql-verb: UPDATE
   /v1/recommendations/{recommendation_identifier}/lifecycle:
@@ -537,7 +557,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: recommendation_lifecycles
+      x-stackql-resource: recommendations
       x-stackql-method: update_recommendation_lifecycle
       x-stackql-verb: UPDATE
 components:

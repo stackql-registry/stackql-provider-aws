@@ -256,6 +256,7 @@ paths:
       x-stackql-resource: delivery_streams
       x-stackql-method: describe_delivery_stream
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DeliveryStreamDescription
   /ListDeliveryStreams:
     post:
       operationId: ListDeliveryStreams
@@ -348,7 +349,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForDeliveryStreamOutput'
-      x-stackql-resource: tags_for_delivery_streams
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_delivery_stream
       x-stackql-verb: SELECT
   /PutRecord:
@@ -412,7 +413,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutRecordOutput'
-      x-stackql-resource: records
+      x-stackql-resource: delivery_streams
       x-stackql-method: put_record
       x-stackql-verb: REPLACE
   /PutRecordBatch:
@@ -489,7 +490,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutRecordBatchOutput'
-      x-stackql-resource: record_batches
+      x-stackql-resource: delivery_streams
       x-stackql-method: put_record_batch
       x-stackql-verb: REPLACE
   /StartDeliveryStreamEncryption:
@@ -551,7 +552,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDeliveryStreamEncryptionOutput'
-      x-stackql-resource: delivery_stream_encryption
+      x-stackql-resource: delivery_streams
       x-stackql-method: start_delivery_stream_encryption
       x-stackql-verb: EXEC
   /StopDeliveryStreamEncryption:
@@ -598,7 +599,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDeliveryStreamEncryptionOutput'
-      x-stackql-resource: delivery_stream_encryption
+      x-stackql-resource: delivery_streams
       x-stackql-method: stop_delivery_stream_encryption
       x-stackql-verb: EXEC
   /TagDeliveryStream:
@@ -643,7 +644,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagDeliveryStreamOutput'
-      x-stackql-resource: delivery_streams
+      x-stackql-resource: tags
       x-stackql-method: tag_delivery_stream
       x-stackql-verb: UPDATE
   /UntagDeliveryStream:
@@ -685,7 +686,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagDeliveryStreamOutput'
-      x-stackql-resource: delivery_streams
+      x-stackql-resource: tags
       x-stackql-method: untag_delivery_stream
       x-stackql-verb: UPDATE
   /UpdateDestination:
@@ -777,7 +778,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDestinationOutput'
-      x-stackql-resource: destinations
+      x-stackql-resource: delivery_streams
       x-stackql-method: update_destination
       x-stackql-verb: UPDATE
 components:

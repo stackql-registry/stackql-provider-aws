@@ -50,7 +50,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateLicenseResponse'
-      x-stackql-resource: licenses
+      x-stackql-resource: workspaces
       x-stackql-method: associate_license
       x-stackql-verb: UPDATE
     delete:
@@ -76,7 +76,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateLicenseResponse'
-      x-stackql-resource: licenses
+      x-stackql-resource: workspaces
       x-stackql-method: disassociate_license
       x-stackql-verb: UPDATE
   /workspaces:
@@ -174,6 +174,9 @@ paths:
       x-stackql-method: list_workspaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workspaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workspaces/{workspace_id}/apikeys:
     post:
       operationId: CreateWorkspaceApiKey
@@ -212,7 +215,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateWorkspaceApiKeyResponse'
-      x-stackql-resource: workspace_api_keys
+      x-stackql-resource: workspaces
       x-stackql-method: create_workspace_api_key
       x-stackql-verb: INSERT
   /workspaces/{workspace_id}/serviceaccounts:
@@ -290,6 +293,9 @@ paths:
       x-stackql-method: list_workspace_service_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.serviceAccounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workspaces/{workspace_id}/serviceaccounts/{service_account_id}/tokens:
     post:
       operationId: CreateWorkspaceServiceAccountToken
@@ -378,6 +384,9 @@ paths:
       x-stackql-method: list_workspace_service_account_tokens
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.serviceAccountTokens
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workspaces/{workspace_id}:
     delete:
       operationId: DeleteWorkspace
@@ -419,6 +428,7 @@ paths:
       x-stackql-resource: workspaces
       x-stackql-method: describe_workspace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.workspace
     put:
       operationId: UpdateWorkspace
       description: Modifies an existing Amazon Managed Grafana workspace. If you use this operation and omit any optional
@@ -504,7 +514,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteWorkspaceApiKeyResponse'
-      x-stackql-resource: workspace_api_keys
+      x-stackql-resource: workspaces
       x-stackql-method: delete_workspace_api_key
       x-stackql-verb: DELETE
   /workspaces/{workspace_id}/serviceaccounts/{service_account_id}:
@@ -593,6 +603,7 @@ paths:
       x-stackql-resource: workspace_authentications
       x-stackql-method: describe_workspace_authentication
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.authentication
     post:
       operationId: UpdateWorkspaceAuthentication
       description: Use this operation to define the identity provider (IdP) that this workspace authenticates users from,
@@ -740,6 +751,9 @@ paths:
       x-stackql-method: list_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.permissions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     patch:
       operationId: UpdatePermissions
       description: Updates which users in a workspace have the Grafana Admin or Editor roles.
@@ -790,7 +804,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -824,7 +838,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -850,7 +864,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /versions:
@@ -885,11 +899,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListVersionsResponse'
+                $ref: '#/components/schemas/ListVersionsOutputDisplay'
       x-stackql-resource: versions
       x-stackql-method: list_versions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.grafanaVersions
+      x-stackql-responseEnvelope: ListVersionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "grafanaVersions" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"grafana_version": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1689,20 +1711,20 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListVersionsResponse:
+    ListVersionsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: The token to use in a subsequent ListVersions operation to return the next set of results.
-        grafanaVersions:
-          $ref: '#/components/schemas/GrafanaVersionList'
+        grafana_version:
+          type: string
           description: The Grafana versions available to create. If a workspace ID is included in the request, the Grafana
             versions to which this workspace can be upgraded.
-    GrafanaVersionList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GrafanaVersion'
+    ListVersionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListVersionsRowDisplay'
     ListWorkspaceServiceAccountTokensRequestMaxResultsInteger:
       type: integer
       minimum: 1

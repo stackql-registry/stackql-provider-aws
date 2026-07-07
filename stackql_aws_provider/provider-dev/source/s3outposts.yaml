@@ -107,6 +107,9 @@ paths:
       x-stackql-method: list_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Endpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /S3Outposts/ListOutpostsWithS3:
     get:
       operationId: ListOutpostsWithS3
@@ -138,6 +141,9 @@ paths:
       x-stackql-method: list_outposts_with_s3
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Outposts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /S3Outposts/ListSharedEndpoints:
     get:
       operationId: ListSharedEndpoints
@@ -174,6 +180,9 @@ paths:
       x-stackql-method: list_shared_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Endpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

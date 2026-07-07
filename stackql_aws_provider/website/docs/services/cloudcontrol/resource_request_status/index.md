@@ -1,0 +1,134 @@
+--- 
+title: resource_request_status
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - resource_request_status
+  - cloudcontrol
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists a <code>resource_request_status</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="resource_request_status" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.cloudcontrol.resource_request_status" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="get_resource_request_status"
+    values={[
+        { label: 'get_resource_request_status', value: 'get_resource_request_status' }
+    ]}
+>
+<TabItem value="get_resource_request_status">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="HooksProgressEvent" /></td>
+    <td><code>array</code></td>
+    <td>Lists Hook invocations for the specified target in the request. This is a list since the same target can invoke multiple Hooks.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ProgressEvent" /></td>
+    <td><code>object</code></td>
+    <td>Represents the current status of a resource operation request. For more information, see Managing resource operation requests in the Amazon Web Services Cloud Control API User Guide.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#get_resource_request_status"><CopyableCode code="get_resource_request_status" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns the current status of a resource operation request. For more information, see Tracking the progress of resource operation requests in the Amazon Web Services Cloud Control API User Guide.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="get_resource_request_status"
+    values={[
+        { label: 'get_resource_request_status', value: 'get_resource_request_status' }
+    ]}
+>
+<TabItem value="get_resource_request_status">
+
+Returns the current status of a resource operation request. For more information, see Tracking the progress of resource operation requests in the Amazon Web Services Cloud Control API User Guide.
+
+```sql
+SELECT
+HooksProgressEvent,
+ProgressEvent
+FROM aws.cloudcontrol.resource_request_status
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>

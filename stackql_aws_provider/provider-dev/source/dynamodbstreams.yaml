@@ -69,6 +69,7 @@ paths:
       x-stackql-resource: streams
       x-stackql-method: describe_stream
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.StreamDescription
   /GetRecords:
     post:
       operationId: GetRecords

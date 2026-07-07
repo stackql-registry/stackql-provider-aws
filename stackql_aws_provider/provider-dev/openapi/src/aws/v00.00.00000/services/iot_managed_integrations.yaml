@@ -101,7 +101,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
               required:
-                - Name
                 - EndpointConfig
       responses:
         "201":
@@ -287,7 +286,6 @@ paths:
               required:
                 - DeliveryDestinationArn
                 - DeliveryDestinationType
-                - Name
                 - RoleArn
       responses:
         "201":
@@ -419,7 +417,6 @@ paths:
                 MetaData:
                   $ref: "#/components/schemas/MetaData"
               required:
-                - Role
                 - AuthenticationMaterial
                 - AuthenticationMaterialType
       responses:
@@ -1922,8 +1919,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagsMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -5139,6 +5134,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_account_association:
           operation:
             $ref: "#/paths/~1account-associations~1{account_association_id}/delete"
@@ -5181,6 +5184,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_account_association_refresh:
+          operation:
+            $ref: "#/paths/~1account-associations~1{account_association_id}~1refresh/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/account_associations/methods/get_account_association"
@@ -5218,6 +5227,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_cloud_connector:
           operation:
             $ref: "#/paths/~1cloud-connectors~1{identifier}/delete"
@@ -5274,6 +5291,14 @@ components:
             objectKey: $.ConnectorDestinationList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_connector_destination:
           operation:
             $ref: "#/paths/~1connector-destinations~1{identifier}/delete"
@@ -5330,6 +5355,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_credential_locker:
           operation:
             $ref: "#/paths/~1credential-lockers~1{identifier}/delete"
@@ -5375,6 +5408,14 @@ components:
             objectKey: $.DestinationList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_destination:
           operation:
             $ref: "#/paths/~1destinations~1{name}/delete"
@@ -5431,6 +5472,14 @@ components:
             objectKey: $.EventLogConfigurationList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_event_log_configuration:
           operation:
             $ref: "#/paths/~1event-log-configurations~1{id}/delete"
@@ -5487,6 +5536,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_managed_thing:
           operation:
             $ref: "#/paths/~1managed-things~1{identifier}/delete"
@@ -5505,6 +5562,22 @@ components:
             $ref: "#/paths/~1managed-things~1{identifier}/put"
           response:
             openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reset_runtime_log_configuration:
+          operation:
+            $ref: "#/paths/~1runtime-log-configurations~1{managed_thing_id}/delete"
+          response:
+            openAPIDocKey: "200"
+        send_managed_thing_command:
+          operation:
+            $ref: "#/paths/~1managed-things-command~1{managed_thing_id}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -5545,6 +5618,14 @@ components:
             objectKey: $.NotificationConfigurationList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_notification_configuration:
           operation:
             $ref: "#/paths/~1notification-configurations~1{event_type}/delete"
@@ -5601,6 +5682,14 @@ components:
             objectKey: $.Tasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_ota_task:
           operation:
             $ref: "#/paths/~1ota-tasks~1{identifier}/delete"
@@ -5657,6 +5746,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_ota_task_configuration:
           operation:
             $ref: "#/paths/~1ota-task-configurations~1{identifier}/delete"
@@ -5702,6 +5799,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_provisioning_profile:
           operation:
             $ref: "#/paths/~1provisioning-profiles~1{identifier}/delete"
@@ -5796,6 +5901,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/device_discoveries/methods/get_device_discovery"
@@ -5969,6 +6082,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/schema_versions/methods/get_schema_version"
@@ -5990,6 +6111,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/discovered_devices/methods/list_discovered_devices"
@@ -6010,6 +6139,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_thing_account_associations/methods/list_managed_thing_account_associations"
@@ -6030,6 +6167,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_thing_schemas/methods/list_managed_thing_schemas"
@@ -6050,16 +6195,24 @@ components:
             objectKey: $.ExecutionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ota_task_executions/methods/list_ota_task_executions"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.iot_managed_integrations.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.iot_managed_integrations.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6067,17 +6220,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.iot_managed_integrations.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -6098,9 +6240,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

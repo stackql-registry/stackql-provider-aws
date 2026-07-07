@@ -6096,6 +6096,128 @@ components:
           $ref: "#/components/schemas/LifecyclePolicyArn"
           description: The Amazon Resource Name (ARN) of the image lifecycle policy resource that was updated.
   x-stackQL-resources:
+    images:
+      id: aws.imagebuilder.images
+      name: images
+      title: images
+      methods:
+        cancel_image_creation:
+          operation:
+            $ref: "#/paths/~1CancelImageCreation/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_image:
+          operation:
+            $ref: "#/paths/~1CreateImage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_image:
+          operation:
+            $ref: "#/paths/~1DeleteImage/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        get_image:
+          operation:
+            $ref: "#/paths/~1GetImage/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        list_images:
+          operation:
+            $ref: "#/paths/~1ListImages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.imageVersionList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/images/methods/get_image"
+          - $ref: "#/components/x-stackQL-resources/images/methods/list_images"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/images/methods/create_image"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/images/methods/delete_image"
+    lifecycle_executions:
+      id: aws.imagebuilder.lifecycle_executions
+      name: lifecycle_executions
+      title: lifecycle_executions
+      methods:
+        cancel_lifecycle_execution:
+          operation:
+            $ref: "#/paths/~1CancelLifecycleExecution/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_lifecycle_execution:
+          operation:
+            $ref: "#/paths/~1GetLifecycleExecution/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.lifecycleExecution
+          request:
+            nativeCasing: pascal
+        list_lifecycle_executions:
+          operation:
+            $ref: "#/paths/~1ListLifecycleExecutions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.lifecycleExecutions
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/lifecycle_executions/methods/get_lifecycle_execution"
+          - $ref: "#/components/x-stackQL-resources/lifecycle_executions/methods/list_lifecycle_executions"
+        insert: []
+        update: []
+        delete: []
     components:
       id: aws.imagebuilder.components
       name: components
@@ -6138,6 +6260,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6191,6 +6320,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6226,6 +6362,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        distribute_image:
+          operation:
+            $ref: "#/paths/~1DistributeImage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_distribution_configuration:
           operation:
             $ref: "#/paths/~1GetDistributionConfiguration/get"
@@ -6244,6 +6391,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_distribution_configuration:
@@ -6267,59 +6421,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/distribution_configurations/methods/update_distribution_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/distribution_configurations/methods/delete_distribution_configuration"
-    images:
-      id: aws.imagebuilder.images
-      name: images
-      title: images
-      methods:
-        create_image:
-          operation:
-            $ref: "#/paths/~1CreateImage/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_image:
-          operation:
-            $ref: "#/paths/~1DeleteImage/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        get_image:
-          operation:
-            $ref: "#/paths/~1GetImage/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_images:
-          operation:
-            $ref: "#/paths/~1ListImages/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.imageVersionList
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/images/methods/get_image"
-          - $ref: "#/components/x-stackQL-resources/images/methods/list_images"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/images/methods/create_image"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/images/methods/delete_image"
     image_pipelines:
       id: aws.imagebuilder.image_pipelines
       name: image_pipelines
@@ -6359,6 +6460,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imagePipelineList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_image_pipeline_execution:
+          operation:
+            $ref: "#/paths/~1StartImagePipelineExecution/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6427,6 +6546,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6470,6 +6596,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        import_disk_image:
+          operation:
+            $ref: "#/paths/~1ImportDiskImage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_infrastructure_configurations:
           operation:
             $ref: "#/paths/~1ListInfrastructureConfigurations/post"
@@ -6480,6 +6617,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_infrastructure_configuration:
@@ -6533,6 +6677,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.lifecyclePolicy
           request:
             nativeCasing: pascal
         list_lifecycle_policies:
@@ -6545,6 +6690,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_lifecycle_policy:
@@ -6607,6 +6759,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.workflowVersionList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        send_workflow_step_action:
+          operation:
+            $ref: "#/paths/~1SendWorkflowStepAction/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6749,38 +6919,6 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/image_recipe_policies/methods/put_image_recipe_policy"
         delete: []
-    lifecycle_executions:
-      id: aws.imagebuilder.lifecycle_executions
-      name: lifecycle_executions
-      title: lifecycle_executions
-      methods:
-        get_lifecycle_execution:
-          operation:
-            $ref: "#/paths/~1GetLifecycleExecution/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_lifecycle_executions:
-          operation:
-            $ref: "#/paths/~1ListLifecycleExecutions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.lifecycleExecutions
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/lifecycle_executions/methods/get_lifecycle_execution"
-          - $ref: "#/components/x-stackQL-resources/lifecycle_executions/methods/list_lifecycle_executions"
-        insert: []
-        update: []
-        delete: []
     marketplace_resources:
       id: aws.imagebuilder.marketplace_resources
       name: marketplace_resources
@@ -6826,6 +6964,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6858,6 +7003,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6882,6 +7034,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6902,6 +7061,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.imageSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        retry_image:
+          operation:
+            $ref: "#/paths/~1RetryImage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -6928,6 +7105,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6951,6 +7135,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6974,6 +7165,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6997,6 +7195,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7020,6 +7225,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7028,10 +7240,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.imagebuilder.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.imagebuilder.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7039,17 +7251,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.imagebuilder.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -7070,11 +7271,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     waiting_workflow_steps:
       id: aws.imagebuilder.waiting_workflow_steps
@@ -7091,6 +7293,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7114,6 +7323,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

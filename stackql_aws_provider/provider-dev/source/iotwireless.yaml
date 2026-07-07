@@ -43,7 +43,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateAwsAccountWithPartnerAccountResponse'
-      x-stackql-resource: aws_account_with_partner_accounts
+      x-stackql-resource: partner_accounts
       x-stackql-method: associate_aws_account_with_partner_account
       x-stackql-verb: UPDATE
     get:
@@ -101,7 +101,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMulticastGroupWithFuotaTaskResponse'
-      x-stackql-resource: multicast_group_with_fuota_tasks
+      x-stackql-resource: fuota_tasks
       x-stackql-method: associate_multicast_group_with_fuota_task
       x-stackql-verb: UPDATE
   /fuota-tasks/{id}/wireless-device:
@@ -132,7 +132,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateWirelessDeviceWithFuotaTaskResponse'
-      x-stackql-resource: wireless_device_with_fuota_tasks
+      x-stackql-resource: fuota_tasks
       x-stackql-method: associate_wireless_device_with_fuota_task
       x-stackql-verb: UPDATE
   /multicast-groups/{id}/wireless-device:
@@ -163,7 +163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateWirelessDeviceWithMulticastGroupResponse'
-      x-stackql-resource: wireless_device_with_multicast_groups
+      x-stackql-resource: multicast_groups
       x-stackql-method: associate_wireless_device_with_multicast_group
       x-stackql-verb: UPDATE
   /wireless-devices/{id}/thing:
@@ -195,7 +195,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateWirelessDeviceWithThingResponse'
-      x-stackql-resource: wireless_device_with_things
+      x-stackql-resource: wireless_devices
       x-stackql-method: associate_wireless_device_with_thing
       x-stackql-verb: UPDATE
     delete:
@@ -215,7 +215,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateWirelessDeviceFromThingResponse'
-      x-stackql-resource: wireless_device_from_things
+      x-stackql-resource: wireless_devices
       x-stackql-method: disassociate_wireless_device_from_thing
       x-stackql-verb: UPDATE
   /wireless-gateways/{id}/certificate:
@@ -247,7 +247,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateWirelessGatewayWithCertificateResponse'
-      x-stackql-resource: wireless_gateway_with_certificates
+      x-stackql-resource: wireless_gateways
       x-stackql-method: associate_wireless_gateway_with_certificate
       x-stackql-verb: UPDATE
     delete:
@@ -267,7 +267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateWirelessGatewayFromCertificateResponse'
-      x-stackql-resource: wireless_gateway_from_certificates
+      x-stackql-resource: wireless_gateways
       x-stackql-method: disassociate_wireless_gateway_from_certificate
       x-stackql-verb: UPDATE
     get:
@@ -319,7 +319,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateWirelessGatewayWithThingResponse'
-      x-stackql-resource: wireless_gateway_with_things
+      x-stackql-resource: wireless_gateways
       x-stackql-method: associate_wireless_gateway_with_thing
       x-stackql-verb: UPDATE
     delete:
@@ -339,7 +339,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateWirelessGatewayFromThingResponse'
-      x-stackql-resource: wireless_gateway_from_things
+      x-stackql-resource: wireless_gateways
       x-stackql-method: disassociate_wireless_gateway_from_thing
       x-stackql-verb: UPDATE
   /multicast-groups/{id}/session:
@@ -359,7 +359,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelMulticastGroupSessionResponse'
-      x-stackql-resource: multicast_group_session
+      x-stackql-resource: multicast_groups
       x-stackql-method: cancel_multicast_group_session
       x-stackql-verb: EXEC
     get:
@@ -381,6 +381,7 @@ paths:
       x-stackql-resource: multicast_group_sessions
       x-stackql-method: get_multicast_group_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LoRaWAN
     put:
       operationId: StartMulticastGroupSession
       description: Starts a multicast group session.
@@ -408,7 +409,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMulticastGroupSessionResponse'
-      x-stackql-resource: multicast_group_session
+      x-stackql-resource: multicast_groups
       x-stackql-method: start_multicast_group_session
       x-stackql-verb: EXEC
   /destinations:
@@ -1925,7 +1926,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateAwsAccountFromPartnerAccountResponse'
-      x-stackql-resource: aws_account_from_partner_accounts
+      x-stackql-resource: partner_accounts
       x-stackql-method: disassociate_aws_account_from_partner_account
       x-stackql-verb: UPDATE
     get:
@@ -2014,7 +2015,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMulticastGroupFromFuotaTaskResponse'
-      x-stackql-resource: multicast_group_from_fuota_tasks
+      x-stackql-resource: fuota_tasks
       x-stackql-method: disassociate_multicast_group_from_fuota_task
       x-stackql-verb: UPDATE
   /fuota-tasks/{id}/wireless-devices/{wireless_device_id}:
@@ -2039,7 +2040,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateWirelessDeviceFromFuotaTaskResponse'
-      x-stackql-resource: wireless_device_from_fuota_tasks
+      x-stackql-resource: fuota_tasks
       x-stackql-method: disassociate_wireless_device_from_fuota_task
       x-stackql-verb: UPDATE
   /multicast-groups/{id}/wireless-devices/{wireless_device_id}:
@@ -2064,7 +2065,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateWirelessDeviceFromMulticastGroupResponse'
-      x-stackql-resource: wireless_device_from_multicast_groups
+      x-stackql-resource: multicast_groups
       x-stackql-method: disassociate_wireless_device_from_multicast_group
       x-stackql-verb: UPDATE
   /event-configurations-resource-types:
@@ -2140,7 +2141,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetAllResourceLogLevelsResponse'
-      x-stackql-resource: all_resource_log_levels
+      x-stackql-resource: resource_log_levels
       x-stackql-method: reset_all_resource_log_levels
       x-stackql-verb: EXEC
     post:
@@ -2188,6 +2189,7 @@ paths:
       x-stackql-resource: metric_configurations
       x-stackql-method: get_metric_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SummaryMetric
     put:
       operationId: UpdateMetricConfiguration
       description: Update the summary metric configuration.
@@ -2760,6 +2762,7 @@ paths:
       x-stackql-resource: wireless_gateway_firmware_informations
       x-stackql-method: get_wireless_gateway_firmware_information
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.LoRaWAN
   /wireless-gateways/{id}/statistics:
     get:
       operationId: GetWirelessGatewayStatistics
@@ -2851,7 +2854,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWirelessDeviceImportTaskResponse'
-      x-stackql-resource: wireless_device_import_task
+      x-stackql-resource: wireless_devices
       x-stackql-method: start_wireless_device_import_task
       x-stackql-verb: EXEC
   /event-configurations:
@@ -2971,7 +2974,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -3002,7 +3005,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3028,7 +3031,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /wireless_device_import_tasks:
@@ -3187,7 +3190,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSingleWirelessDeviceImportTaskResponse'
-      x-stackql-resource: single_wireless_device_import_task
+      x-stackql-resource: destinations
       x-stackql-method: start_single_wireless_device_import_task
       x-stackql-verb: EXEC
   /wireless-devices/{id}/test:

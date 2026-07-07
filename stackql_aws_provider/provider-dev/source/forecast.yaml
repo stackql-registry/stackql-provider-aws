@@ -2220,6 +2220,9 @@ paths:
       x-stackql-method: list_dataset_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DatasetGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDatasetImportJobs:
     post:
       operationId: ListDatasetImportJobs
@@ -2272,6 +2275,9 @@ paths:
       x-stackql-method: list_dataset_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DatasetImportJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDatasets:
     post:
       operationId: ListDatasets
@@ -2313,6 +2319,9 @@ paths:
       x-stackql-method: list_datasets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Datasets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListExplainabilities:
     post:
       operationId: ListExplainabilities
@@ -2361,6 +2370,9 @@ paths:
       x-stackql-method: list_explainabilities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Explainabilities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListExplainabilityExports:
     post:
       operationId: ListExplainabilityExports
@@ -2410,6 +2422,9 @@ paths:
       x-stackql-method: list_explainability_exports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ExplainabilityExports
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListForecastExportJobs:
     post:
       operationId: ListForecastExportJobs
@@ -2463,6 +2478,9 @@ paths:
       x-stackql-method: list_forecast_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ForecastExportJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListForecasts:
     post:
       operationId: ListForecasts
@@ -2514,6 +2532,9 @@ paths:
       x-stackql-method: list_forecasts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Forecasts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMonitorEvaluations:
     post:
       operationId: ListMonitorEvaluations
@@ -2569,6 +2590,9 @@ paths:
       x-stackql-method: list_monitor_evaluations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PredictorMonitorEvaluations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMonitors:
     post:
       operationId: ListMonitors
@@ -2619,6 +2643,9 @@ paths:
       x-stackql-method: list_monitors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Monitors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPredictorBacktestExportJobs:
     post:
       operationId: ListPredictorBacktestExportJobs
@@ -2670,6 +2697,9 @@ paths:
       x-stackql-method: list_predictor_backtest_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PredictorBacktestExportJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPredictors:
     post:
       operationId: ListPredictors
@@ -2722,6 +2752,9 @@ paths:
       x-stackql-method: list_predictors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Predictors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2755,7 +2788,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListWhatIfAnalyses:
@@ -2810,6 +2843,9 @@ paths:
       x-stackql-method: list_what_if_analyses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WhatIfAnalyses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWhatIfForecastExports:
     post:
       operationId: ListWhatIfForecastExports
@@ -2863,6 +2899,9 @@ paths:
       x-stackql-method: list_what_if_forecast_exports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WhatIfForecastExports
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWhatIfForecasts:
     post:
       operationId: ListWhatIfForecasts
@@ -2915,6 +2954,9 @@ paths:
       x-stackql-method: list_what_if_forecasts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WhatIfForecasts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ResumeResource:
     post:
       operationId: ResumeResource
@@ -3033,7 +3075,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3073,7 +3115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateDatasetGroup:

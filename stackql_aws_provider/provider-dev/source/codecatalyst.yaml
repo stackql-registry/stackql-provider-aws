@@ -76,6 +76,9 @@ paths:
       x-stackql-method: list_access_tokens
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments:
     put:
       operationId: CreateDevEnvironment
@@ -200,6 +203,9 @@ paths:
       x-stackql-method: list_projects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/projects/{project_name}/sourceRepositories/{name}:
     put:
       operationId: CreateSourceRepository
@@ -851,6 +857,9 @@ paths:
       x-stackql-method: list_dev_environment_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/devEnvironments:
     post:
       operationId: ListDevEnvironments
@@ -888,6 +897,9 @@ paths:
       x-stackql-method: list_dev_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/eventLogs:
     post:
       operationId: ListEventLogs
@@ -935,6 +947,9 @@ paths:
       x-stackql-method: list_event_logs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/projects/{project_name}/sourceRepositories:
     post:
       operationId: ListSourceRepositories
@@ -974,6 +989,9 @@ paths:
       x-stackql-method: list_source_repositories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/projects/{project_name}/sourceRepositories/{source_repository_name}/branches:
     post:
       operationId: ListSourceRepositoryBranches
@@ -1019,6 +1037,9 @@ paths:
       x-stackql-method: list_source_repository_branches
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces:
     post:
       operationId: ListSpaces
@@ -1044,6 +1065,9 @@ paths:
       x-stackql-method: list_spaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/projects/{project_name}/workflowRuns:
     post:
       operationId: ListWorkflowRuns
@@ -1101,6 +1125,9 @@ paths:
       x-stackql-method: list_workflow_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     put:
       operationId: StartWorkflowRun
       description: Begins a run of a specified workflow.
@@ -1139,7 +1166,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWorkflowRunResponse'
-      x-stackql-resource: workflow_run
+      x-stackql-resource: workflows
       x-stackql-method: start_workflow_run
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/workflows:
@@ -1193,6 +1220,9 @@ paths:
       x-stackql-method: list_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}/start:
     put:
       operationId: StartDevEnvironment
@@ -1236,7 +1266,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDevEnvironmentResponse'
-      x-stackql-resource: dev_environment
+      x-stackql-resource: projects
       x-stackql-method: start_dev_environment
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}/session:
@@ -1280,7 +1310,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDevEnvironmentSessionResponse'
-      x-stackql-resource: dev_environment_session
+      x-stackql-resource: dev_environments
       x-stackql-method: start_dev_environment_session
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}/stop:
@@ -1314,7 +1344,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDevEnvironmentResponse'
-      x-stackql-resource: dev_environment
+      x-stackql-resource: projects
       x-stackql-method: stop_dev_environment
       x-stackql-verb: EXEC
   /v1/spaces/{space_name}/projects/{project_name}/devEnvironments/{id}/session/{session_id}:
@@ -1353,7 +1383,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDevEnvironmentSessionResponse'
-      x-stackql-resource: dev_environment_session
+      x-stackql-resource: dev_environments
       x-stackql-method: stop_dev_environment_session
       x-stackql-verb: EXEC
   /session:

@@ -2642,10 +2642,10 @@ components:
         - sessionArn
         - sharingConfiguration
   x-stackQL-resources:
-    library_item_reviews:
-      id: aws.qapps.library_item_reviews
-      name: library_item_reviews
-      title: library_item_reviews
+    library_items:
+      id: aws.qapps.library_items
+      name: library_items
+      title: library_items
       methods:
         associate_library_item_review:
           operation:
@@ -2657,48 +2657,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        disassociate_library_item_review:
-          operation:
-            $ref: "#/paths/~1catalog.disassociateItemRating/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/library_item_reviews/methods/associate_library_item_review"
-        delete: []
-    q_app_with_users:
-      id: aws.qapps.q_app_with_users
-      name: q_app_with_users
-      title: q_app_with_users
-      methods:
-        associate_q_app_with_user:
-          operation:
-            $ref: "#/paths/~1apps.install/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/q_app_with_users/methods/associate_q_app_with_user"
-        delete: []
-    library_items:
-      id: aws.qapps.library_items
-      name: library_items
-      title: library_items
-      methods:
         create_library_item:
           operation:
             $ref: "#/paths/~1catalog.createItem/post"
@@ -2713,6 +2671,16 @@ components:
         delete_library_item:
           operation:
             $ref: "#/paths/~1catalog.deleteItem/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_library_item_review:
+          operation:
+            $ref: "#/paths/~1catalog.disassociateItemRating/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -2737,12 +2705,30 @@ components:
             objectKey: $.libraryItems
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_library_item:
           operation:
             $ref: "#/paths/~1catalog.updateItem/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_library_item_metadata:
+          operation:
+            $ref: "#/paths/~1catalog.updateItemMetadata/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -2758,33 +2744,21 @@ components:
           - $ref: "#/components/x-stackQL-resources/library_items/methods/update_library_item"
         delete:
           - $ref: "#/components/x-stackQL-resources/library_items/methods/delete_library_item"
-    presigned_urls:
-      id: aws.qapps.presigned_urls
-      name: presigned_urls
-      title: presigned_urls
-      methods:
-        create_presigned_url:
-          operation:
-            $ref: "#/paths/~1apps.createPresignedUrl/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/presigned_urls/methods/create_presigned_url"
-        update: []
-        delete: []
     q_apps:
       id: aws.qapps.q_apps
       name: q_apps
       title: q_apps
       methods:
+        associate_q_app_with_user:
+          operation:
+            $ref: "#/paths/~1apps.install/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_q_app:
           operation:
             $ref: "#/paths/~1apps.create/post"
@@ -2799,6 +2773,16 @@ components:
         delete_q_app:
           operation:
             $ref: "#/paths/~1apps.delete/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_q_app_from_user:
+          operation:
+            $ref: "#/paths/~1apps.uninstall/post"
           response:
             openAPIDocKey: "200"
           request:
@@ -2823,6 +2807,35 @@ components:
             objectKey: $.apps
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        start_q_app_session:
+          operation:
+            $ref: "#/paths/~1runtime.startQAppSession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_q_app_session:
+          operation:
+            $ref: "#/paths/~1runtime.deleteMiniAppRun/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_q_app:
           operation:
             $ref: "#/paths/~1apps.update/post"
@@ -2844,6 +2857,28 @@ components:
           - $ref: "#/components/x-stackQL-resources/q_apps/methods/update_q_app"
         delete:
           - $ref: "#/components/x-stackQL-resources/q_apps/methods/delete_q_app"
+    presigned_urls:
+      id: aws.qapps.presigned_urls
+      name: presigned_urls
+      title: presigned_urls
+      methods:
+        create_presigned_url:
+          operation:
+            $ref: "#/paths/~1apps.createPresignedUrl/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert:
+          - $ref: "#/components/x-stackQL-resources/presigned_urls/methods/create_presigned_url"
+        update: []
+        delete: []
     q_app_permissions:
       id: aws.qapps.q_app_permissions
       name: q_app_permissions
@@ -2875,32 +2910,22 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/q_app_permissions/methods/update_q_app_permissions"
         delete: []
-    q_app_from_users:
-      id: aws.qapps.q_app_from_users
-      name: q_app_from_users
-      title: q_app_from_users
-      methods:
-        disassociate_q_app_from_user:
-          operation:
-            $ref: "#/paths/~1apps.uninstall/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/q_app_from_users/methods/disassociate_q_app_from_user"
-        delete: []
     q_app_sessions:
       id: aws.qapps.q_app_sessions
       name: q_app_sessions
       title: q_app_sessions
       methods:
+        export_q_app_session_data:
+          operation:
+            $ref: "#/paths/~1runtime.exportQAppSessionData/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_q_app_session:
           operation:
             $ref: "#/paths/~1runtime.getQAppSession/get"
@@ -2994,10 +3019,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.qapps.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.qapps.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3005,17 +3030,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.qapps.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3036,30 +3050,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    library_item_metadatas:
-      id: aws.qapps.library_item_metadatas
-      name: library_item_metadatas
-      title: library_item_metadatas
-      methods:
-        update_library_item_metadata:
-          operation:
-            $ref: "#/paths/~1catalog.updateItemMetadata/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/library_item_metadatas/methods/update_library_item_metadata"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

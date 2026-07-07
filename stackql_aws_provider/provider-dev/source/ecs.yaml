@@ -1524,6 +1524,7 @@ paths:
       x-stackql-resource: daemons
       x-stackql-method: describe_daemon
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.daemon
   /DescribeDaemonDeployments:
     post:
       operationId: DescribeDaemonDeployments
@@ -1638,6 +1639,7 @@ paths:
       x-stackql-resource: daemon_task_definitions
       x-stackql-method: describe_daemon_task_definition
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.daemonTaskDefinition
   /DescribeExpressGatewayService:
     post:
       operationId: DescribeExpressGatewayService
@@ -1682,6 +1684,7 @@ paths:
       x-stackql-resource: express_gateway_services
       x-stackql-method: describe_express_gateway_service
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.service
   /DescribeServiceDeployments:
     post:
       operationId: DescribeServiceDeployments
@@ -2143,6 +2146,9 @@ paths:
       x-stackql-method: list_account_settings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.settings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAttributes:
     post:
       operationId: ListAttributes
@@ -2208,6 +2214,9 @@ paths:
       x-stackql-method: list_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.attributes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListClusters:
     post:
       operationId: ListClusters
@@ -2248,11 +2257,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListClustersResponse'
+                $ref: '#/components/schemas/ListClustersOutputDisplay'
       x-stackql-resource: clusters
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.clusterArns
+      x-stackql-responseEnvelope: ListClustersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "clusterArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"cluster_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListContainerInstances:
     post:
       operationId: ListContainerInstances
@@ -2311,11 +2328,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListContainerInstancesResponse'
+                $ref: '#/components/schemas/ListContainerInstancesOutputDisplay'
       x-stackql-resource: container_instances
       x-stackql-method: list_container_instances
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.containerInstanceArns
+      x-stackql-responseEnvelope: ListContainerInstancesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "containerInstanceArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"container_instance_arn": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDaemonDeployments:
     post:
       operationId: ListDaemonDeployments
@@ -2616,11 +2641,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListServicesResponse'
+                $ref: '#/components/schemas/ListServicesOutputDisplay'
       x-stackql-resource: services
       x-stackql-method: list_services
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.serviceArns
+      x-stackql-responseEnvelope: ListServicesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "serviceArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListServicesByNamespace:
     post:
       operationId: ListServicesByNamespace
@@ -2674,11 +2707,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListServicesByNamespaceResponse'
+                $ref: '#/components/schemas/ListServicesByNamespaceOutputDisplay'
       x-stackql-resource: services_by_namespaces
       x-stackql-method: list_services_by_namespace
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.serviceArns
+      x-stackql-responseEnvelope: ListServicesByNamespaceOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "serviceArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2713,7 +2754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTaskDefinitionFamilies:
@@ -2773,11 +2814,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTaskDefinitionFamiliesResponse'
+                $ref: '#/components/schemas/ListTaskDefinitionFamiliesOutputDisplay'
       x-stackql-resource: task_definition_families
       x-stackql-method: list_task_definition_families
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.families
+      x-stackql-responseEnvelope: ListTaskDefinitionFamiliesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "families" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"family": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTaskDefinitions:
     post:
       operationId: ListTaskDefinitions
@@ -2836,11 +2885,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTaskDefinitionsResponse'
+                $ref: '#/components/schemas/ListTaskDefinitionsOutputDisplay'
       x-stackql-resource: task_definitions
       x-stackql-method: list_task_definitions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.taskDefinitionArns
+      x-stackql-responseEnvelope: ListTaskDefinitionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "taskDefinitionArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"task_definition_arn": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTasks:
     post:
       operationId: ListTasks
@@ -2919,11 +2976,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTasksResponse'
+                $ref: '#/components/schemas/ListTasksOutputDisplay'
       x-stackql-resource: tasks
       x-stackql-method: list_tasks
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.taskArns
+      x-stackql-responseEnvelope: ListTasksOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "taskArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"task_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /PutAccountSetting:
     post:
       operationId: PutAccountSetting
@@ -3133,7 +3198,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountSettingDefaultResponse'
-      x-stackql-resource: account_setting_defaults
+      x-stackql-resource: account_settings
       x-stackql-method: put_account_setting_default
       x-stackql-verb: REPLACE
   /PutAttributes:
@@ -3245,7 +3310,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutClusterCapacityProvidersResponse'
-      x-stackql-resource: cluster_capacity_providers
+      x-stackql-resource: capacity_providers
       x-stackql-method: put_cluster_capacity_providers
       x-stackql-verb: REPLACE
   /RegisterContainerInstance:
@@ -3913,7 +3978,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopServiceDeploymentResponse'
-      x-stackql-resource: service_deployment
+      x-stackql-resource: services
       x-stackql-method: stop_service_deployment
       x-stackql-verb: EXEC
   /StopTask:
@@ -4126,7 +4191,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitTaskStateChangeResponse'
-      x-stackql-resource: task_state_change
+      x-stackql-resource: tasks
       x-stackql-method: submit_task_state_change
       x-stackql-verb: EXEC
   /TagResource:
@@ -4183,7 +4248,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -4225,7 +4290,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCapacityProvider:
@@ -4373,7 +4438,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateClusterSettingsResponse'
-      x-stackql-resource: cluster_settings
+      x-stackql-resource: clusters
       x-stackql-method: update_cluster_settings
       x-stackql-verb: UPDATE
   /UpdateContainerAgent:
@@ -4493,7 +4558,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContainerInstancesStateResponse'
-      x-stackql-resource: container_instances_states
+      x-stackql-resource: container_instances
       x-stackql-method: update_container_instances_state
       x-stackql-verb: UPDATE
   /UpdateDaemon:
@@ -4911,7 +4976,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateServicePrimaryTaskSetResponse'
-      x-stackql-resource: service_primary_task_sets
+      x-stackql-resource: task_sets
       x-stackql-method: update_service_primary_task_set
       x-stackql-verb: UPDATE
   /UpdateTaskProtection:
@@ -11742,17 +11807,19 @@ components:
           description: The nextToken value to include in a future ListAttributes request. When the results of a ListAttributes
             request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when
             there are no more results to return.
-    ListClustersResponse:
+    ListClustersRowDisplay:
       type: object
       properties:
-        clusterArns:
-          $ref: '#/components/schemas/StringList'
+        cluster_arn:
+          type: string
           description: The list of full Amazon Resource Name (ARN) entries for each cluster that's associated with your account.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListClusters request. When the results of a ListClusters
-            request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when
-            there are no more results to return.
+    ListClustersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListClustersRowDisplay'
     ContainerInstanceStatus:
       type: string
       enum:
@@ -11761,18 +11828,20 @@ components:
       - REGISTERING
       - DEREGISTERING
       - REGISTRATION_FAILED
-    ListContainerInstancesResponse:
+    ListContainerInstancesRowDisplay:
       type: object
       properties:
-        containerInstanceArns:
-          $ref: '#/components/schemas/StringList'
+        container_instance_arn:
+          type: string
           description: The list of container instances with full ARN entries for each container instance associated with the
             specified cluster.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListContainerInstances request. When the results of a ListContainerInstances
-            request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when
-            there are no more results to return.
+    ListContainerInstancesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListContainerInstancesRowDisplay'
     DaemonDeploymentStatusList:
       type: array
       items:
@@ -11972,28 +12041,32 @@ components:
           $ref: '#/components/schemas/String'
           description: Information about why the service deployment is in the current status. For example, the circuit breaker
             detected a deployment failure.
-    ListServicesResponse:
+    ListServicesRowDisplay:
       type: object
       properties:
-        serviceArns:
-          $ref: '#/components/schemas/StringList'
+        service_arn:
+          type: string
           description: The list of full ARN entries for each service that's associated with the specified cluster.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListServices request. When the results of a ListServices
-            request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when
-            there are no more results to return.
-    ListServicesByNamespaceResponse:
+    ListServicesOutputDisplay:
       type: object
       properties:
-        serviceArns:
-          $ref: '#/components/schemas/StringList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListServicesRowDisplay'
+    ListServicesByNamespaceRowDisplay:
+      type: object
+      properties:
+        service_arn:
+          type: string
           description: The list of full ARN entries for each service that's associated with the specified namespace.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListServicesByNamespace request. When the results of a ListServicesByNamespace
-            request exceed maxResults, this value can be used to retrieve the next page of results. When there are no more
-            results to return, this value is null.
+    ListServicesByNamespaceOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListServicesByNamespaceRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -12006,45 +12079,51 @@ components:
       - ACTIVE
       - INACTIVE
       - ALL
-    ListTaskDefinitionFamiliesResponse:
+    ListTaskDefinitionFamiliesRowDisplay:
       type: object
       properties:
-        families:
-          $ref: '#/components/schemas/StringList'
+        family:
+          type: string
           description: The list of task definition family names that match the ListTaskDefinitionFamilies request.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListTaskDefinitionFamilies request. When the results of
-            a ListTaskDefinitionFamilies request exceed maxResults, this value can be used to retrieve the next page of results.
-            This value is null when there are no more results to return.
-    ListTaskDefinitionsResponse:
+    ListTaskDefinitionFamiliesOutputDisplay:
       type: object
       properties:
-        taskDefinitionArns:
-          $ref: '#/components/schemas/StringList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTaskDefinitionFamiliesRowDisplay'
+    ListTaskDefinitionsRowDisplay:
+      type: object
+      properties:
+        task_definition_arn:
+          type: string
           description: The list of task definition Amazon Resource Name (ARN) entries for the ListTaskDefinitions request.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListTaskDefinitions request. When the results of a ListTaskDefinitions
-            request exceed maxResults, this value can be used to retrieve the next page of results. This value is null when
-            there are no more results to return.
+    ListTaskDefinitionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTaskDefinitionsRowDisplay'
     DesiredStatus:
       type: string
       enum:
       - RUNNING
       - PENDING
       - STOPPED
-    ListTasksResponse:
+    ListTasksRowDisplay:
       type: object
       properties:
-        taskArns:
-          $ref: '#/components/schemas/StringList'
+        task_arn:
+          type: string
           description: The list of task ARN entries for the ListTasks request.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListTasks request. When the results of a ListTasks request
-            exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there
-            are no more results to return.
+    ListTasksOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTasksRowDisplay'
     PutAccountSettingResponse:
       type: object
       properties:

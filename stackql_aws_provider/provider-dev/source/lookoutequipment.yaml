@@ -1125,7 +1125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportModelVersionResponse'
-      x-stackql-resource: model_version
+      x-stackql-resource: models
       x-stackql-method: import_model_version
       x-stackql-verb: EXEC
   /ListDataIngestionJobs:
@@ -1692,7 +1692,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutResourcePolicy:
@@ -1790,7 +1790,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataIngestionJobResponse'
-      x-stackql-resource: data_ingestion_job
+      x-stackql-resource: datasets
       x-stackql-method: start_data_ingestion_job
       x-stackql-verb: EXEC
   /StartInferenceScheduler:
@@ -1826,7 +1826,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInferenceSchedulerResponse'
-      x-stackql-resource: inference_scheduler
+      x-stackql-resource: inference_schedulers
       x-stackql-method: start_inference_scheduler
       x-stackql-verb: EXEC
   /StartRetrainingScheduler:
@@ -1862,7 +1862,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRetrainingSchedulerResponse'
-      x-stackql-resource: retraining_scheduler
+      x-stackql-resource: models
       x-stackql-method: start_retraining_scheduler
       x-stackql-verb: EXEC
   /StopInferenceScheduler:
@@ -1898,7 +1898,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopInferenceSchedulerResponse'
-      x-stackql-resource: inference_scheduler
+      x-stackql-resource: inference_schedulers
       x-stackql-method: stop_inference_scheduler
       x-stackql-verb: EXEC
   /StopRetrainingScheduler:
@@ -1934,7 +1934,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRetrainingSchedulerResponse'
-      x-stackql-resource: retraining_scheduler
+      x-stackql-resource: models
       x-stackql-method: stop_retraining_scheduler
       x-stackql-verb: EXEC
   /TagResource:
@@ -1977,7 +1977,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2017,7 +2017,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateActiveModelVersion:
@@ -2057,7 +2057,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateActiveModelVersionResponse'
-      x-stackql-resource: active_model_versions
+      x-stackql-resource: model_versions
       x-stackql-method: update_active_model_version
       x-stackql-verb: UPDATE
   /UpdateInferenceScheduler:

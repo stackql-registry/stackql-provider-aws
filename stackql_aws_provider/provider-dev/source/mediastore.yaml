@@ -284,6 +284,7 @@ paths:
       x-stackql-resource: containers
       x-stackql-method: describe_container
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Container
   /GetContainerPolicy:
     post:
       operationId: GetContainerPolicy
@@ -431,6 +432,7 @@ paths:
       x-stackql-resource: metric_policies
       x-stackql-method: get_metric_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MetricPolicy
   /ListContainers:
     post:
       operationId: ListContainers
@@ -475,6 +477,9 @@ paths:
       x-stackql-method: list_containers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Containers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -508,7 +513,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutContainerPolicy:
@@ -726,7 +731,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAccessLoggingOutput'
-      x-stackql-resource: access_logging
+      x-stackql-resource: containers
       x-stackql-method: start_access_logging
       x-stackql-verb: EXEC
   /StopAccessLogging:
@@ -763,7 +768,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopAccessLoggingOutput'
-      x-stackql-resource: access_logging
+      x-stackql-resource: containers
       x-stackql-method: stop_access_logging
       x-stackql-verb: EXEC
   /TagResource:
@@ -810,7 +815,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -852,7 +857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

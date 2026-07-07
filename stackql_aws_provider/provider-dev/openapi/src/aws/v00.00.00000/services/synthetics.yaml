@@ -89,7 +89,6 @@ paths:
                 ArtifactConfig:
                   $ref: "#/components/schemas/ArtifactConfigInput"
               required:
-                - Name
                 - Code
                 - ArtifactS3Location
                 - ExecutionRoleArn
@@ -457,7 +456,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListGroupResourcesResponse"
+                $ref: "#/components/schemas/ListGroupResourcesOutputDisplay"
   /groups:
     post:
       operationId: ListGroups
@@ -518,8 +517,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1492,19 +1489,19 @@ components:
         Arn:
           $ref: "#/components/schemas/GroupArn"
           description: The ARN of the group.
-    ListGroupResourcesResponse:
+    ListGroupResourcesRowDisplay:
       type: object
       properties:
-        Resources:
-          $ref: "#/components/schemas/StringList"
+        resource:
+          type: string
           description: An array of ARNs. These ARNs are for the canaries that are associated with the group.
-        NextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: A token that indicates that there is more data available. You can use this token in a subsequent ListGroupResources operation to retrieve the next set of results.
-    StringList:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    ListGroupResourcesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListGroupResourcesRowDisplay"
     ListGroupsResponse:
       type: object
       properties:
@@ -1571,10 +1568,10 @@ components:
     UpdateCanaryResponse:
       type: object
   x-stackQL-resources:
-    resources:
-      id: aws.synthetics.resources
-      name: resources
-      title: resources
+    groups:
+      id: aws.synthetics.groups
+      name: groups
+      title: groups
       methods:
         associate_resource:
           operation:
@@ -1587,6 +1584,30 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_group:
+          operation:
+            $ref: "#/paths/~1group/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_group:
+          operation:
+            $ref: "#/paths/~1group~1{group_identifier}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_group:
+          operation:
+            $ref: "#/paths/~1group~1{group_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Group
         disassociate_resource:
           operation:
             $ref: "#/paths/~1group~1{group_identifier}~1disassociate/patch"
@@ -1598,9 +1619,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        tag_resource:
+        list_groups:
           operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/post"
+            $ref: "#/paths/~1groups/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1609,22 +1630,16 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/groups/methods/get_group"
+          - $ref: "#/components/x-stackQL-resources/groups/methods/list_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/groups/methods/create_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/associate_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/groups/methods/associate_resource"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/groups/methods/delete_group"
     canaries:
       id: aws.synthetics.canaries
       name: canaries
@@ -1655,6 +1670,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Canary
           request:
             nativeCasing: pascal
         update_canary:
@@ -1679,6 +1695,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_canary_dry_run:
+          operation:
+            $ref: "#/paths/~1canary~1{name}~1dry-run~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/canaries/methods/get_canary"
@@ -1689,54 +1716,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/canaries/methods/update_canary"
         delete:
           - $ref: "#/components/x-stackQL-resources/canaries/methods/delete_canary"
-    groups:
-      id: aws.synthetics.groups
-      name: groups
-      title: groups
-      methods:
-        create_group:
-          operation:
-            $ref: "#/paths/~1group/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_group:
-          operation:
-            $ref: "#/paths/~1group~1{group_identifier}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_group:
-          operation:
-            $ref: "#/paths/~1group~1{group_identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_groups:
-          operation:
-            $ref: "#/paths/~1groups/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/groups/methods/get_group"
-          - $ref: "#/components/x-stackQL-resources/groups/methods/list_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/groups/methods/create_group"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/groups/methods/delete_group"
     canaries_last_runs:
       id: aws.synthetics.canaries_last_runs
       name: canaries_last_runs
@@ -1836,6 +1815,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListGroupResourcesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Resources" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -1847,10 +1833,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.synthetics.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.synthetics.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1858,9 +1844,30 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

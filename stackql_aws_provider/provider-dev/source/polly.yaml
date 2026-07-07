@@ -148,6 +148,9 @@ paths:
       x-stackql-method: describe_voices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Voices
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/synthesisTasks/{task_id}:
     get:
       operationId: GetSpeechSynthesisTask
@@ -171,6 +174,7 @@ paths:
       x-stackql-resource: speech_synthesis_tasks
       x-stackql-method: get_speech_synthesis_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SynthesisTask
   /v1/lexicons:
     get:
       operationId: ListLexicons
@@ -195,6 +199,9 @@ paths:
       x-stackql-method: list_lexicons
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Lexicons
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/synthesisTasks:
     get:
       operationId: ListSpeechSynthesisTasks
@@ -230,6 +237,9 @@ paths:
       x-stackql-method: list_speech_synthesis_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SynthesisTasks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: StartSpeechSynthesisTask
       description: Allows the creation of an asynchronous synthesis task, by starting a new SpeechSynthesisTask. This operation
@@ -282,7 +292,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSpeechSynthesisTaskOutput'
-      x-stackql-resource: speech_synthesis_task
+      x-stackql-resource: voices
       x-stackql-method: start_speech_synthesis_task
       x-stackql-verb: EXEC
   /v1/synthesisStream:
@@ -395,7 +405,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SynthesizeSpeechOutput'
-      x-stackql-resource: synthesize_speech
+      x-stackql-resource: voices
       x-stackql-method: synthesize_speech
       x-stackql-verb: EXEC
 components:

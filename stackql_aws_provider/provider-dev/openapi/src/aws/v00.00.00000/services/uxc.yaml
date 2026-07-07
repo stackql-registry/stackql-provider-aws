@@ -75,7 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListServicesOutput"
+                $ref: "#/components/schemas/ListServicesOutputDisplay"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -171,15 +171,19 @@ components:
       type: integer
       minimum: 1
       maximum: 1000
-    ListServicesOutput:
+    ListServicesRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token for retrieving the next page of results. This value is null when no more results are available.
-        services:
-          $ref: "#/components/schemas/ServiceList"
+        service:
+          type: string
           description: The list of available Amazon Web Services service identifiers.
+    ListServicesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListServicesRowDisplay"
     UpdateAccountCustomizationsOutput:
       type: object
       properties:
@@ -233,9 +237,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.services
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListServicesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "services" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/services/methods/list_services"

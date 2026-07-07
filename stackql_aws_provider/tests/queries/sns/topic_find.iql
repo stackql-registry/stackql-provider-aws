@@ -1,0 +1,2 @@
+-- Lazy id capture: list and export the new topic's arn via regex.
+SELECT topic_arn FROM aws.sns.topics WHERE region = '{{ region }}'

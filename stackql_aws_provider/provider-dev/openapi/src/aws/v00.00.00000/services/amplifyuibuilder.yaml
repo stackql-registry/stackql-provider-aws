@@ -2209,6 +2209,14 @@ components:
             objectKey: $.entities
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_component:
           operation:
             $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1components~1{id}/delete"
@@ -2220,6 +2228,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.component
         update_component:
           operation:
             $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1components~1{id}/patch"
@@ -2237,8 +2246,14 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/components/methods/get_component"
@@ -2274,6 +2289,14 @@ components:
             objectKey: $.entities
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_form:
           operation:
             $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1forms~1{id}/delete"
@@ -2285,6 +2308,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.form
         update_form:
           operation:
             $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1forms~1{id}/patch"
@@ -2302,8 +2326,14 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/forms/methods/get_form"
@@ -2339,6 +2369,14 @@ components:
             objectKey: $.entities
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_theme:
           operation:
             $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1themes~1{id}/delete"
@@ -2350,6 +2388,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.theme
         update_theme:
           operation:
             $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1themes~1{id}/patch"
@@ -2367,8 +2406,14 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/themes/methods/get_theme"
@@ -2390,6 +2435,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.job
         list_codegen_jobs:
           operation:
             $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1codegen-jobs/get"
@@ -2399,6 +2445,14 @@ components:
             objectKey: $.entities
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/codegen_jobs/methods/get_codegen_job"
@@ -2417,16 +2471,28 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        put_metadata_flag:
+          operation:
+            $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1metadata~1features~1{feature_name}/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metadatas/methods/get_metadata"
         insert: []
         update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/metadatas/methods/put_metadata_flag"
         delete: []
-    tags_for_resources:
-      id: aws.amplifyuibuilder.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.amplifyuibuilder.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2434,17 +2500,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.amplifyuibuilder.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2465,31 +2520,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    metadata_flags:
-      id: aws.amplifyuibuilder.metadata_flags
-      name: metadata_flags
-      title: metadata_flags
-      methods:
-        put_metadata_flag:
-          operation:
-            $ref: "#/paths/~1app~1{app_id}~1environment~1{environment_name}~1metadata~1features~1{feature_name}/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/metadata_flags/methods/put_metadata_flag"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

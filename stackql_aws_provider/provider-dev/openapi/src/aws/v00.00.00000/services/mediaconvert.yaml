@@ -31,8 +31,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/__string"
-              required:
-                - Arn
       responses:
         "201":
           description: Success
@@ -115,9 +113,6 @@ paths:
                   $ref: "#/components/schemas/__mapOf__string"
                 UserMetadata:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Role
-                - Settings
       responses:
         "201":
           description: Success
@@ -198,9 +193,6 @@ paths:
                   $ref: "#/components/schemas/StatusUpdateInterval"
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Name
-                - Settings
       responses:
         "201":
           description: Success
@@ -271,9 +263,6 @@ paths:
                   $ref: "#/components/schemas/PresetSettings"
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Name
-                - Settings
       responses:
         "201":
           description: Success
@@ -350,8 +339,6 @@ paths:
                   $ref: "#/components/schemas/QueueStatus"
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -531,8 +518,6 @@ paths:
               properties:
                 Policy:
                   $ref: "#/components/schemas/Policy"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -916,7 +901,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
               required:
-                - Arn
                 - Tags
       responses:
         "200":
@@ -10380,8 +10364,8 @@ components:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/certificates/methods/associate_certificate"
           - $ref: "#/components/x-stackQL-resources/certificates/methods/disassociate_certificate"
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/associate_certificate"
         delete: []
     jobs:
       id: aws.mediaconvert.jobs
@@ -10394,6 +10378,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Job
         create_job:
           operation:
             $ref: "#/paths/~12017-08-29~1jobs/post"
@@ -10414,6 +10399,25 @@ components:
             objectKey: $.Jobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        create_resource_share:
+          operation:
+            $ref: "#/paths/~12017-08-29~1resourceShares/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         search_jobs:
           operation:
             $ref: "#/paths/~12017-08-29~1search/get"
@@ -10421,13 +10425,31 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Jobs
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_jobs_query:
+          operation:
+            $ref: "#/paths/~12017-08-29~1jobsQueries/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
           request:
             nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/get_job"
           - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
         insert:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/create_resource_share"
           - $ref: "#/components/x-stackQL-resources/jobs/methods/create_job"
         update: []
         delete: []
@@ -10456,6 +10478,14 @@ components:
             objectKey: $.JobTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_job_template:
           operation:
             $ref: "#/paths/~12017-08-29~1jobTemplates~1{name}/delete"
@@ -10468,6 +10498,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.JobTemplate
         update_job_template:
           operation:
             $ref: "#/paths/~12017-08-29~1jobTemplates~1{name}/put"
@@ -10514,6 +10545,14 @@ components:
             objectKey: $.Presets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_preset:
           operation:
             $ref: "#/paths/~12017-08-29~1presets~1{name}/delete"
@@ -10526,6 +10565,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Preset
         update_preset:
           operation:
             $ref: "#/paths/~12017-08-29~1presets~1{name}/put"
@@ -10572,6 +10612,14 @@ components:
             objectKey: $.Queues
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_queue:
           operation:
             $ref: "#/paths/~12017-08-29~1queues~1{name}/delete"
@@ -10584,6 +10632,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Queue
         update_queue:
           operation:
             $ref: "#/paths/~12017-08-29~1queues~1{name}/put"
@@ -10605,28 +10654,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/queues/methods/update_queue"
         delete:
           - $ref: "#/components/x-stackQL-resources/queues/methods/delete_queue"
-    resource_shares:
-      id: aws.mediaconvert.resource_shares
-      name: resource_shares
-      title: resource_shares
-      methods:
-        create_resource_share:
-          operation:
-            $ref: "#/paths/~12017-08-29~1resourceShares/post"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/resource_shares/methods/create_resource_share"
-        update: []
-        delete: []
     policies:
       id: aws.mediaconvert.policies
       name: policies
@@ -10644,6 +10671,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Policy
         put_policy:
           operation:
             $ref: "#/paths/~12017-08-29~1policy/put"
@@ -10679,6 +10707,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10704,10 +10739,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.mediaconvert.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mediaconvert.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -10715,17 +10750,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mediaconvert.resources
-      name: resources
-      title: resources
-      methods:
+            objectKey: $.ResourceTags
         untag_resource:
           operation:
             $ref: "#/paths/~12017-08-29~1tags~1{arn}/put"
@@ -10749,11 +10774,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     versions:
       id: aws.mediaconvert.versions
@@ -10769,6 +10795,14 @@ components:
             objectKey: $.Versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/versions/methods/list_versions"

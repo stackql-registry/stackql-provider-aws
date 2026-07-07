@@ -105,6 +105,9 @@ paths:
       x-stackql-method: list_associated_access_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.associatedAccessPolicies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/encryption-config/associate:
     post:
       operationId: AssociateEncryptionConfig
@@ -270,11 +273,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAccessEntriesResponse'
+                $ref: '#/components/schemas/ListAccessEntriesOutputDisplay'
       x-stackql-resource: access_entries
       x-stackql-method: list_access_entries
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.accessEntries
+      x-stackql-responseEnvelope: ListAccessEntriesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "accessEntries" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"access_entry": {{ toJson $v
+        }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/addons:
     post:
       operationId: CreateAddon
@@ -359,11 +370,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAddonsResponse'
+                $ref: '#/components/schemas/ListAddonsOutputDisplay'
       x-stackql-resource: addons
       x-stackql-method: list_addons
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.addons
+      x-stackql-responseEnvelope: ListAddonsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "addons" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"addon": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/capabilities:
     post:
       operationId: CreateCapability
@@ -454,6 +473,9 @@ paths:
       x-stackql-method: list_capabilities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.capabilities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters:
     post:
       operationId: CreateCluster
@@ -572,11 +594,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListClustersResponse'
+                $ref: '#/components/schemas/ListClustersOutputDisplay'
       x-stackql-resource: clusters
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.clusters
+      x-stackql-responseEnvelope: ListClustersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "clusters" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"cluster": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /eks-anywhere-subscriptions:
     post:
       operationId: CreateEksAnywhereSubscription
@@ -657,6 +687,9 @@ paths:
       x-stackql-method: list_eks_anywhere_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.subscriptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/fargate-profiles:
     post:
       operationId: CreateFargateProfile
@@ -749,11 +782,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFargateProfilesResponse'
+                $ref: '#/components/schemas/ListFargateProfilesOutputDisplay'
       x-stackql-resource: fargate_profiles
       x-stackql-method: list_fargate_profiles
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.fargateProfileNames
+      x-stackql-responseEnvelope: ListFargateProfilesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "fargateProfileNames" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"fargate_profile_name": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/node-groups:
     post:
       operationId: CreateNodegroup
@@ -868,11 +909,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListNodegroupsResponse'
+                $ref: '#/components/schemas/ListNodegroupsOutputDisplay'
       x-stackql-resource: nodegroups
       x-stackql-method: list_nodegroups
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.nodegroups
+      x-stackql-responseEnvelope: ListNodegroupsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "nodegroups" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"nodegroup": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/pod-identity-associations:
     post:
       operationId: CreatePodIdentityAssociation
@@ -991,6 +1040,9 @@ paths:
       x-stackql-method: list_pod_identity_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.associations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/access-entries/{principal_arn}:
     delete:
       operationId: DeleteAccessEntry
@@ -1045,6 +1097,7 @@ paths:
       x-stackql-resource: access_entries
       x-stackql-method: describe_access_entry
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.accessEntry
     post:
       operationId: UpdateAccessEntry
       description: Updates an access entry.
@@ -1145,6 +1198,7 @@ paths:
       x-stackql-resource: addons
       x-stackql-method: describe_addon
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.addon
   /clusters/{name}/capabilities/{capability_name}:
     delete:
       operationId: DeleteCapability
@@ -1203,6 +1257,7 @@ paths:
       x-stackql-resource: capabilities
       x-stackql-method: describe_capability
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.capability
     post:
       operationId: UpdateCapability
       description: Updates the configuration of a managed capability in your Amazon EKS cluster. You can update the IAM role,
@@ -1296,6 +1351,7 @@ paths:
       x-stackql-resource: clusters
       x-stackql-method: describe_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.cluster
   /eks-anywhere-subscriptions/{id}:
     delete:
       operationId: DeleteEksAnywhereSubscription
@@ -1339,6 +1395,7 @@ paths:
       x-stackql-resource: eks_anywhere_subscriptions
       x-stackql-method: describe_eks_anywhere_subscription
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.subscription
     post:
       operationId: UpdateEksAnywhereSubscription
       description: Update an EKS Anywhere Subscription. Only auto renewal and tags can be updated after subscription creation.
@@ -1429,6 +1486,7 @@ paths:
       x-stackql-resource: fargate_profiles
       x-stackql-method: describe_fargate_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.fargateProfile
   /clusters/{name}/node-groups/{nodegroup_name}:
     delete:
       operationId: DeleteNodegroup
@@ -1482,6 +1540,7 @@ paths:
       x-stackql-resource: nodegroups
       x-stackql-method: describe_nodegroup
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.nodegroup
   /clusters/{name}/pod-identity-associations/{association_id}:
     delete:
       operationId: DeletePodIdentityAssociation
@@ -1540,6 +1599,7 @@ paths:
       x-stackql-resource: pod_identity_associations
       x-stackql-method: describe_pod_identity_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.association
     post:
       operationId: UpdatePodIdentityAssociation
       description: 'Updates a EKS Pod Identity association. In an update, you can change the IAM role, the target IAM role,
@@ -1710,6 +1770,9 @@ paths:
       x-stackql-method: describe_addon_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.addons
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /cluster-versions:
     get:
       operationId: DescribeClusterVersions
@@ -1775,6 +1838,9 @@ paths:
       x-stackql-method: describe_cluster_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.clusterVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/identity-provider-configs/describe:
     post:
       operationId: DescribeIdentityProviderConfig
@@ -1807,6 +1873,7 @@ paths:
       x-stackql-resource: identity_provider_configs
       x-stackql-method: describe_identity_provider_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.identityProviderConfig
   /clusters/{name}/insights/{id}:
     get:
       operationId: DescribeInsight
@@ -1834,6 +1901,7 @@ paths:
       x-stackql-resource: insights
       x-stackql-method: describe_insight
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.insight
   /clusters/{name}/insights-refresh:
     get:
       operationId: DescribeInsightsRefresh
@@ -1873,7 +1941,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInsightsRefreshResponse'
-      x-stackql-resource: insights_refresh
+      x-stackql-resource: insights
       x-stackql-method: start_insights_refresh
       x-stackql-verb: EXEC
   /clusters/{name}/updates/{update_id}:
@@ -1924,6 +1992,7 @@ paths:
       x-stackql-resource: updates
       x-stackql-method: describe_update
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.update
   /clusters/{name}/access-entries/{principal_arn}/access-policies/{policy_arn}:
     delete:
       operationId: DisassociateAccessPolicy
@@ -2028,6 +2097,9 @@ paths:
       x-stackql-method: list_access_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accessPolicies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/identity-provider-configs:
     get:
       operationId: ListIdentityProviderConfigs
@@ -2068,6 +2140,9 @@ paths:
       x-stackql-method: list_identity_provider_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.identityProviderConfigs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /clusters/{name}/insights:
     post:
       operationId: ListInsights
@@ -2108,6 +2183,9 @@ paths:
       x-stackql-method: list_insights
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.insights
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2126,7 +2204,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2161,7 +2239,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2187,7 +2265,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /clusters/{name}/updates:
@@ -2244,11 +2322,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListUpdatesResponse'
+                $ref: '#/components/schemas/ListUpdatesOutputDisplay'
       x-stackql-resource: updates
       x-stackql-method: list_updates
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.updateIds
+      x-stackql-responseEnvelope: ListUpdatesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "updateIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"update_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: UpdateClusterVersion
       description: Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during
@@ -2443,7 +2529,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateClusterConfigResponse'
-      x-stackql-resource: cluster_configs
+      x-stackql-resource: clusters
       x-stackql-method: update_cluster_config
       x-stackql-verb: UPDATE
   /clusters/{name}/node-groups/{nodegroup_name}/update-config:
@@ -2494,7 +2580,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNodegroupConfigResponse'
-      x-stackql-resource: nodegroup_configs
+      x-stackql-resource: nodegroups
       x-stackql-method: update_nodegroup_config
       x-stackql-verb: UPDATE
   /clusters/{name}/node-groups/{nodegroup_name}/update-version:
@@ -2551,7 +2637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNodegroupVersionResponse'
-      x-stackql-resource: nodegroup_versions
+      x-stackql-resource: nodegroups
       x-stackql-method: update_nodegroup_version
       x-stackql-verb: UPDATE
 components:
@@ -5420,19 +5506,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListAccessEntriesResponse:
+    ListAccessEntriesRowDisplay:
       type: object
       properties:
-        accessEntries:
-          $ref: '#/components/schemas/StringList'
+        access_entry:
+          type: string
           description: The list of access entries that exist for the cluster.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results
-            exceeded the value of that parameter. Pagination continues from the end of the previous results that returned
-            the nextToken value. This value is null when there are no more results to return. This token should be treated
-            as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic
-            purposes.
+    ListAccessEntriesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAccessEntriesRowDisplay'
     ListAccessPoliciesRequestMaxResults:
       type: integer
       minimum: 1
@@ -5474,18 +5560,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListAddonsResponse:
+    ListAddonsRowDisplay:
       type: object
       properties:
-        addons:
-          $ref: '#/components/schemas/StringList'
+        addon:
+          type: string
           description: A list of installed add-ons.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value to include in a future ListAddons request. When the results of a ListAddons request
-            exceed maxResults, you can use this value to retrieve the next page of results. This value is null when there
-            are no more results to return. This token should be treated as an opaque identifier that is used only to retrieve
-            the next items in a list and not for other programmatic purposes.
+    ListAddonsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAddonsRowDisplay'
     ListAssociatedAccessPoliciesRequestMaxResults:
       type: integer
       minimum: 1
@@ -5567,19 +5654,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    ListClustersResponse:
+    ListClustersRowDisplay:
       type: object
       properties:
-        clusters:
-          $ref: '#/components/schemas/StringList'
+        cluster:
+          type: string
           description: A list of all of the clusters for your account in the specified Amazon Web Services Region .
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results
-            exceeded the value of that parameter. Pagination continues from the end of the previous results that returned
-            the nextToken value. This value is null when there are no more results to return. This token should be treated
-            as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic
-            purposes.
+    ListClustersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListClustersRowDisplay'
     ListEksAnywhereSubscriptionsRequestMaxResults:
       type: integer
       minimum: 1
@@ -5617,19 +5704,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListFargateProfilesResponse:
+    ListFargateProfilesRowDisplay:
       type: object
       properties:
-        fargateProfileNames:
-          $ref: '#/components/schemas/StringList'
+        fargate_profile_name:
+          type: string
           description: A list of all of the Fargate profiles associated with the specified cluster.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results
-            exceeded the value of that parameter. Pagination continues from the end of the previous results that returned
-            the nextToken value. This value is null when there are no more results to return. This token should be treated
-            as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic
-            purposes.
+    ListFargateProfilesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFargateProfilesRowDisplay'
     ListIdentityProviderConfigsRequestMaxResults:
       type: integer
       minimum: 1
@@ -5726,19 +5813,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListNodegroupsResponse:
+    ListNodegroupsRowDisplay:
       type: object
       properties:
-        nodegroups:
-          $ref: '#/components/schemas/StringList'
+        nodegroup:
+          type: string
           description: A list of all of the node groups associated with the specified cluster.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results
-            exceeded the value of that parameter. Pagination continues from the end of the previous results that returned
-            the nextToken value. This value is null when there are no more results to return. This token should be treated
-            as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic
-            purposes.
+    ListNodegroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListNodegroupsRowDisplay'
     ListPodIdentityAssociationsMaxResults:
       type: integer
       minimum: 1
@@ -5798,19 +5885,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListUpdatesResponse:
+    ListUpdatesRowDisplay:
       type: object
       properties:
-        updateIds:
-          $ref: '#/components/schemas/StringList'
+        update_id:
+          type: string
           description: A list of all the updates for the specified cluster and Region.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results
-            exceeded the value of that parameter. Pagination continues from the end of the previous results that returned
-            the nextToken value. This value is null when there are no more results to return. This token should be treated
-            as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic
-            purposes.
+    ListUpdatesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListUpdatesRowDisplay'
     ConnectorConfigRequest:
       description: The configuration sent to a cluster for configuration.
       type: object

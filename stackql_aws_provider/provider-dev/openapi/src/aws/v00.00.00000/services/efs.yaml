@@ -252,8 +252,6 @@ paths:
               properties:
                 Destinations:
                   $ref: "#/components/schemas/DestinationsToCreate"
-              required:
-                - Destinations
       responses:
         "200":
           description: Success
@@ -300,8 +298,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -413,8 +409,6 @@ paths:
                   $ref: "#/components/schemas/Policy"
                 BypassPolicyLockoutSafetyCheck:
                   $ref: "#/components/schemas/BypassPolicyLockoutSafetyCheck"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -615,7 +609,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DescribeMountTargetSecurityGroupsResponse"
+                $ref: "#/components/schemas/DescribeMountTargetSecurityGroupsOutputDisplay"
     put:
       operationId: ModifyMountTargetSecurityGroups
       description: "Modifies the set of security groups in effect for a mount target. When you create a mount target, Amazon EFS also creates a new network interface. For more information, see CreateMountTarget. This operation replaces the security groups in effect for the network interface associated with a mount target, with the SecurityGroups provided in the request. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not deleted. The operation requires permissions for the following actions: elasticfilesystem:ModifyMountTargetSecurityGroups action on the mount target's file system. ec2:ModifyNetworkInterfaceAttribute action on the mount target's network interface."
@@ -747,8 +741,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -764,7 +756,7 @@ paths:
           description: Specifies the EFS resource that you want to remove tags from.
         - name: tagKeys
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/TagKeys"
           description: The keys of the key-value tag pairs that you want to remove from the specified EFS resource.
@@ -1532,14 +1524,19 @@ components:
         - AFTER_180_DAYS
         - AFTER_270_DAYS
         - AFTER_365_DAYS
-    DescribeMountTargetSecurityGroupsResponse:
+    DescribeMountTargetSecurityGroupsRowDisplay:
       type: object
       properties:
-        SecurityGroups:
-          $ref: "#/components/schemas/SecurityGroups"
+        security_group:
+          type: string
           description: An array of security groups.
-      required:
-        - SecurityGroups
+    DescribeMountTargetSecurityGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/DescribeMountTargetSecurityGroupsRowDisplay"
     DescribeMountTargetsResponse:
       type: object
       properties:
@@ -1629,6 +1626,14 @@ components:
             objectKey: $.AccessPoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_access_point:
           operation:
             $ref: "#/paths/~12015-02-01~1access-points~1{access_point_id}/delete"
@@ -1667,6 +1672,14 @@ components:
             objectKey: $.FileSystems
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: query
+              responseToken:
+                key: $.NextMarker
+                location: body
         delete_file_system:
           operation:
             $ref: "#/paths/~12015-02-01~1file-systems~1{file_system_id}/delete"
@@ -1677,6 +1690,17 @@ components:
             $ref: "#/paths/~12015-02-01~1file-systems~1{file_system_id}/put"
           response:
             openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_file_system_protection:
+          operation:
+            $ref: "#/paths/~12015-02-01~1file-systems~1{file_system_id}~1protection/put"
+          response:
+            openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -1717,6 +1741,14 @@ components:
             objectKey: $.MountTargets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: query
+              responseToken:
+                key: $.NextMarker
+                location: body
         delete_mount_target:
           operation:
             $ref: "#/paths/~12015-02-01~1mount-targets~1{mount_target_id}/delete"
@@ -1762,6 +1794,14 @@ components:
             objectKey: $.Replications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/replication_configurations/methods/describe_replication_configurations"
@@ -1804,12 +1844,45 @@ components:
             objectKey: $.Tags
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: query
+              responseToken:
+                key: $.NextMarker
+                location: body
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        tag_resource:
+          operation:
+            $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/delete"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/describe_tags"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert:
           - $ref: "#/components/x-stackQL-resources/tags/methods/create_tags"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete:
           - $ref: "#/components/x-stackQL-resources/tags/methods/delete_tags"
     file_system_policies:
@@ -1859,6 +1932,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResourceIdPreference
           request:
             nativeCasing: pascal
           config:
@@ -1894,6 +1968,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.BackupPolicy
         put_backup_policy:
           operation:
             $ref: "#/paths/~12015-02-01~1file-systems~1{file_system_id}~1backup-policy/put"
@@ -1954,6 +2029,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeMountTargetSecurityGroupsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SecurityGroups" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"security_group": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
         modify_mount_target_security_groups:
           operation:
             $ref: "#/paths/~12015-02-01~1mount-targets~1{mount_target_id}~1security-groups/put"
@@ -1970,74 +2052,4 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/mount_target_security_groups/methods/modify_mount_target_security_groups"
-        delete: []
-    tags_for_resources:
-      id: aws.efs.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.efs.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~12015-02-01~1resource-tags~1{resource_id}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    file_system_protections:
-      id: aws.efs.file_system_protections
-      name: file_system_protections
-      title: file_system_protections
-      methods:
-        update_file_system_protection:
-          operation:
-            $ref: "#/paths/~12015-02-01~1file-systems~1{file_system_id}~1protection/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/file_system_protections/methods/update_file_system_protection"
         delete: []

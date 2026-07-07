@@ -9302,10 +9302,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/alias/methods/associate_alias"
         delete: []
-    distribution_tenant_web_acls:
-      id: aws.cloudfront.distribution_tenant_web_acls
-      name: distribution_tenant_web_acls
-      title: distribution_tenant_web_acls
+    distribution_tenants:
+      id: aws.cloudfront.distribution_tenants
+      name: distribution_tenants
+      title: distribution_tenants
       methods:
         associate_distribution_tenant_web_acl:
           operation:
@@ -9316,6 +9316,47 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/AssociateDistributionTenantWebACLOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_distribution_tenant:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution-tenant/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateDistributionTenantOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_distribution_tenant:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{id}/delete"
+          response:
+            openAPIDocKey: "204"
+        update_distribution_tenant:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateDistributionTenantOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -9337,17 +9378,52 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+        get_distribution_tenant:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetDistributionTenantOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        list_distribution_tenants:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution-tenants/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionTenantsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/get_distribution_tenant"
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/list_distribution_tenants"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/create_distribution_tenant"
         update:
-          - $ref: "#/components/x-stackQL-resources/distribution_tenant_web_acls/methods/associate_distribution_tenant_web_acl"
-          - $ref: "#/components/x-stackQL-resources/distribution_tenant_web_acls/methods/disassociate_distribution_tenant_web_acl"
-        delete: []
-    distribution_web_acls:
-      id: aws.cloudfront.distribution_web_acls
-      name: distribution_web_acls
-      title: distribution_web_acls
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/associate_distribution_tenant_web_acl"
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/update_distribution_tenant"
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/disassociate_distribution_tenant_web_acl"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/delete_distribution_tenant"
+    distributions:
+      id: aws.cloudfront.distributions
+      name: distributions
+      title: distributions
       methods:
         associate_distribution_web_acl:
           operation:
@@ -9367,6 +9443,55 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_distribution:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateDistributionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_distributions:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDistributionsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        delete_distribution:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution~1{id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_distribution:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetDistributionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
         disassociate_distribution_web_acl:
           operation:
             $ref: "#/paths/~12020-05-31~1distribution~1{id}~1disassociate-web-acl/put"
@@ -9379,13 +9504,48 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+        update_distribution:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution~1{id}~1config/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateDistributionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_distribution_with_staging_config:
+          operation:
+            $ref: "#/paths/~12020-05-31~1distribution~1{id}~1promote-staging-config/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateDistributionWithStagingConfigOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/get_distribution"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/create_distribution"
         update:
-          - $ref: "#/components/x-stackQL-resources/distribution_web_acls/methods/associate_distribution_web_acl"
-          - $ref: "#/components/x-stackQL-resources/distribution_web_acls/methods/disassociate_distribution_web_acl"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/associate_distribution_web_acl"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/update_distribution"
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/disassociate_distribution_web_acl"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/distributions/methods/delete_distribution"
     anycast_ip_lists:
       id: aws.cloudfront.anycast_ip_lists
       name: anycast_ip_lists
@@ -9704,8 +9864,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
         list_connection_functions:
           operation:
             $ref: "#/paths/~12020-05-31~1connection-functions/post"
@@ -9927,174 +10085,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/continuous_deployment_policies/methods/update_continuous_deployment_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/continuous_deployment_policies/methods/delete_continuous_deployment_policy"
-    distributions:
-      id: aws.cloudfront.distributions
-      name: distributions
-      title: distributions
-      methods:
-        create_distribution:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateDistributionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_distributions:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-        delete_distribution:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution~1{id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_distribution:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetDistributionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-        update_distribution:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution~1{id}~1config/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateDistributionOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/get_distribution"
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/list_distributions"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/create_distribution"
-        update:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/update_distribution"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/distributions/methods/delete_distribution"
-    distribution_tenants:
-      id: aws.cloudfront.distribution_tenants
-      name: distribution_tenants
-      title: distribution_tenants
-      methods:
-        create_distribution_tenant:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution-tenant/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateDistributionTenantOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_distribution_tenant:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{id}/delete"
-          response:
-            openAPIDocKey: "204"
-        update_distribution_tenant:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateDistributionTenantOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_distribution_tenant:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution-tenant~1{identifier}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetDistributionTenantOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-        list_distribution_tenants:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution-tenants/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDistributionTenantsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/get_distribution_tenant"
-          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/list_distribution_tenants"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/create_distribution_tenant"
-        update:
-          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/update_distribution_tenant"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/distribution_tenants/methods/delete_distribution_tenant"
     distribution_tenant_by_domains:
       id: aws.cloudfront.distribution_tenant_by_domains
       name: distribution_tenant_by_domains
@@ -10120,10 +10110,10 @@ components:
         insert: []
         update: []
         delete: []
-    distribution_with_tags:
-      id: aws.cloudfront.distribution_with_tags
-      name: distribution_with_tags
-      title: distribution_with_tags
+    tags:
+      id: aws.cloudfront.tags
+      name: tags
+      title: tags
       methods:
         create_distribution_with_tags:
           operation:
@@ -10143,11 +10133,69 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_streaming_distribution_with_tags:
+          operation:
+            $ref: "#/paths/~12020-05-31~1streaming-distribution?WithTags/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateStreamingDistributionWithTagsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~12020-05-31~1tagging/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTagsForResourceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        tag_resource:
+          operation:
+            $ref: "#/paths/~12020-05-31~1tagging?Operation=Tag/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~12020-05-31~1tagging?Operation=Untag/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert:
-          - $ref: "#/components/x-stackQL-resources/distribution_with_tags/methods/create_distribution_with_tags"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/tags/methods/create_distribution_with_tags"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/create_streaming_distribution_with_tags"
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     field_level_encryption_configs:
       id: aws.cloudfront.field_level_encryption_configs
@@ -10399,8 +10447,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/functions/methods/get_function"
@@ -11257,35 +11303,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/streaming_distributions/methods/update_streaming_distribution"
         delete:
           - $ref: "#/components/x-stackQL-resources/streaming_distributions/methods/delete_streaming_distribution"
-    streaming_distribution_with_tags:
-      id: aws.cloudfront.streaming_distribution_with_tags
-      name: streaming_distribution_with_tags
-      title: streaming_distribution_with_tags
-      methods:
-        create_streaming_distribution_with_tags:
-          operation:
-            $ref: "#/paths/~12020-05-31~1streaming-distribution?WithTags/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateStreamingDistributionWithTagsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/streaming_distribution_with_tags/methods/create_streaming_distribution_with_tags"
-        update: []
-        delete: []
     trust_stores:
       id: aws.cloudfront.trust_stores
       name: trust_stores
@@ -12207,90 +12224,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/domain_conflicts/methods/list_domain_conflicts"
         insert: []
         update: []
-        delete: []
-    tags_for_resources:
-      id: aws.cloudfront.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~12020-05-31~1tagging/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListTagsForResourceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.cloudfront.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~12020-05-31~1tagging?Operation=Tag/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~12020-05-31~1tagging?Operation=Untag/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-        delete: []
-    distribution_with_staging_configs:
-      id: aws.cloudfront.distribution_with_staging_configs
-      name: distribution_with_staging_configs
-      title: distribution_with_staging_configs
-      methods:
-        update_distribution_with_staging_config:
-          operation:
-            $ref: "#/paths/~12020-05-31~1distribution~1{id}~1promote-staging-config/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateDistributionWithStagingConfigOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/distribution_with_staging_configs/methods/update_distribution_with_staging_config"
         delete: []
     domain_associations:
       id: aws.cloudfront.domain_associations

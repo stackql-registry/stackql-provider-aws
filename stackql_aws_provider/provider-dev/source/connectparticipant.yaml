@@ -87,7 +87,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompleteAttachmentUploadResponse'
-      x-stackql-resource: complete_attachment_upload
+      x-stackql-resource: attachments
       x-stackql-method: complete_attachment_upload
       x-stackql-verb: EXEC
   /participant/connection:
@@ -175,6 +175,7 @@ paths:
       x-stackql-resource: views
       x-stackql-method: describe_view
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.View
   /participant/disconnect:
     post:
       operationId: DisconnectParticipant
@@ -451,7 +452,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAttachmentUploadResponse'
-      x-stackql-resource: attachment_upload
+      x-stackql-resource: attachments
       x-stackql-method: start_attachment_upload
       x-stackql-verb: EXEC
 components:

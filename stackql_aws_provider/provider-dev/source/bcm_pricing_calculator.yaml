@@ -61,7 +61,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateBillScenarioCommitmentModificationResponse'
-      x-stackql-resource: batch_create_bill_scenario_commitment_modification
+      x-stackql-resource: bill_scenarios
       x-stackql-method: batch_create_bill_scenario_commitment_modification
       x-stackql-verb: EXEC
   /BatchCreateBillScenarioUsageModification:
@@ -106,7 +106,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateBillScenarioUsageModificationResponse'
-      x-stackql-resource: batch_create_bill_scenario_usage_modification
+      x-stackql-resource: bill_scenarios
       x-stackql-method: batch_create_bill_scenario_usage_modification
       x-stackql-verb: EXEC
   /BatchCreateWorkloadEstimateUsage:
@@ -151,7 +151,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateWorkloadEstimateUsageResponse'
-      x-stackql-resource: batch_create_workload_estimate_usage
+      x-stackql-resource: workload_estimates
       x-stackql-method: batch_create_workload_estimate_usage
       x-stackql-verb: EXEC
   /BatchDeleteBillScenarioCommitmentModification:
@@ -196,7 +196,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteBillScenarioCommitmentModificationResponse'
-      x-stackql-resource: batch_delete_bill_scenario_commitment_modification
+      x-stackql-resource: bill_scenarios
       x-stackql-method: batch_delete_bill_scenario_commitment_modification
       x-stackql-verb: EXEC
   /BatchDeleteBillScenarioUsageModification:
@@ -240,7 +240,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteBillScenarioUsageModificationResponse'
-      x-stackql-resource: batch_delete_bill_scenario_usage_modification
+      x-stackql-resource: bill_scenarios
       x-stackql-method: batch_delete_bill_scenario_usage_modification
       x-stackql-verb: EXEC
   /BatchDeleteWorkloadEstimateUsage:
@@ -284,7 +284,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteWorkloadEstimateUsageResponse'
-      x-stackql-resource: batch_delete_workload_estimate_usage
+      x-stackql-resource: workload_estimates
       x-stackql-method: batch_delete_workload_estimate_usage
       x-stackql-verb: EXEC
   /BatchUpdateBillScenarioCommitmentModification:
@@ -328,7 +328,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateBillScenarioCommitmentModificationResponse'
-      x-stackql-resource: batch_update_bill_scenario_commitment_modification
+      x-stackql-resource: bill_scenarios
       x-stackql-method: batch_update_bill_scenario_commitment_modification
       x-stackql-verb: EXEC
   /BatchUpdateBillScenarioUsageModification:
@@ -371,7 +371,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateBillScenarioUsageModificationResponse'
-      x-stackql-resource: batch_update_bill_scenario_usage_modification
+      x-stackql-resource: bill_scenarios
       x-stackql-method: batch_update_bill_scenario_usage_modification
       x-stackql-verb: EXEC
   /BatchUpdateWorkloadEstimateUsage:
@@ -415,7 +415,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateWorkloadEstimateUsageResponse'
-      x-stackql-resource: batch_update_workload_estimate_usage
+      x-stackql-resource: workload_estimates
       x-stackql-method: batch_update_workload_estimate_usage
       x-stackql-verb: EXEC
   /CreateBillEstimate:
@@ -859,6 +859,9 @@ paths:
       x-stackql-method: list_bill_estimate_commitments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillEstimateInputCommitmentModifications:
     post:
       operationId: ListBillEstimateInputCommitmentModifications
@@ -902,6 +905,9 @@ paths:
       x-stackql-method: list_bill_estimate_input_commitment_modifications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillEstimateInputUsageModifications:
     post:
       operationId: ListBillEstimateInputUsageModifications
@@ -948,6 +954,9 @@ paths:
       x-stackql-method: list_bill_estimate_input_usage_modifications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillEstimateLineItems:
     post:
       operationId: ListBillEstimateLineItems
@@ -994,6 +1003,9 @@ paths:
       x-stackql-method: list_bill_estimate_line_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillEstimates:
     post:
       operationId: ListBillEstimates
@@ -1041,6 +1053,9 @@ paths:
       x-stackql-method: list_bill_estimates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillScenarioCommitmentModifications:
     post:
       operationId: ListBillScenarioCommitmentModifications
@@ -1084,6 +1099,9 @@ paths:
       x-stackql-method: list_bill_scenario_commitment_modifications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillScenarioUsageModifications:
     post:
       operationId: ListBillScenarioUsageModifications
@@ -1130,6 +1148,9 @@ paths:
       x-stackql-method: list_bill_scenario_usage_modifications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBillScenarios:
     post:
       operationId: ListBillScenarios
@@ -1177,6 +1198,9 @@ paths:
       x-stackql-method: list_bill_scenarios
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1210,7 +1234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListWorkloadEstimateUsage:
@@ -1259,6 +1283,9 @@ paths:
       x-stackql-method: list_workload_estimate_usage
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWorkloadEstimates:
     post:
       operationId: ListWorkloadEstimates
@@ -1306,6 +1333,9 @@ paths:
       x-stackql-method: list_workload_estimates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /TagResource:
     post:
       operationId: TagResource
@@ -1343,7 +1373,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1383,7 +1413,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateBillEstimate:

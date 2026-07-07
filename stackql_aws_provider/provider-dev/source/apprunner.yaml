@@ -698,6 +698,7 @@ paths:
       x-stackql-resource: auto_scaling_configurations
       x-stackql-method: describe_auto_scaling_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AutoScalingConfiguration
   /DescribeCustomDomains:
     post:
       operationId: DescribeCustomDomains
@@ -783,6 +784,7 @@ paths:
       x-stackql-resource: observability_configurations
       x-stackql-method: describe_observability_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ObservabilityConfiguration
   /DescribeService:
     post:
       operationId: DescribeService
@@ -819,6 +821,7 @@ paths:
       x-stackql-resource: services
       x-stackql-method: describe_service
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Service
   /DescribeVpcConnector:
     post:
       operationId: DescribeVpcConnector
@@ -856,6 +859,7 @@ paths:
       x-stackql-resource: vpc_connectors
       x-stackql-method: describe_vpc_connector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VpcConnector
   /DescribeVpcIngressConnection:
     post:
       operationId: DescribeVpcIngressConnection
@@ -893,6 +897,7 @@ paths:
       x-stackql-resource: vpc_ingress_connections
       x-stackql-method: describe_vpc_ingress_connection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VpcIngressConnection
   /DisassociateCustomDomain:
     post:
       operationId: DisassociateCustomDomain
@@ -1215,10 +1220,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListServicesForAutoScalingConfigurationResponse'
+                $ref: '#/components/schemas/ListServicesForAutoScalingConfigurationOutputDisplay'
       x-stackql-resource: services_for_auto_scaling_configurations
       x-stackql-method: list_services_for_auto_scaling_configuration
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListServicesForAutoScalingConfigurationOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ServiceArnList" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1254,7 +1264,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListVpcConnectors:
@@ -1376,7 +1386,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PauseServiceResponse'
-      x-stackql-resource: service
+      x-stackql-resource: services
       x-stackql-method: pause_service
       x-stackql-verb: EXEC
   /ResumeService:
@@ -1414,7 +1424,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResumeServiceResponse'
-      x-stackql-resource: service
+      x-stackql-resource: services
       x-stackql-method: resume_service
       x-stackql-verb: EXEC
   /StartDeployment:
@@ -1455,7 +1465,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDeploymentResponse'
-      x-stackql-resource: deployment
+      x-stackql-resource: services
       x-stackql-method: start_deployment
       x-stackql-verb: EXEC
   /TagResource:
@@ -1498,7 +1508,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1539,7 +1549,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateDefaultAutoScalingConfiguration:
@@ -1579,7 +1589,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDefaultAutoScalingConfigurationResponse'
-      x-stackql-resource: default_auto_scaling_configurations
+      x-stackql-resource: auto_scaling_configurations
       x-stackql-method: update_default_auto_scaling_configuration
       x-stackql-verb: UPDATE
   /UpdateService:
@@ -3114,23 +3124,20 @@ components:
             To troubleshoot this failure, read the failure events and logs, change any parameters that need to be fixed, and
             rebuild your service using UpdateService. DELETE_FAILED – The service failed to delete and can't be successfully
             recovered. Retry the service deletion call to ensure that all related resources are removed.
-    ListServicesForAutoScalingConfigurationResponse:
+    ListServicesForAutoScalingConfigurationRowDisplay:
       type: object
       properties:
-        ServiceArnList:
-          $ref: '#/components/schemas/ServiceArnList'
+        service_arn:
+          type: string
           description: A list of service ARN records. In a paginated request, the request returns up to MaxResults records
             for each call.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token that you can pass in a subsequent request to get the next result page. It's returned in a
-            paginated request.
-      required:
-      - ServiceArnList
-    ServiceArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AppRunnerResourceArn'
+    ListServicesForAutoScalingConfigurationOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListServicesForAutoScalingConfigurationRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

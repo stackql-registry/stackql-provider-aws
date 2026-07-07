@@ -6418,92 +6418,37 @@ components:
           $ref: "#/components/schemas/TemplateSyncConfig"
           description: The template sync configuration detail data that's returned by Proton.
   x-stackQL-resources:
-    components:
-      id: aws.proton.components
-      name: components
-      title: components
-      methods:
-        create_component:
-          operation:
-            $ref: "#/paths/~1CreateComponent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_component:
-          operation:
-            $ref: "#/paths/~1DeleteComponent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_component:
-          operation:
-            $ref: "#/paths/~1GetComponent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_components:
-          operation:
-            $ref: "#/paths/~1ListComponents/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.components
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_component:
-          operation:
-            $ref: "#/paths/~1UpdateComponent/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/components/methods/get_component"
-          - $ref: "#/components/x-stackQL-resources/components/methods/list_components"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/components/methods/create_component"
-        update:
-          - $ref: "#/components/x-stackQL-resources/components/methods/update_component"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/components/methods/delete_component"
     environments:
       id: aws.proton.environments
       name: environments
       title: environments
       methods:
+        accept_environment_account_connection:
+          operation:
+            $ref: "#/paths/~1AcceptEnvironmentAccountConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_environment_deployment:
+          operation:
+            $ref: "#/paths/~1CancelEnvironmentDeployment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_environment:
           operation:
             $ref: "#/paths/~1CreateEnvironment/post"
@@ -6536,6 +6481,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.environment
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6550,6 +6496,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.environments
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reject_environment_account_connection:
+          operation:
+            $ref: "#/paths/~1RejectEnvironmentAccountConnection/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6580,6 +6546,326 @@ components:
           - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
         delete:
           - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
+    components:
+      id: aws.proton.components
+      name: components
+      title: components
+      methods:
+        cancel_component_deployment:
+          operation:
+            $ref: "#/paths/~1CancelComponentDeployment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_component:
+          operation:
+            $ref: "#/paths/~1CreateComponent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_component:
+          operation:
+            $ref: "#/paths/~1DeleteComponent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_component:
+          operation:
+            $ref: "#/paths/~1GetComponent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.component
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_components:
+          operation:
+            $ref: "#/paths/~1ListComponents/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.components
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_component:
+          operation:
+            $ref: "#/paths/~1UpdateComponent/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/components/methods/get_component"
+          - $ref: "#/components/x-stackQL-resources/components/methods/list_components"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/components/methods/create_component"
+        update:
+          - $ref: "#/components/x-stackQL-resources/components/methods/update_component"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/components/methods/delete_component"
+    service_instances:
+      id: aws.proton.service_instances
+      name: service_instances
+      title: service_instances
+      methods:
+        cancel_service_instance_deployment:
+          operation:
+            $ref: "#/paths/~1CancelServiceInstanceDeployment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_service_instance:
+          operation:
+            $ref: "#/paths/~1CreateServiceInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_service_instance:
+          operation:
+            $ref: "#/paths/~1GetServiceInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.serviceInstance
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_service_instances:
+          operation:
+            $ref: "#/paths/~1ListServiceInstances/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.serviceInstances
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_service_instance:
+          operation:
+            $ref: "#/paths/~1UpdateServiceInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/service_instances/methods/get_service_instance"
+          - $ref: "#/components/x-stackQL-resources/service_instances/methods/list_service_instances"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/service_instances/methods/create_service_instance"
+        update:
+          - $ref: "#/components/x-stackQL-resources/service_instances/methods/update_service_instance"
+        delete: []
+    services:
+      id: aws.proton.services
+      name: services
+      title: services
+      methods:
+        cancel_service_pipeline_deployment:
+          operation:
+            $ref: "#/paths/~1CancelServicePipelineDeployment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_service:
+          operation:
+            $ref: "#/paths/~1CreateService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_service:
+          operation:
+            $ref: "#/paths/~1DeleteService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_service:
+          operation:
+            $ref: "#/paths/~1GetService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.service
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_services:
+          operation:
+            $ref: "#/paths/~1ListServices/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.services
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_service:
+          operation:
+            $ref: "#/paths/~1UpdateService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_service_pipeline:
+          operation:
+            $ref: "#/paths/~1UpdateServicePipeline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_service_sync_blocker:
+          operation:
+            $ref: "#/paths/~1UpdateServiceSyncBlocker/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/services/methods/get_service"
+          - $ref: "#/components/x-stackQL-resources/services/methods/list_services"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/services/methods/create_service"
+        update:
+          - $ref: "#/components/x-stackQL-resources/services/methods/update_service_pipeline"
+          - $ref: "#/components/x-stackQL-resources/services/methods/update_service_sync_blocker"
+          - $ref: "#/components/x-stackQL-resources/services/methods/update_service"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/services/methods/delete_service"
     environment_account_connections:
       id: aws.proton.environment_account_connections
       name: environment_account_connections
@@ -6617,6 +6903,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.environmentAccountConnection
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6636,6 +6923,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_environment_account_connection:
@@ -6698,6 +6992,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.environmentTemplate
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6717,6 +7012,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_environment_template:
@@ -6779,6 +7081,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.environmentTemplateVersion
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6798,6 +7101,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_environment_template_version:
@@ -6860,6 +7170,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.repository
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -6879,6 +7190,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6890,154 +7208,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/repositories/methods/delete_repository"
-    services:
-      id: aws.proton.services
-      name: services
-      title: services
-      methods:
-        create_service:
-          operation:
-            $ref: "#/paths/~1CreateService/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_service:
-          operation:
-            $ref: "#/paths/~1DeleteService/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_service:
-          operation:
-            $ref: "#/paths/~1GetService/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_services:
-          operation:
-            $ref: "#/paths/~1ListServices/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.services
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_service:
-          operation:
-            $ref: "#/paths/~1UpdateService/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/services/methods/get_service"
-          - $ref: "#/components/x-stackQL-resources/services/methods/list_services"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/services/methods/create_service"
-        update:
-          - $ref: "#/components/x-stackQL-resources/services/methods/update_service"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/services/methods/delete_service"
-    service_instances:
-      id: aws.proton.service_instances
-      name: service_instances
-      title: service_instances
-      methods:
-        create_service_instance:
-          operation:
-            $ref: "#/paths/~1CreateServiceInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_service_instance:
-          operation:
-            $ref: "#/paths/~1GetServiceInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_service_instances:
-          operation:
-            $ref: "#/paths/~1ListServiceInstances/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.serviceInstances
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_service_instance:
-          operation:
-            $ref: "#/paths/~1UpdateServiceInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/service_instances/methods/get_service_instance"
-          - $ref: "#/components/x-stackQL-resources/service_instances/methods/list_service_instances"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/service_instances/methods/create_service_instance"
-        update:
-          - $ref: "#/components/x-stackQL-resources/service_instances/methods/update_service_instance"
-        delete: []
     service_sync_configs:
       id: aws.proton.service_sync_configs
       name: service_sync_configs
@@ -7075,6 +7245,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.serviceSyncConfig
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7141,6 +7312,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.serviceTemplate
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7160,6 +7332,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_service_template:
@@ -7222,6 +7401,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.serviceTemplateVersion
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7241,6 +7421,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_service_template_version:
@@ -7303,6 +7490,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.templateSyncConfig
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7356,6 +7544,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.deployment
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7375,6 +7564,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7396,6 +7592,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.accountSettings
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7434,6 +7631,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.latestSync
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7458,6 +7656,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.counts
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7506,6 +7705,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.serviceSyncBlockerSummary
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -7560,6 +7760,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7585,6 +7792,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7610,6 +7824,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7635,6 +7856,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7660,6 +7888,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7685,6 +7920,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7710,6 +7952,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7735,6 +7984,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7760,6 +8016,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7768,10 +8031,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.proton.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.proton.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7785,19 +8048,15 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.proton.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -7825,57 +8084,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    service_pipelines:
-      id: aws.proton.service_pipelines
-      name: service_pipelines
-      title: service_pipelines
-      methods:
-        update_service_pipeline:
-          operation:
-            $ref: "#/paths/~1UpdateServicePipeline/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/service_pipelines/methods/update_service_pipeline"
-        delete: []
-    service_sync_blockers:
-      id: aws.proton.service_sync_blockers
-      name: service_sync_blockers
-      title: service_sync_blockers
-      methods:
-        update_service_sync_blocker:
-          operation:
-            $ref: "#/paths/~1UpdateServiceSyncBlocker/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/service_sync_blockers/methods/update_service_sync_blocker"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

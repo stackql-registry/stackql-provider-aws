@@ -111,6 +111,9 @@ paths:
       x-stackql-method: list_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.connectors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/custom-plugins:
     post:
       operationId: CreateCustomPlugin
@@ -181,6 +184,9 @@ paths:
       x-stackql-method: list_custom_plugins
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.customPlugins
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/worker-configurations:
     post:
       operationId: CreateWorkerConfiguration
@@ -248,6 +254,9 @@ paths:
       x-stackql-method: list_worker_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workerConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/connectors/{connector_arn}:
     delete:
       operationId: DeleteConnector
@@ -470,6 +479,9 @@ paths:
       x-stackql-method: list_connector_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.connectorOperations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -488,7 +500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -519,7 +531,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -545,7 +557,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

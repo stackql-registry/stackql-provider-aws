@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddAttributesToFindingsResponse'
-      x-stackql-resource: attributes_to_findings
+      x-stackql-resource: findings
       x-stackql-method: add_attributes_to_findings
       x-stackql-verb: UPDATE
   /CreateAssessmentTarget:
@@ -805,6 +805,9 @@ paths:
       x-stackql-method: list_assessment_run_agents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assessmentRunAgents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAssessmentRuns:
     post:
       operationId: ListAssessmentRuns
@@ -850,11 +853,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssessmentRunsResponse'
+                $ref: '#/components/schemas/ListAssessmentRunsOutputDisplay'
       x-stackql-resource: assessment_runs
       x-stackql-method: list_assessment_runs
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.assessmentRunArns
+      x-stackql-responseEnvelope: ListAssessmentRunsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "assessmentRunArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"assessment_run_arn": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAssessmentTargets:
     post:
       operationId: ListAssessmentTargets
@@ -897,11 +908,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssessmentTargetsResponse'
+                $ref: '#/components/schemas/ListAssessmentTargetsOutputDisplay'
       x-stackql-resource: assessment_targets
       x-stackql-method: list_assessment_targets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.assessmentTargetArns
+      x-stackql-responseEnvelope: ListAssessmentTargetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "assessmentTargetArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"assessment_target_arn": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListAssessmentTemplates:
     post:
       operationId: ListAssessmentTemplates
@@ -948,11 +967,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssessmentTemplatesResponse'
+                $ref: '#/components/schemas/ListAssessmentTemplatesOutputDisplay'
       x-stackql-resource: assessment_templates
       x-stackql-method: list_assessment_templates
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.assessmentTemplateArns
+      x-stackql-responseEnvelope: ListAssessmentTemplatesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "assessmentTemplateArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"assessment_template_arn":
+        {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEventSubscriptions:
     post:
       operationId: ListEventSubscriptions
@@ -998,6 +1025,9 @@ paths:
       x-stackql-method: list_event_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.subscriptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListExclusions:
     post:
       operationId: ListExclusions
@@ -1039,11 +1069,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListExclusionsResponse'
+                $ref: '#/components/schemas/ListExclusionsOutputDisplay'
       x-stackql-resource: exclusions
       x-stackql-method: list_exclusions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.exclusionArns
+      x-stackql-responseEnvelope: ListExclusionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "exclusionArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"exclusion_arn": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListFindings:
     post:
       operationId: ListFindings
@@ -1089,11 +1127,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFindingsResponse'
+                $ref: '#/components/schemas/ListFindingsOutputDisplay'
       x-stackql-resource: findings
       x-stackql-method: list_findings
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.findingArns
+      x-stackql-responseEnvelope: ListFindingsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "findingArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRulesPackages:
     post:
       operationId: ListRulesPackages
@@ -1130,11 +1176,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRulesPackagesResponse'
+                $ref: '#/components/schemas/ListRulesPackagesOutputDisplay'
       x-stackql-resource: rules_packages
       x-stackql-method: list_rules_packages
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.rulesPackageArns
+      x-stackql-responseEnvelope: ListRulesPackagesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "rulesPackageArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"rules_package_arn": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1168,7 +1222,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PreviewAgents:
@@ -1216,6 +1270,9 @@ paths:
       x-stackql-resource: preview_agents
       x-stackql-method: preview_agents
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /RegisterCrossAccountAccessRole:
     post:
       operationId: RegisterCrossAccountAccessRole
@@ -1287,7 +1344,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveAttributesFromFindingsResponse'
-      x-stackql-resource: attributes_from_findings
+      x-stackql-resource: findings
       x-stackql-method: remove_attributes_from_findings
       x-stackql-verb: UPDATE
   /SetTagsForResource:
@@ -1323,7 +1380,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: set_tags_for_resource
       x-stackql-verb: UPDATE
   /StartAssessmentRun:
@@ -2698,23 +2755,19 @@ components:
         endDate:
           $ref: '#/components/schemas/Timestamp'
           description: The maximum value of the timestamp range.
-    ListAssessmentRunsResponse:
+    ListAssessmentRunsRowDisplay:
       type: object
       properties:
-        assessmentRunArns:
-          $ref: '#/components/schemas/ListReturnedArnList'
+        assessment_run_arn:
+          type: string
           description: A list of ARNs that specifies the assessment runs that are returned by the action.
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the
-            response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there
-            is no more data to be listed, this parameter is set to null.
-      required:
-      - assessmentRunArns
-    ListReturnedArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Arn'
+    ListAssessmentRunsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssessmentRunsRowDisplay'
     AssessmentTargetFilter:
       description: Used as the request parameter in the ListAssessmentTargets action.
       type: object
@@ -2724,19 +2777,19 @@ components:
           description: For a record to match a filter, an explicit value or a string that contains a wildcard that is specified
             for this data type property must match the value of the assessmentTargetName property of the AssessmentTarget
             data type.
-    ListAssessmentTargetsResponse:
+    ListAssessmentTargetsRowDisplay:
       type: object
       properties:
-        assessmentTargetArns:
-          $ref: '#/components/schemas/ListReturnedArnList'
+        assessment_target_arn:
+          type: string
           description: A list of ARNs that specifies the assessment targets that are returned by the action.
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the
-            response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there
-            is no more data to be listed, this parameter is set to null.
-      required:
-      - assessmentTargetArns
+    ListAssessmentTargetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssessmentTargetsRowDisplay'
     AssessmentTemplateFilter:
       description: Used as the request parameter in the ListAssessmentTemplates action.
       type: object
@@ -2755,19 +2808,19 @@ components:
           $ref: '#/components/schemas/FilterRulesPackageArnList'
           description: For a record to match a filter, the values that are specified for this data type property must be contained
             in the list of values of the rulesPackageArns property of the AssessmentTemplate data type.
-    ListAssessmentTemplatesResponse:
+    ListAssessmentTemplatesRowDisplay:
       type: object
       properties:
-        assessmentTemplateArns:
-          $ref: '#/components/schemas/ListReturnedArnList'
+        assessment_template_arn:
+          type: string
           description: A list of ARNs that specifies the assessment templates returned by the action.
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the
-            response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there
-            is no more data to be listed, this parameter is set to null.
-      required:
-      - assessmentTemplateArns
+    ListAssessmentTemplatesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssessmentTemplatesRowDisplay'
     ListEventSubscriptionsMaxResults:
       type: integer
     ListEventSubscriptionsResponse:
@@ -2822,19 +2875,19 @@ components:
       required:
       - event
       - subscribedAt
-    ListExclusionsResponse:
+    ListExclusionsRowDisplay:
       type: object
       properties:
-        exclusionArns:
-          $ref: '#/components/schemas/ListReturnedArnList'
+        exclusion_arn:
+          type: string
           description: A list of exclusions' ARNs returned by the action.
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: When a response is generated, if there is more data to be listed, this parameters is present in the
-            response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there
-            is no more data to be listed, this parameter is set to null.
-      required:
-      - exclusionArns
+    ListExclusionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListExclusionsRowDisplay'
     FindingFilter:
       description: This data type is used as a request parameter in the ListFindings action.
       type: object
@@ -2889,32 +2942,32 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Severity'
-    ListFindingsResponse:
+    ListFindingsRowDisplay:
       type: object
       properties:
-        findingArns:
-          $ref: '#/components/schemas/ListReturnedArnList'
+        finding_arn:
+          type: string
           description: A list of ARNs that specifies the findings returned by the action.
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the
-            response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there
-            is no more data to be listed, this parameter is set to null.
-      required:
-      - findingArns
-    ListRulesPackagesResponse:
+    ListFindingsOutputDisplay:
       type: object
       properties:
-        rulesPackageArns:
-          $ref: '#/components/schemas/ListReturnedArnList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFindingsRowDisplay'
+    ListRulesPackagesRowDisplay:
+      type: object
+      properties:
+        rules_package_arn:
+          type: string
           description: The list of ARNs that specifies the rules packages returned by the action.
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the
-            response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there
-            is no more data to be listed, this parameter is set to null.
-      required:
-      - rulesPackageArns
+    ListRulesPackagesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListRulesPackagesRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

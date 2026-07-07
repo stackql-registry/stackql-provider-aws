@@ -75,7 +75,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddDraftAppVersionResourceMappingsResponse'
-      x-stackql-resource: draft_app_version_resource_mappings
+      x-stackql-resource: app_version_resource_mappings
       x-stackql-method: add_draft_app_version_resource_mappings
       x-stackql-verb: UPDATE
   /batch-update-recommendation-status:
@@ -104,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateRecommendationStatusResponse'
-      x-stackql-resource: batch_update_recommendation_status
+      x-stackql-resource: apps
       x-stackql-method: batch_update_recommendation_status
       x-stackql-verb: EXEC
   /create-app:
@@ -583,6 +583,7 @@ paths:
       x-stackql-resource: apps
       x-stackql-method: describe_app
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.app
   /describe-app-assessment:
     post:
       operationId: DescribeAppAssessment
@@ -609,6 +610,7 @@ paths:
       x-stackql-resource: app_assessments
       x-stackql-method: describe_app_assessment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.assessment
   /describe-app-version:
     post:
       operationId: DescribeAppVersion
@@ -853,6 +855,7 @@ paths:
       x-stackql-resource: resiliency_policies
       x-stackql-method: describe_resiliency_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.policy
   /describe-resource-grouping-recommendation-task:
     post:
       operationId: DescribeResourceGroupingRecommendationTask
@@ -913,7 +916,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportResourcesToDraftAppVersionResponse'
-      x-stackql-resource: resources_to_draft_app_version
+      x-stackql-resource: apps
       x-stackql-method: import_resources_to_draft_app_version
       x-stackql-verb: EXEC
   /list-alarm-recommendations:
@@ -1007,6 +1010,9 @@ paths:
       x-stackql-method: list_app_assessment_resource_drifts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourceDrifts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-app-assessments:
     get:
       operationId: ListAppAssessments
@@ -1404,11 +1410,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListMetricsResponse'
+                $ref: '#/components/schemas/ListMetricsOutputDisplay'
       x-stackql-resource: metrics
       x-stackql-method: list_metrics
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.rows
+      x-stackql-responseEnvelope: ListMetricsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "rows" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"row": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-recommendation-templates:
     get:
       operationId: ListRecommendationTemplates
@@ -1537,6 +1551,9 @@ paths:
       x-stackql-method: list_resource_grouping_recommendations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.groupingRecommendations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-sop-recommendations:
     post:
       operationId: ListSopRecommendations
@@ -1613,7 +1630,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1644,7 +1661,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1670,7 +1687,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /list-test-recommendations:
@@ -1764,7 +1781,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishAppVersionResponse'
-      x-stackql-resource: app_version
+      x-stackql-resource: apps
       x-stackql-method: publish_app_version
       x-stackql-verb: EXEC
   /put-draft-app-version-template:
@@ -1793,7 +1810,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutDraftAppVersionTemplateResponse'
-      x-stackql-resource: draft_app_version_templates
+      x-stackql-resource: app_version_templates
       x-stackql-method: put_draft_app_version_template
       x-stackql-verb: REPLACE
   /reject-resource-grouping-recommendations:
@@ -1860,7 +1877,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveDraftAppVersionResourceMappingsResponse'
-      x-stackql-resource: draft_app_version_resource_mappings
+      x-stackql-resource: app_version_resource_mappings
       x-stackql-method: remove_draft_app_version_resource_mappings
       x-stackql-verb: UPDATE
   /resolve-app-version-resources:
@@ -1889,7 +1906,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResolveAppVersionResourcesResponse'
-      x-stackql-resource: resolve_app_version_resources
+      x-stackql-resource: app_version_resources
       x-stackql-method: resolve_app_version_resources
       x-stackql-verb: EXEC
   /start-app-assessment:
@@ -1925,7 +1942,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAppAssessmentResponse'
-      x-stackql-resource: app_assessment
+      x-stackql-resource: apps
       x-stackql-method: start_app_assessment
       x-stackql-verb: EXEC
   /start-metrics-export:
@@ -1951,7 +1968,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMetricsExportResponse'
-      x-stackql-resource: metrics_export
+      x-stackql-resource: metrics
       x-stackql-method: start_metrics_export
       x-stackql-verb: EXEC
   /start-resource-grouping-recommendation-task:
@@ -1977,7 +1994,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartResourceGroupingRecommendationTaskResponse'
-      x-stackql-resource: resource_grouping_recommendation_task
+      x-stackql-resource: resource_grouping_recommendations
       x-stackql-method: start_resource_grouping_recommendation_task
       x-stackql-verb: EXEC
   /update-app:
@@ -4439,25 +4456,19 @@ components:
             order. To sort the list in descending order, set this field to False.
       required:
       - field
-    ListMetricsResponse:
+    ListMetricsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: Token for the next set of results, or null if there are no more results.
-        rows:
-          $ref: '#/components/schemas/RowList'
+        row:
+          type: array
           description: Specifies all the list of metric values for each row of metrics.
-      required:
-      - rows
-    RowList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Row'
-    Row:
-      type: array
-      items:
-        $ref: '#/components/schemas/String255'
+    ListMetricsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListMetricsRowDisplay'
     RecommendationTemplateStatusList:
       type: array
       items:

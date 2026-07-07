@@ -115,6 +115,9 @@ paths:
       x-stackql-method: list_human_loops
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HumanLoopSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: StartHumanLoop
       description: Starts a human loop, provided that at least one activation condition is met.
@@ -145,7 +148,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartHumanLoopResponse'
-      x-stackql-resource: human_loop
+      x-stackql-resource: human_loops
       x-stackql-method: start_human_loop
       x-stackql-verb: EXEC
   /human-loops/stop:
@@ -171,7 +174,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopHumanLoopResponse'
-      x-stackql-resource: human_loop
+      x-stackql-resource: human_loops
       x-stackql-method: stop_human_loop
       x-stackql-verb: EXEC
 components:

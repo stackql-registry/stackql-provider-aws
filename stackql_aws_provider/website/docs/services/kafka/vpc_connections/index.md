@@ -1,0 +1,409 @@
+--- 
+title: vpc_connections
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - vpc_connections
+  - kafka
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists a <code>vpc_connections</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="vpc_connections" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.kafka.vpc_connections" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="describe_vpc_connection"
+    values={[
+        { label: 'describe_vpc_connection', value: 'describe_vpc_connection' },
+        { label: 'list_vpc_connections', value: 'list_vpc_connections' }
+    ]}
+>
+<TabItem value="describe_vpc_connection">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Authentication" /></td>
+    <td><code>string</code></td>
+    <td>The authentication type of VPC connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="CreationTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The creation time of the VPC connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="SecurityGroups" /></td>
+    <td><code>array</code></td>
+    <td>The list of security groups for the VPC connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="State" /></td>
+    <td><code>string</code></td>
+    <td>The state of VPC connection. (CREATING, AVAILABLE, INACTIVE, DEACTIVATING, DELETING, FAILED, REJECTED, REJECTING)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Subnets" /></td>
+    <td><code>array</code></td>
+    <td>The list of subnets for the VPC connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Tags" /></td>
+    <td><code>object</code></td>
+    <td>A map of tags for the VPC connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TargetClusterArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) that uniquely identifies an MSK cluster.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VpcConnectionArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) that uniquely identifies a MSK VPC connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VpcId" /></td>
+    <td><code>string</code></td>
+    <td>The VPC Id for the VPC connection.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_vpc_connections">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Authentication" /></td>
+    <td><code>string</code></td>
+    <td>Information about the auth scheme of Vpc Connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="CreationTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>Creation time of the Vpc Connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="State" /></td>
+    <td><code>string</code></td>
+    <td>State of the Vpc Connection. (CREATING, AVAILABLE, INACTIVE, DEACTIVATING, DELETING, FAILED, REJECTED, REJECTING)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TargetClusterArn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN that identifies the Cluster which the Vpc Connection belongs to.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VpcConnectionArn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN that identifies the Vpc Connection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VpcId" /></td>
+    <td><code>string</code></td>
+    <td>The vpcId that belongs to the Vpc Connection.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#describe_vpc_connection"><CopyableCode code="describe_vpc_connection" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a description of this MSK VPC connection.</td>
+</tr>
+<tr>
+    <td><a href="#list_vpc_connections"><CopyableCode code="list_vpc_connections" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Returns a list of all the VPC connections in this Region.</td>
+</tr>
+<tr>
+    <td><a href="#create_vpc_connection"><CopyableCode code="create_vpc_connection" /></a></td>
+    <td><CopyableCode code="insert" /></td>
+    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TargetClusterArn"><code>TargetClusterArn</code></a>, <a href="#parameter-VpcId"><code>VpcId</code></a>, <a href="#parameter-ClientSubnets"><code>ClientSubnets</code></a>, <a href="#parameter-SecurityGroups"><code>SecurityGroups</code></a></td>
+    <td></td>
+    <td>Creates a new MSK VPC connection.</td>
+</tr>
+<tr>
+    <td><a href="#delete_vpc_connection"><CopyableCode code="delete_vpc_connection" /></a></td>
+    <td><CopyableCode code="delete" /></td>
+    <td><a href="#parameter-arn"><code>arn</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Deletes a MSK VPC connection.</td>
+</tr>
+<tr>
+    <td><a href="#reject_client_vpc_connection"><CopyableCode code="reject_client_vpc_connection" /></a></td>
+    <td><CopyableCode code="exec" /></td>
+    <td><a href="#parameter-cluster_arn"><code>cluster_arn</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-VpcConnectionArn"><code>VpcConnectionArn</code></a></td>
+    <td></td>
+    <td>Returns empty response.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-arn">
+    <td><CopyableCode code="arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) that uniquely identifies an MSK VPC connection.</td>
+</tr>
+<tr id="parameter-cluster_arn">
+    <td><CopyableCode code="cluster_arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the cluster.</td>
+</tr>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-maxResults">
+    <td><CopyableCode code="maxResults" /></td>
+    <td><code>integer</code></td>
+    <td>The maximum number of results to return in the response. If there are more results, the response includes a NextToken parameter.</td>
+</tr>
+<tr id="parameter-nextToken">
+    <td><CopyableCode code="nextToken" /></td>
+    <td><code>string</code></td>
+    <td>The paginated results marker. When the result of the operation is truncated, the call returns NextToken in the response. To get the next batch, provide this token in your next request.</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="describe_vpc_connection"
+    values={[
+        { label: 'describe_vpc_connection', value: 'describe_vpc_connection' },
+        { label: 'list_vpc_connections', value: 'list_vpc_connections' }
+    ]}
+>
+<TabItem value="describe_vpc_connection">
+
+Returns a description of this MSK VPC connection.
+
+```sql
+SELECT
+Authentication,
+CreationTime,
+SecurityGroups,
+State,
+Subnets,
+Tags,
+TargetClusterArn,
+VpcConnectionArn,
+VpcId
+FROM aws.kafka.vpc_connections
+WHERE arn = '{{ arn }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_vpc_connections">
+
+Returns a list of all the VPC connections in this Region.
+
+```sql
+SELECT
+Authentication,
+CreationTime,
+State,
+TargetClusterArn,
+VpcConnectionArn,
+VpcId
+FROM aws.kafka.vpc_connections
+WHERE region = '{{ region }}' -- required
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>
+
+
+## `INSERT` examples
+
+<Tabs
+    defaultValue="create_vpc_connection"
+    values={[
+        { label: 'create_vpc_connection', value: 'create_vpc_connection' },
+        { label: 'Manifest', value: 'manifest' }
+    ]}
+>
+<TabItem value="create_vpc_connection">
+
+Creates a new MSK VPC connection.
+
+```sql
+INSERT INTO aws.kafka.vpc_connections (
+TargetClusterArn,
+Authentication,
+VpcId,
+ClientSubnets,
+SecurityGroups,
+Tags,
+region
+)
+SELECT 
+'{{ TargetClusterArn }}' /* required */,
+'{{ Authentication }}',
+'{{ VpcId }}' /* required */,
+'{{ ClientSubnets }}' /* required */,
+'{{ SecurityGroups }}' /* required */,
+'{{ Tags }}',
+'{{ region }}'
+RETURNING
+Authentication,
+ClientSubnets,
+CreationTime,
+SecurityGroups,
+State,
+Tags,
+VpcConnectionArn,
+VpcId
+;
+```
+</TabItem>
+<TabItem value="manifest">
+
+<CodeBlock language="yaml">{`# Description fields are for documentation purposes
+- name: vpc_connections
+  props:
+    - name: region
+      value: "{{ region }}"
+      description: Required parameter for the vpc_connections resource.
+    - name: TargetClusterArn
+      value: "{{ TargetClusterArn }}"
+    - name: Authentication
+      value: "{{ Authentication }}"
+    - name: VpcId
+      value: "{{ VpcId }}"
+    - name: ClientSubnets
+      value:
+        - "{{ ClientSubnets }}"
+    - name: SecurityGroups
+      value:
+        - "{{ SecurityGroups }}"
+    - name: Tags
+      value: "{{ Tags }}"
+`}</CodeBlock>
+
+</TabItem>
+</Tabs>
+
+
+## `DELETE` examples
+
+<Tabs
+    defaultValue="delete_vpc_connection"
+    values={[
+        { label: 'delete_vpc_connection', value: 'delete_vpc_connection' }
+    ]}
+>
+<TabItem value="delete_vpc_connection">
+
+Deletes a MSK VPC connection.
+
+```sql
+DELETE FROM aws.kafka.vpc_connections
+WHERE arn = '{{ arn }}' --required
+AND region = '{{ region }}' --required
+;
+```
+</TabItem>
+</Tabs>
+
+
+## Lifecycle Methods
+
+<Tabs
+    defaultValue="reject_client_vpc_connection"
+    values={[
+        { label: 'reject_client_vpc_connection', value: 'reject_client_vpc_connection' }
+    ]}
+>
+<TabItem value="reject_client_vpc_connection">
+
+Returns empty response.
+
+```sql
+EXEC aws.kafka.vpc_connections.reject_client_vpc_connection 
+@cluster_arn='{{ cluster_arn }}' --required, 
+@region='{{ region }}' --required 
+@@json=
+'{
+"VpcConnectionArn": "{{ VpcConnectionArn }}"
+}'
+;
+```
+</TabItem>
+</Tabs>

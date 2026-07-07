@@ -194,7 +194,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateLensVersionOutput'
-      x-stackql-resource: lens_versions
+      x-stackql-resource: lens
       x-stackql-method: create_lens_version
       x-stackql-verb: INSERT
   /workloads/{workload_id}/milestones:
@@ -709,6 +709,7 @@ paths:
       x-stackql-resource: lens
       x-stackql-method: get_lens
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Lens
   /lenses/{lens_alias}/shares/{share_id}:
     delete:
       operationId: DeleteLensShare
@@ -791,6 +792,7 @@ paths:
       x-stackql-resource: profiles
       x-stackql-method: get_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Profile
     patch:
       operationId: UpdateProfile
       description: Update a profile.
@@ -893,6 +895,7 @@ paths:
       x-stackql-resource: review_templates
       x-stackql-method: get_review_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ReviewTemplate
     patch:
       operationId: UpdateReviewTemplate
       description: Update a review template.
@@ -999,6 +1002,7 @@ paths:
       x-stackql-resource: workloads
       x-stackql-method: get_workload
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Workload
     patch:
       operationId: UpdateWorkload
       description: Update an existing workload.
@@ -1535,6 +1539,7 @@ paths:
       x-stackql-resource: profile_templates
       x-stackql-method: get_profile_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ProfileTemplate
   /reviewTemplates/{template_arn}/lensReviews/{lens_alias}/answers/{question_id}:
     get:
       operationId: GetReviewTemplateAnswer
@@ -2229,7 +2234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2260,7 +2265,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2288,7 +2293,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /workloadsSummaries:
@@ -2346,7 +2351,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: integrations
+      x-stackql-resource: workloads
       x-stackql-method: update_integration
       x-stackql-verb: UPDATE
   /shareInvitations/{share_invitation_id}:
@@ -2413,7 +2418,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: upgrade_lens_review
+      x-stackql-resource: milestones
       x-stackql-method: upgrade_lens_review
       x-stackql-verb: EXEC
   /workloads/{workload_id}/profiles/{profile_arn}/upgrade:
@@ -2446,7 +2451,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: upgrade_profile_version
+      x-stackql-resource: workloads
       x-stackql-method: upgrade_profile_version
       x-stackql-verb: EXEC
   /reviewTemplates/{template_arn}/lensReviews/{lens_alias}/upgrade:

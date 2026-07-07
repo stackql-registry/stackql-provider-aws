@@ -197,7 +197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDataSourceFromRDSOutput'
-      x-stackql-resource: data_source_from_rds
+      x-stackql-resource: data_sources
       x-stackql-method: create_data_source_from_rds
       x-stackql-verb: INSERT
   /CreateDataSourceFromRedshift:
@@ -277,7 +277,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDataSourceFromRedshiftOutput'
-      x-stackql-resource: data_source_from_redshifts
+      x-stackql-resource: data_sources
       x-stackql-method: create_data_source_from_redshift
       x-stackql-verb: INSERT
   /CreateDataSourceFromS3:
@@ -342,7 +342,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDataSourceFromS3Output'
-      x-stackql-resource: data_source_from_s3s
+      x-stackql-resource: data_sources
       x-stackql-method: create_data_source_from_s3
       x-stackql-verb: INSERT
   /CreateEvaluation:
@@ -520,7 +520,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateRealtimeEndpointOutput'
-      x-stackql-resource: realtime_endpoints
+      x-stackql-resource: ml_models
       x-stackql-method: create_realtime_endpoint
       x-stackql-verb: INSERT
   /DeleteBatchPrediction:
@@ -708,7 +708,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteRealtimeEndpointOutput'
-      x-stackql-resource: realtime_endpoints
+      x-stackql-resource: ml_models
       x-stackql-method: delete_realtime_endpoint
       x-stackql-verb: DELETE
   /DeleteTags:
@@ -839,6 +839,9 @@ paths:
       x-stackql-method: describe_batch_predictions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeDataSources:
     post:
       operationId: DescribeDataSources
@@ -919,6 +922,9 @@ paths:
       x-stackql-method: describe_data_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeEvaluations:
     post:
       operationId: DescribeEvaluations
@@ -1000,6 +1006,9 @@ paths:
       x-stackql-method: describe_evaluations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeMLModels:
     post:
       operationId: DescribeMLModels
@@ -1084,6 +1093,9 @@ paths:
       x-stackql-method: describe_ml_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeTags:
     post:
       operationId: DescribeTags
@@ -1321,7 +1333,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PredictOutput'
-      x-stackql-resource: predict
+      x-stackql-resource: ml_models
       x-stackql-method: predict
       x-stackql-verb: EXEC
   /UpdateBatchPrediction:

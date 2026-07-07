@@ -96,6 +96,9 @@ paths:
       x-stackql-method: list_agent_runtimes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentRuntimes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /runtimes/{agent_runtime_id}/runtime-endpoints/:
     put:
       operationId: CreateAgentRuntimeEndpoint
@@ -169,6 +172,9 @@ paths:
       x-stackql-method: list_agent_runtime_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.runtimeEndpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /identities/CreateApiKeyCredentialProvider:
     post:
       operationId: CreateApiKeyCredentialProvider
@@ -280,6 +286,9 @@ paths:
       x-stackql-method: list_browsers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.browserSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /browser-profiles:
     put:
       operationId: CreateBrowserProfile
@@ -350,6 +359,9 @@ paths:
       x-stackql-method: list_browser_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.profileSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /code-interpreters:
     put:
       operationId: CreateCodeInterpreter
@@ -422,6 +434,9 @@ paths:
       x-stackql-method: list_code_interpreters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.codeInterpreterSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /configuration-bundles/create:
     post:
       operationId: CreateConfigurationBundle
@@ -589,6 +604,9 @@ paths:
       x-stackql-method: list_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /gateways/{gateway_identifier}/rules:
     post:
       operationId: CreateGatewayRule
@@ -666,6 +684,9 @@ paths:
       x-stackql-method: list_gateway_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.gatewayRules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /gateways/{gateway_identifier}/targets/:
     post:
       operationId: CreateGatewayTarget
@@ -747,6 +768,9 @@ paths:
       x-stackql-method: list_gateway_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /harnesses:
     post:
       operationId: CreateHarness
@@ -835,6 +859,9 @@ paths:
       x-stackql-method: list_harnesses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.harnesses
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memories/create:
     post:
       operationId: CreateMemory
@@ -1176,6 +1203,9 @@ paths:
       x-stackql-method: list_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /policy-engines:
     post:
       operationId: CreatePolicyEngine
@@ -1245,6 +1275,9 @@ paths:
       x-stackql-method: list_policy_engines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyEngines
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /registries:
     post:
       operationId: CreateRegistry
@@ -1328,6 +1361,9 @@ paths:
       x-stackql-method: list_registries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.registries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /registries/{registry_id}/records:
     post:
       operationId: CreateRegistryRecord
@@ -1435,6 +1471,9 @@ paths:
       x-stackql-method: list_registry_records
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.registryRecords
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /identities/CreateWorkloadIdentity:
     post:
       operationId: CreateWorkloadIdentity
@@ -2363,6 +2402,7 @@ paths:
       x-stackql-resource: harness
       x-stackql-method: get_harness
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.harness
     patch:
       operationId: UpdateHarness
       description: Operation to update a Harness.
@@ -3331,6 +3371,7 @@ paths:
       x-stackql-resource: memories
       x-stackql-method: get_memory
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.memory
   /identities/GetOauth2CredentialProvider:
     post:
       operationId: GetOauth2CredentialProvider
@@ -3584,6 +3625,9 @@ paths:
       x-stackql-method: list_agent_runtime_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.agentRuntimes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /identities/ListApiKeyCredentialProviders:
     post:
       operationId: ListApiKeyCredentialProviders
@@ -3611,6 +3655,9 @@ paths:
       x-stackql-method: list_api_key_credential_providers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.credentialProviders
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /configuration-bundles/{bundle_id}/versions:
     post:
       operationId: ListConfigurationBundleVersions
@@ -3657,6 +3704,9 @@ paths:
       x-stackql-method: list_configuration_bundle_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.versions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /configuration-bundles:
     post:
       operationId: ListConfigurationBundles
@@ -3688,6 +3738,9 @@ paths:
       x-stackql-method: list_configuration_bundles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.bundles
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /evaluators:
     post:
       operationId: ListEvaluators
@@ -3717,6 +3770,9 @@ paths:
       x-stackql-method: list_evaluators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.evaluators
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memories/:
     post:
       operationId: ListMemories
@@ -3744,6 +3800,9 @@ paths:
       x-stackql-method: list_memories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.memories
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /identities/ListOauth2CredentialProviders:
     post:
       operationId: ListOauth2CredentialProviders
@@ -3771,6 +3830,9 @@ paths:
       x-stackql-method: list_oauth2_credential_providers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.credentialProviders
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /online-evaluation-configs:
     post:
       operationId: ListOnlineEvaluationConfigs
@@ -3800,6 +3862,9 @@ paths:
       x-stackql-method: list_online_evaluation_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.onlineEvaluationConfigs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /payments/managers/{payment_manager_id}/connectors-list:
     post:
       operationId: ListPaymentConnectors
@@ -3837,6 +3902,9 @@ paths:
       x-stackql-method: list_payment_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.paymentConnectors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /identities/ListPaymentCredentialProviders:
     post:
       operationId: ListPaymentCredentialProviders
@@ -3864,6 +3932,9 @@ paths:
       x-stackql-method: list_payment_credential_providers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.credentialProviders
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /payments/managers-list:
     post:
       operationId: ListPaymentManagers
@@ -3895,6 +3966,9 @@ paths:
       x-stackql-method: list_payment_managers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.paymentManagers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /policy-engine-summaries:
     get:
       operationId: ListPolicyEngineSummaries
@@ -3927,6 +4001,9 @@ paths:
       x-stackql-method: list_policy_engine_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyEngines
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /policy-engines/{policy_engine_id}/policy-generations/{policy_generation_id}/assets:
     get:
       operationId: ListPolicyGenerationAssets
@@ -3974,6 +4051,9 @@ paths:
       x-stackql-method: list_policy_generation_assets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyGenerationAssets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /policy-engines/{policy_engine_id}/policy-generation-summaries:
     get:
       operationId: ListPolicyGenerationSummaries
@@ -4013,6 +4093,9 @@ paths:
       x-stackql-method: list_policy_generation_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyGenerations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /policy-engines/{policy_engine_id}/policy-generations:
     get:
       operationId: ListPolicyGenerations
@@ -4048,6 +4131,9 @@ paths:
       x-stackql-method: list_policy_generations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyGenerations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartPolicyGeneration
       description: Initiates the AI-powered generation of Cedar policies from natural language descriptions within the AgentCore
@@ -4093,7 +4179,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPolicyGenerationResponse'
-      x-stackql-resource: policy_generation
+      x-stackql-resource: policies
       x-stackql-method: start_policy_generation
       x-stackql-verb: EXEC
   /policy-engines/{policy_engine_id}/policy-summaries:
@@ -4143,6 +4229,9 @@ paths:
       x-stackql-method: list_policy_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -4162,7 +4251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -4196,7 +4285,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -4223,7 +4312,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /identities/ListWorkloadIdentities:
@@ -4253,6 +4342,9 @@ paths:
       x-stackql-method: list_workload_identities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workloadIdentities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /identities/set-token-vault-cmk:
     post:
       operationId: SetTokenVaultCMK
@@ -4278,7 +4370,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetTokenVaultCMKResponse'
-      x-stackql-resource: token_vault_cmks
+      x-stackql-resource: token_vaults
       x-stackql-method: set_token_vault_cmk
       x-stackql-verb: UPDATE
   /registries/{registry_id}/records/{record_id}/submit-for-approval:
@@ -4308,7 +4400,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitRegistryRecordForApprovalResponse'
-      x-stackql-resource: registry_record_for_approval
+      x-stackql-resource: registry_records
       x-stackql-method: submit_registry_record_for_approval
       x-stackql-verb: EXEC
   /gateways/{gateway_identifier}/synchronizeTargets:
@@ -4344,7 +4436,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SynchronizeGatewayTargetsResponse'
-      x-stackql-resource: synchronize_gateway_targets
+      x-stackql-resource: gateway_targets
       x-stackql-method: synchronize_gateway_targets
       x-stackql-verb: EXEC
   /identities/UpdateApiKeyCredentialProvider:
@@ -4523,7 +4615,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRegistryRecordStatusResponse'
-      x-stackql-resource: registry_record_status
+      x-stackql-resource: registry_records
       x-stackql-method: update_registry_record_status
       x-stackql-verb: UPDATE
   /identities/UpdateWorkloadIdentity:

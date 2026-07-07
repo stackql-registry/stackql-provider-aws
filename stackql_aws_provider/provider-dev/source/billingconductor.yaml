@@ -566,6 +566,9 @@ paths:
       x-stackql-method: list_account_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LinkedAccounts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-billing-group-cost-reports:
     post:
       operationId: ListBillingGroupCostReports
@@ -598,6 +601,9 @@ paths:
       x-stackql-method: list_billing_group_cost_reports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BillingGroupCostReports
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-billing-groups:
     post:
       operationId: ListBillingGroups
@@ -630,6 +636,9 @@ paths:
       x-stackql-method: list_billing_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BillingGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-custom-line-item-versions:
     post:
       operationId: ListCustomLineItemVersions
@@ -663,6 +672,9 @@ paths:
       x-stackql-method: list_custom_line_item_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CustomLineItemVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-custom-line-items:
     post:
       operationId: ListCustomLineItems
@@ -695,6 +707,9 @@ paths:
       x-stackql-method: list_custom_line_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CustomLineItems
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-pricing-plans:
     post:
       operationId: ListPricingPlans
@@ -727,6 +742,9 @@ paths:
       x-stackql-method: list_pricing_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PricingPlans
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-pricing-plans-associated-with-pricing-rule:
     post:
       operationId: ListPricingPlansAssociatedWithPricingRule
@@ -755,11 +773,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPricingPlansAssociatedWithPricingRuleOutput'
+                $ref: '#/components/schemas/ListPricingPlansAssociatedWithPricingRuleOutputDisplay'
       x-stackql-resource: pricing_plans_associated_with_pricing_rules
       x-stackql-method: list_pricing_plans_associated_with_pricing_rule
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.PricingPlanArns
+      x-stackql-responseEnvelope: ListPricingPlansAssociatedWithPricingRuleOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "PricingPlanArns" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pricing_plan_arn": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-pricing-rules:
     post:
       operationId: ListPricingRules
@@ -791,6 +817,9 @@ paths:
       x-stackql-method: list_pricing_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PricingRules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-pricing-rules-associated-to-pricing-plan:
     post:
       operationId: ListPricingRulesAssociatedToPricingPlan
@@ -819,11 +848,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPricingRulesAssociatedToPricingPlanOutput'
+                $ref: '#/components/schemas/ListPricingRulesAssociatedToPricingPlanOutputDisplay'
       x-stackql-resource: pricing_rules_associated_to_pricing_plans
       x-stackql-method: list_pricing_rules_associated_to_pricing_plan
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.PricingRuleArns
+      x-stackql-responseEnvelope: ListPricingRulesAssociatedToPricingPlanOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "PricingRuleArns" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pricing_rule_arn": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-resources-associated-to-custom-line-item:
     post:
       operationId: ListResourcesAssociatedToCustomLineItem
@@ -859,6 +896,9 @@ paths:
       x-stackql-method: list_resources_associated_to_custom_line_item
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssociatedResources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -877,7 +917,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -909,7 +949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -935,7 +975,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /update-billing-group:
@@ -2228,21 +2268,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListPricingPlansAssociatedWithPricingRuleOutput:
+    ListPricingPlansAssociatedWithPricingRuleRowDisplay:
       type: object
       properties:
-        BillingPeriod:
-          $ref: '#/components/schemas/BillingPeriod'
-          description: The pricing plan billing period for which associations will be listed.
-        PricingRuleArn:
-          $ref: '#/components/schemas/PricingRuleArn'
-          description: The pricing rule Amazon Resource Name (ARN) for which associations will be listed.
-        PricingPlanArns:
-          $ref: '#/components/schemas/PricingPlanArns'
+        pricing_plan_arn:
+          type: string
           description: The list containing pricing plans that are associated with the requested pricing rule.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: The pagination token to be used on subsequent calls.
+    ListPricingPlansAssociatedWithPricingRuleOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPricingPlansAssociatedWithPricingRuleRowDisplay'
     ListPricingRulesFilter:
       description: The filter that specifies criteria that the pricing rules returned by the ListPricingRules API will adhere
         to.
@@ -2347,21 +2385,19 @@ components:
           description: Activate or deactivate Amazon Web Services Free Tier application.
       required:
       - Activated
-    ListPricingRulesAssociatedToPricingPlanOutput:
+    ListPricingRulesAssociatedToPricingPlanRowDisplay:
       type: object
       properties:
-        BillingPeriod:
-          $ref: '#/components/schemas/BillingPeriod'
-          description: The billing period for which the pricing rule associations are listed.
-        PricingPlanArn:
-          $ref: '#/components/schemas/PricingPlanArn'
-          description: The Amazon Resource Name (ARN) of the pricing plan for which associations are listed.
-        PricingRuleArns:
-          $ref: '#/components/schemas/PricingRuleArns'
+        pricing_rule_arn:
+          type: string
           description: A list containing pricing rules that are associated with the requested pricing plan.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: The pagination token to be used on subsequent calls.
+    ListPricingRulesAssociatedToPricingPlanOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPricingRulesAssociatedToPricingPlanRowDisplay'
     ListResourcesAssociatedToCustomLineItemFilter:
       description: A filter that specifies the type of resource associations that should be retrieved for a custom line item.
       type: object

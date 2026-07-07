@@ -35,7 +35,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptInputDeviceTransferResponse'
-      x-stackql-resource: input_device_transfer
+      x-stackql-resource: input_devices
       x-stackql-method: accept_input_device_transfer
       x-stackql-verb: EXEC
   /prod/batch/delete:
@@ -149,7 +149,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateScheduleResponse'
-      x-stackql-resource: batch_update_schedule
+      x-stackql-resource: channels
       x-stackql-method: batch_update_schedule
       x-stackql-verb: EXEC
     delete:
@@ -203,6 +203,9 @@ paths:
       x-stackql-method: describe_schedule
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ScheduleActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/inputDevices/{input_device_id}/cancel:
     post:
       operationId: CancelInputDeviceTransfer
@@ -221,7 +224,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelInputDeviceTransferResponse'
-      x-stackql-resource: input_device_transfer
+      x-stackql-resource: input_devices
       x-stackql-method: cancel_input_device_transfer
       x-stackql-verb: EXEC
   /prod/claimDevice:
@@ -336,6 +339,9 @@ paths:
       x-stackql-method: list_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Channels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/clusters/{cluster_id}/channelplacementgroups:
     post:
       operationId: CreateChannelPlacementGroup
@@ -409,6 +415,9 @@ paths:
       x-stackql-method: list_channel_placement_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChannelPlacementGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/cloudwatch-alarm-templates:
     post:
       operationId: CreateCloudWatchAlarmTemplate
@@ -515,6 +524,9 @@ paths:
       x-stackql-method: list_cloud_watch_alarm_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CloudWatchAlarmTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/cloudwatch-alarm-template-groups:
     post:
       operationId: CreateCloudWatchAlarmTemplateGroup
@@ -586,6 +598,9 @@ paths:
       x-stackql-method: list_cloud_watch_alarm_template_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CloudWatchAlarmTemplateGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/clusters:
     post:
       operationId: CreateCluster
@@ -647,6 +662,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Clusters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/eventbridge-rule-templates:
     post:
       operationId: CreateEventBridgeRuleTemplate
@@ -725,6 +743,9 @@ paths:
       x-stackql-method: list_event_bridge_rule_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventBridgeRuleTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/eventbridge-rule-template-groups:
     post:
       operationId: CreateEventBridgeRuleTemplateGroup
@@ -790,6 +811,9 @@ paths:
       x-stackql-method: list_event_bridge_rule_template_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventBridgeRuleTemplateGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/inputs:
     post:
       operationId: CreateInput
@@ -871,6 +895,9 @@ paths:
       x-stackql-method: list_inputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Inputs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/inputSecurityGroups:
     post:
       operationId: CreateInputSecurityGroup
@@ -922,6 +949,9 @@ paths:
       x-stackql-method: list_input_security_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InputSecurityGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/multiplexes:
     post:
       operationId: CreateMultiplex
@@ -986,6 +1016,9 @@ paths:
       x-stackql-method: list_multiplexes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Multiplexes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/multiplexes/{multiplex_id}/programs:
     post:
       operationId: CreateMultiplexProgram
@@ -1057,6 +1090,9 @@ paths:
       x-stackql-method: list_multiplex_programs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MultiplexPrograms
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/networks:
     post:
       operationId: CreateNetwork
@@ -1118,6 +1154,9 @@ paths:
       x-stackql-method: list_networks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Networks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/clusters/{cluster_id}/nodes:
     post:
       operationId: CreateNode
@@ -1190,6 +1229,9 @@ paths:
       x-stackql-method: list_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Nodes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/clusters/{cluster_id}/nodeRegistrationScript:
     post:
       operationId: CreateNodeRegistrationScript
@@ -1227,7 +1269,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateNodeRegistrationScriptResponse'
-      x-stackql-resource: node_registration_scripts
+      x-stackql-resource: nodes
       x-stackql-method: create_node_registration_script
       x-stackql-verb: INSERT
   /prod/inputs/{input_id}/partners:
@@ -1259,7 +1301,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePartnerInputResponse'
-      x-stackql-resource: partner_inputs
+      x-stackql-resource: inputs
       x-stackql-method: create_partner_input
       x-stackql-verb: INSERT
   /prod/sdiSources:
@@ -1323,6 +1365,9 @@ paths:
       x-stackql-method: list_sdi_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SdiSources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/signal-maps:
     post:
       operationId: CreateSignalMap
@@ -1401,6 +1446,9 @@ paths:
       x-stackql-method: list_signal_maps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SignalMaps
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/tags/{resource-arn}:
     post:
       operationId: CreateTags
@@ -1463,7 +1511,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /prod/channels/{channel_id}:
@@ -2630,6 +2678,7 @@ paths:
       x-stackql-resource: sdi_sources
       x-stackql-method: describe_sdi_source
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SdiSource
     put:
       operationId: UpdateSdiSource
       description: Change some of the settings in an SdiSource.
@@ -2755,6 +2804,7 @@ paths:
       x-stackql-resource: account_configurations
       x-stackql-method: describe_account_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccountConfiguration
     put:
       operationId: UpdateAccountConfiguration
       description: Update account configuration
@@ -2956,6 +3006,9 @@ paths:
       x-stackql-method: list_alerts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Alerts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/clusters/{cluster_id}/alerts:
     get:
       operationId: ListClusterAlerts
@@ -2997,6 +3050,9 @@ paths:
       x-stackql-method: list_cluster_alerts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Alerts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/inputDeviceTransfers:
     get:
       operationId: ListInputDeviceTransfers
@@ -3029,6 +3085,9 @@ paths:
       x-stackql-method: list_input_device_transfers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InputDeviceTransfers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/inputDevices:
     get:
       operationId: ListInputDevices
@@ -3055,6 +3114,9 @@ paths:
       x-stackql-method: list_input_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InputDevices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/multiplexes/{multiplex_id}/alerts:
     get:
       operationId: ListMultiplexAlerts
@@ -3096,6 +3158,9 @@ paths:
       x-stackql-method: list_multiplex_alerts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Alerts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/offerings:
     get:
       operationId: ListOfferings
@@ -3182,6 +3247,9 @@ paths:
       x-stackql-method: list_offerings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Offerings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/reservations:
     get:
       operationId: ListReservations
@@ -3256,6 +3324,9 @@ paths:
       x-stackql-method: list_reservations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Reservations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prod/versions:
     get:
       operationId: ListVersions
@@ -3310,7 +3381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PurchaseOfferingResponse'
-      x-stackql-resource: purchase_offering
+      x-stackql-resource: offerings
       x-stackql-method: purchase_offering
       x-stackql-verb: EXEC
   /prod/inputDevices/{input_device_id}/reboot:
@@ -3341,7 +3412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootInputDeviceResponse'
-      x-stackql-resource: input_device
+      x-stackql-resource: inputs
       x-stackql-method: reboot_input_device
       x-stackql-verb: EXEC
   /prod/inputDevices/{input_device_id}/reject:
@@ -3362,7 +3433,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectInputDeviceTransferResponse'
-      x-stackql-resource: input_device_transfer
+      x-stackql-resource: input_devices
       x-stackql-method: reject_input_device_transfer
       x-stackql-verb: EXEC
   /prod/channels/{channel_id}/restartChannelPipelines:
@@ -3392,7 +3463,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestartChannelPipelinesResponse'
-      x-stackql-resource: restart_channel_pipelines
+      x-stackql-resource: channels
       x-stackql-method: restart_channel_pipelines
       x-stackql-verb: EXEC
   /prod/channels/{channel_id}/start:
@@ -3413,7 +3484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartChannelResponse'
-      x-stackql-resource: channel
+      x-stackql-resource: channels
       x-stackql-method: start_channel
       x-stackql-verb: EXEC
   /prod/signal-maps/{identifier}/monitor-deployment:
@@ -3485,7 +3556,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInputDeviceResponse'
-      x-stackql-resource: input_device
+      x-stackql-resource: inputs
       x-stackql-method: start_input_device
       x-stackql-verb: EXEC
   /prod/inputDevices/{input_device_id}/startInputDeviceMaintenanceWindow:
@@ -3510,7 +3581,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInputDeviceMaintenanceWindowResponse'
-      x-stackql-resource: input_device_maintenance_window
+      x-stackql-resource: input_devices
       x-stackql-method: start_input_device_maintenance_window
       x-stackql-verb: EXEC
   /prod/multiplexes/{multiplex_id}/start:
@@ -3532,7 +3603,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMultiplexResponse'
-      x-stackql-resource: multiplex
+      x-stackql-resource: multiplexes
       x-stackql-method: start_multiplex
       x-stackql-verb: EXEC
   /prod/channels/{channel_id}/stop:
@@ -3553,7 +3624,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopChannelResponse'
-      x-stackql-resource: channel
+      x-stackql-resource: channels
       x-stackql-method: stop_channel
       x-stackql-verb: EXEC
   /prod/inputDevices/{input_device_id}/stop:
@@ -3575,7 +3646,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopInputDeviceResponse'
-      x-stackql-resource: input_device
+      x-stackql-resource: inputs
       x-stackql-method: stop_input_device
       x-stackql-verb: EXEC
   /prod/multiplexes/{multiplex_id}/stop:
@@ -3596,7 +3667,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopMultiplexResponse'
-      x-stackql-resource: multiplex
+      x-stackql-resource: multiplexes
       x-stackql-method: stop_multiplex
       x-stackql-verb: EXEC
   /prod/inputDevices/{input_device_id}/transfer:
@@ -3631,7 +3702,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransferInputDeviceResponse'
-      x-stackql-resource: transfer_input_device
+      x-stackql-resource: input_devices
       x-stackql-method: transfer_input_device
       x-stackql-verb: EXEC
   /prod/channels/{channel_id}/channelClass:
@@ -3665,7 +3736,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateChannelClassResponse'
-      x-stackql-resource: channel_class
+      x-stackql-resource: channels
       x-stackql-method: update_channel_class
       x-stackql-verb: UPDATE
   /prod/clusters/{cluster_id}/nodes/{node_id}/state:
@@ -3701,7 +3772,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNodeStateResponse'
-      x-stackql-resource: node_states
+      x-stackql-resource: nodes
       x-stackql-method: update_node_state
       x-stackql-verb: UPDATE
 components:

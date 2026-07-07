@@ -67,6 +67,9 @@ paths:
       x-stackql-method: describe_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Services
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetAttributeValues:
     post:
       operationId: GetAttributeValues
@@ -116,6 +119,9 @@ paths:
       x-stackql-method: get_attribute_values
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AttributeValues
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetPriceListFileUrl:
     post:
       operationId: GetPriceListFileUrl
@@ -206,11 +212,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetProductsResponse'
+                $ref: '#/components/schemas/GetProductsOutputDisplay'
       x-stackql-resource: products
       x-stackql-method: get_products
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.PriceList
+      x-stackql-responseEnvelope: GetProductsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "PriceList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"price": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPriceLists:
     post:
       operationId: ListPriceLists
@@ -279,6 +293,9 @@ paths:
       x-stackql-method: list_price_lists
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PriceLists
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -458,25 +475,20 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    GetProductsResponse:
+    GetProductsRowDisplay:
       type: object
       properties:
-        FormatVersion:
-          $ref: '#/components/schemas/FormatVersion'
-          description: The format version of the response. For example, aws_v1.
-        PriceList:
-          $ref: '#/components/schemas/PriceListJsonItems'
+        price:
+          type: string
           description: The list of products that match your filters. The list contains both the product metadata and the price
             information.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination token that indicates the next set of results to retrieve.
-    PriceListJsonItems:
-      type: array
-      items:
-        $ref: '#/components/schemas/SynthesizedJsonPriceListJsonItem'
-    SynthesizedJsonPriceListJsonItem:
-      type: string
+    GetProductsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetProductsRowDisplay'
     ServiceCode:
       type: string
       minLength: 1

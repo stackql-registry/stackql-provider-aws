@@ -1,0 +1,3 @@
+SELECT enable_dns_hostnames
+FROM aws.ec2.vpc_attributes
+WHERE region = '{{ region }}' AND vpc_id = '{{ vpc_create.vpc_id }}' AND Attribute = 'enableDnsHostnames'

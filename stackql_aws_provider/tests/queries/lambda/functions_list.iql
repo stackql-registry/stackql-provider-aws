@@ -1,0 +1,3 @@
+-- rest-json list smoke (no error is the assertion; the account may have zero
+-- functions). Projects the fields users actually reach for.
+SELECT runtime, function_name, memory_size FROM aws.lambda.functions WHERE region = '{{ global_region }}'

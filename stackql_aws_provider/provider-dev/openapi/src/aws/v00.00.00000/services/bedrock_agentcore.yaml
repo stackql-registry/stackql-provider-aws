@@ -8172,6 +8172,102 @@ components:
         - streams
         - updatedAt
   x-stackQL-resources:
+    memory_records:
+      id: aws.bedrock_agentcore.memory_records
+      name: memory_records
+      title: memory_records
+      methods:
+        batch_create_memory_records:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecords~1batchCreate/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_memory_records:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecords~1batchDelete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_memory_records:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecords~1batchUpdate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_memory_record:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecords~1{memory_record_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_memory_record:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecord~1{memory_record_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.memoryRecord
+        list_memory_records:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecords/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.memoryRecordSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        retrieve_memory_records:
+          operation:
+            $ref: "#/paths/~1memories~1{memory_id}~1retrieve/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/memory_records/methods/get_memory_record"
+          - $ref: "#/components/x-stackQL-resources/memory_records/methods/list_memory_records"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/memory_records/methods/delete_memory_record"
     ab_tests:
       id: aws.bedrock_agentcore.ab_tests
       name: ab_tests
@@ -8197,6 +8293,14 @@ components:
             objectKey: $.abTests
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ab_test:
           operation:
             $ref: "#/paths/~1ab-tests~1{ab_test_id}/delete"
@@ -8258,6 +8362,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.event
         list_events:
           operation:
             $ref: "#/paths/~1memories~1{memory_id}~1actor~1{actor_id}~1sessions~1{session_id}/post"
@@ -8268,6 +8373,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8312,6 +8424,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.paymentInstrument
           request:
             nativeCasing: pascal
           config:
@@ -8324,6 +8437,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.paymentInstruments
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        process_payment:
+          operation:
+            $ref: "#/paths/~1payments~1processPayment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -8371,6 +8502,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.paymentSession
           request:
             nativeCasing: pascal
           config:
@@ -8386,6 +8518,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8423,6 +8562,31 @@ components:
             objectKey: $.batchEvaluations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        start_batch_evaluation:
+          operation:
+            $ref: "#/paths/~1evaluations~1batch-evaluate/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_batch_evaluation:
+          operation:
+            $ref: "#/paths/~1evaluations~1batch-evaluate~1{batch_evaluation_id}~1stop/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_evaluations/methods/get_batch_evaluation"
@@ -8431,43 +8595,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/batch_evaluations/methods/delete_batch_evaluation"
-    memory_records:
-      id: aws.bedrock_agentcore.memory_records
-      name: memory_records
-      title: memory_records
-      methods:
-        delete_memory_record:
-          operation:
-            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecords~1{memory_record_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_memory_record:
-          operation:
-            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecord~1{memory_record_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_memory_records:
-          operation:
-            $ref: "#/paths/~1memories~1{memory_id}~1memoryRecords/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.memoryRecordSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/memory_records/methods/get_memory_record"
-          - $ref: "#/components/x-stackQL-resources/memory_records/methods/list_memory_records"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/memory_records/methods/delete_memory_record"
     recommendations:
       id: aws.bedrock_agentcore.recommendations
       name: recommendations
@@ -8494,6 +8621,14 @@ components:
             objectKey: $.recommendationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/get_recommendation"
@@ -8660,6 +8795,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.paymentTokenResponse
           request:
             nativeCasing: pascal
           config:
@@ -8752,6 +8888,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8775,6 +8918,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8798,13 +8948,43 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        save_browser_session_profile:
+          operation:
+            $ref: "#/paths/~1browser-profiles~1{profile_identifier}~1save/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_browser_stream:
+          operation:
+            $ref: "#/paths/~1browsers~1{browser_identifier}~1sessions~1streams~1update/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/list_sessions"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/sessions/methods/update_browser_stream"
         delete: []
     registry_records:
       id: aws.bedrock_agentcore.registry_records
@@ -8827,26 +9007,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/registry_records/methods/search_registry_records"
         insert: []
         update: []
-        delete: []
-    browser_streams:
-      id: aws.bedrock_agentcore.browser_streams
-      name: browser_streams
-      title: browser_streams
-      methods:
-        update_browser_stream:
-          operation:
-            $ref: "#/paths/~1browsers~1{browser_identifier}~1sessions~1streams~1update/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/browser_streams/methods/update_browser_stream"
         delete: []

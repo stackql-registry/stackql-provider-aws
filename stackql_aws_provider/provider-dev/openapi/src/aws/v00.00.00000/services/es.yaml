@@ -51,7 +51,6 @@ paths:
                 TagList:
                   $ref: "#/components/schemas/TagList"
               required:
-                - ARN
                 - TagList
       responses:
         "200":
@@ -973,7 +972,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListElasticsearchInstanceTypesResponse"
+                $ref: "#/components/schemas/ListElasticsearchInstanceTypesOutputDisplay"
   /2015-01-01/es/versions:
     get:
       operationId: ListElasticsearchVersions
@@ -996,7 +995,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListElasticsearchVersionsResponse"
+                $ref: "#/components/schemas/ListElasticsearchVersionsOutputDisplay"
   /2015-01-01/domain/{domain_name}/packages:
     get:
       operationId: ListPackagesForDomain
@@ -1156,7 +1155,6 @@ paths:
                 TagKeys:
                   $ref: "#/components/schemas/StringList"
               required:
-                - ARN
                 - TagKeys
       responses:
         "200":
@@ -3608,29 +3606,31 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/DomainPackageDetails"
-    ListElasticsearchInstanceTypesResponse:
-      description: Container for the parameters returned by ListElasticsearchInstanceTypes operation.
+    ListElasticsearchInstanceTypesRowDisplay:
       type: object
       properties:
-        ElasticsearchInstanceTypes:
-          $ref: "#/components/schemas/ElasticsearchInstanceTypeList"
+        elasticsearch_instance_type:
+          type: string
           description: List of instance types supported by Amazon Elasticsearch service for given ElasticsearchVersion
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: In case if there are more results available NextToken would be present, make further request to the same API with received NextToken to paginate remaining results.
-    ElasticsearchInstanceTypeList:
-      description: List of instance types supported by Amazon Elasticsearch service.
-      type: array
-      items:
-        $ref: "#/components/schemas/ESPartitionInstanceType"
-    ListElasticsearchVersionsResponse:
-      description: Container for the parameters for response received from ListElasticsearchVersions operation.
+    ListElasticsearchInstanceTypesOutputDisplay:
       type: object
       properties:
-        ElasticsearchVersions:
-          $ref: "#/components/schemas/ElasticsearchVersionList"
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListElasticsearchInstanceTypesRowDisplay"
+    ListElasticsearchVersionsRowDisplay:
+      type: object
+      properties:
+        elasticsearch_version:
+          type: string
+    ListElasticsearchVersionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListElasticsearchVersionsRowDisplay"
     ListPackagesForDomainResponse:
       description: Container for response parameters to ListPackagesForDomain operation.
       type: object
@@ -3862,6 +3862,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        dissociate_package:
+          operation:
+            $ref: "#/paths/~12015-01-01~1packages~1dissociate~1{package_id}~1{domain_name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         update_package:
           operation:
             $ref: "#/paths/~12015-01-01~1packages~1update/post"
@@ -3953,6 +3959,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DomainStatus
         describe_elasticsearch_domains:
           operation:
             $ref: "#/paths/~12015-01-01~1es~1domain-info/post"
@@ -4151,6 +4158,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChangeProgressStatus
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -4170,6 +4178,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DomainConfig
         update_elasticsearch_domain_config:
           operation:
             $ref: "#/paths/~12015-01-01~1es~1domain~1{domain_name}~1config/post"
@@ -4221,6 +4230,25 @@ components:
             objectKey: $.ReservedElasticsearchInstanceOfferings
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        purchase_reserved_elasticsearch_instance_offering:
+          operation:
+            $ref: "#/paths/~12015-01-01~1es~1purchaseReservedInstanceOffering/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reserved_elasticsearch_instance_offerings/methods/describe_reserved_elasticsearch_instance_offerings"
@@ -4241,6 +4269,14 @@ components:
             objectKey: $.ReservedElasticsearchInstances
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reserved_elasticsearch_instances/methods/describe_reserved_elasticsearch_instances"
@@ -4299,6 +4335,14 @@ components:
             objectKey: $.UpgradeHistories
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/upgrade_histories/methods/get_upgrade_history"
@@ -4371,9 +4415,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ElasticsearchInstanceTypes
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListElasticsearchInstanceTypesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ElasticsearchInstanceTypes" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"elasticsearch_instance_type": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/elasticsearch_instance_types/methods/list_elasticsearch_instance_types"
@@ -4391,9 +4449,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ElasticsearchVersions
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListElasticsearchVersionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ElasticsearchVersions" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"elasticsearch_version": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/elasticsearch_versions/methods/list_elasticsearch_versions"

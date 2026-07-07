@@ -4958,11 +4958,16 @@ components:
       required:
         - configuredAudienceModelArn
   x-stackQL-resources:
-    trained_model_outputs:
-      id: aws.cleanroomsml.trained_model_outputs
-      name: trained_model_outputs
-      title: trained_model_outputs
+    trained_models:
+      id: aws.cleanroomsml.trained_models
+      name: trained_models
+      title: trained_models
       methods:
+        cancel_trained_model:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-models~1{trained_model_arn}/patch"
+          response:
+            openAPIDocKey: "200"
         delete_trained_model_output:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-models~1{trained_model_arn}/delete"
@@ -4970,17 +4975,6 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/trained_model_outputs/methods/delete_trained_model_output"
-    trained_models:
-      id: aws.cleanroomsml.trained_models
-      name: trained_models
-      title: trained_models
-      methods:
         get_trained_model:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-models~1{trained_model_arn}/get"
@@ -4989,6 +4983,11 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        cancel_trained_model_inference_job:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-model-inference-jobs~1{trained_model_inference_job_arn}/patch"
+          response:
+            openAPIDocKey: "200"
         create_trained_model:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-models/post"
@@ -5009,6 +5008,35 @@ components:
             objectKey: $.trainedModels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        start_trained_model_inference_job:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-model-inference-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_trained_model_export_job:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1trained-models~1{trained_model_arn}~1export-jobs/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/trained_models/methods/get_trained_model"
@@ -5016,7 +5044,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/trained_models/methods/create_trained_model"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/trained_models/methods/delete_trained_model_output"
     trained_model_inference_jobs:
       id: aws.cleanroomsml.trained_model_inference_jobs
       name: trained_model_inference_jobs
@@ -5037,6 +5066,14 @@ components:
             objectKey: $.trainedModelInferenceJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/trained_model_inference_jobs/methods/get_trained_model_inference_job"
@@ -5069,6 +5106,14 @@ components:
             objectKey: $.audienceModels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_audience_model:
           operation:
             $ref: "#/paths/~1audience-model~1{audience_model_arn}/delete"
@@ -5114,6 +5159,14 @@ components:
             objectKey: $.configuredAudienceModels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_configured_audience_model:
           operation:
             $ref: "#/paths/~1configured-audience-model~1{configured_audience_model_arn}/delete"
@@ -5128,6 +5181,17 @@ components:
         update_configured_audience_model:
           operation:
             $ref: "#/paths/~1configured-audience-model~1{configured_audience_model_arn}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_audience_generation_job:
+          operation:
+            $ref: "#/paths/~1audience-generation-job/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5171,6 +5235,14 @@ components:
             objectKey: $.configuredModelAlgorithms
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_configured_model_algorithm:
           operation:
             $ref: "#/paths/~1configured-model-algorithms~1{configured_model_algorithm_arn}/delete"
@@ -5216,6 +5288,14 @@ components:
             objectKey: $.configuredModelAlgorithmAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_configured_model_algorithm_association:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1configured-model-algorithm-associations~1{configured_model_algorithm_association_arn}/delete"
@@ -5261,6 +5341,19 @@ components:
             objectKey: $.mlInputChannelsList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_ml_input_channel_data:
+          operation:
+            $ref: "#/paths/~1memberships~1{membership_identifier}~1ml-input-channels~1{ml_input_channel_arn}/delete"
+          response:
+            openAPIDocKey: "200"
         get_ml_input_channel:
           operation:
             $ref: "#/paths/~1memberships~1{membership_identifier}~1ml-input-channels~1{ml_input_channel_arn}/get"
@@ -5274,7 +5367,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/ml_input_channels/methods/create_ml_input_channel"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/ml_input_channels/methods/delete_ml_input_channel_data"
     training_datasets:
       id: aws.cleanroomsml.training_datasets
       name: training_datasets
@@ -5300,6 +5394,14 @@ components:
             objectKey: $.trainingDatasets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_training_dataset:
           operation:
             $ref: "#/paths/~1training-dataset~1{training_dataset_arn}/delete"
@@ -5336,6 +5438,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        start_audience_export_job:
+          operation:
+            $ref: "#/paths/~1audience-export-job/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_audience_generation_jobs:
           operation:
             $ref: "#/paths/~1audience-generation-job/get"
@@ -5345,6 +5457,14 @@ components:
             objectKey: $.audienceGenerationJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/audience_generation_jobs/methods/get_audience_generation_job"
@@ -5424,22 +5544,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/ml_configurations/methods/put_ml_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/ml_configurations/methods/delete_ml_configuration"
-    ml_input_channel_datas:
-      id: aws.cleanroomsml.ml_input_channel_datas
-      name: ml_input_channel_datas
-      title: ml_input_channel_datas
-      methods:
-        delete_ml_input_channel_data:
-          operation:
-            $ref: "#/paths/~1memberships~1{membership_identifier}~1ml-input-channels~1{ml_input_channel_arn}/delete"
-          response:
-            openAPIDocKey: "200"
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/ml_input_channel_datas/methods/delete_ml_input_channel_data"
     collaboration_configured_model_algorithm_associations:
       id: aws.cleanroomsml.collaboration_configured_model_algorithm_associations
       name: collaboration_configured_model_algorithm_associations
@@ -5460,6 +5564,14 @@ components:
             objectKey: $.collaborationConfiguredModelAlgorithmAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_configured_model_algorithm_associations/methods/get_collaboration_configured_model_algorithm_association"
@@ -5487,6 +5599,14 @@ components:
             objectKey: $.collaborationMLInputChannelsList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_ml_input_channels/methods/get_collaboration_ml_input_channel"
@@ -5516,6 +5636,14 @@ components:
             objectKey: $.collaborationTrainedModels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_trained_models/methods/get_collaboration_trained_model"
@@ -5537,6 +5665,14 @@ components:
             objectKey: $.audienceExportJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/audience_export_jobs/methods/list_audience_export_jobs"
@@ -5557,6 +5693,14 @@ components:
             objectKey: $.collaborationTrainedModelExportJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_trained_model_export_jobs/methods/list_collaboration_trained_model_export_jobs"
@@ -5577,16 +5721,24 @@ components:
             objectKey: $.collaborationTrainedModelInferenceJobs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/collaboration_trained_model_inference_jobs/methods/list_collaboration_trained_model_inference_jobs"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.cleanroomsml.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.cleanroomsml.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5594,17 +5746,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.cleanroomsml.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -5625,11 +5766,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     trained_model_versions:
       id: aws.cleanroomsml.trained_model_versions
@@ -5645,6 +5787,14 @@ components:
             objectKey: $.trainedModels
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/trained_model_versions/methods/list_trained_model_versions"

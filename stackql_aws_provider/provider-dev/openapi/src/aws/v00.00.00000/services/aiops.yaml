@@ -547,6 +547,14 @@ components:
             objectKey: $.investigationGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_investigation_group:
           operation:
             $ref: "#/paths/~1investigationGroups~1{identifier}/delete"
@@ -616,10 +624,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/investigation_group_policies/methods/put_investigation_group_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/investigation_group_policies/methods/delete_investigation_group_policy"
-    tags_for_resources:
-      id: aws.aiops.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.aiops.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -627,17 +635,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.aiops.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -658,9 +655,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

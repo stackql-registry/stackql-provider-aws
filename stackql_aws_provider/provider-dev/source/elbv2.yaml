@@ -182,6 +182,13 @@ paths:
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AddTrustStoreRevocationsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $s := separator ", " -}}{{- $n := index . "AddTrustStoreRevocationsResponse" -}}{{- if
+        eq (kindOf $n) "map" }}{{ $n = index $n "AddTrustStoreRevocationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if
+        eq (kindOf $n) "map" }}{{ $n = index $n "TrustStoreRevocations" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf
+        $n) "map" }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice"
+        -}}{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{
+        toJson $n }}{{- end -}}]}'
     post:
       operationId: POST_AddTrustStoreRevocations
       description: Adds the specified revocation file to the specified trust store.
@@ -203,6 +210,13 @@ paths:
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AddTrustStoreRevocationsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $s := separator ", " -}}{{- $n := index . "AddTrustStoreRevocationsResponse" -}}{{- if
+        eq (kindOf $n) "map" }}{{ $n = index $n "AddTrustStoreRevocationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if
+        eq (kindOf $n) "map" }}{{ $n = index $n "TrustStoreRevocations" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf
+        $n) "map" }}{{ $n = index $n "item" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice"
+        -}}{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{
+        toJson $n }}{{- end -}}]}'
   /?Action=CreateListener&Version=2015-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -1022,7 +1036,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeleteSharedTrustStoreAssociationOutputDisplay'
-      x-stackql-resource: shared_trust_store_associations
+      x-stackql-resource: trust_store_associations
       x-stackql-method: delete_shared_trust_store_association
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteSharedTrustStoreAssociationOutputDisplay
@@ -1043,7 +1057,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteSharedTrustStoreAssociationInput'
-      x-stackql-resource: shared_trust_store_associations
+      x-stackql-resource: trust_store_associations
       x-stackql-method: delete_shared_trust_store_association
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteSharedTrustStoreAssociationOutputDisplay
@@ -1195,7 +1209,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeregisterTargetsOutputDisplay'
-      x-stackql-resource: targets
+      x-stackql-resource: target_groups
       x-stackql-method: deregister_targets
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeregisterTargetsOutputDisplay
@@ -1222,7 +1236,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeregisterTargetsInput'
-      x-stackql-resource: targets
+      x-stackql-resource: target_groups
       x-stackql-method: deregister_targets
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeregisterTargetsOutputDisplay
@@ -2534,7 +2548,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ModifyIpPoolsOutputDisplay'
-      x-stackql-resource: ip_pools
+      x-stackql-resource: load_balancers
       x-stackql-method: modify_ip_pools
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyIpPoolsOutputDisplay
@@ -2555,7 +2569,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ModifyIpPoolsInput'
-      x-stackql-resource: ip_pools
+      x-stackql-resource: load_balancers
       x-stackql-method: modify_ip_pools
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: ModifyIpPoolsOutputDisplay
@@ -3160,7 +3174,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RegisterTargetsOutputDisplay'
-      x-stackql-resource: targets
+      x-stackql-resource: target_groups
       x-stackql-method: register_targets
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: RegisterTargetsOutputDisplay
@@ -3186,7 +3200,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RegisterTargetsInput'
-      x-stackql-resource: targets
+      x-stackql-resource: target_groups
       x-stackql-method: register_targets
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: RegisterTargetsOutputDisplay
@@ -3407,7 +3421,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetIpAddressTypeOutputDisplay'
-      x-stackql-resource: ip_address_types
+      x-stackql-resource: load_balancers
       x-stackql-method: set_ip_address_type
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIpAddressTypeOutputDisplay
@@ -3428,7 +3442,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetIpAddressTypeInput'
-      x-stackql-resource: ip_address_types
+      x-stackql-resource: load_balancers
       x-stackql-method: set_ip_address_type
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIpAddressTypeOutputDisplay
@@ -3460,7 +3474,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetRulePrioritiesOutputDisplay'
-      x-stackql-resource: rule_priorities
+      x-stackql-resource: rules
       x-stackql-method: set_rule_priorities
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetRulePrioritiesOutputDisplay
@@ -3482,7 +3496,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetRulePrioritiesInput'
-      x-stackql-resource: rule_priorities
+      x-stackql-resource: rules
       x-stackql-method: set_rule_priorities
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetRulePrioritiesOutputDisplay
@@ -3530,7 +3544,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetSecurityGroupsOutputDisplay'
-      x-stackql-resource: security_groups
+      x-stackql-resource: load_balancers
       x-stackql-method: set_security_groups
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetSecurityGroupsOutputDisplay
@@ -3554,7 +3568,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetSecurityGroupsInput'
-      x-stackql-resource: security_groups
+      x-stackql-resource: load_balancers
       x-stackql-method: set_security_groups
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetSecurityGroupsOutputDisplay
@@ -3628,7 +3642,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetSubnetsOutputDisplay'
-      x-stackql-resource: subnets
+      x-stackql-resource: load_balancers
       x-stackql-method: set_subnets
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetSubnetsOutputDisplay
@@ -3650,7 +3664,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetSubnetsInput'
-      x-stackql-resource: subnets
+      x-stackql-resource: load_balancers
       x-stackql-method: set_subnets
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetSubnetsOutputDisplay
@@ -3825,13 +3839,28 @@ components:
       type: string
       enum:
       - CRL
+    TrustStoreRevocationDisplay:
+      type: object
+      properties:
+        TrustStoreArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the trust store.
+        RevocationId:
+          type: integer
+          description: The revocation ID of the revocation file.
+        RevocationType:
+          type: string
+          description: The type of revocation file.
+        NumberOfRevokedEntries:
+          type: integer
+          description: The number of revoked certificates.
     AddTrustStoreRevocationsOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/AddTrustStoreRevocationsOutputDisplay'
+            $ref: '#/components/schemas/TrustStoreRevocationDisplay'
     AddTrustStoreRevocationsInput:
       type: object
       properties:

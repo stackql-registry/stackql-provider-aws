@@ -300,8 +300,6 @@ paths:
               properties:
                 Name:
                   $ref: "#/components/schemas/DirectoryName"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -458,8 +456,6 @@ paths:
               properties:
                 Facet:
                   $ref: "#/components/schemas/TypedLinkFacet"
-              required:
-                - Facet
       responses:
         "200":
           description: Success
@@ -1033,7 +1029,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetTypedLinkFacetInformationResponse"
+                $ref: "#/components/schemas/GetTypedLinkFacetInformationOutputDisplay"
   /amazonclouddirectory/2017-01-11/schema/applied:
     post:
       operationId: ListAppliedSchemaArns
@@ -1062,7 +1058,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAppliedSchemaArnsResponse"
+                $ref: "#/components/schemas/ListAppliedSchemaArnsOutputDisplay"
   /amazonclouddirectory/2017-01-11/object/indices:
     post:
       operationId: ListAttachedIndices
@@ -1124,7 +1120,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDevelopmentSchemaArnsResponse"
+                $ref: "#/components/schemas/ListDevelopmentSchemaArnsOutputDisplay"
   /amazonclouddirectory/2017-01-11/directory/list:
     post:
       operationId: ListDirectories
@@ -1174,8 +1170,6 @@ paths:
                   $ref: "#/components/schemas/NextToken"
                 MaxResults:
                   $ref: "#/components/schemas/NumberResults"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1211,7 +1205,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFacetNamesResponse"
+                $ref: "#/components/schemas/ListFacetNamesOutputDisplay"
   /amazonclouddirectory/2017-01-11/typedlink/incoming:
     post:
       operationId: ListIncomingTypedLinks
@@ -1316,7 +1310,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListManagedSchemaArnsResponse"
+                $ref: "#/components/schemas/ListManagedSchemaArnsOutputDisplay"
   /amazonclouddirectory/2017-01-11/object/attributes:
     post:
       operationId: ListObjectAttributes
@@ -1509,7 +1503,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListObjectPoliciesResponse"
+                $ref: "#/components/schemas/ListObjectPoliciesOutputDisplay"
   /amazonclouddirectory/2017-01-11/typedlink/outgoing:
     post:
       operationId: ListOutgoingTypedLinks
@@ -1587,7 +1581,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPolicyAttachmentsResponse"
+                $ref: "#/components/schemas/ListPolicyAttachmentsOutputDisplay"
   /amazonclouddirectory/2017-01-11/schema/published:
     post:
       operationId: ListPublishedSchemaArns
@@ -1612,7 +1606,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPublishedSchemaArnsResponse"
+                $ref: "#/components/schemas/ListPublishedSchemaArnsOutputDisplay"
   /amazonclouddirectory/2017-01-11/tags:
     post:
       operationId: ListTagsForResource
@@ -1664,8 +1658,6 @@ paths:
                   $ref: "#/components/schemas/NextToken"
                 MaxResults:
                   $ref: "#/components/schemas/NumberResults"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1701,7 +1693,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTypedLinkFacetNamesResponse"
+                $ref: "#/components/schemas/ListTypedLinkFacetNamesOutputDisplay"
   /amazonclouddirectory/2017-01-11/policy/lookup:
     post:
       operationId: LookupPolicy
@@ -3728,25 +3720,32 @@ components:
           description: The JSON representation of the schema document.
     SchemaJsonDocument:
       type: string
-    GetTypedLinkFacetInformationResponse:
+    GetTypedLinkFacetInformationRowDisplay:
       type: object
       properties:
-        IdentityAttributeOrder:
-          $ref: "#/components/schemas/AttributeNameList"
+        identity_attribute_order:
+          type: string
           description: The order of identity attributes for the facet, from most significant to least significant. The ability to filter typed links considers the order that the attributes are defined on the typed link facet. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range. Filters are interpreted in the order of the attributes on the typed link facet, not the order in which they are supplied to any API calls. For more information about identity attributes, see Typed Links.
-    ListAppliedSchemaArnsResponse:
+    GetTypedLinkFacetInformationOutputDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: "#/components/schemas/Arns"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetTypedLinkFacetInformationRowDisplay"
+    ListAppliedSchemaArnsRowDisplay:
+      type: object
+      properties:
+        schema_arn:
+          type: string
           description: The ARNs of schemas that are applied to the directory.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
-    Arns:
-      type: array
-      items:
-        $ref: "#/components/schemas/Arn"
+    ListAppliedSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAppliedSchemaArnsRowDisplay"
     ListAttachedIndicesResponse:
       type: object
       properties:
@@ -3756,15 +3755,19 @@ components:
         NextToken:
           $ref: "#/components/schemas/NextToken"
           description: The pagination token.
-    ListDevelopmentSchemaArnsResponse:
+    ListDevelopmentSchemaArnsRowDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: "#/components/schemas/Arns"
+        schema_arn:
+          type: string
           description: The ARNs of retrieved development schemas.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
+    ListDevelopmentSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDevelopmentSchemaArnsRowDisplay"
     ListDirectoriesResponse:
       type: object
       properties:
@@ -3789,19 +3792,19 @@ components:
         NextToken:
           $ref: "#/components/schemas/NextToken"
           description: The pagination token.
-    ListFacetNamesResponse:
+    ListFacetNamesRowDisplay:
       type: object
       properties:
-        FacetNames:
-          $ref: "#/components/schemas/FacetNameList"
+        facet_name:
+          type: string
           description: The names of facets that exist within the schema.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
-    FacetNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/FacetName"
+    ListFacetNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFacetNamesRowDisplay"
     ListIncomingTypedLinksResponse:
       type: object
       properties:
@@ -3820,15 +3823,19 @@ components:
         NextToken:
           $ref: "#/components/schemas/NextToken"
           description: The pagination token.
-    ListManagedSchemaArnsResponse:
+    ListManagedSchemaArnsRowDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: "#/components/schemas/Arns"
+        schema_arn:
+          type: string
           description: The ARNs for all AWS managed schemas.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
+    ListManagedSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListManagedSchemaArnsRowDisplay"
     ListObjectAttributesResponse:
       type: object
       properties:
@@ -3870,15 +3877,19 @@ components:
         ParentLinks:
           $ref: "#/components/schemas/ObjectIdentifierAndLinkNameList"
           description: Returns a list of parent reference and LinkName Tuples.
-    ListObjectPoliciesResponse:
+    ListObjectPoliciesRowDisplay:
       type: object
       properties:
-        AttachedPolicyIds:
-          $ref: "#/components/schemas/ObjectIdentifierList"
+        attached_policy_id:
+          type: string
           description: A list of policy ObjectIdentifiers, that are attached to the object.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
+    ListObjectPoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListObjectPoliciesRowDisplay"
     ListOutgoingTypedLinksResponse:
       type: object
       properties:
@@ -3888,24 +3899,32 @@ components:
         NextToken:
           $ref: "#/components/schemas/NextToken"
           description: The pagination token.
-    ListPolicyAttachmentsResponse:
+    ListPolicyAttachmentsRowDisplay:
       type: object
       properties:
-        ObjectIdentifiers:
-          $ref: "#/components/schemas/ObjectIdentifierList"
+        object_identifier:
+          type: string
           description: A list of ObjectIdentifiers to which the policy is attached.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
-    ListPublishedSchemaArnsResponse:
+    ListPolicyAttachmentsOutputDisplay:
       type: object
       properties:
-        SchemaArns:
-          $ref: "#/components/schemas/Arns"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPolicyAttachmentsRowDisplay"
+    ListPublishedSchemaArnsRowDisplay:
+      type: object
+      properties:
+        schema_arn:
+          type: string
           description: The ARNs of published schemas.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
+    ListPublishedSchemaArnsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPublishedSchemaArnsRowDisplay"
     TagsNumberResults:
       type: integer
       minimum: 50
@@ -3945,19 +3964,19 @@ components:
         NextToken:
           $ref: "#/components/schemas/NextToken"
           description: The pagination token.
-    ListTypedLinkFacetNamesResponse:
+    ListTypedLinkFacetNamesRowDisplay:
       type: object
       properties:
-        FacetNames:
-          $ref: "#/components/schemas/TypedLinkNameList"
+        facet_name:
+          type: string
           description: The names of typed link facets that exist within the schema.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The pagination token.
-    TypedLinkNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/TypedLinkName"
+    ListTypedLinkFacetNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTypedLinkFacetNamesRowDisplay"
     LookupPolicyResponse:
       type: object
       properties:
@@ -4059,10 +4078,10 @@ components:
           $ref: "#/components/schemas/Arn"
           description: The ARN of the upgraded schema that is returned as part of the response.
   x-stackQL-resources:
-    facet_to_objects:
-      id: aws.clouddirectory.facet_to_objects
-      name: facet_to_objects
-      title: facet_to_objects
+    facets:
+      id: aws.clouddirectory.facets
+      name: facets
+      title: facets
       methods:
         add_facet_to_object:
           operation:
@@ -4075,12 +4094,107 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_facet:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet~1create/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_typed_link_facet:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1create/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_facet:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet~1delete/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_typed_link_facet:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1delete/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_facet:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Facet
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_facet:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        remove_facet_from_object:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1object~1facets~1delete/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_typed_link_facet:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/facets/methods/get_facet"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/facets/methods/create_facet"
+          - $ref: "#/components/x-stackQL-resources/facets/methods/create_typed_link_facet"
         update:
-          - $ref: "#/components/x-stackQL-resources/facet_to_objects/methods/add_facet_to_object"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/facets/methods/update_typed_link_facet"
+          - $ref: "#/components/x-stackQL-resources/facets/methods/add_facet_to_object"
+          - $ref: "#/components/x-stackQL-resources/facets/methods/update_facet"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/facets/methods/delete_facet"
     objects:
       id: aws.clouddirectory.objects
       name: objects
@@ -4176,6 +4290,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4185,10 +4306,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/policies/methods/attach_policy"
         delete: []
-    to_indexes:
-      id: aws.clouddirectory.to_indexes
-      name: to_indexes
-      title: to_indexes
+    indexes:
+      id: aws.clouddirectory.indexes
+      name: indexes
+      title: indexes
       methods:
         attach_to_index:
           operation:
@@ -4201,11 +4322,54 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_index:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1index/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        detach_from_index:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1index~1detach/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_index:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1index~1targets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.IndexAttachments
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/list_index"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/create_index"
         update:
-          - $ref: "#/components/x-stackQL-resources/to_indexes/methods/attach_to_index"
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/attach_to_index"
         delete: []
     typed_links:
       id: aws.clouddirectory.typed_links
@@ -4268,6 +4432,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Directory
         list_directories:
           operation:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1directory~1list/post"
@@ -4275,6 +4440,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Directories
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        upgrade_applied_schema:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1schema~1upgradeapplied/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4289,99 +4472,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/directories/methods/delete_directory"
-    facets:
-      id: aws.clouddirectory.facets
-      name: facets
-      title: facets
-      methods:
-        create_facet:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet~1create/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_facet:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet~1delete/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_facet:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_facet:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1facet/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/facets/methods/get_facet"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/facets/methods/create_facet"
-        update:
-          - $ref: "#/components/x-stackQL-resources/facets/methods/update_facet"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/facets/methods/delete_facet"
-    indexes:
-      id: aws.clouddirectory.indexes
-      name: indexes
-      title: indexes
-      methods:
-        create_index:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1index/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_index:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1index~1targets/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.IndexAttachments
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/indexes/methods/list_index"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/indexes/methods/create_index"
-        update: []
-        delete: []
     schemas:
       id: aws.clouddirectory.schemas
       name: schemas
@@ -4423,74 +4513,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/schemas/methods/update_schema"
         delete:
           - $ref: "#/components/x-stackQL-resources/schemas/methods/delete_schema"
-    typed_link_facets:
-      id: aws.clouddirectory.typed_link_facets
-      name: typed_link_facets
-      title: typed_link_facets
-      methods:
-        create_typed_link_facet:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1create/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_typed_link_facet:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1delete/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_typed_link_facet:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/typed_link_facets/methods/create_typed_link_facet"
-        update:
-          - $ref: "#/components/x-stackQL-resources/typed_link_facets/methods/update_typed_link_facet"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/typed_link_facets/methods/delete_typed_link_facet"
-    from_indexes:
-      id: aws.clouddirectory.from_indexes
-      name: from_indexes
-      title: from_indexes
-      methods:
-        detach_from_index:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1index~1detach/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/from_indexes/methods/detach_from_index"
-        delete: []
     applied_schema_versions:
       id: aws.clouddirectory.applied_schema_versions
       name: applied_schema_versions
@@ -4573,6 +4595,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_object_attributes:
@@ -4667,6 +4696,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetTypedLinkFacetInformationOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "IdentityAttributeOrder" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"identity_attribute_order": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -4689,10 +4725,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.SchemaArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAppliedSchemaArnsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4716,6 +4765,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4735,10 +4791,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.SchemaArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDevelopmentSchemaArnsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4762,6 +4831,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4781,10 +4857,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.FacetNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFacetNamesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "FacetNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"facet_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4808,6 +4897,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4827,10 +4923,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.SchemaArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListManagedSchemaArnsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4876,6 +4985,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4917,10 +5033,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.AttachedPolicyIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListObjectPoliciesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "AttachedPolicyIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"attached_policy_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4944,6 +5073,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4963,10 +5099,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ObjectIdentifiers
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPolicyAttachmentsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ObjectIdentifiers" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"object_identifier": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4986,10 +5135,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.SchemaArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPublishedSchemaArnsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SchemaArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4998,10 +5160,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.clouddirectory.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.clouddirectory.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5013,87 +5175,15 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    typed_link_facet_attributes:
-      id: aws.clouddirectory.typed_link_facet_attributes
-      name: typed_link_facet_attributes
-      title: typed_link_facet_attributes
-      methods:
-        list_typed_link_facet_attributes:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1attributes/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Attributes
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/typed_link_facet_attributes/methods/list_typed_link_facet_attributes"
-        insert: []
-        update: []
-        delete: []
-    typed_link_facet_names:
-      id: aws.clouddirectory.typed_link_facet_names
-      name: typed_link_facet_names
-      title: typed_link_facet_names
-      methods:
-        list_typed_link_facet_names:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.FacetNames
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/typed_link_facet_names/methods/list_typed_link_facet_names"
-        insert: []
-        update: []
-        delete: []
-    facet_from_objects:
-      id: aws.clouddirectory.facet_from_objects
-      name: facet_from_objects
-      title: facet_from_objects
-      methods:
-        remove_facet_from_object:
-          operation:
-            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1object~1facets~1delete/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/facet_from_objects/methods/remove_facet_from_object"
-        delete: []
-    resources:
-      id: aws.clouddirectory.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1tags~1add/put"
@@ -5117,9 +5207,76 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    typed_link_facet_attributes:
+      id: aws.clouddirectory.typed_link_facet_attributes
+      name: typed_link_facet_attributes
+      title: typed_link_facet_attributes
+      methods:
+        list_typed_link_facet_attributes:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1attributes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Attributes
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/typed_link_facet_attributes/methods/list_typed_link_facet_attributes"
+        insert: []
+        update: []
+        delete: []
+    typed_link_facet_names:
+      id: aws.clouddirectory.typed_link_facet_names
+      name: typed_link_facet_names
+      title: typed_link_facet_names
+      methods:
+        list_typed_link_facet_names:
+          operation:
+            $ref: "#/paths/~1amazonclouddirectory~12017-01-11~1typedlink~1facet~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTypedLinkFacetNamesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "FacetNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"facet_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/typed_link_facet_names/methods/list_typed_link_facet_names"
+        insert: []
+        update: []
         delete: []

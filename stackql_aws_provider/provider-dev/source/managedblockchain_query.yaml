@@ -133,6 +133,7 @@ paths:
       x-stackql-resource: transactions
       x-stackql-method: get_transaction
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.transaction
   /list-asset-contracts:
     post:
       operationId: ListAssetContracts
@@ -165,6 +166,9 @@ paths:
       x-stackql-method: list_asset_contracts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contracts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-filtered-transaction-events:
     post:
       operationId: ListFilteredTransactionEvents
@@ -208,6 +212,9 @@ paths:
       x-stackql-method: list_filtered_transaction_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-token-balances:
     post:
       operationId: ListTokenBalances
@@ -244,6 +251,9 @@ paths:
       x-stackql-method: list_token_balances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tokenBalances
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-transaction-events:
     post:
       operationId: ListTransactionEvents
@@ -280,6 +290,9 @@ paths:
       x-stackql-method: list_transaction_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-transactions:
     post:
       operationId: ListTransactions
@@ -322,6 +335,9 @@ paths:
       x-stackql-method: list_transactions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.transactions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

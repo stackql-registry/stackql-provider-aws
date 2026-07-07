@@ -49,7 +49,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptAdministratorInvitationResponse'
-      x-stackql-resource: administrator_invitation
+      x-stackql-resource: invitations
       x-stackql-method: accept_administrator_invitation
       x-stackql-verb: EXEC
     get:
@@ -77,6 +77,7 @@ paths:
       x-stackql-resource: administrator_accounts
       x-stackql-method: get_administrator_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Administrator
   /detector/{detector_id}/master:
     post:
       operationId: AcceptInvitation
@@ -110,7 +111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptInvitationResponse'
-      x-stackql-resource: invitation
+      x-stackql-resource: invitations
       x-stackql-method: accept_invitation
       x-stackql-verb: EXEC
     get:
@@ -135,6 +136,7 @@ paths:
       x-stackql-resource: master_accounts
       x-stackql-method: get_master_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Master
   /detector/{detector_id}/findings/archive:
     post:
       operationId: ArchiveFindings
@@ -166,7 +168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ArchiveFindingsResponse'
-      x-stackql-resource: archive_findings
+      x-stackql-resource: findings
       x-stackql-method: archive_findings
       x-stackql-verb: EXEC
   /detector:
@@ -239,11 +241,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDetectorsResponse'
+                $ref: '#/components/schemas/ListDetectorsOutputDisplay'
       x-stackql-resource: detectors
       x-stackql-method: list_detectors
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.DetectorIds
+      x-stackql-responseEnvelope: ListDetectorsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "DetectorIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"detector_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/filter:
     post:
       operationId: CreateFilter
@@ -323,11 +333,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFiltersResponse'
+                $ref: '#/components/schemas/ListFiltersOutputDisplay'
       x-stackql-resource: filters
       x-stackql-method: list_filters
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.FilterNames
+      x-stackql-responseEnvelope: ListFiltersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "FilterNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"filter_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/ipset:
     post:
       operationId: CreateIPSet
@@ -412,11 +430,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListIPSetsResponse'
+                $ref: '#/components/schemas/ListIPSetsOutputDisplay'
       x-stackql-resource: ip_sets
       x-stackql-method: list_ip_sets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.IpSetIds
+      x-stackql-responseEnvelope: ListIPSetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "IpSetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"ip_set_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /malware-protection-plan:
     post:
       operationId: CreateMalwareProtectionPlan
@@ -569,6 +595,9 @@ paths:
       x-stackql-method: list_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/publishingDestination:
     post:
       operationId: CreatePublishingDestination
@@ -674,7 +703,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateSampleFindingsResponse'
-      x-stackql-resource: sample_findings
+      x-stackql-resource: findings
       x-stackql-method: create_sample_findings
       x-stackql-verb: INSERT
   /detector/{detector_id}/threatentityset:
@@ -761,11 +790,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThreatEntitySetsResponse'
+                $ref: '#/components/schemas/ListThreatEntitySetsOutputDisplay'
       x-stackql-resource: threat_entity_sets
       x-stackql-method: list_threat_entity_sets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ThreatEntitySetIds
+      x-stackql-responseEnvelope: ListThreatEntitySetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ThreatEntitySetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"threat_entity_set_id": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/threatintelset:
     post:
       operationId: CreateThreatIntelSet
@@ -849,11 +886,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThreatIntelSetsResponse'
+                $ref: '#/components/schemas/ListThreatIntelSetsOutputDisplay'
       x-stackql-resource: threat_intel_sets
       x-stackql-method: list_threat_intel_sets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ThreatIntelSetIds
+      x-stackql-responseEnvelope: ListThreatIntelSetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ThreatIntelSetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"threat_intel_set_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/trustedentityset:
     post:
       operationId: CreateTrustedEntitySet
@@ -939,11 +984,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTrustedEntitySetsResponse'
+                $ref: '#/components/schemas/ListTrustedEntitySetsOutputDisplay'
       x-stackql-resource: trusted_entity_sets
       x-stackql-method: list_trusted_entity_sets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.TrustedEntitySetIds
+      x-stackql-responseEnvelope: ListTrustedEntitySetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "TrustedEntitySetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"trusted_entity_set_id": {{
+        toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /invitation/decline:
     post:
       operationId: DeclineInvitations
@@ -968,7 +1021,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeclineInvitationsResponse'
-      x-stackql-resource: decline_invitations
+      x-stackql-resource: invitations
       x-stackql-method: decline_invitations
       x-stackql-verb: EXEC
   /detector/{detector_id}:
@@ -1804,6 +1857,9 @@ paths:
       x-stackql-method: describe_malware_scans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Scans
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/admin:
     get:
       operationId: DescribeOrganizationConfiguration
@@ -1934,7 +1990,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateFromAdministratorAccountResponse'
-      x-stackql-resource: from_administrator_accounts
+      x-stackql-resource: administrator_accounts
       x-stackql-method: disassociate_from_administrator_account
       x-stackql-verb: UPDATE
   /detector/{detector_id}/master/disassociate:
@@ -1959,7 +2015,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateFromMasterAccountResponse'
-      x-stackql-resource: from_master_accounts
+      x-stackql-resource: master_accounts
       x-stackql-method: disassociate_from_master_account
       x-stackql-verb: UPDATE
   /detector/{detector_id}/member/disassociate:
@@ -2071,6 +2127,7 @@ paths:
       x-stackql-resource: coverage_statistics
       x-stackql-method: get_coverage_statistics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CoverageStatistics
   /detector/{detector_id}/findings/get:
     post:
       operationId: GetFindings
@@ -2148,6 +2205,7 @@ paths:
       x-stackql-resource: findings_statistics
       x-stackql-method: get_findings_statistics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.FindingStatistics
   /invitation/count:
     get:
       operationId: GetInvitationsCount
@@ -2334,6 +2392,7 @@ paths:
       x-stackql-resource: organization_statistics
       x-stackql-method: get_organization_statistics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.OrganizationDetails
   /detector/{detector_id}/freeTrial/daysRemaining:
     post:
       operationId: GetRemainingFreeTrialDays
@@ -2413,6 +2472,7 @@ paths:
       x-stackql-resource: usage_statistics
       x-stackql-method: get_usage_statistics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UsageStatistics
   /detector/{detector_id}/member/invite:
     post:
       operationId: InviteMembers
@@ -2463,7 +2523,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteMembersResponse'
-      x-stackql-resource: invite_members
+      x-stackql-resource: members
       x-stackql-method: invite_members
       x-stackql-verb: EXEC
   /detector/{detector_id}/coverage:
@@ -2506,6 +2566,9 @@ paths:
       x-stackql-method: list_coverage
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Resources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /detector/{detector_id}/findings:
     post:
       operationId: ListFindings
@@ -2541,11 +2604,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFindingsResponse'
+                $ref: '#/components/schemas/ListFindingsOutputDisplay'
       x-stackql-resource: findings
       x-stackql-method: list_findings
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.FindingIds
+      x-stackql-responseEnvelope: ListFindingsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "FindingIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /invitation:
     get:
       operationId: ListInvitations
@@ -2577,6 +2648,9 @@ paths:
       x-stackql-method: list_invitations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Invitations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /malware-scan:
     post:
       operationId: ListMalwareScans
@@ -2620,6 +2694,9 @@ paths:
       x-stackql-method: list_malware_scans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Scans
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /admin:
     get:
       operationId: ListOrganizationAdminAccounts
@@ -2651,6 +2728,9 @@ paths:
       x-stackql-method: list_organization_admin_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AdminAccounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2671,7 +2751,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2702,7 +2782,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2728,7 +2808,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /object-malware-scan/send:
@@ -2824,7 +2904,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMonitoringMembersResponse'
-      x-stackql-resource: monitoring_members
+      x-stackql-resource: members
       x-stackql-method: start_monitoring_members
       x-stackql-verb: EXEC
   /detector/{detector_id}/member/stop:
@@ -2860,7 +2940,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopMonitoringMembersResponse'
-      x-stackql-resource: monitoring_members
+      x-stackql-resource: members
       x-stackql-method: stop_monitoring_members
       x-stackql-verb: EXEC
   /detector/{detector_id}/findings/unarchive:
@@ -2893,7 +2973,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnarchiveFindingsResponse'
-      x-stackql-resource: unarchive_findings
+      x-stackql-resource: findings
       x-stackql-method: unarchive_findings
       x-stackql-verb: EXEC
   /detector/{detector_id}/findings/feedback:
@@ -2932,7 +3012,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFindingsFeedbackResponse'
-      x-stackql-resource: findings_feedbacks
+      x-stackql-resource: findings
       x-stackql-method: update_findings_feedback
       x-stackql-verb: UPDATE
   /detector/{detector_id}/member/detector/update:
@@ -8296,62 +8376,58 @@ components:
       enum:
       - HEALTHY
       - UNHEALTHY
-    ListDetectorsResponse:
+    ListDetectorsRowDisplay:
       type: object
       properties:
-        DetectorIds:
-          $ref: '#/components/schemas/DetectorIds'
+        detector_id:
+          type: string
           description: A list of detector IDs.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-      - DetectorIds
-    DetectorIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/DetectorId'
-    ListFiltersResponse:
+    ListDetectorsOutputDisplay:
       type: object
       properties:
-        FilterNames:
-          $ref: '#/components/schemas/FilterNames'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDetectorsRowDisplay'
+    ListFiltersRowDisplay:
+      type: object
+      properties:
+        filter_name:
+          type: string
           description: A list of filter names.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-      - FilterNames
-    FilterNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/FilterName'
-    ListFindingsResponse:
+    ListFiltersOutputDisplay:
       type: object
       properties:
-        FindingIds:
-          $ref: '#/components/schemas/FindingIds'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFiltersRowDisplay'
+    ListFindingsRowDisplay:
+      type: object
+      properties:
+        finding_id:
+          type: string
           description: The IDs of the findings that you're listing.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-      - FindingIds
-    ListIPSetsResponse:
+    ListFindingsOutputDisplay:
       type: object
       properties:
-        IpSetIds:
-          $ref: '#/components/schemas/IpSetIds'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFindingsRowDisplay'
+    ListIPSetsRowDisplay:
+      type: object
+      properties:
+        ip_set_id:
+          type: string
           description: The IDs of the IPSet resources.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-      - IpSetIds
-    IpSetIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListIPSetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListIPSetsRowDisplay'
     ListInvitationsResponse:
       type: object
       properties:
@@ -8565,51 +8641,45 @@ components:
           type: object
           properties: {}
           description: The tags associated with the resource.
-    ListThreatEntitySetsResponse:
+    ListThreatEntitySetsRowDisplay:
       type: object
       properties:
-        ThreatEntitySetIds:
-          $ref: '#/components/schemas/ThreatEntitySetIds'
+        threat_entity_set_id:
+          type: string
           description: The IDs of the threat entity set resources.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-      - ThreatEntitySetIds
-    ThreatEntitySetIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    ListThreatIntelSetsResponse:
+    ListThreatEntitySetsOutputDisplay:
       type: object
       properties:
-        ThreatIntelSetIds:
-          $ref: '#/components/schemas/ThreatIntelSetIds'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListThreatEntitySetsRowDisplay'
+    ListThreatIntelSetsRowDisplay:
+      type: object
+      properties:
+        threat_intel_set_id:
+          type: string
           description: The IDs of the ThreatIntelSet resources.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-      - ThreatIntelSetIds
-    ThreatIntelSetIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    ListTrustedEntitySetsResponse:
+    ListThreatIntelSetsOutputDisplay:
       type: object
       properties:
-        TrustedEntitySetIds:
-          $ref: '#/components/schemas/TrustedEntitySetIds'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListThreatIntelSetsRowDisplay'
+    ListTrustedEntitySetsRowDisplay:
+      type: object
+      properties:
+        trusted_entity_set_id:
+          type: string
           description: The IDs of the trusted entity set resources.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-      - TrustedEntitySetIds
-    TrustedEntitySetIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListTrustedEntitySetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTrustedEntitySetsRowDisplay'
     S3ObjectForSendObjectMalwareScan:
       description: The S3 object path to initiate a scan, including bucket name, object key, and optional version ID.
       type: object

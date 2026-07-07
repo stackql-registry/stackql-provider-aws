@@ -1,0 +1,5 @@
+-- rest-xml INSERT routed by path parameter; bucket names are global so the
+-- account id (exported by caller_identity) namespaces it. us-east-1 avoids
+-- the CreateBucketConfiguration body requirement.
+INSERT INTO aws.s3.buckets(region, bucket)
+SELECT '{{ global_region }}', '{{ bucket_prefix }}-{{ caller_identity.account }}'

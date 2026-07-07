@@ -491,7 +491,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePresignedNotebookUrlResponse'
-      x-stackql-resource: presigned_notebook_urls
+      x-stackql-resource: sessions
       x-stackql-method: create_presigned_notebook_url
       x-stackql-verb: INSERT
   /CreateWorkGroup:
@@ -956,6 +956,7 @@ paths:
       x-stackql-resource: capacity_assignment_configurations
       x-stackql-method: get_capacity_assignment_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CapacityAssignmentConfiguration
   /GetCapacityReservation:
     post:
       operationId: GetCapacityReservation
@@ -992,6 +993,7 @@ paths:
       x-stackql-resource: capacity_reservations
       x-stackql-method: get_capacity_reservation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CapacityReservation
   /GetDataCatalog:
     post:
       operationId: GetDataCatalog
@@ -1031,6 +1033,7 @@ paths:
       x-stackql-resource: data_catalogs
       x-stackql-method: get_data_catalog
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DataCatalog
   /GetDatabase:
     post:
       operationId: GetDatabase
@@ -1075,6 +1078,7 @@ paths:
       x-stackql-resource: databases
       x-stackql-method: get_database
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Database
   /GetNamedQuery:
     post:
       operationId: GetNamedQuery
@@ -1112,6 +1116,7 @@ paths:
       x-stackql-resource: named_queries
       x-stackql-method: get_named_query
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.NamedQuery
   /GetNotebookMetadata:
     post:
       operationId: GetNotebookMetadata
@@ -1148,6 +1153,7 @@ paths:
       x-stackql-resource: notebook_metadatas
       x-stackql-method: get_notebook_metadata
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.NotebookMetadata
   /GetPreparedStatement:
     post:
       operationId: GetPreparedStatement
@@ -1188,6 +1194,7 @@ paths:
       x-stackql-resource: prepared_statements
       x-stackql-method: get_prepared_statement
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PreparedStatement
   /GetQueryExecution:
     post:
       operationId: GetQueryExecution
@@ -1225,6 +1232,7 @@ paths:
       x-stackql-resource: query_executions
       x-stackql-method: get_query_execution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.QueryExecution
   /GetQueryResults:
     post:
       operationId: GetQueryResults
@@ -1282,6 +1290,9 @@ paths:
       x-stackql-resource: query_results
       x-stackql-method: get_query_results
       x-stackql-verb: SELECT
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetQueryRuntimeStatistics:
     post:
       operationId: GetQueryRuntimeStatistics
@@ -1323,6 +1334,7 @@ paths:
       x-stackql-resource: query_runtime_statistics
       x-stackql-method: get_query_runtime_statistics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.QueryRuntimeStatistics
   /GetResourceDashboard:
     post:
       operationId: GetResourceDashboard
@@ -1515,6 +1527,7 @@ paths:
       x-stackql-resource: table_metadatas
       x-stackql-method: get_table_metadata
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TableMetadata
   /GetWorkGroup:
     post:
       operationId: GetWorkGroup
@@ -1551,6 +1564,7 @@ paths:
       x-stackql-resource: work_groups
       x-stackql-method: get_work_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.WorkGroup
   /ImportNotebook:
     post:
       operationId: ImportNotebook
@@ -1784,6 +1798,9 @@ paths:
       x-stackql-method: list_data_catalogs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataCatalogsSummary
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDatabases:
     post:
       operationId: ListDatabases
@@ -1833,6 +1850,9 @@ paths:
       x-stackql-method: list_databases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DatabaseList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEngineVersions:
     post:
       operationId: ListEngineVersions
@@ -1964,11 +1984,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListNamedQueriesOutput'
+                $ref: '#/components/schemas/ListNamedQueriesOutputDisplay'
       x-stackql-resource: named_queries
       x-stackql-method: list_named_queries
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.NamedQueryIds
+      x-stackql-responseEnvelope: ListNamedQueriesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "NamedQueryIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"named_query_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListNotebookMetadata:
     post:
       operationId: ListNotebookMetadata
@@ -2145,11 +2173,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListQueryExecutionsOutput'
+                $ref: '#/components/schemas/ListQueryExecutionsOutputDisplay'
       x-stackql-resource: query_executions
       x-stackql-method: list_query_executions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.QueryExecutionIds
+      x-stackql-responseEnvelope: ListQueryExecutionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "QueryExecutionIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"query_execution_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSessions:
     post:
       operationId: ListSessions
@@ -2260,6 +2296,9 @@ paths:
       x-stackql-method: list_table_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableMetadataList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2300,10 +2339,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkGroups:
     post:
       operationId: ListWorkGroups
@@ -2712,7 +2754,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TerminateSession:
@@ -2791,7 +2833,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCapacityReservation:
@@ -5305,17 +5347,19 @@ components:
       type: integer
       minimum: 0
       maximum: 50
-    ListNamedQueriesOutput:
+    ListNamedQueriesRowDisplay:
       type: object
       properties:
-        NamedQueryIds:
-          $ref: '#/components/schemas/NamedQueryIdList'
+        named_query_id:
+          type: string
           description: The list of unique query IDs.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: A token generated by the Athena service that specifies where to continue pagination if a previous request
-            was truncated. To obtain the next set of pages, pass in the NextToken from the response object of the previous
-            page call.
+    ListNamedQueriesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListNamedQueriesRowDisplay'
     FilterDefinition:
       description: A string for searching notebook names.
       type: object
@@ -5407,15 +5451,19 @@ components:
       type: integer
       minimum: 0
       maximum: 50
-    ListQueryExecutionsOutput:
+    ListQueryExecutionsRowDisplay:
       type: object
       properties:
-        QueryExecutionIds:
-          $ref: '#/components/schemas/QueryExecutionIdList'
+        query_execution_id:
+          type: string
           description: The unique IDs of each query execution as an array of strings.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: A token to be used by the next request if this request is truncated.
+    ListQueryExecutionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListQueryExecutionsRowDisplay'
     ListSessionsResponse:
       type: object
       properties:

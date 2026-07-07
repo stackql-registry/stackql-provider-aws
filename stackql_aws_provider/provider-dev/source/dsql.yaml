@@ -93,6 +93,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.clusters
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /stream/{cluster_identifier}:
     post:
       operationId: CreateStream
@@ -175,6 +178,9 @@ paths:
       x-stackql-method: list_streams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.streams
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /cluster/{identifier}:
     delete:
       operationId: DeleteCluster
@@ -469,7 +475,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -496,7 +502,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -518,7 +524,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

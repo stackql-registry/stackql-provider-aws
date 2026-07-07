@@ -85,6 +85,9 @@ paths:
       x-stackql-method: list_access_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.accessPoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /file-systems:
     put:
       operationId: CreateFileSystem
@@ -161,6 +164,9 @@ paths:
       x-stackql-method: list_file_systems
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.fileSystems
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /mount-targets:
     put:
       operationId: CreateMountTarget
@@ -241,6 +247,9 @@ paths:
       x-stackql-method: list_mount_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.mountTargets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /access-points/{access_point_id}:
     delete:
       operationId: DeleteAccessPoint
@@ -549,10 +558,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: TagResource
       description: Creates tags for S3 Files resources using standard Amazon Web Services tagging APIs.
@@ -577,7 +589,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -599,7 +611,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

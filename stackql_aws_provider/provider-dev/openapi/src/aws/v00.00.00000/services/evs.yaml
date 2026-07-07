@@ -1907,10 +1907,10 @@ components:
           $ref: "#/components/schemas/Connector"
           description: A description of the updated connector.
   x-stackQL-resources:
-    eip_to_vlans:
-      id: aws.evs.eip_to_vlans
-      name: eip_to_vlans
-      title: eip_to_vlans
+    environments:
+      id: aws.evs.environments
+      name: environments
+      title: environments
       methods:
         associate_eip_to_vlan:
           operation:
@@ -1925,20 +1925,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/eip_to_vlans/methods/associate_eip_to_vlan"
-        delete: []
-    entitlements:
-      id: aws.evs.entitlements
-      name: entitlements
-      title: entitlements
-      methods:
         create_entitlement:
           operation:
             $ref: "#/paths/~1CreateEntitlement/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_environment:
+          operation:
+            $ref: "#/paths/~1CreateEnvironment/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1962,21 +1964,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/entitlements/methods/create_entitlement"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/entitlements/methods/delete_entitlement"
-    environments:
-      id: aws.evs.environments
-      name: environments
-      title: environments
-      methods:
-        create_environment:
+        delete_environment:
           operation:
-            $ref: "#/paths/~1CreateEnvironment/post"
+            $ref: "#/paths/~1DeleteEnvironment/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1987,9 +1977,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_environment:
+        disassociate_eip_from_vlan:
           operation:
-            $ref: "#/paths/~1DeleteEnvironment/post"
+            $ref: "#/paths/~1DisassociateEipFromVlan/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2006,6 +1996,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.environment
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2025,6 +2016,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2033,8 +2031,12 @@ components:
           - $ref: "#/components/x-stackQL-resources/environments/methods/list_environments"
         insert:
           - $ref: "#/components/x-stackQL-resources/environments/methods/create_environment"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/environments/methods/create_entitlement"
+        update:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/associate_eip_to_vlan"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/disassociate_eip_from_vlan"
         delete:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/delete_entitlement"
           - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
     environment_connectors:
       id: aws.evs.environment_connectors
@@ -2079,6 +2081,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_environment_connector:
@@ -2146,6 +2155,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2156,30 +2172,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/environment_hosts/methods/delete_environment_host"
-    eip_from_vlans:
-      id: aws.evs.eip_from_vlans
-      name: eip_from_vlans
-      title: eip_from_vlans
-      methods:
-        disassociate_eip_from_vlan:
-          operation:
-            $ref: "#/paths/~1DisassociateEipFromVlan/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/eip_from_vlans/methods/disassociate_eip_from_vlan"
-        delete: []
     versions:
       id: aws.evs.versions
       name: versions
@@ -2221,6 +2213,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2229,10 +2228,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.evs.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.evs.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2247,42 +2246,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    vm_entitlements:
-      id: aws.evs.vm_entitlements
-      name: vm_entitlements
-      title: vm_entitlements
-      methods:
-        list_vm_entitlements:
-          operation:
-            $ref: "#/paths/~1ListVmEntitlements/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.entitlements
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/vm_entitlements/methods/list_vm_entitlements"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.evs.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2310,9 +2273,42 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    vm_entitlements:
+      id: aws.evs.vm_entitlements
+      name: vm_entitlements
+      title: vm_entitlements
+      methods:
+        list_vm_entitlements:
+          operation:
+            $ref: "#/paths/~1ListVmEntitlements/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.entitlements
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/vm_entitlements/methods/list_vm_entitlements"
+        insert: []
+        update: []
         delete: []

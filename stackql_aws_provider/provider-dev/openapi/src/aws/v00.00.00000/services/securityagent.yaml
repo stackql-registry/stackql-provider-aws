@@ -4515,6 +4515,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4526,6 +4533,204 @@ components:
           - $ref: "#/components/x-stackQL-resources/artifacts/methods/add_artifact"
         delete:
           - $ref: "#/components/x-stackQL-resources/artifacts/methods/delete_artifact"
+    code_reviews:
+      id: aws.securityagent.code_reviews
+      name: code_reviews
+      title: code_reviews
+      methods:
+        batch_delete_code_reviews:
+          operation:
+            $ref: "#/paths/~1BatchDeleteCodeReviews/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_get_code_reviews:
+          operation:
+            $ref: "#/paths/~1BatchGetCodeReviews/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_code_review:
+          operation:
+            $ref: "#/paths/~1CreateCodeReview/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_code_reviews:
+          operation:
+            $ref: "#/paths/~1ListCodeReviews/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.codeReviewSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_code_review_job:
+          operation:
+            $ref: "#/paths/~1StartCodeReviewJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_code_review_job:
+          operation:
+            $ref: "#/paths/~1StopCodeReviewJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_code_review:
+          operation:
+            $ref: "#/paths/~1UpdateCodeReview/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/batch_get_code_reviews"
+          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/list_code_reviews"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/create_code_review"
+        update:
+          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/update_code_review"
+        delete: []
+    pentests:
+      id: aws.securityagent.pentests
+      name: pentests
+      title: pentests
+      methods:
+        batch_delete_pentests:
+          operation:
+            $ref: "#/paths/~1BatchDeletePentests/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_get_pentests:
+          operation:
+            $ref: "#/paths/~1BatchGetPentests/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_pentest:
+          operation:
+            $ref: "#/paths/~1CreatePentest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_pentests:
+          operation:
+            $ref: "#/paths/~1ListPentests/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.pentestSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_pentest_job:
+          operation:
+            $ref: "#/paths/~1StartPentestJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_pentest_job:
+          operation:
+            $ref: "#/paths/~1StopPentestJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_pentest:
+          operation:
+            $ref: "#/paths/~1UpdatePentest/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/pentests/methods/batch_get_pentests"
+          - $ref: "#/components/x-stackQL-resources/pentests/methods/list_pentests"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/pentests/methods/create_pentest"
+        update:
+          - $ref: "#/components/x-stackQL-resources/pentests/methods/update_pentest"
+        delete: []
     agent_spaces:
       id: aws.securityagent.agent_spaces
       name: agent_spaces
@@ -4571,6 +4776,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.agentSpaceSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_code_remediation:
+          operation:
+            $ref: "#/paths/~1StartCodeRemediation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -4645,6 +4868,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4676,65 +4906,6 @@ components:
         insert: []
         update: []
         delete: []
-    code_reviews:
-      id: aws.securityagent.code_reviews
-      name: code_reviews
-      title: code_reviews
-      methods:
-        batch_get_code_reviews:
-          operation:
-            $ref: "#/paths/~1BatchGetCodeReviews/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        create_code_review:
-          operation:
-            $ref: "#/paths/~1CreateCodeReview/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_code_reviews:
-          operation:
-            $ref: "#/paths/~1ListCodeReviews/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.codeReviewSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_code_review:
-          operation:
-            $ref: "#/paths/~1UpdateCodeReview/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/batch_get_code_reviews"
-          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/list_code_reviews"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/create_code_review"
-        update:
-          - $ref: "#/components/x-stackQL-resources/code_reviews/methods/update_code_review"
-        delete: []
     findings:
       id: aws.securityagent.findings
       name: findings
@@ -4761,6 +4932,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_finding:
@@ -4808,6 +4986,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4838,65 +5023,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/pentest_jobs/methods/batch_get_pentest_jobs"
         insert: []
         update: []
-        delete: []
-    pentests:
-      id: aws.securityagent.pentests
-      name: pentests
-      title: pentests
-      methods:
-        batch_get_pentests:
-          operation:
-            $ref: "#/paths/~1BatchGetPentests/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        create_pentest:
-          operation:
-            $ref: "#/paths/~1CreatePentest/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_pentests:
-          operation:
-            $ref: "#/paths/~1ListPentests/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.pentestSummaries
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_pentest:
-          operation:
-            $ref: "#/paths/~1UpdatePentest/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pentests/methods/batch_get_pentests"
-          - $ref: "#/components/x-stackQL-resources/pentests/methods/list_pentests"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/pentests/methods/create_pentest"
-        update:
-          - $ref: "#/components/x-stackQL-resources/pentests/methods/update_pentest"
         delete: []
     target_domains:
       id: aws.securityagent.target_domains
@@ -4946,11 +5072,29 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_target_domain:
           operation:
             $ref: "#/paths/~1UpdateTargetDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        verify_target_domain:
+          operation:
+            $ref: "#/paths/~1VerifyTargetDomain/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5016,6 +5160,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_application:
@@ -5087,6 +5238,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5135,6 +5293,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5160,6 +5325,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5183,6 +5355,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5206,6 +5385,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_integrated_resources:
@@ -5241,6 +5427,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5249,10 +5442,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.securityagent.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.securityagent.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5260,17 +5453,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.securityagent.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -5291,9 +5473,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

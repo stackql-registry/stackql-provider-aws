@@ -62,7 +62,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCheckLayerAvailabilityResponse'
-      x-stackql-resource: batch_check_layer_availability
+      x-stackql-resource: repositories
       x-stackql-method: batch_check_layer_availability
       x-stackql-verb: EXEC
   /BatchDeleteImage:
@@ -110,7 +110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteImageResponse'
-      x-stackql-resource: batch_delete_image
+      x-stackql-resource: repositories
       x-stackql-method: batch_delete_image
       x-stackql-verb: EXEC
   /BatchGetImage:
@@ -248,7 +248,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompleteLayerUploadResponse'
-      x-stackql-resource: complete_layer_upload
+      x-stackql-resource: repositories
       x-stackql-method: complete_layer_upload
       x-stackql-verb: EXEC
   /CreatePullThroughCacheRule:
@@ -871,6 +871,9 @@ paths:
       x-stackql-resource: image_scan_findings
       x-stackql-method: describe_image_scan_findings
       x-stackql-verb: SELECT
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeImageSigningStatus:
     post:
       operationId: DescribeImageSigningStatus
@@ -984,6 +987,9 @@ paths:
       x-stackql-method: describe_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribePullThroughCacheRules:
     post:
       operationId: DescribePullThroughCacheRules
@@ -1038,6 +1044,9 @@ paths:
       x-stackql-method: describe_pull_through_cache_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pullThroughCacheRules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeRegistry:
     post:
       operationId: DescribeRegistry
@@ -1125,6 +1134,9 @@ paths:
       x-stackql-method: describe_repositories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.repositories
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeRepositoryCreationTemplates:
     post:
       operationId: DescribeRepositoryCreationTemplates
@@ -1177,6 +1189,9 @@ paths:
       x-stackql-method: describe_repository_creation_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.repositoryCreationTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetAccountSetting:
     post:
       operationId: GetAccountSetting
@@ -1403,6 +1418,9 @@ paths:
       x-stackql-method: get_lifecycle_policy_preview
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.previewResults
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetRegistryPolicy:
     post:
       operationId: GetRegistryPolicy
@@ -1576,7 +1594,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiateLayerUploadResponse'
-      x-stackql-resource: initiate_layer_upload
+      x-stackql-resource: repositories
       x-stackql-method: initiate_layer_upload
       x-stackql-verb: EXEC
   /ListImageReferrers:
@@ -1705,6 +1723,9 @@ paths:
       x-stackql-method: list_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageIds
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPullTimeUpdateExclusions:
     post:
       operationId: ListPullTimeUpdateExclusions
@@ -1747,10 +1768,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPullTimeUpdateExclusionsResponse'
+                $ref: '#/components/schemas/ListPullTimeUpdateExclusionsOutputDisplay'
       x-stackql-resource: pull_time_update_exclusions
       x-stackql-method: list_pull_time_update_exclusions
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListPullTimeUpdateExclusionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "pullTimeUpdateExclusions" -}}{"line_items": [{{- if eq (kindOf $lst)
+        "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"pull_time_update_exclusion": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]}'
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1785,7 +1812,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutAccountSetting:
@@ -1932,7 +1959,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutImageScanningConfigurationResponse'
-      x-stackql-resource: image_scanning_configurations
+      x-stackql-resource: images
       x-stackql-method: put_image_scanning_configuration
       x-stackql-verb: REPLACE
   /PutImageTagMutability:
@@ -1984,7 +2011,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutImageTagMutabilityResponse'
-      x-stackql-resource: image_tag_mutabilities
+      x-stackql-resource: images
       x-stackql-method: put_image_tag_mutability
       x-stackql-verb: REPLACE
   /PutLifecyclePolicy:
@@ -2328,7 +2355,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartImageScanResponse'
-      x-stackql-resource: image_scan
+      x-stackql-resource: images
       x-stackql-method: start_image_scan
       x-stackql-verb: EXEC
   /StartLifecyclePolicyPreview:
@@ -2373,7 +2400,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartLifecyclePolicyPreviewResponse'
-      x-stackql-resource: lifecycle_policy_preview
+      x-stackql-resource: lifecycle_policies
       x-stackql-method: start_lifecycle_policy_preview
       x-stackql-verb: EXEC
   /TagResource:
@@ -2416,7 +2443,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2457,7 +2484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateImageStorageClass:
@@ -2505,7 +2532,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateImageStorageClassResponse'
-      x-stackql-resource: image_storage_class
+      x-stackql-resource: images
       x-stackql-method: update_image_storage_class
       x-stackql-verb: UPDATE
   /UpdatePullThroughCacheRule:
@@ -2691,7 +2718,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UploadLayerPartResponse'
-      x-stackql-resource: upload_layer_part
+      x-stackql-resource: repositories
       x-stackql-method: upload_layer_part
       x-stackql-verb: EXEC
   /ValidatePullThroughCacheRule:
@@ -4875,21 +4902,19 @@ components:
           description: The nextToken value to include in a future ListImages request. When the results of a ListImages request
             exceed maxResults, this value can be used to retrieve the next page of results. This value is null when there
             are no more results to return.
-    ListPullTimeUpdateExclusionsResponse:
+    ListPullTimeUpdateExclusionsRowDisplay:
       type: object
       properties:
-        pullTimeUpdateExclusions:
-          $ref: '#/components/schemas/PullTimeUpdateExclusionList'
+        pull_time_update_exclusion:
+          type: string
           description: The list of IAM principal ARNs that are excluded from having their image pull times recorded.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The nextToken value to include in a future ListPullTimeUpdateExclusions request. When the results of
-            a ListPullTimeUpdateExclusions request exceed maxResults, this value can be used to retrieve the next page of
-            results. This value is null when there are no more results to return.
-    PullTimeUpdateExclusionList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PrincipalArn'
+    ListPullTimeUpdateExclusionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPullTimeUpdateExclusionsRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

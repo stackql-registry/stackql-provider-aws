@@ -129,6 +129,9 @@ paths:
       x-stackql-method: get_offer_terms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.offerTerms
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /2026-02-05/getProduct:
     post:
       operationId: GetProduct
@@ -188,6 +191,9 @@ paths:
       x-stackql-method: list_fulfillment_options
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.fulfillmentOptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /2026-02-05/listPurchaseOptions:
     post:
       operationId: ListPurchaseOptions
@@ -220,6 +226,9 @@ paths:
       x-stackql-method: list_purchase_options
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.purchaseOptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /2026-02-05/searchFacets:
     post:
       operationId: SearchFacets
@@ -251,6 +260,9 @@ paths:
       x-stackql-resource: facets
       x-stackql-method: search_facets
       x-stackql-verb: SELECT
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /2026-02-05/searchListings:
     post:
       operationId: SearchListings
@@ -287,6 +299,9 @@ paths:
       x-stackql-method: search_listings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.listingSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

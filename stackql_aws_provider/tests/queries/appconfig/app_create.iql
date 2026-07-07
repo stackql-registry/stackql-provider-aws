@@ -1,0 +1,10 @@
+-- rest-json INSERT (JSON body via requestBodyTranslate: naive), eager id
+-- capture via RETURNING. Closes the live-mutation coverage gap for the
+-- rest-json protocol (the other four protocols all have CRUD legs).
+-- NOTE: RETURNING * (not named columns) - named RETURNING columns SIGSEGV
+-- on this resource in stackql v0.10.542 (nil schema in GenerateSelectDML,
+-- any-sdk wrappers.go:1378; repro: appconfig.applications, amp.workspaces;
+-- fine on lambda.functions, apigatewayv2.apis). Core bug, not spec-side.
+INSERT INTO aws.appconfig.applications(region, Name, Description)
+SELECT '{{ region }}', '{{ appconfig_app_name }}', 'stackql smoke test application'
+RETURNING *

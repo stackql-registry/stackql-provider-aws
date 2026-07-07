@@ -1,0 +1,10 @@
+-- Cleanup safety net: find any instance still occupying the smoke subnet,
+-- regardless of whether instance_create managed to export its id (a
+-- projection failure after a successful RunInstances dispatch would
+-- otherwise leak the instance and block subnet/vpc deletion). Filters on
+-- the subnet_id COLUMN (client-side - there is no SubnetId param on
+-- DescribeInstances, and JSON() Filters don't transpose). Terminated
+-- instances drop their subnet association, so the happy path finds
+-- nothing and the terminate step below is skipped.
+SELECT instance_id FROM aws.ec2.instances
+WHERE region = '{{ region }}' AND subnet_id = '{{ subnet_create.subnet_id }}'

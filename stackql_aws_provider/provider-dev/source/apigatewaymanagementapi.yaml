@@ -76,7 +76,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: post_to_connection
+      x-stackql-resource: connections
       x-stackql-method: post_to_connection
       x-stackql-verb: EXEC
 components:

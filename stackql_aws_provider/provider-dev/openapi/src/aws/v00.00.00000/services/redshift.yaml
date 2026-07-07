@@ -4526,7 +4526,7 @@ paths:
           description: The Amazon Web Services account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot.
           schema:
             $ref: "#/components/schemas/String"
-        - name: Filters
+        - name: Filter
           in: query
           required: false
           description: A set of name, operator, and value items to filter the results.
@@ -11754,16 +11754,40 @@ components:
         Filters:
           $ref: "#/components/schemas/DescribeIntegrationsFilterList"
           description: A filter that specifies one or more resources to return.
-    StringDisplay:
+    LoggingStatusDisplay:
       type: object
-      properties: {}
+      properties:
+        LoggingEnabled:
+          type: boolean
+          description: true if logging is on, false if logging is off.
+        BucketName:
+          type: string
+          description: The name of the S3 bucket where the log files are stored.
+        S3KeyPrefix:
+          type: string
+          description: The prefix applied to the log file names.
+        LastSuccessfulDeliveryTime:
+          type: string
+          description: The last time that logs were delivered.
+        LastFailureTime:
+          type: string
+          description: The last time when logs failed to be delivered.
+        LastFailureMessage:
+          type: string
+          description: The message indicating that logs failed to be delivered.
+        LogDestinationType:
+          type: string
+          description: The log destination type. An enum with possible values of s3 and cloudwatch.
+        LogExports:
+          type: string
+          description: The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.
     DescribeLoggingStatusOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/StringDisplay"
+            $ref: "#/components/schemas/LoggingStatusDisplay"
     DescribeLoggingStatusMessage:
       type: object
       properties:
@@ -12088,13 +12112,16 @@ components:
         Marker:
           $ref: "#/components/schemas/String"
           description: An optional parameter that specifies the starting point to return a set of response records. When the results of a DescribeReservedNodes request exceed the value specified in MaxRecords, Amazon Web Services returns a value in the Marker field of the response. You can retrieve the next set of response records by providing the returned marker value in the Marker parameter and retrying the request.
+    StringDisplay:
+      type: object
+      properties: {}
     DescribeResizeOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/StringDisplay"
+            $ref: "#/components/schemas/DescribeResizeRowDisplay"
     DescribeResizeMessage:
       type: object
       properties:
@@ -12103,6 +12130,57 @@ components:
           description: The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive. By default, resize operations for all clusters defined for an Amazon Web Services account are returned.
       required:
         - ClusterIdentifier
+    DescribeResizeRowDisplay:
+      type: object
+      properties:
+        target_node_type:
+          type: string
+          description: The node type that the cluster will have after the resize operation is complete.
+        target_number_of_nodes:
+          type: integer
+          description: The number of nodes that the cluster will have after the resize operation is complete.
+        target_cluster_type:
+          type: string
+          description: "The cluster type after the resize operation is complete. Valid Values: multi-node | single-node"
+        status:
+          type: string
+          description: "The status of the resize operation. Valid Values: NONE | IN_PROGRESS | FAILED | SUCCEEDED | CANCELLING"
+        import_tables_completed:
+          type: array
+          description: "The names of tables that have been completely imported . Valid Values: List of table names."
+        import_tables_in_progress:
+          type: array
+          description: "The names of tables that are being currently imported. Valid Values: List of table names."
+        import_tables_not_started:
+          type: array
+          description: "The names of tables that have not been yet imported. Valid Values: List of table names"
+        avg_resize_rate_in_mega_bytes_per_second:
+          type: number
+          description: The average rate of the resize operation over the last few minutes, measured in megabytes per second. After the resize operation completes, this value shows the average rate of the entire resize operation.
+        total_resize_data_in_mega_bytes:
+          type: integer
+          description: The estimated total amount of data, in megabytes, on the cluster before the resize operation began.
+        progress_in_mega_bytes:
+          type: integer
+          description: While the resize operation is in progress, this value shows the current amount of data, in megabytes, that has been processed so far. When the resize operation is complete, this value shows the total amount of data, in megabytes, on the cluster, which may be more or less than TotalResizeDataInMegaBytes (the estimated total amount of data before resize).
+        elapsed_time_in_seconds:
+          type: integer
+          description: The amount of seconds that have elapsed since the resize operation began. After the resize operation completes, this value shows the total actual time, in seconds, for the resize operation.
+        estimated_time_to_completion_in_seconds:
+          type: integer
+          description: The estimated time remaining, in seconds, until the resize operation is complete. This value is calculated based on the average resize rate and the estimated amount of data remaining to be processed. Once the resize operation is complete, this value will be 0.
+        resize_type:
+          type: string
+          description: An enum with possible values of ClassicResize and ElasticResize. These values describe the type of resize operation being performed.
+        message:
+          type: string
+          description: An optional string to provide additional details about the resize action.
+        target_encryption_type:
+          type: string
+          description: The type of encryption for the cluster after the resize is complete. Possible values are KMS and None.
+        data_transfer_progress_percent:
+          type: number
+          description: The percent of data transferred from source cluster to target cluster.
     ScheduledActionTypeValues:
       type: string
       enum:
@@ -12373,33 +12451,6 @@ components:
         TagValues:
           $ref: "#/components/schemas/TagValueList"
           description: A tag value or values for which you want to return all matching usage limit objects that are associated with the specified tag value or values. For example, suppose that you have parameter groups that are tagged with values called admin and test. If you specify both of these tag values in the request, Amazon Redshift returns a response with the usage limit objects that have either or both of these tag values associated with them.
-    LoggingStatusDisplay:
-      type: object
-      properties:
-        LoggingEnabled:
-          type: boolean
-          description: true if logging is on, false if logging is off.
-        BucketName:
-          type: string
-          description: The name of the S3 bucket where the log files are stored.
-        S3KeyPrefix:
-          type: string
-          description: The prefix applied to the log file names.
-        LastSuccessfulDeliveryTime:
-          type: string
-          description: The last time that logs were delivered.
-        LastFailureTime:
-          type: string
-          description: The last time when logs failed to be delivered.
-        LastFailureMessage:
-          type: string
-          description: The message indicating that logs failed to be delivered.
-        LogDestinationType:
-          type: string
-          description: The log destination type. An enum with possible values of s3 and cloudwatch.
-        LogExports:
-          type: string
-          description: The collection of exported log types. Possible values are connectionlog, useractivitylog, and userlog.
     DisableLoggingOutputDisplay:
       type: object
       properties:
@@ -13894,6 +13945,53 @@ components:
         - PartnerName
         - Status
   x-stackQL-resources:
+    reserved_nodes:
+      id: aws.redshift.reserved_nodes
+      name: reserved_nodes
+      title: reserved_nodes
+      methods:
+        accept_reserved_node_exchange:
+          operation:
+            $ref: "#/paths/~1?Action=AcceptReservedNodeExchange&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AcceptReservedNodeExchangeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_reserved_nodes:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeReservedNodes&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeReservedNodesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/reserved_nodes/methods/describe_reserved_nodes"
+        insert: []
+        update: []
+        delete: []
     partners:
       id: aws.redshift.partners
       name: partners
@@ -13956,6 +14054,23 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        update_partner_status:
+          operation:
+            $ref: "#/paths/~1?Action=UpdatePartnerStatus&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdatePartnerStatusOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/partners/methods/describe_partners"
@@ -13964,10 +14079,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/partners/methods/add_partner"
         delete:
           - $ref: "#/components/x-stackQL-resources/partners/methods/delete_partner"
-    data_share_consumers:
-      id: aws.redshift.data_share_consumers
-      name: data_share_consumers
-      title: data_share_consumers
+    data_shares:
+      id: aws.redshift.data_shares
+      name: data_shares
+      title: data_shares
       methods:
         associate_data_share_consumer:
           operation:
@@ -13988,85 +14103,6 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-        disassociate_data_share_consumer:
-          operation:
-            $ref: "#/paths/~1?Action=DisassociateDataShareConsumer&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DisassociateDataShareConsumerOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/data_share_consumers/methods/associate_data_share_consumer"
-        delete: []
-    cluster_security_group_ingress:
-      id: aws.redshift.cluster_security_group_ingress
-      name: cluster_security_group_ingress
-      title: cluster_security_group_ingress
-      methods:
-        authorize_cluster_security_group_ingress:
-          operation:
-            $ref: "#/paths/~1?Action=AuthorizeClusterSecurityGroupIngress&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/AuthorizeClusterSecurityGroupIngressOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        revoke_cluster_security_group_ingress:
-          operation:
-            $ref: "#/paths/~1?Action=RevokeClusterSecurityGroupIngress&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/RevokeClusterSecurityGroupIngressOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_security_group_ingress/methods/authorize_cluster_security_group_ingress"
-        delete: []
-    data_shares:
-      id: aws.redshift.data_shares
-      name: data_shares
-      title: data_shares
-      methods:
         authorize_data_share:
           operation:
             $ref: "#/paths/~1?Action=AuthorizeDataShare&Version=2012-12-01/get"
@@ -14081,6 +14117,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        deauthorize_data_share:
+          operation:
+            $ref: "#/paths/~1?Action=DeauthorizeDataShare&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeauthorizeDataShareOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -14105,13 +14158,148 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        disassociate_data_share_consumer:
+          operation:
+            $ref: "#/paths/~1?Action=DisassociateDataShareConsumer&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisassociateDataShareConsumerOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reject_data_share:
+          operation:
+            $ref: "#/paths/~1?Action=RejectDataShare&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RejectDataShareOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_shares/methods/describe_data_shares"
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/data_shares/methods/authorize_data_share"
+          - $ref: "#/components/x-stackQL-resources/data_shares/methods/associate_data_share_consumer"
         delete: []
+    cluster_security_groups:
+      id: aws.redshift.cluster_security_groups
+      name: cluster_security_groups
+      title: cluster_security_groups
+      methods:
+        authorize_cluster_security_group_ingress:
+          operation:
+            $ref: "#/paths/~1?Action=AuthorizeClusterSecurityGroupIngress&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/AuthorizeClusterSecurityGroupIngressOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_cluster_security_group:
+          operation:
+            $ref: "#/paths/~1?Action=CreateClusterSecurityGroup&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateClusterSecurityGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_cluster_security_group:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteClusterSecurityGroup&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_cluster_security_groups:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeClusterSecurityGroups&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeClusterSecurityGroupsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        revoke_cluster_security_group_ingress:
+          operation:
+            $ref: "#/paths/~1?Action=RevokeClusterSecurityGroupIngress&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RevokeClusterSecurityGroupIngressOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/describe_cluster_security_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/create_cluster_security_group"
+        update:
+          - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/authorize_cluster_security_group_ingress"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/delete_cluster_security_group"
     endpoint_access:
       id: aws.redshift.endpoint_access
       name: endpoint_access
@@ -14278,8 +14466,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -14291,6 +14477,546 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/snapshot_access/methods/authorize_snapshot_access"
         delete: []
+    cluster_snapshots:
+      id: aws.redshift.cluster_snapshots
+      name: cluster_snapshots
+      title: cluster_snapshots
+      methods:
+        batch_delete_cluster_snapshots:
+          operation:
+            $ref: "#/paths/~1?Action=BatchDeleteClusterSnapshots&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BatchDeleteClusterSnapshotsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        batch_modify_cluster_snapshots:
+          operation:
+            $ref: "#/paths/~1?Action=BatchModifyClusterSnapshots&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/BatchModifyClusterSnapshotsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=CreateClusterSnapshot&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateClusterSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteClusterSnapshot&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteClusterSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_cluster_snapshots:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeClusterSnapshots&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeClusterSnapshotsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyClusterSnapshot&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyClusterSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/describe_cluster_snapshots"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/create_cluster_snapshot"
+        update:
+          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/modify_cluster_snapshot"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/delete_cluster_snapshot"
+    clusters:
+      id: aws.redshift.clusters
+      name: clusters
+      title: clusters
+      methods:
+        cancel_resize:
+          operation:
+            $ref: "#/paths/~1?Action=CancelResize&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CancelResizeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        copy_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=CopyClusterSnapshot&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CopyClusterSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=CreateCluster&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteCluster&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_clusters:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeClusters&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeClustersOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        disable_logging:
+          operation:
+            $ref: "#/paths/~1?Action=DisableLogging&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableLoggingOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        disable_snapshot_copy:
+          operation:
+            $ref: "#/paths/~1?Action=DisableSnapshotCopy&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableSnapshotCopyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_logging:
+          operation:
+            $ref: "#/paths/~1?Action=EnableLogging&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableLoggingOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        enable_snapshot_copy:
+          operation:
+            $ref: "#/paths/~1?Action=EnableSnapshotCopy&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableSnapshotCopyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        failover_primary_compute:
+          operation:
+            $ref: "#/paths/~1?Action=FailoverPrimaryCompute&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/FailoverPrimaryComputeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_aqua_configuration:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyAquaConfiguration&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyAquaConfigurationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyCluster&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_cluster_iam_roles:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyClusterIamRoles&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyClusterIamRolesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_cluster_maintenance:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyClusterMaintenance&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyClusterMaintenanceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_lakehouse_configuration:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyLakehouseConfiguration&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifyLakehouseConfigurationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        modify_snapshot_copy_retention_period:
+          operation:
+            $ref: "#/paths/~1?Action=ModifySnapshotCopyRetentionPeriod&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ModifySnapshotCopyRetentionPeriodOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        pause_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=PauseCluster&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PauseClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reboot_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=RebootCluster&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RebootClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        resize_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=ResizeCluster&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResizeClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_from_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreFromClusterSnapshot&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreFromClusterSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        restore_table_from_cluster_snapshot:
+          operation:
+            $ref: "#/paths/~1?Action=RestoreTableFromClusterSnapshot&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RestoreTableFromClusterSnapshotOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        resume_cluster:
+          operation:
+            $ref: "#/paths/~1?Action=ResumeCluster&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResumeClusterOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        rotate_encryption_key:
+          operation:
+            $ref: "#/paths/~1?Action=RotateEncryptionKey&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/RotateEncryptionKeyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_clusters"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
+        update:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/modify_snapshot_copy_retention_period"
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/modify_cluster"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
     authentication_profiles:
       id: aws.redshift.authentication_profiles
       name: authentication_profiles
@@ -14381,96 +15107,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/authentication_profiles/methods/modify_authentication_profile"
         delete:
           - $ref: "#/components/x-stackQL-resources/authentication_profiles/methods/delete_authentication_profile"
-    clusters:
-      id: aws.redshift.clusters
-      name: clusters
-      title: clusters
-      methods:
-        create_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=CreateCluster&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateClusterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteCluster&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteClusterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_clusters:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeClusters&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeClustersOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        modify_cluster:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyCluster&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyClusterOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_clusters"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
-        update:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/modify_cluster"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
     cluster_parameter_groups:
       id: aws.redshift.cluster_parameter_groups
       name: cluster_parameter_groups
@@ -14554,159 +15190,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/cluster_parameter_groups/methods/modify_cluster_parameter_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/cluster_parameter_groups/methods/delete_cluster_parameter_group"
-    cluster_security_groups:
-      id: aws.redshift.cluster_security_groups
-      name: cluster_security_groups
-      title: cluster_security_groups
-      methods:
-        create_cluster_security_group:
-          operation:
-            $ref: "#/paths/~1?Action=CreateClusterSecurityGroup&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateClusterSecurityGroupOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_cluster_security_group:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteClusterSecurityGroup&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_cluster_security_groups:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeClusterSecurityGroups&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeClusterSecurityGroupsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/describe_cluster_security_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/create_cluster_security_group"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/cluster_security_groups/methods/delete_cluster_security_group"
-    cluster_snapshots:
-      id: aws.redshift.cluster_snapshots
-      name: cluster_snapshots
-      title: cluster_snapshots
-      methods:
-        create_cluster_snapshot:
-          operation:
-            $ref: "#/paths/~1?Action=CreateClusterSnapshot&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateClusterSnapshotOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_cluster_snapshot:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteClusterSnapshot&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteClusterSnapshotOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_cluster_snapshots:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeClusterSnapshots&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeClusterSnapshotsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        modify_cluster_snapshot:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyClusterSnapshot&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyClusterSnapshotOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/describe_cluster_snapshots"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/create_cluster_snapshot"
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/modify_cluster_snapshot"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/cluster_snapshots/methods/delete_cluster_snapshot"
     cluster_subnet_groups:
       id: aws.redshift.cluster_subnet_groups
       name: cluster_subnet_groups
@@ -15456,6 +15939,18 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        modify_cluster_snapshot_schedule:
+          operation:
+            $ref: "#/paths/~1?Action=ModifyClusterSnapshotSchedule&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         modify_snapshot_schedule:
           operation:
             $ref: "#/paths/~1?Action=ModifySnapshotSchedule&Version=2012-12-01/get"
@@ -15482,6 +15977,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/snapshot_schedules/methods/create_snapshot_schedule"
         update:
           - $ref: "#/components/x-stackQL-resources/snapshot_schedules/methods/modify_snapshot_schedule"
+          - $ref: "#/components/x-stackQL-resources/snapshot_schedules/methods/modify_cluster_snapshot_schedule"
         delete:
           - $ref: "#/components/x-stackQL-resources/snapshot_schedules/methods/delete_snapshot_schedule"
     tags:
@@ -15836,6 +16332,23 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        reset_cluster_parameter_group:
+          operation:
+            $ref: "#/paths/~1?Action=ResetClusterParameterGroup&Version=2012-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ResetClusterParameterGroupOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -16261,31 +16774,18 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/reserved_node_offerings/methods/describe_reserved_node_offerings"
-        insert: []
-        update: []
-        delete: []
-    reserved_nodes:
-      id: aws.redshift.reserved_nodes
-      name: reserved_nodes
-      title: reserved_nodes
-      methods:
-        describe_reserved_nodes:
+        purchase_reserved_node_offering:
           operation:
-            $ref: "#/paths/~1?Action=DescribeReservedNodes&Version=2012-12-01/get"
+            $ref: "#/paths/~1?Action=PurchaseReservedNodeOffering&Version=2012-12-01/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/xml
             overrideMediaType: application/json
             schema_override:
-              $ref: "#/components/schemas/DescribeReservedNodesOutputDisplay"
+              $ref: "#/components/schemas/PurchaseReservedNodeOfferingOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -16293,7 +16793,7 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/reserved_nodes/methods/describe_reserved_nodes"
+          - $ref: "#/components/x-stackQL-resources/reserved_node_offerings/methods/describe_reserved_node_offerings"
         insert: []
         update: []
         delete: []
@@ -16312,7 +16812,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/DescribeResizeOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "DescribeResizeResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DescribeResizeResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n) "map" -}}"target_node_type": {{ toJson (index $n "TargetNodeType") }}, "target_number_of_nodes": {{ toJson (index $n "TargetNumberOfNodes") }}, "target_cluster_type": {{ toJson (index $n "TargetClusterType") }}, "status": {{ toJson (index $n "Status") }}, "import_tables_completed": {{ toJson (index $n "ImportTablesCompleted") }}, "import_tables_in_progress": {{ toJson (index $n "ImportTablesInProgress") }}, "import_tables_not_started": {{ toJson (index $n "ImportTablesNotStarted") }}, "avg_resize_rate_in_mega_bytes_per_second": {{ toJson (index $n "AvgResizeRateInMegaBytesPerSecond") }}, "total_resize_data_in_mega_bytes": {{ toJson (index $n "TotalResizeDataInMegaBytes") }}, "progress_in_mega_bytes": {{ toJson (index $n "ProgressInMegaBytes") }}, "elapsed_time_in_seconds": {{ toJson (index $n "ElapsedTimeInSeconds") }}, "estimated_time_to_completion_in_seconds": {{ toJson (index $n "EstimatedTimeToCompletionInSeconds") }}, "resize_type": {{ toJson (index $n "ResizeType") }}, "message": {{ toJson (index $n "Message") }}, "target_encryption_type": {{ toJson (index $n "TargetEncryptionType") }}, "data_transfer_progress_percent": {{ toJson (index $n "DataTransferProgressPercent") }}{{- end -}}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -16564,207 +17065,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/recommendations/methods/list_recommendations"
         insert: []
         update: []
-        delete: []
-    aqua_configurations:
-      id: aws.redshift.aqua_configurations
-      name: aqua_configurations
-      title: aqua_configurations
-      methods:
-        modify_aqua_configuration:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyAquaConfiguration&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyAquaConfigurationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/aqua_configurations/methods/modify_aqua_configuration"
-        delete: []
-    cluster_iam_roles:
-      id: aws.redshift.cluster_iam_roles
-      name: cluster_iam_roles
-      title: cluster_iam_roles
-      methods:
-        modify_cluster_iam_roles:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyClusterIamRoles&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyClusterIamRolesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_iam_roles/methods/modify_cluster_iam_roles"
-        delete: []
-    cluster_maintenances:
-      id: aws.redshift.cluster_maintenances
-      name: cluster_maintenances
-      title: cluster_maintenances
-      methods:
-        modify_cluster_maintenance:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyClusterMaintenance&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyClusterMaintenanceOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_maintenances/methods/modify_cluster_maintenance"
-        delete: []
-    cluster_snapshot_schedules:
-      id: aws.redshift.cluster_snapshot_schedules
-      name: cluster_snapshot_schedules
-      title: cluster_snapshot_schedules
-      methods:
-        modify_cluster_snapshot_schedule:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyClusterSnapshotSchedule&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_snapshot_schedules/methods/modify_cluster_snapshot_schedule"
-        delete: []
-    lakehouse_configurations:
-      id: aws.redshift.lakehouse_configurations
-      name: lakehouse_configurations
-      title: lakehouse_configurations
-      methods:
-        modify_lakehouse_configuration:
-          operation:
-            $ref: "#/paths/~1?Action=ModifyLakehouseConfiguration&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifyLakehouseConfigurationOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/lakehouse_configurations/methods/modify_lakehouse_configuration"
-        delete: []
-    snapshot_copy_retention_periods:
-      id: aws.redshift.snapshot_copy_retention_periods
-      name: snapshot_copy_retention_periods
-      title: snapshot_copy_retention_periods
-      methods:
-        modify_snapshot_copy_retention_period:
-          operation:
-            $ref: "#/paths/~1?Action=ModifySnapshotCopyRetentionPeriod&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ModifySnapshotCopyRetentionPeriodOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/snapshot_copy_retention_periods/methods/modify_snapshot_copy_retention_period"
-        delete: []
-    partner_status:
-      id: aws.redshift.partner_status
-      name: partner_status
-      title: partner_status
-      methods:
-        update_partner_status:
-          operation:
-            $ref: "#/paths/~1?Action=UpdatePartnerStatus&Version=2012-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdatePartnerStatusOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/partner_status/methods/update_partner_status"
         delete: []

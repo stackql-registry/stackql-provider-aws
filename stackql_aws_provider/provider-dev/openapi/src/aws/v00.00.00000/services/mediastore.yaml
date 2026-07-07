@@ -478,7 +478,6 @@ paths:
                   description: "The contents of the policy, which includes the following: One Version tag One Statement tag that contains the standard tags for the policy."
               required:
                 - ContainerName
-                - Policy
       responses:
         "200":
           description: Success
@@ -692,7 +691,6 @@ paths:
                   description: "An array of key:value pairs that you want to add to the container. You need to specify only the tags that you want to add or update. For example, suppose a container already has two tags (customer:CompanyA and priority:High). You want to change the priority tag and also add a third tag (type:Contract). For TagResource, you specify the following tags: priority:Medium, type:Contract. The result is that your container has three tags: customer:CompanyA, priority:Medium, and type:Contract."
               required:
                 - Resource
-                - Tags
       responses:
         "200":
           description: Success
@@ -1120,6 +1118,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Container
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1134,6 +1133,39 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Containers
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_access_logging:
+          operation:
+            $ref: "#/paths/~1StartAccessLogging/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_access_logging:
+          operation:
+            $ref: "#/paths/~1StopAccessLogging/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1332,6 +1364,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.MetricPolicy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1361,10 +1394,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/metric_policies/methods/put_metric_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/metric_policies/methods/delete_metric_policy"
-    tags_for_resources:
-      id: aws.mediastore.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mediastore.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1379,17 +1412,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mediastore.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1417,9 +1439,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

@@ -167,7 +167,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelDeploymentResponse'
-      x-stackql-resource: deployment
+      x-stackql-resource: deployments
       x-stackql-method: cancel_deployment
       x-stackql-verb: EXEC
   /greengrass/v2/createComponentVersion:
@@ -303,6 +303,9 @@ paths:
       x-stackql-method: list_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.deployments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /greengrass/v2/components/{arn}:
     delete:
       operationId: DeleteComponent
@@ -595,6 +598,9 @@ paths:
       x-stackql-method: list_client_devices_associated_with_core_device
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.associatedClientDevices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /greengrass/v2/components/{arn}/versions:
     get:
       operationId: ListComponentVersions
@@ -629,6 +635,9 @@ paths:
       x-stackql-method: list_component_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.componentVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /greengrass/v2/components:
     get:
       operationId: ListComponents
@@ -664,6 +673,9 @@ paths:
       x-stackql-method: list_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.components
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /greengrass/v2/coreDevices:
     get:
       operationId: ListCoreDevices
@@ -724,6 +736,9 @@ paths:
       x-stackql-method: list_core_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.coreDevices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /greengrass/v2/coreDevices/{core_device_thing_name}/effectiveDeployments:
     get:
       operationId: ListEffectiveDeployments
@@ -758,6 +773,9 @@ paths:
       x-stackql-method: list_effective_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.effectiveDeployments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /greengrass/v2/coreDevices/{core_device_thing_name}/installedComponents:
     get:
       operationId: ListInstalledComponents
@@ -810,6 +828,9 @@ paths:
       x-stackql-method: list_installed_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.installedComponents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -828,7 +849,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -860,7 +881,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -886,7 +907,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /greengrass/v2/resolveComponentCandidates:

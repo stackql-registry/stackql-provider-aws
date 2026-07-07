@@ -1,0 +1,10 @@
+{
+  "services": 413,
+  "resources": 5985,
+  "methods": 17448,
+  "selectableResources": 5785,
+  "nonSelectableResources": 200,
+  "nonSelectableRatioPct": 3.34,
+  "ratioTolerancePct": 0.5,
+  "note": "Regression baseline - counts must not fall, ratio must not spike. Update via generate-provider.mjs --update-benchmarks only."
+}

@@ -80,7 +80,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDevicePositionHistoryResponse'
-      x-stackql-resource: batch_delete_device_position_history
+      x-stackql-resource: trackers
       x-stackql-method: batch_delete_device_position_history
       x-stackql-verb: EXEC
   /geofencing/v0/collections/{collection_name}/delete-geofences:
@@ -112,7 +112,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteGeofenceResponse'
-      x-stackql-resource: batch_delete_geofence
+      x-stackql-resource: geofences
       x-stackql-method: batch_delete_geofence
       x-stackql-verb: EXEC
   /geofencing/v0/collections/{collection_name}/positions:
@@ -151,7 +151,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchEvaluateGeofencesResponse'
-      x-stackql-resource: batch_evaluate_geofences
+      x-stackql-resource: geofences
       x-stackql-method: batch_evaluate_geofences
       x-stackql-verb: EXEC
   /tracking/v0/trackers/{tracker_name}/get-positions:
@@ -259,7 +259,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateDevicePositionResponse'
-      x-stackql-resource: batch_update_device_position
+      x-stackql-resource: trackers
       x-stackql-method: batch_update_device_position
       x-stackql-verb: EXEC
   /routes/v0/calculators/{calculator_name}/calculate/route:
@@ -1304,6 +1304,9 @@ paths:
       x-stackql-resource: forecast_geofence_events
       x-stackql-method: forecast_geofence_events
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tracking/v0/trackers/{tracker_name}/devices/{device_id}/positions/latest:
     get:
       operationId: GetDevicePosition
@@ -1376,6 +1379,9 @@ paths:
       x-stackql-method: get_device_position_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DevicePositions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /geofencing/v0/collections/{collection_name}/geofences/{geofence_id}:
     get:
       operationId: GetGeofence
@@ -1721,6 +1727,7 @@ paths:
       x-stackql-resource: places
       x-stackql-method: get_place
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Place
   /tracking/v0/trackers/{tracker_name}/list-positions:
     post:
       operationId: ListDevicePositions
@@ -1756,6 +1763,9 @@ paths:
       x-stackql-method: list_device_positions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /geofencing/v0/list-collections:
     post:
       operationId: ListGeofenceCollections
@@ -1783,6 +1793,9 @@ paths:
       x-stackql-method: list_geofence_collections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /geofencing/v0/collections/{collection_name}/list-geofences:
     post:
       operationId: ListGeofences
@@ -1816,6 +1829,9 @@ paths:
       x-stackql-method: list_geofences
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /metadata/v0/jobs/list-jobs:
     post:
       operationId: ListJobs
@@ -1846,6 +1862,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /metadata/v0/list-keys:
     post:
       operationId: ListKeys
@@ -1876,6 +1895,9 @@ paths:
       x-stackql-method: list_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /maps/v0/list-maps:
     post:
       operationId: ListMaps
@@ -1910,6 +1932,9 @@ paths:
       x-stackql-method: list_maps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /places/v0/list-indexes:
     post:
       operationId: ListPlaceIndexes
@@ -1944,6 +1969,9 @@ paths:
       x-stackql-method: list_place_indexes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /routes/v0/list-calculators:
     post:
       operationId: ListRouteCalculators
@@ -1978,6 +2006,9 @@ paths:
       x-stackql-method: list_route_calculators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1996,7 +2027,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2033,7 +2064,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2059,7 +2090,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /tracking/v0/trackers/{tracker_name}/list-consumers:
@@ -2090,11 +2121,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTrackerConsumersResponse'
+                $ref: '#/components/schemas/ListTrackerConsumersOutputDisplay'
       x-stackql-resource: tracker_consumers
       x-stackql-method: list_tracker_consumers
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ConsumerArns
+      x-stackql-responseEnvelope: ListTrackerConsumersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ConsumerArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"consumer_arn": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tracking/v0/list-trackers:
     post:
       operationId: ListTrackers
@@ -2122,6 +2161,9 @@ paths:
       x-stackql-method: list_trackers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /places/v0/indexes/{index_name}/search/position:
     post:
       operationId: SearchPlaceIndexForPosition
@@ -2374,7 +2416,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyDevicePositionResponse'
-      x-stackql-resource: device_position
+      x-stackql-resource: trackers
       x-stackql-method: verify_device_position
       x-stackql-verb: EXEC
 components:
@@ -4944,22 +4986,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListTrackerConsumersResponse:
+    ListTrackerConsumersRowDisplay:
       type: object
       properties:
-        ConsumerArns:
-          $ref: '#/components/schemas/ArnList'
+        consumer_arn:
+          type: string
           description: Contains the list of geofence collection ARNs associated to the tracker resource.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: A pagination token indicating there are additional pages available. You can use the token in a following
-            request to fetch the next set of results.
-      required:
-      - ConsumerArns
-    ArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Arn'
+    ListTrackerConsumersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTrackerConsumersRowDisplay'
     ListTrackersRequestMaxResultsInteger:
       type: integer
       minimum: 1

@@ -155,7 +155,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateMediaInsightsPipelineResponse'
-      x-stackql-resource: media_insights_pipelines
+      x-stackql-resource: media_insights_pipeline_configurations
       x-stackql-method: create_media_insights_pipeline
       x-stackql-verb: INSERT
   /media-insights-pipeline-configurations:
@@ -391,6 +391,7 @@ paths:
       x-stackql-resource: media_capture_pipelines
       x-stackql-method: get_media_capture_pipeline
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MediaCapturePipeline
   /media-insights-pipeline-configurations/{identifier}:
     delete:
       operationId: DeleteMediaInsightsPipelineConfiguration
@@ -430,6 +431,7 @@ paths:
       x-stackql-resource: media_insights_pipeline_configurations
       x-stackql-method: get_media_insights_pipeline_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MediaInsightsPipelineConfiguration
     put:
       operationId: UpdateMediaInsightsPipelineConfiguration
       description: Updates the media insights pipeline's configuration settings.
@@ -504,6 +506,7 @@ paths:
       x-stackql-resource: media_pipelines
       x-stackql-method: get_media_pipeline
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MediaPipeline
   /media-pipeline-kinesis-video-stream-pools/{identifier}:
     delete:
       operationId: DeleteMediaPipelineKinesisVideoStreamPool
@@ -543,6 +546,7 @@ paths:
       x-stackql-resource: media_pipeline_kinesis_video_stream_pools
       x-stackql-method: get_media_pipeline_kinesis_video_stream_pool
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.KinesisVideoStreamPoolConfiguration
     put:
       operationId: UpdateMediaPipelineKinesisVideoStreamPool
       description: Updates an Amazon Kinesis Video Stream pool in a media pipeline.
@@ -601,6 +605,7 @@ paths:
       x-stackql-resource: speaker_search_tasks
       x-stackql-method: get_speaker_search_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SpeakerSearchTask
   /media-insights-pipelines/{identifier}/voice-tone-analysis-tasks/{voice_tone_analysis_task_id}:
     get:
       operationId: GetVoiceToneAnalysisTask
@@ -629,6 +634,7 @@ paths:
       x-stackql-resource: voice_tone_analysis_tasks
       x-stackql-method: get_voice_tone_analysis_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceToneAnalysisTask
   /sdk-media-pipelines:
     get:
       operationId: ListMediaPipelines
@@ -675,7 +681,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /media-insights-pipelines/{identifier}/speaker-search-tasks?operation=start:
@@ -832,7 +838,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /tags?operation=untag-resource:
@@ -861,7 +867,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /media-insights-pipeline-status/{identifier}:

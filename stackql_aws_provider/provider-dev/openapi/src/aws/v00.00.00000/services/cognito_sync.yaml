@@ -241,8 +241,6 @@ paths:
               properties:
                 Events:
                   $ref: "#/components/schemas/Events"
-              required:
-                - Events
       responses:
         "200":
           description: Success
@@ -983,6 +981,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Dataset
         list_datasets:
           operation:
             $ref: "#/paths/~1identitypools~1{identity_pool_id}~1identities~1{identity_id}~1datasets/get"
@@ -991,6 +990,18 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        subscribe_to_dataset:
+          operation:
+            $ref: "#/paths/~1identitypools~1{identity_pool_id}~1identities~1{identity_id}~1datasets~1{dataset_name}~1subscriptions~1{device_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        unsubscribe_from_dataset:
+          operation:
+            $ref: "#/paths/~1identitypools~1{identity_pool_id}~1identities~1{identity_id}~1datasets~1{dataset_name}~1subscriptions~1{device_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/datasets/methods/describe_dataset"
@@ -1041,6 +1052,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.IdentityPoolUsage
         list_identity_pool_usage:
           operation:
             $ref: "#/paths/~1identitypools/get"
@@ -1067,6 +1079,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.IdentityUsage
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/identity_usages/methods/describe_identity_usage"

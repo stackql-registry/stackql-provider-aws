@@ -231,6 +231,7 @@ paths:
       x-stackql-resource: billing_views
       x-stackql-method: get_billing_view
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.billingView
   /GetResourcePolicy:
     post:
       operationId: GetResourcePolicy
@@ -329,6 +330,9 @@ paths:
       x-stackql-method: list_billing_views
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.billingViews
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSourceViewsForBillingView:
     post:
       operationId: ListSourceViewsForBillingView
@@ -367,11 +371,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSourceViewsForBillingViewResponse'
+                $ref: '#/components/schemas/ListSourceViewsForBillingViewOutputDisplay'
       x-stackql-resource: source_views_for_billing_views
       x-stackql-method: list_source_views_for_billing_view
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.sourceViews
+      x-stackql-responseEnvelope: ListSourceViewsForBillingViewOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "sourceViews" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"source_view": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -405,7 +417,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /TagResource:
@@ -445,7 +457,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -485,7 +497,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateBillingView:
@@ -962,17 +974,19 @@ components:
         healthStatus:
           $ref: '#/components/schemas/BillingViewHealthStatus'
           description: The current health status of the billing view.
-    ListSourceViewsForBillingViewResponse:
+    ListSourceViewsForBillingViewRowDisplay:
       type: object
       properties:
-        sourceViews:
-          $ref: '#/components/schemas/BillingViewSourceViewsList'
+        source_view:
+          type: string
           description: A list of billing views used as the data source for the custom billing view.
-        nextToken:
-          $ref: '#/components/schemas/PageToken'
-          description: The pagination token that is used on subsequent calls to list billing views.
-      required:
-      - sourceViews
+    ListSourceViewsForBillingViewOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSourceViewsForBillingViewRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

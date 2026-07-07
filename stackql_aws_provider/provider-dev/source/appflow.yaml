@@ -51,7 +51,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelFlowExecutionsResponse'
-      x-stackql-resource: flow_executions
+      x-stackql-resource: flows
       x-stackql-method: cancel_flow_executions
       x-stackql-verb: EXEC
   /create-connector-profile:
@@ -235,6 +235,7 @@ paths:
       x-stackql-resource: connectors
       x-stackql-method: describe_connector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.connectorConfiguration
   /describe-connector-entity:
     post:
       operationId: DescribeConnectorEntity
@@ -495,7 +496,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -526,7 +527,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -552,7 +553,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /register-connector:
@@ -622,7 +623,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetConnectorMetadataCacheResponse'
-      x-stackql-resource: connector_metadata_cache
+      x-stackql-resource: connectors
       x-stackql-method: reset_connector_metadata_cache
       x-stackql-verb: EXEC
   /start-flow:
@@ -651,7 +652,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFlowResponse'
-      x-stackql-resource: flow
+      x-stackql-resource: flows
       x-stackql-method: start_flow
       x-stackql-verb: EXEC
   /stop-flow:
@@ -678,7 +679,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopFlowResponse'
-      x-stackql-resource: flow
+      x-stackql-resource: flows
       x-stackql-method: stop_flow
       x-stackql-verb: EXEC
   /unregister-connector:
@@ -775,7 +776,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateConnectorRegistrationResponse'
-      x-stackql-resource: connector_registrations
+      x-stackql-resource: connectors
       x-stackql-method: update_connector_registration
       x-stackql-verb: UPDATE
   /update-flow:

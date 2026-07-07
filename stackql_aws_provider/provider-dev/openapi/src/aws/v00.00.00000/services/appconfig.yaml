@@ -35,8 +35,6 @@ paths:
                   $ref: "#/components/schemas/Description"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -102,7 +100,6 @@ paths:
                 KmsKeyIdentifier:
                   $ref: "#/components/schemas/KmsKeyIdentifier"
               required:
-                - Name
                 - LocationUri
       responses:
         "201":
@@ -175,7 +172,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - DeploymentDurationInMinutes
                 - GrowthFactor
       responses:
@@ -234,8 +230,6 @@ paths:
                   $ref: "#/components/schemas/MonitorList"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -300,9 +294,6 @@ paths:
                   $ref: "#/components/schemas/ParameterMap"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
-                - Actions
       responses:
         "201":
           description: Success
@@ -462,8 +453,6 @@ paths:
               properties:
                 Content:
                   $ref: "#/components/schemas/Blob"
-              required:
-                - Content
       responses:
         "201":
           description: Success
@@ -1258,8 +1247,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -2180,6 +2167,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -2196,6 +2191,23 @@ components:
             $ref: "#/paths/~1applications~1{application_id}/patch"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_deployment:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1environments~1{environment_id}~1deployments~1{deployment_number}/delete"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        start_deployment:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1environments~1{environment_id}~1deployments/post"
+          response:
+            openAPIDocKey: "201"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -2237,6 +2249,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_configuration_profile:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1configurationprofiles~1{configuration_profile_id}/delete"
@@ -2259,6 +2279,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        validate_configuration:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1configurationprofiles~1{configuration_profile_id}~1validators/post"
+          response:
+            openAPIDocKey: "204"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_profiles/methods/get_configuration_profile"
@@ -2294,6 +2319,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_deployment_strategy:
           operation:
             $ref: "#/paths/~1deployementstrategies~1{deployment_strategy_id}/delete"
@@ -2351,6 +2384,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_environment:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1environments~1{environment_id}/delete"
@@ -2408,6 +2449,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_extension:
           operation:
             $ref: "#/paths/~1extensions~1{extension_identifier}/delete"
@@ -2469,6 +2518,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_extension_association:
           operation:
             $ref: "#/paths/~1extensionassociations~1{extension_association_id}/delete"
@@ -2526,6 +2583,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_hosted_configuration_version:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1configurationprofiles~1{configuration_profile_id}~1hostedconfigurationversions~1{version_number}/delete"
@@ -2557,6 +2622,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DeletionProtection
         update_account_settings:
           operation:
             $ref: "#/paths/~1settings/patch"
@@ -2614,6 +2680,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next_token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/deployments/methods/get_deployment"
@@ -2621,10 +2695,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.appconfig.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.appconfig.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2632,17 +2706,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.appconfig.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2661,9 +2724,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

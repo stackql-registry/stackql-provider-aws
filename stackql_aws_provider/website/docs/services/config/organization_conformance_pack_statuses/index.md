@@ -1,0 +1,152 @@
+--- 
+title: organization_conformance_pack_statuses
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - organization_conformance_pack_statuses
+  - config
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists an <code>organization_conformance_pack_statuses</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="organization_conformance_pack_statuses" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.config.organization_conformance_pack_statuses" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="describe_organization_conformance_pack_statuses"
+    values={[
+        { label: 'describe_organization_conformance_pack_statuses', value: 'describe_organization_conformance_pack_statuses' }
+    ]}
+>
+<TabItem value="describe_organization_conformance_pack_statuses">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="ErrorCode" /></td>
+    <td><code>string</code></td>
+    <td>An error code that is returned when organization conformance pack creation or deletion has failed in a member account.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ErrorMessage" /></td>
+    <td><code>string</code></td>
+    <td>An error message indicating that organization conformance pack creation or deletion failed due to an error.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="LastUpdateTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The timestamp of the last update.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="OrganizationConformancePackName" /></td>
+    <td><code>string</code></td>
+    <td>The name that you assign to organization conformance pack. (pattern: &lt;code&gt;&#91;a-zA-Z&#93;&#91;-a-zA-Z0-9&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Status" /></td>
+    <td><code>string</code></td>
+    <td>Indicates deployment status of an organization conformance pack. When management account calls PutOrganizationConformancePack for the first time, conformance pack status is created in all the member accounts. When management account calls PutOrganizationConformancePack for the second time, conformance pack status is updated in all the member accounts. Additionally, conformance pack status is updated when one or more member accounts join or leave an organization. Conformance pack status is deleted when the management account deletes OrganizationConformancePack in all the member accounts and disables service access for config-multiaccountsetup.amazonaws.com. Config sets the state of the conformance pack to: CREATE_SUCCESSFUL when an organization conformance pack has been successfully created in all the member accounts. CREATE_IN_PROGRESS when an organization conformance pack creation is in progress. CREATE_FAILED when an organization conformance pack creation failed in one or more member accounts within that organization. DELETE_FAILED when an organization conformance pack deletion failed in one or more member accounts within that organization. DELETE_IN_PROGRESS when an organization conformance pack deletion is in progress. DELETE_SUCCESSFUL when an organization conformance pack has been successfully deleted from all the member accounts. UPDATE_SUCCESSFUL when an organization conformance pack has been successfully updated in all the member accounts. UPDATE_IN_PROGRESS when an organization conformance pack update is in progress. UPDATE_FAILED when an organization conformance pack update failed in one or more member accounts within that organization. (CREATE_SUCCESSFUL, CREATE_IN_PROGRESS, CREATE_FAILED, DELETE_SUCCESSFUL, DELETE_FAILED, DELETE_IN_PROGRESS, UPDATE_SUCCESSFUL, UPDATE_IN_PROGRESS, UPDATE_FAILED)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#describe_organization_conformance_pack_statuses"><CopyableCode code="describe_organization_conformance_pack_statuses" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Provides organization conformance pack deployment status for an organization. The status is not considered successful until organization conformance pack is successfully deployed in all the member accounts with an exception of excluded accounts. When you specify the limit and the next token, you receive a paginated response. Limit and next token are not applicable if you specify organization conformance pack names. They are only applicable, when you request all the organization conformance packs.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="describe_organization_conformance_pack_statuses"
+    values={[
+        { label: 'describe_organization_conformance_pack_statuses', value: 'describe_organization_conformance_pack_statuses' }
+    ]}
+>
+<TabItem value="describe_organization_conformance_pack_statuses">
+
+Provides organization conformance pack deployment status for an organization. The status is not considered successful until organization conformance pack is successfully deployed in all the member accounts with an exception of excluded accounts. When you specify the limit and the next token, you receive a paginated response. Limit and next token are not applicable if you specify organization conformance pack names. They are only applicable, when you request all the organization conformance packs.
+
+```sql
+SELECT
+ErrorCode,
+ErrorMessage,
+LastUpdateTime,
+OrganizationConformancePackName,
+Status
+FROM aws.config.organization_conformance_pack_statuses
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>

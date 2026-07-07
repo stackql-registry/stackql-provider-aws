@@ -1312,7 +1312,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAllowedRepositoriesForGroupResult"
+                $ref: "#/components/schemas/ListAllowedRepositoriesForGroupOutputDisplay"
   /v1/list-associated-packages:
     get:
       operationId: ListAssociatedPackages
@@ -2834,19 +2834,19 @@ components:
       minLength: 1
       maxLength: 2000
       pattern: \S+
-    ListAllowedRepositoriesForGroupResult:
+    ListAllowedRepositoriesForGroupRowDisplay:
       type: object
       properties:
-        allowedRepositories:
-          $ref: "#/components/schemas/RepositoryNameList"
+        allowed_repository:
+          type: string
           description: The list of allowed repositories for the package group and origin configuration restriction type.
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
-    RepositoryNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/RepositoryName"
+    ListAllowedRepositoriesForGroupOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAllowedRepositoriesForGroupRowDisplay"
     ListPackagesMaxResults:
       type: integer
       minimum: 1
@@ -3327,8 +3327,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select: []
         insert: []
@@ -3368,8 +3366,20 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.packageVersion
           request:
             nativeCasing: pascal
+        dispose_package_versions:
+          operation:
+            $ref: "#/paths/~1v1~1package~1versions~1dispose/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_package_versions:
           operation:
             $ref: "#/paths/~1v1~1package~1versions/post"
@@ -3379,12 +3389,32 @@ components:
             objectKey: $.versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        update_package_versions_status:
+          operation:
+            $ref: "#/paths/~1v1~1package~1versions~1update_status/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_versions/methods/describe_package_version"
           - $ref: "#/components/x-stackQL-resources/package_versions/methods/list_package_versions"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/package_versions/methods/update_package_versions_status"
         delete:
           - $ref: "#/components/x-stackQL-resources/package_versions/methods/delete_package_versions"
     domains:
@@ -3417,6 +3447,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.domain
           request:
             nativeCasing: pascal
         list_domains:
@@ -3429,6 +3460,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3470,6 +3508,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.packageGroup
           request:
             nativeCasing: pascal
         update_package_group:
@@ -3492,6 +3531,25 @@ components:
             objectKey: $.packageGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        update_package_group_origin_configuration:
+          operation:
+            $ref: "#/paths/~1v1~1package-group-origin-configuration/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/describe_package_group"
@@ -3500,6 +3558,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/create_package_group"
         update:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/update_package_group"
+          - $ref: "#/components/x-stackQL-resources/package_groups/methods/update_package_group_origin_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/package_groups/methods/delete_package_group"
     repositories:
@@ -3532,6 +3591,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.repository
           request:
             nativeCasing: pascal
         update_repository:
@@ -3554,6 +3614,14 @@ components:
             objectKey: $.repositories
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/repositories/methods/describe_repository"
@@ -3583,6 +3651,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.policy
           request:
             nativeCasing: pascal
         put_domain_permissions_policy:
@@ -3624,30 +3693,9 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.package
           request:
             nativeCasing: pascal
-        list_packages:
-          operation:
-            $ref: "#/paths/~1v1~1packages/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.packages
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/packages/methods/describe_package"
-          - $ref: "#/components/x-stackQL-resources/packages/methods/list_packages"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/packages/methods/delete_package"
-    package_origin_configurations:
-      id: aws.codeartifact.package_origin_configurations
-      name: package_origin_configurations
-      title: package_origin_configurations
-      methods:
         put_package_origin_configuration:
           operation:
             $ref: "#/paths/~1v1~1package/post"
@@ -3659,13 +3707,44 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_packages:
+          operation:
+            $ref: "#/paths/~1v1~1packages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.packages
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        publish_package_version:
+          operation:
+            $ref: "#/paths/~1v1~1package~1version~1publish/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/packages/methods/describe_package"
+          - $ref: "#/components/x-stackQL-resources/packages/methods/list_packages"
         insert: []
         update: []
         replace:
-          - $ref: "#/components/x-stackQL-resources/package_origin_configurations/methods/put_package_origin_configuration"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/packages/methods/put_package_origin_configuration"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/packages/methods/delete_package"
     repository_permissions_policies:
       id: aws.codeartifact.repository_permissions_policies
       name: repository_permissions_policies
@@ -3685,6 +3764,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.policy
           request:
             nativeCasing: pascal
         put_repository_permissions_policy:
@@ -3767,6 +3847,14 @@ components:
             objectKey: $.assets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/package_version_assets/methods/get_package_version_asset"
@@ -3823,9 +3911,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.allowedRepositories
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAllowedRepositoriesForGroupOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "allowedRepositories" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"allowed_repository": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/allowed_repositories_for_groups/methods/list_allowed_repositories_for_group"
@@ -3846,6 +3948,14 @@ components:
             objectKey: $.packages
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_packages/methods/list_associated_packages"
@@ -3885,6 +3995,14 @@ components:
             objectKey: $.repositories
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/repositories_in_domains/methods/list_repositories_in_domain"
@@ -3905,16 +4023,24 @@ components:
             objectKey: $.packageGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sub_package_groups/methods/list_sub_package_groups"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.codeartifact.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.codeartifact.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3924,17 +4050,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.codeartifact.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tag/post"
@@ -3958,53 +4073,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    package_group_origin_configurations:
-      id: aws.codeartifact.package_group_origin_configurations
-      name: package_group_origin_configurations
-      title: package_group_origin_configurations
-      methods:
-        update_package_group_origin_configuration:
-          operation:
-            $ref: "#/paths/~1v1~1package-group-origin-configuration/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/package_group_origin_configurations/methods/update_package_group_origin_configuration"
-        delete: []
-    package_versions_status:
-      id: aws.codeartifact.package_versions_status
-      name: package_versions_status
-      title: package_versions_status
-      methods:
-        update_package_versions_status:
-          operation:
-            $ref: "#/paths/~1v1~1package~1versions~1update_status/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/package_versions_status/methods/update_package_versions_status"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -241,10 +241,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetRevocationStatusResponse'
+                $ref: '#/components/schemas/GetRevocationStatusOutputDisplay'
       x-stackql-resource: revocation_status
       x-stackql-method: get_revocation_status
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetRevocationStatusOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "revokedEntities" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"revoked_entity": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /signing-platforms/{platform_id}:
     get:
       operationId: GetSigningPlatform
@@ -344,6 +349,9 @@ paths:
       x-stackql-method: list_signing_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartSigningJob
       description: 'Initiates a signing job to be performed on the code provided. Signing jobs are viewable by the ListSigningJobs
@@ -438,6 +446,9 @@ paths:
       x-stackql-method: list_signing_platforms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.platforms
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /signing-profiles:
     get:
       operationId: ListSigningProfiles
@@ -490,6 +501,9 @@ paths:
       x-stackql-method: list_signing_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.profiles
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -508,7 +522,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -541,7 +555,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -567,7 +581,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /signing-profiles/{profile_name}/permissions/{statement_id}:
@@ -972,17 +986,20 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/String'
-    GetRevocationStatusResponse:
+    GetRevocationStatusRowDisplay:
       type: object
       properties:
-        revokedEntities:
-          $ref: '#/components/schemas/RevokedEntities'
+        revoked_entity:
+          type: string
           description: A list of revoked entities (including zero or more of the signing profile ARN, signing job ARN, and
             certificate hashes) supplied as input to the API.
-    RevokedEntities:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    GetRevocationStatusOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetRevocationStatusRowDisplay'
     GetSigningPlatformResponse:
       type: object
       properties:

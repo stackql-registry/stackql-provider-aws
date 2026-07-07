@@ -99,7 +99,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateWhatsAppMessageTemplateFromLibraryOutput'
-      x-stackql-resource: whats_app_message_template_from_libraries
+      x-stackql-resource: whats_app_message_templates
       x-stackql-method: create_whats_app_message_template_from_library
       x-stackql-verb: INSERT
   /v1/whatsapp/template/media:
@@ -127,7 +127,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateWhatsAppMessageTemplateMediaOutput'
-      x-stackql-resource: whats_app_message_template_medias
+      x-stackql-resource: whats_app_message_templates
       x-stackql-method: create_whats_app_message_template_media
       x-stackql-verb: INSERT
   /v1/whatsapp/media:
@@ -354,6 +354,7 @@ paths:
       x-stackql-resource: linked_whats_app_business_accounts
       x-stackql-method: get_linked_whats_app_business_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.account
   /v1/whatsapp/waba/phone/details:
     get:
       operationId: GetLinkedWhatsAppBusinessAccountPhoneNumber
@@ -441,6 +442,9 @@ paths:
       x-stackql-method: list_linked_whats_app_business_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.linkedAccounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags/list:
     get:
       operationId: ListTagsForResource
@@ -459,7 +463,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /v1/whatsapp/template/list:
@@ -496,6 +500,9 @@ paths:
       x-stackql-method: list_whats_app_message_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/whatsapp/template/library:
     post:
       operationId: ListWhatsAppTemplateLibrary
@@ -531,6 +538,9 @@ paths:
       x-stackql-method: list_whats_app_template_library
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.metaLibraryTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/whatsapp/waba/eventdestinations:
     put:
       operationId: PutWhatsAppBusinessAccountEventDestinations
@@ -621,7 +631,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /v1/tags/untag-resource:
@@ -650,7 +660,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

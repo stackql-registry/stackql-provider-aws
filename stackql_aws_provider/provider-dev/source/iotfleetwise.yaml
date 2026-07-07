@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateVehicleFleetResponse'
-      x-stackql-resource: vehicle_fleets
+      x-stackql-resource: fleets
       x-stackql-method: associate_vehicle_fleet
       x-stackql-verb: UPDATE
   /BatchCreateVehicle:
@@ -884,7 +884,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateVehicleFleetResponse'
-      x-stackql-resource: vehicle_fleets
+      x-stackql-resource: fleets
       x-stackql-method: disassociate_vehicle_fleet
       x-stackql-verb: UPDATE
   /GetCampaign:
@@ -1057,6 +1057,7 @@ paths:
       x-stackql-resource: logging_options
       x-stackql-method: get_logging_options
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.cloudWatchLogDelivery
   /GetModelManifest:
     post:
       operationId: GetModelManifest
@@ -1285,6 +1286,9 @@ paths:
       x-stackql-method: get_vehicle_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.campaigns
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ImportDecoderManifest:
     post:
       operationId: ImportDecoderManifest
@@ -1422,6 +1426,9 @@ paths:
       x-stackql-method: list_campaigns
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.campaignSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDecoderManifestNetworkInterfaces:
     post:
       operationId: ListDecoderManifestNetworkInterfaces
@@ -1469,6 +1476,9 @@ paths:
       x-stackql-method: list_decoder_manifest_network_interfaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.networkInterfaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDecoderManifestSignals:
     post:
       operationId: ListDecoderManifestSignals
@@ -1516,6 +1526,9 @@ paths:
       x-stackql-method: list_decoder_manifest_signals
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.signalDecoders
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDecoderManifests:
     post:
       operationId: ListDecoderManifests
@@ -1566,6 +1579,9 @@ paths:
       x-stackql-method: list_decoder_manifests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListFleets:
     post:
       operationId: ListFleets
@@ -1612,6 +1628,9 @@ paths:
       x-stackql-method: list_fleets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.fleetSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListFleetsForVehicle:
     post:
       operationId: ListFleetsForVehicle
@@ -1654,11 +1673,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFleetsForVehicleResponse'
+                $ref: '#/components/schemas/ListFleetsForVehicleOutputDisplay'
       x-stackql-resource: fleets_for_vehicles
       x-stackql-method: list_fleets_for_vehicle
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.fleets
+      x-stackql-responseEnvelope: ListFleetsForVehicleOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "fleets" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"fleet": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListModelManifestNodes:
     post:
       operationId: ListModelManifestNodes
@@ -1706,6 +1733,9 @@ paths:
       x-stackql-method: list_model_manifest_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.nodes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListModelManifests:
     post:
       operationId: ListModelManifests
@@ -1756,6 +1786,9 @@ paths:
       x-stackql-method: list_model_manifests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSignalCatalogNodes:
     post:
       operationId: ListSignalCatalogNodes
@@ -1806,6 +1839,9 @@ paths:
       x-stackql-method: list_signal_catalog_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.nodes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSignalCatalogs:
     post:
       operationId: ListSignalCatalogs
@@ -1849,6 +1885,9 @@ paths:
       x-stackql-method: list_signal_catalogs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListStateTemplates:
     post:
       operationId: ListStateTemplates
@@ -1893,6 +1932,9 @@ paths:
       x-stackql-method: list_state_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1926,7 +1968,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListVehicles:
@@ -1998,6 +2040,9 @@ paths:
       x-stackql-method: list_vehicles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.vehicleSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListVehiclesInFleet:
     post:
       operationId: ListVehiclesInFleet
@@ -2040,11 +2085,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListVehiclesInFleetResponse'
+                $ref: '#/components/schemas/ListVehiclesInFleetOutputDisplay'
       x-stackql-resource: vehicles_in_fleets
       x-stackql-method: list_vehicles_in_fleet
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.vehicles
+      x-stackql-responseEnvelope: ListVehiclesInFleetOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "vehicles" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"vehicle": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /PutEncryptionConfiguration:
     post:
       operationId: PutEncryptionConfiguration
@@ -2208,7 +2261,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2248,7 +2301,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCampaign:
@@ -5132,19 +5185,19 @@ components:
       - arn
       - signalCatalogArn
       - creationTime
-    ListFleetsForVehicleResponse:
+    ListFleetsForVehicleRowDisplay:
       type: object
       properties:
-        fleets:
-          $ref: '#/components/schemas/fleets'
+        fleet:
+          type: string
           description: A list of fleet IDs that the vehicle is associated with.
-        nextToken:
-          $ref: '#/components/schemas/nextToken'
-          description: The token to retrieve the next set of results, or null if there are no more results.
-    fleets:
-      type: array
-      items:
-        $ref: '#/components/schemas/fleetId'
+    ListFleetsForVehicleOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFleetsForVehicleRowDisplay'
     ListModelManifestNodesResponse:
       type: object
       properties:
@@ -5365,19 +5418,19 @@ components:
       - decoderManifestArn
       - creationTime
       - lastModificationTime
-    ListVehiclesInFleetResponse:
+    ListVehiclesInFleetRowDisplay:
       type: object
       properties:
-        vehicles:
-          $ref: '#/components/schemas/vehicles'
+        vehicle:
+          type: string
           description: A list of vehicles associated with the fleet.
-        nextToken:
-          $ref: '#/components/schemas/nextToken'
-          description: The token to retrieve the next set of results, or null if there are no more results.
-    vehicles:
-      type: array
-      items:
-        $ref: '#/components/schemas/vehicleName'
+    ListVehiclesInFleetOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListVehiclesInFleetRowDisplay'
     PutEncryptionConfigurationRequestKmsKeyIdString:
       type: string
       minLength: 0

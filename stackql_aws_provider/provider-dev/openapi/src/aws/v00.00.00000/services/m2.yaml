@@ -2804,6 +2804,17 @@ components:
       name: applications
       title: applications
       methods:
+        cancel_batch_job_execution:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1batch-job-executions~1{execution_id}~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_application:
           operation:
             $ref: "#/paths/~1applications/post"
@@ -2824,6 +2835,14 @@ components:
             objectKey: $.applications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -2839,6 +2858,34 @@ components:
         update_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_batch_job:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1batch-job/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1stop/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2940,6 +2987,14 @@ components:
             objectKey: $.deployments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_deployment:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1deployments~1{deployment_id}/get"
@@ -2979,6 +3034,20 @@ components:
             objectKey: $.environments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_application_from_environment:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1environment~1{environment_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         delete_environment:
           operation:
             $ref: "#/paths/~1environments~1{environment_id}/delete"
@@ -3011,24 +3080,8 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
         delete:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/delete_application_from_environment"
           - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment"
-    application_from_environments:
-      id: aws.m2.application_from_environments
-      name: application_from_environments
-      title: application_from_environments
-      methods:
-        delete_application_from_environment:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1environment~1{environment_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/application_from_environments/methods/delete_application_from_environment"
     application_versions:
       id: aws.m2.application_versions
       name: application_versions
@@ -3049,6 +3102,14 @@ components:
             objectKey: $.applicationVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_versions/methods/get_application_version"
@@ -3076,6 +3137,14 @@ components:
             objectKey: $.batchJobExecutions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_job_executions/methods/get_batch_job_execution"
@@ -3131,6 +3200,14 @@ components:
             objectKey: $.batchJobDefinitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/batch_job_definitions/methods/list_batch_job_definitions"
@@ -3170,6 +3247,14 @@ components:
             objectKey: $.dataSetExportTasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_set_export_histories/methods/list_data_set_export_history"
@@ -3190,6 +3275,14 @@ components:
             objectKey: $.dataSetImportTasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_set_import_histories/methods/list_data_set_import_history"
@@ -3210,6 +3303,14 @@ components:
             objectKey: $.dataSets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_sets/methods/list_data_sets"
@@ -3230,16 +3331,24 @@ components:
             objectKey: $.engineVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/engine_versions/methods/list_engine_versions"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.m2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.m2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3247,17 +3356,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.m2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3278,9 +3376,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

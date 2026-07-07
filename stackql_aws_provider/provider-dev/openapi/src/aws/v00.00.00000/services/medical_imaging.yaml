@@ -1684,6 +1684,17 @@ components:
       name: datastores
       title: datastores
       methods:
+        copy_image_set:
+          operation:
+            $ref: "#/paths/~1datastore~1{datastore_id}~1imageSet~1{source_image_set_id}~1copyImageSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_datastore:
           operation:
             $ref: "#/paths/~1datastore/post"
@@ -1704,6 +1715,14 @@ components:
             objectKey: $.datastoreSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_datastore:
           operation:
             $ref: "#/paths/~1datastore~1{datastore_id}/delete"
@@ -1716,6 +1735,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.datastoreProperties
+        start_dicom_import_job:
+          operation:
+            $ref: "#/paths/~1startDICOMImportJob~1datastore~1{datastore_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/datastores/methods/get_datastore"
@@ -1754,6 +1785,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1775,6 +1813,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.jobProperties
         list_dicom_import_jobs:
           operation:
             $ref: "#/paths/~1listDICOMImportJobs~1datastore~1{datastore_id}/get"
@@ -1784,6 +1823,14 @@ components:
             objectKey: $.jobSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dicom_import_jobs/methods/get_dicom_import_job"
@@ -1858,16 +1905,24 @@ components:
             objectKey: $.imageSetPropertiesList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/image_set_versions/methods/list_image_set_versions"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.medical_imaging.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.medical_imaging.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1875,17 +1930,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.medical_imaging.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1906,9 +1950,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

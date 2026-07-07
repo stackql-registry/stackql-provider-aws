@@ -183,7 +183,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
                   description: A list of tags that you want to attach to the newly created account. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging Organizations resources in the Organizations User Guide. If any one of the tags is not valid or if you exceed the maximum allowed number of tags for an account, then the entire request fails and the account is not created.
               required:
-                - Email
                 - AccountName
       responses:
         "200":
@@ -229,7 +228,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
                   description: A list of tags that you want to attach to the newly created account. These tags are attached to the commercial account associated with the GovCloud account, and not to the GovCloud account itself. To add tags to the actual GovCloud account, call the TagResource operation in the GovCloud region after the new GovCloud account exists. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging Organizations resources in the Organizations User Guide. If any one of the tags is not valid or if you exceed the maximum allowed number of tags for an account, then the entire request fails and the account is not created.
               required:
-                - Email
                 - AccountName
       responses:
         "200":
@@ -347,9 +345,6 @@ paths:
                   description: A list of tags that you want to attach to the newly created policy. For each tag in the list, you must specify both a tag key and a value. You can set the value to an empty string, but you can't set it to null. For more information about tagging, see Tagging Organizations resources in the Organizations User Guide. If any one of the tags is not valid or if you exceed the allowed number of tags for a policy, then the entire request fails and the policy is not created.
               required:
                 - Content
-                - Description
-                - Name
-                - Type
       responses:
         "200":
           description: Success
@@ -3455,6 +3450,70 @@ components:
         ResponsibilityTransfer:
           $ref: "#/components/schemas/ResponsibilityTransfer"
   x-stackQL-resources:
+    handshakes:
+      id: aws.organizations.handshakes
+      name: handshakes
+      title: handshakes
+      methods:
+        accept_handshake:
+          operation:
+            $ref: "#/paths/~1AcceptHandshake/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_handshake:
+          operation:
+            $ref: "#/paths/~1CancelHandshake/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        decline_handshake:
+          operation:
+            $ref: "#/paths/~1DeclineHandshake/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_handshake:
+          operation:
+            $ref: "#/paths/~1DescribeHandshake/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Handshake
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/handshakes/methods/describe_handshake"
+        insert: []
+        update: []
+        delete: []
     policies:
       id: aws.organizations.policies
       name: policies
@@ -3503,6 +3562,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Policy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3522,6 +3582,32 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disable_policy_type:
+          operation:
+            $ref: "#/paths/~1DisablePolicyType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_policy_type:
+          operation:
+            $ref: "#/paths/~1EnablePolicyType/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_policies:
           operation:
             $ref: "#/paths/~1ListPolicies/post"
@@ -3534,6 +3620,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_policy:
@@ -3565,9 +3658,34 @@ components:
       name: accounts
       title: accounts
       methods:
+        close_account:
+          operation:
+            $ref: "#/paths/~1CloseAccount/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_account:
           operation:
             $ref: "#/paths/~1CreateAccount/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_gov_cloud_account:
+          operation:
+            $ref: "#/paths/~1CreateGovCloudAccount/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3584,6 +3702,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Account
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3603,27 +3722,20 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/accounts/methods/describe_account"
-          - $ref: "#/components/x-stackQL-resources/accounts/methods/list_accounts"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/accounts/methods/create_account"
-        update: []
-        delete: []
-    gov_cloud_accounts:
-      id: aws.organizations.gov_cloud_accounts
-      name: gov_cloud_accounts
-      title: gov_cloud_accounts
-      methods:
-        create_gov_cloud_account:
+        move_account:
           operation:
-            $ref: "#/paths/~1CreateGovCloudAccount/post"
+            $ref: "#/paths/~1MoveAccount/post"
           response:
             openAPIDocKey: "200"
-            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3632,9 +3744,11 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/describe_account"
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/list_accounts"
         insert:
-          - $ref: "#/components/x-stackQL-resources/gov_cloud_accounts/methods/create_gov_cloud_account"
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/create_account"
         update: []
         delete: []
     organizations:
@@ -3669,15 +3783,29 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Organization
           request:
             mediaType: application/x-amz-json-1.1
             base: "{}"
+        remove_account_from_organization:
+          operation:
+            $ref: "#/paths/~1RemoveAccountFromOrganization/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organizations/methods/describe_organization"
         insert:
           - $ref: "#/components/x-stackQL-resources/organizations/methods/create_organization"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/organizations/methods/remove_account_from_organization"
         delete:
           - $ref: "#/components/x-stackQL-resources/organizations/methods/delete_organization"
     organizational_units:
@@ -3716,6 +3844,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.OrganizationalUnit
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3764,6 +3893,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResourcePolicy
           request:
             mediaType: application/x-amz-json-1.1
             base: "{}"
@@ -3818,6 +3948,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_delegated_administrator:
@@ -3851,6 +3988,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CreateAccountStatus
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3870,6 +4008,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3890,6 +4035,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EffectivePolicy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3900,30 +4046,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/effective_policies/methods/describe_effective_policy"
-        insert: []
-        update: []
-        delete: []
-    handshakes:
-      id: aws.organizations.handshakes
-      name: handshakes
-      title: handshakes
-      methods:
-        describe_handshake:
-          operation:
-            $ref: "#/paths/~1DescribeHandshake/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/handshakes/methods/describe_handshake"
         insert: []
         update: []
         delete: []
@@ -3938,6 +4060,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResponsibilityTransfer
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3996,6 +4119,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4021,6 +4151,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4046,6 +4183,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4071,6 +4215,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4096,6 +4247,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4121,6 +4279,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4146,6 +4311,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4171,6 +4343,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4220,6 +4399,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4269,6 +4455,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4294,6 +4487,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4319,6 +4519,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4327,10 +4534,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.organizations.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.organizations.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4344,67 +4551,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    targets_for_policies:
-      id: aws.organizations.targets_for_policies
-      name: targets_for_policies
-      title: targets_for_policies
-      methods:
-        list_targets_for_policy:
-          operation:
-            $ref: "#/paths/~1ListTargetsForPolicy/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Targets
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/targets_for_policies/methods/list_targets_for_policy"
-        insert: []
-        update: []
-        delete: []
-    account_from_organizations:
-      id: aws.organizations.account_from_organizations
-      name: account_from_organizations
-      title: account_from_organizations
-      methods:
-        remove_account_from_organization:
-          operation:
-            $ref: "#/paths/~1RemoveAccountFromOrganization/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/account_from_organizations/methods/remove_account_from_organization"
-        delete: []
-    resources:
-      id: aws.organizations.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -4430,9 +4585,42 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    targets_for_policies:
+      id: aws.organizations.targets_for_policies
+      name: targets_for_policies
+      title: targets_for_policies
+      methods:
+        list_targets_for_policy:
+          operation:
+            $ref: "#/paths/~1ListTargetsForPolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Targets
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/targets_for_policies/methods/list_targets_for_policy"
+        insert: []
+        update: []
         delete: []

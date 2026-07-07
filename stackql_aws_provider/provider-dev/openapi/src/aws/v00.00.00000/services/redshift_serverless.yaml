@@ -4264,6 +4264,92 @@ components:
       required:
         - workgroup
   x-stackQL-resources:
+    recovery_points:
+      id: aws.redshift_serverless.recovery_points
+      name: recovery_points
+      title: recovery_points
+      methods:
+        convert_recovery_point_to_snapshot:
+          operation:
+            $ref: "#/paths/~1ConvertRecoveryPointToSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_recovery_point:
+          operation:
+            $ref: "#/paths/~1GetRecoveryPoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.recoveryPoint
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_recovery_points:
+          operation:
+            $ref: "#/paths/~1ListRecoveryPoints/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.recoveryPoints
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        restore_from_recovery_point:
+          operation:
+            $ref: "#/paths/~1RestoreFromRecoveryPoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        restore_table_from_recovery_point:
+          operation:
+            $ref: "#/paths/~1RestoreTableFromRecoveryPoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/get_recovery_point"
+          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/list_recovery_points"
+        insert: []
+        update: []
+        delete: []
     custom_domain_associations:
       id: aws.redshift_serverless.custom_domain_associations
       name: custom_domain_associations
@@ -4320,6 +4406,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_custom_domain_association:
@@ -4382,6 +4475,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.endpoint
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4401,6 +4495,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_endpoint_access:
@@ -4463,6 +4564,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.namespace
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4477,6 +4579,52 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.namespaces
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        restore_from_snapshot:
+          operation:
+            $ref: "#/paths/~1RestoreFromSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        restore_table_from_snapshot:
+          operation:
+            $ref: "#/paths/~1RestoreTableFromSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_lakehouse_configuration:
+          operation:
+            $ref: "#/paths/~1UpdateLakehouseConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4531,6 +4679,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.reservation
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4550,6 +4699,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4597,6 +4753,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.scheduledAction
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4616,6 +4773,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_scheduled_action:
@@ -4678,6 +4842,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.snapshot
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4697,6 +4862,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_snapshot:
@@ -4764,6 +4936,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_snapshot_copy_configuration:
@@ -4825,6 +5004,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.usageLimit
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4844,6 +5024,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_usage_limit:
@@ -4906,6 +5093,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.workgroup
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4925,6 +5113,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_workgroup:
@@ -4974,6 +5169,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.resourcePolicy
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5051,45 +5247,6 @@ components:
         insert: []
         update: []
         delete: []
-    recovery_points:
-      id: aws.redshift_serverless.recovery_points
-      name: recovery_points
-      title: recovery_points
-      methods:
-        get_recovery_point:
-          operation:
-            $ref: "#/paths/~1GetRecoveryPoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_recovery_points:
-          operation:
-            $ref: "#/paths/~1ListRecoveryPoints/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.recoveryPoints
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/get_recovery_point"
-          - $ref: "#/components/x-stackQL-resources/recovery_points/methods/list_recovery_points"
-        insert: []
-        update: []
-        delete: []
     reservation_offerings:
       id: aws.redshift_serverless.reservation_offerings
       name: reservation_offerings
@@ -5101,6 +5258,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.reservationOffering
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5120,6 +5278,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5140,6 +5305,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.tableRestoreStatus
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5159,6 +5325,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5179,6 +5352,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.track
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5198,6 +5372,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5224,6 +5405,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5232,10 +5420,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.redshift_serverless.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.redshift_serverless.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5250,17 +5438,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.redshift_serverless.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -5288,33 +5465,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    lakehouse_configurations:
-      id: aws.redshift_serverless.lakehouse_configurations
-      name: lakehouse_configurations
-      title: lakehouse_configurations
-      methods:
-        update_lakehouse_configuration:
-          operation:
-            $ref: "#/paths/~1UpdateLakehouseConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/lakehouse_configurations/methods/update_lakehouse_configuration"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

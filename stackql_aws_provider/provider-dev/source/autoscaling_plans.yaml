@@ -154,6 +154,9 @@ paths:
       x-stackql-method: describe_scaling_plan_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ScalingPlanResources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeScalingPlans:
     post:
       operationId: DescribeScalingPlans
@@ -205,6 +208,9 @@ paths:
       x-stackql-method: describe_scaling_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ScalingPlans
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetScalingPlanResourceForecastData:
     post:
       operationId: GetScalingPlanResourceForecastData

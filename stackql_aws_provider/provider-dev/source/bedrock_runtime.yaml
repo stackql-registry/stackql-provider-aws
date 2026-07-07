@@ -565,6 +565,9 @@ paths:
       x-stackql-method: list_async_invokes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.asyncInvokeSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartAsyncInvoke
       description: Starts an asynchronous invocation. This operation requires permission for the bedrock:InvokeModel action.

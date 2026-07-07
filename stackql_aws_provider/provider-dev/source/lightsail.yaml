@@ -102,7 +102,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AttachCertificateToDistributionResult'
-      x-stackql-resource: certificate_to_distributions
+      x-stackql-resource: distributions
       x-stackql-method: attach_certificate_to_distribution
       x-stackql-verb: UPDATE
   /AttachDisk:
@@ -198,7 +198,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AttachInstancesToLoadBalancerResult'
-      x-stackql-resource: instances_to_load_balancers
+      x-stackql-resource: load_balancers
       x-stackql-method: attach_instances_to_load_balancer
       x-stackql-verb: UPDATE
   /AttachLoadBalancerTlsCertificate:
@@ -325,7 +325,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CloseInstancePublicPortsResult'
-      x-stackql-resource: close_instance_public_ports
+      x-stackql-resource: instances
       x-stackql-method: close_instance_public_ports
       x-stackql-verb: EXEC
   /CopySnapshot:
@@ -823,7 +823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateContainerServiceRegistryLoginResult'
-      x-stackql-resource: container_service_registry_logins
+      x-stackql-resource: container_services
       x-stackql-method: create_container_service_registry_login
       x-stackql-verb: INSERT
   /CreateDisk:
@@ -959,7 +959,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDiskFromSnapshotResult'
-      x-stackql-resource: disk_from_snapshots
+      x-stackql-resource: disks
       x-stackql-method: create_disk_from_snapshot
       x-stackql-verb: INSERT
   /CreateDiskSnapshot:
@@ -1179,7 +1179,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDomainEntryResult'
-      x-stackql-resource: domain_entries
+      x-stackql-resource: domains
       x-stackql-method: create_domain_entry
       x-stackql-verb: INSERT
   /CreateGUISessionAccessDetails:
@@ -1442,7 +1442,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateInstancesFromSnapshotResult'
-      x-stackql-resource: instances_from_snapshots
+      x-stackql-resource: instances
       x-stackql-method: create_instances_from_snapshot
       x-stackql-verb: INSERT
   /CreateKeyPair:
@@ -1808,7 +1808,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateRelationalDatabaseFromSnapshotResult'
-      x-stackql-resource: relational_database_from_snapshots
+      x-stackql-resource: relational_databases
       x-stackql-method: create_relational_database_from_snapshot
       x-stackql-verb: INSERT
   /CreateRelationalDatabaseSnapshot:
@@ -2381,7 +2381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteDomainEntryResult'
-      x-stackql-resource: domain_entries
+      x-stackql-resource: domains
       x-stackql-method: delete_domain_entry
       x-stackql-verb: DELETE
   /DeleteInstance:
@@ -2545,7 +2545,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteKnownHostKeysResult'
-      x-stackql-resource: known_host_keys
+      x-stackql-resource: instances
       x-stackql-method: delete_known_host_keys
       x-stackql-verb: DELETE
   /DeleteLoadBalancer:
@@ -2758,7 +2758,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetachCertificateFromDistributionResult'
-      x-stackql-resource: certificate_from_distributions
+      x-stackql-resource: distributions
       x-stackql-method: detach_certificate_from_distribution
       x-stackql-verb: UPDATE
   /DetachDisk:
@@ -2841,7 +2841,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetachInstancesFromLoadBalancerResult'
-      x-stackql-resource: instances_from_load_balancers
+      x-stackql-resource: load_balancers
       x-stackql-method: detach_instances_from_load_balancer
       x-stackql-verb: UPDATE
   /DetachStaticIp:
@@ -3069,11 +3069,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetActiveNamesResult'
+                $ref: '#/components/schemas/GetActiveNamesOutputDisplay'
       x-stackql-resource: active_names
       x-stackql-method: get_active_names
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.activeNames
+      x-stackql-responseEnvelope: GetActiveNamesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "activeNames" -}}{{- $tok := index . "nextPageToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"active_name": {{ toJson $v
+        }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextPageToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetAlarms:
     post:
       operationId: GetAlarms
@@ -3208,6 +3216,9 @@ paths:
       x-stackql-method: get_blueprints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.blueprints
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetBucketAccessKeys:
     post:
       operationId: GetBucketAccessKeys
@@ -3463,6 +3474,9 @@ paths:
       x-stackql-method: get_bundles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.bundles
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetCertificates:
     post:
       operationId: GetCertificates
@@ -3553,6 +3567,9 @@ paths:
       x-stackql-method: get_cloud_formation_stack_records
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cloudFormationStackRecords
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetContactMethods:
     post:
       operationId: GetContactMethods
@@ -3619,10 +3636,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetContainerAPIMetadataResult'
+                $ref: '#/components/schemas/GetContainerAPIMetadataOutputDisplay'
       x-stackql-resource: container_api_metadatas
       x-stackql-method: get_container_api_metadata
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetContainerAPIMetadataOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "metadata" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"metadata": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /GetContainerImages:
     post:
       operationId: GetContainerImages
@@ -4000,6 +4022,7 @@ paths:
       x-stackql-resource: disks
       x-stackql-method: get_disk
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.disk
   /GetDiskSnapshot:
     post:
       operationId: GetDiskSnapshot
@@ -4036,6 +4059,7 @@ paths:
       x-stackql-resource: disk_snapshots
       x-stackql-method: get_disk_snapshot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.diskSnapshot
   /GetDiskSnapshots:
     post:
       operationId: GetDiskSnapshots
@@ -4073,6 +4097,9 @@ paths:
       x-stackql-method: get_disk_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.diskSnapshots
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetDisks:
     post:
       operationId: GetDisks
@@ -4110,6 +4137,9 @@ paths:
       x-stackql-method: get_disks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.disks
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetDistributionBundles:
     post:
       operationId: GetDistributionBundles
@@ -4348,6 +4378,7 @@ paths:
       x-stackql-resource: domains
       x-stackql-method: get_domain
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.domain
   /GetDomains:
     post:
       operationId: GetDomains
@@ -4385,6 +4416,9 @@ paths:
       x-stackql-method: get_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.domains
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetExportSnapshotRecords:
     post:
       operationId: GetExportSnapshotRecords
@@ -4424,6 +4458,9 @@ paths:
       x-stackql-method: get_export_snapshot_records
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.exportSnapshotRecords
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetInstance:
     post:
       operationId: GetInstance
@@ -4460,6 +4497,7 @@ paths:
       x-stackql-resource: instances
       x-stackql-method: get_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.instance
   /GetInstanceAccessDetails:
     post:
       operationId: GetInstanceAccessDetails
@@ -4501,6 +4539,7 @@ paths:
       x-stackql-resource: instance_access_details
       x-stackql-method: get_instance_access_details
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.accessDetails
   /GetInstanceMetricData:
     post:
       operationId: GetInstanceMetricData
@@ -4686,6 +4725,7 @@ paths:
       x-stackql-resource: instance_snapshots
       x-stackql-method: get_instance_snapshot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.instanceSnapshot
   /GetInstanceSnapshots:
     post:
       operationId: GetInstanceSnapshots
@@ -4723,6 +4763,9 @@ paths:
       x-stackql-method: get_instance_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.instanceSnapshots
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetInstanceState:
     post:
       operationId: GetInstanceState
@@ -4759,6 +4802,7 @@ paths:
       x-stackql-resource: instance_states
       x-stackql-method: get_instance_state
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.state
   /GetInstances:
     post:
       operationId: GetInstances
@@ -4796,6 +4840,9 @@ paths:
       x-stackql-method: get_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.instances
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetKeyPair:
     post:
       operationId: GetKeyPair
@@ -4832,6 +4879,7 @@ paths:
       x-stackql-resource: key_pairs
       x-stackql-method: get_key_pair
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.keyPair
   /GetKeyPairs:
     post:
       operationId: GetKeyPairs
@@ -4873,6 +4921,9 @@ paths:
       x-stackql-method: get_key_pairs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.keyPairs
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetLoadBalancer:
     post:
       operationId: GetLoadBalancer
@@ -4909,6 +4960,7 @@ paths:
       x-stackql-resource: load_balancers
       x-stackql-method: get_load_balancer
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.loadBalancer
   /GetLoadBalancerMetricData:
     post:
       operationId: GetLoadBalancerMetricData
@@ -5129,6 +5181,9 @@ paths:
       x-stackql-method: get_load_balancers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.loadBalancers
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetOperation:
     post:
       operationId: GetOperation
@@ -5166,6 +5221,7 @@ paths:
       x-stackql-resource: operations
       x-stackql-method: get_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.operation
   /GetOperations:
     post:
       operationId: GetOperations
@@ -5205,6 +5261,9 @@ paths:
       x-stackql-method: get_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.operations
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetOperationsForResource:
     post:
       operationId: GetOperationsForResource
@@ -5322,6 +5381,7 @@ paths:
       x-stackql-resource: relational_databases
       x-stackql-method: get_relational_database
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.relationalDatabase
   /GetRelationalDatabaseBlueprints:
     post:
       operationId: GetRelationalDatabaseBlueprints
@@ -5360,6 +5420,9 @@ paths:
       x-stackql-method: get_relational_database_blueprints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.blueprints
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetRelationalDatabaseBundles:
     post:
       operationId: GetRelationalDatabaseBundles
@@ -5402,6 +5465,9 @@ paths:
       x-stackql-method: get_relational_database_bundles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.bundles
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetRelationalDatabaseEvents:
     post:
       operationId: GetRelationalDatabaseEvents
@@ -5448,6 +5514,9 @@ paths:
       x-stackql-method: get_relational_database_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relationalDatabaseEvents
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetRelationalDatabaseLogEvents:
     post:
       operationId: GetRelationalDatabaseLogEvents
@@ -5542,10 +5611,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetRelationalDatabaseLogStreamsResult'
+                $ref: '#/components/schemas/GetRelationalDatabaseLogStreamsOutputDisplay'
       x-stackql-resource: relational_database_log_streams
       x-stackql-method: get_relational_database_log_streams
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetRelationalDatabaseLogStreamsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "logStreams" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"log_stream": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /GetRelationalDatabaseMasterUserPassword:
     post:
       operationId: GetRelationalDatabaseMasterUserPassword
@@ -5725,6 +5799,9 @@ paths:
       x-stackql-method: get_relational_database_parameters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.parameters
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetRelationalDatabaseSnapshot:
     post:
       operationId: GetRelationalDatabaseSnapshot
@@ -5761,6 +5838,7 @@ paths:
       x-stackql-resource: relational_database_snapshots
       x-stackql-method: get_relational_database_snapshot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.relationalDatabaseSnapshot
   /GetRelationalDatabaseSnapshots:
     post:
       operationId: GetRelationalDatabaseSnapshots
@@ -5798,6 +5876,9 @@ paths:
       x-stackql-method: get_relational_database_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relationalDatabaseSnapshots
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetRelationalDatabases:
     post:
       operationId: GetRelationalDatabases
@@ -5835,6 +5916,9 @@ paths:
       x-stackql-method: get_relational_databases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relationalDatabases
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /GetSetupHistory:
     post:
       operationId: GetSetupHistory
@@ -5913,6 +5997,7 @@ paths:
       x-stackql-resource: static_ips
       x-stackql-method: get_static_ip
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.staticIp
   /GetStaticIps:
     post:
       operationId: GetStaticIps
@@ -5950,6 +6035,9 @@ paths:
       x-stackql-method: get_static_ips
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.staticIps
+      x-stackql-pagination-request-token-key: pageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /ImportKeyPair:
     post:
       operationId: ImportKeyPair
@@ -5987,7 +6075,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportKeyPairResult'
-      x-stackql-resource: key_pair
+      x-stackql-resource: key_pairs
       x-stackql-method: import_key_pair
       x-stackql-verb: EXEC
   /IsVpcPeered:
@@ -6060,7 +6148,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/OpenInstancePublicPortsResult'
-      x-stackql-resource: open_instance_public_ports
+      x-stackql-resource: instances
       x-stackql-method: open_instance_public_ports
       x-stackql-verb: EXEC
   /PeerVpc:
@@ -6255,7 +6343,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutInstancePublicPortsResult'
-      x-stackql-resource: instance_public_ports
+      x-stackql-resource: instances
       x-stackql-method: put_instance_public_ports
       x-stackql-verb: REPLACE
   /RebootInstance:
@@ -6293,7 +6381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootInstanceResult'
-      x-stackql-resource: instance
+      x-stackql-resource: instances
       x-stackql-method: reboot_instance
       x-stackql-verb: EXEC
   /RebootRelationalDatabase:
@@ -6331,7 +6419,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootRelationalDatabaseResult'
-      x-stackql-resource: relational_database
+      x-stackql-resource: relational_databases
       x-stackql-method: reboot_relational_database
       x-stackql-verb: EXEC
   /RegisterContainerImage:
@@ -6460,7 +6548,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetDistributionCacheResult'
-      x-stackql-resource: distribution_cache
+      x-stackql-resource: distributions
       x-stackql-method: reset_distribution_cache
       x-stackql-verb: EXEC
   /SendContactMethodVerification:
@@ -6503,7 +6591,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendContactMethodVerificationResult'
-      x-stackql-resource: contact_method_verification
+      x-stackql-resource: contact_methods
       x-stackql-method: send_contact_method_verification
       x-stackql-verb: EXEC
   /SetIpAddressType:
@@ -6607,7 +6695,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetResourceAccessForBucketResult'
-      x-stackql-resource: resource_access_for_buckets
+      x-stackql-resource: buckets
       x-stackql-method: set_resource_access_for_bucket
       x-stackql-verb: UPDATE
   /SetupInstanceHttps:
@@ -6657,7 +6745,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetupInstanceHttpsResult'
-      x-stackql-resource: up_instance_https
+      x-stackql-resource: instances
       x-stackql-method: setup_instance_https
       x-stackql-verb: UPDATE
   /StartGUISession:
@@ -6735,7 +6823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartInstanceResult'
-      x-stackql-resource: instance
+      x-stackql-resource: instances
       x-stackql-method: start_instance
       x-stackql-verb: EXEC
   /StartRelationalDatabase:
@@ -6774,7 +6862,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRelationalDatabaseResult'
-      x-stackql-resource: relational_database
+      x-stackql-resource: relational_databases
       x-stackql-method: start_relational_database
       x-stackql-verb: EXEC
   /StopGUISession:
@@ -6856,7 +6944,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopInstanceResult'
-      x-stackql-resource: instance
+      x-stackql-resource: instances
       x-stackql-method: stop_instance
       x-stackql-verb: EXEC
   /StopRelationalDatabase:
@@ -6899,7 +6987,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRelationalDatabaseResult'
-      x-stackql-resource: relational_database
+      x-stackql-resource: relational_databases
       x-stackql-method: stop_relational_database
       x-stackql-verb: EXEC
   /TagResource:
@@ -6946,7 +7034,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestAlarm:
@@ -6993,7 +7081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestAlarmResult'
-      x-stackql-resource: alarm
+      x-stackql-resource: alarms
       x-stackql-method: test_alarm
       x-stackql-verb: EXEC
   /UnpeerVpc:
@@ -7068,7 +7156,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateBucket:
@@ -7399,7 +7487,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDomainEntryResult'
-      x-stackql-resource: domain_entries
+      x-stackql-resource: domains
       x-stackql-method: update_domain_entry
       x-stackql-verb: UPDATE
   /UpdateInstanceMetadataOptions:
@@ -7464,7 +7552,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateInstanceMetadataOptionsResult'
-      x-stackql-resource: instance_metadata_options
+      x-stackql-resource: instances
       x-stackql-method: update_instance_metadata_options
       x-stackql-verb: UPDATE
   /UpdateLoadBalancerAttribute:
@@ -7521,7 +7609,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateLoadBalancerAttributeResult'
-      x-stackql-resource: load_balancer_attributes
+      x-stackql-resource: load_balancers
       x-stackql-method: update_load_balancer_attribute
       x-stackql-verb: UPDATE
   /UpdateRelationalDatabase:
@@ -9873,17 +9961,19 @@ components:
           $ref: '#/components/schemas/OperationList'
           description: An array of objects that describe the result of the action, such as the status of the request, the
             timestamp of the request, and the resources affected by the request.
-    GetActiveNamesResult:
+    GetActiveNamesRowDisplay:
       type: object
       properties:
-        activeNames:
-          $ref: '#/components/schemas/StringList'
+        active_name:
+          type: string
           description: The list of active names returned by the get active names request.
-        nextPageToken:
-          $ref: '#/components/schemas/string'
-          description: The token to advance to the next page of results from your request. A next page token is not returned
-            if there are no more results to display. To get the next page of results, perform another GetActiveNames request
-            and specify the next page token using the pageToken parameter.
+    GetActiveNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetActiveNamesRowDisplay'
     GetAlarmsResult:
       type: object
       properties:
@@ -10647,20 +10737,20 @@ components:
       - PendingVerification
       - Valid
       - Invalid
-    GetContainerAPIMetadataResult:
+    GetContainerAPIMetadataRowDisplay:
       type: object
       properties:
         metadata:
-          $ref: '#/components/schemas/ContainerServiceMetadataEntryList'
+          type: object
           description: Metadata about Lightsail containers, such as the current version of the Lightsail Control (lightsailctl)
             plugin.
-    ContainerServiceMetadataEntryList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ContainerServiceMetadataEntry'
-    ContainerServiceMetadataEntry:
+    GetContainerAPIMetadataOutputDisplay:
       type: object
-      properties: {}
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetContainerAPIMetadataRowDisplay'
     GetContainerImagesResult:
       type: object
       properties:
@@ -12840,12 +12930,19 @@ components:
         message:
           $ref: '#/components/schemas/string'
           description: The message of the database log event.
-    GetRelationalDatabaseLogStreamsResult:
+    GetRelationalDatabaseLogStreamsRowDisplay:
       type: object
       properties:
-        logStreams:
-          $ref: '#/components/schemas/StringList'
+        log_stream:
+          type: string
           description: An object describing the result of your get relational database log streams request.
+    GetRelationalDatabaseLogStreamsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetRelationalDatabaseLogStreamsRowDisplay'
     RelationalDatabasePasswordVersion:
       type: string
       enum:

@@ -7861,6 +7861,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.member
           request:
             nativeCasing: pascal
           config:
@@ -7876,6 +7877,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7990,10 +7998,74 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_update_member_ec2_deep_inspection_status:
+          operation:
+            $ref: "#/paths/~1ec2deepinspectionstatus~1member~1batch~1update/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/member_ec2_deep_inspection_status/methods/batch_get_member_ec2_deep_inspection_status"
         insert: []
+        update: []
+        delete: []
+    findings:
+      id: aws.inspector2.findings
+      name: findings
+      title: findings
+      methods:
+        cancel_findings_report:
+          operation:
+            $ref: "#/paths/~1reporting~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_findings_report:
+          operation:
+            $ref: "#/paths/~1reporting~1create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_findings:
+          operation:
+            $ref: "#/paths/~1findings~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.findings
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/create_findings_report"
         update: []
         delete: []
     cis_scan_configurations:
@@ -8033,6 +8105,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_cis_scan_configuration:
@@ -8226,6 +8305,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_filter:
@@ -8248,28 +8334,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/filters/methods/update_filter"
         delete:
           - $ref: "#/components/x-stackQL-resources/filters/methods/delete_filter"
-    findings_reports:
-      id: aws.inspector2.findings_reports
-      name: findings_reports
-      title: findings_reports
-      methods:
-        create_findings_report:
-          operation:
-            $ref: "#/paths/~1reporting~1create/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/findings_reports/methods/create_findings_report"
-        update: []
-        delete: []
     sbom_exports:
       id: aws.inspector2.sbom_exports
       name: sbom_exports
@@ -8333,6 +8397,65 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/organization_configurations/methods/update_organization_configuration"
         delete: []
+    delegated_admin_accounts:
+      id: aws.inspector2.delegated_admin_accounts
+      name: delegated_admin_accounts
+      title: delegated_admin_accounts
+      methods:
+        disable_delegated_admin_account:
+          operation:
+            $ref: "#/paths/~1delegatedadminaccounts~1disable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_delegated_admin_account:
+          operation:
+            $ref: "#/paths/~1delegatedadminaccounts~1enable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_delegated_admin_account:
+          operation:
+            $ref: "#/paths/~1delegatedadminaccounts~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.delegatedAdmin
+        list_delegated_admin_accounts:
+          operation:
+            $ref: "#/paths/~1delegatedadminaccounts~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.delegatedAdminAccounts
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/delegated_admin_accounts/methods/get_delegated_admin_account"
+        insert: []
+        update: []
+        delete: []
     cis_scan_reports:
       id: aws.inspector2.cis_scan_reports
       name: cis_scan_reports
@@ -8370,6 +8493,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8393,6 +8523,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8452,35 +8589,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/update_configuration"
         delete: []
-    delegated_admin_accounts:
-      id: aws.inspector2.delegated_admin_accounts
-      name: delegated_admin_accounts
-      title: delegated_admin_accounts
-      methods:
-        get_delegated_admin_account:
-          operation:
-            $ref: "#/paths/~1delegatedadminaccounts~1get/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_delegated_admin_accounts:
-          operation:
-            $ref: "#/paths/~1delegatedadminaccounts~1list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.delegatedAdminAccounts
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/delegated_admin_accounts/methods/get_delegated_admin_account"
-        insert: []
-        update: []
-        delete: []
     ec2_deep_inspection_configurations:
       id: aws.inspector2.ec2_deep_inspection_configurations
       name: ec2_deep_inspection_configurations
@@ -8503,11 +8611,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_org_ec2_deep_inspection_configuration:
+          operation:
+            $ref: "#/paths/~1ec2deepinspectionconfiguration~1org~1update/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ec2_deep_inspection_configurations/methods/get_ec2_deep_inspection_configuration"
         insert: []
         update:
+          - $ref: "#/components/x-stackQL-resources/ec2_deep_inspection_configurations/methods/update_org_ec2_deep_inspection_configuration"
           - $ref: "#/components/x-stackQL-resources/ec2_deep_inspection_configurations/methods/update_ec2_deep_inspection_configuration"
         delete: []
     encryption_keys:
@@ -8578,6 +8698,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8601,6 +8728,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8624,6 +8758,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8647,6 +8788,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8692,6 +8840,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8715,6 +8870,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8738,6 +8900,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8746,33 +8915,10 @@ components:
         insert: []
         update: []
         delete: []
-    findings:
-      id: aws.inspector2.findings
-      name: findings
-      title: findings
-      methods:
-        list_findings:
-          operation:
-            $ref: "#/paths/~1findings~1list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.findings
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
-        insert: []
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.inspector2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.inspector2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -8780,17 +8926,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.inspector2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -8811,11 +8946,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     usage_totals:
       id: aws.inspector2.usage_totals
@@ -8832,6 +8968,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8855,6 +8998,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8862,26 +9012,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/vulnerabilities/methods/search_vulnerabilities"
         insert: []
         update: []
-        delete: []
-    org_ec2_deep_inspection_configurations:
-      id: aws.inspector2.org_ec2_deep_inspection_configurations
-      name: org_ec2_deep_inspection_configurations
-      title: org_ec2_deep_inspection_configurations
-      methods:
-        update_org_ec2_deep_inspection_configuration:
-          operation:
-            $ref: "#/paths/~1ec2deepinspectionconfiguration~1org~1update/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/org_ec2_deep_inspection_configurations/methods/update_org_ec2_deep_inspection_configuration"
         delete: []

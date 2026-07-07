@@ -1702,6 +1702,14 @@ components:
             objectKey: $.connectors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_connector:
           operation:
             $ref: "#/paths/~1v1~1connectors~1{connector_arn}/delete"
@@ -1762,6 +1770,14 @@ components:
             objectKey: $.customPlugins
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_custom_plugin:
           operation:
             $ref: "#/paths/~1v1~1custom-plugins~1{custom_plugin_arn}/delete"
@@ -1808,6 +1824,14 @@ components:
             objectKey: $.workerConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_worker_configuration:
           operation:
             $ref: "#/paths/~1v1~1worker-configurations~1{worker_configuration_arn}/delete"
@@ -1849,6 +1873,14 @@ components:
             objectKey: $.connectorOperations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connector_operations/methods/describe_connector_operation"
@@ -1856,10 +1888,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.kafkaconnect.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.kafkaconnect.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1867,17 +1899,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.kafkaconnect.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
@@ -1898,9 +1919,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

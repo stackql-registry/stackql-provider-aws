@@ -801,7 +801,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterMemberFromAddressListResponse'
-      x-stackql-resource: member_from_address_lists
+      x-stackql-resource: address_lists
       x-stackql-method: deregister_member_from_address_list
       x-stackql-verb: DELETE
   /GetAddonInstance:
@@ -1093,6 +1093,7 @@ paths:
       x-stackql-resource: archive_message_contents
       x-stackql-method: get_archive_message_content
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Body
   /GetArchiveSearch:
     post:
       operationId: GetArchiveSearch
@@ -1393,6 +1394,9 @@ paths:
       x-stackql-method: list_addon_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AddonInstances
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAddonSubscriptions:
     post:
       operationId: ListAddonSubscriptions
@@ -1433,6 +1437,9 @@ paths:
       x-stackql-method: list_addon_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AddonSubscriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAddressListImportJobs:
     post:
       operationId: ListAddressListImportJobs
@@ -1478,6 +1485,9 @@ paths:
       x-stackql-method: list_address_list_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ImportJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAddressLists:
     post:
       operationId: ListAddressLists
@@ -1518,6 +1528,9 @@ paths:
       x-stackql-method: list_address_lists
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AddressLists
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListArchiveExports:
     post:
       operationId: ListArchiveExports
@@ -1563,6 +1576,9 @@ paths:
       x-stackql-method: list_archive_exports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Exports
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListArchiveSearches:
     post:
       operationId: ListArchiveSearches
@@ -1608,6 +1624,9 @@ paths:
       x-stackql-method: list_archive_searches
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Searches
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListArchives:
     post:
       operationId: ListArchives
@@ -1648,6 +1667,9 @@ paths:
       x-stackql-method: list_archives
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Archives
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListIngressPoints:
     post:
       operationId: ListIngressPoints
@@ -1688,6 +1710,9 @@ paths:
       x-stackql-method: list_ingress_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IngressPoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMembersOfAddressList:
     post:
       operationId: ListMembersOfAddressList
@@ -1736,6 +1761,9 @@ paths:
       x-stackql-method: list_members_of_address_list
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Addresses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRelays:
     post:
       operationId: ListRelays
@@ -1775,6 +1803,9 @@ paths:
       x-stackql-method: list_relays
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Relays
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRuleSets:
     post:
       operationId: ListRuleSets
@@ -1815,6 +1846,9 @@ paths:
       x-stackql-method: list_rule_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RuleSets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1848,7 +1882,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTrafficPolicies:
@@ -1891,6 +1925,9 @@ paths:
       x-stackql-method: list_traffic_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrafficPolicies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /RegisterMemberToAddressList:
     post:
       operationId: RegisterMemberToAddressList
@@ -1928,7 +1965,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterMemberToAddressListResponse'
-      x-stackql-resource: member_to_address_lists
+      x-stackql-resource: address_lists
       x-stackql-method: register_member_to_address_list
       x-stackql-verb: INSERT
   /StartAddressListImportJob:
@@ -1964,7 +2001,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAddressListImportJobResponse'
-      x-stackql-resource: address_list_import_job
+      x-stackql-resource: address_lists
       x-stackql-method: start_address_list_import_job
       x-stackql-verb: EXEC
   /StartArchiveExport:
@@ -2021,7 +2058,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartArchiveExportResponse'
-      x-stackql-resource: archive_export
+      x-stackql-resource: archives
       x-stackql-method: start_archive_export
       x-stackql-verb: EXEC
   /StartArchiveSearch:
@@ -2072,7 +2109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartArchiveSearchResponse'
-      x-stackql-resource: archive_search
+      x-stackql-resource: archives
       x-stackql-method: start_archive_search
       x-stackql-verb: EXEC
   /StopAddressListImportJob:
@@ -2108,7 +2145,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopAddressListImportJobResponse'
-      x-stackql-resource: address_list_import_job
+      x-stackql-resource: address_lists
       x-stackql-method: stop_address_list_import_job
       x-stackql-verb: EXEC
   /StopArchiveExport:
@@ -2144,7 +2181,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopArchiveExportResponse'
-      x-stackql-resource: archive_export
+      x-stackql-resource: archives
       x-stackql-method: stop_archive_export
       x-stackql-verb: EXEC
   /StopArchiveSearch:
@@ -2180,7 +2217,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopArchiveSearchResponse'
-      x-stackql-resource: archive_search
+      x-stackql-resource: archives
       x-stackql-method: stop_archive_search
       x-stackql-verb: EXEC
   /TagResource:
@@ -2221,7 +2258,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2261,7 +2298,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateArchive:

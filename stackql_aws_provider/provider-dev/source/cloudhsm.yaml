@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddTagsToResourceResponse'
-      x-stackql-resource: tags_to_resources
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_resource
       x-stackql-verb: UPDATE
   /CreateHapg:
@@ -525,10 +525,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAvailableZonesResponse'
+                $ref: '#/components/schemas/ListAvailableZonesOutputDisplay'
       x-stackql-resource: available_zones
       x-stackql-method: list_available_zones
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListAvailableZonesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "AZList" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range
+        $i, $v := $lst -}}{{- if $i }},{{ end }}{"az": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListHapgs:
     post:
       operationId: ListHapgs
@@ -564,11 +569,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListHapgsResponse'
+                $ref: '#/components/schemas/ListHapgsOutputDisplay'
       x-stackql-resource: hapgs
       x-stackql-method: list_hapgs
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.HapgList
+      x-stackql-responseEnvelope: ListHapgsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "HapgList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"hapg": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHsms:
     post:
       operationId: ListHsms
@@ -604,11 +617,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListHsmsResponse'
+                $ref: '#/components/schemas/ListHsmsOutputDisplay'
       x-stackql-resource: hsms
       x-stackql-method: list_hsms
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.HsmList
+      x-stackql-responseEnvelope: ListHsmsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "HsmList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"hsm": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLunaClients:
     post:
       operationId: ListLunaClients
@@ -645,11 +666,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListLunaClientsResponse'
+                $ref: '#/components/schemas/ListLunaClientsOutputDisplay'
       x-stackql-resource: luna_clients
       x-stackql-method: list_luna_clients
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ClientList
+      x-stackql-responseEnvelope: ListLunaClientsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ClientList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"client": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -686,7 +715,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ModifyHapg:
@@ -879,7 +908,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveTagsFromResourceResponse'
-      x-stackql-resource: tags_from_resources
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_resource
       x-stackql-verb: UPDATE
 components:
@@ -1241,55 +1270,61 @@ components:
         ConfigCred:
           $ref: '#/components/schemas/String'
           description: The certificate file containing the server.pem files of the HSMs.
-    ListAvailableZonesResponse:
+    ListAvailableZonesRowDisplay:
       type: object
       properties:
-        AZList:
-          $ref: '#/components/schemas/AZList'
+        az:
+          type: string
           description: The list of Availability Zones that have available AWS CloudHSM capacity.
-    AZList:
-      type: array
-      items:
-        $ref: '#/components/schemas/AZ'
+    ListAvailableZonesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAvailableZonesRowDisplay'
     PaginationToken:
       type: string
       pattern: '[a-zA-Z0-9+/]*'
-    ListHapgsResponse:
+    ListHapgsRowDisplay:
       type: object
       properties:
-        HapgList:
-          $ref: '#/components/schemas/HapgList'
+        hapg:
+          type: string
           description: The list of high-availability partition groups.
-        NextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: If not null, more results are available. Pass this value to ListHapgs to retrieve the next set of items.
-      required:
-      - HapgList
-    ListHsmsResponse:
-      description: Contains the output of the ListHsms operation.
+    ListHapgsOutputDisplay:
       type: object
       properties:
-        HsmList:
-          $ref: '#/components/schemas/HsmList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListHapgsRowDisplay'
+    ListHsmsRowDisplay:
+      type: object
+      properties:
+        hsm:
+          type: string
           description: The list of ARNs that identify the HSMs.
-        NextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: If not null, more results are available. Pass this value to ListHsms to retrieve the next set of items.
-    ListLunaClientsResponse:
+    ListHsmsOutputDisplay:
       type: object
       properties:
-        ClientList:
-          $ref: '#/components/schemas/ClientList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListHsmsRowDisplay'
+    ListLunaClientsRowDisplay:
+      type: object
+      properties:
+        client:
+          type: string
           description: The list of clients.
-        NextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: If not null, more results are available. Pass this to ListLunaClients to retrieve the next set of items.
-      required:
-      - ClientList
-    ClientList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ClientArn'
+    ListLunaClientsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListLunaClientsRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

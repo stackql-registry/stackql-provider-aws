@@ -91,7 +91,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WorkflowExecutionCount'
-      x-stackql-resource: count_closed_workflow_executions
+      x-stackql-resource: closed_workflow_executions
       x-stackql-method: count_closed_workflow_executions
       x-stackql-verb: EXEC
   /CountOpenWorkflowExecutions:
@@ -153,7 +153,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WorkflowExecutionCount'
-      x-stackql-resource: count_open_workflow_executions
+      x-stackql-resource: open_workflow_executions
       x-stackql-method: count_open_workflow_executions
       x-stackql-verb: EXEC
   /CountPendingActivityTasks:
@@ -729,6 +729,9 @@ paths:
       x-stackql-method: get_workflow_execution_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /ListActivityTypes:
     post:
       operationId: ListActivityTypes
@@ -797,6 +800,9 @@ paths:
       x-stackql-method: list_activity_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.typeInfos
+      x-stackql-pagination-request-token-key: nextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /ListClosedWorkflowExecutions:
     post:
       operationId: ListClosedWorkflowExecutions
@@ -891,6 +897,9 @@ paths:
       x-stackql-method: list_closed_workflow_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executionInfos
+      x-stackql-pagination-request-token-key: nextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /ListDomains:
     post:
       operationId: ListDomains
@@ -952,6 +961,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.domainInfos
+      x-stackql-pagination-request-token-key: nextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /ListOpenWorkflowExecutions:
     post:
       operationId: ListOpenWorkflowExecutions
@@ -1033,6 +1045,9 @@ paths:
       x-stackql-method: list_open_workflow_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executionInfos
+      x-stackql-pagination-request-token-key: nextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1066,7 +1081,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListWorkflowTypes:
@@ -1135,6 +1150,9 @@ paths:
       x-stackql-method: list_workflow_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.typeInfos
+      x-stackql-pagination-request-token-key: nextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /PollForActivityTask:
     post:
       operationId: PollForActivityTask
@@ -1282,6 +1300,9 @@ paths:
       x-stackql-resource: poll_for_decision_task
       x-stackql-method: poll_for_decision_task
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextPageToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextPageToken
   /RecordActivityTaskHeartbeat:
     post:
       operationId: RecordActivityTaskHeartbeat
@@ -2067,7 +2088,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TerminateWorkflowExecution:
@@ -2301,7 +2322,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

@@ -92,7 +92,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateChannelMembershipResponse'
-      x-stackql-resource: batch_create_channel_membership
+      x-stackql-resource: channels
       x-stackql-method: batch_create_channel_membership
       x-stackql-verb: EXEC
   /channels/{channel_arn}?operation=channel-flow-callback:
@@ -131,7 +131,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChannelFlowCallbackResponse'
-      x-stackql-resource: channel_flow_callback
+      x-stackql-resource: channel_flows
       x-stackql-method: channel_flow_callback
       x-stackql-verb: EXEC
   /channels:
@@ -630,6 +630,7 @@ paths:
       x-stackql-resource: channels
       x-stackql-method: describe_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Channel
     put:
       operationId: UpdateChannel
       description: 'Update a channel''s attributes. Restriction: You can''t change a channel''s privacy. The x-amz-chime-bearer
@@ -734,6 +735,7 @@ paths:
       x-stackql-resource: channel_bans
       x-stackql-method: describe_channel_ban
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelBan
   /channel-flows/{channel_flow_arn}:
     delete:
       operationId: DeleteChannelFlow
@@ -774,6 +776,7 @@ paths:
       x-stackql-resource: channel_flows
       x-stackql-method: describe_channel_flow
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelFlow
     put:
       operationId: UpdateChannelFlow
       description: Updates channel flow attributes. This is a developer API.
@@ -884,6 +887,7 @@ paths:
       x-stackql-resource: channel_memberships
       x-stackql-method: describe_channel_membership
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelMembership
   /channels/{channel_arn}/messages/{message_id}:
     delete:
       operationId: DeleteChannelMessage
@@ -962,6 +966,7 @@ paths:
       x-stackql-resource: channel_messages
       x-stackql-method: get_channel_message
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelMessage
     put:
       operationId: UpdateChannelMessage
       description: Updates the content of a message. The x-amz-chime-bearer request header is mandatory. Use the ARN of the
@@ -1075,6 +1080,7 @@ paths:
       x-stackql-resource: channel_moderators
       x-stackql-method: describe_channel_moderator
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelModerator
   /app-instances/{app_instance_arn}/streaming-configurations:
     delete:
       operationId: DeleteMessagingStreamingConfigurations
@@ -1181,6 +1187,7 @@ paths:
       x-stackql-resource: channel_membership_for_app_instance_users
       x-stackql-method: describe_channel_membership_for_app_instance_user
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelMembership
   /channels/{channel_arn}?scope=app-instance-user-moderated-channel:
     get:
       operationId: DescribeChannelModeratedByAppInstanceUser
@@ -1216,6 +1223,7 @@ paths:
       x-stackql-resource: channel_moderated_by_app_instance_users
       x-stackql-method: describe_channel_moderated_by_app_instance_user
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Channel
   /channels/{channel_arn}/channel-flow/{channel_flow_arn}:
     delete:
       operationId: DisassociateChannelFlow
@@ -1379,6 +1387,7 @@ paths:
       x-stackql-resource: channel_message_status
       x-stackql-method: get_channel_message_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Status
   /endpoints/messaging-session:
     get:
       operationId: GetMessagingSessionEndpoint
@@ -1400,6 +1409,7 @@ paths:
       x-stackql-resource: messaging_session_endpoints
       x-stackql-method: get_messaging_session_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Endpoint
   /channels?scope=app-instance-user-memberships:
     get:
       operationId: ListChannelMembershipsForAppInstanceUser
@@ -1568,7 +1578,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendChannelMessageResponse'
-      x-stackql-resource: channel_message
+      x-stackql-resource: channels
       x-stackql-method: send_channel_message
       x-stackql-verb: EXEC
   /channels?scope=channel-flow-associations:
@@ -1703,7 +1713,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /channels/{channel_arn}/expiration-settings:
@@ -1743,7 +1753,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutChannelExpirationSettingsResponse'
-      x-stackql-resource: channel_expiration_settings
+      x-stackql-resource: channels
       x-stackql-method: put_channel_expiration_settings
       x-stackql-verb: REPLACE
   /channels/{channel_arn}/messages/{message_id}?operation=redact:
@@ -1787,7 +1797,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RedactChannelMessageResponse'
-      x-stackql-resource: redact_channel_message
+      x-stackql-resource: channels
       x-stackql-method: redact_channel_message
       x-stackql-verb: EXEC
   /channels?operation=search:
@@ -1859,7 +1869,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /tags?operation=untag-resource:
@@ -1884,7 +1894,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /channels/{channel_arn}/readMarker:
@@ -1912,7 +1922,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateChannelReadMarkerResponse'
-      x-stackql-resource: channel_read_markers
+      x-stackql-resource: channels
       x-stackql-method: update_channel_read_marker
       x-stackql-verb: UPDATE
 components:

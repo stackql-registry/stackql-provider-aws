@@ -335,7 +335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ClassifyDocumentResponse'
-      x-stackql-resource: classify_document
+      x-stackql-resource: endpoints
       x-stackql-method: classify_document
       x-stackql-verb: EXEC
   /ContainsPiiEntities:
@@ -999,6 +999,7 @@ paths:
       x-stackql-resource: datasets
       x-stackql-method: describe_dataset
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DatasetProperties
   /DescribeDocumentClassificationJob:
     post:
       operationId: DescribeDocumentClassificationJob
@@ -1037,6 +1038,7 @@ paths:
       x-stackql-resource: document_classification_jobs
       x-stackql-method: describe_document_classification_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DocumentClassificationJobProperties
   /DescribeDocumentClassifier:
     post:
       operationId: DescribeDocumentClassifier
@@ -1074,6 +1076,7 @@ paths:
       x-stackql-resource: document_classifiers
       x-stackql-method: describe_document_classifier
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DocumentClassifierProperties
   /DescribeDominantLanguageDetectionJob:
     post:
       operationId: DescribeDominantLanguageDetectionJob
@@ -1112,6 +1115,7 @@ paths:
       x-stackql-resource: dominant_language_detection_jobs
       x-stackql-method: describe_dominant_language_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DominantLanguageDetectionJobProperties
   /DescribeEndpoint:
     post:
       operationId: DescribeEndpoint
@@ -1149,6 +1153,7 @@ paths:
       x-stackql-resource: endpoints
       x-stackql-method: describe_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EndpointProperties
   /DescribeEntitiesDetectionJob:
     post:
       operationId: DescribeEntitiesDetectionJob
@@ -1187,6 +1192,7 @@ paths:
       x-stackql-resource: entities_detection_jobs
       x-stackql-method: describe_entities_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EntitiesDetectionJobProperties
   /DescribeEntityRecognizer:
     post:
       operationId: DescribeEntityRecognizer
@@ -1224,6 +1230,7 @@ paths:
       x-stackql-resource: entity_recognizers
       x-stackql-method: describe_entity_recognizer
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EntityRecognizerProperties
   /DescribeEventsDetectionJob:
     post:
       operationId: DescribeEventsDetectionJob
@@ -1260,6 +1267,7 @@ paths:
       x-stackql-resource: events_detection_jobs
       x-stackql-method: describe_events_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EventsDetectionJobProperties
   /DescribeFlywheel:
     post:
       operationId: DescribeFlywheel
@@ -1297,6 +1305,7 @@ paths:
       x-stackql-resource: flywheels
       x-stackql-method: describe_flywheel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.FlywheelProperties
   /DescribeFlywheelIteration:
     post:
       operationId: DescribeFlywheelIteration
@@ -1336,6 +1345,7 @@ paths:
       x-stackql-resource: flywheel_iterations
       x-stackql-method: describe_flywheel_iteration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.FlywheelIterationProperties
   /DescribeKeyPhrasesDetectionJob:
     post:
       operationId: DescribeKeyPhrasesDetectionJob
@@ -1374,6 +1384,7 @@ paths:
       x-stackql-resource: key_phrases_detection_jobs
       x-stackql-method: describe_key_phrases_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.KeyPhrasesDetectionJobProperties
   /DescribePiiEntitiesDetectionJob:
     post:
       operationId: DescribePiiEntitiesDetectionJob
@@ -1412,6 +1423,7 @@ paths:
       x-stackql-resource: pii_entities_detection_jobs
       x-stackql-method: describe_pii_entities_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PiiEntitiesDetectionJobProperties
   /DescribeResourcePolicy:
     post:
       operationId: DescribeResourcePolicy
@@ -1487,6 +1499,7 @@ paths:
       x-stackql-resource: sentiment_detection_jobs
       x-stackql-method: describe_sentiment_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SentimentDetectionJobProperties
   /DescribeTargetedSentimentDetectionJob:
     post:
       operationId: DescribeTargetedSentimentDetectionJob
@@ -1525,6 +1538,7 @@ paths:
       x-stackql-resource: targeted_sentiment_detection_jobs
       x-stackql-method: describe_targeted_sentiment_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TargetedSentimentDetectionJobProperties
   /DescribeTopicsDetectionJob:
     post:
       operationId: DescribeTopicsDetectionJob
@@ -1562,6 +1576,7 @@ paths:
       x-stackql-resource: topics_detection_jobs
       x-stackql-method: describe_topics_detection_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TopicsDetectionJobProperties
   /DetectDominantLanguage:
     post:
       operationId: DetectDominantLanguage
@@ -2067,6 +2082,9 @@ paths:
       x-stackql-method: list_document_classification_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DocumentClassificationJobPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDocumentClassifierSummaries:
     post:
       operationId: ListDocumentClassifierSummaries
@@ -2146,6 +2164,9 @@ paths:
       x-stackql-method: list_document_classifiers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DocumentClassifierPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDominantLanguageDetectionJobs:
     post:
       operationId: ListDominantLanguageDetectionJobs
@@ -2188,6 +2209,9 @@ paths:
       x-stackql-method: list_dominant_language_detection_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DominantLanguageDetectionJobPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEndpoints:
     post:
       operationId: ListEndpoints
@@ -2231,6 +2255,9 @@ paths:
       x-stackql-method: list_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EndpointPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEntitiesDetectionJobs:
     post:
       operationId: ListEntitiesDetectionJobs
@@ -2273,6 +2300,9 @@ paths:
       x-stackql-method: list_entities_detection_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EntitiesDetectionJobPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEntityRecognizerSummaries:
     post:
       operationId: ListEntityRecognizerSummaries
@@ -2355,6 +2385,9 @@ paths:
       x-stackql-method: list_entity_recognizers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EntityRecognizerPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEventsDetectionJobs:
     post:
       operationId: ListEventsDetectionJobs
@@ -2525,6 +2558,9 @@ paths:
       x-stackql-method: list_key_phrases_detection_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.KeyPhrasesDetectionJobPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPiiEntitiesDetectionJobs:
     post:
       operationId: ListPiiEntitiesDetectionJobs
@@ -2567,6 +2603,9 @@ paths:
       x-stackql-method: list_pii_entities_detection_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PiiEntitiesDetectionJobPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSentimentDetectionJobs:
     post:
       operationId: ListSentimentDetectionJobs
@@ -2609,6 +2648,9 @@ paths:
       x-stackql-method: list_sentiment_detection_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SentimentDetectionJobPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2642,7 +2684,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTargetedSentimentDetectionJobs:
@@ -2728,6 +2770,9 @@ paths:
       x-stackql-method: list_topics_detection_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TopicsDetectionJobPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutResourcePolicy:
     post:
       operationId: PutResourcePolicy
@@ -3107,7 +3152,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFlywheelIterationResponse'
-      x-stackql-resource: flywheel_iteration
+      x-stackql-resource: flywheels
       x-stackql-method: start_flywheel_iteration
       x-stackql-verb: EXEC
   /StartKeyPhrasesDetectionJob:
@@ -3776,7 +3821,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTrainingDocumentClassifierResponse'
-      x-stackql-resource: training_document_classifier
+      x-stackql-resource: document_classifiers
       x-stackql-method: stop_training_document_classifier
       x-stackql-verb: EXEC
   /StopTrainingEntityRecognizer:
@@ -3815,7 +3860,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTrainingEntityRecognizerResponse'
-      x-stackql-resource: training_entity_recognizer
+      x-stackql-resource: entity_recognizers
       x-stackql-method: stop_training_entity_recognizer
       x-stackql-verb: EXEC
   /TagResource:
@@ -3859,7 +3904,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3902,7 +3947,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateEndpoint:

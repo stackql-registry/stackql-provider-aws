@@ -2086,6 +2086,65 @@ components:
         insert: []
         update: []
         delete: []
+    deployments:
+      id: aws.greengrassv2.deployments
+      name: deployments
+      title: deployments
+      methods:
+        cancel_deployment:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1deployments~1{deployment_id}~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_deployment:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1deployments/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_deployments:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1deployments/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.deployments
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_deployment:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1deployments~1{deployment_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_deployment:
+          operation:
+            $ref: "#/paths/~1greengrass~1v2~1deployments~1{deployment_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/deployments/methods/get_deployment"
+          - $ref: "#/components/x-stackQL-resources/deployments/methods/list_deployments"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/deployments/methods/create_deployment"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/deployments/methods/delete_deployment"
     component_versions:
       id: aws.greengrassv2.component_versions
       name: component_versions
@@ -2111,6 +2170,14 @@ components:
             objectKey: $.componentVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/component_versions/methods/list_component_versions"
@@ -2118,51 +2185,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/component_versions/methods/create_component_version"
         update: []
         delete: []
-    deployments:
-      id: aws.greengrassv2.deployments
-      name: deployments
-      title: deployments
-      methods:
-        create_deployment:
-          operation:
-            $ref: "#/paths/~1greengrass~1v2~1deployments/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_deployments:
-          operation:
-            $ref: "#/paths/~1greengrass~1v2~1deployments/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.deployments
-          request:
-            nativeCasing: pascal
-        delete_deployment:
-          operation:
-            $ref: "#/paths/~1greengrass~1v2~1deployments~1{deployment_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_deployment:
-          operation:
-            $ref: "#/paths/~1greengrass~1v2~1deployments~1{deployment_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/deployments/methods/get_deployment"
-          - $ref: "#/components/x-stackQL-resources/deployments/methods/list_deployments"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/deployments/methods/create_deployment"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/deployments/methods/delete_deployment"
     components:
       id: aws.greengrassv2.components
       name: components
@@ -2196,6 +2218,14 @@ components:
             objectKey: $.components
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/components/methods/get_component"
@@ -2229,6 +2259,14 @@ components:
             objectKey: $.coreDevices
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_devices/methods/get_core_device"
@@ -2299,6 +2337,14 @@ components:
             objectKey: $.associatedClientDevices
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/client_devices_associated_with_core_devices/methods/list_client_devices_associated_with_core_device"
@@ -2319,6 +2365,14 @@ components:
             objectKey: $.effectiveDeployments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/effective_deployments/methods/list_effective_deployments"
@@ -2339,16 +2393,24 @@ components:
             objectKey: $.installedComponents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/installed_components/methods/list_installed_components"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.greengrassv2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.greengrassv2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2356,17 +2418,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.greengrassv2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2387,9 +2438,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

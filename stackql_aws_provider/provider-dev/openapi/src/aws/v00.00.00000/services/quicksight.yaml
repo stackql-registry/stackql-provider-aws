@@ -440,8 +440,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ActionConnectorId
-                - Name
-                - Type
                 - AuthenticationConfig
       responses:
         "200":
@@ -863,8 +861,6 @@ paths:
                   $ref: "#/components/schemas/LinkSharingConfiguration"
                 LinkEntities:
                   $ref: "#/components/schemas/LinkEntityArnList"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -975,8 +971,6 @@ paths:
                   $ref: "#/components/schemas/DashboardVersionDefinition"
                 ValidationStrategy:
                   $ref: "#/components/schemas/ValidationStrategy"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1042,7 +1036,6 @@ paths:
                   $ref: "#/components/schemas/SemanticModelConfiguration"
               required:
                 - DataSetId
-                - Name
                 - PhysicalTableMap
                 - ImportMode
       responses:
@@ -1121,8 +1114,6 @@ paths:
                   $ref: "#/components/schemas/FolderArnList"
               required:
                 - DataSourceId
-                - Name
-                - Type
       responses:
         "200":
           description: Success
@@ -1273,8 +1264,6 @@ paths:
               properties:
                 Name:
                   $ref: "#/components/schemas/FolderName"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -1598,7 +1587,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
               required:
-                - Namespace
                 - IdentityStore
       responses:
         "200":
@@ -2095,7 +2083,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
               required:
-                - Name
                 - BaseThemeId
                 - Configuration
       responses:
@@ -2378,7 +2365,6 @@ paths:
                   $ref: "#/components/schemas/CustomInstructions"
               required:
                 - TopicId
-                - Topic
       responses:
         "200":
           description: Success
@@ -2694,7 +2680,6 @@ paths:
                 VpcConnectionArn:
                   $ref: "#/components/schemas/Arn"
               required:
-                - Name
                 - AuthenticationConfig
       responses:
         "200":
@@ -2944,7 +2929,6 @@ paths:
                 SemanticModelConfiguration:
                   $ref: "#/components/schemas/SemanticModelConfiguration"
               required:
-                - Name
                 - PhysicalTableMap
                 - ImportMode
       responses:
@@ -3115,8 +3099,6 @@ paths:
                   $ref: "#/components/schemas/VpcConnectionProperties"
                 SslProperties:
                   $ref: "#/components/schemas/SslProperties"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -3667,8 +3649,6 @@ paths:
                   $ref: "#/components/schemas/TopicDetails"
                 CustomInstructions:
                   $ref: "#/components/schemas/CustomInstructions"
-              required:
-                - Topic
       responses:
         "200":
           description: Success
@@ -3877,9 +3857,6 @@ paths:
                   $ref: "#/components/schemas/String"
                 ExternalLoginId:
                   $ref: "#/components/schemas/String"
-              required:
-                - Email
-                - Role
       responses:
         "200":
           description: Success
@@ -6077,7 +6054,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFoldersForResourceResponse"
+                $ref: "#/components/schemas/ListFoldersForResourceOutputDisplay"
   /accounts/{aws_account_id}/namespaces/{namespace}/groups/{group_name}/members:
     get:
       operationId: ListGroupMemberships
@@ -6341,7 +6318,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRoleMembershipsResponse"
+                $ref: "#/components/schemas/ListRoleMembershipsOutputDisplay"
   /accounts/{aws_account_id}/namespaces/{namespace}/self-upgrade-requests:
     get:
       operationId: ListSelfUpgrades
@@ -6415,8 +6392,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagList"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -6806,7 +6781,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - IdentityType
-                - Email
                 - UserRole
       responses:
         "200":
@@ -28648,25 +28622,19 @@ components:
         SharingModel:
           $ref: "#/components/schemas/SharingModel"
           description: The sharing scope of the folder.
-    ListFoldersForResourceResponse:
+    ListFoldersForResourceRowDisplay:
       type: object
       properties:
-        Status:
-          $ref: "#/components/schemas/StatusCode"
-          description: The HTTP status of the request.
-        Folders:
-          $ref: "#/components/schemas/FoldersForResourceArnList"
+        folder:
+          type: string
           description: A list that contains the Amazon Resource Names (ARNs) of all folders that the resource is a member of.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The token for the next set of results, or null if there are no more results.
-        RequestId:
-          $ref: "#/components/schemas/String"
-          description: The Amazon Web Services request ID for this operation.
-    FoldersForResourceArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Arn"
+    ListFoldersForResourceOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFoldersForResourceRowDisplay"
     ListGroupMembershipsResponse:
       type: object
       properties:
@@ -28858,21 +28826,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/RefreshSchedule"
-    ListRoleMembershipsResponse:
+    ListRoleMembershipsRowDisplay:
       type: object
       properties:
-        MembersList:
-          $ref: "#/components/schemas/GroupsList"
+        members:
+          type: string
           description: The list of groups associated with a role
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: A pagination token that can be used in a subsequent request.
-        RequestId:
-          $ref: "#/components/schemas/String"
-          description: The Amazon Web Services request ID for this operation.
-        Status:
-          $ref: "#/components/schemas/StatusCode"
-          description: The HTTP status of the request.
+    ListRoleMembershipsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRoleMembershipsRowDisplay"
     ListSelfUpgradesResponse:
       type: object
       properties:
@@ -30915,11 +30881,116 @@ components:
           $ref: "#/components/schemas/StatusCode"
           description: The HTTP status of the request.
   x-stackQL-resources:
+    topics:
+      id: aws.quicksight.topics
+      name: topics
+      title: topics
+      methods:
+        batch_create_topic_reviewed_answer:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}~1batch-create-reviewed-answers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_topic_reviewed_answer:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}~1batch-delete-reviewed-answers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_topic:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_topics:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_topic:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_topic:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_topic:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_topics:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1topics/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.TopicSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/topics/methods/describe_topic"
+          - $ref: "#/components/x-stackQL-resources/topics/methods/search_topics"
+          - $ref: "#/components/x-stackQL-resources/topics/methods/list_topics"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/topics/methods/create_topic"
+        update:
+          - $ref: "#/components/x-stackQL-resources/topics/methods/update_topic"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/topics/methods/delete_topic"
     ingestions:
       id: aws.quicksight.ingestions
       name: ingestions
       title: ingestions
       methods:
+        cancel_ingestion:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1data-sets~1{data_set_id}~1ingestions~1{ingestion_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         create_ingestion:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1data-sets~1{data_set_id}~1ingestions~1{ingestion_id}/put"
@@ -30946,6 +31017,14 @@ components:
             objectKey: $.Ingestions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ingestions/methods/describe_ingestion"
@@ -31067,6 +31146,14 @@ components:
             objectKey: $.ActionConnectorSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_action_connector:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1action-connectors~1{action_connector_id}/delete"
@@ -31100,6 +31187,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -31160,8 +31254,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/analysis/methods/describe_analysis"
@@ -31221,6 +31313,14 @@ components:
             objectKey: $.Brands
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/brands/methods/describe_brand"
@@ -31256,6 +31356,14 @@ components:
             objectKey: $.CustomPermissionsList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_custom_permissions:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1custom-permissions~1{custom_permissions_name}/delete"
@@ -31279,6 +31387,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_user_custom_permission:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users~1{user_name}~1custom-permission/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_user_custom_permission:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users~1{user_name}~1custom-permission/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/describe_custom_permissions"
@@ -31286,8 +31411,10 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/create_custom_permissions"
         update:
+          - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/update_user_custom_permission"
           - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/update_custom_permissions"
         delete:
+          - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/delete_user_custom_permission"
           - $ref: "#/components/x-stackQL-resources/custom_permissions/methods/delete_custom_permissions"
     dashboards:
       id: aws.quicksight.dashboards
@@ -31341,6 +31468,14 @@ components:
             objectKey: $.DashboardSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_dashboards:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1dashboards/post"
@@ -31351,8 +31486,43 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
+        start_dashboard_snapshot_job:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}~1snapshot-jobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_dashboard_links:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}~1linked-entities/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_dashboard_published_version:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}~1versions~1{version_number}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dashboards/methods/describe_dashboard"
@@ -31361,6 +31531,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/dashboards/methods/create_dashboard"
         update:
+          - $ref: "#/components/x-stackQL-resources/dashboards/methods/update_dashboard_links"
+          - $ref: "#/components/x-stackQL-resources/dashboards/methods/update_dashboard_published_version"
           - $ref: "#/components/x-stackQL-resources/dashboards/methods/update_dashboard"
         delete:
           - $ref: "#/components/x-stackQL-resources/dashboards/methods/delete_dashboard"
@@ -31389,6 +31561,14 @@ components:
             objectKey: $.DataSetSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_data_set:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1data-sets~1{data_set_id}/delete"
@@ -31422,6 +31602,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -31460,6 +31647,14 @@ components:
             objectKey: $.DataSources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_data_source:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1data-sources~1{data_source_id}/delete"
@@ -31493,6 +31688,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -31545,43 +31747,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        list_folders:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1folders/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.FolderSummaryList
-          request:
-            nativeCasing: pascal
-        search_folders:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1folders/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.FolderSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/folders/methods/describe_folder"
-          - $ref: "#/components/x-stackQL-resources/folders/methods/search_folders"
-          - $ref: "#/components/x-stackQL-resources/folders/methods/list_folders"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/folders/methods/create_folder"
-        update:
-          - $ref: "#/components/x-stackQL-resources/folders/methods/update_folder"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/folders/methods/delete_folder"
-    folder_memberships:
-      id: aws.quicksight.folder_memberships
-      name: folder_memberships
-      title: folder_memberships
-      methods:
         create_folder_membership:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1folders~1{folder_id}~1members~1{member_type}~1{member_id}/put"
@@ -31594,13 +31759,55 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        list_folders:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1folders/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.FolderSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        search_folders:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1folders/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.FolderSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/folders/methods/describe_folder"
+          - $ref: "#/components/x-stackQL-resources/folders/methods/search_folders"
+          - $ref: "#/components/x-stackQL-resources/folders/methods/list_folders"
         insert:
-          - $ref: "#/components/x-stackQL-resources/folder_memberships/methods/create_folder_membership"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/folders/methods/create_folder_membership"
+          - $ref: "#/components/x-stackQL-resources/folders/methods/create_folder"
+        update:
+          - $ref: "#/components/x-stackQL-resources/folders/methods/update_folder"
         delete:
-          - $ref: "#/components/x-stackQL-resources/folder_memberships/methods/delete_folder_membership"
+          - $ref: "#/components/x-stackQL-resources/folders/methods/delete_folder_membership"
+          - $ref: "#/components/x-stackQL-resources/folders/methods/delete_folder"
     groups:
       id: aws.quicksight.groups
       name: groups
@@ -31626,6 +31833,14 @@ components:
             objectKey: $.GroupList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_group:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1groups~1{group_name}/delete"
@@ -31659,6 +31874,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -31704,6 +31926,14 @@ components:
             objectKey: $.GroupMemberList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/group_memberships/methods/describe_group_membership"
@@ -31761,6 +31991,14 @@ components:
             objectKey: $.IAMPolicyAssignments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/iam_policy_assignments/methods/describe_iam_policy_assignment"
@@ -31808,6 +32046,14 @@ components:
             objectKey: $.Namespaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/namespaces/methods/describe_namespace"
@@ -31895,9 +32141,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.MembersList
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRoleMembershipsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "MembersList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"members": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/role_memberships/methods/list_role_memberships"
@@ -31958,6 +32218,14 @@ components:
             objectKey: $.TemplateSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/templates/methods/describe_template"
@@ -32068,6 +32336,14 @@ components:
             objectKey: $.ThemeSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/themes/methods/describe_theme"
@@ -32126,76 +32402,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/theme_alias/methods/update_theme_alias"
         delete:
           - $ref: "#/components/x-stackQL-resources/theme_alias/methods/delete_theme_alias"
-    topics:
-      id: aws.quicksight.topics
-      name: topics
-      title: topics
-      methods:
-        create_topic:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_topics:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        delete_topic:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_topic:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_topic:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1topics~1{topic_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        search_topics:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1topics/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.TopicSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/topics/methods/describe_topic"
-          - $ref: "#/components/x-stackQL-resources/topics/methods/search_topics"
-          - $ref: "#/components/x-stackQL-resources/topics/methods/list_topics"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/topics/methods/create_topic"
-        update:
-          - $ref: "#/components/x-stackQL-resources/topics/methods/update_topic"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/topics/methods/delete_topic"
     topic_refresh_schedules:
       id: aws.quicksight.topic_refresh_schedules
       name: topic_refresh_schedules
@@ -32559,6 +32765,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_user_by_principal_id:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1user-principals~1{principal_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        generate_embed_url_for_registered_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1embed-url~1registered-user/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_users:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users/get"
@@ -32568,6 +32791,14 @@ components:
             objectKey: $.UserList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         register_user:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users/post"
@@ -32589,52 +32820,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/users/methods/update_user"
         delete:
           - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
-    user_by_principal_ids:
-      id: aws.quicksight.user_by_principal_ids
-      name: user_by_principal_ids
-      title: user_by_principal_ids
-      methods:
-        delete_user_by_principal_id:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1user-principals~1{principal_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/user_by_principal_ids/methods/delete_user_by_principal_id"
-    user_custom_permissions:
-      id: aws.quicksight.user_custom_permissions
-      name: user_custom_permissions
-      title: user_custom_permissions
-      methods:
-        delete_user_custom_permission:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users~1{user_name}~1custom-permission/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_user_custom_permission:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1namespaces~1{namespace}~1users~1{user_name}~1custom-permission/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_custom_permissions/methods/update_user_custom_permission"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/user_custom_permissions/methods/delete_user_custom_permission"
+          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user_by_principal_id"
     account_settings:
       id: aws.quicksight.account_settings
       name: account_settings
@@ -32759,6 +32945,25 @@ components:
             objectKey: $.AssetBundleExportJobSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_asset_bundle_export_job:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1asset-bundle-export-jobs~1export/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_bundle_export_jobs/methods/describe_asset_bundle_export_job"
@@ -32786,6 +32991,25 @@ components:
             objectKey: $.AssetBundleImportJobSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_asset_bundle_import_job:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1asset-bundle-import-jobs~1import/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/asset_bundle_import_jobs/methods/describe_asset_bundle_import_job"
@@ -32897,6 +33121,12 @@ components:
         describe_dashboard_snapshot_job:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}~1snapshot-jobs~1{snapshot_job_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_dashboard_snapshot_job_schedule:
+          operation:
+            $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}~1schedules~1{schedule_id}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -33024,6 +33254,14 @@ components:
             objectKey: $.Permissions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_folder_permissions:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1folders~1{folder_id}~1permissions/put"
@@ -33056,6 +33294,14 @@ components:
             objectKey: $.Permissions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_resolved_permissions/methods/describe_folder_resolved_permissions"
@@ -33452,6 +33698,14 @@ components:
             objectKey: $.AnalysisSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_analyses:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1search~1analyses/post"
@@ -33462,6 +33716,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -33485,6 +33746,14 @@ components:
             objectKey: $.DashboardVersionSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dashboard_versions/methods/list_dashboard_versions"
@@ -33505,6 +33774,14 @@ components:
             objectKey: $.FlowSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_flows:
           operation:
             $ref: "#/paths/~1accounts~1{aws_account_id}~1flows~1searchFlows/post"
@@ -33515,6 +33792,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -33538,6 +33822,14 @@ components:
             objectKey: $.FolderMemberList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_members/methods/list_folder_members"
@@ -33555,9 +33847,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Folders
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFoldersForResourceOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Folders" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"folder": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folders_for_resources/methods/list_folders_for_resource"
@@ -33578,6 +33884,14 @@ components:
             objectKey: $.ActiveAssignments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/iam_policy_assignments_for_users/methods/list_iam_policy_assignments_for_user"
@@ -33615,10 +33929,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/self_upgrades/methods/update_self_upgrade"
         delete: []
-    tags_for_resources:
-      id: aws.quicksight.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.quicksight.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -33626,17 +33940,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.quicksight.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1resources~1{resource_arn}~1tags/post"
@@ -33657,11 +33960,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     template_aliases:
       id: aws.quicksight.template_aliases
@@ -33677,6 +33981,14 @@ components:
             objectKey: $.TemplateAliasList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/template_aliases/methods/list_template_aliases"
@@ -33697,6 +34009,14 @@ components:
             objectKey: $.TemplateVersionSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/template_versions/methods/list_template_versions"
@@ -33736,6 +34056,14 @@ components:
             objectKey: $.ThemeVersionSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/theme_versions/methods/list_theme_versions"
@@ -33773,6 +34101,14 @@ components:
             objectKey: $.GroupList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/user_groups/methods/list_user_groups"
@@ -33797,45 +34133,6 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/application_with_token_exchange_grants/methods/update_application_with_token_exchange_grant"
-        delete: []
-    dashboard_links:
-      id: aws.quicksight.dashboard_links
-      name: dashboard_links
-      title: dashboard_links
-      methods:
-        update_dashboard_links:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}~1linked-entities/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/dashboard_links/methods/update_dashboard_links"
-        delete: []
-    dashboard_published_versions:
-      id: aws.quicksight.dashboard_published_versions
-      name: dashboard_published_versions
-      title: dashboard_published_versions
-      methods:
-        update_dashboard_published_version:
-          operation:
-            $ref: "#/paths/~1accounts~1{aws_account_id}~1dashboards~1{dashboard_id}~1versions~1{version_number}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/dashboard_published_versions/methods/update_dashboard_published_version"
         delete: []
     public_sharing_settings:
       id: aws.quicksight.public_sharing_settings

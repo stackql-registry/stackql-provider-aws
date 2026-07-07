@@ -42,7 +42,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateKeySigningKeyOutputDisplay'
-      x-stackql-resource: key_signing_key
+      x-stackql-resource: hosted_zones
       x-stackql-method: activate_key_signing_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ActivateKeySigningKeyOutputDisplay
@@ -85,7 +85,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateVPCWithHostedZoneOutputDisplay'
-      x-stackql-resource: vpc_with_hosted_zones
+      x-stackql-resource: hosted_zones
       x-stackql-method: associate_vpc_with_hosted_zone
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: AssociateVPCWithHostedZoneOutputDisplay
@@ -126,7 +126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChangeCidrCollectionOutputDisplay'
-      x-stackql-resource: change_cidr_collection
+      x-stackql-resource: changes
       x-stackql-method: change_cidr_collection
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ChangeCidrCollectionOutputDisplay
@@ -251,7 +251,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChangeResourceRecordSetsOutputDisplay'
-      x-stackql-resource: change_resource_record_sets
+      x-stackql-resource: resource_record_sets
       x-stackql-method: change_resource_record_sets
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ChangeResourceRecordSetsOutputDisplay
@@ -293,7 +293,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ChangeTagsForResourceOutputDisplay'
-      x-stackql-resource: change_tags_for_resource
+      x-stackql-resource: changes
       x-stackql-method: change_tags_for_resource
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ChangeTagsForResourceOutputDisplay
@@ -323,7 +323,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -601,7 +601,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateKeySigningKeyOutputDisplay'
-      x-stackql-resource: key_signing_keys
+      x-stackql-resource: hosted_zones
       x-stackql-method: create_key_signing_key
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateKeySigningKeyOutputDisplay
@@ -1021,7 +1021,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateKeySigningKeyOutputDisplay'
-      x-stackql-resource: key_signing_key
+      x-stackql-resource: hosted_zones
       x-stackql-method: deactivate_key_signing_key
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DeactivateKeySigningKeyOutputDisplay
@@ -1236,7 +1236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHostedZoneCommentOutputDisplay'
-      x-stackql-resource: hosted_zone_comments
+      x-stackql-resource: hosted_zones
       x-stackql-method: update_hosted_zone_comment
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateHostedZoneCommentOutputDisplay
@@ -1267,7 +1267,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteKeySigningKeyOutputDisplay'
-      x-stackql-resource: key_signing_keys
+      x-stackql-resource: hosted_zones
       x-stackql-method: delete_key_signing_key
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteKeySigningKeyOutputDisplay
@@ -1462,7 +1462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateTrafficPolicyCommentOutputDisplay'
-      x-stackql-resource: traffic_policy_comments
+      x-stackql-resource: traffic_policies
       x-stackql-method: update_traffic_policy_comment
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateTrafficPolicyCommentOutputDisplay
@@ -1624,7 +1624,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableHostedZoneDNSSECOutputDisplay'
-      x-stackql-resource: hosted_zone_dnssec
+      x-stackql-resource: hosted_zones
       x-stackql-method: disable_hosted_zone_dnssec
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DisableHostedZoneDNSSECOutputDisplay
@@ -1670,7 +1670,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateVPCFromHostedZoneOutputDisplay'
-      x-stackql-resource: vpc_from_hosted_zones
+      x-stackql-resource: hosted_zones
       x-stackql-method: disassociate_vpc_from_hosted_zone
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: DisassociateVPCFromHostedZoneOutputDisplay
@@ -1693,7 +1693,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableHostedZoneDNSSECOutputDisplay'
-      x-stackql-resource: hosted_zone_dnssec
+      x-stackql-resource: hosted_zones
       x-stackql-method: enable_hosted_zone_dnssec
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: EnableHostedZoneDNSSECOutputDisplay
@@ -2349,7 +2349,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourcesOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resources
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourcesOutputDisplay
@@ -2720,7 +2720,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHostedZoneFeaturesOutputDisplay'
-      x-stackql-resource: hosted_zone_features
+      x-stackql-resource: hosted_zones
       x-stackql-method: update_hosted_zone_features
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateHostedZoneFeaturesOutputDisplay

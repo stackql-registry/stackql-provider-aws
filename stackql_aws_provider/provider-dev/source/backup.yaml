@@ -44,7 +44,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: backup_vault_mpa_approval_teams
+      x-stackql-resource: backup_vaults
       x-stackql-method: associate_backup_vault_mpa_approval_team
       x-stackql-verb: UPDATE
   /legal-holds/{legal_hold_id}:
@@ -78,7 +78,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelLegalHoldOutput'
-      x-stackql-resource: legal_hold
+      x-stackql-resource: legal_holds
       x-stackql-method: cancel_legal_hold
       x-stackql-verb: EXEC
   /backup/plans/:
@@ -148,6 +148,9 @@ paths:
       x-stackql-method: list_backup_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupPlansList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /backup/plans/{backup_plan_id}/selections/:
     put:
       operationId: CreateBackupSelection
@@ -218,6 +221,9 @@ paths:
       x-stackql-method: list_backup_selections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupSelectionsList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /backup-vaults/{backup_vault_name}:
     put:
       operationId: CreateBackupVault
@@ -431,6 +437,9 @@ paths:
       x-stackql-method: list_legal_holds
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LegalHolds
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /logically-air-gapped-backup-vaults/{backup_vault_name}:
     put:
       operationId: CreateLogicallyAirGappedBackupVault
@@ -472,7 +481,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateLogicallyAirGappedBackupVaultOutput'
-      x-stackql-resource: logically_air_gapped_backup_vaults
+      x-stackql-resource: backup_vaults
       x-stackql-method: create_logically_air_gapped_backup_vault
       x-stackql-verb: INSERT
   /audit/report-plans:
@@ -638,6 +647,9 @@ paths:
       x-stackql-method: list_restore_testing_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RestoreTestingPlans
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /restore-testing/plans/{restore_testing_plan_name}/selections:
     put:
       operationId: CreateRestoreTestingSelection
@@ -713,6 +725,9 @@ paths:
       x-stackql-method: list_restore_testing_selections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RestoreTestingSelections
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tiering-configurations:
     put:
       operationId: CreateTieringConfiguration
@@ -932,7 +947,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: backup_vault_lock_configurations
+      x-stackql-resource: backup_vaults
       x-stackql-method: delete_backup_vault_lock_configuration
       x-stackql-verb: DELETE
     put:
@@ -967,7 +982,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: backup_vault_lock_configurations
+      x-stackql-resource: backup_vaults
       x-stackql-method: put_backup_vault_lock_configuration
       x-stackql-verb: REPLACE
   /backup-vaults/{backup_vault_name}/notification-configuration:
@@ -1215,7 +1230,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRecoveryPointLifecycleOutput'
-      x-stackql-resource: recovery_point_lifecycles
+      x-stackql-resource: recovery_points
       x-stackql-method: update_recovery_point_lifecycle
       x-stackql-verb: UPDATE
   /audit/report-plans/{report_plan_name}:
@@ -1255,6 +1270,7 @@ paths:
       x-stackql-resource: report_plans
       x-stackql-method: describe_report_plan
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ReportPlan
     put:
       operationId: UpdateReportPlan
       description: Updates the specified report plan.
@@ -1330,6 +1346,7 @@ paths:
       x-stackql-resource: restore_testing_plans
       x-stackql-method: get_restore_testing_plan
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RestoreTestingPlan
     put:
       operationId: UpdateRestoreTestingPlan
       description: 'This request will send changes to your specified restore testing plan. RestoreTestingPlanName cannot be
@@ -1414,6 +1431,7 @@ paths:
       x-stackql-resource: restore_testing_selections
       x-stackql-method: get_restore_testing_selection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RestoreTestingSelection
     put:
       operationId: UpdateRestoreTestingSelection
       description: Updates the specified restore testing selection. Most elements except the RestoreTestingSelectionName can
@@ -1494,6 +1512,7 @@ paths:
       x-stackql-resource: tiering_configurations
       x-stackql-method: get_tiering_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TieringConfiguration
     put:
       operationId: UpdateTieringConfiguration
       description: 'This request will send changes to your specified tiering configuration. TieringConfigurationName cannot
@@ -1587,6 +1606,7 @@ paths:
       x-stackql-resource: copy_jobs
       x-stackql-method: describe_copy_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CopyJob
   /global-settings:
     get:
       operationId: DescribeGlobalSettings
@@ -1709,6 +1729,7 @@ paths:
       x-stackql-resource: report_jobs
       x-stackql-method: describe_report_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ReportJob
   /restore-jobs/{restore_job_id}:
     get:
       operationId: DescribeRestoreJob
@@ -1775,7 +1796,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: backup_vault_mpa_approval_teams
+      x-stackql-resource: backup_vaults
       x-stackql-method: disassociate_backup_vault_mpa_approval_team
       x-stackql-verb: UPDATE
   /backup-vaults/{backup_vault_name}/recovery-points/{recovery_point_arn}/disassociate:
@@ -1828,7 +1849,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: recovery_point_from_parents
+      x-stackql-resource: recovery_points
       x-stackql-method: disassociate_recovery_point_from_parent
       x-stackql-verb: UPDATE
   /backup/plans/{backup_plan_id}/toTemplate/:
@@ -1849,7 +1870,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportBackupPlanTemplateOutput'
-      x-stackql-resource: backup_plan_template
+      x-stackql-resource: backup_plans
       x-stackql-method: export_backup_plan_template
       x-stackql-verb: EXEC
   /backup/plans/{backup_plan_id}/:
@@ -1914,6 +1935,7 @@ paths:
       x-stackql-resource: backup_plan_from_jsons
       x-stackql-method: get_backup_plan_from_json
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BackupPlan
   /backup/template/plans/{template_id}/toPlan:
     get:
       operationId: GetBackupPlanFromTemplate
@@ -1935,6 +1957,7 @@ paths:
       x-stackql-resource: backup_plan_from_templates
       x-stackql-method: get_backup_plan_from_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BackupPlanDocument
   /legal-holds/{legal_hold_id}/:
     get:
       operationId: GetLegalHold
@@ -2026,7 +2049,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRecoveryPointIndexSettingsOutput'
-      x-stackql-resource: recovery_point_index_settings
+      x-stackql-resource: recovery_points
       x-stackql-method: update_recovery_point_index_settings
       x-stackql-verb: UPDATE
   /backup-vaults/{backup_vault_name}/recovery-points/{recovery_point_arn}/restore-metadata:
@@ -2131,10 +2154,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetSupportedResourceTypesOutput'
+                $ref: '#/components/schemas/GetSupportedResourceTypesOutputDisplay'
       x-stackql-resource: supported_resource_types
       x-stackql-method: get_supported_resource_types
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetSupportedResourceTypesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ResourceTypes" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_type": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /audit/backup-job-summaries:
     get:
       operationId: ListBackupJobSummaries
@@ -2328,6 +2356,9 @@ paths:
       x-stackql-method: list_backup_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /backup/template/plans:
     get:
       operationId: ListBackupPlanTemplates
@@ -2358,6 +2389,9 @@ paths:
       x-stackql-method: list_backup_plan_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupPlanTemplatesList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /backup/plans/{backup_plan_id}/versions/:
     get:
       operationId: ListBackupPlanVersions
@@ -2395,6 +2429,9 @@ paths:
       x-stackql-method: list_backup_plan_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupPlanVersionsList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /backup-vaults/:
     get:
       operationId: ListBackupVaults
@@ -2437,6 +2474,9 @@ paths:
       x-stackql-method: list_backup_vaults
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupVaultList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /audit/copy-job-summaries:
     get:
       operationId: ListCopyJobSummaries
@@ -2626,6 +2666,9 @@ paths:
       x-stackql-method: list_copy_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CopyJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /indexes/recovery-point/:
     get:
       operationId: ListIndexedRecoveryPoints
@@ -2690,6 +2733,9 @@ paths:
       x-stackql-method: list_indexed_recovery_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IndexedRecoveryPoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /resources/:
     get:
       operationId: ListProtectedResources
@@ -2721,6 +2767,9 @@ paths:
       x-stackql-method: list_protected_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /backup-vaults/{backup_vault_name}/resources/:
     get:
       operationId: ListProtectedResourcesByBackupVault
@@ -2763,6 +2812,9 @@ paths:
       x-stackql-method: list_protected_resources_by_backup_vault
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Results
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /backup-vaults/{backup_vault_name}/recovery-points/:
     get:
       operationId: ListRecoveryPointsByBackupVault
@@ -2850,6 +2902,9 @@ paths:
       x-stackql-method: list_recovery_points_by_backup_vault
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecoveryPoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /legal-holds/{legal_hold_id}/recovery-points:
     get:
       operationId: ListRecoveryPointsByLegalHold
@@ -2886,6 +2941,9 @@ paths:
       x-stackql-method: list_recovery_points_by_legal_hold
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecoveryPoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /resources/{resource_arn}/recovery-points/:
     get:
       operationId: ListRecoveryPointsByResource
@@ -2931,6 +2989,9 @@ paths:
       x-stackql-method: list_recovery_points_by_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecoveryPoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /audit/report-jobs:
     get:
       operationId: ListReportJobs
@@ -3022,6 +3083,9 @@ paths:
       x-stackql-method: list_restore_access_backup_vaults
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RestoreAccessBackupVaults
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /audit/restore-job-summaries:
     get:
       operationId: ListRestoreJobSummaries
@@ -3182,6 +3246,9 @@ paths:
       x-stackql-method: list_restore_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RestoreJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /resources/{resource_arn}/restore-jobs/:
     get:
       operationId: ListRestoreJobsByProtectedResource
@@ -3237,6 +3304,9 @@ paths:
       x-stackql-method: list_restore_jobs_by_protected_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RestoreJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /audit/scan-job-summaries:
     get:
       operationId: ListScanJobSummaries
@@ -3311,6 +3381,9 @@ paths:
       x-stackql-method: list_scan_job_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ScanJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /scan/jobs:
     get:
       operationId: ListScanJobs
@@ -3408,6 +3481,9 @@ paths:
       x-stackql-method: list_scan_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ScanJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}/:
     get:
       operationId: ListTags
@@ -3481,6 +3557,9 @@ paths:
       x-stackql-method: list_tiering_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TieringConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /restore-jobs/{restore_job_id}/validations:
     put:
       operationId: PutRestoreValidationResult
@@ -3509,7 +3588,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: restore_validation_results
+      x-stackql-resource: restore_jobs
       x-stackql-method: put_restore_validation_result
       x-stackql-verb: REPLACE
   /logically-air-gapped-backup-vaults/{backup_vault_name}/restore-access-backup-vaults/{restore_access_backup_vault_arn}:
@@ -3627,7 +3706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCopyJobOutput'
-      x-stackql-resource: copy_job
+      x-stackql-resource: recovery_points
       x-stackql-method: start_copy_job
       x-stackql-verb: EXEC
   /audit/report-jobs/{report_plan_name}:
@@ -3657,7 +3736,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartReportJobOutput'
-      x-stackql-resource: report_job
+      x-stackql-resource: report_plans
       x-stackql-method: start_report_job
       x-stackql-verb: EXEC
   /restore-jobs:
@@ -3694,7 +3773,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRestoreJobOutput'
-      x-stackql-resource: restore_job
+      x-stackql-resource: recovery_points
       x-stackql-method: start_restore_job
       x-stackql-verb: EXEC
   /scan/job:
@@ -3739,7 +3818,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartScanJobOutput'
-      x-stackql-resource: scan_job
+      x-stackql-resource: recovery_points
       x-stackql-method: start_scan_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -3767,7 +3846,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /untag/{resource_arn}:
@@ -3800,7 +3879,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:
@@ -6461,11 +6540,11 @@ components:
       - ProtectedResourceType
       - RestoreTestingPlanName
       - RestoreTestingSelectionName
-    GetSupportedResourceTypesOutput:
+    GetSupportedResourceTypesRowDisplay:
       type: object
       properties:
-        ResourceTypes:
-          $ref: '#/components/schemas/ResourceTypes'
+        resource_type:
+          type: string
           description: 'Contains a string with the supported Amazon Web Services resource types: Aurora for Amazon Aurora
             CloudFormation for CloudFormation DocumentDB for Amazon DocumentDB (with MongoDB compatibility) DynamoDB for Amazon
             DynamoDB EBS for Amazon Elastic Block Store EC2 for Amazon Elastic Compute Cloud EFS for Amazon Elastic File System
@@ -6473,6 +6552,13 @@ components:
             Database Service Redshift for Amazon Redshift S3 for Amazon Simple Storage Service (Amazon S3) SAP HANA on Amazon
             EC2 for SAP HANA databases on Amazon Elastic Compute Cloud instances Storage Gateway for Storage Gateway Timestream
             for Amazon Timestream VirtualMachine for VMware virtual machines'
+    GetSupportedResourceTypesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetSupportedResourceTypesRowDisplay'
     GetTieringConfigurationOutput:
       type: object
       properties:

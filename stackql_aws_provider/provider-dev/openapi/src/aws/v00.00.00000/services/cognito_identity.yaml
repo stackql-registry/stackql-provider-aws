@@ -668,7 +668,6 @@ paths:
                   description: How users for a specific identity provider are to mapped to roles. This is a string to RoleMapping object map. The string identifies the identity provider, for example, graph.facebook.com or cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id. Up to 25 rules can be specified per identity provider.
               required:
                 - IdentityPoolId
-                - Roles
       responses:
         "200":
           description: Success
@@ -744,7 +743,6 @@ paths:
                   description: The tags to assign to the identity pool.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -825,7 +823,6 @@ paths:
                   description: Provider names to unlink from this identity.
               required:
                 - IdentityId
-                - Logins
                 - LoginsToRemove
       responses:
         "200":
@@ -1429,6 +1426,25 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        unlink_developer_identity:
+          operation:
+            $ref: "#/paths/~1UnlinkDeveloperIdentity/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
         update_identity_pool:
@@ -1491,6 +1507,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        unlink_identity:
+          operation:
+            $ref: "#/paths/~1UnlinkIdentity/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1677,10 +1705,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/principal_tag_attribute_maps/methods/set_principal_tag_attribute_map"
         delete: []
-    tags_for_resources:
-      id: aws.cognito_identity.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.cognito_identity.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1695,41 +1723,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    developer_identities:
-      id: aws.cognito_identity.developer_identities
-      name: developer_identities
-      title: developer_identities
-      methods:
-        lookup_developer_identity:
-          operation:
-            $ref: "#/paths/~1LookupDeveloperIdentity/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/developer_identities/methods/lookup_developer_identity"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.cognito_identity.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1757,9 +1750,47 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    developer_identities:
+      id: aws.cognito_identity.developer_identities
+      name: developer_identities
+      title: developer_identities
+      methods:
+        lookup_developer_identity:
+          operation:
+            $ref: "#/paths/~1LookupDeveloperIdentity/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        merge_developer_identities:
+          operation:
+            $ref: "#/paths/~1MergeDeveloperIdentities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/developer_identities/methods/lookup_developer_identity"
+        insert: []
+        update: []
         delete: []

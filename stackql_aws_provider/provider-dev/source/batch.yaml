@@ -48,7 +48,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
   /v1/createcomputeenvironment:
@@ -522,6 +522,9 @@ paths:
       x-stackql-method: describe_compute_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.computeEnvironments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/describeconsumableresource:
     post:
       operationId: DescribeConsumableResource
@@ -582,6 +585,9 @@ paths:
       x-stackql-method: describe_job_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobDefinitions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/describejobqueues:
     post:
       operationId: DescribeJobQueues
@@ -611,6 +617,9 @@ paths:
       x-stackql-method: describe_job_queues
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobQueues
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/describejobs:
     post:
       operationId: DescribeJobs
@@ -718,6 +727,9 @@ paths:
       x-stackql-method: describe_service_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.serviceEnvironments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/describeservicejob:
     post:
       operationId: DescribeServiceJob
@@ -803,6 +815,9 @@ paths:
       x-stackql-method: list_consumable_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.consumableResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/listjobs:
     post:
       operationId: ListJobs
@@ -842,6 +857,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/listjobsbyconsumableresource:
     post:
       operationId: ListJobsByConsumableResource
@@ -875,6 +893,9 @@ paths:
       x-stackql-method: list_jobs_by_consumable_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/listquotashares:
     post:
       operationId: ListQuotaShares
@@ -906,6 +927,9 @@ paths:
       x-stackql-method: list_quota_shares
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.quotaShares
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/listschedulingpolicies:
     post:
       operationId: ListSchedulingPolicies
@@ -933,6 +957,9 @@ paths:
       x-stackql-method: list_scheduling_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.schedulingPolicies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/listservicejobs:
     post:
       operationId: ListServiceJobs
@@ -966,6 +993,9 @@ paths:
       x-stackql-method: list_service_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -988,7 +1018,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1024,7 +1054,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1052,7 +1082,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/registerjobdefinition:
@@ -1171,7 +1201,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: submit_job
       x-stackql-verb: EXEC
   /v1/submitservicejob:
@@ -1223,7 +1253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitServiceJobResponse'
-      x-stackql-resource: service_job
+      x-stackql-resource: jobs
       x-stackql-method: submit_service_job
       x-stackql-verb: EXEC
   /v1/terminatejob:

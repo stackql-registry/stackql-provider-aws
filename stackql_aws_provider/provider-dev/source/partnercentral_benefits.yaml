@@ -116,7 +116,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateBenefitApplicationResourceOutput'
-      x-stackql-resource: benefit_application_resources
+      x-stackql-resource: benefit_applications
       x-stackql-method: associate_benefit_application_resource
       x-stackql-verb: UPDATE
   /CancelBenefitApplication:
@@ -163,7 +163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelBenefitApplicationOutput'
-      x-stackql-resource: benefit_application
+      x-stackql-resource: benefits
       x-stackql-method: cancel_benefit_application
       x-stackql-verb: EXEC
   /CreateBenefitApplication:
@@ -275,7 +275,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateBenefitApplicationResourceOutput'
-      x-stackql-resource: benefit_application_resources
+      x-stackql-resource: benefit_applications
       x-stackql-method: disassociate_benefit_application_resource
       x-stackql-verb: UPDATE
   /GetBenefit:
@@ -453,6 +453,9 @@ paths:
       x-stackql-method: list_benefit_allocations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BenefitAllocationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListBenefitApplications:
     post:
       operationId: ListBenefitApplications
@@ -517,6 +520,9 @@ paths:
       x-stackql-method: list_benefit_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BenefitApplicationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListBenefits:
     post:
       operationId: ListBenefits
@@ -569,6 +575,9 @@ paths:
       x-stackql-method: list_benefits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BenefitSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -602,7 +611,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /RecallBenefitApplication:
@@ -689,7 +698,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitBenefitApplicationOutput'
-      x-stackql-resource: benefit_application
+      x-stackql-resource: benefits
       x-stackql-method: submit_benefit_application
       x-stackql-verb: EXEC
   /TagResource:
@@ -729,7 +738,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -769,7 +778,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateBenefitApplication:

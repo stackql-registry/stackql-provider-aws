@@ -5,7 +5,7 @@ info:
   description: ARC - Region switch
   x-serviceName: arc-region-switch
   x-serviceAlias: arc_region_switch
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2022-07-26'
   x-endpointPrefix: arc-region-switch
   x-targetPrefix: ArcRegionSwitch
@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApprovePlanExecutionStepResponse'
-      x-stackql-resource: plan_execution_step
+      x-stackql-resource: plan_executions
       x-stackql-method: approve_plan_execution_step
       x-stackql-verb: EXEC
   /CancelPlanExecution:
@@ -114,7 +114,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelPlanExecutionResponse'
-      x-stackql-resource: plan_execution
+      x-stackql-resource: plans
       x-stackql-method: cancel_plan_execution
       x-stackql-verb: EXEC
   /CreatePlan:
@@ -268,6 +268,7 @@ paths:
       x-stackql-resource: plans
       x-stackql-method: get_plan
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.plan
   /GetPlanEvaluationStatus:
     post:
       operationId: GetPlanEvaluationStatus
@@ -314,6 +315,9 @@ paths:
       x-stackql-method: get_plan_evaluation_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.warnings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetPlanExecution:
     post:
       operationId: GetPlanExecution
@@ -364,6 +368,9 @@ paths:
       x-stackql-method: get_plan_execution
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.stepStates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetPlanInRegion:
     post:
       operationId: GetPlanInRegion
@@ -401,6 +408,7 @@ paths:
       x-stackql-resource: plan_in_regions
       x-stackql-method: get_plan_in_region
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.plan
   /ListPlanExecutionEvents:
     post:
       operationId: ListPlanExecutionEvents
@@ -454,6 +462,9 @@ paths:
       x-stackql-method: list_plan_execution_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPlanExecutions:
     post:
       operationId: ListPlanExecutions
@@ -503,6 +514,9 @@ paths:
       x-stackql-method: list_plan_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.items_
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPlans:
     post:
       operationId: ListPlans
@@ -543,6 +557,9 @@ paths:
       x-stackql-method: list_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.plans
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPlansInRegion:
     post:
       operationId: ListPlansInRegion
@@ -584,6 +601,9 @@ paths:
       x-stackql-method: list_plans_in_region
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.plans
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRoute53HealthChecks:
     post:
       operationId: ListRoute53HealthChecks
@@ -635,6 +655,9 @@ paths:
       x-stackql-method: list_route53_health_checks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.healthChecks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRoute53HealthChecksInRegion:
     post:
       operationId: ListRoute53HealthChecksInRegion
@@ -686,6 +709,9 @@ paths:
       x-stackql-method: list_route53_health_checks_in_region
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.healthChecks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -719,7 +745,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /StartPlanExecution:
@@ -782,7 +808,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPlanExecutionResponse'
-      x-stackql-resource: plan_execution
+      x-stackql-resource: plans
       x-stackql-method: start_plan_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -823,7 +849,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -863,7 +889,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdatePlan:
@@ -1025,7 +1051,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePlanExecutionStepResponse'
-      x-stackql-resource: plan_execution_steps
+      x-stackql-resource: plan_executions
       x-stackql-method: update_plan_execution_step
       x-stackql-verb: UPDATE
 components:

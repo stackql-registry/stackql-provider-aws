@@ -785,6 +785,7 @@ paths:
       x-stackql-resource: backups
       x-stackql-method: describe_backup
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BackupDescription
   /DescribeContinuousBackups:
     post:
       operationId: DescribeContinuousBackups
@@ -828,6 +829,7 @@ paths:
       x-stackql-resource: continuous_backups
       x-stackql-method: describe_continuous_backups
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ContinuousBackupsDescription
   /DescribeContributorInsights:
     post:
       operationId: DescribeContributorInsights
@@ -935,6 +937,7 @@ paths:
       x-stackql-resource: exports
       x-stackql-method: describe_export
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExportDescription
   /DescribeGlobalTable:
     post:
       operationId: DescribeGlobalTable
@@ -976,6 +979,7 @@ paths:
       x-stackql-resource: global_tables
       x-stackql-method: describe_global_table
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.GlobalTableDescription
   /DescribeGlobalTableSettings:
     post:
       operationId: DescribeGlobalTableSettings
@@ -1053,6 +1057,7 @@ paths:
       x-stackql-resource: imports
       x-stackql-method: describe_import
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ImportTableDescription
   /DescribeKinesisStreamingDestination:
     post:
       operationId: DescribeKinesisStreamingDestination
@@ -1183,6 +1188,7 @@ paths:
       x-stackql-resource: tables
       x-stackql-method: describe_table
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Table
   /DescribeTableReplicaAutoScaling:
     post:
       operationId: DescribeTableReplicaAutoScaling
@@ -1220,6 +1226,7 @@ paths:
       x-stackql-resource: table_replica_auto_scalings
       x-stackql-method: describe_table_replica_auto_scaling
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TableAutoScalingDescription
   /DescribeTimeToLive:
     post:
       operationId: DescribeTimeToLive
@@ -1257,6 +1264,7 @@ paths:
       x-stackql-resource: time_to_lives
       x-stackql-method: describe_time_to_live
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TimeToLiveDescription
   /DisableKinesisStreamingDestination:
     post:
       operationId: DisableKinesisStreamingDestination
@@ -1299,7 +1307,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/KinesisStreamingDestinationOutput'
-      x-stackql-resource: kinesis_streaming_destination
+      x-stackql-resource: tables
       x-stackql-method: disable_kinesis_streaming_destination
       x-stackql-verb: EXEC
   /EnableKinesisStreamingDestination:
@@ -1345,7 +1353,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/KinesisStreamingDestinationOutput'
-      x-stackql-resource: kinesis_streaming_destination
+      x-stackql-resource: tables
       x-stackql-method: enable_kinesis_streaming_destination
       x-stackql-verb: EXEC
   /ExecuteStatement:
@@ -1540,7 +1548,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportTableToPointInTimeOutput'
-      x-stackql-resource: table_to_point_in_time
+      x-stackql-resource: tables
       x-stackql-method: export_table_to_point_in_time
       x-stackql-verb: EXEC
   /GetItem:
@@ -1792,6 +1800,9 @@ paths:
       x-stackql-method: list_backups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BackupSummaries
+      x-stackql-pagination-request-token-key: ExclusiveStartBackupArn
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.LastEvaluatedBackupArn
   /ListContributorInsights:
     post:
       operationId: ListContributorInsights
@@ -1999,11 +2010,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTablesOutput'
+                $ref: '#/components/schemas/ListTablesOutputDisplay'
       x-stackql-resource: tables
       x-stackql-method: list_tables
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.TableNames
+      x-stackql-responseEnvelope: ListTablesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "TableNames" -}}{{- $tok := index . "LastEvaluatedTableName" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"table_name": {{ toJson $v
+        }}}{{- end -}}{{- end -}}]{{- if $tok }}, "LastEvaluatedTableName": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: ExclusiveStartTableName
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.LastEvaluatedTableName
   /ListTagsOfResource:
     post:
       operationId: ListTagsOfResource
@@ -2044,10 +2063,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsOfResourceOutput'
-      x-stackql-resource: tags_of_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_of_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutItem:
     post:
       operationId: PutItem
@@ -2438,9 +2460,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryOutput'
-      x-stackql-resource: query
+      x-stackql-resource: tables
       x-stackql-method: query
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: ExclusiveStartKey
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.LastEvaluatedKey
   /RestoreTableFromBackup:
     post:
       operationId: RestoreTableFromBackup
@@ -2500,7 +2525,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreTableFromBackupOutput'
-      x-stackql-resource: table_from_backup
+      x-stackql-resource: tables
       x-stackql-method: restore_table_from_backup
       x-stackql-verb: EXEC
   /RestoreTableToPointInTime:
@@ -2577,7 +2602,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestoreTableToPointInTimeOutput'
-      x-stackql-resource: table_to_point_in_time
+      x-stackql-resource: tables
       x-stackql-method: restore_table_to_point_in_time
       x-stackql-verb: EXEC
   /Scan:
@@ -2756,9 +2781,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScanOutput'
-      x-stackql-resource: scan
+      x-stackql-resource: tables
       x-stackql-method: scan
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: ExclusiveStartKey
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.LastEvaluatedKey
   /TagResource:
     post:
       operationId: TagResource
@@ -2801,7 +2829,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TransactGetItems:
@@ -2848,7 +2876,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactGetItemsOutput'
-      x-stackql-resource: transact_get_items
+      x-stackql-resource: items
       x-stackql-method: transact_get_items
       x-stackql-verb: EXEC
   /TransactWriteItems:
@@ -2928,7 +2956,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransactWriteItemsOutput'
-      x-stackql-resource: transact_write_items
+      x-stackql-resource: items
       x-stackql-method: transact_write_items
       x-stackql-verb: EXEC
   /UntagResource:
@@ -2973,7 +3001,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateContinuousBackups:
@@ -6420,24 +6448,21 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListTablesOutput:
-      description: Represents the output of a ListTables operation.
+    ListTablesRowDisplay:
       type: object
       properties:
-        TableNames:
-          $ref: '#/components/schemas/TableNameList'
+        table_name:
+          type: string
           description: The names of the tables associated with the current account at the current endpoint. The maximum size
             of this array is 100. If LastEvaluatedTableName also appears in the output, you can use this value as the ExclusiveStartTableName
             parameter in a subsequent ListTables request and obtain the next page of results.
-        LastEvaluatedTableName:
-          $ref: '#/components/schemas/TableName'
-          description: The name of the last table in the current page of results. Use this value as the ExclusiveStartTableName
-            in a new request to obtain the next page of results, until all the table names are returned. If you do not receive
-            a LastEvaluatedTableName value in the response, this means that there are no more table names to be retrieved.
-    TableNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TableName'
+    ListTablesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTablesRowDisplay'
     ListTagsOfResourceOutput:
       type: object
       properties:

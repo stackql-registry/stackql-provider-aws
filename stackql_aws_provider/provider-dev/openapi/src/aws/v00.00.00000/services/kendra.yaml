@@ -49,7 +49,6 @@ paths:
                   $ref: "#/components/schemas/AssociateEntityList"
                   description: Lists users or groups in your IAM Identity Center identity source.
               required:
-                - Id
                 - IndexId
                 - EntityList
       responses:
@@ -90,7 +89,6 @@ paths:
                   $ref: "#/components/schemas/EntityPersonaConfigurationList"
                   description: The personas that define the specific permissions of users or groups in your IAM Identity Center identity source. The available personas or access roles are Owner and Viewer. For more information on these personas, see Providing access to your search page.
               required:
-                - Id
                 - IndexId
                 - Personas
       responses:
@@ -326,7 +324,6 @@ paths:
                   description: A token that you provide to identify the request to create an access control configuration. Multiple calls to the CreateAccessControlConfiguration API with the same client token will create only one access control configuration.
               required:
                 - IndexId
-                - Name
       responses:
         "200":
           description: Success
@@ -392,9 +389,7 @@ paths:
                   $ref: "#/components/schemas/CustomDocumentEnrichmentConfiguration"
                   description: Configuration information for altering document metadata and content during the document ingestion process. For more information on how to create, modify and delete document metadata, or make other content alterations when you ingest documents into Amazon Kendra, see Customizing document metadata during the ingestion process.
               required:
-                - Name
                 - IndexId
-                - Type
       responses:
         "200":
           description: Success
@@ -442,7 +437,6 @@ paths:
                   $ref: "#/components/schemas/ClientTokenName"
                   description: A token that you provide to identify the request to create your Amazon Kendra experience. Multiple calls to the CreateExperience API with the same client token creates only one Amazon Kendra experience.
               required:
-                - Name
                 - IndexId
       responses:
         "200":
@@ -501,7 +495,6 @@ paths:
                   description: The code for a language. This allows you to support a language for the FAQ document. English is supported by default. For more information on supported languages, including their codes, see Adding documents in languages other than English.
               required:
                 - IndexId
-                - Name
                 - S3Path
                 - RoleArn
       responses:
@@ -618,7 +611,6 @@ paths:
                   $ref: "#/components/schemas/UserGroupResolutionConfiguration"
                   description: Gets users and groups from IAM Identity Center identity source. To configure this, see UserGroupResolutionConfiguration. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents. If you're using an Amazon Kendra Gen AI Enterprise Edition index, UserGroupResolutionConfiguration isn't supported.
               required:
-                - Name
                 - RoleArn
       responses:
         "200":
@@ -671,7 +663,6 @@ paths:
                   description: "A list of key-value pairs that identify or categorize the block list. Tag keys and values can consist of Unicode letters, digits, white space, and any of the following symbols: _ . : / = + - @."
               required:
                 - IndexId
-                - Name
                 - SourceS3Path
                 - RoleArn
       responses:
@@ -725,7 +716,6 @@ paths:
                   description: A token that you provide to identify the request to create a thesaurus. Multiple calls to the CreateThesaurus API with the same client token will create only one thesaurus.
               required:
                 - IndexId
-                - Name
                 - RoleArn
                 - SourceS3Path
       responses:
@@ -764,7 +754,6 @@ paths:
                   description: The identifier of the access control configuration you want to delete.
               required:
                 - IndexId
-                - Id
       responses:
         "200":
           description: Success
@@ -800,7 +789,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index used with the data source connector.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -833,7 +821,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index for your Amazon Kendra experience.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -870,7 +857,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index for the FAQ.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -899,8 +885,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index you want to delete.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -972,7 +956,6 @@ paths:
                   description: The identifier of the block list you want to delete.
               required:
                 - IndexId
-                - Id
       responses:
         "200":
           description: Success
@@ -1004,7 +987,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index for the thesaurus.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -1038,7 +1020,6 @@ paths:
                   description: The identifier of the access control configuration you want to get information on.
               required:
                 - IndexId
-                - Id
       responses:
         "200":
           description: Success
@@ -1074,7 +1055,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index used with the data source connector.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -1111,7 +1091,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index for your Amazon Kendra experience.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -1148,7 +1127,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index for the FAQ.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -1218,8 +1196,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index you want to get information on.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -1296,7 +1272,6 @@ paths:
                   description: The identifier of the block list you want to get information on.
               required:
                 - IndexId
-                - Id
       responses:
         "200":
           description: Success
@@ -1365,7 +1340,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index for the thesaurus.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -1405,7 +1379,6 @@ paths:
                   $ref: "#/components/schemas/DisassociateEntityList"
                   description: Lists users or groups in your IAM Identity Center identity source.
               required:
-                - Id
                 - IndexId
                 - EntityList
       responses:
@@ -1446,7 +1419,6 @@ paths:
                   $ref: "#/components/schemas/EntityIdsList"
                   description: The identifiers of users or groups in your IAM Identity Center identity source. For example, user IDs could be user emails.
               required:
-                - Id
                 - IndexId
                 - EntityIds
       responses:
@@ -2271,7 +2243,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index used with the data source connector.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -2308,7 +2279,6 @@ paths:
                   $ref: "#/components/schemas/IndexId"
                   description: The identifier of the index used with the data source connector.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -2381,7 +2351,6 @@ paths:
                   description: A list of tag keys to add to the index, FAQ, data source, or other resource. If a tag already exists, the existing value is replaced with the new value.
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -2467,7 +2436,6 @@ paths:
                   description: The updated list of principal lists that define the hierarchy for which documents users should have access to.
               required:
                 - IndexId
-                - Id
       responses:
         "200":
           description: Success
@@ -2527,7 +2495,6 @@ paths:
                   $ref: "#/components/schemas/CustomDocumentEnrichmentConfiguration"
                   description: Configuration information you want to update for altering document metadata and content during the document ingestion process. For more information on how to create, modify and delete document metadata, or make other content alterations when you ingest documents into Amazon Kendra, see Customizing document metadata during the ingestion process.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -2572,7 +2539,6 @@ paths:
                   $ref: "#/components/schemas/Description"
                   description: A new description for your Amazon Kendra experience.
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -2677,8 +2643,6 @@ paths:
                 UserGroupResolutionConfiguration:
                   $ref: "#/components/schemas/UserGroupResolutionConfiguration"
                   description: Gets users and groups from IAM Identity Center identity source. To configure this, see UserGroupResolutionConfiguration. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents. If you're using an Amazon Kendra Gen AI Enterprise Edition index, UserGroupResolutionConfiguration isn't supported.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -2723,7 +2687,6 @@ paths:
                   description: The IAM (Identity and Access Management) role used to access the block list text file in S3.
               required:
                 - IndexId
-                - Id
       responses:
         "200":
           description: Success
@@ -2813,7 +2776,6 @@ paths:
                 SourceS3Path:
                   $ref: "#/components/schemas/S3Path"
               required:
-                - Id
                 - IndexId
       responses:
         "200":
@@ -7677,10 +7639,10 @@ components:
           $ref: "#/components/schemas/AttributeSuggestionsMode"
           description: You can set the mode to ACTIVE or INACTIVE. You must also set SuggestionTypes as either QUERY or DOCUMENT_ATTRIBUTES and then call GetQuerySuggestions. If Mode to use query history is set to ENABLED when calling UpdateQuerySuggestionsConfig and AttributeSuggestionsMode to use fields/attributes is set to ACTIVE, and you haven't set your SuggestionTypes preference to DOCUMENT_ATTRIBUTES, then Amazon Kendra uses the query history.
   x-stackQL-resources:
-    entities_to_experiences:
-      id: aws.kendra.entities_to_experiences
-      name: entities_to_experiences
-      title: entities_to_experiences
+    experiences:
+      id: aws.kendra.experiences
+      name: experiences
+      title: experiences
       methods:
         associate_entities_to_experience:
           operation:
@@ -7695,16 +7657,97 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_experience:
+          operation:
+            $ref: "#/paths/~1CreateExperience/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_experience:
+          operation:
+            $ref: "#/paths/~1DeleteExperience/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_experience:
+          operation:
+            $ref: "#/paths/~1DescribeExperience/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_entities_from_experience:
+          operation:
+            $ref: "#/paths/~1DisassociateEntitiesFromExperience/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_experiences:
+          operation:
+            $ref: "#/paths/~1ListExperiences/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_experience:
+          operation:
+            $ref: "#/paths/~1UpdateExperience/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/experiences/methods/describe_experience"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/experiences/methods/create_experience"
         update:
-          - $ref: "#/components/x-stackQL-resources/entities_to_experiences/methods/associate_entities_to_experience"
-        delete: []
-    personas_to_entities:
-      id: aws.kendra.personas_to_entities
-      name: personas_to_entities
-      title: personas_to_entities
+          - $ref: "#/components/x-stackQL-resources/experiences/methods/associate_entities_to_experience"
+          - $ref: "#/components/x-stackQL-resources/experiences/methods/update_experience"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/experiences/methods/delete_experience"
+    indexes:
+      id: aws.kendra.indexes
+      name: indexes
+      title: indexes
       methods:
         associate_personas_to_entities:
           operation:
@@ -7719,11 +7762,222 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        batch_delete_document:
+          operation:
+            $ref: "#/paths/~1BatchDeleteDocument/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_put_document:
+          operation:
+            $ref: "#/paths/~1BatchPutDocument/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_index:
+          operation:
+            $ref: "#/paths/~1CreateIndex/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_index:
+          operation:
+            $ref: "#/paths/~1DeleteIndex/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_index:
+          operation:
+            $ref: "#/paths/~1DescribeIndex/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_personas_from_entities:
+          operation:
+            $ref: "#/paths/~1DisassociatePersonasFromEntities/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        query:
+          operation:
+            $ref: "#/paths/~1Query/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        retrieve:
+          operation:
+            $ref: "#/paths/~1Retrieve/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        submit_feedback:
+          operation:
+            $ref: "#/paths/~1SubmitFeedback/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_index:
+          operation:
+            $ref: "#/paths/~1UpdateIndex/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/describe_index"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/create_index"
         update:
-          - $ref: "#/components/x-stackQL-resources/personas_to_entities/methods/associate_personas_to_entities"
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/associate_personas_to_entities"
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/disassociate_personas_from_entities"
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/update_index"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/indexes/methods/delete_index"
+    featured_results_sets:
+      id: aws.kendra.featured_results_sets
+      name: featured_results_sets
+      title: featured_results_sets
+      methods:
+        batch_delete_featured_results_set:
+          operation:
+            $ref: "#/paths/~1BatchDeleteFeaturedResultsSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_featured_results_set:
+          operation:
+            $ref: "#/paths/~1CreateFeaturedResultsSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_featured_results_set:
+          operation:
+            $ref: "#/paths/~1DescribeFeaturedResultsSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_featured_results_sets:
+          operation:
+            $ref: "#/paths/~1ListFeaturedResultsSets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_featured_results_set:
+          operation:
+            $ref: "#/paths/~1UpdateFeaturedResultsSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/describe_featured_results_set"
+          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/list_featured_results_sets"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/create_featured_results_set"
+        update:
+          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/update_featured_results_set"
         delete: []
     document_status:
       id: aws.kendra.document_status
@@ -7746,6 +8000,42 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/document_status/methods/batch_get_document_status"
+        insert: []
+        update: []
+        delete: []
+    query_suggestions:
+      id: aws.kendra.query_suggestions
+      name: query_suggestions
+      title: query_suggestions
+      methods:
+        clear_query_suggestions:
+          operation:
+            $ref: "#/paths/~1ClearQuerySuggestions/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_query_suggestions:
+          operation:
+            $ref: "#/paths/~1GetQuerySuggestions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/query_suggestions/methods/get_query_suggestions"
         insert: []
         update: []
         delete: []
@@ -7822,7 +8112,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/access_control_configurations/methods/describe_access_control_configuration"
-          - $ref: "#/components/x-stackQL-resources/access_control_configurations/methods/list_access_control_configurations"
         insert:
           - $ref: "#/components/x-stackQL-resources/access_control_configurations/methods/create_access_control_configuration"
         update:
@@ -7885,6 +8174,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_data_source_sync_job:
+          operation:
+            $ref: "#/paths/~1StartDataSourceSyncJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_data_source_sync_job:
+          operation:
+            $ref: "#/paths/~1StopDataSourceSyncJob/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_data_source:
           operation:
             $ref: "#/paths/~1UpdateDataSource/post"
@@ -7900,92 +8214,12 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/describe_data_source"
-          - $ref: "#/components/x-stackQL-resources/data_sources/methods/list_data_sources"
         insert:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/create_data_source"
         update:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/update_data_source"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/delete_data_source"
-    experiences:
-      id: aws.kendra.experiences
-      name: experiences
-      title: experiences
-      methods:
-        create_experience:
-          operation:
-            $ref: "#/paths/~1CreateExperience/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_experience:
-          operation:
-            $ref: "#/paths/~1DeleteExperience/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_experience:
-          operation:
-            $ref: "#/paths/~1DescribeExperience/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_experiences:
-          operation:
-            $ref: "#/paths/~1ListExperiences/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_experience:
-          operation:
-            $ref: "#/paths/~1UpdateExperience/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/experiences/methods/describe_experience"
-          - $ref: "#/components/x-stackQL-resources/experiences/methods/list_experiences"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/experiences/methods/create_experience"
-        update:
-          - $ref: "#/components/x-stackQL-resources/experiences/methods/update_experience"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/experiences/methods/delete_experience"
     faqs:
       id: aws.kendra.faqs
       name: faqs
@@ -8045,142 +8279,11 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/faqs/methods/describe_faq"
-          - $ref: "#/components/x-stackQL-resources/faqs/methods/list_faqs"
         insert:
           - $ref: "#/components/x-stackQL-resources/faqs/methods/create_faq"
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/faqs/methods/delete_faq"
-    featured_results_sets:
-      id: aws.kendra.featured_results_sets
-      name: featured_results_sets
-      title: featured_results_sets
-      methods:
-        create_featured_results_set:
-          operation:
-            $ref: "#/paths/~1CreateFeaturedResultsSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_featured_results_set:
-          operation:
-            $ref: "#/paths/~1DescribeFeaturedResultsSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_featured_results_sets:
-          operation:
-            $ref: "#/paths/~1ListFeaturedResultsSets/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_featured_results_set:
-          operation:
-            $ref: "#/paths/~1UpdateFeaturedResultsSet/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/describe_featured_results_set"
-          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/list_featured_results_sets"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/create_featured_results_set"
-        update:
-          - $ref: "#/components/x-stackQL-resources/featured_results_sets/methods/update_featured_results_set"
-        delete: []
-    indexes:
-      id: aws.kendra.indexes
-      name: indexes
-      title: indexes
-      methods:
-        create_index:
-          operation:
-            $ref: "#/paths/~1CreateIndex/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_index:
-          operation:
-            $ref: "#/paths/~1DeleteIndex/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_index:
-          operation:
-            $ref: "#/paths/~1DescribeIndex/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_index:
-          operation:
-            $ref: "#/paths/~1UpdateIndex/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/indexes/methods/describe_index"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/indexes/methods/create_index"
-        update:
-          - $ref: "#/components/x-stackQL-resources/indexes/methods/update_index"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/indexes/methods/delete_index"
     query_suggestions_block_lists:
       id: aws.kendra.query_suggestions_block_lists
       name: query_suggestions_block_lists
@@ -8252,7 +8355,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/query_suggestions_block_lists/methods/describe_query_suggestions_block_list"
-          - $ref: "#/components/x-stackQL-resources/query_suggestions_block_lists/methods/list_query_suggestions_block_lists"
         insert:
           - $ref: "#/components/x-stackQL-resources/query_suggestions_block_lists/methods/create_query_suggestions_block_list"
         update:
@@ -8411,78 +8513,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/query_suggestions_configs/methods/update_query_suggestions_config"
         delete: []
-    entities_from_experiences:
-      id: aws.kendra.entities_from_experiences
-      name: entities_from_experiences
-      title: entities_from_experiences
-      methods:
-        disassociate_entities_from_experience:
-          operation:
-            $ref: "#/paths/~1DisassociateEntitiesFromExperience/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/entities_from_experiences/methods/disassociate_entities_from_experience"
-        delete: []
-    personas_from_entities:
-      id: aws.kendra.personas_from_entities
-      name: personas_from_entities
-      title: personas_from_entities
-      methods:
-        disassociate_personas_from_entities:
-          operation:
-            $ref: "#/paths/~1DisassociatePersonasFromEntities/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/personas_from_entities/methods/disassociate_personas_from_entities"
-        delete: []
-    query_suggestions:
-      id: aws.kendra.query_suggestions
-      name: query_suggestions
-      title: query_suggestions
-      methods:
-        get_query_suggestions:
-          operation:
-            $ref: "#/paths/~1GetQuerySuggestions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/query_suggestions/methods/get_query_suggestions"
-        insert: []
-        update: []
-        delete: []
     snapshots:
       id: aws.kendra.snapshots
       name: snapshots
@@ -8627,10 +8657,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.kendra.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.kendra.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -8645,41 +8675,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    thesauris:
-      id: aws.kendra.thesauris
-      name: thesauris
-      title: thesauris
-      methods:
-        list_thesauri:
-          operation:
-            $ref: "#/paths/~1ListThesauri/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/thesauris/methods/list_thesauri"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.kendra.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -8707,9 +8702,34 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    thesauris:
+      id: aws.kendra.thesauris
+      name: thesauris
+      title: thesauris
+      methods:
+        list_thesauri:
+          operation:
+            $ref: "#/paths/~1ListThesauri/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/thesauris/methods/list_thesauri"
+        insert: []
+        update: []
         delete: []

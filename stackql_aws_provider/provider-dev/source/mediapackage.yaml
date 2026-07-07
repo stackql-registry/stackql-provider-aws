@@ -106,6 +106,9 @@ paths:
       x-stackql-method: list_channels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Channels
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /harvest_jobs:
     post:
       operationId: CreateHarvestJob
@@ -183,6 +186,9 @@ paths:
       x-stackql-method: list_harvest_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HarvestJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /origin_endpoints:
     post:
       operationId: CreateOriginEndpoint
@@ -269,6 +275,9 @@ paths:
       x-stackql-method: list_origin_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OriginEndpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /channels/{id}:
     delete:
       operationId: DeleteChannel
@@ -466,7 +475,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -491,7 +500,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -511,7 +520,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /channels/{id}/credentials:

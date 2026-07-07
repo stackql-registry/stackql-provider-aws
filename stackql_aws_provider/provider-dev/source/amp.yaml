@@ -93,6 +93,7 @@ paths:
       x-stackql-resource: alert_manager_definitions
       x-stackql-method: describe_alert_manager_definition
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.alertManagerDefinition
     put:
       operationId: PutAlertManagerDefinition
       description: Updates an existing alert manager definition in a workspace. If the workspace does not already have an
@@ -212,6 +213,9 @@ paths:
       x-stackql-method: list_anomaly_detectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.anomalyDetectors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workspaces/{workspace_id}/logging:
     post:
       operationId: CreateLoggingConfiguration
@@ -292,6 +296,7 @@ paths:
       x-stackql-resource: logging_configurations
       x-stackql-method: describe_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.loggingConfiguration
     put:
       operationId: UpdateLoggingConfiguration
       description: Updates the log group ARN or the workspace ID of the current rules and alerting logging configuration.
@@ -404,6 +409,7 @@ paths:
       x-stackql-resource: query_logging_configurations
       x-stackql-method: describe_query_logging_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.queryLoggingConfiguration
     put:
       operationId: UpdateQueryLoggingConfiguration
       description: Updates the query logging configuration for the specified workspace.
@@ -522,6 +528,9 @@ paths:
       x-stackql-method: list_rule_groups_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ruleGroupsNamespaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /scrapers:
     post:
       operationId: CreateScraper
@@ -614,6 +623,9 @@ paths:
       x-stackql-method: list_scrapers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scrapers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workspaces:
     post:
       operationId: CreateWorkspace
@@ -684,6 +696,9 @@ paths:
       x-stackql-method: list_workspaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workspaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /workspaces/{workspace_id}/anomalydetectors/{anomaly_detector_id}:
     delete:
       operationId: DeleteAnomalyDetector
@@ -739,6 +754,7 @@ paths:
       x-stackql-resource: anomaly_detectors
       x-stackql-method: describe_anomaly_detector
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.anomalyDetector
     put:
       operationId: PutAnomalyDetector
       description: When you call PutAnomalyDetector, the operation creates a new anomaly detector if one doesn't exist, or
@@ -938,6 +954,7 @@ paths:
       x-stackql-resource: rule_groups_namespaces
       x-stackql-method: describe_rule_groups_namespace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ruleGroupsNamespace
     put:
       operationId: PutRuleGroupsNamespace
       description: Updates an existing rule groups namespace within a workspace. A rule groups namespace is associated with
@@ -1029,6 +1046,7 @@ paths:
       x-stackql-resource: scrapers
       x-stackql-method: describe_scraper
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.scraper
     put:
       operationId: UpdateScraper
       description: Updates an existing scraper. You can't use this function to update the source from which the scraper is
@@ -1187,6 +1205,7 @@ paths:
       x-stackql-resource: workspaces
       x-stackql-method: describe_workspace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.workspace
   /workspaces/{workspace_id}/configuration:
     get:
       operationId: DescribeWorkspaceConfiguration
@@ -1210,6 +1229,7 @@ paths:
       x-stackql-resource: workspace_configurations
       x-stackql-method: describe_workspace_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.workspaceConfiguration
     patch:
       operationId: UpdateWorkspaceConfiguration
       description: Use this operation to create or update the label sets, label set limits, and retention period of a workspace.
@@ -1280,7 +1300,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1315,7 +1335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1342,7 +1362,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /workspaces/{workspace_id}/alias:
@@ -1370,7 +1390,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: workspace_alias
+      x-stackql-resource: workspaces
       x-stackql-method: update_workspace_alias
       x-stackql-verb: UPDATE
 components:

@@ -1,0 +1,152 @@
+--- 
+title: domain_auto_tunes
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - domain_auto_tunes
+  - es
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists a <code>domain_auto_tunes</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="domain_auto_tunes" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.es.domain_auto_tunes" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="describe_domain_auto_tunes"
+    values={[
+        { label: 'describe_domain_auto_tunes', value: 'describe_domain_auto_tunes' }
+    ]}
+>
+<TabItem value="describe_domain_auto_tunes">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="AutoTunes" /></td>
+    <td><code>array</code></td>
+    <td>Specifies the list of setting adjustments that Auto-Tune has made to the domain. See the Developer Guide for more information.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="NextToken" /></td>
+    <td><code>string</code></td>
+    <td>Paginated APIs accepts NextToken input to returns next page results and provides a NextToken output in the response which can be used by the client to retrieve more results.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#describe_domain_auto_tunes"><CopyableCode code="describe_domain_auto_tunes" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_name"><code>domain_name</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-domain_name">
+    <td><CopyableCode code="domain_name" /></td>
+    <td><code>string</code></td>
+    <td>Specifies the domain name for which you want Auto-Tune action details.</td>
+</tr>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+<tr id="parameter-maxResults">
+    <td><CopyableCode code="maxResults" /></td>
+    <td><code>integer</code></td>
+    <td>Set this value to limit the number of results returned. If not specified, defaults to 100.</td>
+</tr>
+<tr id="parameter-nextToken">
+    <td><CopyableCode code="nextToken" /></td>
+    <td><code>string</code></td>
+    <td>NextToken is sent in case the earlier API call results contain the NextToken. It is used for pagination.</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="describe_domain_auto_tunes"
+    values={[
+        { label: 'describe_domain_auto_tunes', value: 'describe_domain_auto_tunes' }
+    ]}
+>
+<TabItem value="describe_domain_auto_tunes">
+
+Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date.
+
+```sql
+SELECT
+AutoTunes,
+NextToken
+FROM aws.es.domain_auto_tunes
+WHERE domain_name = '{{ domain_name }}' -- required
+AND region = '{{ region }}' -- required
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
+;
+```
+</TabItem>
+</Tabs>

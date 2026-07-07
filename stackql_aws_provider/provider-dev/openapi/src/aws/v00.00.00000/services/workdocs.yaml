@@ -298,8 +298,6 @@ paths:
                   $ref: "#/components/schemas/CommentVisibilityType"
                 NotifyCollaborators:
                   $ref: "#/components/schemas/BooleanType"
-              required:
-                - Text
       responses:
         "201":
           description: Success
@@ -516,7 +514,6 @@ paths:
                   $ref: "#/components/schemas/SubscriptionType"
               required:
                 - Endpoint
-                - Protocol
                 - SubscriptionType
       responses:
         "200":
@@ -589,9 +586,7 @@ paths:
                 StorageRule:
                   $ref: "#/components/schemas/StorageRuleType"
               required:
-                - Username
                 - GivenName
-                - Surname
                 - Password
       responses:
         "201":
@@ -2920,6 +2915,47 @@ components:
           $ref: "#/components/schemas/User"
           description: The user information.
   x-stackQL-resources:
+    documents:
+      id: aws.workdocs.documents
+      name: documents
+      title: documents
+      methods:
+        abort_document_version_upload:
+          operation:
+            $ref: "#/paths/~1api~1v1~1documents~1{document_id}~1versions~1{version_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        delete_document:
+          operation:
+            $ref: "#/paths/~1api~1v1~1documents~1{document_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_document:
+          operation:
+            $ref: "#/paths/~1api~1v1~1documents~1{document_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        update_document:
+          operation:
+            $ref: "#/paths/~1api~1v1~1documents~1{document_id}/patch"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/documents/methods/get_document"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/documents/methods/update_document"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/documents/methods/delete_document"
     document_versions:
       id: aws.workdocs.document_versions
       name: document_versions
@@ -2959,6 +2995,14 @@ components:
             objectKey: $.DocumentVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
         restore_document_versions:
           operation:
             $ref: "#/paths/~1api~1v1~1documentVersions~1restore~1{document_id}/post"
@@ -2973,6 +3017,75 @@ components:
           - $ref: "#/components/x-stackQL-resources/document_versions/methods/update_document_version"
         delete:
           - $ref: "#/components/x-stackQL-resources/document_versions/methods/delete_document_version"
+    users:
+      id: aws.workdocs.users
+      name: users
+      title: users
+      methods:
+        activate_user:
+          operation:
+            $ref: "#/paths/~1api~1v1~1users~1{user_id}~1activation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        deactivate_user:
+          operation:
+            $ref: "#/paths/~1api~1v1~1users~1{user_id}~1activation/delete"
+          response:
+            openAPIDocKey: "204"
+        create_user:
+          operation:
+            $ref: "#/paths/~1api~1v1~1users/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_users:
+          operation:
+            $ref: "#/paths/~1api~1v1~1users/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Users
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
+        delete_user:
+          operation:
+            $ref: "#/paths/~1api~1v1~1users~1{user_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        update_user:
+          operation:
+            $ref: "#/paths/~1api~1v1~1users~1{user_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/users/methods/describe_users"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/users/methods/create_user"
+        update:
+          - $ref: "#/components/x-stackQL-resources/users/methods/update_user"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
     resource_permissions:
       id: aws.workdocs.resource_permissions
       name: resource_permissions
@@ -2998,6 +3111,19 @@ components:
             objectKey: $.Principals
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
+        remove_all_resource_permissions:
+          operation:
+            $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1permissions/delete"
+          response:
+            openAPIDocKey: "204"
         remove_resource_permission:
           operation:
             $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1permissions~1{principal_id}/delete"
@@ -3012,22 +3138,7 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/resource_permissions/methods/add_resource_permissions"
           - $ref: "#/components/x-stackQL-resources/resource_permissions/methods/remove_resource_permission"
-        delete: []
-    all_resource_permissions:
-      id: aws.workdocs.all_resource_permissions
-      name: all_resource_permissions
-      title: all_resource_permissions
-      methods:
-        remove_all_resource_permissions:
-          operation:
-            $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1permissions/delete"
-          response:
-            openAPIDocKey: "204"
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/all_resource_permissions/methods/remove_all_resource_permissions"
+          - $ref: "#/components/x-stackQL-resources/resource_permissions/methods/remove_all_resource_permissions"
         delete: []
     comments:
       id: aws.workdocs.comments
@@ -3059,6 +3170,14 @@ components:
             objectKey: $.Comments
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/comments/methods/describe_comments"
@@ -3067,10 +3186,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/comments/methods/delete_comment"
-    custom_metadatas:
-      id: aws.workdocs.custom_metadatas
-      name: custom_metadatas
-      title: custom_metadatas
+    resources:
+      id: aws.workdocs.resources
+      name: resources
+      title: resources
       methods:
         create_custom_metadata:
           operation:
@@ -3091,13 +3210,59 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        create_labels:
+          operation:
+            $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1labels/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_labels:
+          operation:
+            $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1labels/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_resources:
+          operation:
+            $ref: "#/paths/~1api~1v1~1resources/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        search_resources:
+          operation:
+            $ref: "#/paths/~1api~1v1~1search/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: Marker
+                location: body
+              responseToken:
+                key: $.Marker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/get_resources"
         insert:
-          - $ref: "#/components/x-stackQL-resources/custom_metadatas/methods/create_custom_metadata"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/create_custom_metadata"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/create_labels"
         update: []
         delete:
-          - $ref: "#/components/x-stackQL-resources/custom_metadatas/methods/delete_custom_metadata"
+          - $ref: "#/components/x-stackQL-resources/resources/methods/delete_custom_metadata"
     folders:
       id: aws.workdocs.folders
       name: folders
@@ -3146,37 +3311,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/folders/methods/update_folder"
         delete:
           - $ref: "#/components/x-stackQL-resources/folders/methods/delete_folder"
-    labels:
-      id: aws.workdocs.labels
-      name: labels
-      title: labels
-      methods:
-        create_labels:
-          operation:
-            $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1labels/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_labels:
-          operation:
-            $ref: "#/paths/~1api~1v1~1resources~1{resource_id}~1labels/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/labels/methods/create_labels"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/labels/methods/delete_labels"
     notification_subscriptions:
       id: aws.workdocs.notification_subscriptions
       name: notification_subscriptions
@@ -3202,6 +3336,14 @@ components:
             objectKey: $.Subscriptions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
         delete_notification_subscription:
           operation:
             $ref: "#/paths/~1api~1v1~1organizations~1{organization_id}~1subscriptions~1{subscription_id}/delete"
@@ -3215,92 +3357,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/notification_subscriptions/methods/delete_notification_subscription"
-    users:
-      id: aws.workdocs.users
-      name: users
-      title: users
-      methods:
-        create_user:
-          operation:
-            $ref: "#/paths/~1api~1v1~1users/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_users:
-          operation:
-            $ref: "#/paths/~1api~1v1~1users/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Users
-          request:
-            nativeCasing: pascal
-        delete_user:
-          operation:
-            $ref: "#/paths/~1api~1v1~1users~1{user_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        update_user:
-          operation:
-            $ref: "#/paths/~1api~1v1~1users~1{user_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/users/methods/describe_users"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/users/methods/create_user"
-        update:
-          - $ref: "#/components/x-stackQL-resources/users/methods/update_user"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
-    documents:
-      id: aws.workdocs.documents
-      name: documents
-      title: documents
-      methods:
-        delete_document:
-          operation:
-            $ref: "#/paths/~1api~1v1~1documents~1{document_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_document:
-          operation:
-            $ref: "#/paths/~1api~1v1~1documents~1{document_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        update_document:
-          operation:
-            $ref: "#/paths/~1api~1v1~1documents~1{document_id}/patch"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/documents/methods/get_document"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/documents/methods/update_document"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/documents/methods/delete_document"
     folder_contents:
       id: aws.workdocs.folder_contents
       name: folder_contents
@@ -3320,6 +3376,14 @@ components:
             objectKey: $.Folders
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_contents/methods/describe_folder_contents"
@@ -3341,6 +3405,14 @@ components:
             objectKey: $.UserActivities
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/activities/methods/describe_activities"
@@ -3361,6 +3433,14 @@ components:
             objectKey: $.Groups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/groups/methods/describe_groups"
@@ -3381,6 +3461,14 @@ components:
             objectKey: $.Folders
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.Marker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/root_folders/methods/describe_root_folders"
@@ -3398,6 +3486,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.User
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/current_users/methods/get_current_user"
@@ -3415,6 +3504,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Path
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -3434,42 +3524,12 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Path
           request:
             nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/folder_paths/methods/get_folder_path"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.workdocs.resources
-      name: resources
-      title: resources
-      methods:
-        get_resources:
-          operation:
-            $ref: "#/paths/~1api~1v1~1resources/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        search_resources:
-          operation:
-            $ref: "#/paths/~1api~1v1~1search/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Items
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/get_resources"
         insert: []
         update: []
         delete: []

@@ -146,8 +146,6 @@ paths:
                   description: The actions that the specified Amazon Web Services service principal can use. These include IssueCertificate, GetCertificate, and ListPermissions.
               required:
                 - CertificateAuthorityArn
-                - Principal
-                - Actions
       responses:
         "200":
           description: Success
@@ -215,7 +213,6 @@ paths:
                   description: The Amazon Web Services account that calls this action.
               required:
                 - CertificateAuthorityArn
-                - Principal
       responses:
         "200":
           description: Success
@@ -691,7 +688,6 @@ paths:
                   description: The path and file name of a JSON-formatted IAM policy to attach to the specified private CA resource. If this policy does not contain all required statements or if it includes any statement that is not allowed, the PutPolicy action returns an InvalidPolicyException. For information about IAM policy and statement structure, see Overview of JSON Policies.
               required:
                 - ResourceArn
-                - Policy
       responses:
         "200":
           description: Success
@@ -1831,6 +1827,32 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CertificateAuthority
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_certificate_authority_certificate:
+          operation:
+            $ref: "#/paths/~1ImportCertificateAuthorityCertificate/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        issue_certificate:
+          operation:
+            $ref: "#/paths/~1IssueCertificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1850,30 +1872,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
-            requestBodyTranslate:
-              algorithm: naive
-        tag_certificate_authority:
-          operation:
-            $ref: "#/paths/~1TagCertificateAuthority/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_certificate_authority:
-          operation:
-            $ref: "#/paths/~1UntagCertificateAuthority/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_certificate_authority:
@@ -1895,7 +1900,6 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/certificate_authorities/methods/create_certificate_authority"
         update:
-          - $ref: "#/components/x-stackQL-resources/certificate_authorities/methods/tag_certificate_authority"
           - $ref: "#/components/x-stackQL-resources/certificate_authorities/methods/update_certificate_authority"
         delete:
           - $ref: "#/components/x-stackQL-resources/certificate_authorities/methods/delete_certificate_authority"
@@ -1978,6 +1982,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2050,6 +2061,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        restore_certificate_authority:
+          operation:
+            $ref: "#/paths/~1RestoreCertificateAuthority/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -2141,11 +2164,43 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        tag_certificate_authority:
+          operation:
+            $ref: "#/paths/~1TagCertificateAuthority/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_certificate_authority:
+          operation:
+            $ref: "#/paths/~1UntagCertificateAuthority/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_certificate_authority"
         delete: []

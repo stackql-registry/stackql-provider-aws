@@ -997,7 +997,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListServicesForAutoScalingConfigurationResponse"
+                $ref: "#/components/schemas/ListServicesForAutoScalingConfigurationOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1230,7 +1230,6 @@ paths:
                   description: A list of tag key-value pairs to add or update. If a key is new to the resource, the tag is added with the provided value. If a key is already associated with the resource, the value of the tag is updated.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -2657,21 +2656,19 @@ components:
         Status:
           $ref: "#/components/schemas/ServiceStatus"
           description: The current state of the App Runner service. These particular values mean the following. CREATE_FAILED – The service failed to create. The failed service isn't usable, and still counts towards your service quota. To troubleshoot this failure, read the failure events and logs, change any parameters that need to be fixed, and rebuild your service using UpdateService. DELETE_FAILED – The service failed to delete and can't be successfully recovered. Retry the service deletion call to ensure that all related resources are removed.
-    ListServicesForAutoScalingConfigurationResponse:
+    ListServicesForAutoScalingConfigurationRowDisplay:
       type: object
       properties:
-        ServiceArnList:
-          $ref: "#/components/schemas/ServiceArnList"
+        service_arn:
+          type: string
           description: A list of service ARN records. In a paginated request, the request returns up to MaxResults records for each call.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token that you can pass in a subsequent request to get the next result page. It's returned in a paginated request.
-      required:
-        - ServiceArnList
-    ServiceArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/AppRunnerResourceArn"
+    ListServicesForAutoScalingConfigurationOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListServicesForAutoScalingConfigurationRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -2883,6 +2880,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AutoScalingConfiguration
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2903,13 +2901,27 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_default_auto_scaling_configuration:
+          operation:
+            $ref: "#/paths/~1UpdateDefaultAutoScalingConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/auto_scaling_configurations/methods/describe_auto_scaling_configuration"
           - $ref: "#/components/x-stackQL-resources/auto_scaling_configurations/methods/list_auto_scaling_configurations"
         insert:
           - $ref: "#/components/x-stackQL-resources/auto_scaling_configurations/methods/create_auto_scaling_configuration"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/auto_scaling_configurations/methods/update_default_auto_scaling_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/auto_scaling_configurations/methods/delete_auto_scaling_configuration"
     connections:
@@ -3001,6 +3013,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ObservabilityConfiguration
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3067,6 +3080,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Service
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3077,6 +3091,45 @@ components:
         list_services:
           operation:
             $ref: "#/paths/~1ListServices/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        pause_service:
+          operation:
+            $ref: "#/paths/~1PauseService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resume_service:
+          operation:
+            $ref: "#/paths/~1ResumeService/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_deployment:
+          operation:
+            $ref: "#/paths/~1StartDeployment/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3147,6 +3200,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VpcConnector
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3213,6 +3267,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VpcIngressConnection
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3291,6 +3346,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListServicesForAutoScalingConfigurationOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ServiceArnList" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"service_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -3304,10 +3366,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.apprunner.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.apprunner.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3322,17 +3384,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.apprunner.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -3360,33 +3411,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    default_auto_scaling_configurations:
-      id: aws.apprunner.default_auto_scaling_configurations
-      name: default_auto_scaling_configurations
-      title: default_auto_scaling_configurations
-      methods:
-        update_default_auto_scaling_configuration:
-          operation:
-            $ref: "#/paths/~1UpdateDefaultAutoScalingConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/default_auto_scaling_configurations/methods/update_default_auto_scaling_configuration"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

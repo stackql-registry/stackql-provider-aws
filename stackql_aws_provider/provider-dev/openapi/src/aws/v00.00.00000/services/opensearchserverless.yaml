@@ -3550,7 +3550,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/collections/methods/batch_get_collection"
+          - $ref: "#/components/x-stackQL-resources/collections/methods/list_collections"
         insert:
           - $ref: "#/components/x-stackQL-resources/collections/methods/create_collection"
         update:
@@ -3629,7 +3629,7 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/collection_groups/methods/batch_get_collection_group"
+          - $ref: "#/components/x-stackQL-resources/collection_groups/methods/list_collection_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/collection_groups/methods/create_collection_group"
         update:
@@ -3857,6 +3857,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.accessPolicyDetail
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -4003,6 +4004,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.securityConfigDetail
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -4083,6 +4085,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.securityPolicyDetail
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -4137,6 +4140,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.accountSettingsDetail
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -4188,10 +4192,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.opensearchserverless.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.opensearchserverless.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4206,17 +4210,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.opensearchserverless.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -4244,9 +4237,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -5,7 +5,7 @@ info:
   description: ARC - Region switch
   x-serviceName: arc-region-switch
   x-serviceAlias: arc_region_switch
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: "2022-07-26"
   x-endpointPrefix: arc-region-switch
   x-targetPrefix: ArcRegionSwitch
@@ -2520,11 +2520,119 @@ components:
     UpdatePlanExecutionStepResponse:
       type: object
   x-stackQL-resources:
+    plan_executions:
+      id: aws.arc_region_switch.plan_executions
+      name: plan_executions
+      title: plan_executions
+      methods:
+        approve_plan_execution_step:
+          operation:
+            $ref: "#/paths/~1ApprovePlanExecutionStep/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_plan_execution:
+          operation:
+            $ref: "#/paths/~1GetPlanExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.stepStates
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        list_plan_executions:
+          operation:
+            $ref: "#/paths/~1ListPlanExecutions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_plan_execution:
+          operation:
+            $ref: "#/paths/~1UpdatePlanExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_plan_execution_step:
+          operation:
+            $ref: "#/paths/~1UpdatePlanExecutionStep/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/get_plan_execution"
+          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/list_plan_executions"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/update_plan_execution_step"
+          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/update_plan_execution"
+        delete: []
     plans:
       id: aws.arc_region_switch.plans
       name: plans
       title: plans
       methods:
+        cancel_plan_execution:
+          operation:
+            $ref: "#/paths/~1CancelPlanExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_plan:
           operation:
             $ref: "#/paths/~1CreatePlan/post"
@@ -2533,6 +2641,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2544,6 +2654,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2553,8 +2665,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.plan
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2567,6 +2682,28 @@ components:
             objectKey: $.plans
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_plan_execution:
+          operation:
+            $ref: "#/paths/~1StartPlanExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2578,6 +2715,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2605,7 +2744,16 @@ components:
             objectKey: $.warnings
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2613,54 +2761,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/plan_evaluation_status/methods/get_plan_evaluation_status"
         insert: []
         update: []
-        delete: []
-    plan_executions:
-      id: aws.arc_region_switch.plan_executions
-      name: plan_executions
-      title: plan_executions
-      methods:
-        get_plan_execution:
-          operation:
-            $ref: "#/paths/~1GetPlanExecution/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.stepStates
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_plan_executions:
-          operation:
-            $ref: "#/paths/~1ListPlanExecutions/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_plan_execution:
-          operation:
-            $ref: "#/paths/~1UpdatePlanExecution/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/get_plan_execution"
-          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/list_plan_executions"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/plan_executions/methods/update_plan_execution"
         delete: []
     plan_in_regions:
       id: aws.arc_region_switch.plan_in_regions
@@ -2673,8 +2773,11 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.plan
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2698,7 +2801,16 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2721,7 +2833,16 @@ components:
             objectKey: $.plans
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2744,7 +2865,16 @@ components:
             objectKey: $.healthChecks
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2767,7 +2897,16 @@ components:
             objectKey: $.healthChecks
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2776,10 +2915,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.arc_region_switch.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.arc_region_switch.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2789,20 +2928,11 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.arc_region_switch.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2811,6 +2941,8 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
@@ -2822,35 +2954,16 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
           config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    plan_execution_steps:
-      id: aws.arc_region_switch.plan_execution_steps
-      name: plan_execution_steps
-      title: plan_execution_steps
-      methods:
-        update_plan_execution_step:
-          operation:
-            $ref: "#/paths/~1UpdatePlanExecutionStep/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/plan_execution_steps/methods/update_plan_execution_step"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

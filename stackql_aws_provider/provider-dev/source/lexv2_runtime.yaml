@@ -223,7 +223,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RecognizeTextResponse'
-      x-stackql-resource: recognize_text
+      x-stackql-resource: sessions
       x-stackql-method: recognize_text
       x-stackql-verb: EXEC
   /bots/{bot_id}/botAliases/{bot_alias_id}/botLocales/{locale_id}/sessions/{session_id}/utterance:
@@ -323,7 +323,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RecognizeUtteranceResponse'
-      x-stackql-resource: recognize_utterance
+      x-stackql-resource: sessions
       x-stackql-method: recognize_utterance
       x-stackql-verb: EXEC
   /bots/{bot_id}/botAliases/{bot_alias_id}/botLocales/{locale_id}/sessions/{session_id}/conversation:
@@ -393,7 +393,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConversationResponse'
-      x-stackql-resource: conversation
+      x-stackql-resource: sessions
       x-stackql-method: start_conversation
       x-stackql-verb: EXEC
 components:

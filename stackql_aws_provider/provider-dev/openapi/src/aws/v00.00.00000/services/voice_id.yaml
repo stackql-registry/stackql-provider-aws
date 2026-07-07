@@ -96,7 +96,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: A list of tags you want added to the domain.
               required:
-                - Name
                 - ServerSideEncryptionConfiguration
       responses:
         "200":
@@ -140,7 +139,6 @@ paths:
                   description: The name of the watchlist.
               required:
                 - DomainId
-                - Name
       responses:
         "200":
           description: Success
@@ -1017,7 +1015,6 @@ paths:
                   description: The list of tags to assign to the specified resource.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -1097,7 +1094,6 @@ paths:
                   description: The configuration, containing the KMS key identifier, to be used by Voice ID for the server-side encryption of your data. Changing the domain's associated KMS key immediately triggers an asynchronous process to remove dependency on the old KMS key, such that the domain's data can only be accessed using the new KMS key. The domain's ServerSideEncryptionUpdateDetails contains the details for this process.
               required:
                 - DomainId
-                - Name
                 - ServerSideEncryptionConfiguration
       responses:
         "200":
@@ -2238,6 +2234,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Fraudster
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2265,6 +2262,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.FraudsterSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_fraudster_registration_job:
+          operation:
+            $ref: "#/paths/~1StartFraudsterRegistrationJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2317,6 +2334,20 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Domain
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        evaluate_session:
+          operation:
+            $ref: "#/paths/~1EvaluateSession/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2336,6 +2367,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_domain:
@@ -2397,6 +2435,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Watchlist
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2416,6 +2455,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_watchlist:
@@ -2464,6 +2510,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Speaker
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2478,6 +2525,39 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SpeakerSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        opt_out_speaker:
+          operation:
+            $ref: "#/paths/~1OptOutSpeaker/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_speaker_enrollment_job:
+          operation:
+            $ref: "#/paths/~1StartSpeakerEnrollmentJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2504,6 +2584,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Job
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2523,6 +2604,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2543,6 +2631,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Job
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2562,6 +2651,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2571,10 +2667,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.voice_id.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.voice_id.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2589,17 +2685,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.voice_id.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2627,9 +2712,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

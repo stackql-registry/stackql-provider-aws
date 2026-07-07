@@ -3548,10 +3548,10 @@ components:
           $ref: "#/components/schemas/LaunchConfigurationTemplate"
           description: Updated Launch Configuration Template.
   x-stackQL-resources:
-    source_network_stacks:
-      id: aws.drs.source_network_stacks
-      name: source_network_stacks
-      title: source_network_stacks
+    source_networks:
+      id: aws.drs.source_networks
+      name: source_networks
+      title: source_networks
       methods:
         associate_source_network_stack:
           operation:
@@ -3564,16 +3564,104 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_source_network:
+          operation:
+            $ref: "#/paths/~1CreateSourceNetwork/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_source_network:
+          operation:
+            $ref: "#/paths/~1DeleteSourceNetwork/post"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_source_networks:
+          operation:
+            $ref: "#/paths/~1DescribeSourceNetworks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        export_source_network_cfn_template:
+          operation:
+            $ref: "#/paths/~1ExportSourceNetworkCfnTemplate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_source_network_recovery:
+          operation:
+            $ref: "#/paths/~1StartSourceNetworkRecovery/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_source_network_replication:
+          operation:
+            $ref: "#/paths/~1StartSourceNetworkReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_source_network_replication:
+          operation:
+            $ref: "#/paths/~1StopSourceNetworkReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/source_networks/methods/describe_source_networks"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/source_networks/methods/create_source_network"
         update:
-          - $ref: "#/components/x-stackQL-resources/source_network_stacks/methods/associate_source_network_stack"
-        delete: []
-    extended_source_servers:
-      id: aws.drs.extended_source_servers
-      name: extended_source_servers
-      title: extended_source_servers
+          - $ref: "#/components/x-stackQL-resources/source_networks/methods/associate_source_network_stack"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/source_networks/methods/delete_source_network"
+    source_servers:
+      id: aws.drs.source_servers
+      name: source_servers
+      title: source_servers
       methods:
         create_extended_source_server:
           operation:
@@ -3586,12 +3674,88 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_source_server:
+          operation:
+            $ref: "#/paths/~1DeleteSourceServer/post"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_source_servers:
+          operation:
+            $ref: "#/paths/~1DescribeSourceServers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.items_
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        disconnect_source_server:
+          operation:
+            $ref: "#/paths/~1DisconnectSourceServer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        retry_data_replication:
+          operation:
+            $ref: "#/paths/~1RetryDataReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_replication:
+          operation:
+            $ref: "#/paths/~1StartReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_replication:
+          operation:
+            $ref: "#/paths/~1StopReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/source_servers/methods/describe_source_servers"
         insert:
-          - $ref: "#/components/x-stackQL-resources/extended_source_servers/methods/create_extended_source_server"
+          - $ref: "#/components/x-stackQL-resources/source_servers/methods/create_extended_source_server"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/source_servers/methods/delete_source_server"
     launch_configuration_templates:
       id: aws.drs.launch_configuration_templates
       name: launch_configuration_templates
@@ -3629,6 +3793,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_launch_configuration_template:
@@ -3688,6 +3859,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_replication_configuration_template:
@@ -3710,53 +3888,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/replication_configuration_templates/methods/update_replication_configuration_template"
         delete:
           - $ref: "#/components/x-stackQL-resources/replication_configuration_templates/methods/delete_replication_configuration_template"
-    source_networks:
-      id: aws.drs.source_networks
-      name: source_networks
-      title: source_networks
-      methods:
-        create_source_network:
-          operation:
-            $ref: "#/paths/~1CreateSourceNetwork/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_source_network:
-          operation:
-            $ref: "#/paths/~1DeleteSourceNetwork/post"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_source_networks:
-          operation:
-            $ref: "#/paths/~1DescribeSourceNetworks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/source_networks/methods/describe_source_networks"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/source_networks/methods/create_source_network"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/source_networks/methods/delete_source_network"
     jobs:
       id: aws.drs.jobs
       name: jobs
@@ -3783,6 +3914,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3818,6 +3956,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_launch_action:
@@ -3865,6 +4010,44 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        disconnect_recovery_instance:
+          operation:
+            $ref: "#/paths/~1DisconnectRecoveryInstance/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reverse_replication:
+          operation:
+            $ref: "#/paths/~1ReverseReplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_failback:
+          operation:
+            $ref: "#/paths/~1StopFailback/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
         terminate_recovery_instances:
@@ -3886,41 +4069,6 @@ components:
         delete:
           - $ref: "#/components/x-stackQL-resources/recovery_instances/methods/delete_recovery_instance"
           - $ref: "#/components/x-stackQL-resources/recovery_instances/methods/terminate_recovery_instances"
-    source_servers:
-      id: aws.drs.source_servers
-      name: source_servers
-      title: source_servers
-      methods:
-        delete_source_server:
-          operation:
-            $ref: "#/paths/~1DeleteSourceServer/post"
-          response:
-            openAPIDocKey: "204"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_source_servers:
-          operation:
-            $ref: "#/paths/~1DescribeSourceServers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.items_
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/source_servers/methods/describe_source_servers"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/source_servers/methods/delete_source_server"
     job_log_items:
       id: aws.drs.job_log_items
       name: job_log_items
@@ -3936,6 +4084,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3959,6 +4114,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4083,6 +4245,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4105,16 +4274,24 @@ components:
             objectKey: $.accounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/staging_accounts/methods/list_staging_accounts"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.drs.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.drs.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4122,17 +4299,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.drs.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -4151,9 +4317,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

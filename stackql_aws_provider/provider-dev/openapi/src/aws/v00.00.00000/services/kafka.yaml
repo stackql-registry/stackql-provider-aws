@@ -102,7 +102,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListScramSecretsResponse"
+                $ref: "#/components/schemas/ListScramSecretsOutputDisplay"
   /v1/clusters:
     post:
       operationId: CreateCluster
@@ -267,7 +267,6 @@ paths:
                 ServerProperties:
                   $ref: "#/components/schemas/__blob"
               required:
-                - Name
                 - ServerProperties
       responses:
         "200":
@@ -464,7 +463,6 @@ paths:
                   $ref: "#/components/schemas/__mapOf__string"
               required:
                 - TargetClusterArn
-                - Authentication
                 - VpcId
                 - ClientSubnets
                 - SecurityGroups
@@ -572,8 +570,6 @@ paths:
                   $ref: "#/components/schemas/__string"
                 Policy:
                   $ref: "#/components/schemas/__string"
-              required:
-                - Policy
       responses:
         "200":
           description: Success
@@ -1164,8 +1160,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -1524,7 +1518,6 @@ paths:
                   $ref: "#/components/schemas/Rebalancing"
               required:
                 - CurrentVersion
-                - Rebalancing
       responses:
         "200":
           description: Success
@@ -3921,15 +3914,19 @@ components:
         TargetKafkaClusterAlias:
           $ref: "#/components/schemas/__string"
           description: The alias of the target Kafka cluster.
-    ListScramSecretsResponse:
+    ListScramSecretsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: "#/components/schemas/__string"
-          description: Paginated results marker.
-        SecretArnList:
-          $ref: "#/components/schemas/__listOf__string"
+        secret_arn:
+          type: string
           description: The list of scram secrets associated with the cluster.
+    ListScramSecretsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListScramSecretsRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -4191,31 +4188,33 @@ components:
           $ref: "#/components/schemas/TopicState"
           description: The status of the topic update.
   x-stackQL-resources:
-    scram_secrets:
-      id: aws.kafka.scram_secrets
-      name: scram_secrets
-      title: scram_secrets
-      methods:
-        list_scram_secrets:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1scram-secrets/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.SecretArnList
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/scram_secrets/methods/list_scram_secrets"
-        insert: []
-        update: []
-        delete: []
     clusters:
       id: aws.kafka.clusters
       name: clusters
       title: clusters
       methods:
+        batch_associate_scram_secret:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1scram-secrets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_scram_secret:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1scram-secrets/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_cluster:
           operation:
             $ref: "#/paths/~1v1~1clusters/post"
@@ -4236,6 +4235,14 @@ components:
             objectKey: $.ClusterInfoList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_cluster:
           operation:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}/delete"
@@ -4250,15 +4257,153 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ClusterInfo
+        reboot_broker:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1reboot-broker/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_broker_count:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1nodes~1count/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_broker_storage:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1nodes~1storage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_broker_type:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1nodes~1type/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_connectivity:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1connectivity/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_monitoring:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1monitoring/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_rebalancing:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1rebalancing/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_security:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1security/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_storage:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1storage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_cluster"
           - $ref: "#/components/x-stackQL-resources/clusters/methods/list_clusters"
         insert:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_broker_count"
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_broker_storage"
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_broker_type"
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_connectivity"
         delete:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
+    scram_secrets:
+      id: aws.kafka.scram_secrets
+      name: scram_secrets
+      title: scram_secrets
+      methods:
+        list_scram_secrets:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1scram-secrets/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListScramSecretsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "SecretArnList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"secret_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/scram_secrets/methods/list_scram_secrets"
+        insert: []
+        update: []
+        delete: []
     cluster_v2s:
       id: aws.kafka.cluster_v2s
       name: cluster_v2s
@@ -4281,6 +4426,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ClusterInfo
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_v2s/methods/describe_cluster_v2"
@@ -4302,6 +4448,14 @@ components:
             objectKey: $.ClusterInfoList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/clusters_v2s/methods/list_clusters_v2"
@@ -4333,6 +4487,14 @@ components:
             objectKey: $.Configurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_configuration:
           operation:
             $ref: "#/paths/~1v1~1configurations~1{arn}/delete"
@@ -4356,6 +4518,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_cluster_configuration:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1configuration/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/describe_configuration"
@@ -4363,6 +4536,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/create_configuration"
         update:
+          - $ref: "#/components/x-stackQL-resources/configurations/methods/update_cluster_configuration"
           - $ref: "#/components/x-stackQL-resources/configurations/methods/update_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/delete_configuration"
@@ -4391,6 +4565,14 @@ components:
             objectKey: $.Replicators
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_replicator:
           operation:
             $ref: "#/paths/~1replication~1v1~1replicators~1{replicator_arn}/delete"
@@ -4405,13 +4587,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        update_replication_info:
+          operation:
+            $ref: "#/paths/~1replication~1v1~1replicators~1{replicator_arn}~1replication-info/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/replicators/methods/describe_replicator"
           - $ref: "#/components/x-stackQL-resources/replicators/methods/list_replicators"
         insert:
           - $ref: "#/components/x-stackQL-resources/replicators/methods/create_replicator"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/replicators/methods/update_replication_info"
         delete:
           - $ref: "#/components/x-stackQL-resources/replicators/methods/delete_replicator"
     topics:
@@ -4439,6 +4633,14 @@ components:
             objectKey: $.Topics
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_topic:
           operation:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1topics~1{topic_name}/delete"
@@ -4509,6 +4711,25 @@ components:
             objectKey: $.VpcConnections
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        reject_client_vpc_connection:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1client-vpc-connection/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/vpc_connections/methods/describe_vpc_connection"
@@ -4566,6 +4787,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ClusterOperationInfo
         list_cluster_operations:
           operation:
             $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1operations/get"
@@ -4575,6 +4797,14 @@ components:
             objectKey: $.ClusterOperationInfoList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_operations/methods/describe_cluster_operation"
@@ -4593,6 +4823,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ClusterOperationInfo
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_operation_v2s/methods/describe_cluster_operation_v2"
@@ -4619,6 +4850,14 @@ components:
             objectKey: $.Revisions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_revisions/methods/describe_configuration_revision"
@@ -4640,6 +4879,14 @@ components:
             objectKey: $.Partitions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/topic_partitions/methods/describe_topic_partitions"
@@ -4696,6 +4943,14 @@ components:
             objectKey: $.ClientVpcConnections
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/client_vpc_connections/methods/list_client_vpc_connections"
@@ -4716,6 +4971,14 @@ components:
             objectKey: $.ClusterOperationInfoList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/cluster_operations_v2s/methods/list_cluster_operations_v2"
@@ -4736,11 +4999,31 @@ components:
             objectKey: $.KafkaVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        update_cluster_kafka_version:
+          operation:
+            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1version/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/kafka_versions/methods/list_kafka_versions"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/kafka_versions/methods/update_cluster_kafka_version"
         delete: []
     nodes:
       id: aws.kafka.nodes
@@ -4756,16 +5039,24 @@ components:
             objectKey: $.NodeInfoList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/nodes/methods/list_nodes"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.kafka.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.kafka.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4773,17 +5064,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.kafka.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
@@ -4802,251 +5082,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    broker_counts:
-      id: aws.kafka.broker_counts
-      name: broker_counts
-      title: broker_counts
-      methods:
-        update_broker_count:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1nodes~1count/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/broker_counts/methods/update_broker_count"
-        delete: []
-    broker_storages:
-      id: aws.kafka.broker_storages
-      name: broker_storages
-      title: broker_storages
-      methods:
-        update_broker_storage:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1nodes~1storage/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/broker_storages/methods/update_broker_storage"
-        delete: []
-    broker_types:
-      id: aws.kafka.broker_types
-      name: broker_types
-      title: broker_types
-      methods:
-        update_broker_type:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1nodes~1type/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/broker_types/methods/update_broker_type"
-        delete: []
-    cluster_configurations:
-      id: aws.kafka.cluster_configurations
-      name: cluster_configurations
-      title: cluster_configurations
-      methods:
-        update_cluster_configuration:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1configuration/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_configurations/methods/update_cluster_configuration"
-        delete: []
-    cluster_kafka_versions:
-      id: aws.kafka.cluster_kafka_versions
-      name: cluster_kafka_versions
-      title: cluster_kafka_versions
-      methods:
-        update_cluster_kafka_version:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1version/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_kafka_versions/methods/update_cluster_kafka_version"
-        delete: []
-    connectivities:
-      id: aws.kafka.connectivities
-      name: connectivities
-      title: connectivities
-      methods:
-        update_connectivity:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1connectivity/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/connectivities/methods/update_connectivity"
-        delete: []
-    monitorings:
-      id: aws.kafka.monitorings
-      name: monitorings
-      title: monitorings
-      methods:
-        update_monitoring:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1monitoring/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/monitorings/methods/update_monitoring"
-        delete: []
-    rebalancings:
-      id: aws.kafka.rebalancings
-      name: rebalancings
-      title: rebalancings
-      methods:
-        update_rebalancing:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1rebalancing/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/rebalancings/methods/update_rebalancing"
-        delete: []
-    replication_infos:
-      id: aws.kafka.replication_infos
-      name: replication_infos
-      title: replication_infos
-      methods:
-        update_replication_info:
-          operation:
-            $ref: "#/paths/~1replication~1v1~1replicators~1{replicator_arn}~1replication-info/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/replication_infos/methods/update_replication_info"
-        delete: []
-    securities:
-      id: aws.kafka.securities
-      name: securities
-      title: securities
-      methods:
-        update_security:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1security/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/securities/methods/update_security"
-        delete: []
-    storages:
-      id: aws.kafka.storages
-      name: storages
-      title: storages
-      methods:
-        update_storage:
-          operation:
-            $ref: "#/paths/~1v1~1clusters~1{cluster_arn}~1storage/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/storages/methods/update_storage"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

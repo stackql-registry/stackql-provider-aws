@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptPrimaryEmailUpdateResponse'
-      x-stackql-resource: primary_email_update
+      x-stackql-resource: primary_emails
       x-stackql-method: accept_primary_email_update
       x-stackql-verb: EXEC
   /deleteAlternateContact:
@@ -99,7 +99,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: region
+      x-stackql-resource: regions
       x-stackql-method: disable_region
       x-stackql-verb: EXEC
   /enableRegion:
@@ -123,7 +123,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: region
+      x-stackql-resource: regions
       x-stackql-method: enable_region
       x-stackql-verb: EXEC
   /getAccountInformation:
@@ -184,6 +184,7 @@ paths:
       x-stackql-resource: alternate_contacts
       x-stackql-method: get_alternate_contact
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AlternateContact
   /getContactInformation:
     post:
       operationId: GetContactInformation
@@ -209,6 +210,7 @@ paths:
       x-stackql-resource: contact_informations
       x-stackql-method: get_contact_information
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ContactInformation
   /getGovCloudAccountInformation:
     post:
       operationId: GetGovCloudAccountInformation
@@ -321,6 +323,9 @@ paths:
       x-stackql-method: list_regions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Regions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /putAccountName:
     post:
       operationId: PutAccountName
@@ -437,7 +442,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPrimaryEmailUpdateResponse'
-      x-stackql-resource: primary_email_update
+      x-stackql-resource: primary_emails
       x-stackql-method: start_primary_email_update
       x-stackql-verb: EXEC
 components:

@@ -45,7 +45,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddBridgeOutputsResponse'
-      x-stackql-resource: bridge_outputs
+      x-stackql-resource: bridges
       x-stackql-method: add_bridge_outputs
       x-stackql-verb: UPDATE
   /v1/bridges/{bridge_arn}/sources:
@@ -77,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddBridgeSourcesResponse'
-      x-stackql-resource: bridge_sources
+      x-stackql-resource: bridges
       x-stackql-method: add_bridge_sources
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/mediaStreams:
@@ -110,7 +110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddFlowMediaStreamsResponse'
-      x-stackql-resource: flow_media_streams
+      x-stackql-resource: flows
       x-stackql-method: add_flow_media_streams
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/outputs:
@@ -142,7 +142,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddFlowOutputsResponse'
-      x-stackql-resource: flow_outputs
+      x-stackql-resource: flows
       x-stackql-method: add_flow_outputs
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/source:
@@ -174,7 +174,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddFlowSourcesResponse'
-      x-stackql-resource: flow_sources
+      x-stackql-resource: flows
       x-stackql-method: add_flow_sources
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/vpcInterfaces:
@@ -206,7 +206,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddFlowVpcInterfacesResponse'
-      x-stackql-resource: flow_vpc_interfaces
+      x-stackql-resource: flows
       x-stackql-method: add_flow_vpc_interfaces
       x-stackql-verb: UPDATE
   /v1/routerInputs:
@@ -266,6 +266,9 @@ paths:
       x-stackql-method: list_router_inputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RouterInputs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/routerNetworkInterfaces:
     get:
       operationId: BatchGetRouterNetworkInterface
@@ -323,6 +326,9 @@ paths:
       x-stackql-method: list_router_network_interfaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RouterNetworkInterfaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/routerOutputs:
     get:
       operationId: BatchGetRouterOutput
@@ -380,6 +386,9 @@ paths:
       x-stackql-method: list_router_outputs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RouterOutputs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/bridges:
     post:
       operationId: CreateBridge
@@ -461,6 +470,9 @@ paths:
       x-stackql-method: list_bridges
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Bridges
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/flows:
     post:
       operationId: CreateFlow
@@ -549,6 +561,9 @@ paths:
       x-stackql-method: list_flows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Flows
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/gateways:
     post:
       operationId: CreateGateway
@@ -615,6 +630,9 @@ paths:
       x-stackql-method: list_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Gateways
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/routerInput:
     post:
       operationId: CreateRouterInput
@@ -789,6 +807,7 @@ paths:
       x-stackql-resource: bridges
       x-stackql-method: describe_bridge
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Bridge
     put:
       operationId: UpdateBridge
       description: Updates the bridge.
@@ -950,6 +969,7 @@ paths:
       x-stackql-resource: gateways
       x-stackql-method: describe_gateway
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Gateway
   /v1/routerInput/{arn}:
     delete:
       operationId: DeleteRouterInput
@@ -991,6 +1011,7 @@ paths:
       x-stackql-resource: router_inputs
       x-stackql-method: get_router_input
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RouterInput
     put:
       operationId: UpdateRouterInput
       description: Updates the configuration of an existing router input in AWS Elemental MediaConnect.
@@ -1074,6 +1095,7 @@ paths:
       x-stackql-resource: router_network_interfaces
       x-stackql-method: get_router_network_interface
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RouterNetworkInterface
     put:
       operationId: UpdateRouterNetworkInterface
       description: Updates the configuration of an existing router network interface in AWS Elemental MediaConnect.
@@ -1146,6 +1168,7 @@ paths:
       x-stackql-resource: router_outputs
       x-stackql-method: get_router_output
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RouterOutput
     put:
       operationId: UpdateRouterOutput
       description: Updates the configuration of an existing router output in AWS Elemental MediaConnect.
@@ -1234,6 +1257,7 @@ paths:
       x-stackql-resource: gateway_instances
       x-stackql-method: describe_gateway_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.GatewayInstance
     put:
       operationId: UpdateGatewayInstance
       description: Updates an existing gateway instance.
@@ -1307,6 +1331,7 @@ paths:
       x-stackql-resource: flow_source_thumbnails
       x-stackql-method: describe_flow_source_thumbnail
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ThumbnailDetails
   /v1/offerings/{offering_arn}:
     get:
       operationId: DescribeOffering
@@ -1329,6 +1354,7 @@ paths:
       x-stackql-resource: offerings
       x-stackql-method: describe_offering
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Offering
     post:
       operationId: PurchaseOffering
       description: Submits a request to purchase an offering. If you already have an active reservation, you can't purchase
@@ -1361,7 +1387,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PurchaseOfferingResponse'
-      x-stackql-resource: purchase_offering
+      x-stackql-resource: reservations
       x-stackql-method: purchase_offering
       x-stackql-verb: EXEC
   /v1/reservations/{reservation_arn}:
@@ -1387,6 +1413,7 @@ paths:
       x-stackql-resource: reservations
       x-stackql-method: describe_reservation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Reservation
   /v1/routerInput/{arn}/source-metadata:
     get:
       operationId: GetRouterInputSourceMetadata
@@ -1459,7 +1486,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GrantFlowEntitlementsResponse'
-      x-stackql-resource: grant_flow_entitlements
+      x-stackql-resource: entitlements
       x-stackql-method: grant_flow_entitlements
       x-stackql-verb: EXEC
   /v1/entitlements:
@@ -1498,6 +1525,9 @@ paths:
       x-stackql-method: list_entitlements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entitlements
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/gateway-instances:
     get:
       operationId: ListGatewayInstances
@@ -1541,6 +1571,9 @@ paths:
       x-stackql-method: list_gateway_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Instances
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/offerings:
     get:
       operationId: ListOfferings
@@ -1578,6 +1611,9 @@ paths:
       x-stackql-method: list_offerings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Offerings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/reservations:
     get:
       operationId: ListReservations
@@ -1614,6 +1650,9 @@ paths:
       x-stackql-method: list_reservations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Reservations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/global/{resource_arn}:
     get:
       operationId: ListTagsForGlobalResource
@@ -1633,7 +1672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForGlobalResourceResponse'
-      x-stackql-resource: tags_for_global_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_global_resource
       x-stackql-verb: SELECT
     post:
@@ -1661,7 +1700,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: global_resources
+      x-stackql-resource: tags
       x-stackql-method: tag_global_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1684,7 +1723,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: global_resources
+      x-stackql-resource: tags
       x-stackql-method: untag_global_resource
       x-stackql-verb: UPDATE
   /tags/{resource_arn}:
@@ -1705,7 +1744,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1734,7 +1773,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1756,7 +1795,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/bridges/{bridge_arn}/outputs/{output_name}:
@@ -1783,7 +1822,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveBridgeOutputResponse'
-      x-stackql-resource: bridge_outputs
+      x-stackql-resource: bridges
       x-stackql-method: remove_bridge_output
       x-stackql-verb: UPDATE
     put:
@@ -1818,7 +1857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBridgeOutputResponse'
-      x-stackql-resource: bridge_outputs
+      x-stackql-resource: bridges
       x-stackql-method: update_bridge_output
       x-stackql-verb: UPDATE
   /v1/bridges/{bridge_arn}/sources/{source_name}:
@@ -1845,7 +1884,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveBridgeSourceResponse'
-      x-stackql-resource: bridge_sources
+      x-stackql-resource: bridges
       x-stackql-method: remove_bridge_source
       x-stackql-verb: UPDATE
     put:
@@ -1882,7 +1921,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBridgeSourceResponse'
-      x-stackql-resource: bridge_sources
+      x-stackql-resource: bridges
       x-stackql-method: update_bridge_source
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/mediaStreams/{media_stream_name}:
@@ -1910,7 +1949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveFlowMediaStreamResponse'
-      x-stackql-resource: flow_media_streams
+      x-stackql-resource: flows
       x-stackql-method: remove_flow_media_stream
       x-stackql-verb: UPDATE
     put:
@@ -1953,7 +1992,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFlowMediaStreamResponse'
-      x-stackql-resource: flow_media_streams
+      x-stackql-resource: flows
       x-stackql-method: update_flow_media_stream
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/outputs/{output_arn}:
@@ -1982,7 +2021,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveFlowOutputResponse'
-      x-stackql-resource: flow_outputs
+      x-stackql-resource: flows
       x-stackql-method: remove_flow_output
       x-stackql-verb: UPDATE
     put:
@@ -2055,7 +2094,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFlowOutputResponse'
-      x-stackql-resource: flow_outputs
+      x-stackql-resource: flows
       x-stackql-method: update_flow_output
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/source/{source_arn}:
@@ -2083,7 +2122,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveFlowSourceResponse'
-      x-stackql-resource: flow_sources
+      x-stackql-resource: flows
       x-stackql-method: remove_flow_source
       x-stackql-verb: UPDATE
     put:
@@ -2163,7 +2202,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFlowSourceResponse'
-      x-stackql-resource: flow_sources
+      x-stackql-resource: flows
       x-stackql-method: update_flow_source
       x-stackql-verb: UPDATE
   /v1/flows/{flow_arn}/vpcInterfaces/{vpc_interface_name}:
@@ -2192,7 +2231,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveFlowVpcInterfaceResponse'
-      x-stackql-resource: flow_vpc_interfaces
+      x-stackql-resource: flows
       x-stackql-method: remove_flow_vpc_interface
       x-stackql-verb: UPDATE
   /v1/routerInput/restart/{arn}:
@@ -2262,7 +2301,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RevokeFlowEntitlementResponse'
-      x-stackql-resource: flow_entitlements
+      x-stackql-resource: entitlements
       x-stackql-method: revoke_flow_entitlement
       x-stackql-verb: UPDATE
     put:
@@ -2304,7 +2343,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateFlowEntitlementResponse'
-      x-stackql-resource: flow_entitlements
+      x-stackql-resource: entitlements
       x-stackql-method: update_flow_entitlement
       x-stackql-verb: UPDATE
   /v1/flows/start/{flow_arn}:
@@ -2325,7 +2364,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFlowResponse'
-      x-stackql-resource: flow
+      x-stackql-resource: flows
       x-stackql-method: start_flow
       x-stackql-verb: EXEC
   /v1/routerInput/start/{arn}:
@@ -2388,7 +2427,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopFlowResponse'
-      x-stackql-resource: flow
+      x-stackql-resource: flows
       x-stackql-method: stop_flow
       x-stackql-verb: EXEC
   /v1/routerInput/stop/{arn}:
@@ -2460,7 +2499,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TakeRouterInputResponse'
-      x-stackql-resource: take_router_input
+      x-stackql-resource: router_outputs
       x-stackql-method: take_router_input
       x-stackql-verb: EXEC
   /v1/bridges/{bridge_arn}/state:
@@ -2492,7 +2531,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBridgeStateResponse'
-      x-stackql-resource: bridge_states
+      x-stackql-resource: bridges
       x-stackql-method: update_bridge_state
       x-stackql-verb: UPDATE
 components:

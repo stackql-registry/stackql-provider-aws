@@ -1,0 +1,7 @@
+-- GetItem on a deleted key returns an empty result (no Item member) -
+-- assert the payload token is absent rather than expecting an error.
+SELECT * FROM aws.dynamodb.items
+WHERE region = '{{ region }}'
+  AND TableName = '{{ table_name }}'
+  AND Key = '{"pk":{"S":"smoke-1"}}'
+  AND ConsistentRead = true

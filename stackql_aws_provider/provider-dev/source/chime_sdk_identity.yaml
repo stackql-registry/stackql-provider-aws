@@ -324,6 +324,7 @@ paths:
       x-stackql-resource: app_instances
       x-stackql-method: describe_app_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AppInstance
     put:
       operationId: UpdateAppInstance
       description: Updates AppInstance metadata.
@@ -407,6 +408,7 @@ paths:
       x-stackql-resource: app_instance_admins
       x-stackql-method: describe_app_instance_admin
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AppInstanceAdmin
   /app-instance-bots/{app_instance_bot_arn}:
     delete:
       operationId: DeleteAppInstanceBot
@@ -444,6 +446,7 @@ paths:
       x-stackql-resource: app_instance_bots
       x-stackql-method: describe_app_instance_bot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AppInstanceBot
     put:
       operationId: UpdateAppInstanceBot
       description: Updates the name and metadata of an AppInstanceBot.
@@ -517,6 +520,7 @@ paths:
       x-stackql-resource: app_instance_users
       x-stackql-method: describe_app_instance_user
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AppInstanceUser
     put:
       operationId: UpdateAppInstanceUser
       description: Updates the details of an AppInstanceUser. You can update names and metadata.
@@ -600,6 +604,7 @@ paths:
       x-stackql-resource: app_instance_user_endpoints
       x-stackql-method: describe_app_instance_user_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AppInstanceUserEndpoint
     put:
       operationId: UpdateAppInstanceUserEndpoint
       description: Updates the details of an AppInstanceUserEndpoint. You can update the name and AllowMessage values.
@@ -785,7 +790,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /app-instance-users/{app_instance_user_arn}/expiration-settings:
@@ -818,7 +823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAppInstanceUserExpirationSettingsResponse'
-      x-stackql-resource: app_instance_user_expiration_settings
+      x-stackql-resource: app_instance_users
       x-stackql-method: put_app_instance_user_expiration_settings
       x-stackql-verb: REPLACE
   /tags?operation=tag-resource:
@@ -843,7 +848,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /tags?operation=untag-resource:
@@ -868,7 +873,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

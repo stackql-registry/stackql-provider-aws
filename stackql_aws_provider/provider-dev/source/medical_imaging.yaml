@@ -66,7 +66,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyImageSetResponse'
-      x-stackql-resource: image_set
+      x-stackql-resource: datastores
       x-stackql-method: copy_image_set
       x-stackql-verb: EXEC
   /datastore:
@@ -138,6 +138,9 @@ paths:
       x-stackql-method: list_datastores
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datastoreSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /datastore/{datastore_id}:
     delete:
       operationId: DeleteDatastore
@@ -179,6 +182,7 @@ paths:
       x-stackql-resource: datastores
       x-stackql-method: get_datastore
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.datastoreProperties
   /datastore/{datastore_id}/imageSet/{image_set_id}/deleteImageSet:
     post:
       operationId: DeleteImageSet
@@ -236,6 +240,7 @@ paths:
       x-stackql-resource: dicom_import_jobs
       x-stackql-method: get_dicom_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.jobProperties
   /datastore/{datastore_id}/imageSet/{image_set_id}/getImageFrame:
     post:
       operationId: GetImageFrame
@@ -380,6 +385,9 @@ paths:
       x-stackql-method: list_dicom_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /datastore/{datastore_id}/imageSet/{image_set_id}/listImageSetVersions:
     post:
       operationId: ListImageSetVersions
@@ -420,6 +428,9 @@ paths:
       x-stackql-method: list_image_set_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageSetPropertiesList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -438,7 +449,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -469,7 +480,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -495,7 +506,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /datastore/{datastore_id}/searchImageSets:
@@ -545,6 +556,9 @@ paths:
       x-stackql-method: search_image_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.imageSetsMetadataSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /startDICOMImportJob/datastore/{datastore_id}:
     post:
       operationId: StartDICOMImportJob
@@ -592,7 +606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDICOMImportJobResponse'
-      x-stackql-resource: dicom_import_job
+      x-stackql-resource: datastores
       x-stackql-method: start_dicom_import_job
       x-stackql-verb: EXEC
   /datastore/{datastore_id}/imageSet/{image_set_id}/updateImageSetMetadata:

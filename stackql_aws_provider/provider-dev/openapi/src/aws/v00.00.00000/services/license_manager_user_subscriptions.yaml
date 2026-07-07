@@ -300,8 +300,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -386,7 +384,6 @@ paths:
                   $ref: "#/components/schemas/Tags"
               required:
                 - IdentityProvider
-                - Product
       responses:
         "200":
           description: Success
@@ -1175,6 +1172,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1211,6 +1215,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_identity_provider:
@@ -1224,12 +1235,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_identity_provider_settings:
+          operation:
+            $ref: "#/paths/~1identity-provider~1UpdateIdentityProviderSettings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/identity_providers/methods/list_identity_providers"
         insert:
           - $ref: "#/components/x-stackQL-resources/identity_providers/methods/register_identity_provider"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/identity_providers/methods/update_identity_provider_settings"
         delete:
           - $ref: "#/components/x-stackQL-resources/identity_providers/methods/deregister_identity_provider"
     instances:
@@ -1247,6 +1270,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1270,6 +1300,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1278,10 +1315,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.license_manager_user_subscriptions.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.license_manager_user_subscriptions.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1289,17 +1326,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.license_manager_user_subscriptions.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
@@ -1320,11 +1346,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     user_associations:
       id: aws.license_manager_user_subscriptions.user_associations
@@ -1341,6 +1368,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1348,26 +1382,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/user_associations/methods/list_user_associations"
         insert: []
         update: []
-        delete: []
-    identity_provider_settings:
-      id: aws.license_manager_user_subscriptions.identity_provider_settings
-      name: identity_provider_settings
-      title: identity_provider_settings
-      methods:
-        update_identity_provider_settings:
-          operation:
-            $ref: "#/paths/~1identity-provider~1UpdateIdentityProviderSettings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/identity_provider_settings/methods/update_identity_provider_settings"
         delete: []

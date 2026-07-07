@@ -69,7 +69,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
               required:
-                - Id
                 - PackagingGroupId
                 - SourceArn
                 - SourceRoleArn
@@ -136,7 +135,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/Tags"
               required:
-                - Id
                 - PackagingGroupId
       responses:
         "200":
@@ -194,8 +192,6 @@ paths:
                   $ref: "#/components/schemas/__string"
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -394,8 +390,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/__mapOf__string"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -1179,6 +1173,14 @@ components:
             objectKey: $.Assets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_asset:
           operation:
             $ref: "#/paths/~1assets~1{id}/delete"
@@ -1225,6 +1227,14 @@ components:
             objectKey: $.PackagingConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_packaging_configuration:
           operation:
             $ref: "#/paths/~1packaging_configurations~1{id}/delete"
@@ -1271,6 +1281,14 @@ components:
             objectKey: $.PackagingGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_packaging_group:
           operation:
             $ref: "#/paths/~1packaging_groups~1{id}/delete"
@@ -1304,10 +1322,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/packaging_groups/methods/update_packaging_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/packaging_groups/methods/delete_packaging_group"
-    tags_for_resources:
-      id: aws.mediapackage_vod.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.mediapackage_vod.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1315,17 +1333,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mediapackage_vod.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource-arn}/post"
@@ -1344,9 +1351,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

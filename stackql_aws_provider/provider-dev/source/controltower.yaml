@@ -264,6 +264,7 @@ paths:
       x-stackql-resource: baseline_operations
       x-stackql-method: get_baseline_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.baselineOperation
   /get-control-operation:
     post:
       operationId: GetControlOperation
@@ -292,6 +293,7 @@ paths:
       x-stackql-resource: control_operations
       x-stackql-method: get_control_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.controlOperation
   /get-enabled-baseline:
     post:
       operationId: GetEnabledBaseline
@@ -318,6 +320,7 @@ paths:
       x-stackql-resource: enabled_baselines
       x-stackql-method: get_enabled_baseline
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.enabledBaselineDetails
   /get-enabled-control:
     post:
       operationId: GetEnabledControl
@@ -344,6 +347,7 @@ paths:
       x-stackql-resource: enabled_controls
       x-stackql-method: get_enabled_control
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.enabledControlDetails
   /get-landingzone:
     post:
       operationId: GetLandingZone
@@ -370,6 +374,7 @@ paths:
       x-stackql-resource: landing_zones
       x-stackql-method: get_landing_zone
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.landingZone
   /get-landingzone-operation:
     post:
       operationId: GetLandingZoneOperation
@@ -397,6 +402,7 @@ paths:
       x-stackql-resource: landing_zone_operations
       x-stackql-method: get_landing_zone_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.operationDetails
   /list-baselines:
     post:
       operationId: ListBaselines
@@ -425,6 +431,9 @@ paths:
       x-stackql-method: list_baselines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.baselines
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-control-operations:
     post:
       operationId: ListControlOperations
@@ -454,6 +463,9 @@ paths:
       x-stackql-method: list_control_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.controlOperations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-enabled-baselines:
     post:
       operationId: ListEnabledBaselines
@@ -487,6 +499,9 @@ paths:
       x-stackql-method: list_enabled_baselines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.enabledBaselines
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-enabled-controls:
     post:
       operationId: ListEnabledControls
@@ -521,6 +536,9 @@ paths:
       x-stackql-method: list_enabled_controls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.enabledControls
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-landingzone-operations:
     post:
       operationId: ListLandingZoneOperations
@@ -551,6 +569,9 @@ paths:
       x-stackql-method: list_landing_zone_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.landingZoneOperations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-landingzones:
     post:
       operationId: ListLandingZones
@@ -579,6 +600,9 @@ paths:
       x-stackql-method: list_landing_zones
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.landingZones
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -598,7 +622,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -629,7 +653,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -655,7 +679,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /reset-enabled-baseline:
@@ -683,7 +707,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetEnabledBaselineOutput'
-      x-stackql-resource: enabled_baseline
+      x-stackql-resource: enabled_baselines
       x-stackql-method: reset_enabled_baseline
       x-stackql-verb: EXEC
   /reset-enabled-control:
@@ -709,7 +733,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetEnabledControlOutput'
-      x-stackql-resource: enabled_control
+      x-stackql-resource: enabled_controls
       x-stackql-method: reset_enabled_control
       x-stackql-verb: EXEC
   /reset-landingzone:
@@ -738,7 +762,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetLandingZoneOutput'
-      x-stackql-resource: landing_zone
+      x-stackql-resource: landing_zones
       x-stackql-method: reset_landing_zone
       x-stackql-verb: EXEC
   /update-enabled-baseline:

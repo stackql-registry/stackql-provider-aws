@@ -632,7 +632,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListCustomActionsResult"
+                $ref: "#/components/schemas/ListCustomActionsOutputDisplay"
   /list-ms-teams-channel-configurations:
     post:
       operationId: ListMicrosoftTeamsChannelConfigurations
@@ -747,7 +747,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -1612,26 +1611,19 @@ components:
       minLength: 1
       maxLength: 1024
       pattern: "[\\x20-\\x7F]+"
-    ListCustomActionsResult:
+    ListCustomActionsRowDisplay:
       type: object
       properties:
-        CustomActions:
-          $ref: "#/components/schemas/CustomActionArnList"
+        custom_action:
+          type: string
           description: A list of custom actions.
-        NextToken:
-          $ref: "#/components/schemas/ListCustomActionsResultNextTokenString"
-          description: An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by MaxResults.
-      required:
-        - CustomActions
-    CustomActionArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/CustomActionArn"
-    ListCustomActionsResultNextTokenString:
-      type: string
-      minLength: 1
-      maxLength: 1024
-      pattern: "[\\x20-\\x7F]+"
+    ListCustomActionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListCustomActionsRowDisplay"
     ListTeamsChannelConfigurationsResult:
       type: object
       properties:
@@ -1833,6 +1825,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_chime_webhook_configuration:
@@ -1888,6 +1887,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CustomAction
           request:
             nativeCasing: pascal
           config:
@@ -1899,10 +1899,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.CustomActions
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListCustomActionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "CustomActions" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"custom_action": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_custom_action:
@@ -1959,6 +1972,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -1974,6 +1988,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_microsoft_teams_channel_configuration:
@@ -2034,6 +2055,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_slack_channel_configuration:
@@ -2082,6 +2110,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2117,6 +2152,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2152,6 +2194,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2161,10 +2210,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/slack_user_identities/methods/delete_slack_user_identity"
-    slack_workspace_authorizations:
-      id: aws.chatbot.slack_workspace_authorizations
-      name: slack_workspace_authorizations
-      title: slack_workspace_authorizations
+    slack_workspaces:
+      id: aws.chatbot.slack_workspaces
+      name: slack_workspaces
+      title: slack_workspaces
       methods:
         delete_slack_workspace_authorization:
           operation:
@@ -2177,17 +2226,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/slack_workspace_authorizations/methods/delete_slack_workspace_authorization"
-    slack_workspaces:
-      id: aws.chatbot.slack_workspaces
-      name: slack_workspaces
-      title: slack_workspaces
-      methods:
         describe_slack_workspaces:
           operation:
             $ref: "#/paths/~1describe-slack-workspaces/post"
@@ -2198,6 +2236,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2205,7 +2250,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/slack_workspaces/methods/describe_slack_workspaces"
         insert: []
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/slack_workspaces/methods/delete_slack_workspace_authorization"
     from_configurations:
       id: aws.chatbot.from_configurations
       name: from_configurations
@@ -2239,6 +2285,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AccountPreferences
         update_account_preferences:
           operation:
             $ref: "#/paths/~1update-account-preferences/post"
@@ -2272,6 +2319,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2280,10 +2334,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.chatbot.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.chatbot.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2296,17 +2350,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.chatbot.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tag-resource/post"
@@ -2330,9 +2373,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

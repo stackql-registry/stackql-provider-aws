@@ -88,6 +88,9 @@ paths:
       x-stackql-method: list_discoverers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Discoverers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/registries/name/{registry_name}:
     post:
       operationId: CreateRegistry
@@ -603,7 +606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportSchemaResponse'
-      x-stackql-resource: schema
+      x-stackql-resource: registries
       x-stackql-method: export_schema
       x-stackql-verb: EXEC
   /v1/registries/name/{registry_name}/schemas/name/{schema_name}/language/{language}/source:
@@ -714,6 +717,9 @@ paths:
       x-stackql-method: list_registries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Registries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/registries/name/{registry_name}/schemas/name/{schema_name}/versions:
     get:
       operationId: ListSchemaVersions
@@ -754,6 +760,9 @@ paths:
       x-stackql-method: list_schema_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SchemaVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/registries/name/{registry_name}/schemas:
     get:
       operationId: ListSchemas
@@ -794,6 +803,9 @@ paths:
       x-stackql-method: list_schemas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Schemas
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource-arn}:
     get:
       operationId: ListTagsForResource
@@ -812,7 +824,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -839,7 +851,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -861,7 +873,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/registries/name/{registry_name}/schemas/search:
@@ -904,6 +916,9 @@ paths:
       x-stackql-method: search_schemas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Schemas
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/discoverers/id/{discoverer_id}/start:
     post:
       operationId: StartDiscoverer
@@ -922,7 +937,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDiscovererResponse'
-      x-stackql-resource: discoverer
+      x-stackql-resource: discoverers
       x-stackql-method: start_discoverer
       x-stackql-verb: EXEC
   /v1/discoverers/id/{discoverer_id}/stop:
@@ -943,7 +958,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDiscovererResponse'
-      x-stackql-resource: discoverer
+      x-stackql-resource: discoverers
       x-stackql-method: stop_discoverer
       x-stackql-verb: EXEC
 components:

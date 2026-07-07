@@ -64,7 +64,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptDirectConnectGatewayAssociationProposalResult'
-      x-stackql-resource: direct_connect_gateway_association_proposal
+      x-stackql-resource: direct_connect_gateway_associations
       x-stackql-method: accept_direct_connect_gateway_association_proposal
       x-stackql-verb: EXEC
   /AllocateConnectionOnInterconnect:
@@ -120,7 +120,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Connection'
-      x-stackql-resource: connection_on_interconnects
+      x-stackql-resource: interconnects
       x-stackql-method: allocate_connection_on_interconnect
       x-stackql-verb: UPDATE
   /AllocateHostedConnection:
@@ -228,7 +228,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VirtualInterface'
-      x-stackql-resource: private_virtual_interfaces
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: allocate_private_virtual_interface
       x-stackql-verb: UPDATE
   /AllocatePublicVirtualInterface:
@@ -277,7 +277,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VirtualInterface'
-      x-stackql-resource: public_virtual_interfaces
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: allocate_public_virtual_interface
       x-stackql-verb: UPDATE
   /AllocateTransitVirtualInterface:
@@ -325,7 +325,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AllocateTransitVirtualInterfaceResult'
-      x-stackql-resource: transit_virtual_interfaces
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: allocate_transit_virtual_interface
       x-stackql-verb: UPDATE
   /AssociateConnectionWithLag:
@@ -374,7 +374,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Connection'
-      x-stackql-resource: connection_with_lags
+      x-stackql-resource: lags
       x-stackql-method: associate_connection_with_lag
       x-stackql-verb: UPDATE
   /AssociateHostedConnection:
@@ -472,7 +472,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateMacSecKeyResponse'
-      x-stackql-resource: mac_sec_keys
+      x-stackql-resource: connections
       x-stackql-method: associate_mac_sec_key
       x-stackql-verb: UPDATE
   /AssociateVirtualInterface:
@@ -557,7 +557,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfirmConnectionResponse'
-      x-stackql-resource: connection
+      x-stackql-resource: connections
       x-stackql-method: confirm_connection
       x-stackql-verb: EXEC
   /ConfirmCustomerAgreement:
@@ -635,7 +635,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfirmPrivateVirtualInterfaceResponse'
-      x-stackql-resource: private_virtual_interface
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: confirm_private_virtual_interface
       x-stackql-verb: EXEC
   /ConfirmPublicVirtualInterface:
@@ -672,7 +672,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfirmPublicVirtualInterfaceResponse'
-      x-stackql-resource: public_virtual_interface
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: confirm_public_virtual_interface
       x-stackql-verb: EXEC
   /ConfirmTransitVirtualInterface:
@@ -714,7 +714,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfirmTransitVirtualInterfaceResponse'
-      x-stackql-resource: transit_virtual_interface
+      x-stackql-resource: direct_connect_gateways
       x-stackql-method: confirm_transit_virtual_interface
       x-stackql-verb: EXEC
   /CreateBGPPeer:
@@ -1166,7 +1166,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VirtualInterface'
-      x-stackql-resource: private_virtual_interfaces
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: create_private_virtual_interface
       x-stackql-verb: INSERT
   /CreatePublicVirtualInterface:
@@ -1209,7 +1209,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VirtualInterface'
-      x-stackql-resource: public_virtual_interfaces
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: create_public_virtual_interface
       x-stackql-verb: INSERT
   /CreateTransitVirtualInterface:
@@ -1258,7 +1258,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateTransitVirtualInterfaceResult'
-      x-stackql-resource: transit_virtual_interfaces
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: create_transit_virtual_interface
       x-stackql-verb: INSERT
   /DeleteBGPPeer:
@@ -1626,6 +1626,7 @@ paths:
       x-stackql-resource: connection_loas
       x-stackql-method: describe_connection_loa
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.loa
   /DescribeConnections:
     post:
       operationId: DescribeConnections
@@ -1840,6 +1841,9 @@ paths:
       x-stackql-method: describe_direct_connect_gateway_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.directConnectGatewayAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeDirectConnectGatewayAttachments:
     post:
       operationId: DescribeDirectConnectGatewayAttachments
@@ -1890,6 +1894,9 @@ paths:
       x-stackql-method: describe_direct_connect_gateway_attachments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.directConnectGatewayAttachments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeDirectConnectGateways:
     post:
       operationId: DescribeDirectConnectGateways
@@ -1934,6 +1941,9 @@ paths:
       x-stackql-method: describe_direct_connect_gateways
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.directConnectGateways
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeHostedConnections:
     post:
       operationId: DescribeHostedConnections
@@ -2026,6 +2036,7 @@ paths:
       x-stackql-resource: interconnect_loas
       x-stackql-method: describe_interconnect_loa
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.loa
   /DescribeInterconnects:
     post:
       operationId: DescribeInterconnects
@@ -2378,7 +2389,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Connection'
-      x-stackql-resource: connection_from_lags
+      x-stackql-resource: lags
       x-stackql-method: disassociate_connection_from_lag
       x-stackql-verb: UPDATE
   /DisassociateMacSecKey:
@@ -2420,7 +2431,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateMacSecKeyResponse'
-      x-stackql-resource: mac_sec_keys
+      x-stackql-resource: connections
       x-stackql-method: disassociate_mac_sec_key
       x-stackql-verb: UPDATE
   /ListVirtualInterfaceTestHistory:
@@ -2517,7 +2528,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBgpFailoverTestResponse'
-      x-stackql-resource: bgp_failover_test
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: start_bgp_failover_test
       x-stackql-verb: EXEC
   /StopBgpFailoverTest:
@@ -2553,7 +2564,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBgpFailoverTestResponse'
-      x-stackql-resource: bgp_failover_test
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: stop_bgp_failover_test
       x-stackql-verb: EXEC
   /TagResource:
@@ -2595,7 +2606,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2635,7 +2646,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateConnection:
@@ -2861,7 +2872,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VirtualInterface'
-      x-stackql-resource: virtual_interface_attributes
+      x-stackql-resource: virtual_interfaces
       x-stackql-method: update_virtual_interface_attributes
       x-stackql-verb: UPDATE
 components:

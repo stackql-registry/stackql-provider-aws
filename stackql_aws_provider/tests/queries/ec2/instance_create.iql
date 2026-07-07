@@ -1,0 +1,9 @@
+-- INSERT routed to RunInstances via the durable-mappings CSV (conscious
+-- exec -> insert edit in provider-dev/config/all_services.csv); eager id
+-- capture via RETURNING, same pattern as vpc_create. Tagged so
+-- test-created resources are identifiable (wire names: TagSpecification /
+-- inner Tag).
+INSERT INTO aws.ec2.instances(region, ImageId, InstanceType, SubnetId, MinCount, MaxCount, TagSpecification)
+SELECT '{{ region }}', '{{ ami_lookup.ami_id }}', '{{ instance_type }}', '{{ subnet_create.subnet_id }}', 1, 1,
+       JSON('[{"ResourceType":"instance","Tag":[{"Key":"stackql-provider-test","Value":"instance_create"}]}]')
+RETURNING instance_id, instance_type, image_id

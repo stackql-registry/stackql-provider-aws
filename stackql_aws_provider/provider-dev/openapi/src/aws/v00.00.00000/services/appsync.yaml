@@ -4237,6 +4237,14 @@ components:
             objectKey: $.apis
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_api:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}/delete"
@@ -4249,9 +4257,27 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.api
         update_api:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        flush_api_cache:
+          operation:
+            $ref: "#/paths/~1v1~1apis~1{api_id}~1FlushCache/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        start_schema_creation:
+          operation:
+            $ref: "#/paths/~1v1~1apis~1{api_id}~1schemacreation/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4283,20 +4309,84 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.apiAssociation
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/api_associations/methods/get_api_association"
         insert: []
         update: []
         delete: []
-    merged_graphql_apis:
-      id: aws.appsync.merged_graphql_apis
-      name: merged_graphql_apis
-      title: merged_graphql_apis
+    graphql_apis:
+      id: aws.appsync.graphql_apis
+      name: graphql_apis
+      title: graphql_apis
       methods:
         associate_merged_graphql_api:
           operation:
             $ref: "#/paths/~1v1~1sourceApis~1{source_api_identifier}~1mergedApiAssociations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        associate_source_graphql_api:
+          operation:
+            $ref: "#/paths/~1v1~1mergedApis~1{merged_api_identifier}~1sourceApiAssociations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_graphql_api:
+          operation:
+            $ref: "#/paths/~1v1~1apis/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_graphql_apis:
+          operation:
+            $ref: "#/paths/~1v1~1apis/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.graphqlApis
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_graphql_api:
+          operation:
+            $ref: "#/paths/~1v1~1apis~1{api_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_graphql_api:
+          operation:
+            $ref: "#/paths/~1v1~1apis~1{api_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.graphqlApi
+        update_graphql_api:
+          operation:
+            $ref: "#/paths/~1v1~1apis~1{api_id}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4311,29 +4401,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/merged_graphql_apis/methods/associate_merged_graphql_api"
-          - $ref: "#/components/x-stackQL-resources/merged_graphql_apis/methods/disassociate_merged_graphql_api"
-        delete: []
-    source_graphql_apis:
-      id: aws.appsync.source_graphql_apis
-      name: source_graphql_apis
-      title: source_graphql_apis
-      methods:
-        associate_source_graphql_api:
-          operation:
-            $ref: "#/paths/~1v1~1mergedApis~1{merged_api_identifier}~1sourceApiAssociations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         disassociate_source_graphql_api:
           operation:
             $ref: "#/paths/~1v1~1mergedApis~1{merged_api_identifier}~1sourceApiAssociations~1{association_id}/delete"
@@ -4341,12 +4408,19 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/get_graphql_api"
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/list_graphql_apis"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/create_graphql_api"
         update:
-          - $ref: "#/components/x-stackQL-resources/source_graphql_apis/methods/associate_source_graphql_api"
-          - $ref: "#/components/x-stackQL-resources/source_graphql_apis/methods/disassociate_source_graphql_api"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/update_graphql_api"
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/associate_merged_graphql_api"
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/associate_source_graphql_api"
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/disassociate_merged_graphql_api"
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/disassociate_source_graphql_api"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/delete_graphql_api"
     api_caches:
       id: aws.appsync.api_caches
       name: api_caches
@@ -4375,6 +4449,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.apiCache
         update_api_cache:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1ApiCaches~1update/post"
@@ -4420,6 +4495,14 @@ components:
             objectKey: $.apiKeys
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_api_key:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1apikeys~1{id}/delete"
@@ -4471,6 +4554,14 @@ components:
             objectKey: $.channelNamespaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_channel_namespace:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1channelNamespaces~1{name}/delete"
@@ -4483,6 +4574,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.channelNamespace
         update_channel_namespace:
           operation:
             $ref: "#/paths/~1v2~1apis~1{api_id}~1channelNamespaces~1{name}/post"
@@ -4529,6 +4621,14 @@ components:
             objectKey: $.dataSources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_data_source:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1datasources~1{name}/delete"
@@ -4541,9 +4641,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.dataSource
         update_data_source:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1datasources~1{name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_data_source_introspection:
+          operation:
+            $ref: "#/paths/~1v1~1datasources~1introspections/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4587,6 +4699,14 @@ components:
             objectKey: $.domainNameConfigs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_domain_name:
           operation:
             $ref: "#/paths/~1v1~1domainnames~1{domain_name}/delete"
@@ -4599,6 +4719,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.domainNameConfig
         update_domain_name:
           operation:
             $ref: "#/paths/~1v1~1domainnames~1{domain_name}/post"
@@ -4645,6 +4766,14 @@ components:
             objectKey: $.functions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_function:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1functions~1{function_id}/delete"
@@ -4657,6 +4786,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.functionConfiguration
         update_function:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1functions~1{function_id}/post"
@@ -4678,64 +4808,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/functions/methods/update_function"
         delete:
           - $ref: "#/components/x-stackQL-resources/functions/methods/delete_function"
-    graphql_apis:
-      id: aws.appsync.graphql_apis
-      name: graphql_apis
-      title: graphql_apis
-      methods:
-        create_graphql_api:
-          operation:
-            $ref: "#/paths/~1v1~1apis/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_graphql_apis:
-          operation:
-            $ref: "#/paths/~1v1~1apis/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.graphqlApis
-          request:
-            nativeCasing: pascal
-        delete_graphql_api:
-          operation:
-            $ref: "#/paths/~1v1~1apis~1{api_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_graphql_api:
-          operation:
-            $ref: "#/paths/~1v1~1apis~1{api_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_graphql_api:
-          operation:
-            $ref: "#/paths/~1v1~1apis~1{api_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/get_graphql_api"
-          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/list_graphql_apis"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/create_graphql_api"
-        update:
-          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/update_graphql_api"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/graphql_apis/methods/delete_graphql_api"
     resolvers:
       id: aws.appsync.resolvers
       name: resolvers
@@ -4761,6 +4833,14 @@ components:
             objectKey: $.resolvers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_resolver:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}~1resolvers~1{field_name}/delete"
@@ -4773,6 +4853,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.resolver
         update_resolver:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}~1resolvers~1{field_name}/post"
@@ -4819,6 +4900,14 @@ components:
             objectKey: $.types
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_type:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}/delete"
@@ -4831,8 +4920,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
+            objectKey: $.type
         update_type:
           operation:
             $ref: "#/paths/~1v1~1apis~1{api_id}~1types~1{type_name}/post"
@@ -4846,7 +4934,6 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/types/methods/get_type"
           - $ref: "#/components/x-stackQL-resources/types/methods/list_types"
         insert:
           - $ref: "#/components/x-stackQL-resources/types/methods/create_type"
@@ -4865,6 +4952,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.sourceApiAssociation
         update_source_api_association:
           operation:
             $ref: "#/paths/~1v1~1mergedApis~1{merged_api_identifier}~1sourceApiAssociations~1{association_id}/post"
@@ -4885,6 +4973,14 @@ components:
             objectKey: $.sourceApiAssociationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/source_api_associations/methods/get_source_api_association"
@@ -4992,16 +5088,24 @@ components:
             objectKey: $.resolvers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resolvers_by_functions/methods/list_resolvers_by_function"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.appsync.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.appsync.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5009,17 +5113,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.appsync.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
@@ -5040,11 +5133,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     types_by_associations:
       id: aws.appsync.types_by_associations
@@ -5060,6 +5154,14 @@ components:
             objectKey: $.types
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/types_by_associations/methods/list_types_by_association"

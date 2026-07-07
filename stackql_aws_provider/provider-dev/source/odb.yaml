@@ -821,6 +821,7 @@ paths:
       x-stackql-resource: cloud_autonomous_vm_clusters
       x-stackql-method: get_cloud_autonomous_vm_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.cloudAutonomousVmCluster
   /GetCloudExadataInfrastructure:
     post:
       operationId: GetCloudExadataInfrastructure
@@ -857,6 +858,7 @@ paths:
       x-stackql-resource: cloud_exadata_infrastructures
       x-stackql-method: get_cloud_exadata_infrastructure
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.cloudExadataInfrastructure
   /GetCloudExadataInfrastructureUnallocatedResources:
     post:
       operationId: GetCloudExadataInfrastructureUnallocatedResources
@@ -897,6 +899,7 @@ paths:
       x-stackql-resource: cloud_exadata_infrastructure_unallocated_resources
       x-stackql-method: get_cloud_exadata_infrastructure_unallocated_resources
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.cloudExadataInfrastructureUnallocatedResources
   /GetCloudVmCluster:
     post:
       operationId: GetCloudVmCluster
@@ -933,6 +936,7 @@ paths:
       x-stackql-resource: cloud_vm_clusters
       x-stackql-method: get_cloud_vm_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.cloudVmCluster
   /GetDbNode:
     post:
       operationId: GetDbNode
@@ -973,6 +977,7 @@ paths:
       x-stackql-resource: db_nodes
       x-stackql-method: get_db_node
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dbNode
   /GetDbServer:
     post:
       operationId: GetDbServer
@@ -1013,6 +1018,7 @@ paths:
       x-stackql-resource: db_servers
       x-stackql-method: get_db_server
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dbServer
   /GetOciOnboardingStatus:
     post:
       operationId: GetOciOnboardingStatus
@@ -1079,6 +1085,7 @@ paths:
       x-stackql-resource: odb_networks
       x-stackql-method: get_odb_network
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.odbNetwork
   /GetOdbPeeringConnection:
     post:
       operationId: GetOdbPeeringConnection
@@ -1115,6 +1122,7 @@ paths:
       x-stackql-resource: odb_peering_connections
       x-stackql-method: get_odb_peering_connection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.odbPeeringConnection
   /InitializeService:
     post:
       operationId: InitializeService
@@ -1192,6 +1200,9 @@ paths:
       x-stackql-method: list_autonomous_virtual_machines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.autonomousVirtualMachines
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCloudAutonomousVmClusters:
     post:
       operationId: ListCloudAutonomousVmClusters
@@ -1234,6 +1245,9 @@ paths:
       x-stackql-method: list_cloud_autonomous_vm_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cloudAutonomousVmClusters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCloudExadataInfrastructures:
     post:
       operationId: ListCloudExadataInfrastructures
@@ -1274,6 +1288,9 @@ paths:
       x-stackql-method: list_cloud_exadata_infrastructures
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cloudExadataInfrastructures
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCloudVmClusters:
     post:
       operationId: ListCloudVmClusters
@@ -1318,6 +1335,9 @@ paths:
       x-stackql-method: list_cloud_vm_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cloudVmClusters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDbNodes:
     post:
       operationId: ListDbNodes
@@ -1363,6 +1383,9 @@ paths:
       x-stackql-method: list_db_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dbNodes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDbServers:
     post:
       operationId: ListDbServers
@@ -1408,6 +1431,9 @@ paths:
       x-stackql-method: list_db_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dbServers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDbSystemShapes:
     post:
       operationId: ListDbSystemShapes
@@ -1454,6 +1480,9 @@ paths:
       x-stackql-method: list_db_system_shapes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dbSystemShapes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListGiVersions:
     post:
       operationId: ListGiVersions
@@ -1499,6 +1528,9 @@ paths:
       x-stackql-method: list_gi_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.giVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListOdbNetworks:
     post:
       operationId: ListOdbNetworks
@@ -1539,6 +1571,9 @@ paths:
       x-stackql-method: list_odb_networks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.odbNetworks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListOdbPeeringConnections:
     post:
       operationId: ListOdbPeeringConnections
@@ -1582,6 +1617,9 @@ paths:
       x-stackql-method: list_odb_peering_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.odbPeeringConnections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSystemVersions:
     post:
       operationId: ListSystemVersions
@@ -1632,6 +1670,9 @@ paths:
       x-stackql-method: list_system_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.systemVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1665,7 +1706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /RebootDbNode:
@@ -1705,7 +1746,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootDbNodeOutput'
-      x-stackql-resource: db_node
+      x-stackql-resource: cloud_vm_clusters
       x-stackql-method: reboot_db_node
       x-stackql-verb: EXEC
   /StartDbNode:
@@ -1745,7 +1786,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDbNodeOutput'
-      x-stackql-resource: db_node
+      x-stackql-resource: cloud_vm_clusters
       x-stackql-method: start_db_node
       x-stackql-verb: EXEC
   /StopDbNode:
@@ -1785,7 +1826,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDbNodeOutput'
-      x-stackql-resource: db_node
+      x-stackql-resource: cloud_vm_clusters
       x-stackql-method: stop_db_node
       x-stackql-verb: EXEC
   /TagResource:
@@ -1825,7 +1866,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1865,7 +1906,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCloudExadataInfrastructure:

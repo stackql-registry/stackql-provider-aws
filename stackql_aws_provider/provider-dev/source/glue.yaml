@@ -63,7 +63,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreatePartitionResponse'
-      x-stackql-resource: batch_create_partition
+      x-stackql-resource: databases
       x-stackql-method: batch_create_partition
       x-stackql-verb: EXEC
   /BatchDeleteConnection:
@@ -151,7 +151,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeletePartitionResponse'
-      x-stackql-resource: batch_delete_partition
+      x-stackql-resource: databases
       x-stackql-method: batch_delete_partition
       x-stackql-verb: EXEC
   /BatchDeleteTable:
@@ -203,7 +203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteTableResponse'
-      x-stackql-resource: batch_delete_table
+      x-stackql-resource: databases
       x-stackql-method: batch_delete_table
       x-stackql-verb: EXEC
   /BatchDeleteTableVersion:
@@ -253,7 +253,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteTableVersionResponse'
-      x-stackql-resource: batch_delete_table_version
+      x-stackql-resource: databases
       x-stackql-method: batch_delete_table_version
       x-stackql-verb: EXEC
   /BatchGetBlueprints:
@@ -732,7 +732,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchStopJobRunResponse'
-      x-stackql-resource: batch_stop_job_run
+      x-stackql-resource: job_runs
       x-stackql-method: batch_stop_job_run
       x-stackql-verb: EXEC
   /BatchUpdatePartition:
@@ -780,7 +780,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdatePartitionResponse'
-      x-stackql-resource: batch_update_partition
+      x-stackql-resource: databases
       x-stackql-method: batch_update_partition
       x-stackql-verb: EXEC
   /CancelDataQualityRuleRecommendationRun:
@@ -852,7 +852,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelDataQualityRulesetEvaluationRunResponse'
-      x-stackql-resource: data_quality_ruleset_evaluation_run
+      x-stackql-resource: data_quality_rulesets
       x-stackql-method: cancel_data_quality_ruleset_evaluation_run
       x-stackql-verb: EXEC
   /CancelMLTaskRun:
@@ -937,7 +937,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelStatementResponse'
-      x-stackql-resource: statement
+      x-stackql-resource: sessions
       x-stackql-method: cancel_statement
       x-stackql-verb: EXEC
   /CheckSchemaVersionValidity:
@@ -4272,6 +4272,9 @@ paths:
       x-stackql-method: describe_entity
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Fields
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInboundIntegrations:
     post:
       operationId: DescribeInboundIntegrations
@@ -4403,6 +4406,7 @@ paths:
       x-stackql-resource: blueprints
       x-stackql-method: get_blueprint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Blueprint
   /GetBlueprintRun:
     post:
       operationId: GetBlueprintRun
@@ -4443,6 +4447,7 @@ paths:
       x-stackql-resource: blueprint_runs
       x-stackql-method: get_blueprint_run
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BlueprintRun
   /GetBlueprintRuns:
     post:
       operationId: GetBlueprintRuns
@@ -4522,6 +4527,7 @@ paths:
       x-stackql-resource: catalogs
       x-stackql-method: get_catalog
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Catalog
   /GetCatalogImportStatus:
     post:
       operationId: GetCatalogImportStatus
@@ -4557,6 +4563,7 @@ paths:
       x-stackql-resource: catalog_import_status
       x-stackql-method: get_catalog_import_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ImportStatus
   /GetCatalogs:
     post:
       operationId: GetCatalogs
@@ -4652,6 +4659,7 @@ paths:
       x-stackql-resource: classifiers
       x-stackql-method: get_classifier
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Classifier
   /GetClassifiers:
     post:
       operationId: GetClassifiers
@@ -4690,6 +4698,9 @@ paths:
       x-stackql-method: get_classifiers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Classifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetColumnStatisticsForPartition:
     post:
       operationId: GetColumnStatisticsForPartition
@@ -4828,6 +4839,7 @@ paths:
       x-stackql-resource: column_statistics_task_runs
       x-stackql-method: get_column_statistics_task_run
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ColumnStatisticsTaskRun
   /GetColumnStatisticsTaskRuns:
     post:
       operationId: GetColumnStatisticsTaskRuns
@@ -4914,6 +4926,7 @@ paths:
       x-stackql-resource: column_statistics_task_settings
       x-stackql-method: get_column_statistics_task_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ColumnStatisticsTaskSettings
   /GetConnection:
     post:
       operationId: GetConnection
@@ -4964,6 +4977,7 @@ paths:
       x-stackql-resource: connections
       x-stackql-method: get_connection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Connection
   /GetConnections:
     post:
       operationId: GetConnections
@@ -5015,6 +5029,9 @@ paths:
       x-stackql-method: get_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConnectionList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetCrawler:
     post:
       operationId: GetCrawler
@@ -5051,6 +5068,7 @@ paths:
       x-stackql-resource: crawlers
       x-stackql-method: get_crawler
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Crawler
   /GetCrawlerMetrics:
     post:
       operationId: GetCrawlerMetrics
@@ -5092,6 +5110,9 @@ paths:
       x-stackql-method: get_crawler_metrics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CrawlerMetricsList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetCrawlers:
     post:
       operationId: GetCrawlers
@@ -5130,6 +5151,9 @@ paths:
       x-stackql-method: get_crawlers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Crawlers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetCustomEntityType:
     post:
       operationId: GetCustomEntityType
@@ -5201,6 +5225,7 @@ paths:
       x-stackql-resource: data_catalog_encryption_settings
       x-stackql-method: get_data_catalog_encryption_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DataCatalogEncryptionSettings
   /GetDataQualityModel:
     post:
       operationId: GetDataQualityModel
@@ -5464,6 +5489,7 @@ paths:
       x-stackql-resource: databases
       x-stackql-method: get_database
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Database
   /GetDatabases:
     post:
       operationId: GetDatabases
@@ -5517,6 +5543,9 @@ paths:
       x-stackql-method: get_databases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DatabaseList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetDataflowGraph:
     post:
       operationId: GetDataflowGraph
@@ -5589,6 +5618,7 @@ paths:
       x-stackql-resource: dev_endpoints
       x-stackql-method: get_dev_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DevEndpoint
   /GetDevEndpoints:
     post:
       operationId: GetDevEndpoints
@@ -5629,6 +5659,9 @@ paths:
       x-stackql-method: get_dev_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DevEndpoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetEntityRecords:
     post:
       operationId: GetEntityRecords
@@ -5694,10 +5727,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetEntityRecordsResponse'
+                $ref: '#/components/schemas/GetEntityRecordsOutputDisplay'
       x-stackql-resource: entity_records
       x-stackql-method: get_entity_records
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: GetEntityRecordsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Records" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range
+        $i, $v := $lst -}}{{- if $i }},{{ end }}{"record": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /GetGlueIdentityCenterConfiguration:
     post:
       operationId: GetGlueIdentityCenterConfiguration
@@ -5847,6 +5885,7 @@ paths:
       x-stackql-resource: jobs
       x-stackql-method: get_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Job
   /GetJobBookmark:
     post:
       operationId: GetJobBookmark
@@ -5887,6 +5926,7 @@ paths:
       x-stackql-resource: job_bookmarks
       x-stackql-method: get_job_bookmark
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JobBookmarkEntry
   /GetJobRun:
     post:
       operationId: GetJobRun
@@ -5931,6 +5971,7 @@ paths:
       x-stackql-resource: job_runs
       x-stackql-method: get_job_run
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JobRun
   /GetJobRuns:
     post:
       operationId: GetJobRuns
@@ -5975,6 +6016,9 @@ paths:
       x-stackql-method: get_job_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobRuns
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetJobs:
     post:
       operationId: GetJobs
@@ -6013,6 +6057,9 @@ paths:
       x-stackql-method: get_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Jobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetMLTaskRun:
     post:
       operationId: GetMLTaskRun
@@ -6274,6 +6321,7 @@ paths:
       x-stackql-resource: materialized_view_refresh_task_runs
       x-stackql-method: get_materialized_view_refresh_task_run
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.MaterializedViewRefreshTaskRun
   /GetPartition:
     post:
       operationId: GetPartition
@@ -6324,6 +6372,7 @@ paths:
       x-stackql-resource: partitions
       x-stackql-method: get_partition
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Partition
   /GetPartitionIndexes:
     post:
       operationId: GetPartitionIndexes
@@ -6371,6 +6420,9 @@ paths:
       x-stackql-method: get_partition_indexes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PartitionIndexDescriptorList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetPartitions:
     post:
       operationId: GetPartitions
@@ -6458,6 +6510,9 @@ paths:
       x-stackql-method: get_partitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Partitions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetPlan:
     post:
       operationId: GetPlan
@@ -6589,6 +6644,9 @@ paths:
       x-stackql-method: get_resource_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GetResourcePoliciesResponseList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetResourcePolicy:
     post:
       operationId: GetResourcePolicy
@@ -6842,6 +6900,7 @@ paths:
       x-stackql-resource: security_configurations
       x-stackql-method: get_security_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SecurityConfiguration
   /GetSecurityConfigurations:
     post:
       operationId: GetSecurityConfigurations
@@ -6880,6 +6939,9 @@ paths:
       x-stackql-method: get_security_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SecurityConfigurations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetSession:
     post:
       operationId: GetSession
@@ -6919,6 +6981,7 @@ paths:
       x-stackql-resource: sessions
       x-stackql-method: get_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Session
   /GetStatement:
     post:
       operationId: GetStatement
@@ -6962,6 +7025,7 @@ paths:
       x-stackql-resource: statements
       x-stackql-method: get_statement
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Statement
   /GetTable:
     post:
       operationId: GetTable
@@ -7022,6 +7086,7 @@ paths:
       x-stackql-resource: tables
       x-stackql-method: get_table
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Table
   /GetTableOptimizer:
     post:
       operationId: GetTableOptimizer
@@ -7121,6 +7186,7 @@ paths:
       x-stackql-resource: table_versions
       x-stackql-method: get_table_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TableVersion
   /GetTableVersions:
     post:
       operationId: GetTableVersions
@@ -7175,6 +7241,9 @@ paths:
       x-stackql-method: get_table_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetTables:
     post:
       operationId: GetTables
@@ -7246,6 +7315,9 @@ paths:
       x-stackql-method: get_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetTags:
     post:
       operationId: GetTags
@@ -7318,6 +7390,7 @@ paths:
       x-stackql-resource: triggers
       x-stackql-method: get_trigger
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Trigger
   /GetTriggers:
     post:
       operationId: GetTriggers
@@ -7360,6 +7433,9 @@ paths:
       x-stackql-method: get_triggers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Triggers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetUnfilteredPartitionMetadata:
     post:
       operationId: GetUnfilteredPartitionMetadata
@@ -7676,6 +7752,7 @@ paths:
       x-stackql-resource: user_defined_functions
       x-stackql-method: get_user_defined_function
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UserDefinedFunction
   /GetUserDefinedFunctions:
     post:
       operationId: GetUserDefinedFunctions
@@ -7732,6 +7809,9 @@ paths:
       x-stackql-method: get_user_defined_functions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserDefinedFunctions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetWorkflow:
     post:
       operationId: GetWorkflow
@@ -7771,6 +7851,7 @@ paths:
       x-stackql-resource: workflows
       x-stackql-method: get_workflow
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Workflow
   /GetWorkflowRun:
     post:
       operationId: GetWorkflowRun
@@ -7815,6 +7896,7 @@ paths:
       x-stackql-resource: workflow_runs
       x-stackql-method: get_workflow_run
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Run
   /GetWorkflowRunProperties:
     post:
       operationId: GetWorkflowRunProperties
@@ -7901,6 +7983,9 @@ paths:
       x-stackql-method: get_workflow_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Runs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ImportCatalogToGlue:
     post:
       operationId: ImportCatalogToGlue
@@ -7933,7 +8018,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportCatalogToGlueResponse'
-      x-stackql-resource: catalog_to_glue
+      x-stackql-resource: catalogs
       x-stackql-method: import_catalog_to_glue
       x-stackql-verb: EXEC
   /ListBlueprints:
@@ -7972,11 +8057,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListBlueprintsResponse'
+                $ref: '#/components/schemas/ListBlueprintsOutputDisplay'
       x-stackql-resource: blueprints
       x-stackql-method: list_blueprints
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Blueprints
+      x-stackql-responseEnvelope: ListBlueprintsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Blueprints" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"blueprint": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListColumnStatisticsTaskRuns:
     post:
       operationId: ListColumnStatisticsTaskRuns
@@ -8010,10 +8103,16 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListColumnStatisticsTaskRunsResponse'
+                $ref: '#/components/schemas/ListColumnStatisticsTaskRunsOutputDisplay'
       x-stackql-resource: column_statistics_task_runs
       x-stackql-method: list_column_statistics_task_runs
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListColumnStatisticsTaskRunsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ColumnStatisticsTaskRunIds" -}}{"line_items": [{{- if eq (kindOf $lst)
+        "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"column_statistics_task_run_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]}'
   /ListConnectionTypes:
     post:
       operationId: ListConnectionTypes
@@ -8056,6 +8155,9 @@ paths:
       x-stackql-method: list_connection_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ConnectionTypes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCrawlers:
     post:
       operationId: ListCrawlers
@@ -8095,10 +8197,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListCrawlersResponse'
+                $ref: '#/components/schemas/ListCrawlersOutputDisplay'
       x-stackql-resource: crawlers
       x-stackql-method: list_crawlers
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListCrawlersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "CrawlerNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"crawler_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListCrawls:
     post:
       operationId: ListCrawls
@@ -8482,10 +8589,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDevEndpointsResponse'
+                $ref: '#/components/schemas/ListDevEndpointsOutputDisplay'
       x-stackql-resource: dev_endpoints
       x-stackql-method: list_dev_endpoints
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListDevEndpointsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "DevEndpointNames" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"dev_endpoint_name": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListEntities:
     post:
       operationId: ListEntities
@@ -8535,6 +8647,9 @@ paths:
       x-stackql-method: list_entities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListIntegrationResourceProperties:
     post:
       operationId: ListIntegrationResourceProperties
@@ -8614,11 +8729,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListJobsResponse'
+                $ref: '#/components/schemas/ListJobsOutputDisplay'
       x-stackql-resource: jobs
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.JobNames
+      x-stackql-responseEnvelope: ListJobsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "JobNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"job_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMLTransforms:
     post:
       operationId: ListMLTransforms
@@ -8664,10 +8787,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListMLTransformsResponse'
+                $ref: '#/components/schemas/ListMLTransformsOutputDisplay'
       x-stackql-resource: ml_transforms
       x-stackql-method: list_ml_transforms
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListMLTransformsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "TransformIds" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"transform_id": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListMaterializedViewRefreshTaskRuns:
     post:
       operationId: ListMaterializedViewRefreshTaskRuns
@@ -8718,6 +8846,9 @@ paths:
       x-stackql-method: list_materialized_view_refresh_task_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MaterializedViewRefreshTaskRuns
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRegistries:
     post:
       operationId: ListRegistries
@@ -8758,6 +8889,9 @@ paths:
       x-stackql-method: list_registries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Registries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSchemaVersions:
     post:
       operationId: ListSchemaVersions
@@ -8806,6 +8940,9 @@ paths:
       x-stackql-method: list_schema_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Schemas
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSchemas:
     post:
       operationId: ListSchemas
@@ -8850,6 +8987,9 @@ paths:
       x-stackql-method: list_schemas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Schemas
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSessions:
     post:
       operationId: ListSessions
@@ -8990,6 +9130,9 @@ paths:
       x-stackql-method: list_table_optimizer_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TableOptimizerRuns
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTriggers:
     post:
       operationId: ListTriggers
@@ -9033,11 +9176,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTriggersResponse'
+                $ref: '#/components/schemas/ListTriggersOutputDisplay'
       x-stackql-resource: triggers
       x-stackql-method: list_triggers
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.TriggerNames
+      x-stackql-responseEnvelope: ListTriggersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "TriggerNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"trigger_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListUsageProfiles:
     post:
       operationId: ListUsageProfiles
@@ -9076,6 +9227,9 @@ paths:
       x-stackql-method: list_usage_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Profiles
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkflows:
     post:
       operationId: ListWorkflows
@@ -9109,11 +9263,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListWorkflowsResponse'
+                $ref: '#/components/schemas/ListWorkflowsOutputDisplay'
       x-stackql-resource: workflows
       x-stackql-method: list_workflows
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Workflows
+      x-stackql-responseEnvelope: ListWorkflowsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Workflows" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"workflow": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ModifyIntegration:
     post:
       operationId: ModifyIntegration
@@ -9342,7 +9504,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutSchemaVersionMetadataResponse'
-      x-stackql-resource: schema_version_metadatas
+      x-stackql-resource: schema_versions
       x-stackql-method: put_schema_version_metadata
       x-stackql-verb: REPLACE
   /PutWorkflowRunProperties:
@@ -9603,7 +9765,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveSchemaVersionMetadataResponse'
-      x-stackql-resource: schema_version_metadatas
+      x-stackql-resource: schema_versions
       x-stackql-method: remove_schema_version_metadata
       x-stackql-verb: UPDATE
   /ResetJobBookmark:
@@ -9643,7 +9805,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetJobBookmarkResponse'
-      x-stackql-resource: job_bookmark
+      x-stackql-resource: jobs
       x-stackql-method: reset_job_bookmark
       x-stackql-verb: EXEC
   /ResumeWorkflowRun:
@@ -9689,7 +9851,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResumeWorkflowRunResponse'
-      x-stackql-resource: workflow_run
+      x-stackql-resource: workflows
       x-stackql-method: resume_workflow_run
       x-stackql-verb: EXEC
   /RunStatement:
@@ -9732,7 +9894,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RunStatementResponse'
-      x-stackql-resource: statement
+      x-stackql-resource: sessions
       x-stackql-method: run_statement
       x-stackql-verb: EXEC
   /SearchTables:
@@ -9845,7 +10007,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBlueprintRunResponse'
-      x-stackql-resource: blueprint_run
+      x-stackql-resource: blueprints
       x-stackql-method: start_blueprint_run
       x-stackql-verb: EXEC
   /StartColumnStatisticsTaskRun:
@@ -9905,7 +10067,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartColumnStatisticsTaskRunResponse'
-      x-stackql-resource: column_statistics_task_run
+      x-stackql-resource: databases
       x-stackql-method: start_column_statistics_task_run
       x-stackql-verb: EXEC
   /StartColumnStatisticsTaskRunSchedule:
@@ -9945,7 +10107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartColumnStatisticsTaskRunScheduleResponse'
-      x-stackql-resource: column_statistics_task_run_schedule
+      x-stackql-resource: column_statistics_task_runs
       x-stackql-method: start_column_statistics_task_run_schedule
       x-stackql-verb: EXEC
   /StartCrawler:
@@ -10019,7 +10181,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCrawlerScheduleResponse'
-      x-stackql-resource: crawler_schedule
+      x-stackql-resource: crawlers
       x-stackql-method: start_crawler_schedule
       x-stackql-verb: EXEC
   /StartDataQualityRuleRecommendationRun:
@@ -10141,7 +10303,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDataQualityRulesetEvaluationRunResponse'
-      x-stackql-resource: data_quality_ruleset_evaluation_run
+      x-stackql-resource: data_quality_rulesets
       x-stackql-method: start_data_quality_ruleset_evaluation_run
       x-stackql-verb: EXEC
   /StartExportLabelsTaskRun:
@@ -10369,7 +10531,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobRunResponse'
-      x-stackql-resource: job_run
+      x-stackql-resource: jobs
       x-stackql-method: start_job_run
       x-stackql-verb: EXEC
   /StartMLEvaluationTaskRun:
@@ -10503,7 +10665,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartMaterializedViewRefreshTaskRunResponse'
-      x-stackql-resource: materialized_view_refresh_task_run
+      x-stackql-resource: databases
       x-stackql-method: start_materialized_view_refresh_task_run
       x-stackql-verb: EXEC
   /StartTrigger:
@@ -10581,7 +10743,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWorkflowRunResponse'
-      x-stackql-resource: workflow_run
+      x-stackql-resource: workflows
       x-stackql-method: start_workflow_run
       x-stackql-verb: EXEC
   /StopColumnStatisticsTaskRun:
@@ -10621,7 +10783,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopColumnStatisticsTaskRunResponse'
-      x-stackql-resource: column_statistics_task_run
+      x-stackql-resource: databases
       x-stackql-method: stop_column_statistics_task_run
       x-stackql-verb: EXEC
   /StopColumnStatisticsTaskRunSchedule:
@@ -10661,7 +10823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopColumnStatisticsTaskRunScheduleResponse'
-      x-stackql-resource: column_statistics_task_run_schedule
+      x-stackql-resource: column_statistics_task_runs
       x-stackql-method: stop_column_statistics_task_run_schedule
       x-stackql-verb: EXEC
   /StopCrawler:
@@ -10734,7 +10896,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopCrawlerScheduleResponse'
-      x-stackql-resource: crawler_schedule
+      x-stackql-resource: crawlers
       x-stackql-method: stop_crawler_schedule
       x-stackql-verb: EXEC
   /StopMaterializedViewRefreshTaskRun:
@@ -10779,7 +10941,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopMaterializedViewRefreshTaskRunResponse'
-      x-stackql-resource: materialized_view_refresh_task_run
+      x-stackql-resource: databases
       x-stackql-method: stop_materialized_view_refresh_task_run
       x-stackql-verb: EXEC
   /StopSession:
@@ -10894,7 +11056,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopWorkflowRunResponse'
-      x-stackql-resource: workflow_run
+      x-stackql-resource: workflows
       x-stackql-method: stop_workflow_run
       x-stackql-verb: EXEC
   /TagResource:
@@ -10937,7 +11099,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TestConnection:
@@ -11020,7 +11182,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateBlueprint:
@@ -11473,7 +11635,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateCrawlerScheduleResponse'
-      x-stackql-resource: crawler_schedules
+      x-stackql-resource: crawlers
       x-stackql-method: update_crawler_schedule
       x-stackql-verb: UPDATE
   /UpdateDataQualityRuleset:
@@ -11861,7 +12023,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateJobFromSourceControlResponse'
-      x-stackql-resource: job_from_source_controls
+      x-stackql-resource: jobs
       x-stackql-method: update_job_from_source_control
       x-stackql-verb: UPDATE
   /UpdateMLTransform:
@@ -12153,7 +12315,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSourceControlFromJobResponse'
-      x-stackql-resource: source_control_from_jobs
+      x-stackql-resource: jobs
       x-stackql-method: update_source_control_from_job
       x-stackql-verb: UPDATE
   /UpdateTable:
@@ -20229,21 +20391,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/EntityFieldName'
-    GetEntityRecordsResponse:
+    GetEntityRecordsRowDisplay:
       type: object
       properties:
-        Records:
-          $ref: '#/components/schemas/Records'
+        record:
+          type: object
           description: A list of the requested objects.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A continuation token, present if the current segment is not the last.
-    Records:
-      type: array
-      items:
-        $ref: '#/components/schemas/Record'
-    Record:
+    GetEntityRecordsOutputDisplay:
       type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetEntityRecordsRowDisplay'
     GetGlueIdentityCenterConfigurationResponse:
       description: Response containing the Glue Identity Center configuration details.
       type: object
@@ -22058,28 +22218,32 @@ components:
       type: integer
       minimum: 1
       maximum: 25
-    ListBlueprintsResponse:
+    ListBlueprintsRowDisplay:
       type: object
       properties:
-        Blueprints:
-          $ref: '#/components/schemas/BlueprintNames'
+        blueprint:
+          type: string
           description: List of names of blueprints in the account.
-        NextToken:
-          $ref: '#/components/schemas/GenericString'
-          description: A continuation token, if not all blueprint names have been returned.
-    ListColumnStatisticsTaskRunsResponse:
+    ListBlueprintsOutputDisplay:
       type: object
       properties:
-        ColumnStatisticsTaskRunIds:
-          $ref: '#/components/schemas/ColumnStatisticsTaskRunIdList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListBlueprintsRowDisplay'
+    ListColumnStatisticsTaskRunsRowDisplay:
+      type: object
+      properties:
+        column_statistics_task_run_id:
+          type: string
           description: A list of column statistics task run IDs.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: A continuation token, if not all task run IDs have yet been returned.
-    ColumnStatisticsTaskRunIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/HashString'
+    ListColumnStatisticsTaskRunsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListColumnStatisticsTaskRunsRowDisplay'
     MaxResults:
       type: integer
       minimum: 1
@@ -22161,15 +22325,19 @@ components:
         LogoUrl:
           $ref: '#/components/schemas/UrlString'
           description: The URL of the logo associated with a connection type variant.
-    ListCrawlersResponse:
+    ListCrawlersRowDisplay:
       type: object
       properties:
-        CrawlerNames:
-          $ref: '#/components/schemas/CrawlerNameList'
+        crawler_name:
+          type: string
           description: The names of all crawlers in the account, or the crawlers with the specified tags.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: A continuation token, if the returned list does not contain the last metric available.
+    ListCrawlersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCrawlersRowDisplay'
     CrawlsFilterList:
       type: array
       items:
@@ -22611,19 +22779,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/NameString'
-    ListDevEndpointsResponse:
+    ListDevEndpointsRowDisplay:
       type: object
       properties:
-        DevEndpointNames:
-          $ref: '#/components/schemas/DevEndpointNameList'
+        dev_endpoint_name:
+          type: string
           description: The names of all the DevEndpoints in the account, or the DevEndpoints with the specified tags.
-        NextToken:
-          $ref: '#/components/schemas/GenericString'
-          description: A continuation token, if the returned list does not contain the last metric available.
-    DevEndpointNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/NameString'
+    ListDevEndpointsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDevEndpointsRowDisplay'
     ListEntitiesResponse:
       type: object
       properties:
@@ -22722,31 +22890,33 @@ components:
           description: The resource properties associated with the integration target.
       required:
       - ResourceArn
-    ListJobsResponse:
+    ListJobsRowDisplay:
       type: object
       properties:
-        JobNames:
-          $ref: '#/components/schemas/JobNameList'
+        job_name:
+          type: string
           description: The names of all jobs in the account, or the jobs with the specified tags.
-        NextToken:
-          $ref: '#/components/schemas/GenericString'
-          description: A continuation token, if the returned list does not contain the last metric available.
-    ListMLTransformsResponse:
+    ListJobsOutputDisplay:
       type: object
       properties:
-        TransformIds:
-          $ref: '#/components/schemas/TransformIdList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListJobsRowDisplay'
+    ListMLTransformsRowDisplay:
+      type: object
+      properties:
+        transform_id:
+          type: string
           description: The identifiers of all the machine learning transforms in the account, or the machine learning transforms
             with the specified tags.
-        NextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: A continuation token, if the returned list does not contain the last metric available.
-      required:
-      - TransformIds
-    TransformIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/HashString'
+    ListMLTransformsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListMLTransformsRowDisplay'
     ListMaterializedViewRefreshTaskRunsResponse:
       type: object
       properties:
@@ -22937,15 +23107,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/TableOptimizerRun'
-    ListTriggersResponse:
+    ListTriggersRowDisplay:
       type: object
       properties:
-        TriggerNames:
-          $ref: '#/components/schemas/TriggerNameList'
+        trigger_name:
+          type: string
           description: The names of all triggers in the account, or the triggers with the specified tags.
-        NextToken:
-          $ref: '#/components/schemas/GenericString'
-          description: A continuation token, if the returned list does not contain the last metric available.
+    ListTriggersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTriggersRowDisplay'
     ListUsageProfilesResponse:
       type: object
       properties:
@@ -22975,15 +23149,19 @@ components:
         LastModifiedOn:
           $ref: '#/components/schemas/TimestampValue'
           description: The date and time when the usage profile was last modified.
-    ListWorkflowsResponse:
+    ListWorkflowsRowDisplay:
       type: object
       properties:
-        Workflows:
-          $ref: '#/components/schemas/WorkflowNames'
+        workflow:
+          type: string
           description: List of names of workflows in the account.
-        NextToken:
-          $ref: '#/components/schemas/GenericString'
-          description: A continuation token, if not all workflow names have been returned.
+    ListWorkflowsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListWorkflowsRowDisplay'
     ModifyIntegrationResponse:
       type: object
       properties:

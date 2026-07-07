@@ -147,7 +147,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateHealthCheckResponse'
-      x-stackql-resource: health_checks
+      x-stackql-resource: protections
       x-stackql-method: associate_health_check
       x-stackql-verb: UPDATE
   /AssociateProactiveEngagementDetails:
@@ -490,6 +490,7 @@ paths:
       x-stackql-resource: attacks
       x-stackql-method: describe_attack
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Attack
   /DescribeAttackStatistics:
     post:
       operationId: DescribeAttackStatistics
@@ -626,6 +627,7 @@ paths:
       x-stackql-resource: protections
       x-stackql-method: describe_protection
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Protection
   /DescribeProtectionGroup:
     post:
       operationId: DescribeProtectionGroup
@@ -663,6 +665,7 @@ paths:
       x-stackql-resource: protection_groups
       x-stackql-method: describe_protection_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ProtectionGroup
   /DescribeSubscription:
     post:
       operationId: DescribeSubscription
@@ -693,6 +696,7 @@ paths:
       x-stackql-resource: subscriptions
       x-stackql-method: describe_subscription
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Subscription
   /DisableApplicationLayerAutomaticResponse:
     post:
       operationId: DisableApplicationLayerAutomaticResponse
@@ -869,7 +873,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateHealthCheckResponse'
-      x-stackql-resource: health_checks
+      x-stackql-resource: protections
       x-stackql-method: disassociate_health_check
       x-stackql-verb: UPDATE
   /EnableApplicationLayerAutomaticResponse:
@@ -1049,6 +1053,9 @@ paths:
       x-stackql-method: list_attacks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AttackSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProtectionGroups:
     post:
       operationId: ListProtectionGroups
@@ -1158,6 +1165,9 @@ paths:
       x-stackql-method: list_protections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Protections
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourcesInProtectionGroup:
     post:
       operationId: ListResourcesInProtectionGroup
@@ -1207,10 +1217,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListResourcesInProtectionGroupResponse'
+                $ref: '#/components/schemas/ListResourcesInProtectionGroupOutputDisplay'
       x-stackql-resource: resources_in_protection_groups
       x-stackql-method: list_resources_in_protection_group
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListResourcesInProtectionGroupOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ResourceArns" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1244,7 +1259,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /TagResource:
@@ -1284,7 +1299,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1324,7 +1339,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateApplicationLayerAutomaticResponse:
@@ -2437,27 +2452,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/Protection'
-    ListResourcesInProtectionGroupResponse:
+    ListResourcesInProtectionGroupRowDisplay:
       type: object
       properties:
-        ResourceArns:
-          $ref: '#/components/schemas/ResourceArnList'
+        resource_arn:
+          type: string
           description: The Amazon Resource Names (ARNs) of the resources that are included in the protection group.
-        NextToken:
-          $ref: '#/components/schemas/Token'
-          description: When you request a list of objects from Shield Advanced, if the response does not include all of the
-            remaining available objects, Shield Advanced includes a NextToken value in the response. You can retrieve the
-            next batch of objects by requesting the list again and providing the token that was returned by the prior call
-            in your request. You can indicate the maximum number of objects that you want Shield Advanced to return for a
-            single call with the MaxResults setting. Shield Advanced will not return more than MaxResults objects, but may
-            return fewer, even if more objects are still available. Whenever more objects remain that Shield Advanced has
-            not yet returned to you, the response will include a NextToken value.
-      required:
-      - ResourceArns
-    ResourceArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ResourceArn'
+    ListResourcesInProtectionGroupOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListResourcesInProtectionGroupRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

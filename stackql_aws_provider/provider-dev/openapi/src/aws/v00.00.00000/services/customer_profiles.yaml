@@ -44,7 +44,6 @@ paths:
               required:
                 - ProfileId
                 - KeyName
-                - Values
       responses:
         "200":
           description: Success
@@ -160,7 +159,6 @@ paths:
                   $ref: "#/components/schemas/TagMap"
               required:
                 - AttributeDetails
-                - Statistic
       responses:
         "200":
           description: Success
@@ -400,10 +398,8 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Description
                 - DisplayName
                 - LayoutType
-                - Layout
       responses:
         "200":
           description: Success
@@ -1149,8 +1145,6 @@ paths:
                   $ref: "#/components/schemas/RecommenderSchemaFields"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Fields
       responses:
         "200":
           description: Success
@@ -1393,7 +1387,6 @@ paths:
                   $ref: "#/components/schemas/expirationDaysInteger"
               required:
                 - DisplayName
-                - Fields
                 - UniqueKey
       responses:
         "200":
@@ -1509,8 +1502,6 @@ paths:
                   $ref: "#/components/schemas/DomainObjectTypeFields"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Fields
       responses:
         "200":
           description: Success
@@ -1538,8 +1529,6 @@ paths:
               properties:
                 Uri:
                   $ref: "#/components/schemas/string1To255"
-              required:
-                - Uri
       responses:
         "200":
           description: Success
@@ -1603,7 +1592,6 @@ paths:
               required:
                 - ProfileId
                 - KeyName
-                - Values
       responses:
         "200":
           description: Success
@@ -1738,8 +1726,6 @@ paths:
                   $ref: "#/components/schemas/KeyMap"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Description
       responses:
         "200":
           description: Success
@@ -1931,8 +1917,6 @@ paths:
               properties:
                 Uri:
                   $ref: "#/components/schemas/string1To255"
-              required:
-                - Uri
       responses:
         "200":
           description: Success
@@ -2090,7 +2074,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetSimilarProfilesResponse"
+                $ref: "#/components/schemas/GetSimilarProfilesOutputDisplay"
   /domains/{domain_name}/object-types/{object_type_name}/attributes/{attribute_name}/statistics:
     post:
       operationId: GetObjectTypeAttributeStatistics
@@ -3116,7 +3100,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRuleBasedMatchesResponse"
+                $ref: "#/components/schemas/ListRuleBasedMatchesOutputDisplay"
   /domains/{domain_name}/segment-definitions:
     get:
       operationId: ListSegmentDefinitions
@@ -3335,7 +3319,6 @@ paths:
                   $ref: "#/components/schemas/logicalOperator"
               required:
                 - KeyName
-                - Values
       responses:
         "200":
           description: Success
@@ -6931,31 +6914,19 @@ components:
       enum:
         - RULE_BASED_MATCHING
         - ML_BASED_MATCHING
-    GetSimilarProfilesResponse:
+    GetSimilarProfilesRowDisplay:
       type: object
       properties:
-        ProfileIds:
-          $ref: "#/components/schemas/ProfileIdList"
+        profile_id:
+          type: string
           description: Set of profileIds that belong to the same matching group.
-        MatchId:
-          $ref: "#/components/schemas/string1To255"
-          description: The string matchId that the similar profiles belong to.
-        MatchType:
-          $ref: "#/components/schemas/MatchType"
-          description: Specify the type of matching to get similar profiles for.
-        RuleLevel:
-          $ref: "#/components/schemas/RuleLevel"
-          description: The integer rule level that the profiles matched on.
-        ConfidenceScore:
-          $ref: "#/components/schemas/Double"
-          description: It only has value when the MatchType is ML_BASED_MATCHING.A number between 0 and 1, where a higher score means higher similarity. Examining match confidence scores lets you distinguish between groups of similar records in which the system is highly confident (which you may decide to merge), groups of similar records about which the system is uncertain (which you may decide to have reviewed by a human), and groups of similar records that the system deems to be unlikely (which you may decide to reject). Given confidence scores vary as per the data input, it should not be used as an absolute measure of matching quality.
-        NextToken:
-          $ref: "#/components/schemas/token"
-          description: The pagination token from the previous GetSimilarProfiles API call.
-    RuleLevel:
-      type: integer
-      minimum: 1
-      maximum: 15
+    GetSimilarProfilesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetSimilarProfilesRowDisplay"
     GetUploadJobResponse:
       type: object
       properties:
@@ -7966,19 +7937,19 @@ components:
         LatestRecommenderUpdate:
           $ref: "#/components/schemas/RecommenderUpdate"
           description: Information about the most recent update performed on the recommender, including its status and timing.
-    ListRuleBasedMatchesResponse:
+    ListRuleBasedMatchesRowDisplay:
       type: object
       properties:
-        MatchIds:
-          $ref: "#/components/schemas/MatchIdList"
+        match_id:
+          type: string
           description: The list of MatchIds for the given domain.
-        NextToken:
-          $ref: "#/components/schemas/token"
-          description: The pagination token from the previous ListRuleBasedMatches API call.
-    MatchIdList:
-      type: array
-      items:
-        $ref: "#/components/schemas/string1To255"
+    ListRuleBasedMatchesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRuleBasedMatchesRowDisplay"
     MaxSize500:
       type: integer
       minimum: 1
@@ -8599,10 +8570,10 @@ components:
       required:
         - RecommenderName
   x-stackQL-resources:
-    profile_keys:
-      id: aws.customer_profiles.profile_keys
-      name: profile_keys
-      title: profile_keys
+    profiles:
+      id: aws.customer_profiles.profiles
+      name: profiles
+      title: profiles
       methods:
         add_profile_key:
           operation:
@@ -8615,58 +8586,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_profile_key:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_name}~1profiles~1keys~1delete/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/profile_keys/methods/add_profile_key"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/profile_keys/methods/delete_profile_key"
-    calculated_attribute_for_profiles:
-      id: aws.customer_profiles.calculated_attribute_for_profiles
-      name: calculated_attribute_for_profiles
-      title: calculated_attribute_for_profiles
-      methods:
-        batch_get_calculated_attribute_for_profile:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_name}~1calculated-attributes~1{calculated_attribute_name}~1batch-get-for-profiles/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_calculated_attribute_for_profile:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_name}~1profile~1{profile_id}~1calculated-attributes~1{calculated_attribute_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/calculated_attribute_for_profiles/methods/batch_get_calculated_attribute_for_profile"
-          - $ref: "#/components/x-stackQL-resources/calculated_attribute_for_profiles/methods/get_calculated_attribute_for_profile"
-        insert: []
-        update: []
-        delete: []
-    profiles:
-      id: aws.customer_profiles.profiles
-      name: profiles
-      title: profiles
-      methods:
         batch_get_profile:
           operation:
             $ref: "#/paths/~1domains~1{domain_name}~1batch-get-profiles/post"
@@ -8711,6 +8630,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_profile_key:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1profiles~1keys~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        merge_profiles:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1profiles~1objects~1merge/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         search_profiles:
           operation:
             $ref: "#/paths/~1domains~1{domain_name}~1profiles~1search/post"
@@ -8724,14 +8665,45 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/profiles/methods/search_profiles"
           - $ref: "#/components/x-stackQL-resources/profiles/methods/batch_get_profile"
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/search_profiles"
         insert:
           - $ref: "#/components/x-stackQL-resources/profiles/methods/create_profile"
         update:
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/add_profile_key"
           - $ref: "#/components/x-stackQL-resources/profiles/methods/update_profile"
         delete:
+          - $ref: "#/components/x-stackQL-resources/profiles/methods/delete_profile_key"
           - $ref: "#/components/x-stackQL-resources/profiles/methods/delete_profile"
+    calculated_attribute_for_profiles:
+      id: aws.customer_profiles.calculated_attribute_for_profiles
+      name: calculated_attribute_for_profiles
+      title: calculated_attribute_for_profiles
+      methods:
+        batch_get_calculated_attribute_for_profile:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1calculated-attributes~1{calculated_attribute_name}~1batch-get-for-profiles/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_calculated_attribute_for_profile:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1profile~1{profile_id}~1calculated-attributes~1{calculated_attribute_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/calculated_attribute_for_profiles/methods/batch_get_calculated_attribute_for_profile"
+          - $ref: "#/components/x-stackQL-resources/calculated_attribute_for_profiles/methods/get_calculated_attribute_for_profile"
+        insert: []
+        update: []
+        delete: []
     calculated_attribute_definitions:
       id: aws.customer_profiles.calculated_attribute_definitions
       name: calculated_attribute_definitions
@@ -8828,6 +8800,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        detect_profile_object_type:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1detect~1object-types/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_upload_job:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1upload-jobs~1{job_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         list_domains:
           operation:
             $ref: "#/paths/~1domains/get"
@@ -8836,6 +8825,12 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        stop_upload_job:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1upload-jobs~1{job_id}~1stop/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domains/methods/get_domain"
@@ -8894,6 +8889,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_layouts/methods/get_domain_layout"
@@ -8941,6 +8944,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/event_streams/methods/get_event_stream"
@@ -8998,6 +9009,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/event_triggers/methods/get_event_trigger"
@@ -9008,10 +9027,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/event_triggers/methods/update_event_trigger"
         delete:
           - $ref: "#/components/x-stackQL-resources/event_triggers/methods/delete_event_trigger"
-    integration_workflows:
-      id: aws.customer_profiles.integration_workflows
-      name: integration_workflows
-      title: integration_workflows
+    workflows:
+      id: aws.customer_profiles.workflows
+      name: workflows
+      title: workflows
       methods:
         create_integration_workflow:
           operation:
@@ -9024,12 +9043,38 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_workflow:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1workflows~1{workflow_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_workflow:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1workflows~1{workflow_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_workflows:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1workflows/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/workflows/methods/get_workflow"
+          - $ref: "#/components/x-stackQL-resources/workflows/methods/list_workflows"
         insert:
-          - $ref: "#/components/x-stackQL-resources/integration_workflows/methods/create_integration_workflow"
+          - $ref: "#/components/x-stackQL-resources/workflows/methods/create_integration_workflow"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/workflows/methods/delete_workflow"
     recommenders:
       id: aws.customer_profiles.recommenders
       name: recommenders
@@ -9080,6 +9125,26 @@ components:
             objectKey: $.Recommenders
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_recommender:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1recommenders~1{recommender_name}~1start/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_recommender:
+          operation:
+            $ref: "#/paths/~1domains~1{domain_name}~1recommenders~1{recommender_name}~1stop/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommenders/methods/get_recommender"
@@ -9127,6 +9192,14 @@ components:
             objectKey: $.RecommenderFilters
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommender_filters/methods/get_recommender_filter"
@@ -9173,6 +9246,14 @@ components:
             objectKey: $.RecommenderSchemas
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommender_schemas/methods/get_recommender_schema"
@@ -9219,6 +9300,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/segment_definitions/methods/get_segment_definition"
@@ -9311,6 +9400,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         get_upload_job:
           operation:
             $ref: "#/paths/~1domains~1{domain_name}~1upload-jobs~1{job_id}/get"
@@ -9362,6 +9459,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_object_types/methods/get_domain_object_type"
@@ -9405,8 +9510,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
         put_integration:
           operation:
             $ref: "#/paths/~1domains~1{domain_name}~1integrations/put"
@@ -9421,7 +9524,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/integrations/methods/get_integration"
-          - $ref: "#/components/x-stackQL-resources/integrations/methods/list_integrations"
         insert: []
         update: []
         replace:
@@ -9521,42 +9623,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/profile_object_types/methods/put_profile_object_type"
         delete:
           - $ref: "#/components/x-stackQL-resources/profile_object_types/methods/delete_profile_object_type"
-    workflows:
-      id: aws.customer_profiles.workflows
-      name: workflows
-      title: workflows
-      methods:
-        delete_workflow:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_name}~1workflows~1{workflow_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_workflow:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_name}~1workflows~1{workflow_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_workflows:
-          operation:
-            $ref: "#/paths/~1domains~1{domain_name}~1workflows/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workflows/methods/get_workflow"
-          - $ref: "#/components/x-stackQL-resources/workflows/methods/list_workflows"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/workflows/methods/delete_workflow"
     auto_merging_previews:
       id: aws.customer_profiles.auto_merging_previews
       name: auto_merging_previews
@@ -9635,10 +9701,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ProfileIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetSimilarProfilesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ProfileIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"profile_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9873,6 +9952,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/object_type_attributes/methods/list_object_type_attributes"
@@ -9910,6 +9997,14 @@ components:
             objectKey: $.RecommenderRecipes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recommender_recipes/methods/list_recommender_recipes"
@@ -9927,19 +10022,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.MatchIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRuleBasedMatchesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "MatchIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"match_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/rule_based_matches/methods/list_rule_based_matches"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.customer_profiles.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.customer_profiles.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9947,17 +10056,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.customer_profiles.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -9978,9 +10076,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

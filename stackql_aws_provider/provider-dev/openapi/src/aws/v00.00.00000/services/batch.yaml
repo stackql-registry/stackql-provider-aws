@@ -4922,6 +4922,93 @@ components:
           $ref: "#/components/schemas/String"
           description: The unique identifier for the job.
   x-stackQL-resources:
+    jobs:
+      id: aws.batch.jobs
+      name: jobs
+      title: jobs
+      methods:
+        cancel_job:
+          operation:
+            $ref: "#/paths/~1v1~1canceljob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_jobs:
+          operation:
+            $ref: "#/paths/~1v1~1describejobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_jobs:
+          operation:
+            $ref: "#/paths/~1v1~1listjobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.jobSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        submit_job:
+          operation:
+            $ref: "#/paths/~1v1~1submitjob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        submit_service_job:
+          operation:
+            $ref: "#/paths/~1v1~1submitservicejob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        terminate_job:
+          operation:
+            $ref: "#/paths/~1v1~1terminatejob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_jobs"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/terminate_job"
     compute_environments:
       id: aws.batch.compute_environments
       name: compute_environments
@@ -4959,6 +5046,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_compute_environment:
@@ -5029,6 +5123,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_consumable_resource:
@@ -5089,6 +5190,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_job_queue:
@@ -5159,6 +5267,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_quota_share:
@@ -5230,6 +5345,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_scheduling_policy:
@@ -5290,6 +5412,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_service_environment:
@@ -5338,6 +5467,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_job_definition:
@@ -5359,53 +5495,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/job_definitions/methods/deregister_job_definition"
-    jobs:
-      id: aws.batch.jobs
-      name: jobs
-      title: jobs
-      methods:
-        describe_jobs:
-          operation:
-            $ref: "#/paths/~1v1~1describejobs/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_jobs:
-          operation:
-            $ref: "#/paths/~1v1~1listjobs/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.jobSummaryList
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        terminate_job:
-          operation:
-            $ref: "#/paths/~1v1~1terminatejob/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_jobs"
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/terminate_job"
     service_jobs:
       id: aws.batch.service_jobs
       name: service_jobs
@@ -5432,6 +5521,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         terminate_service_job:
@@ -5502,6 +5598,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5510,10 +5613,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.batch.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.batch.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5521,17 +5624,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.batch.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v1~1tags~1{resource_arn}/post"
@@ -5552,9 +5644,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

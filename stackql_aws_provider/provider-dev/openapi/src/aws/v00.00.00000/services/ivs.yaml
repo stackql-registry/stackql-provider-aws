@@ -2395,6 +2395,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.channel
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        insert_ad_break:
+          operation:
+            $ref: "#/paths/~1InsertAdBreak/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2407,6 +2419,45 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.channels
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        put_metadata:
+          operation:
+            $ref: "#/paths/~1PutMetadata/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_viewer_session_revocation:
+          operation:
+            $ref: "#/paths/~1StartViewerSessionRevocation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_stream:
+          operation:
+            $ref: "#/paths/~1StopStream/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2432,6 +2483,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/channels/methods/create_channel"
         update:
           - $ref: "#/components/x-stackQL-resources/channels/methods/update_channel"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/channels/methods/put_metadata"
         delete:
           - $ref: "#/components/x-stackQL-resources/channels/methods/delete_channel"
     stream_keys:
@@ -2477,6 +2530,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.streamKey
           request:
             nativeCasing: pascal
           config:
@@ -2492,6 +2546,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2536,6 +2597,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.adConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -2551,6 +2613,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2594,6 +2663,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.playbackRestrictionPolicy
           request:
             nativeCasing: pascal
           config:
@@ -2663,6 +2733,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.recordingConfiguration
           request:
             nativeCasing: pascal
           config:
@@ -2678,6 +2749,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2711,6 +2789,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.keyPair
           request:
             nativeCasing: pascal
           config:
@@ -2726,6 +2805,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2747,6 +2833,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.stream
           request:
             nativeCasing: pascal
           config:
@@ -2762,6 +2849,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2782,6 +2876,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.streamSession
           request:
             nativeCasing: pascal
           config:
@@ -2804,10 +2899,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.ivs.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.ivs.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2815,17 +2910,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.ivs.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2846,31 +2930,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    metadatas:
-      id: aws.ivs.metadatas
-      name: metadatas
-      title: metadatas
-      methods:
-        put_metadata:
-          operation:
-            $ref: "#/paths/~1PutMetadata/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/metadatas/methods/put_metadata"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

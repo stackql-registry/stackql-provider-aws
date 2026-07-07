@@ -6190,10 +6190,10 @@ components:
           items:
             $ref: "#/components/schemas/UpdateJobStatusResultDisplay"
   x-stackQL-resources:
-    access_grants_identity_centers:
-      id: aws.s3control.access_grants_identity_centers
-      name: access_grants_identity_centers
-      title: access_grants_identity_centers
+    access_grants:
+      id: aws.s3control.access_grants
+      name: access_grants
+      title: access_grants
       methods:
         associate_access_grants_identity_center:
           operation:
@@ -6206,17 +6206,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/access_grants_identity_centers/methods/associate_access_grants_identity_center"
-        delete: []
-    access_grants:
-      id: aws.s3control.access_grants
-      name: access_grants
-      title: access_grants
-      methods:
         create_access_grant:
           operation:
             $ref: "#/paths/~1v20180820~1accessgrantsinstance~1grant/post"
@@ -6272,7 +6261,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/access_grants/methods/list_access_grants"
         insert:
           - $ref: "#/components/x-stackQL-resources/access_grants/methods/create_access_grant"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/access_grants/methods/associate_access_grants_identity_center"
         delete:
           - $ref: "#/components/x-stackQL-resources/access_grants/methods/delete_access_grant"
     access_grants_instances:
@@ -6327,8 +6317,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/access_grants_instances/methods/get_access_grants_instance"
@@ -6627,13 +6615,43 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+        update_job_priority:
+          operation:
+            $ref: "#/paths/~1v20180820~1jobs~1{id}~1priority/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateJobPriorityOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        update_job_status:
+          operation:
+            $ref: "#/paths/~1v20180820~1jobs~1{id}~1status/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateJobStatusOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
           - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
         insert:
           - $ref: "#/components/x-stackQL-resources/jobs/methods/create_job"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/update_job_priority"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/update_job_status"
         delete: []
     multi_region_access_points:
       id: aws.s3control.multi_region_access_points
@@ -7731,10 +7749,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.s3control.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.s3control.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7748,17 +7766,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.s3control.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1v20180820~1tags~1{resource_arn}/post"
@@ -7792,59 +7799,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-        delete: []
-    job_priorities:
-      id: aws.s3control.job_priorities
-      name: job_priorities
-      title: job_priorities
-      methods:
-        update_job_priority:
-          operation:
-            $ref: "#/paths/~1v20180820~1jobs~1{id}~1priority/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateJobPriorityOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/job_priorities/methods/update_job_priority"
-        delete: []
-    job_status:
-      id: aws.s3control.job_status
-      name: job_status
-      title: job_status
-      methods:
-        update_job_status:
-          operation:
-            $ref: "#/paths/~1v20180820~1jobs~1{id}~1status/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateJobStatusOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/job_status/methods/update_job_status"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

@@ -60,7 +60,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateEntityToThingResponse'
-      x-stackql-resource: entity_to_things
+      x-stackql-resource: things
       x-stackql-method: associate_entity_to_thing
       x-stackql-verb: UPDATE
   /CreateFlowTemplate:
@@ -542,7 +542,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DissociateEntityFromThingResponse'
-      x-stackql-resource: dissociate_entity_from_thing
+      x-stackql-resource: things
       x-stackql-method: dissociate_entity_from_thing
       x-stackql-verb: EXEC
   /GetEntities:
@@ -625,6 +625,7 @@ paths:
       x-stackql-resource: flow_templates
       x-stackql-method: get_flow_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.description
   /GetFlowTemplateRevisions:
     post:
       operationId: GetFlowTemplateRevisions
@@ -670,6 +671,9 @@ paths:
       x-stackql-method: get_flow_template_revisions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetNamespaceDeletionStatus:
     post:
       operationId: GetNamespaceDeletionStatus
@@ -737,6 +741,7 @@ paths:
       x-stackql-resource: system_instances
       x-stackql-method: get_system_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.description
   /GetSystemTemplate:
     post:
       operationId: GetSystemTemplate
@@ -777,6 +782,7 @@ paths:
       x-stackql-resource: system_templates
       x-stackql-method: get_system_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.description
   /GetSystemTemplateRevisions:
     post:
       operationId: GetSystemTemplateRevisions
@@ -823,6 +829,9 @@ paths:
       x-stackql-method: get_system_template_revisions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetUploadStatus:
     post:
       operationId: GetUploadStatus
@@ -902,6 +911,9 @@ paths:
       x-stackql-method: list_flow_execution_messages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.messages
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -941,10 +953,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /SearchEntities:
     post:
       operationId: SearchEntities
@@ -998,6 +1013,9 @@ paths:
       x-stackql-method: search_entities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.descriptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /SearchFlowExecutions:
     post:
       operationId: SearchFlowExecutions
@@ -1050,6 +1068,9 @@ paths:
       x-stackql-method: search_flow_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /SearchFlowTemplates:
     post:
       operationId: SearchFlowTemplates
@@ -1091,6 +1112,9 @@ paths:
       x-stackql-method: search_flow_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /SearchSystemInstances:
     post:
       operationId: SearchSystemInstances
@@ -1134,6 +1158,9 @@ paths:
       x-stackql-method: search_system_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /SearchSystemTemplates:
     post:
       operationId: SearchSystemTemplates
@@ -1176,6 +1203,9 @@ paths:
       x-stackql-method: search_system_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /SearchThings:
     post:
       operationId: SearchThings
@@ -1226,6 +1256,9 @@ paths:
       x-stackql-method: search_things
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.things
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /TagResource:
     post:
       operationId: TagResource
@@ -1263,7 +1296,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UndeploySystemInstance:
@@ -1340,7 +1373,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateFlowTemplate:

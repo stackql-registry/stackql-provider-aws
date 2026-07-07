@@ -168,7 +168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompareFacesResponse'
-      x-stackql-resource: compare_faces
+      x-stackql-resource: faces
       x-stackql-method: compare_faces
       x-stackql-verb: EXEC
   /CopyProjectVersion:
@@ -244,7 +244,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CopyProjectVersionResponse'
-      x-stackql-resource: project_version
+      x-stackql-resource: projects
       x-stackql-method: copy_project_version
       x-stackql-verb: EXEC
   /CreateCollection:
@@ -396,7 +396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateFaceLivenessSessionResponse'
-      x-stackql-resource: face_liveness_sessions
+      x-stackql-resource: faces
       x-stackql-method: create_face_liveness_session
       x-stackql-verb: INSERT
   /CreateProject:
@@ -1096,6 +1096,7 @@ paths:
       x-stackql-resource: datasets
       x-stackql-method: describe_dataset
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DatasetDescription
   /DescribeProjectVersions:
     post:
       operationId: DescribeProjectVersions
@@ -1151,6 +1152,9 @@ paths:
       x-stackql-method: describe_project_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProjectVersionDescriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeProjects:
     post:
       operationId: DescribeProjects
@@ -1202,6 +1206,9 @@ paths:
       x-stackql-method: describe_projects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProjectDescriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeStreamProcessor:
     post:
       operationId: DescribeStreamProcessor
@@ -1306,7 +1313,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectCustomLabelsResponse'
-      x-stackql-resource: detect_custom_labels
+      x-stackql-resource: project_versions
       x-stackql-method: detect_custom_labels
       x-stackql-verb: EXEC
   /DetectFaces:
@@ -1364,7 +1371,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetectFacesResponse'
-      x-stackql-resource: detect_faces
+      x-stackql-resource: faces
       x-stackql-method: detect_faces
       x-stackql-verb: EXEC
   /DetectLabels:
@@ -1729,7 +1736,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DistributeDatasetEntriesResponse'
-      x-stackql-resource: distribute_dataset_entries
+      x-stackql-resource: dataset_entries
       x-stackql-method: distribute_dataset_entries
       x-stackql-verb: EXEC
   /GetCelebrityInfo:
@@ -2495,7 +2502,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IndexFacesResponse'
-      x-stackql-resource: index_faces
+      x-stackql-resource: faces
       x-stackql-method: index_faces
       x-stackql-verb: EXEC
   /ListCollections:
@@ -2534,11 +2541,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListCollectionsResponse'
+                $ref: '#/components/schemas/ListCollectionsOutputDisplay'
       x-stackql-resource: collections
       x-stackql-method: list_collections
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.CollectionIds
+      x-stackql-responseEnvelope: ListCollectionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "CollectionIds" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"collection_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDatasetEntries:
     post:
       operationId: ListDatasetEntries
@@ -2607,11 +2622,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDatasetEntriesResponse'
+                $ref: '#/components/schemas/ListDatasetEntriesOutputDisplay'
       x-stackql-resource: dataset_entries
       x-stackql-method: list_dataset_entries
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.DatasetEntries
+      x-stackql-responseEnvelope: ListDatasetEntriesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "DatasetEntries" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"dataset_entry": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDatasetLabels:
     post:
       operationId: ListDatasetLabels
@@ -2662,6 +2685,9 @@ paths:
       x-stackql-method: list_dataset_labels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DatasetLabelDescriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFaces:
     post:
       operationId: ListFaces
@@ -2716,6 +2742,9 @@ paths:
       x-stackql-method: list_faces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Faces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMediaAnalysisJobs:
     post:
       operationId: ListMediaAnalysisJobs
@@ -2804,6 +2833,9 @@ paths:
       x-stackql-method: list_project_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProjectPolicies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStreamProcessors:
     post:
       operationId: ListStreamProcessors
@@ -2845,6 +2877,9 @@ paths:
       x-stackql-method: list_stream_processors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StreamProcessors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2880,7 +2915,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListUsers:
@@ -2929,6 +2964,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutProjectPolicy:
     post:
       operationId: PutProjectPolicy
@@ -3468,7 +3506,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFaceDetectionResponse'
-      x-stackql-resource: face_detection
+      x-stackql-resource: faces
       x-stackql-method: start_face_detection
       x-stackql-verb: EXEC
   /StartFaceSearch:
@@ -3533,7 +3571,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartFaceSearchResponse'
-      x-stackql-resource: face_search
+      x-stackql-resource: faces
       x-stackql-method: start_face_search
       x-stackql-verb: EXEC
   /StartLabelDetection:
@@ -3778,7 +3816,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProjectVersionResponse'
-      x-stackql-resource: project_version
+      x-stackql-resource: projects
       x-stackql-method: start_project_version
       x-stackql-verb: EXEC
   /StartSegmentDetection:
@@ -3990,7 +4028,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopProjectVersionResponse'
-      x-stackql-resource: project_version
+      x-stackql-resource: projects
       x-stackql-method: stop_project_version
       x-stackql-verb: EXEC
   /StopStreamProcessor:
@@ -4069,7 +4107,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -4111,7 +4149,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateDatasetEntries:
@@ -7676,29 +7714,19 @@ components:
       type: integer
       minimum: 0
       maximum: 4096
-    ListCollectionsResponse:
+    ListCollectionsRowDisplay:
       type: object
       properties:
-        CollectionIds:
-          $ref: '#/components/schemas/CollectionIdList'
+        collection_id:
+          type: string
           description: An array of collection IDs.
-        NextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: If the result is truncated, the response provides a NextToken that you can use in the subsequent request
-            to fetch the next set of collection IDs.
-        FaceModelVersions:
-          $ref: '#/components/schemas/FaceModelVersionList'
-          description: Version numbers of the face detection models associated with the collections in the array CollectionIds.
-            For example, the value of FaceModelVersions[2] is the version number for the face detection model used by the
-            collection in CollectionId[2].
-    CollectionIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/CollectionId'
-    FaceModelVersionList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListCollectionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCollectionsRowDisplay'
     DatasetLabels:
       type: array
       items:
@@ -7721,26 +7749,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListDatasetEntriesResponse:
+    ListDatasetEntriesRowDisplay:
       type: object
       properties:
-        DatasetEntries:
-          $ref: '#/components/schemas/DatasetEntries'
+        dataset_entry:
+          type: string
           description: A list of entries (images) in the dataset.
-        NextToken:
-          $ref: '#/components/schemas/ExtendedPaginationToken'
-          description: If the previous response was incomplete (because there is more results to retrieve), Amazon Rekognition
-            Custom Labels returns a pagination token in the response. You can use this pagination token to retrieve the next
-            set of results.
-    DatasetEntries:
-      type: array
-      items:
-        $ref: '#/components/schemas/DatasetEntry'
-    DatasetEntry:
-      type: string
-      minLength: 1
-      maxLength: 100000
-      pattern: ^\{.*\}$
+    ListDatasetEntriesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDatasetEntriesRowDisplay'
     ListDatasetLabelsPageSize:
       type: integer
       minimum: 1

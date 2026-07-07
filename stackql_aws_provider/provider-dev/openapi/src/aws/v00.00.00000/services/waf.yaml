@@ -46,7 +46,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -83,7 +82,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -120,7 +118,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -168,7 +165,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
               required:
-                - Name
                 - MetricName
                 - RateKey
                 - RateLimit
@@ -208,7 +204,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -245,7 +240,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -287,7 +281,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
               required:
-                - Name
                 - MetricName
                 - ChangeToken
       responses:
@@ -330,7 +323,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
               required:
-                - Name
                 - MetricName
                 - ChangeToken
       responses:
@@ -368,7 +360,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -405,7 +396,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -530,7 +520,6 @@ paths:
                   $ref: "#/components/schemas/ChangeToken"
                   description: The value returned by the most recent call to GetChangeToken.
               required:
-                - Name
                 - ChangeToken
       responses:
         "200":
@@ -1342,7 +1331,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetRateBasedRuleManagedKeysResponse"
+                $ref: "#/components/schemas/GetRateBasedRuleManagedKeysOutputDisplay"
   /GetRegexMatchSet:
     post:
       operationId: GetRegexMatchSet
@@ -2263,7 +2252,6 @@ paths:
                   description: The policy to attach to the specified RuleGroup.
               required:
                 - ResourceArn
-                - Policy
       responses:
         "200":
           description: Success
@@ -4036,21 +4024,19 @@ components:
       minLength: 1
       maxLength: 1224
       pattern: .*\S.*
-    GetRateBasedRuleManagedKeysResponse:
+    GetRateBasedRuleManagedKeysRowDisplay:
       type: object
       properties:
-        ManagedKeys:
-          $ref: "#/components/schemas/ManagedKeys"
+        managed_key:
+          type: string
           description: An array of IP addresses that currently are blocked by the specified RateBasedRule.
-        NextMarker:
-          $ref: "#/components/schemas/NextMarker"
-          description: A null value and not currently used.
-    ManagedKeys:
-      type: array
-      items:
-        $ref: "#/components/schemas/ManagedKey"
-    ManagedKey:
-      type: string
+    GetRateBasedRuleManagedKeysOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetRateBasedRuleManagedKeysRowDisplay"
     GetRegexMatchSetResponse:
       type: object
       properties:
@@ -4907,6 +4893,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ByteMatchSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4926,6 +4913,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_byte_match_set:
@@ -4988,6 +4982,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GeoMatchSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5007,6 +5002,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_geo_match_set:
@@ -5069,6 +5071,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.IPSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5088,6 +5091,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_ip_set:
@@ -5150,6 +5160,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Rule
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5169,6 +5180,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_rate_based_rule:
@@ -5231,6 +5249,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RegexMatchSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5250,6 +5269,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_regex_match_set:
@@ -5312,6 +5338,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RegexPatternSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5331,6 +5358,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_regex_pattern_set:
@@ -5393,6 +5427,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Rule
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5412,6 +5447,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_rule:
@@ -5474,6 +5516,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RuleGroup
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5493,6 +5536,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_rule_group:
@@ -5555,6 +5605,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SizeConstraintSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5574,6 +5625,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_size_constraint_set:
@@ -5636,6 +5694,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SqlInjectionMatchSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5655,6 +5714,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_sql_injection_match_set:
@@ -5698,6 +5764,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_web_acl_migration_stack:
+          operation:
+            $ref: "#/paths/~1CreateWebACLMigrationStack/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_web_acl:
           operation:
             $ref: "#/paths/~1DeleteWebACL/post"
@@ -5717,6 +5796,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.WebACL
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5742,34 +5822,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/get_web_acl"
         insert:
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/create_web_acl"
+          - $ref: "#/components/x-stackQL-resources/web_acls/methods/create_web_acl_migration_stack"
         update:
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/update_web_acl"
         delete:
           - $ref: "#/components/x-stackQL-resources/web_acls/methods/delete_web_acl"
-    web_acl_migration_stacks:
-      id: aws.waf.web_acl_migration_stacks
-      name: web_acl_migration_stacks
-      title: web_acl_migration_stacks
-      methods:
-        create_web_acl_migration_stack:
-          operation:
-            $ref: "#/paths/~1CreateWebACLMigrationStack/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/web_acl_migration_stacks/methods/create_web_acl_migration_stack"
-        update: []
-        delete: []
     xss_match_sets:
       id: aws.waf.xss_match_sets
       name: xss_match_sets
@@ -5807,6 +5864,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.XssMatchSet
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5826,6 +5884,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_xss_match_set:
@@ -5875,6 +5940,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.LoggingConfiguration
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5894,6 +5960,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_logging_configuration:
@@ -6031,12 +6104,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ManagedKeys
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetRateBasedRuleManagedKeysOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ManagedKeys" -}}{{- $tok := index . "NextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"managed_key": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6086,6 +6172,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6111,6 +6204,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -6119,10 +6219,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.waf.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.waf.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -6130,6 +6230,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TagInfoForResource
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -6137,42 +6238,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    web_ac_ls:
-      id: aws.waf.web_ac_ls
-      name: web_ac_ls
-      title: web_ac_ls
-      methods:
-        list_web_ac_ls:
-          operation:
-            $ref: "#/paths/~1ListWebACLs/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.WebACLs
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/web_ac_ls/methods/list_web_ac_ls"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.waf.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -6200,9 +6265,42 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    web_ac_ls:
+      id: aws.waf.web_ac_ls
+      name: web_ac_ls
+      title: web_ac_ls
+      methods:
+        list_web_ac_ls:
+          operation:
+            $ref: "#/paths/~1ListWebACLs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.WebACLs
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextMarker
+                location: body
+              responseToken:
+                key: $.NextMarker
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/web_ac_ls/methods/list_web_ac_ls"
+        insert: []
+        update: []
         delete: []

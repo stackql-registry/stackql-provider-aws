@@ -57,7 +57,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetRevocationStatusResponse"
+                $ref: "#/components/schemas/GetRevocationStatusOutputDisplay"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -121,21 +121,19 @@ components:
       type: string
       minLength: 1
       maxLength: 2048
-    GetRevocationStatusResponse:
-      description: Response containing the list of revoked entities.
+    GetRevocationStatusRowDisplay:
       type: object
       properties:
-        revokedEntities:
-          $ref: "#/components/schemas/RevokedEntities"
+        revoked_entity:
+          type: string
           description: List of entity identifiers that have been revoked. Empty if no revocations found.
-    RevokedEntities:
-      type: array
-      items:
-        $ref: "#/components/schemas/RevokedEntity"
-    RevokedEntity:
-      type: string
-      minLength: 1
-      maxLength: 2048
+    GetRevocationStatusOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetRevocationStatusRowDisplay"
   x-stackQL-resources:
     revocation_status:
       id: aws.signer_data.revocation_status
@@ -148,6 +146,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetRevocationStatusOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "revokedEntities" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"revoked_entity": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
       sqlVerbs:

@@ -176,7 +176,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetTagKeysOutput"
+                $ref: "#/components/schemas/GetTagKeysOutputDisplay"
   /GetTagValues:
     post:
       operationId: GetTagValues
@@ -212,7 +212,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetTagValuesOutput"
+                $ref: "#/components/schemas/GetTagValuesOutputDisplay"
   /ListRequiredTags:
     post:
       operationId: ListRequiredTags
@@ -620,28 +620,32 @@ components:
         $ref: "#/components/schemas/TagKey"
     ComplianceStatus:
       type: boolean
-    GetTagKeysOutput:
+    GetTagKeysRowDisplay:
       type: object
       properties:
-        PaginationToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: A string that indicates that there is more data available than this response contains. To receive the next part of the response, specify this response value as the PaginationToken value in the request for the next page.
-        TagKeys:
-          $ref: "#/components/schemas/TagKeyList"
+        tag_key:
+          type: string
           description: A list of all tag keys in the Amazon Web Services account.
-    GetTagValuesOutput:
+    GetTagKeysOutputDisplay:
       type: object
       properties:
-        PaginationToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: A string that indicates that there is more data available than this response contains. To receive the next part of the response, specify this response value as the PaginationToken value in the request for the next page.
-        TagValues:
-          $ref: "#/components/schemas/TagValuesOutputList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetTagKeysRowDisplay"
+    GetTagValuesRowDisplay:
+      type: object
+      properties:
+        tag_value:
+          type: string
           description: A list of all tag values for the specified key currently used in the specified Amazon Web Services Region for the calling account.
-    TagValuesOutputList:
-      type: array
-      items:
-        $ref: "#/components/schemas/TagValue"
+    GetTagValuesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetTagValuesRowDisplay"
     MaxResultsForListRequiredTags:
       type: integer
       minimum: 1
@@ -758,6 +762,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: PaginationToken
+                location: body
+              responseToken:
+                key: $.PaginationToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -783,8 +794,134 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: PaginationToken
+                location: body
+              responseToken:
+                key: $.PaginationToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/get_resources"
+        insert: []
+        update: []
+        delete: []
+    tag_keys:
+      id: aws.resourcegroupstaggingapi.tag_keys
+      name: tag_keys
+      title: tag_keys
+      methods:
+        get_tag_keys:
+          operation:
+            $ref: "#/paths/~1GetTagKeys/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetTagKeysOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "TagKeys" -}}{{- $tok := index . "PaginationToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"tag_key": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "PaginationToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: PaginationToken
+                location: body
+              responseToken:
+                key: $.PaginationToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/tag_keys/methods/get_tag_keys"
+        insert: []
+        update: []
+        delete: []
+    tag_values:
+      id: aws.resourcegroupstaggingapi.tag_values
+      name: tag_values
+      title: tag_values
+      methods:
+        get_tag_values:
+          operation:
+            $ref: "#/paths/~1GetTagValues/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetTagValuesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "TagValues" -}}{{- $tok := index . "PaginationToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"tag_value": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "PaginationToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: PaginationToken
+                location: body
+              responseToken:
+                key: $.PaginationToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/tag_values/methods/get_tag_values"
+        insert: []
+        update: []
+        delete: []
+    required_tags:
+      id: aws.resourcegroupstaggingapi.required_tags
+      name: required_tags
+      title: required_tags
+      methods:
+        list_required_tags:
+          operation:
+            $ref: "#/paths/~1ListRequiredTags/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.RequiredTags
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/required_tags/methods/list_required_tags"
+        insert: []
+        update: []
+        delete: []
+    tags:
+      id: aws.resourcegroupstaggingapi.tags
+      name: tags
+      title: tags
+      methods:
         tag_resources:
           operation:
             $ref: "#/paths/~1TagResources/post"
@@ -812,85 +949,9 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/get_resources"
+        select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resources"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resources"
-        delete: []
-    tag_keys:
-      id: aws.resourcegroupstaggingapi.tag_keys
-      name: tag_keys
-      title: tag_keys
-      methods:
-        get_tag_keys:
-          operation:
-            $ref: "#/paths/~1GetTagKeys/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.TagKeys
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tag_keys/methods/get_tag_keys"
-        insert: []
-        update: []
-        delete: []
-    tag_values:
-      id: aws.resourcegroupstaggingapi.tag_values
-      name: tag_values
-      title: tag_values
-      methods:
-        get_tag_values:
-          operation:
-            $ref: "#/paths/~1GetTagValues/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.TagValues
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tag_values/methods/get_tag_values"
-        insert: []
-        update: []
-        delete: []
-    required_tags:
-      id: aws.resourcegroupstaggingapi.required_tags
-      name: required_tags
-      title: required_tags
-      methods:
-        list_required_tags:
-          operation:
-            $ref: "#/paths/~1ListRequiredTags/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.RequiredTags
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/required_tags/methods/list_required_tags"
-        insert: []
-        update: []
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resources"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resources"
         delete: []

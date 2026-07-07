@@ -4459,6 +4459,14 @@ components:
             objectKey: $.services
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         register_service:
           operation:
             $ref: "#/paths/~1v1~1register~1{service}/post"
@@ -4520,6 +4528,22 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disable_operator_app:
+          operation:
+            $ref: "#/paths/~1v1~1agentspaces~1{agent_space_id}~1operator/delete"
+          response:
+            openAPIDocKey: "200"
+        enable_operator_app:
+          operation:
+            $ref: "#/paths/~1v1~1agentspaces~1{agent_space_id}~1operator/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_agent_spaces:
           operation:
             $ref: "#/paths/~1v1~1agentspaces~1list/post"
@@ -4529,6 +4553,25 @@ components:
             objectKey: $.agentSpaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        send_message:
+          operation:
+            $ref: "#/paths/~1agents~1agent-space~1{agent_space_id}~1chat~1sendMessage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agent_spaces/methods/get_agent_space"
@@ -4561,6 +4604,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.task
         update_backlog_task:
           operation:
             $ref: "#/paths/~1backlog~1agent-space~1{agent_space_id}~1tasks~1{task_id}/patch"
@@ -4582,6 +4626,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4655,13 +4706,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        update_private_connection_certificate:
+          operation:
+            $ref: "#/paths/~1v1~1private-connections~1{name}~1certificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/private_connections/methods/describe_private_connection"
           - $ref: "#/components/x-stackQL-resources/private_connections/methods/list_private_connections"
         insert:
           - $ref: "#/components/x-stackQL-resources/private_connections/methods/create_private_connection"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/private_connections/methods/update_private_connection_certificate"
         delete:
           - $ref: "#/components/x-stackQL-resources/private_connections/methods/delete_private_connection"
     associations:
@@ -4675,6 +4738,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.association
         update_association:
           operation:
             $ref: "#/paths/~1v1~1agentspaces~1{agent_space_id}~1associations~1{association_id}/patch"
@@ -4695,6 +4759,20 @@ components:
             objectKey: $.associations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        validate_aws_associations:
+          operation:
+            $ref: "#/paths/~1v1~1agentspaces~1{agent_space_id}~1associations~1validate/post"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associations/methods/get_association"
@@ -4731,11 +4809,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        update_operator_app_idp_config:
+          operation:
+            $ref: "#/paths/~1v1~1agentspaces~1{agent_space_id}~1operator~1idp/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/operator_apps/methods/get_operator_app"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/operator_apps/methods/update_operator_app_idp_config"
         delete: []
     recommendations:
       id: aws.devops_agent.recommendations
@@ -4748,6 +4838,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.recommendation
           request:
             nativeCasing: pascal
         update_recommendation:
@@ -4795,6 +4886,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4818,6 +4916,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_goal:
@@ -4853,6 +4958,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4883,10 +4995,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.devops_agent.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.devops_agent.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -4894,17 +5006,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.devops_agent.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -4925,11 +5026,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     webhooks:
       id: aws.devops_agent.webhooks
@@ -4947,48 +5049,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/webhooks/methods/list_webhooks"
         insert: []
         update: []
-        delete: []
-    operator_app_idp_configs:
-      id: aws.devops_agent.operator_app_idp_configs
-      name: operator_app_idp_configs
-      title: operator_app_idp_configs
-      methods:
-        update_operator_app_idp_config:
-          operation:
-            $ref: "#/paths/~1v1~1agentspaces~1{agent_space_id}~1operator~1idp/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/operator_app_idp_configs/methods/update_operator_app_idp_config"
-        delete: []
-    private_connection_certificates:
-      id: aws.devops_agent.private_connection_certificates
-      name: private_connection_certificates
-      title: private_connection_certificates
-      methods:
-        update_private_connection_certificate:
-          operation:
-            $ref: "#/paths/~1v1~1private-connections~1{name}~1certificate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/private_connection_certificates/methods/update_private_connection_certificate"
         delete: []

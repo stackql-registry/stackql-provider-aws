@@ -56,7 +56,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CloseTunnelResponse'
-      x-stackql-resource: close_tunnel
+      x-stackql-resource: tunnels
       x-stackql-method: close_tunnel
       x-stackql-verb: EXEC
   /DescribeTunnel:
@@ -96,6 +96,7 @@ paths:
       x-stackql-resource: tunnels
       x-stackql-method: describe_tunnel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.tunnel
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -129,7 +130,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTunnels:
@@ -262,7 +263,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RotateTunnelAccessTokenResponse'
-      x-stackql-resource: rotate_tunnel_access_token
+      x-stackql-resource: tunnels
       x-stackql-method: rotate_tunnel_access_token
       x-stackql-verb: EXEC
   /TagResource:
@@ -302,7 +303,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -342,7 +343,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

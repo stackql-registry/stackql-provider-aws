@@ -2527,7 +2527,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/PhoneNumberDisplay"
+            $ref: "#/components/schemas/ListPhoneNumbersOptedOutRowDisplay"
     ListPhoneNumbersOptedOutInput:
       description: The input for the ListPhoneNumbersOptedOut action.
       type: object
@@ -2535,6 +2535,12 @@ components:
         nextToken:
           $ref: "#/components/schemas/string"
           description: A NextToken string is used when you call the ListPhoneNumbersOptedOut action to retrieve additional records that are available after the first page of results.
+    ListPhoneNumbersOptedOutRowDisplay:
+      type: object
+      properties:
+        phone_number:
+          type: string
+          description: A list of phone numbers that are opted out of receiving SMS messages. The list is paginated, and each page can contain up to 100 phone numbers.
     PlatformApplicationDisplay:
       type: object
       properties:
@@ -3062,10 +3068,10 @@ components:
         - PhoneNumber
         - OneTimePassword
   x-stackQL-resources:
-    permissions:
-      id: aws.sns.permissions
-      name: permissions
-      title: permissions
+    topics:
+      id: aws.sns.topics
+      name: topics
+      title: topics
       methods:
         add_permission:
           operation:
@@ -3074,6 +3080,90 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        confirm_subscription:
+          operation:
+            $ref: "#/paths/~1?Action=ConfirmSubscription&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ConfirmSubscriptionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_topic:
+          operation:
+            $ref: "#/paths/~1?Action=CreateTopic&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateTopicOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_topic:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteTopic&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        list_topics:
+          operation:
+            $ref: "#/paths/~1?Action=ListTopics&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTopicsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        publish_batch:
+          operation:
+            $ref: "#/paths/~1?Action=PublishBatch&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/PublishBatchOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -3091,13 +3181,33 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        subscribe:
+          operation:
+            $ref: "#/paths/~1?Action=Subscribe&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SubscribeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/topics/methods/list_topics"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/topics/methods/create_topic"
         update:
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/add_permission"
-          - $ref: "#/components/x-stackQL-resources/permissions/methods/remove_permission"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/topics/methods/add_permission"
+          - $ref: "#/components/x-stackQL-resources/topics/methods/remove_permission"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/topics/methods/delete_topic"
     platform_applications:
       id: aws.sns.platform_applications
       name: platform_applications
@@ -3112,6 +3222,25 @@ components:
             overrideMediaType: application/json
             schema_override:
               $ref: "#/components/schemas/CreatePlatformApplicationOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_platform_endpoint:
+          operation:
+            $ref: "#/paths/~1?Action=CreatePlatformEndpoint&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreatePlatformEndpointOutputDisplay"
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
@@ -3158,39 +3287,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/platform_applications/methods/list_platform_applications"
         insert:
           - $ref: "#/components/x-stackQL-resources/platform_applications/methods/create_platform_application"
+          - $ref: "#/components/x-stackQL-resources/platform_applications/methods/create_platform_endpoint"
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/platform_applications/methods/delete_platform_application"
-    platform_endpoints:
-      id: aws.sns.platform_endpoints
-      name: platform_endpoints
-      title: platform_endpoints
-      methods:
-        create_platform_endpoint:
-          operation:
-            $ref: "#/paths/~1?Action=CreatePlatformEndpoint&Version=2010-03-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreatePlatformEndpointOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/platform_endpoints/methods/create_platform_endpoint"
-        update: []
-        delete: []
     sms_sandbox_phone_numbers:
       id: aws.sns.sms_sandbox_phone_numbers
       name: sms_sandbox_phone_numbers
@@ -3261,69 +3361,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/sms_sandbox_phone_numbers/methods/delete_sms_sandbox_phone_number"
-    topics:
-      id: aws.sns.topics
-      name: topics
-      title: topics
-      methods:
-        create_topic:
-          operation:
-            $ref: "#/paths/~1?Action=CreateTopic&Version=2010-03-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateTopicOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_topic:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteTopic&Version=2010-03-31/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        list_topics:
-          operation:
-            $ref: "#/paths/~1?Action=ListTopics&Version=2010-03-31/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListTopicsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/topics/methods/list_topics"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/topics/methods/create_topic"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/topics/methods/delete_topic"
     endpoints:
       id: aws.sns.endpoints
       name: endpoints
@@ -3716,7 +3753,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/ListPhoneNumbersOptedOutOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListPhoneNumbersOptedOutResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListPhoneNumbersOptedOutResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "phoneNumbers" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"phone_number": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"phone_number": {{ toJson $n }}}{{- end -}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -3750,6 +3788,16 @@ components:
             objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        unsubscribe:
+          operation:
+            $ref: "#/paths/~1?Action=Unsubscribe&Version=2010-03-31/get"
+          response:
+            openAPIDocKey: "200"
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -3791,10 +3839,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.sns.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.sns.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3815,17 +3863,6 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.sns.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1?Action=TagResource&Version=2010-03-31/get"
@@ -3865,9 +3902,10 @@ components:
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

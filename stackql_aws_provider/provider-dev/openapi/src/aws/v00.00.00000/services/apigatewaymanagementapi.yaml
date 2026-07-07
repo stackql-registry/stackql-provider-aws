@@ -165,6 +165,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        post_to_connection:
+          operation:
+            $ref: "#/paths/~1@connections~1{connection_id}/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connections/methods/get_connection"

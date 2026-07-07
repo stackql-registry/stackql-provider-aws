@@ -1,0 +1,3 @@
+-- Plain (non-templated) query: query-protocol global endpoint smoke, and the
+-- exporter of the AWS account id used to build globally-unique names.
+SELECT account, arn, user_id FROM aws.sts.caller_identities WHERE region = 'us-east-1'

@@ -277,6 +277,7 @@ paths:
       x-stackql-resource: scheduled_queries
       x-stackql-method: describe_scheduled_query
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ScheduledQuery
   /ExecuteScheduledQuery:
     post:
       operationId: ExecuteScheduledQuery
@@ -321,7 +322,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: execute_scheduled_query
+      x-stackql-resource: scheduled_queries
       x-stackql-method: execute_scheduled_query
       x-stackql-verb: EXEC
   /ListScheduledQueries:
@@ -365,6 +366,9 @@ paths:
       x-stackql-method: list_scheduled_queries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ScheduledQueries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -404,10 +408,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PrepareQuery:
     post:
       operationId: PrepareQuery
@@ -539,6 +546,9 @@ paths:
       x-stackql-resource: query
       x-stackql-method: query
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /TagResource:
     post:
       operationId: TagResource
@@ -578,7 +588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -620,7 +630,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAccountSettings:

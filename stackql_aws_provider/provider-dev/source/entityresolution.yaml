@@ -60,7 +60,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddPolicyStatementOutput'
-      x-stackql-resource: policy_statements
+      x-stackql-resource: policies
       x-stackql-method: add_policy_statement
       x-stackql-verb: UPDATE
     delete:
@@ -86,7 +86,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeletePolicyStatementOutput'
-      x-stackql-resource: policy_statements
+      x-stackql-resource: policies
       x-stackql-method: delete_policy_statement
       x-stackql-verb: DELETE
   /matchingworkflows/{workflow_name}/uniqueids:
@@ -193,6 +193,9 @@ paths:
       x-stackql-method: list_id_mapping_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /idnamespaces:
     post:
       operationId: CreateIdNamespace
@@ -261,6 +264,9 @@ paths:
       x-stackql-method: list_id_namespaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.idNamespaceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /matchingworkflows:
     post:
       operationId: CreateMatchingWorkflow
@@ -334,6 +340,9 @@ paths:
       x-stackql-method: list_matching_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.workflowSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /schemas:
     post:
       operationId: CreateSchemaMapping
@@ -396,6 +405,9 @@ paths:
       x-stackql-method: list_schema_mappings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.schemaList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /idmappingworkflows/{workflow_name}:
     delete:
       operationId: DeleteIdMappingWorkflow
@@ -965,6 +977,9 @@ paths:
       x-stackql-method: list_id_mapping_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartIdMappingJob
       description: Starts the IdMappingJob of a workflow. The workflow must have previously been created using the CreateIdMappingWorkflow
@@ -1031,6 +1046,9 @@ paths:
       x-stackql-method: list_matching_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartMatchingJob
       description: Starts the MatchingJob of a workflow. The workflow must have previously been created using the CreateMatchingWorkflow
@@ -1086,6 +1104,9 @@ paths:
       x-stackql-method: list_provider_services
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.providerServiceSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1105,7 +1126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1142,7 +1163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1169,7 +1190,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

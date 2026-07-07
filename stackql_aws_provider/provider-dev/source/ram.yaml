@@ -44,7 +44,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptResourceShareInvitationResponse'
-      x-stackql-resource: resource_share_invitation
+      x-stackql-resource: resource_shares
       x-stackql-method: accept_resource_share_invitation
       x-stackql-verb: EXEC
   /associateresourceshare:
@@ -467,6 +467,7 @@ paths:
       x-stackql-resource: permissions
       x-stackql-method: get_permission
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.permission
   /getresourcepolicies:
     post:
       operationId: GetResourcePolicies
@@ -498,11 +499,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetResourcePoliciesResponse'
+                $ref: '#/components/schemas/GetResourcePoliciesOutputDisplay'
       x-stackql-resource: resource_policies
       x-stackql-method: get_resource_policies
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.policies
+      x-stackql-responseEnvelope: GetResourcePoliciesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "policies" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"policy": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /getresourceshareassociations:
     post:
       operationId: GetResourceShareAssociations
@@ -545,6 +554,9 @@ paths:
       x-stackql-method: get_resource_share_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourceShareAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /getresourceshareinvitations:
     post:
       operationId: GetResourceShareInvitations
@@ -579,6 +591,9 @@ paths:
       x-stackql-method: get_resource_share_invitations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourceShareInvitations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /getresourceshares:
     post:
       operationId: GetResourceShares
@@ -625,6 +640,9 @@ paths:
       x-stackql-method: get_resource_shares
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourceShares
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listpendinginvitationresources:
     post:
       operationId: ListPendingInvitationResources
@@ -811,6 +829,9 @@ paths:
       x-stackql-method: list_principals
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.principals
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listreplacepermissionassociationswork:
     post:
       operationId: ListReplacePermissionAssociationsWork
@@ -949,6 +970,9 @@ paths:
       x-stackql-method: list_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listsourceassociations:
     post:
       operationId: ListSourceAssociations
@@ -987,6 +1011,9 @@ paths:
       x-stackql-method: list_source_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sourceAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /promotepermissioncreatedfrompolicy:
     post:
       operationId: PromotePermissionCreatedFromPolicy
@@ -1027,7 +1054,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PromotePermissionCreatedFromPolicyResponse'
-      x-stackql-resource: permission_created_from_policy
+      x-stackql-resource: permissions
       x-stackql-method: promote_permission_created_from_policy
       x-stackql-verb: EXEC
   /promoteresourcesharecreatedfrompolicy:
@@ -1056,7 +1083,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PromoteResourceShareCreatedFromPolicyResponse'
-      x-stackql-resource: resource_share_created_from_policy
+      x-stackql-resource: resource_shares
       x-stackql-method: promote_resource_share_created_from_policy
       x-stackql-verb: EXEC
   /rejectresourceshareinvitation:
@@ -1084,7 +1111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectResourceShareInvitationResponse'
-      x-stackql-resource: resource_share_invitation
+      x-stackql-resource: resource_shares
       x-stackql-method: reject_resource_share_invitation
       x-stackql-verb: EXEC
   /replacepermissionassociations:
@@ -1157,7 +1184,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SetDefaultPermissionVersionResponse'
-      x-stackql-resource: default_permission_versions
+      x-stackql-resource: permission_versions
       x-stackql-method: set_default_permission_version
       x-stackql-verb: UPDATE
   /tagresource:
@@ -1189,7 +1216,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /untagresource:
@@ -1219,7 +1246,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /updateresourceshare:
@@ -1798,22 +1825,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    GetResourcePoliciesResponse:
+    GetResourcePoliciesRowDisplay:
       type: object
       properties:
-        policies:
-          $ref: '#/components/schemas/PolicyList'
+        policy:
+          type: string
           description: An array of resource policy documents in JSON format.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If present, this value indicates that more output is available than is included in the current response.
-            Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of
-            the output. You should repeat this until the NextToken response element comes back as null. This indicates that
-            this is the last page of results.
-    PolicyList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Policy'
+    GetResourcePoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetResourcePoliciesRowDisplay'
     ResourceShareArnList:
       type: array
       items:

@@ -1341,6 +1341,7 @@ paths:
       x-stackql-resource: algorithms
       x-stackql-method: describe_algorithm
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.algorithm
   /DescribeBatchInferenceJob:
     post:
       operationId: DescribeBatchInferenceJob
@@ -1378,6 +1379,7 @@ paths:
       x-stackql-resource: batch_inference_jobs
       x-stackql-method: describe_batch_inference_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.batchInferenceJob
   /DescribeBatchSegmentJob:
     post:
       operationId: DescribeBatchSegmentJob
@@ -1415,6 +1417,7 @@ paths:
       x-stackql-resource: batch_segment_jobs
       x-stackql-method: describe_batch_segment_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.batchSegmentJob
   /DescribeCampaign:
     post:
       operationId: DescribeCampaign
@@ -1454,6 +1457,7 @@ paths:
       x-stackql-resource: campaigns
       x-stackql-method: describe_campaign
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.campaign
   /DescribeDataDeletionJob:
     post:
       operationId: DescribeDataDeletionJob
@@ -1490,6 +1494,7 @@ paths:
       x-stackql-resource: data_deletion_jobs
       x-stackql-method: describe_data_deletion_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dataDeletionJob
   /DescribeDataset:
     post:
       operationId: DescribeDataset
@@ -1526,6 +1531,7 @@ paths:
       x-stackql-resource: datasets
       x-stackql-method: describe_dataset
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.dataset
   /DescribeDatasetExportJob:
     post:
       operationId: DescribeDatasetExportJob
@@ -1562,6 +1568,7 @@ paths:
       x-stackql-resource: dataset_export_jobs
       x-stackql-method: describe_dataset_export_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.datasetExportJob
   /DescribeDatasetGroup:
     post:
       operationId: DescribeDatasetGroup
@@ -1598,6 +1605,7 @@ paths:
       x-stackql-resource: dataset_groups
       x-stackql-method: describe_dataset_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.datasetGroup
   /DescribeDatasetImportJob:
     post:
       operationId: DescribeDatasetImportJob
@@ -1634,6 +1642,7 @@ paths:
       x-stackql-resource: dataset_import_jobs
       x-stackql-method: describe_dataset_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.datasetImportJob
   /DescribeEventTracker:
     post:
       operationId: DescribeEventTracker
@@ -1671,6 +1680,7 @@ paths:
       x-stackql-resource: event_trackers
       x-stackql-method: describe_event_tracker
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.eventTracker
   /DescribeFeatureTransformation:
     post:
       operationId: DescribeFeatureTransformation
@@ -1707,6 +1717,7 @@ paths:
       x-stackql-resource: feature_transformations
       x-stackql-method: describe_feature_transformation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.featureTransformation
   /DescribeFilter:
     post:
       operationId: DescribeFilter
@@ -1743,6 +1754,7 @@ paths:
       x-stackql-resource: filters
       x-stackql-method: describe_filter
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.filter
   /DescribeMetricAttribution:
     post:
       operationId: DescribeMetricAttribution
@@ -1779,6 +1791,7 @@ paths:
       x-stackql-resource: metric_attributions
       x-stackql-method: describe_metric_attribution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.metricAttribution
   /DescribeRecipe:
     post:
       operationId: DescribeRecipe
@@ -1819,6 +1832,7 @@ paths:
       x-stackql-resource: recipes
       x-stackql-method: describe_recipe
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.recipe
   /DescribeRecommender:
     post:
       operationId: DescribeRecommender
@@ -1859,6 +1873,7 @@ paths:
       x-stackql-resource: recommenders
       x-stackql-method: describe_recommender
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.recommender
   /DescribeSchema:
     post:
       operationId: DescribeSchema
@@ -1895,6 +1910,7 @@ paths:
       x-stackql-resource: schemas
       x-stackql-method: describe_schema
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.schema
   /DescribeSolution:
     post:
       operationId: DescribeSolution
@@ -1931,6 +1947,7 @@ paths:
       x-stackql-resource: solutions
       x-stackql-method: describe_solution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.solution
   /DescribeSolutionVersion:
     post:
       operationId: DescribeSolutionVersion
@@ -1967,6 +1984,7 @@ paths:
       x-stackql-resource: solution_versions
       x-stackql-method: describe_solution_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.solutionVersion
   /GetSolutionMetrics:
     post:
       operationId: GetSolutionMetrics
@@ -2046,6 +2064,9 @@ paths:
       x-stackql-method: list_batch_inference_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.batchInferenceJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBatchSegmentJobs:
     post:
       operationId: ListBatchSegmentJobs
@@ -2089,6 +2110,9 @@ paths:
       x-stackql-method: list_batch_segment_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.batchSegmentJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCampaigns:
     post:
       operationId: ListCampaigns
@@ -2134,6 +2158,9 @@ paths:
       x-stackql-method: list_campaigns
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.campaigns
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDataDeletionJobs:
     post:
       operationId: ListDataDeletionJobs
@@ -2223,6 +2250,9 @@ paths:
       x-stackql-method: list_dataset_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datasetExportJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDatasetGroups:
     post:
       operationId: ListDatasetGroups
@@ -2263,6 +2293,9 @@ paths:
       x-stackql-method: list_dataset_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datasetGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDatasetImportJobs:
     post:
       operationId: ListDatasetImportJobs
@@ -2308,6 +2341,9 @@ paths:
       x-stackql-method: list_dataset_import_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datasetImportJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDatasets:
     post:
       operationId: ListDatasets
@@ -2351,6 +2387,9 @@ paths:
       x-stackql-method: list_datasets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.datasets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEventTrackers:
     post:
       operationId: ListEventTrackers
@@ -2395,6 +2434,9 @@ paths:
       x-stackql-method: list_event_trackers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.eventTrackers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListFilters:
     post:
       operationId: ListFilters
@@ -2437,6 +2479,9 @@ paths:
       x-stackql-method: list_filters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Filters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListMetricAttributionMetrics:
     post:
       operationId: ListMetricAttributionMetrics
@@ -2478,6 +2523,9 @@ paths:
       x-stackql-method: list_metric_attribution_metrics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.metrics
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListMetricAttributions:
     post:
       operationId: ListMetricAttributions
@@ -2519,6 +2567,9 @@ paths:
       x-stackql-method: list_metric_attributions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.metricAttributions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRecipes:
     post:
       operationId: ListRecipes
@@ -2567,6 +2618,9 @@ paths:
       x-stackql-method: list_recipes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recipes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRecommenders:
     post:
       operationId: ListRecommenders
@@ -2612,6 +2666,9 @@ paths:
       x-stackql-method: list_recommenders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommenders
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSchemas:
     post:
       operationId: ListSchemas
@@ -2652,6 +2709,9 @@ paths:
       x-stackql-method: list_schemas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.schemas
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSolutionVersions:
     post:
       operationId: ListSolutionVersions
@@ -2696,6 +2756,9 @@ paths:
       x-stackql-method: list_solution_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.solutionVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSolutions:
     post:
       operationId: ListSolutions
@@ -2740,6 +2803,9 @@ paths:
       x-stackql-method: list_solutions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.solutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2773,7 +2839,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /StartRecommender:
@@ -2810,7 +2876,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartRecommenderResponse'
-      x-stackql-resource: recommender
+      x-stackql-resource: recommenders
       x-stackql-method: start_recommender
       x-stackql-verb: EXEC
   /StopRecommender:
@@ -2847,7 +2913,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopRecommenderResponse'
-      x-stackql-resource: recommender
+      x-stackql-resource: recommenders
       x-stackql-method: stop_recommender
       x-stackql-verb: EXEC
   /StopSolutionVersionCreation:
@@ -2882,7 +2948,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: solution_version_creation
+      x-stackql-resource: solution_versions
       x-stackql-method: stop_solution_version_creation
       x-stackql-verb: EXEC
   /TagResource:
@@ -2922,7 +2988,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2963,7 +3029,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateCampaign:

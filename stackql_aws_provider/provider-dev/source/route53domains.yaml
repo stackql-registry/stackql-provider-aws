@@ -61,7 +61,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptDomainTransferFromAnotherAwsAccountResponse'
-      x-stackql-resource: domain_transfer_from_another_aws_account
+      x-stackql-resource: domains
       x-stackql-method: accept_domain_transfer_from_another_aws_account
       x-stackql-verb: EXEC
   /AssociateDelegationSignerToDomain:
@@ -104,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateDelegationSignerToDomainResponse'
-      x-stackql-resource: delegation_signer_to_domains
+      x-stackql-resource: domains
       x-stackql-method: associate_delegation_signer_to_domain
       x-stackql-verb: UPDATE
   /CancelDomainTransferToAnotherAwsAccount:
@@ -145,7 +145,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelDomainTransferToAnotherAwsAccountResponse'
-      x-stackql-resource: domain_transfer_to_another_aws_account
+      x-stackql-resource: domains
       x-stackql-method: cancel_domain_transfer_to_another_aws_account
       x-stackql-verb: EXEC
   /CheckDomainAvailability:
@@ -193,7 +193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckDomainAvailabilityResponse'
-      x-stackql-resource: check_domain_availability
+      x-stackql-resource: domains
       x-stackql-method: check_domain_availability
       x-stackql-verb: EXEC
   /CheckDomainTransferability:
@@ -238,7 +238,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckDomainTransferabilityResponse'
-      x-stackql-resource: check_domain_transferability
+      x-stackql-resource: domains
       x-stackql-method: check_domain_transferability
       x-stackql-verb: EXEC
   /DeleteDomain:
@@ -321,7 +321,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteTagsForDomainResponse'
-      x-stackql-resource: tags_for_domains
+      x-stackql-resource: domains
       x-stackql-method: delete_tags_for_domain
       x-stackql-verb: DELETE
   /DisableDomainAutoRenew:
@@ -357,7 +357,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableDomainAutoRenewResponse'
-      x-stackql-resource: domain_auto_renew
+      x-stackql-resource: domains
       x-stackql-method: disable_domain_auto_renew
       x-stackql-verb: EXEC
   /DisableDomainTransferLock:
@@ -397,7 +397,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableDomainTransferLockResponse'
-      x-stackql-resource: domain_transfer_lock
+      x-stackql-resource: domains
       x-stackql-method: disable_domain_transfer_lock
       x-stackql-verb: EXEC
   /DisassociateDelegationSignerFromDomain:
@@ -438,7 +438,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateDelegationSignerFromDomainResponse'
-      x-stackql-resource: delegation_signer_from_domains
+      x-stackql-resource: domains
       x-stackql-method: disassociate_delegation_signer_from_domain
       x-stackql-verb: UPDATE
   /EnableDomainAutoRenew:
@@ -478,7 +478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableDomainAutoRenewResponse'
-      x-stackql-resource: domain_auto_renew
+      x-stackql-resource: domains
       x-stackql-method: enable_domain_auto_renew
       x-stackql-verb: EXEC
   /EnableDomainTransferLock:
@@ -517,7 +517,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableDomainTransferLockResponse'
-      x-stackql-resource: domain_transfer_lock
+      x-stackql-resource: domains
       x-stackql-method: enable_domain_transfer_lock
       x-stackql-verb: EXEC
   /GetContactReachabilityStatus:
@@ -736,6 +736,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Domains
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageMarker
   /ListOperations:
     post:
       operationId: ListOperations
@@ -795,6 +798,9 @@ paths:
       x-stackql-method: list_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Operations
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageMarker
   /ListPrices:
     post:
       operationId: ListPrices
@@ -843,6 +849,9 @@ paths:
       x-stackql-method: list_prices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Prices
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageMarker
   /ListTagsForDomain:
     post:
       operationId: ListTagsForDomain
@@ -877,7 +886,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForDomainResponse'
-      x-stackql-resource: tags_for_domains
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_domain
       x-stackql-verb: SELECT
   /PushDomain:
@@ -914,7 +923,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: push_domain
+      x-stackql-resource: domains
       x-stackql-method: push_domain
       x-stackql-verb: EXEC
   /RegisterDomain:
@@ -1069,7 +1078,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectDomainTransferFromAnotherAwsAccountResponse'
-      x-stackql-resource: domain_transfer_from_another_aws_account
+      x-stackql-resource: domains
       x-stackql-method: reject_domain_transfer_from_another_aws_account
       x-stackql-verb: EXEC
   /RenewDomain:
@@ -1119,7 +1128,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RenewDomainResponse'
-      x-stackql-resource: domain
+      x-stackql-resource: domains
       x-stackql-method: renew_domain
       x-stackql-verb: EXEC
   /ResendContactReachabilityEmail:
@@ -1188,7 +1197,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resend_operation_authorization
+      x-stackql-resource: operations
       x-stackql-method: resend_operation_authorization
       x-stackql-verb: EXEC
   /RetrieveDomainAuthCode:
@@ -1225,7 +1234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveDomainAuthCodeResponse'
-      x-stackql-resource: retrieve_domain_auth_code
+      x-stackql-resource: domains
       x-stackql-method: retrieve_domain_auth_code
       x-stackql-verb: EXEC
   /TransferDomain:
@@ -1341,7 +1350,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransferDomainResponse'
-      x-stackql-resource: transfer_domain
+      x-stackql-resource: domains
       x-stackql-method: transfer_domain
       x-stackql-verb: EXEC
   /TransferDomainToAnotherAwsAccount:
@@ -1393,7 +1402,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransferDomainToAnotherAwsAccountResponse'
-      x-stackql-resource: transfer_domain_to_another_aws_account
+      x-stackql-resource: domains
       x-stackql-method: transfer_domain_to_another_aws_account
       x-stackql-verb: EXEC
   /UpdateDomainContact:
@@ -1448,7 +1457,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDomainContactResponse'
-      x-stackql-resource: domain_contacts
+      x-stackql-resource: domains
       x-stackql-method: update_domain_contact
       x-stackql-verb: UPDATE
   /UpdateDomainContactPrivacy:
@@ -1520,7 +1529,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDomainContactPrivacyResponse'
-      x-stackql-resource: domain_contact_privacies
+      x-stackql-resource: domains
       x-stackql-method: update_domain_contact_privacy
       x-stackql-verb: UPDATE
   /UpdateDomainNameservers:
@@ -1567,7 +1576,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDomainNameserversResponse'
-      x-stackql-resource: domain_nameservers
+      x-stackql-resource: domains
       x-stackql-method: update_domain_nameservers
       x-stackql-verb: UPDATE
   /UpdateTagsForDomain:
@@ -1608,7 +1617,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateTagsForDomainResponse'
-      x-stackql-resource: tags_for_domains
+      x-stackql-resource: domains
       x-stackql-method: update_tags_for_domain
       x-stackql-verb: UPDATE
   /ViewBilling:
@@ -1662,6 +1671,9 @@ paths:
       x-stackql-resource: view_billing
       x-stackql-method: view_billing
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextPageMarker
 components:
   parameters:
     X-Amz-Content-Sha256:

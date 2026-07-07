@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelKeyDeletionResponse'
-      x-stackql-resource: key_deletion
+      x-stackql-resource: keys
       x-stackql-method: cancel_key_deletion
       x-stackql-verb: EXEC
   /ConnectCustomKeyStore:
@@ -129,7 +129,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConnectCustomKeyStoreResponse'
-      x-stackql-resource: connect_custom_key_store
+      x-stackql-resource: custom_key_stores
       x-stackql-method: connect_custom_key_store
       x-stackql-verb: EXEC
   /CreateAlias:
@@ -994,7 +994,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteImportedKeyMaterialResponse'
-      x-stackql-resource: imported_key_materials
+      x-stackql-resource: keys
       x-stackql-method: delete_imported_key_material
       x-stackql-verb: DELETE
   /DeriveSharedSecret:
@@ -1106,7 +1106,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeriveSharedSecretResponse'
-      x-stackql-resource: derive_shared_secret
+      x-stackql-resource: keys
       x-stackql-method: derive_shared_secret
       x-stackql-verb: EXEC
   /DescribeCustomKeyStores:
@@ -1180,6 +1180,9 @@ paths:
       x-stackql-method: describe_custom_key_stores
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CustomKeyStores
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /DescribeKey:
     post:
       operationId: DescribeKey
@@ -1246,6 +1249,7 @@ paths:
       x-stackql-resource: keys
       x-stackql-method: describe_key
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.KeyMetadata
   /DisableKey:
     post:
       operationId: DisableKey
@@ -1282,7 +1286,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: key
+      x-stackql-resource: keys
       x-stackql-method: disable_key
       x-stackql-verb: EXEC
   /DisableKeyRotation:
@@ -1330,7 +1334,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: key_rotation
+      x-stackql-resource: keys
       x-stackql-method: disable_key_rotation
       x-stackql-verb: EXEC
   /DisconnectCustomKeyStore:
@@ -1381,7 +1385,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisconnectCustomKeyStoreResponse'
-      x-stackql-resource: disconnect_custom_key_store
+      x-stackql-resource: custom_key_stores
       x-stackql-method: disconnect_custom_key_store
       x-stackql-verb: EXEC
   /EnableKey:
@@ -1420,7 +1424,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: key
+      x-stackql-resource: keys
       x-stackql-method: enable_key
       x-stackql-verb: EXEC
   /EnableKeyRotation:
@@ -1487,7 +1491,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: key_rotation
+      x-stackql-resource: keys
       x-stackql-method: enable_key_rotation
       x-stackql-verb: EXEC
   /Encrypt:
@@ -1585,7 +1589,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EncryptResponse'
-      x-stackql-resource: encrypt
+      x-stackql-resource: keys
       x-stackql-method: encrypt
       x-stackql-verb: EXEC
   /GenerateDataKey:
@@ -1707,7 +1711,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateDataKeyResponse'
-      x-stackql-resource: data_key
+      x-stackql-resource: keys
       x-stackql-method: generate_data_key
       x-stackql-verb: EXEC
   /GenerateDataKeyPair:
@@ -1830,7 +1834,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateDataKeyPairResponse'
-      x-stackql-resource: data_key_pair
+      x-stackql-resource: keys
       x-stackql-method: generate_data_key_pair
       x-stackql-verb: EXEC
   /GenerateDataKeyPairWithoutPlaintext:
@@ -1922,7 +1926,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateDataKeyPairWithoutPlaintextResponse'
-      x-stackql-resource: data_key_pair_without_plaintext
+      x-stackql-resource: keys
       x-stackql-method: generate_data_key_pair_without_plaintext
       x-stackql-verb: EXEC
   /GenerateDataKeyWithoutPlaintext:
@@ -2019,7 +2023,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateDataKeyWithoutPlaintextResponse'
-      x-stackql-resource: data_key_without_plaintext
+      x-stackql-resource: keys
       x-stackql-method: generate_data_key_without_plaintext
       x-stackql-verb: EXEC
   /GenerateMac:
@@ -2092,7 +2096,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateMacResponse'
-      x-stackql-resource: mac
+      x-stackql-resource: keys
       x-stackql-method: generate_mac
       x-stackql-verb: EXEC
   /GenerateRandom:
@@ -2620,7 +2624,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportKeyMaterialResponse'
-      x-stackql-resource: key_material
+      x-stackql-resource: keys
       x-stackql-method: import_key_material
       x-stackql-verb: EXEC
   /ListAliases:
@@ -2683,6 +2687,9 @@ paths:
       x-stackql-method: list_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Aliases
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListGrants:
     post:
       operationId: ListGrants
@@ -2749,6 +2756,9 @@ paths:
       x-stackql-method: list_grants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Grants
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListKeyPolicies:
     post:
       operationId: ListKeyPolicies
@@ -2797,11 +2807,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListKeyPoliciesResponse'
+                $ref: '#/components/schemas/ListKeyPoliciesOutputDisplay'
       x-stackql-resource: key_policies
       x-stackql-method: list_key_policies
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.PolicyNames
+      x-stackql-responseEnvelope: ListKeyPoliciesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "PolicyNames" -}}{{- $tok := index . "NextMarker" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextMarker": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListKeyRotations:
     post:
       operationId: ListKeyRotations
@@ -2866,6 +2884,9 @@ paths:
       x-stackql-method: list_key_rotations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rotations
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListKeys:
     post:
       operationId: ListKeys
@@ -2911,6 +2932,9 @@ paths:
       x-stackql-method: list_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Keys
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListResourceTags:
     post:
       operationId: ListResourceTags
@@ -2966,6 +2990,9 @@ paths:
       x-stackql-method: list_resource_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /ListRetirableGrants:
     post:
       operationId: ListRetirableGrants
@@ -3032,6 +3059,9 @@ paths:
       x-stackql-method: list_retirable_grants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Grants
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextMarker
   /PutKeyPolicy:
     post:
       operationId: PutKeyPolicy
@@ -3382,7 +3412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReplicateKeyResponse'
-      x-stackql-resource: replicate_key
+      x-stackql-resource: keys
       x-stackql-method: replicate_key
       x-stackql-verb: EXEC
   /RetireGrant:
@@ -3553,7 +3583,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RotateKeyOnDemandResponse'
-      x-stackql-resource: rotate_key_on_demand
+      x-stackql-resource: keys
       x-stackql-method: rotate_key_on_demand
       x-stackql-verb: EXEC
   /ScheduleKeyDeletion:
@@ -3624,7 +3654,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ScheduleKeyDeletionResponse'
-      x-stackql-resource: schedule_key_deletion
+      x-stackql-resource: keys
       x-stackql-method: schedule_key_deletion
       x-stackql-verb: EXEC
   /Sign:
@@ -3736,7 +3766,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignResponse'
-      x-stackql-resource: sign
+      x-stackql-resource: keys
       x-stackql-method: sign
       x-stackql-verb: EXEC
   /TagResource:
@@ -3790,7 +3820,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -3838,7 +3868,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateAlias:
@@ -4087,7 +4117,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: key_descriptions
+      x-stackql-resource: keys
       x-stackql-method: update_key_description
       x-stackql-verb: UPDATE
   /UpdatePrimaryRegion:
@@ -4156,7 +4186,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: primary_regions
+      x-stackql-resource: keys
       x-stackql-method: update_primary_region
       x-stackql-verb: UPDATE
   /Verify:
@@ -4268,7 +4298,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyResponse'
-      x-stackql-resource: verify
+      x-stackql-resource: keys
       x-stackql-method: verify
       x-stackql-verb: EXEC
   /VerifyMac:
@@ -4342,7 +4372,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyMacResponse'
-      x-stackql-resource: mac
+      x-stackql-resource: keys
       x-stackql-method: verify_mac
       x-stackql-verb: EXEC
 components:
@@ -5704,25 +5734,19 @@ components:
           $ref: '#/components/schemas/GrantConstraints'
           description: A list of key-value pairs that must be present in the encryption context of certain subsequent operations
             that the grant allows.
-    ListKeyPoliciesResponse:
+    ListKeyPoliciesRowDisplay:
       type: object
       properties:
-        PolicyNames:
-          $ref: '#/components/schemas/PolicyNameList'
+        policy_name:
+          type: string
           description: A list of key policy names. The only valid value is default.
-        NextMarker:
-          $ref: '#/components/schemas/MarkerType'
-          description: When Truncated is true, this element is present and contains the value to use for the Marker parameter
-            in a subsequent request.
-        Truncated:
-          $ref: '#/components/schemas/BooleanType'
-          description: A flag that indicates whether there are more items in the list. When this value is true, the list in
-            this response is truncated. To get more items, pass the value of the NextMarker element in this response to the
-            Marker parameter in a subsequent request.
-    PolicyNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/PolicyNameType'
+    ListKeyPoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListKeyPoliciesRowDisplay'
     IncludeKeyMaterial:
       type: string
       enum:

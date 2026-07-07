@@ -210,7 +210,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AttachClusterNodeVolumeResponse'
-      x-stackql-resource: cluster_node_volumes
+      x-stackql-resource: cluster_nodes
       x-stackql-method: attach_cluster_node_volume
       x-stackql-verb: UPDATE
   /BatchAddClusterNodes:
@@ -259,7 +259,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAddClusterNodesResponse'
-      x-stackql-resource: batch_add_cluster_nodes
+      x-stackql-resource: cluster_nodes
       x-stackql-method: batch_add_cluster_nodes
       x-stackql-verb: EXEC
   /BatchDeleteClusterNodes:
@@ -309,7 +309,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteClusterNodesResponse'
-      x-stackql-resource: batch_delete_cluster_nodes
+      x-stackql-resource: cluster_nodes
       x-stackql-method: batch_delete_cluster_nodes
       x-stackql-verb: EXEC
   /BatchDescribeModelPackage:
@@ -402,7 +402,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchRebootClusterNodesResponse'
-      x-stackql-resource: batch_reboot_cluster_nodes
+      x-stackql-resource: cluster_nodes
       x-stackql-method: batch_reboot_cluster_nodes
       x-stackql-verb: EXEC
   /BatchReplaceClusterNodes:
@@ -466,7 +466,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchReplaceClusterNodesResponse'
-      x-stackql-resource: batch_replace_cluster_nodes
+      x-stackql-resource: cluster_nodes
       x-stackql-method: batch_replace_cluster_nodes
       x-stackql-verb: EXEC
   /CreateAIBenchmarkJob:
@@ -1865,7 +1865,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: edge_deployment_stages
+      x-stackql-resource: edge_deployment_plans
       x-stackql-method: create_edge_deployment_stage
       x-stackql-verb: INSERT
   /CreateEdgePackagingJob:
@@ -2432,9 +2432,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHubContentPresignedUrlsResponse'
-      x-stackql-resource: hub_content_presigned_urls
+      x-stackql-resource: hub_contents
       x-stackql-method: create_hub_content_presigned_urls
       x-stackql-verb: INSERT
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /CreateHubContentReference:
     post:
       operationId: CreateHubContentReference
@@ -2481,7 +2484,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateHubContentReferenceResponse'
-      x-stackql-resource: hub_content_references
+      x-stackql-resource: hub_contents
       x-stackql-method: create_hub_content_reference
       x-stackql-verb: INSERT
   /CreateHumanTaskUi:
@@ -4269,7 +4272,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePartnerAppPresignedUrlResponse'
-      x-stackql-resource: partner_app_presigned_urls
+      x-stackql-resource: partner_apps
       x-stackql-method: create_partner_app_presigned_url
       x-stackql-verb: INSERT
   /CreatePipeline:
@@ -4403,7 +4406,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePresignedDomainUrlResponse'
-      x-stackql-resource: presigned_domain_urls
+      x-stackql-resource: user_profiles
       x-stackql-method: create_presigned_domain_url
       x-stackql-verb: INSERT
   /CreatePresignedMlflowAppUrl:
@@ -4541,7 +4544,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePresignedNotebookInstanceUrlOutput'
-      x-stackql-resource: presigned_notebook_instance_urls
+      x-stackql-resource: notebook_instances
       x-stackql-method: create_presigned_notebook_instance_url
       x-stackql-verb: INSERT
   /CreateProcessingJob:
@@ -6184,7 +6187,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: edge_deployment_stages
+      x-stackql-resource: edge_deployment_plans
       x-stackql-method: delete_edge_deployment_stage
       x-stackql-verb: DELETE
   /DeleteEndpoint:
@@ -6483,7 +6486,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: hub_content_references
+      x-stackql-resource: hub_contents
       x-stackql-method: delete_hub_content_reference
       x-stackql-verb: DELETE
   /DeleteHumanTaskUi:
@@ -8147,6 +8150,7 @@ paths:
       x-stackql-resource: cluster_events
       x-stackql-method: describe_cluster_event
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EventDetails
   /DescribeClusterNode:
     post:
       operationId: DescribeClusterNode
@@ -8192,6 +8196,7 @@ paths:
       x-stackql-resource: cluster_nodes
       x-stackql-method: describe_cluster_node
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.NodeDetails
   /DescribeClusterSchedulerConfig:
     post:
       operationId: DescribeClusterSchedulerConfig
@@ -10140,6 +10145,7 @@ paths:
       x-stackql-resource: subscribed_workteams
       x-stackql-method: describe_subscribed_workteam
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SubscribedWorkteam
   /DescribeTrainingJob:
     post:
       operationId: DescribeTrainingJob
@@ -10259,6 +10265,9 @@ paths:
       x-stackql-method: describe_training_plan_extension_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrainingPlanExtensions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeTransformJob:
     post:
       operationId: DescribeTransformJob
@@ -10446,6 +10455,7 @@ paths:
       x-stackql-resource: workforces
       x-stackql-method: describe_workforce
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Workforce
   /DescribeWorkteam:
     post:
       operationId: DescribeWorkteam
@@ -10483,6 +10493,7 @@ paths:
       x-stackql-resource: workteams
       x-stackql-method: describe_workteam
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Workteam
   /DetachClusterNodeVolume:
     post:
       operationId: DetachClusterNodeVolume
@@ -10528,7 +10539,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DetachClusterNodeVolumeResponse'
-      x-stackql-resource: cluster_node_volumes
+      x-stackql-resource: cluster_nodes
       x-stackql-method: detach_cluster_node_volume
       x-stackql-verb: UPDATE
   /DisableSagemakerServicecatalogPortfolio:
@@ -10981,7 +10992,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportHubContentResponse'
-      x-stackql-resource: hub_content
+      x-stackql-resource: hubs
       x-stackql-method: import_hub_content
       x-stackql-verb: EXEC
   /ListAIBenchmarkJobs:
@@ -11042,6 +11053,9 @@ paths:
       x-stackql-method: list_ai_benchmark_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AIBenchmarkJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAIRecommendationJobs:
     post:
       operationId: ListAIRecommendationJobs
@@ -11100,6 +11114,9 @@ paths:
       x-stackql-method: list_ai_recommendation_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AIRecommendationJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAIWorkloadConfigs:
     post:
       operationId: ListAIWorkloadConfigs
@@ -11156,6 +11173,9 @@ paths:
       x-stackql-method: list_ai_workload_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AIWorkloadConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListActions:
     post:
       operationId: ListActions
@@ -11213,6 +11233,9 @@ paths:
       x-stackql-method: list_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ActionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAlgorithms:
     post:
       operationId: ListAlgorithms
@@ -11268,6 +11291,9 @@ paths:
       x-stackql-method: list_algorithms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AlgorithmSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAliases:
     post:
       operationId: ListAliases
@@ -11314,11 +11340,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAliasesResponse'
+                $ref: '#/components/schemas/ListAliasesOutputDisplay'
       x-stackql-resource: aliases
       x-stackql-method: list_aliases
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.SageMakerImageVersionAliases
+      x-stackql-responseEnvelope: ListAliasesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SageMakerImageVersionAliases" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"sage_maker_image_version_alias":
+        {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAppImageConfigs:
     post:
       operationId: ListAppImageConfigs
@@ -11382,6 +11416,9 @@ paths:
       x-stackql-method: list_app_image_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AppImageConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApps:
     post:
       operationId: ListApps
@@ -11442,6 +11479,9 @@ paths:
       x-stackql-method: list_apps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Apps
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListArtifacts:
     post:
       operationId: ListArtifacts
@@ -11499,6 +11539,9 @@ paths:
       x-stackql-method: list_artifacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ArtifactSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAssociations:
     post:
       operationId: ListAssociations
@@ -11566,6 +11609,9 @@ paths:
       x-stackql-method: list_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssociationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAutoMLJobs:
     post:
       operationId: ListAutoMLJobs
@@ -11629,6 +11675,9 @@ paths:
       x-stackql-method: list_auto_ml_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AutoMLJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCandidatesForAutoMLJob:
     post:
       operationId: ListCandidatesForAutoMLJob
@@ -11685,6 +11734,9 @@ paths:
       x-stackql-method: list_candidates_for_auto_ml_job
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Candidates
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListClusterEvents:
     post:
       operationId: ListClusterEvents
@@ -11757,6 +11809,9 @@ paths:
       x-stackql-method: list_cluster_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListClusterNodes:
     post:
       operationId: ListClusterNodes
@@ -11830,6 +11885,9 @@ paths:
       x-stackql-method: list_cluster_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterNodeSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListClusterSchedulerConfigs:
     post:
       operationId: ListClusterSchedulerConfigs
@@ -11894,6 +11952,9 @@ paths:
       x-stackql-method: list_cluster_scheduler_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterSchedulerConfigSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListClusters:
     post:
       operationId: ListClusters
@@ -11964,6 +12025,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCodeRepositories:
     post:
       operationId: ListCodeRepositories
@@ -12025,6 +12089,9 @@ paths:
       x-stackql-method: list_code_repositories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CodeRepositorySummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCompilationJobs:
     post:
       operationId: ListCompilationJobs
@@ -12089,6 +12156,9 @@ paths:
       x-stackql-method: list_compilation_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CompilationJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListComputeQuotas:
     post:
       operationId: ListComputeQuotas
@@ -12153,6 +12223,9 @@ paths:
       x-stackql-method: list_compute_quotas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ComputeQuotaSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListContexts:
     post:
       operationId: ListContexts
@@ -12210,6 +12283,9 @@ paths:
       x-stackql-method: list_contexts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContextSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDataQualityJobDefinitions:
     post:
       operationId: ListDataQualityJobDefinitions
@@ -12270,6 +12346,9 @@ paths:
       x-stackql-method: list_data_quality_job_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobDefinitionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDeviceFleets:
     post:
       operationId: ListDeviceFleets
@@ -12329,6 +12408,9 @@ paths:
       x-stackql-method: list_device_fleets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DeviceFleetSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDevices:
     post:
       operationId: ListDevices
@@ -12376,6 +12458,9 @@ paths:
       x-stackql-method: list_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DeviceSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDomains:
     post:
       operationId: ListDomains
@@ -12419,6 +12504,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Domains
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEdgeDeploymentPlans:
     post:
       operationId: ListEdgeDeploymentPlans
@@ -12482,6 +12570,9 @@ paths:
       x-stackql-method: list_edge_deployment_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EdgeDeploymentPlanSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEdgePackagingJobs:
     post:
       operationId: ListEdgePackagingJobs
@@ -12547,6 +12638,9 @@ paths:
       x-stackql-method: list_edge_packaging_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EdgePackagingJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEndpointConfigs:
     post:
       operationId: ListEndpointConfigs
@@ -12603,6 +12697,9 @@ paths:
       x-stackql-method: list_endpoint_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EndpointConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEndpoints:
     post:
       operationId: ListEndpoints
@@ -12668,6 +12765,9 @@ paths:
       x-stackql-method: list_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Endpoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListExperiments:
     post:
       operationId: ListExperiments
@@ -12720,6 +12820,9 @@ paths:
       x-stackql-method: list_experiments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ExperimentSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFeatureGroups:
     post:
       operationId: ListFeatureGroups
@@ -12779,6 +12882,9 @@ paths:
       x-stackql-method: list_feature_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FeatureGroupSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListFlowDefinitions:
     post:
       operationId: ListFlowDefinitions
@@ -12830,6 +12936,9 @@ paths:
       x-stackql-method: list_flow_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FlowDefinitionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHubContentVersions:
     post:
       operationId: ListHubContentVersions
@@ -13075,6 +13184,9 @@ paths:
       x-stackql-method: list_human_task_uis
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HumanTaskUiSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHyperParameterTuningJobs:
     post:
       operationId: ListHyperParameterTuningJobs
@@ -13140,6 +13252,9 @@ paths:
       x-stackql-method: list_hyper_parameter_tuning_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HyperParameterTuningJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListImageVersions:
     post:
       operationId: ListImageVersions
@@ -13203,6 +13318,9 @@ paths:
       x-stackql-method: list_image_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ImageVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListImages:
     post:
       operationId: ListImages
@@ -13264,6 +13382,9 @@ paths:
       x-stackql-method: list_images
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Images
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInferenceComponents:
     post:
       operationId: ListInferenceComponents
@@ -13341,6 +13462,9 @@ paths:
       x-stackql-method: list_inference_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InferenceComponents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInferenceExperiments:
     post:
       operationId: ListInferenceExperiments
@@ -13407,6 +13531,9 @@ paths:
       x-stackql-method: list_inference_experiments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InferenceExperiments
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInferenceRecommendationsJobSteps:
     post:
       operationId: ListInferenceRecommendationsJobSteps
@@ -13460,6 +13587,9 @@ paths:
       x-stackql-method: list_inference_recommendations_job_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Steps
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInferenceRecommendationsJobs:
     post:
       operationId: ListInferenceRecommendationsJobs
@@ -13531,6 +13661,9 @@ paths:
       x-stackql-method: list_inference_recommendations_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InferenceRecommendationsJobs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLabelingJobs:
     post:
       operationId: ListLabelingJobs
@@ -13595,6 +13728,9 @@ paths:
       x-stackql-method: list_labeling_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LabelingJobSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLabelingJobsForWorkteam:
     post:
       operationId: ListLabelingJobsForWorkteam
@@ -13654,6 +13790,9 @@ paths:
       x-stackql-method: list_labeling_jobs_for_workteam
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LabelingJobSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListLineageGroups:
     post:
       operationId: ListLineageGroups
@@ -13706,6 +13845,9 @@ paths:
       x-stackql-method: list_lineage_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LineageGroupSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMlflowApps:
     post:
       operationId: ListMlflowApps
@@ -13774,6 +13916,9 @@ paths:
       x-stackql-method: list_mlflow_apps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Summaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMlflowTrackingServers:
     post:
       operationId: ListMlflowTrackingServers
@@ -13838,6 +13983,9 @@ paths:
       x-stackql-method: list_mlflow_tracking_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrackingServerSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelBiasJobDefinitions:
     post:
       operationId: ListModelBiasJobDefinitions
@@ -13895,6 +14043,9 @@ paths:
       x-stackql-method: list_model_bias_job_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobDefinitionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelCardExportJobs:
     post:
       operationId: ListModelCardExportJobs
@@ -13960,6 +14111,9 @@ paths:
       x-stackql-method: list_model_card_export_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ModelCardExportJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelCardVersions:
     post:
       operationId: ListModelCardVersions
@@ -14020,6 +14174,9 @@ paths:
       x-stackql-method: list_model_card_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ModelCardVersionSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelCards:
     post:
       operationId: ListModelCards
@@ -14077,6 +14234,9 @@ paths:
       x-stackql-method: list_model_cards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ModelCardSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelExplainabilityJobDefinitions:
     post:
       operationId: ListModelExplainabilityJobDefinitions
@@ -14134,6 +14294,9 @@ paths:
       x-stackql-method: list_model_explainability_job_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobDefinitionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelMetadata:
     post:
       operationId: ListModelMetadata
@@ -14179,6 +14342,9 @@ paths:
       x-stackql-method: list_model_metadata
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ModelMetadataSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelPackageGroups:
     post:
       operationId: ListModelPackageGroups
@@ -14239,6 +14405,9 @@ paths:
       x-stackql-method: list_model_package_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ModelPackageGroupSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelPackages:
     post:
       operationId: ListModelPackages
@@ -14305,6 +14474,9 @@ paths:
       x-stackql-method: list_model_packages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ModelPackageSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModelQualityJobDefinitions:
     post:
       operationId: ListModelQualityJobDefinitions
@@ -14367,6 +14539,9 @@ paths:
       x-stackql-method: list_model_quality_job_definitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.JobDefinitionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListModels:
     post:
       operationId: ListModels
@@ -14423,6 +14598,9 @@ paths:
       x-stackql-method: list_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Models
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMonitoringAlertHistory:
     post:
       operationId: ListMonitoringAlertHistory
@@ -14483,6 +14661,9 @@ paths:
       x-stackql-method: list_monitoring_alert_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MonitoringAlertHistory
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMonitoringAlerts:
     post:
       operationId: ListMonitoringAlerts
@@ -14527,6 +14708,9 @@ paths:
       x-stackql-method: list_monitoring_alerts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MonitoringAlertSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMonitoringExecutions:
     post:
       operationId: ListMonitoringExecutions
@@ -14606,6 +14790,9 @@ paths:
       x-stackql-method: list_monitoring_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MonitoringExecutionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListMonitoringSchedules:
     post:
       operationId: ListMonitoringSchedules
@@ -14679,6 +14866,9 @@ paths:
       x-stackql-method: list_monitoring_schedules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MonitoringScheduleSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListNotebookInstanceLifecycleConfigs:
     post:
       operationId: ListNotebookInstanceLifecycleConfigs
@@ -14745,6 +14935,9 @@ paths:
       x-stackql-method: list_notebook_instance_lifecycle_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotebookInstanceLifecycleConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListNotebookInstances:
     post:
       operationId: ListNotebookInstances
@@ -14826,6 +15019,9 @@ paths:
       x-stackql-method: list_notebook_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotebookInstances
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOptimizationJobs:
     post:
       operationId: ListOptimizationJobs
@@ -14896,6 +15092,9 @@ paths:
       x-stackql-method: list_optimization_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OptimizationJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPartnerApps:
     post:
       operationId: ListPartnerApps
@@ -14939,6 +15138,9 @@ paths:
       x-stackql-method: list_partner_apps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Summaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPipelineExecutionSteps:
     post:
       operationId: ListPipelineExecutionSteps
@@ -14985,6 +15187,9 @@ paths:
       x-stackql-method: list_pipeline_execution_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineExecutionSteps
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPipelineExecutions:
     post:
       operationId: ListPipelineExecutions
@@ -15041,6 +15246,9 @@ paths:
       x-stackql-method: list_pipeline_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineExecutionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPipelineParametersForExecution:
     post:
       operationId: ListPipelineParametersForExecution
@@ -15085,6 +15293,9 @@ paths:
       x-stackql-method: list_pipeline_parameters_for_execution
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineParameters
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPipelineVersions:
     post:
       operationId: ListPipelineVersions
@@ -15138,6 +15349,9 @@ paths:
       x-stackql-method: list_pipeline_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineVersionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPipelines:
     post:
       operationId: ListPipelines
@@ -15192,6 +15406,9 @@ paths:
       x-stackql-method: list_pipelines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProcessingJobs:
     post:
       operationId: ListProcessingJobs
@@ -15256,6 +15473,9 @@ paths:
       x-stackql-method: list_processing_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProcessingJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListProjects:
     post:
       operationId: ListProjects
@@ -15364,6 +15584,9 @@ paths:
       x-stackql-method: list_resource_catalogs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceCatalogs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSpaces:
     post:
       operationId: ListSpaces
@@ -15419,6 +15642,9 @@ paths:
       x-stackql-method: list_spaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Spaces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStageDevices:
     post:
       operationId: ListStageDevices
@@ -15469,6 +15695,9 @@ paths:
       x-stackql-method: list_stage_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DeviceDeploymentSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStudioLifecycleConfigs:
     post:
       operationId: ListStudioLifecycleConfigs
@@ -15535,6 +15764,9 @@ paths:
       x-stackql-method: list_studio_lifecycle_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StudioLifecycleConfigs
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSubscribedWorkteams:
     post:
       operationId: ListSubscribedWorkteams
@@ -15579,6 +15811,9 @@ paths:
       x-stackql-method: list_subscribed_workteams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SubscribedWorkteams
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTags:
     post:
       operationId: ListTags
@@ -15623,6 +15858,9 @@ paths:
       x-stackql-method: list_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTrainingJobs:
     post:
       operationId: ListTrainingJobs
@@ -15701,6 +15939,9 @@ paths:
       x-stackql-method: list_training_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrainingJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTrainingJobsForHyperParameterTuningJob:
     post:
       operationId: ListTrainingJobsForHyperParameterTuningJob
@@ -15757,6 +15998,9 @@ paths:
       x-stackql-method: list_training_jobs_for_hyper_parameter_tuning_job
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrainingJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTrainingPlans:
     post:
       operationId: ListTrainingPlans
@@ -15810,6 +16054,9 @@ paths:
       x-stackql-method: list_training_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrainingPlanSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTransformJobs:
     post:
       operationId: ListTransformJobs
@@ -15874,6 +16121,9 @@ paths:
       x-stackql-method: list_transform_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TransformJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTrialComponents:
     post:
       operationId: ListTrialComponents
@@ -15939,6 +16189,9 @@ paths:
       x-stackql-method: list_trial_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrialComponentSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTrials:
     post:
       operationId: ListTrials
@@ -15999,6 +16252,9 @@ paths:
       x-stackql-method: list_trials
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrialSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListUltraServersByReservedCapacity:
     post:
       operationId: ListUltraServersByReservedCapacity
@@ -16043,6 +16299,9 @@ paths:
       x-stackql-method: list_ultra_servers_by_reserved_capacity
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UltraServers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListUserProfiles:
     post:
       operationId: ListUserProfiles
@@ -16098,6 +16357,9 @@ paths:
       x-stackql-method: list_user_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserProfiles
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkforces:
     post:
       operationId: ListWorkforces
@@ -16146,6 +16408,9 @@ paths:
       x-stackql-method: list_workforces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Workforces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkteams:
     post:
       operationId: ListWorkteams
@@ -16196,6 +16461,9 @@ paths:
       x-stackql-method: list_workteams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Workteams
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /PutModelPackageGroupPolicy:
     post:
       operationId: PutModelPackageGroupPolicy
@@ -16428,7 +16696,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetryPipelineExecutionResponse'
-      x-stackql-resource: retry_pipeline_execution
+      x-stackql-resource: pipeline_executions
       x-stackql-method: retry_pipeline_execution
       x-stackql-verb: EXEC
   /Search:
@@ -16500,6 +16768,9 @@ paths:
       x-stackql-resource: search
       x-stackql-method: search
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /SearchTrainingPlanOfferings:
     post:
       operationId: SearchTrainingPlanOfferings
@@ -16617,7 +16888,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendPipelineExecutionStepFailureResponse'
-      x-stackql-resource: pipeline_execution_step_failure
+      x-stackql-resource: pipeline_execution_steps
       x-stackql-method: send_pipeline_execution_step_failure
       x-stackql-verb: EXEC
   /SendPipelineExecutionStepSuccess:
@@ -16662,7 +16933,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendPipelineExecutionStepSuccessResponse'
-      x-stackql-resource: pipeline_execution_step_success
+      x-stackql-resource: pipeline_execution_steps
       x-stackql-method: send_pipeline_execution_step_success
       x-stackql-verb: EXEC
   /StartClusterHealthCheck:
@@ -16705,7 +16976,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartClusterHealthCheckResponse'
-      x-stackql-resource: cluster_health_check
+      x-stackql-resource: clusters
       x-stackql-method: start_cluster_health_check
       x-stackql-verb: EXEC
   /StartEdgeDeploymentStage:
@@ -16741,7 +17012,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: edge_deployment_stage
+      x-stackql-resource: edge_deployment_plans
       x-stackql-method: start_edge_deployment_stage
       x-stackql-verb: EXEC
   /StartInferenceExperiment:
@@ -16846,7 +17117,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: monitoring_schedule
+      x-stackql-resource: monitoring_schedules
       x-stackql-method: start_monitoring_schedule
       x-stackql-verb: EXEC
   /StartNotebookInstance:
@@ -16880,7 +17151,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: notebook_instance
+      x-stackql-resource: notebook_instances
       x-stackql-method: start_notebook_instance
       x-stackql-verb: EXEC
   /StartPipelineExecution:
@@ -16943,7 +17214,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPipelineExecutionResponse'
-      x-stackql-resource: pipeline_execution
+      x-stackql-resource: pipelines
       x-stackql-method: start_pipeline_execution
       x-stackql-verb: EXEC
   /StartSession:
@@ -17018,7 +17289,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopAIBenchmarkJobResponse'
-      x-stackql-resource: ai_benchmark_job
+      x-stackql-resource: ai_benchmark_jobs
       x-stackql-method: stop_ai_benchmark_job
       x-stackql-verb: EXEC
   /StopAIRecommendationJob:
@@ -17054,7 +17325,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopAIRecommendationJobResponse'
-      x-stackql-resource: ai_recommendation_job
+      x-stackql-resource: ai_recommendation_jobs
       x-stackql-method: stop_ai_recommendation_job
       x-stackql-verb: EXEC
   /StopAutoMLJob:
@@ -17086,7 +17357,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: auto_ml_job
+      x-stackql-resource: auto_ml_jobs
       x-stackql-method: stop_auto_ml_job
       x-stackql-verb: EXEC
   /StopCompilationJob:
@@ -17121,7 +17392,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: compilation_job
+      x-stackql-resource: compilation_jobs
       x-stackql-method: stop_compilation_job
       x-stackql-verb: EXEC
   /StopEdgeDeploymentStage:
@@ -17157,7 +17428,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: edge_deployment_stage
+      x-stackql-resource: edge_deployment_plans
       x-stackql-method: stop_edge_deployment_stage
       x-stackql-verb: EXEC
   /StopEdgePackagingJob:
@@ -17189,7 +17460,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: edge_packaging_job
+      x-stackql-resource: edge_packaging_jobs
       x-stackql-method: stop_edge_packaging_job
       x-stackql-verb: EXEC
   /StopHyperParameterTuningJob:
@@ -17224,7 +17495,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: hyper_parameter_tuning_job
+      x-stackql-resource: hyper_parameter_tuning_jobs
       x-stackql-method: stop_hyper_parameter_tuning_job
       x-stackql-verb: EXEC
   /StopInferenceExperiment:
@@ -17343,7 +17614,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: labeling_job
+      x-stackql-resource: labeling_jobs
       x-stackql-method: stop_labeling_job
       x-stackql-verb: EXEC
   /StopMlflowTrackingServer:
@@ -17411,7 +17682,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: monitoring_schedule
+      x-stackql-resource: monitoring_schedules
       x-stackql-method: stop_monitoring_schedule
       x-stackql-verb: EXEC
   /StopNotebookInstance:
@@ -17447,7 +17718,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: notebook_instance
+      x-stackql-resource: notebook_instances
       x-stackql-method: stop_notebook_instance
       x-stackql-verb: EXEC
   /StopOptimizationJob:
@@ -17479,7 +17750,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: optimization_job
+      x-stackql-resource: optimization_jobs
       x-stackql-method: stop_optimization_job
       x-stackql-verb: EXEC
   /StopPipelineExecution:
@@ -17529,7 +17800,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPipelineExecutionResponse'
-      x-stackql-resource: pipeline_execution
+      x-stackql-resource: pipelines
       x-stackql-method: stop_pipeline_execution
       x-stackql-verb: EXEC
   /StopProcessingJob:
@@ -17561,7 +17832,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: processing_job
+      x-stackql-resource: processing_jobs
       x-stackql-method: stop_processing_job
       x-stackql-verb: EXEC
   /StopTrainingJob:
@@ -17596,7 +17867,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: training_job
+      x-stackql-resource: training_jobs
       x-stackql-method: stop_training_job
       x-stackql-verb: EXEC
   /StopTransformJob:
@@ -17630,7 +17901,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: transform_job
+      x-stackql-resource: transform_jobs
       x-stackql-method: stop_transform_job
       x-stackql-verb: EXEC
   /UpdateAction:
@@ -17943,7 +18214,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateClusterSoftwareResponse'
-      x-stackql-resource: cluster_softwares
+      x-stackql-resource: clusters
       x-stackql-method: update_cluster_software
       x-stackql-verb: UPDATE
   /UpdateCodeRepository:
@@ -18351,7 +18622,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEndpointWeightsAndCapacitiesOutput'
-      x-stackql-resource: endpoint_weights_and_capacities
+      x-stackql-resource: endpoints
       x-stackql-method: update_endpoint_weights_and_capacities
       x-stackql-verb: UPDATE
   /UpdateExperiment:
@@ -18665,7 +18936,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateHubContentReferenceResponse'
-      x-stackql-resource: hub_content_references
+      x-stackql-resource: hub_contents
       x-stackql-method: update_hub_content_reference
       x-stackql-verb: UPDATE
   /UpdateImage:
@@ -18883,7 +19154,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateInferenceComponentRuntimeConfigOutput'
-      x-stackql-resource: inference_component_runtime_configs
+      x-stackql-resource: inference_components
       x-stackql-method: update_inference_component_runtime_config
       x-stackql-verb: UPDATE
   /UpdateInferenceExperiment:
@@ -42991,15 +43262,19 @@ components:
       - AlgorithmArn
       - CreationTime
       - AlgorithmStatus
-    ListAliasesResponse:
+    ListAliasesRowDisplay:
       type: object
       properties:
-        SageMakerImageVersionAliases:
-          $ref: '#/components/schemas/SageMakerImageVersionAliases'
+        sage_maker_image_version_alias:
+          type: string
           description: A list of SageMaker AI image version aliases.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token for getting the next set of aliases, if more aliases exist.
+    ListAliasesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAliasesRowDisplay'
     AppImageConfigSortKey:
       type: string
       enum:

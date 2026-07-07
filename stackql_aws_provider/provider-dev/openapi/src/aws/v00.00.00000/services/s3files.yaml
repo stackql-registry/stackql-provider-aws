@@ -1382,6 +1382,14 @@ components:
             objectKey: $.accessPoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_access_point:
           operation:
             $ref: "#/paths/~1access-points~1{access_point_id}/delete"
@@ -1427,6 +1435,14 @@ components:
             objectKey: $.fileSystems
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_file_system:
           operation:
             $ref: "#/paths/~1file-systems~1{file_system_id}/delete"
@@ -1474,6 +1490,14 @@ components:
             objectKey: $.mountTargets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_mount_target:
           operation:
             $ref: "#/paths/~1mount-targets~1{mount_target_id}/delete"
@@ -1572,10 +1596,10 @@ components:
         replace:
           - $ref: "#/components/x-stackQL-resources/synchronization_configurations/methods/put_synchronization_configuration"
         delete: []
-    tags_for_resources:
-      id: aws.s3files.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.s3files.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1586,17 +1610,14 @@ components:
             objectKey: $.tags
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.s3files.resources
-      name: resources
-      title: resources
-      methods:
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         tag_resource:
           operation:
             $ref: "#/paths/~1resource-tags~1{resource_id}/post"
@@ -1615,9 +1636,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

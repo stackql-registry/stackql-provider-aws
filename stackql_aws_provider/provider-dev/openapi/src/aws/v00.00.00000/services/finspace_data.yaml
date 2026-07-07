@@ -2061,10 +2061,10 @@ components:
           $ref: "#/components/schemas/UserId"
           description: The unique identifier of the updated user.
   x-stackQL-resources:
-    user_to_permission_groups:
-      id: aws.finspace_data.user_to_permission_groups
-      name: user_to_permission_groups
-      title: user_to_permission_groups
+    permission_groups:
+      id: aws.finspace_data.permission_groups
+      name: permission_groups
+      title: permission_groups
       methods:
         associate_user_to_permission_group:
           operation:
@@ -2077,31 +2077,77 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_to_permission_groups/methods/associate_user_to_permission_group"
-        delete: []
-    user_from_permission_groups:
-      id: aws.finspace_data.user_from_permission_groups
-      name: user_from_permission_groups
-      title: user_from_permission_groups
-      methods:
         disassociate_user_from_permission_group:
           operation:
             $ref: "#/paths/~1permission-group~1{permission_group_id}~1users~1{user_id}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        create_permission_group:
+          operation:
+            $ref: "#/paths/~1permission-group/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_permission_groups:
+          operation:
+            $ref: "#/paths/~1permission-group/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.permissionGroups
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        delete_permission_group:
+          operation:
+            $ref: "#/paths/~1permission-group~1{permission_group_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        get_permission_group:
+          operation:
+            $ref: "#/paths/~1permission-group~1{permission_group_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.permissionGroup
+        update_permission_group:
+          operation:
+            $ref: "#/paths/~1permission-group~1{permission_group_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/list_permission_groups"
+          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/get_permission_group"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/create_permission_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/user_from_permission_groups/methods/disassociate_user_from_permission_group"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/associate_user_to_permission_group"
+          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/update_permission_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/delete_permission_group"
     changesets:
       id: aws.finspace_data.changesets
       name: changesets
@@ -2127,6 +2173,14 @@ components:
             objectKey: $.changesets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_changeset:
           operation:
             $ref: "#/paths/~1datasets~1{dataset_id}~1changesetsv2~1{changeset_id}/get"
@@ -2178,6 +2232,14 @@ components:
             objectKey: $.dataViews
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         get_data_view:
           operation:
             $ref: "#/paths/~1datasets~1{dataset_id}~1dataviewsv2~1{dataview_id}/get"
@@ -2217,6 +2279,14 @@ components:
             objectKey: $.datasets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_dataset:
           operation:
             $ref: "#/paths/~1datasetsv2~1{dataset_id}/delete"
@@ -2252,66 +2322,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/datasets/methods/update_dataset"
         delete:
           - $ref: "#/components/x-stackQL-resources/datasets/methods/delete_dataset"
-    permission_groups:
-      id: aws.finspace_data.permission_groups
-      name: permission_groups
-      title: permission_groups
-      methods:
-        create_permission_group:
-          operation:
-            $ref: "#/paths/~1permission-group/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_permission_groups:
-          operation:
-            $ref: "#/paths/~1permission-group/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.permissionGroups
-          request:
-            nativeCasing: pascal
-        delete_permission_group:
-          operation:
-            $ref: "#/paths/~1permission-group~1{permission_group_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        get_permission_group:
-          operation:
-            $ref: "#/paths/~1permission-group~1{permission_group_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_permission_group:
-          operation:
-            $ref: "#/paths/~1permission-group~1{permission_group_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/list_permission_groups"
-          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/get_permission_group"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/create_permission_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/update_permission_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/permission_groups/methods/delete_permission_group"
     users:
       id: aws.finspace_data.users
       name: users
@@ -2337,6 +2347,36 @@ components:
             objectKey: $.users
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        disable_user:
+          operation:
+            $ref: "#/paths/~1user~1{user_id}~1disable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_user:
+          operation:
+            $ref: "#/paths/~1user~1{user_id}~1enable/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_user:
           operation:
             $ref: "#/paths/~1user~1{user_id}/get"
@@ -2346,6 +2386,17 @@ components:
         update_user:
           operation:
             $ref: "#/paths/~1user~1{user_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reset_user_password:
+          operation:
+            $ref: "#/paths/~1user~1{user_id}~1password/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json

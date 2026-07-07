@@ -687,7 +687,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListChannelsResponse"
+                $ref: "#/components/schemas/ListChannelsOutputDisplay"
   /channels/list-managed-notification-channel-associations:
     get:
       operationId: ListManagedNotificationChannelAssociations
@@ -1057,7 +1057,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListOrganizationalUnitsResponse"
+                $ref: "#/components/schemas/ListOrganizationalUnitsOutputDisplay"
   /tags/{arn}:
     get:
       operationId: ListTagsForResource
@@ -2013,21 +2013,19 @@ components:
       minLength: 1
       maxLength: 4096
       pattern: "[\\w+-/=]+"
-    ListChannelsResponse:
+    ListChannelsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: A pagination token. If a non-null pagination token is returned in a result, pass its value in another request to retrieve more entries.
-        channels:
-          $ref: "#/components/schemas/Channels"
+        channel:
+          type: string
           description: A list of Channels.
-      required:
-        - channels
-    Channels:
-      type: array
-      items:
-        $ref: "#/components/schemas/ChannelArn"
+    ListChannelsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListChannelsRowDisplay"
     ListEventRulesRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -2632,21 +2630,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListOrganizationalUnitsResponse:
+    ListOrganizationalUnitsRowDisplay:
       type: object
       properties:
-        organizationalUnits:
-          $ref: "#/components/schemas/OrganizationalUnits"
+        organizational_unit:
+          type: string
           description: The list of organizational units that match the specified criteria.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use for the next page of results. If there are no additional results, this value is null.
-      required:
-        - organizationalUnits
-    OrganizationalUnits:
-      type: array
-      items:
-        $ref: "#/components/schemas/OrganizationalUnitId"
+    ListOrganizationalUnitsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListOrganizationalUnitsRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -2726,9 +2722,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        associate_managed_notification_additional_channel:
+          operation:
+            $ref: "#/paths/~1channels~1associate-managed-notification~1{channel_arn}/put"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         disassociate_channel:
           operation:
             $ref: "#/paths/~1channels~1disassociate~1{arn}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        disassociate_managed_notification_additional_channel:
+          operation:
+            $ref: "#/paths/~1channels~1disassociate-managed-notification~1{channel_arn}/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2743,20 +2761,35 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.channels
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListChannelsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "channels" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"channel": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/list_channels"
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/channels/methods/associate_channel"
+          - $ref: "#/components/x-stackQL-resources/channels/methods/associate_managed_notification_additional_channel"
         delete: []
-    managed_notification_account_contacts:
-      id: aws.notifications.managed_notification_account_contacts
-      name: managed_notification_account_contacts
-      title: managed_notification_account_contacts
+    managed_notification_configurations:
+      id: aws.notifications.managed_notification_configurations
+      name: managed_notification_configurations
+      title: managed_notification_configurations
       methods:
         associate_managed_notification_account_contact:
           operation:
@@ -2780,44 +2813,36 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/managed_notification_account_contacts/methods/associate_managed_notification_account_contact"
-        delete: []
-    managed_notification_additional_channels:
-      id: aws.notifications.managed_notification_additional_channels
-      name: managed_notification_additional_channels
-      title: managed_notification_additional_channels
-      methods:
-        associate_managed_notification_additional_channel:
+        get_managed_notification_configuration:
           operation:
-            $ref: "#/paths/~1channels~1associate-managed-notification~1{channel_arn}/put"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        disassociate_managed_notification_additional_channel:
-          operation:
-            $ref: "#/paths/~1channels~1disassociate-managed-notification~1{channel_arn}/put"
+            $ref: "#/paths/~1managed-notification-configurations~1{arn}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        list_managed_notification_configurations:
+          operation:
+            $ref: "#/paths/~1managed-notification-configurations/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.managedNotificationConfigurations
           request:
             nativeCasing: pascal
           config:
-            requestBodyTranslate:
-              algorithm: naive
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/managed_notification_configurations/methods/get_managed_notification_configuration"
+          - $ref: "#/components/x-stackQL-resources/managed_notification_configurations/methods/list_managed_notification_configurations"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/managed_notification_additional_channels/methods/associate_managed_notification_additional_channel"
+          - $ref: "#/components/x-stackQL-resources/managed_notification_configurations/methods/associate_managed_notification_account_contact"
         delete: []
     organizational_units:
       id: aws.notifications.organizational_units
@@ -2852,9 +2877,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.organizationalUnits
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListOrganizationalUnitsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "organizationalUnits" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"organizational_unit": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organizational_units/methods/list_organizational_units"
@@ -2887,6 +2926,14 @@ components:
             objectKey: $.eventRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_event_rule:
           operation:
             $ref: "#/paths/~1event-rules~1{arn}/delete"
@@ -2945,6 +2992,14 @@ components:
             objectKey: $.notificationConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_notification_configuration:
           operation:
             $ref: "#/paths/~1notification-configurations~1{arn}/delete"
@@ -2998,6 +3053,14 @@ components:
             objectKey: $.notificationHubs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         register_notification_hub:
           operation:
             $ref: "#/paths/~1notification-hubs/post"
@@ -3028,6 +3091,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.notificationsAccessForOrganization
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/notifications_access_for_organizations/methods/get_notifications_access_for_organization"
@@ -3056,37 +3120,18 @@ components:
             objectKey: $.managedNotificationChildEvents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_child_events/methods/get_managed_notification_child_event"
           - $ref: "#/components/x-stackQL-resources/managed_notification_child_events/methods/list_managed_notification_child_events"
-        insert: []
-        update: []
-        delete: []
-    managed_notification_configurations:
-      id: aws.notifications.managed_notification_configurations
-      name: managed_notification_configurations
-      title: managed_notification_configurations
-      methods:
-        get_managed_notification_configuration:
-          operation:
-            $ref: "#/paths/~1managed-notification-configurations~1{arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_managed_notification_configurations:
-          operation:
-            $ref: "#/paths/~1managed-notification-configurations/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.managedNotificationConfigurations
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/managed_notification_configurations/methods/get_managed_notification_configuration"
-          - $ref: "#/components/x-stackQL-resources/managed_notification_configurations/methods/list_managed_notification_configurations"
         insert: []
         update: []
         delete: []
@@ -3112,6 +3157,14 @@ components:
             objectKey: $.managedNotificationEvents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_events/methods/get_managed_notification_event"
@@ -3141,6 +3194,14 @@ components:
             objectKey: $.notificationEvents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/notification_events/methods/get_notification_event"
@@ -3162,6 +3223,14 @@ components:
             objectKey: $.channelAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_notification_channel_associations/methods/list_managed_notification_channel_associations"
@@ -3182,16 +3251,24 @@ components:
             objectKey: $.memberAccounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/member_accounts/methods/list_member_accounts"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.notifications.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.notifications.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3199,17 +3276,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.notifications.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{arn}/post"
@@ -3230,9 +3296,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

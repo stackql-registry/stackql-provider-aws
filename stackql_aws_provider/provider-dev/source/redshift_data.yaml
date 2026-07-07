@@ -292,6 +292,9 @@ paths:
       x-stackql-method: describe_table
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ColumnList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ExecuteStatement:
     post:
       operationId: ExecuteStatement
@@ -433,11 +436,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetStatementResultResponse'
+                $ref: '#/components/schemas/GetStatementResultOutputDisplay'
       x-stackql-resource: statement_results
       x-stackql-method: get_statement_result
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Records
+      x-stackql-responseEnvelope: GetStatementResultOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Records" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"record": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetStatementResultV2:
     post:
       operationId: GetStatementResultV2
@@ -488,6 +499,9 @@ paths:
       x-stackql-method: get_statement_result_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Records
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDatabases:
     post:
       operationId: ListDatabases
@@ -562,11 +576,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDatabasesResponse'
+                $ref: '#/components/schemas/ListDatabasesOutputDisplay'
       x-stackql-resource: databases
       x-stackql-method: list_databases
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Databases
+      x-stackql-responseEnvelope: ListDatabasesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Databases" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"databas": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSchemas:
     post:
       operationId: ListSchemas
@@ -650,11 +672,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSchemasResponse'
+                $ref: '#/components/schemas/ListSchemasOutputDisplay'
       x-stackql-resource: schemas
       x-stackql-method: list_schemas
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Schemas
+      x-stackql-responseEnvelope: ListSchemasOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Schemas" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"schema": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListStatements:
     post:
       operationId: ListStatements
@@ -732,6 +762,9 @@ paths:
       x-stackql-method: list_statements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Statements
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTables:
     post:
       operationId: ListTables
@@ -828,6 +861,9 @@ paths:
       x-stackql-method: list_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tables
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -1235,72 +1271,19 @@ components:
         SessionId:
           $ref: '#/components/schemas/UUID'
           description: The session identifier of the query.
-    GetStatementResultResponse:
+    GetStatementResultRowDisplay:
       type: object
       properties:
-        Records:
-          $ref: '#/components/schemas/SqlRecords'
+        record:
+          type: array
           description: The results of the SQL statement in JSON format.
-        ColumnMetadata:
-          $ref: '#/components/schemas/ColumnMetadataList'
-          description: The properties (metadata) of a column.
-        TotalNumRows:
-          $ref: '#/components/schemas/Long'
-          description: The total number of rows in the result set returned from a query. You can use this number to estimate
-            the number of calls to the GetStatementResult operation needed to page through the results.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: A value that indicates the starting point for the next set of response records in a subsequent request.
-            If a value is returned in a response, you can retrieve the next set of records by providing this returned NextToken
-            value in the next NextToken parameter and retrying the command. If the NextToken field is empty, all response
-            records have been retrieved for the request.
-      required:
-      - Records
-    SqlRecords:
-      type: array
-      items:
-        $ref: '#/components/schemas/FieldList'
-    FieldList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Field'
-    Field:
-      description: A data value in a column.
+    GetStatementResultOutputDisplay:
       type: object
       properties:
-        isNull:
-          $ref: '#/components/schemas/BoxedBoolean'
-          description: A value that indicates whether the data is NULL.
-        booleanValue:
-          $ref: '#/components/schemas/BoxedBoolean'
-          description: A value of the Boolean data type.
-        longValue:
-          $ref: '#/components/schemas/BoxedLong'
-          description: A value of the long data type.
-        doubleValue:
-          $ref: '#/components/schemas/BoxedDouble'
-          description: A value of the double data type.
-        stringValue:
-          $ref: '#/components/schemas/String'
-          description: A value of the string data type.
-        blobValue:
-          $ref: '#/components/schemas/Blob'
-          description: A value of the BLOB data type.
-    BoxedBoolean:
-      type: boolean
-    BoxedLong:
-      type: integer
-      format: int64
-    BoxedDouble:
-      type: number
-      format: double
-    Blob:
-      type: string
-      format: byte
-    ColumnMetadataList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ColumnMetadata'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetStatementResultRowDisplay'
     GetStatementResultV2Response:
       type: object
       properties:
@@ -1336,38 +1319,36 @@ components:
         CSVRecords:
           $ref: '#/components/schemas/String'
           description: The results of the SQL statement in CSV format.
-    ListDatabasesResponse:
+    ColumnMetadataList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ColumnMetadata'
+    ListDatabasesRowDisplay:
       type: object
       properties:
-        Databases:
-          $ref: '#/components/schemas/DatabaseList'
+        databas:
+          type: string
           description: The names of databases.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: A value that indicates the starting point for the next set of response records in a subsequent request.
-            If a value is returned in a response, you can retrieve the next set of records by providing this returned NextToken
-            value in the next NextToken parameter and retrying the command. If the NextToken field is empty, all response
-            records have been retrieved for the request.
-    DatabaseList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
-    ListSchemasResponse:
+    ListDatabasesOutputDisplay:
       type: object
       properties:
-        Schemas:
-          $ref: '#/components/schemas/SchemaList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDatabasesRowDisplay'
+    ListSchemasRowDisplay:
+      type: object
+      properties:
+        schema:
+          type: string
           description: The schemas that match the request pattern.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: A value that indicates the starting point for the next set of response records in a subsequent request.
-            If a value is returned in a response, you can retrieve the next set of records by providing this returned NextToken
-            value in the next NextToken parameter and retrying the command. If the NextToken field is empty, all response
-            records have been retrieved for the request.
-    SchemaList:
-      type: array
-      items:
-        $ref: '#/components/schemas/String'
+    ListSchemasOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSchemasRowDisplay'
     ListStatementsLimit:
       type: integer
       minimum: 0

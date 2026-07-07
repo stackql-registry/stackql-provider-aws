@@ -51,7 +51,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociatePhoneNumberWithUserResponse'
-      x-stackql-resource: phone_number_with_users
+      x-stackql-resource: users
       x-stackql-method: associate_phone_number_with_user
       x-stackql-verb: UPDATE
   /accounts/{account_id}?operation=associate-signin-delegate-groups:
@@ -83,7 +83,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateSigninDelegateGroupsWithAccountResponse'
-      x-stackql-resource: signin_delegate_groups_with_accounts
+      x-stackql-resource: accounts
       x-stackql-method: associate_signin_delegate_groups_with_account
       x-stackql-verb: UPDATE
   /accounts/{account_id}/rooms/{room_id}/memberships?operation=batch-create:
@@ -122,7 +122,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateRoomMembershipResponse'
-      x-stackql-resource: batch_create_room_membership
+      x-stackql-resource: accounts
       x-stackql-method: batch_create_room_membership
       x-stackql-verb: EXEC
   /phone-numbers?operation=batch-delete:
@@ -150,7 +150,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeletePhoneNumberResponse'
-      x-stackql-resource: batch_delete_phone_number
+      x-stackql-resource: phone_numbers
       x-stackql-method: batch_delete_phone_number
       x-stackql-verb: EXEC
   /accounts/{account_id}/users?operation=suspend:
@@ -188,7 +188,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchSuspendUserResponse'
-      x-stackql-resource: batch_suspend_user
+      x-stackql-resource: accounts
       x-stackql-method: batch_suspend_user
       x-stackql-verb: EXEC
   /accounts/{account_id}/users?operation=unsuspend:
@@ -224,7 +224,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUnsuspendUserResponse'
-      x-stackql-resource: batch_unsuspend_user
+      x-stackql-resource: accounts
       x-stackql-method: batch_unsuspend_user
       x-stackql-verb: EXEC
   /phone-numbers?operation=batch-update:
@@ -287,7 +287,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateUserResponse'
-      x-stackql-resource: batch_update_user
+      x-stackql-resource: accounts
       x-stackql-method: batch_update_user
       x-stackql-verb: EXEC
     get:
@@ -336,6 +336,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts:
     post:
       operationId: CreateAccount
@@ -405,6 +408,9 @@ paths:
       x-stackql-method: list_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accounts
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /accounts/{account_id}/bots:
     post:
       operationId: CreateBot
@@ -803,6 +809,7 @@ paths:
       x-stackql-resource: accounts
       x-stackql-method: get_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Account
     post:
       operationId: UpdateAccount
       description: Updates account details for the specified Amazon Chime account. Currently, only account name and default
@@ -885,6 +892,7 @@ paths:
       x-stackql-resource: events_configurations
       x-stackql-method: get_events_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EventsConfiguration
     put:
       operationId: PutEventsConfiguration
       description: Creates an events configuration that allows a bot to receive outgoing events sent by Amazon Chime. Choose
@@ -962,6 +970,7 @@ paths:
       x-stackql-resource: phone_numbers
       x-stackql-method: get_phone_number
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PhoneNumber
     post:
       operationId: UpdatePhoneNumber
       description: Updates phone number details, such as product type or calling name, for the specified phone number ID.
@@ -1047,6 +1056,7 @@ paths:
       x-stackql-resource: rooms
       x-stackql-method: get_room
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Room
     post:
       operationId: UpdateRoom
       description: Updates room details, such as the room name, for a room in an Amazon Chime Enterprise account.
@@ -1178,7 +1188,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociatePhoneNumberFromUserResponse'
-      x-stackql-resource: phone_number_from_users
+      x-stackql-resource: users
       x-stackql-method: disassociate_phone_number_from_user
       x-stackql-verb: UPDATE
   /accounts/{account_id}?operation=disassociate-signin-delegate-groups:
@@ -1210,7 +1220,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateSigninDelegateGroupsFromAccountResponse'
-      x-stackql-resource: signin_delegate_groups_from_accounts
+      x-stackql-resource: accounts
       x-stackql-method: disassociate_signin_delegate_groups_from_account
       x-stackql-verb: UPDATE
   /accounts/{account_id}/settings:
@@ -1236,6 +1246,7 @@ paths:
       x-stackql-resource: account_settings
       x-stackql-method: get_account_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccountSettings
     put:
       operationId: UpdateAccountSettings
       description: Updates the settings for the specified Amazon Chime account. You can update settings for remote control
@@ -1296,6 +1307,7 @@ paths:
       x-stackql-resource: bots
       x-stackql-method: get_bot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Bot
     post:
       operationId: UpdateBot
       description: Updates the status of the specified bot, such as starting or stopping the bot from running in your Amazon
@@ -1392,6 +1404,7 @@ paths:
       x-stackql-resource: phone_number_orders
       x-stackql-method: get_phone_number_order
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PhoneNumberOrder
   /settings/phone-number:
     get:
       operationId: GetPhoneNumberSettings
@@ -1517,6 +1530,7 @@ paths:
       x-stackql-resource: users
       x-stackql-method: get_user
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.User
     post:
       operationId: UpdateUser
       description: Updates user details for a specified user ID. Currently, only LicenseType updates are supported for this
@@ -1584,6 +1598,7 @@ paths:
       x-stackql-resource: user_settings
       x-stackql-method: get_user_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.UserSettings
     put:
       operationId: UpdateUserSettings
       description: Updates the settings for the specified user, such as phone number settings.
@@ -1649,7 +1664,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InviteUsersResponse'
-      x-stackql-resource: invite_users
+      x-stackql-resource: users
       x-stackql-method: invite_users
       x-stackql-verb: EXEC
   /phone-numbers:
@@ -1749,7 +1764,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LogoutUserResponse'
-      x-stackql-resource: logout_user
+      x-stackql-resource: accounts
       x-stackql-method: logout_user
       x-stackql-verb: EXEC
   /accounts/{account_id}/conversations/{conversation_id}/messages/{message_id}?operation=redact:
@@ -1782,7 +1797,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RedactConversationMessageResponse'
-      x-stackql-resource: redact_conversation_message
+      x-stackql-resource: accounts
       x-stackql-method: redact_conversation_message
       x-stackql-verb: EXEC
   /accounts/{account_id}/rooms/{room_id}/messages/{message_id}?operation=redact:
@@ -1815,7 +1830,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RedactRoomMessageResponse'
-      x-stackql-resource: redact_room_message
+      x-stackql-resource: accounts
       x-stackql-method: redact_room_message
       x-stackql-verb: EXEC
   /accounts/{account_id}/bots/{bot_id}?operation=regenerate-security-token:
@@ -1842,7 +1857,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegenerateSecurityTokenResponse'
-      x-stackql-resource: regenerate_security_token
+      x-stackql-resource: accounts
       x-stackql-method: regenerate_security_token
       x-stackql-verb: EXEC
   /accounts/{account_id}/users/{user_id}?operation=reset-personal-pin:
@@ -1870,7 +1885,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResetPersonalPINResponse'
-      x-stackql-resource: personal_pin
+      x-stackql-resource: accounts
       x-stackql-method: reset_personal_pin
       x-stackql-verb: EXEC
   /phone-numbers/{phone_number_id}?operation=restore:
@@ -1891,7 +1906,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RestorePhoneNumberResponse'
-      x-stackql-resource: phone_number
+      x-stackql-resource: phone_numbers
       x-stackql-method: restore_phone_number
       x-stackql-verb: EXEC
   /search?type=phone-numbers:
@@ -1955,10 +1970,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SearchAvailablePhoneNumbersResponse'
+                $ref: '#/components/schemas/SearchAvailablePhoneNumbersOutputDisplay'
       x-stackql-resource: available_phone_numbers
       x-stackql-method: search_available_phone_numbers
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: SearchAvailablePhoneNumbersOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "E164PhoneNumbers" -}}{"line_items": [{{- if eq (kindOf $lst) "slice"
+        -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"e164_phone_number": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -3095,15 +3115,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    SearchAvailablePhoneNumbersResponse:
+    SearchAvailablePhoneNumbersRowDisplay:
       type: object
       properties:
-        E164PhoneNumbers:
-          $ref: '#/components/schemas/E164PhoneNumberList'
+        e164_phone_number:
+          type: string
           description: List of phone numbers, in E.164 format.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: The token used to retrieve the next page of search results.
+    SearchAvailablePhoneNumbersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/SearchAvailablePhoneNumbersRowDisplay'
     UpdateAccountResponse:
       type: object
       properties:

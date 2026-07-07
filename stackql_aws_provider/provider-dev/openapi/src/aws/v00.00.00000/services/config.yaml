@@ -652,8 +652,6 @@ paths:
                 deliveryChannelName:
                   $ref: "#/components/schemas/ChannelName"
                   description: The name of the delivery channel through which the snapshot is delivered.
-              required:
-                - deliveryChannelName
       responses:
         "200":
           description: Success
@@ -7753,14 +7751,52 @@ components:
       items:
         $ref: "#/components/schemas/TagKey"
   x-stackQL-resources:
-    resource_types:
-      id: aws.config.resource_types
-      name: resource_types
-      title: resource_types
+    configuration_recorders:
+      id: aws.config.configuration_recorders
+      name: configuration_recorders
+      title: configuration_recorders
       methods:
         associate_resource_types:
           operation:
             $ref: "#/paths/~1AssociateResourceTypes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_configuration_recorder:
+          operation:
+            $ref: "#/paths/~1DeleteConfigurationRecorder/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_service_linked_configuration_recorder:
+          operation:
+            $ref: "#/paths/~1DeleteServiceLinkedConfigurationRecorder/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_configuration_recorders:
+          operation:
+            $ref: "#/paths/~1DescribeConfigurationRecorders/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7784,12 +7820,88 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        list_configuration_recorders:
+          operation:
+            $ref: "#/paths/~1ListConfigurationRecorders/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ConfigurationRecorderSummaries
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        put_configuration_recorder:
+          operation:
+            $ref: "#/paths/~1PutConfigurationRecorder/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_service_linked_configuration_recorder:
+          operation:
+            $ref: "#/paths/~1PutServiceLinkedConfigurationRecorder/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_configuration_recorder:
+          operation:
+            $ref: "#/paths/~1StartConfigurationRecorder/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_configuration_recorder:
+          operation:
+            $ref: "#/paths/~1StopConfigurationRecorder/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/describe_configuration_recorders"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resource_types/methods/associate_resource_types"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/associate_resource_types"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/put_configuration_recorder"
+          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/put_service_linked_configuration_recorder"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/delete_configuration_recorder"
+          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/delete_service_linked_configuration_recorder"
     aggregate_resource_configs:
       id: aws.config.aggregate_resource_configs
       name: aggregate_resource_configs
@@ -7814,6 +7926,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ConfigurationItem
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -7908,6 +8021,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_aggregation_authorization:
@@ -7949,6 +8069,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_evaluation_results:
+          operation:
+            $ref: "#/paths/~1DeleteEvaluationResults/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         describe_config_rules:
           operation:
             $ref: "#/paths/~1DescribeConfigRules/post"
@@ -7961,6 +8094,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_config_rule:
@@ -7975,12 +8115,52 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        put_external_evaluation:
+          operation:
+            $ref: "#/paths/~1PutExternalEvaluation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_config_rules_evaluation:
+          operation:
+            $ref: "#/paths/~1StartConfigRulesEvaluation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_remediation_execution:
+          operation:
+            $ref: "#/paths/~1StartRemediationExecution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/config_rules/methods/describe_config_rules"
         insert: []
         update: []
         replace:
+          - $ref: "#/components/x-stackQL-resources/config_rules/methods/put_external_evaluation"
           - $ref: "#/components/x-stackQL-resources/config_rules/methods/put_config_rule"
         delete:
           - $ref: "#/components/x-stackQL-resources/config_rules/methods/delete_config_rule"
@@ -8013,6 +8193,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_configuration_aggregator:
@@ -8028,6 +8215,26 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        select_aggregate_resource_config:
+          operation:
+            $ref: "#/paths/~1SelectAggregateResourceConfig/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_aggregators/methods/describe_configuration_aggregators"
@@ -8037,71 +8244,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/configuration_aggregators/methods/put_configuration_aggregator"
         delete:
           - $ref: "#/components/x-stackQL-resources/configuration_aggregators/methods/delete_configuration_aggregator"
-    configuration_recorders:
-      id: aws.config.configuration_recorders
-      name: configuration_recorders
-      title: configuration_recorders
-      methods:
-        delete_configuration_recorder:
-          operation:
-            $ref: "#/paths/~1DeleteConfigurationRecorder/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_configuration_recorders:
-          operation:
-            $ref: "#/paths/~1DescribeConfigurationRecorders/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_configuration_recorders:
-          operation:
-            $ref: "#/paths/~1ListConfigurationRecorders/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ConfigurationRecorderSummaries
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        put_configuration_recorder:
-          operation:
-            $ref: "#/paths/~1PutConfigurationRecorder/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/describe_configuration_recorders"
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/put_configuration_recorder"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/configuration_recorders/methods/delete_configuration_recorder"
     conformance_packs:
       id: aws.config.conformance_packs
       name: conformance_packs
@@ -8131,6 +8273,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_conformance_pack:
@@ -8172,6 +8321,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        deliver_config_snapshot:
+          operation:
+            $ref: "#/paths/~1DeliverConfigSnapshot/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         describe_delivery_channels:
           operation:
             $ref: "#/paths/~1DescribeDeliveryChannels/post"
@@ -8206,30 +8368,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/delivery_channels/methods/put_delivery_channel"
         delete:
           - $ref: "#/components/x-stackQL-resources/delivery_channels/methods/delete_delivery_channel"
-    evaluation_results:
-      id: aws.config.evaluation_results
-      name: evaluation_results
-      title: evaluation_results
-      methods:
-        delete_evaluation_results:
-          operation:
-            $ref: "#/paths/~1DeleteEvaluationResults/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/evaluation_results/methods/delete_evaluation_results"
     organization_config_rules:
       id: aws.config.organization_config_rules
       name: organization_config_rules
@@ -8259,6 +8397,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_organization_config_rule:
@@ -8312,6 +8457,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_organization_conformance_pack:
@@ -8365,6 +8517,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8509,6 +8668,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_retention_configuration:
@@ -8533,45 +8699,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/retention_configurations/methods/put_retention_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/retention_configurations/methods/delete_retention_configuration"
-    service_linked_configuration_recorders:
-      id: aws.config.service_linked_configuration_recorders
-      name: service_linked_configuration_recorders
-      title: service_linked_configuration_recorders
-      methods:
-        delete_service_linked_configuration_recorder:
-          operation:
-            $ref: "#/paths/~1DeleteServiceLinkedConfigurationRecorder/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        put_service_linked_configuration_recorder:
-          operation:
-            $ref: "#/paths/~1PutServiceLinkedConfigurationRecorder/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/service_linked_configuration_recorders/methods/put_service_linked_configuration_recorder"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/service_linked_configuration_recorders/methods/delete_service_linked_configuration_recorder"
     stored_queries:
       id: aws.config.stored_queries
       name: stored_queries
@@ -8596,6 +8723,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.StoredQuery
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8656,6 +8784,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8681,6 +8816,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8706,6 +8848,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8731,6 +8880,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8756,6 +8912,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8781,6 +8944,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8830,6 +9000,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8855,6 +9032,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8904,6 +9088,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8929,6 +9120,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8954,6 +9152,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8979,6 +9184,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9076,6 +9288,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9101,6 +9320,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9120,6 +9346,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ComplianceSummary
           request:
             mediaType: application/x-amz-json-1.1
             base: "{}"
@@ -9194,6 +9421,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9267,6 +9501,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9292,6 +9533,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9341,6 +9589,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9390,6 +9645,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9439,6 +9701,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9464,6 +9733,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9472,10 +9748,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.config.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.config.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9489,69 +9765,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    evaluations:
-      id: aws.config.evaluations
-      name: evaluations
-      title: evaluations
-      methods:
-        put_evaluations:
-          operation:
-            $ref: "#/paths/~1PutEvaluations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/evaluations/methods/put_evaluations"
-        delete: []
-    external_evaluations:
-      id: aws.config.external_evaluations
-      name: external_evaluations
-      title: external_evaluations
-      methods:
-        put_external_evaluation:
-          operation:
-            $ref: "#/paths/~1PutExternalEvaluation/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/external_evaluations/methods/put_external_evaluation"
-        delete: []
-    resources:
-      id: aws.config.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -9577,9 +9799,35 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+        delete: []
+    evaluations:
+      id: aws.config.evaluations
+      name: evaluations
+      title: evaluations
+      methods:
+        put_evaluations:
+          operation:
+            $ref: "#/paths/~1PutEvaluations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/evaluations/methods/put_evaluations"
         delete: []

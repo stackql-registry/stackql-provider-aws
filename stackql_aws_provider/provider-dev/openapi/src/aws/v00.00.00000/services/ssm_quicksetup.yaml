@@ -250,8 +250,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagsMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -874,6 +872,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: StartingToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -907,6 +912,23 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: StartingToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_configuration_definition:
+          operation:
+            $ref: "#/paths/~1configurationDefinition~1{manager_arn}~1{id}/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -914,7 +936,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/configurations/methods/get_configuration"
           - $ref: "#/components/x-stackQL-resources/configurations/methods/list_configurations"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/configurations/methods/update_configuration_definition"
         delete: []
     service_settings:
       id: aws.ssm_quicksetup.service_settings
@@ -927,6 +950,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ServiceSettings
         update_service_settings:
           operation:
             $ref: "#/paths/~1serviceSettings/put"
@@ -961,10 +985,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.ssm_quicksetup.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.ssm_quicksetup.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -972,17 +996,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.ssm_quicksetup.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
@@ -1001,30 +1014,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    configuration_definitions:
-      id: aws.ssm_quicksetup.configuration_definitions
-      name: configuration_definitions
-      title: configuration_definitions
-      methods:
-        update_configuration_definition:
-          operation:
-            $ref: "#/paths/~1configurationDefinition~1{manager_arn}~1{id}/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/configuration_definitions/methods/update_configuration_definition"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

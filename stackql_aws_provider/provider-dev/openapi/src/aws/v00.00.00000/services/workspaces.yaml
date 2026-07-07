@@ -512,8 +512,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: The tags that you want to add to the new updated WorkSpace image. To add tags at the same time when you're creating the updated image, you must create an IAM policy that grants your IAM user permissions to use workspaces:CreateTags.
               required:
-                - Name
-                - Description
                 - SourceImageId
       responses:
         "200":
@@ -608,8 +606,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: The tags that you want to add to the new WorkSpace image. To add tags when you're creating the image, you must create an IAM policy that grants your IAM user permission to use workspaces:CreateTags.
               required:
-                - Name
-                - Description
                 - WorkspaceId
       responses:
         "200":
@@ -2345,7 +2341,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAvailableManagementCidrRangesResult"
+                $ref: "#/components/schemas/ListAvailableManagementCidrRangesOutputDisplay"
   /MigrateWorkspace:
     post:
       operationId: MigrateWorkspace
@@ -6514,19 +6510,19 @@ components:
       type: integer
       minimum: 1
       maximum: 5
-    ListAvailableManagementCidrRangesResult:
+    ListAvailableManagementCidrRangesRowDisplay:
       type: object
       properties:
-        ManagementCidrRanges:
-          $ref: "#/components/schemas/DedicatedTenancyCidrRangeList"
+        management_cidr_range:
+          type: string
           description: The list of available IP address ranges, specified as IPv4 CIDR blocks.
-        NextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: The token to use to retrieve the next page of results. This value is null when there are no more results to return.
-    DedicatedTenancyCidrRangeList:
-      type: array
-      items:
-        $ref: "#/components/schemas/DedicatedTenancyManagementCidrRange"
+    ListAvailableManagementCidrRangesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAvailableManagementCidrRangesRowDisplay"
     MigrateWorkspaceResult:
       type: object
       properties:
@@ -6782,6 +6778,106 @@ components:
           $ref: "#/components/schemas/WorkspacesPool"
           description: Describes the specified pool.
   x-stackQL-resources:
+    account_links:
+      id: aws.workspaces.account_links
+      name: account_links
+      title: account_links
+      methods:
+        accept_account_link_invitation:
+          operation:
+            $ref: "#/paths/~1AcceptAccountLinkInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_account_link_invitation:
+          operation:
+            $ref: "#/paths/~1CreateAccountLinkInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_account_link_invitation:
+          operation:
+            $ref: "#/paths/~1DeleteAccountLinkInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_account_link:
+          operation:
+            $ref: "#/paths/~1GetAccountLink/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AccountLink
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_account_links:
+          operation:
+            $ref: "#/paths/~1ListAccountLinks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.AccountLinks
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        reject_account_link_invitation:
+          operation:
+            $ref: "#/paths/~1RejectAccountLinkInvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/account_links/methods/get_account_link"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/account_links/methods/create_account_link_invitation"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/account_links/methods/delete_account_link_invitation"
     connection_alias:
       id: aws.workspaces.connection_alias
       name: connection_alias
@@ -6904,11 +7000,31 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         disassociate_ip_groups:
           operation:
             $ref: "#/paths/~1DisassociateIpGroups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_rules_of_ip_group:
+          operation:
+            $ref: "#/paths/~1UpdateRulesOfIpGroup/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6926,16 +7042,43 @@ components:
           - $ref: "#/components/x-stackQL-resources/ip_groups/methods/create_ip_group"
         update:
           - $ref: "#/components/x-stackQL-resources/ip_groups/methods/associate_ip_groups"
+          - $ref: "#/components/x-stackQL-resources/ip_groups/methods/update_rules_of_ip_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/ip_groups/methods/delete_ip_group"
-    workspace_applications:
-      id: aws.workspaces.workspace_applications
-      name: workspace_applications
-      title: workspace_applications
+    applications:
+      id: aws.workspaces.applications
+      name: applications
+      title: applications
       methods:
         associate_workspace_application:
           operation:
             $ref: "#/paths/~1AssociateWorkspaceApplication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deploy_workspace_applications:
+          operation:
+            $ref: "#/paths/~1DeployWorkspaceApplications/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_applications:
+          operation:
+            $ref: "#/paths/~1DescribeApplications/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -6960,10 +7103,11 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/describe_applications"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/workspace_applications/methods/associate_workspace_application"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/associate_workspace_application"
         delete: []
     ip_rules:
       id: aws.workspaces.ip_rules
@@ -7002,14 +7146,14 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/ip_rules/methods/authorize_ip_rules"
         delete: []
-    account_link_invitations:
-      id: aws.workspaces.account_link_invitations
-      name: account_link_invitations
-      title: account_link_invitations
+    workspaces:
+      id: aws.workspaces.workspaces
+      name: workspaces
+      title: workspaces
       methods:
-        create_account_link_invitation:
+        copy_workspace_image:
           operation:
-            $ref: "#/paths/~1CreateAccountLinkInvitation/post"
+            $ref: "#/paths/~1CopyWorkspaceImage/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7020,9 +7164,199 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        delete_account_link_invitation:
+        create_standby_workspaces:
           operation:
-            $ref: "#/paths/~1DeleteAccountLinkInvitation/post"
+            $ref: "#/paths/~1CreateStandbyWorkspaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_workspaces:
+          operation:
+            $ref: "#/paths/~1CreateWorkspaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_workspaces:
+          operation:
+            $ref: "#/paths/~1DescribeWorkspaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Workspaces
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        import_workspace_image:
+          operation:
+            $ref: "#/paths/~1ImportWorkspaceImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        modify_workspace_access_properties:
+          operation:
+            $ref: "#/paths/~1ModifyWorkspaceAccessProperties/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        modify_workspace_creation_properties:
+          operation:
+            $ref: "#/paths/~1ModifyWorkspaceCreationProperties/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        modify_workspace_properties:
+          operation:
+            $ref: "#/paths/~1ModifyWorkspaceProperties/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        modify_workspace_state:
+          operation:
+            $ref: "#/paths/~1ModifyWorkspaceState/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reboot_workspaces:
+          operation:
+            $ref: "#/paths/~1RebootWorkspaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        rebuild_workspaces:
+          operation:
+            $ref: "#/paths/~1RebuildWorkspaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_workspaces:
+          operation:
+            $ref: "#/paths/~1StartWorkspaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_workspaces_pool:
+          operation:
+            $ref: "#/paths/~1StartWorkspacesPool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_workspaces:
+          operation:
+            $ref: "#/paths/~1StopWorkspaces/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_workspaces_pool:
+          operation:
+            $ref: "#/paths/~1StopWorkspacesPool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        terminate_workspaces:
+          operation:
+            $ref: "#/paths/~1TerminateWorkspaces/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7034,12 +7368,18 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspaces"
         insert:
-          - $ref: "#/components/x-stackQL-resources/account_link_invitations/methods/create_account_link_invitation"
-        update: []
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_standby_workspaces"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspaces"
+        update:
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/modify_workspace_access_properties"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/modify_workspace_creation_properties"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/modify_workspace_state"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/modify_workspace_properties"
         delete:
-          - $ref: "#/components/x-stackQL-resources/account_link_invitations/methods/delete_account_link_invitation"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/terminate_workspaces"
     connect_client_add_ins:
       id: aws.workspaces.connect_client_add_ins
       name: connect_client_add_ins
@@ -7106,30 +7446,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/connect_client_add_ins/methods/update_connect_client_add_in"
         delete:
           - $ref: "#/components/x-stackQL-resources/connect_client_add_ins/methods/delete_connect_client_add_in"
-    standby_workspaces:
-      id: aws.workspaces.standby_workspaces
-      name: standby_workspaces
-      title: standby_workspaces
-      methods:
-        create_standby_workspaces:
-          operation:
-            $ref: "#/paths/~1CreateStandbyWorkspaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/standby_workspaces/methods/create_standby_workspaces"
-        update: []
-        delete: []
     tags:
       id: aws.workspaces.tags
       name: tags
@@ -7182,10 +7498,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/tags/methods/delete_tags"
-    updated_workspace_images:
-      id: aws.workspaces.updated_workspace_images
-      name: updated_workspace_images
-      title: updated_workspace_images
+    workspace_images:
+      id: aws.workspaces.workspace_images
+      name: workspace_images
+      title: workspace_images
       methods:
         create_updated_workspace_image:
           operation:
@@ -7200,12 +7516,62 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_workspace_image:
+          operation:
+            $ref: "#/paths/~1CreateWorkspaceImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_workspace_image:
+          operation:
+            $ref: "#/paths/~1DeleteWorkspaceImage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_workspace_images:
+          operation:
+            $ref: "#/paths/~1DescribeWorkspaceImages/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Images
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/describe_workspace_images"
         insert:
-          - $ref: "#/components/x-stackQL-resources/updated_workspace_images/methods/create_updated_workspace_image"
+          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/create_updated_workspace_image"
+          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/create_workspace_image"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/delete_workspace_image"
     workspace_bundles:
       id: aws.workspaces.workspace_bundles
       name: workspace_bundles
@@ -7249,6 +7615,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_workspace_bundle:
@@ -7273,151 +7646,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/workspace_bundles/methods/update_workspace_bundle"
         delete:
           - $ref: "#/components/x-stackQL-resources/workspace_bundles/methods/delete_workspace_bundle"
-    workspace_images:
-      id: aws.workspaces.workspace_images
-      name: workspace_images
-      title: workspace_images
-      methods:
-        create_workspace_image:
-          operation:
-            $ref: "#/paths/~1CreateWorkspaceImage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_workspace_image:
-          operation:
-            $ref: "#/paths/~1DeleteWorkspaceImage/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_workspace_images:
-          operation:
-            $ref: "#/paths/~1DescribeWorkspaceImages/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Images
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/describe_workspace_images"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/create_workspace_image"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/workspace_images/methods/delete_workspace_image"
-    workspaces:
-      id: aws.workspaces.workspaces
-      name: workspaces
-      title: workspaces
-      methods:
-        create_workspaces:
-          operation:
-            $ref: "#/paths/~1CreateWorkspaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_workspaces:
-          operation:
-            $ref: "#/paths/~1DescribeWorkspaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Workspaces
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        reboot_workspaces:
-          operation:
-            $ref: "#/paths/~1RebootWorkspaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        start_workspaces:
-          operation:
-            $ref: "#/paths/~1StartWorkspaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        stop_workspaces:
-          operation:
-            $ref: "#/paths/~1StopWorkspaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        terminate_workspaces:
-          operation:
-            $ref: "#/paths/~1TerminateWorkspaces/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/describe_workspaces"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspaces"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/workspaces/methods/terminate_workspaces"
     workspaces_pools:
       id: aws.workspaces.workspaces_pools
       name: workspaces_pools
@@ -7552,6 +7780,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         register_workspace_directory:
@@ -7630,6 +7865,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7659,30 +7901,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/application_associations/methods/describe_application_associations"
-        insert: []
-        update: []
-        delete: []
-    applications:
-      id: aws.workspaces.applications
-      name: applications
-      title: applications
-      methods:
-        describe_applications:
-          operation:
-            $ref: "#/paths/~1DescribeApplications/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/applications/methods/describe_applications"
         insert: []
         update: []
         delete: []
@@ -7961,6 +8179,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8007,44 +8232,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/workspaces_pool_sessions/methods/terminate_workspaces_pool_session"
-    account_links:
-      id: aws.workspaces.account_links
-      name: account_links
-      title: account_links
-      methods:
-        get_account_link:
-          operation:
-            $ref: "#/paths/~1GetAccountLink/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_account_links:
-          operation:
-            $ref: "#/paths/~1ListAccountLinks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.AccountLinks
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/account_links/methods/get_account_link"
-        insert: []
-        update: []
-        delete: []
     available_management_cidr_ranges:
       id: aws.workspaces.available_management_cidr_ranges
       name: available_management_cidr_ranges
@@ -8056,12 +8243,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ManagementCidrRanges
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAvailableManagementCidrRangesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ManagementCidrRanges" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"management_cidr_range": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8189,124 +8389,4 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/streaming_properties/methods/modify_streaming_properties"
-        delete: []
-    workspace_access_properties:
-      id: aws.workspaces.workspace_access_properties
-      name: workspace_access_properties
-      title: workspace_access_properties
-      methods:
-        modify_workspace_access_properties:
-          operation:
-            $ref: "#/paths/~1ModifyWorkspaceAccessProperties/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_access_properties/methods/modify_workspace_access_properties"
-        delete: []
-    workspace_creation_properties:
-      id: aws.workspaces.workspace_creation_properties
-      name: workspace_creation_properties
-      title: workspace_creation_properties
-      methods:
-        modify_workspace_creation_properties:
-          operation:
-            $ref: "#/paths/~1ModifyWorkspaceCreationProperties/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_creation_properties/methods/modify_workspace_creation_properties"
-        delete: []
-    workspace_properties:
-      id: aws.workspaces.workspace_properties
-      name: workspace_properties
-      title: workspace_properties
-      methods:
-        modify_workspace_properties:
-          operation:
-            $ref: "#/paths/~1ModifyWorkspaceProperties/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_properties/methods/modify_workspace_properties"
-        delete: []
-    workspace_states:
-      id: aws.workspaces.workspace_states
-      name: workspace_states
-      title: workspace_states
-      methods:
-        modify_workspace_state:
-          operation:
-            $ref: "#/paths/~1ModifyWorkspaceState/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_states/methods/modify_workspace_state"
-        delete: []
-    rules_of_ip_groups:
-      id: aws.workspaces.rules_of_ip_groups
-      name: rules_of_ip_groups
-      title: rules_of_ip_groups
-      methods:
-        update_rules_of_ip_group:
-          operation:
-            $ref: "#/paths/~1UpdateRulesOfIpGroup/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/rules_of_ip_groups/methods/update_rules_of_ip_group"
         delete: []

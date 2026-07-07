@@ -1900,6 +1900,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.cluster
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1919,6 +1920,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_cluster:
@@ -1981,6 +1989,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.computeNodeGroup
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -1995,6 +2004,26 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.computeNodeGroups
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        register_compute_node_group_instance:
+          operation:
+            $ref: "#/paths/~1RegisterComputeNodeGroupInstance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2021,6 +2050,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/compute_node_groups/methods/list_compute_node_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/compute_node_groups/methods/create_compute_node_group"
+          - $ref: "#/components/x-stackQL-resources/compute_node_groups/methods/register_compute_node_group_instance"
         update:
           - $ref: "#/components/x-stackQL-resources/compute_node_groups/methods/update_compute_node_group"
         delete:
@@ -2062,6 +2092,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.queue
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -2081,6 +2112,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_queue:
@@ -2106,10 +2144,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/queues/methods/update_queue"
         delete:
           - $ref: "#/components/x-stackQL-resources/queues/methods/delete_queue"
-    tags_for_resources:
-      id: aws.pcs.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.pcs.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2124,41 +2162,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    compute_node_group_instances:
-      id: aws.pcs.compute_node_group_instances
-      name: compute_node_group_instances
-      title: compute_node_group_instances
-      methods:
-        register_compute_node_group_instance:
-          operation:
-            $ref: "#/paths/~1RegisterComputeNodeGroupInstance/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/compute_node_group_instances/methods/register_compute_node_group_instance"
-        update: []
-        delete: []
-    resources:
-      id: aws.pcs.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -2186,9 +2189,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

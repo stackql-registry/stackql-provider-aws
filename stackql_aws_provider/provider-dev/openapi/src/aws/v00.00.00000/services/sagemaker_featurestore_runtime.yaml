@@ -138,8 +138,6 @@ paths:
                   $ref: "#/components/schemas/TargetStores"
                 TtlDuration:
                   $ref: "#/components/schemas/TtlDuration"
-              required:
-                - Record
       responses:
         "200":
           description: Success

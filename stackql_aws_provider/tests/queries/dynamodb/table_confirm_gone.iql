@@ -1,0 +1,2 @@
+-- DescribeTable on a deleted table returns ResourceNotFoundException.
+SELECT * FROM aws.dynamodb.tables WHERE region = '{{ region }}' AND TableName = '{{ table_name }}'

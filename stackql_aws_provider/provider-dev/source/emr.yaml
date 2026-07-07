@@ -153,7 +153,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddJobFlowStepsOutput'
-      x-stackql-resource: job_flow_steps
+      x-stackql-resource: steps
       x-stackql-method: add_job_flow_steps
       x-stackql-verb: UPDATE
   /AddTags:
@@ -654,6 +654,7 @@ paths:
       x-stackql-resource: clusters
       x-stackql-method: describe_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Cluster
   /DescribeJobFlows:
     post:
       operationId: DescribeJobFlows
@@ -740,6 +741,7 @@ paths:
       x-stackql-resource: notebook_executions
       x-stackql-method: describe_notebook_execution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.NotebookExecution
   /DescribePersistentAppUI:
     post:
       operationId: DescribePersistentAppUI
@@ -776,6 +778,7 @@ paths:
       x-stackql-resource: persistent_app_uis
       x-stackql-method: describe_persistent_app_ui
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PersistentAppUI
   /DescribeReleaseLabel:
     post:
       operationId: DescribeReleaseLabel
@@ -894,6 +897,7 @@ paths:
       x-stackql-resource: steps
       x-stackql-method: describe_step
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Step
   /DescribeStudio:
     post:
       operationId: DescribeStudio
@@ -931,6 +935,7 @@ paths:
       x-stackql-resource: studios
       x-stackql-method: describe_studio
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Studio
   /GetAutoTerminationPolicy:
     post:
       operationId: GetAutoTerminationPolicy
@@ -967,6 +972,7 @@ paths:
       x-stackql-resource: auto_termination_policies
       x-stackql-method: get_auto_termination_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AutoTerminationPolicy
   /GetBlockPublicAccessConfiguration:
     post:
       operationId: GetBlockPublicAccessConfiguration
@@ -1077,6 +1083,7 @@ paths:
       x-stackql-resource: managed_scaling_policies
       x-stackql-method: get_managed_scaling_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ManagedScalingPolicy
   /GetOnClusterAppUIPresignedURL:
     post:
       operationId: GetOnClusterAppUIPresignedURL
@@ -1223,6 +1230,7 @@ paths:
       x-stackql-resource: studio_session_mappings
       x-stackql-method: get_studio_session_mapping
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SessionMapping
   /ListBootstrapActions:
     post:
       operationId: ListBootstrapActions
@@ -1263,6 +1271,9 @@ paths:
       x-stackql-method: list_bootstrap_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BootstrapActions
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListClusters:
     post:
       operationId: ListClusters
@@ -1311,6 +1322,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Clusters
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListInstanceFleets:
     post:
       operationId: ListInstanceFleets
@@ -1352,6 +1366,9 @@ paths:
       x-stackql-method: list_instance_fleets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceFleets
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListInstanceGroups:
     post:
       operationId: ListInstanceGroups
@@ -1392,6 +1409,9 @@ paths:
       x-stackql-method: list_instance_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceGroups
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListInstances:
     post:
       operationId: ListInstances
@@ -1449,6 +1469,9 @@ paths:
       x-stackql-method: list_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Instances
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListNotebookExecutions:
     post:
       operationId: ListNotebookExecutions
@@ -1511,6 +1534,9 @@ paths:
       x-stackql-method: list_notebook_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NotebookExecutions
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListReleaseLabels:
     post:
       operationId: ListReleaseLabels
@@ -1553,10 +1579,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListReleaseLabelsOutput'
+                $ref: '#/components/schemas/ListReleaseLabelsOutputDisplay'
       x-stackql-resource: release_labels
       x-stackql-method: list_release_labels
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListReleaseLabelsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ReleaseLabels" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"release_label": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListSecurityConfigurations:
     post:
       operationId: ListSecurityConfigurations
@@ -1594,6 +1625,9 @@ paths:
       x-stackql-method: list_security_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SecurityConfigurations
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListSteps:
     post:
       operationId: ListSteps
@@ -1646,6 +1680,9 @@ paths:
       x-stackql-method: list_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Steps
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListStudioSessionMappings:
     post:
       operationId: ListStudioSessionMappings
@@ -1688,6 +1725,9 @@ paths:
       x-stackql-method: list_studio_session_mappings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SessionMappings
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListStudios:
     post:
       operationId: ListStudios
@@ -1724,6 +1764,9 @@ paths:
       x-stackql-method: list_studios
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Studios
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.Marker
   /ListSupportedInstanceTypes:
     post:
       operationId: ListSupportedInstanceTypes
@@ -1928,7 +1971,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAutoScalingPolicyOutput'
-      x-stackql-resource: auto_scaling_policies
+      x-stackql-resource: instance_groups
       x-stackql-method: put_auto_scaling_policy
       x-stackql-verb: REPLACE
   /PutAutoTerminationPolicy:
@@ -2100,7 +2143,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveAutoScalingPolicyOutput'
-      x-stackql-resource: auto_scaling_policies
+      x-stackql-resource: instance_groups
       x-stackql-method: remove_auto_scaling_policy
       x-stackql-verb: UPDATE
   /RemoveAutoTerminationPolicy:
@@ -2467,7 +2510,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: keep_job_flow_alive_when_no_steps
+      x-stackql-resource: steps
       x-stackql-method: set_keep_job_flow_alive_when_no_steps
       x-stackql-verb: UPDATE
   /SetTerminationProtection:
@@ -2513,7 +2556,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: termination_protections
+      x-stackql-resource: job_flows
       x-stackql-method: set_termination_protection
       x-stackql-verb: UPDATE
   /SetUnhealthyNodeReplacement:
@@ -2557,7 +2600,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: unhealthy_node_replacements
+      x-stackql-resource: job_flows
       x-stackql-method: set_unhealthy_node_replacement
       x-stackql-verb: UPDATE
   /SetVisibleToAllUsers:
@@ -2603,7 +2646,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: visible_to_all_users
+      x-stackql-resource: job_flows
       x-stackql-method: set_visible_to_all_users
       x-stackql-verb: UPDATE
   /StartNotebookExecution:
@@ -6051,15 +6094,19 @@ components:
         Application:
           $ref: '#/components/schemas/String'
           description: Optional release label application filter. For example, spark@2.1.0.
-    ListReleaseLabelsOutput:
+    ListReleaseLabelsRowDisplay:
       type: object
       properties:
-        ReleaseLabels:
-          $ref: '#/components/schemas/StringList'
+        release_label:
+          type: string
           description: The returned release labels.
-        NextToken:
-          $ref: '#/components/schemas/String'
-          description: Used to paginate the next page of results if specified in the next ListReleaseLabels request.
+    ListReleaseLabelsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReleaseLabelsRowDisplay'
     ListSecurityConfigurationsOutput:
       type: object
       properties:

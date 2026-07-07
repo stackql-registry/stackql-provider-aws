@@ -97,6 +97,9 @@ paths:
       x-stackql-method: get_apis
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     put:
       operationId: ImportApi
       description: Imports an API.
@@ -291,6 +294,9 @@ paths:
       x-stackql-method: get_authorizers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/apis/{api_id}/deployments:
     post:
       operationId: CreateDeployment
@@ -356,6 +362,9 @@ paths:
       x-stackql-method: get_deployments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/domainnames:
     post:
       operationId: CreateDomainName
@@ -417,6 +426,9 @@ paths:
       x-stackql-method: get_domain_names
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/apis/{api_id}/integrations:
     post:
       operationId: CreateIntegration
@@ -514,6 +526,9 @@ paths:
       x-stackql-method: get_integrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/apis/{api_id}/integrations/{integration_id}/integrationresponses:
     post:
       operationId: CreateIntegrationResponse
@@ -599,6 +614,9 @@ paths:
       x-stackql-method: get_integration_responses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/apis/{api_id}/models:
     post:
       operationId: CreateModel
@@ -671,6 +689,9 @@ paths:
       x-stackql-method: get_models
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/portals:
     post:
       operationId: CreatePortal
@@ -738,6 +759,9 @@ paths:
       x-stackql-method: list_portals
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/portalproducts:
     post:
       operationId: CreatePortalProduct
@@ -801,6 +825,9 @@ paths:
       x-stackql-method: list_portal_products
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/portalproducts/{portal_product_id}/productpages:
     post:
       operationId: CreateProductPage
@@ -872,6 +899,9 @@ paths:
       x-stackql-method: list_product_pages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/portalproducts/{portal_product_id}/productrestendpointpages:
     post:
       operationId: CreateProductRestEndpointPage
@@ -947,6 +977,9 @@ paths:
       x-stackql-method: list_product_rest_endpoint_pages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/apis/{api_id}/routes:
     post:
       operationId: CreateRoute
@@ -1032,6 +1065,9 @@ paths:
       x-stackql-method: get_routes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/apis/{api_id}/routes/{route_id}/routeresponses:
     post:
       operationId: CreateRouteResponse
@@ -1115,6 +1151,9 @@ paths:
       x-stackql-method: get_route_responses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/domainnames/{domain_name}/routingrules:
     post:
       operationId: CreateRoutingRule
@@ -1198,6 +1237,9 @@ paths:
       x-stackql-method: list_routing_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RoutingRules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/apis/{api_id}/stages:
     post:
       operationId: CreateStage
@@ -1281,6 +1323,9 @@ paths:
       x-stackql-method: get_stages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Items
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v2/vpclinks:
     post:
       operationId: CreateVpcLink
@@ -1361,7 +1406,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: access_log_settings
+      x-stackql-resource: stages
       x-stackql-method: delete_access_log_settings
       x-stackql-verb: DELETE
   /v2/apis/{api_id}:
@@ -1444,7 +1489,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReimportApiResponse'
-      x-stackql-resource: reimport_api
+      x-stackql-resource: apis
       x-stackql-method: reimport_api
       x-stackql-verb: EXEC
     patch:
@@ -1704,7 +1749,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: cors_configurations
+      x-stackql-resource: apis
       x-stackql-method: delete_cors_configuration
       x-stackql-verb: DELETE
   /v2/apis/{api_id}/deployments/{deployment_id}:
@@ -2715,7 +2760,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: route_request_parameters
+      x-stackql-resource: routes
       x-stackql-method: delete_route_request_parameter
       x-stackql-verb: DELETE
   /v2/apis/{api_id}/routes/{route_id}/routeresponses/{route_response_id}:
@@ -2853,7 +2898,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: route_settings
+      x-stackql-resource: routes
       x-stackql-method: delete_route_settings
       x-stackql-verb: DELETE
   /v2/domainnames/{domain_name}/routingrules/{routing_rule_id}:
@@ -3151,7 +3196,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: portal
+      x-stackql-resource: portals
       x-stackql-method: disable_portal
       x-stackql-verb: EXEC
     post:
@@ -3180,7 +3225,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishPortalResponse'
-      x-stackql-resource: portal
+      x-stackql-resource: portals
       x-stackql-method: publish_portal
       x-stackql-verb: EXEC
   /v2/apis/{api_id}/exports/{specification}:
@@ -3310,7 +3355,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3332,7 +3377,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v2/portals/{portal_id}/preview:
@@ -3353,7 +3398,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PreviewPortalResponse'
-      x-stackql-resource: preview_portal
+      x-stackql-resource: portals
       x-stackql-method: preview_portal
       x-stackql-verb: EXEC
   /v2/apis/{api_id}/stages/{stage_name}/cache/authorizers:
@@ -3377,7 +3422,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: authorizers_cache
+      x-stackql-resource: authorizers
       x-stackql-method: reset_authorizers_cache
       x-stackql-verb: EXEC
 components:

@@ -5,7 +5,7 @@ info:
   description: AWS Marketplace Entitlement Service
   x-serviceName: aws-marketplace
   x-serviceAlias: marketplace_entitlement
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2017-01-11'
   x-endpointPrefix: entitlement.marketplace
   x-targetPrefix: AWSMPEntitlementService
@@ -72,6 +72,9 @@ paths:
       x-stackql-method: get_entitlements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Entitlements
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
 components:
   parameters:
     X-Amz-Content-Sha256:

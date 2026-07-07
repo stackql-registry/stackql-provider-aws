@@ -99,6 +99,7 @@ paths:
       x-stackql-resource: campaigns
       x-stackql-method: describe_campaign
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.campaign
   /v2/campaigns/{id}/channel-subtype-config:
     delete:
       operationId: DeleteCampaignChannelSubtypeConfig
@@ -117,7 +118,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_channel_subtype_configs
+      x-stackql-resource: campaigns
       x-stackql-method: delete_campaign_channel_subtype_config
       x-stackql-verb: DELETE
     post:
@@ -143,7 +144,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_channel_subtype_configs
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_channel_subtype_config
       x-stackql-verb: UPDATE
   /v2/campaigns/{id}/communication-limits:
@@ -164,7 +165,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_communication_limits
+      x-stackql-resource: campaigns
       x-stackql-method: delete_campaign_communication_limits
       x-stackql-verb: DELETE
     post:
@@ -190,7 +191,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_communication_limits
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_communication_limits
       x-stackql-verb: UPDATE
   /v2/campaigns/{id}/communication-time:
@@ -211,7 +212,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_communication_times
+      x-stackql-resource: campaigns
       x-stackql-method: delete_campaign_communication_time
       x-stackql-verb: DELETE
     post:
@@ -237,7 +238,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_communication_times
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_communication_time
       x-stackql-verb: UPDATE
   /v2/campaigns/{id}/entry-limits:
@@ -253,7 +254,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_entry_limits
+      x-stackql-resource: campaigns
       x-stackql-method: delete_campaign_entry_limits
       x-stackql-verb: DELETE
     post:
@@ -279,7 +280,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_entry_limits
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_entry_limits
       x-stackql-verb: UPDATE
   /v2/connect-instance/{connect_instance_id}/config:
@@ -322,6 +323,7 @@ paths:
       x-stackql-resource: connect_instance_configs
       x-stackql-method: get_connect_instance_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.connectInstanceConfig
   /v2/connect-instance/{connect_instance_id}/integrations/delete:
     post:
       operationId: DeleteConnectInstanceIntegration
@@ -384,6 +386,7 @@ paths:
       x-stackql-resource: instance_onboarding_job_status
       x-stackql-method: get_instance_onboarding_job_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.connectInstanceOnboardingJobStatus
     put:
       operationId: StartInstanceOnboardingJob
       description: Onboard the specific Amazon Connect instance to Connect Campaigns.
@@ -480,6 +483,7 @@ paths:
       x-stackql-resource: instance_communication_limits
       x-stackql-method: get_instance_communication_limits
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.communicationLimitsConfig
     put:
       operationId: PutInstanceCommunicationLimits
       description: Put the instance communication limits. This API is idempotent.
@@ -535,6 +539,9 @@ paths:
       x-stackql-method: list_campaigns
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.campaignSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v2/connect-instance/{connect_instance_id}/integrations:
     get:
       operationId: ListConnectInstanceIntegrations
@@ -566,6 +573,9 @@ paths:
       x-stackql-method: list_connect_instance_integrations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.integrationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     put:
       operationId: PutConnectInstanceIntegration
       description: Put or update the integration for the specified Amazon Connect instance.
@@ -609,7 +619,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -635,7 +645,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -655,7 +665,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v2/campaigns/{id}/pause:
@@ -809,7 +819,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_flow_associations
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_flow_association
       x-stackql-verb: UPDATE
   /v2/campaigns/{id}/name:
@@ -836,7 +846,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_names
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_name
       x-stackql-verb: UPDATE
   /v2/campaigns/{id}/schedule:
@@ -863,7 +873,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_schedules
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_schedule
       x-stackql-verb: UPDATE
   /v2/campaigns/{id}/source:
@@ -890,7 +900,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: campaign_sources
+      x-stackql-resource: campaigns
       x-stackql-method: update_campaign_source
       x-stackql-verb: UPDATE
 components:

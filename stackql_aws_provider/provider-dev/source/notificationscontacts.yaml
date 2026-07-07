@@ -117,6 +117,7 @@ paths:
       x-stackql-resource: email_contacts
       x-stackql-method: get_email_contact
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.emailContact
   /emailcontacts:
     get:
       operationId: ListEmailContacts
@@ -148,6 +149,9 @@ paths:
       x-stackql-method: list_email_contacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.emailContacts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{arn}:
     get:
       operationId: ListTagsForResource
@@ -167,7 +171,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -199,7 +203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -227,7 +231,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /2022-10-31/emailcontacts/{arn}/activate/send:

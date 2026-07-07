@@ -182,7 +182,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetProductsResponse"
+                $ref: "#/components/schemas/GetProductsOutputDisplay"
   /ListPriceLists:
     post:
       operationId: ListPriceLists
@@ -400,24 +400,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    GetProductsResponse:
+    GetProductsRowDisplay:
       type: object
       properties:
-        FormatVersion:
-          $ref: "#/components/schemas/FormatVersion"
-          description: The format version of the response. For example, aws_v1.
-        PriceList:
-          $ref: "#/components/schemas/PriceListJsonItems"
+        price:
+          type: string
           description: The list of products that match your filters. The list contains both the product metadata and the price information.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination token that indicates the next set of results to retrieve.
-    PriceListJsonItems:
-      type: array
-      items:
-        $ref: "#/components/schemas/SynthesizedJsonPriceListJsonItem"
-    SynthesizedJsonPriceListJsonItem:
-      type: string
+    GetProductsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetProductsRowDisplay"
     ServiceCode:
       type: string
       minLength: 1
@@ -487,6 +482,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -512,6 +514,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -555,12 +564,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.PriceList
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetProductsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "PriceList" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"price": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -586,6 +608,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:

@@ -59,8 +59,6 @@ paths:
                 KmsKeyIdentifier:
                   $ref: "#/components/schemas/KmsKeyIdentifier"
               required:
-                - Source
-                - Target
                 - RoleArn
       responses:
         "200":
@@ -2340,6 +2338,14 @@ components:
             objectKey: $.Pipes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/pipes/methods/describe_pipe"
@@ -2350,10 +2356,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/pipes/methods/update_pipe"
         delete:
           - $ref: "#/components/x-stackQL-resources/pipes/methods/delete_pipe"
-    tags_for_resources:
-      id: aws.pipes.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.pipes.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2361,17 +2367,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.pipes.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2392,9 +2387,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

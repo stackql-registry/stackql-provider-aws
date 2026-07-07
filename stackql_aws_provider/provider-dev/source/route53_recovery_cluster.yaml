@@ -117,6 +117,9 @@ paths:
       x-stackql-method: list_routing_controls
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RoutingControls
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /UpdateRoutingControlState:
     post:
       operationId: UpdateRoutingControlState

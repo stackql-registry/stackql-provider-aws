@@ -1,0 +1,1 @@
+DELETE FROM aws.ec2.vpcs WHERE region = '{{ region }}' AND vpc_id = '{{ vpc_create.vpc_id }}'

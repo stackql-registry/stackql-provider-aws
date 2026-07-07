@@ -1986,8 +1986,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -4823,6 +4821,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Profile
           request:
             nativeCasing: pascal
         update_profile:
@@ -4904,10 +4903,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/lens_shares/methods/delete_lens_share"
-    lens_versions:
-      id: aws.wellarchitected.lens_versions
-      name: lens_versions
-      title: lens_versions
+    lens:
+      id: aws.wellarchitected.lens
+      name: lens
+      title: lens
       methods:
         create_lens_version:
           operation:
@@ -4920,12 +4919,47 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_lens:
+          operation:
+            $ref: "#/paths/~1lenses~1{lens_alias}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        get_lens:
+          operation:
+            $ref: "#/paths/~1lenses~1{lens_alias}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Lens
+          request:
+            nativeCasing: pascal
+        export_lens:
+          operation:
+            $ref: "#/paths/~1lenses~1{lens_alias}~1export/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        import_lens:
+          operation:
+            $ref: "#/paths/~1importLens/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/lens/methods/get_lens"
         insert:
-          - $ref: "#/components/x-stackQL-resources/lens_versions/methods/create_lens_version"
+          - $ref: "#/components/x-stackQL-resources/lens/methods/create_lens_version"
         update: []
-        delete: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/lens/methods/delete_lens"
     milestones:
       id: aws.wellarchitected.milestones
       name: milestones
@@ -4954,6 +4988,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        upgrade_lens_review:
+          operation:
+            $ref: "#/paths/~1workloads~1{workload_id}~1lensReviews~1{lens_alias}~1upgrade/put"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -5043,6 +5087,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ReviewTemplate
         update_review_template:
           operation:
             $ref: "#/paths/~1reviewTemplates~1{template_arn}/patch"
@@ -5132,6 +5177,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Workload
         update_workload:
           operation:
             $ref: "#/paths/~1workloads~1{workload_id}/patch"
@@ -5154,6 +5200,26 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_integration:
+          operation:
+            $ref: "#/paths/~1workloads~1{workload_id}~1updateIntegration/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        upgrade_profile_version:
+          operation:
+            $ref: "#/paths/~1workloads~1{workload_id}~1profiles~1{profile_arn}~1upgrade/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/workloads/methods/get_workload"
@@ -5161,6 +5227,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/workloads/methods/create_workload"
         update:
+          - $ref: "#/components/x-stackQL-resources/workloads/methods/update_integration"
           - $ref: "#/components/x-stackQL-resources/workloads/methods/update_workload"
         delete:
           - $ref: "#/components/x-stackQL-resources/workloads/methods/delete_workload"
@@ -5215,52 +5282,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/workload_shares/methods/update_workload_share"
         delete:
           - $ref: "#/components/x-stackQL-resources/workload_shares/methods/delete_workload_share"
-    lens:
-      id: aws.wellarchitected.lens
-      name: lens
-      title: lens
-      methods:
-        delete_lens:
-          operation:
-            $ref: "#/paths/~1lenses~1{lens_alias}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        get_lens:
-          operation:
-            $ref: "#/paths/~1lenses~1{lens_alias}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        export_lens:
-          operation:
-            $ref: "#/paths/~1lenses~1{lens_alias}~1export/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        import_lens:
-          operation:
-            $ref: "#/paths/~1importLens/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/lens/methods/get_lens"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/lens/methods/delete_lens"
     answers:
       id: aws.wellarchitected.answers
       name: answers
@@ -5437,6 +5458,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ProfileTemplate
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/profile_templates/methods/get_profile_template"
@@ -5645,10 +5667,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/share_invitations/methods/update_share_invitation"
         delete: []
-    tags_for_resources:
-      id: aws.wellarchitected.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.wellarchitected.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5656,17 +5678,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.wellarchitected.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{workload_arn}/post"
@@ -5687,30 +5698,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    integrations:
-      id: aws.wellarchitected.integrations
-      name: integrations
-      title: integrations
-      methods:
-        update_integration:
-          operation:
-            $ref: "#/paths/~1workloads~1{workload_id}~1updateIntegration/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/integrations/methods/update_integration"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

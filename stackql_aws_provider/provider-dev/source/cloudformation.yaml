@@ -287,7 +287,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: update_stack
+      x-stackql-resource: stacks
       x-stackql-method: cancel_update_stack
       x-stackql-verb: EXEC
     post:
@@ -304,7 +304,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CancelUpdateStackInput'
-      x-stackql-resource: update_stack
+      x-stackql-resource: stacks
       x-stackql-method: cancel_update_stack
       x-stackql-verb: EXEC
   /?Action=ContinueUpdateRollback&Version=2010-05-15:
@@ -384,7 +384,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ContinueUpdateRollbackOutputDisplay'
-      x-stackql-resource: continue_update_rollback
+      x-stackql-resource: stacks
       x-stackql-method: continue_update_rollback
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ContinueUpdateRollbackOutputDisplay
@@ -413,7 +413,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ContinueUpdateRollbackInput'
-      x-stackql-resource: continue_update_rollback
+      x-stackql-resource: stacks
       x-stackql-method: continue_update_rollback
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ContinueUpdateRollbackOutputDisplay
@@ -2710,6 +2710,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeStackRefactorOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "DescribeStackRefactorResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "DescribeStackRefactorResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n)
+        "map" -}}"description": {{ toJson (index $n "Description") }}, "stack_refactor_id": {{ toJson (index $n "StackRefactorId")
+        }}, "stack_ids": {{ toJson (index $n "StackIds") }}, "execution_status": {{ toJson (index $n "ExecutionStatus") }},
+        "execution_status_reason": {{ toJson (index $n "ExecutionStatusReason") }}, "status": {{ toJson (index $n "Status")
+        }}, "status_reason": {{ toJson (index $n "StatusReason") }}{{- end -}}}]}'
     post:
       operationId: POST_DescribeStackRefactor
       description: Describes the stack refactor status.
@@ -2731,6 +2738,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: DescribeStackRefactorOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "DescribeStackRefactorResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "DescribeStackRefactorResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n)
+        "map" -}}"description": {{ toJson (index $n "Description") }}, "stack_refactor_id": {{ toJson (index $n "StackRefactorId")
+        }}, "stack_ids": {{ toJson (index $n "StackIds") }}, "execution_status": {{ toJson (index $n "ExecutionStatus") }},
+        "execution_status_reason": {{ toJson (index $n "ExecutionStatusReason") }}, "status": {{ toJson (index $n "Status")
+        }}, "status_reason": {{ toJson (index $n "StatusReason") }}{{- end -}}}]}'
   /?Action=DescribeStackResource&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -3366,7 +3380,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DetectStackDriftOutputDisplay'
-      x-stackql-resource: detect_stack_drift
+      x-stackql-resource: stacks
       x-stackql-method: detect_stack_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackDriftOutputDisplay
@@ -3399,7 +3413,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DetectStackDriftInput'
-      x-stackql-resource: detect_stack_drift
+      x-stackql-resource: stacks
       x-stackql-method: detect_stack_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackDriftOutputDisplay
@@ -3443,7 +3457,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DetectStackResourceDriftOutputDisplay'
-      x-stackql-resource: detect_stack_resource_drift
+      x-stackql-resource: stacks
       x-stackql-method: detect_stack_resource_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackResourceDriftOutputDisplay
@@ -3471,7 +3485,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DetectStackResourceDriftInput'
-      x-stackql-resource: detect_stack_resource_drift
+      x-stackql-resource: stacks
       x-stackql-method: detect_stack_resource_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackResourceDriftOutputDisplay
@@ -3538,7 +3552,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DetectStackSetDriftOutputDisplay'
-      x-stackql-resource: detect_stack_set_drift
+      x-stackql-resource: stack_sets
       x-stackql-method: detect_stack_set_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackSetDriftOutputDisplay
@@ -3571,7 +3585,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DetectStackSetDriftInput'
-      x-stackql-resource: detect_stack_set_drift
+      x-stackql-resource: stack_sets
       x-stackql-method: detect_stack_set_drift
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: DetectStackSetDriftOutputDisplay
@@ -3709,7 +3723,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ExecuteChangeSetOutputDisplay'
-      x-stackql-resource: execute_change_set
+      x-stackql-resource: change_sets
       x-stackql-method: execute_change_set
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ExecuteChangeSetOutputDisplay
@@ -3735,7 +3749,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ExecuteChangeSetInput'
-      x-stackql-resource: execute_change_set
+      x-stackql-resource: change_sets
       x-stackql-method: execute_change_set
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ExecuteChangeSetOutputDisplay
@@ -3762,7 +3776,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: execute_stack_refactor
+      x-stackql-resource: stack_refactors
       x-stackql-method: execute_stack_refactor
       x-stackql-verb: EXEC
     post:
@@ -3777,7 +3791,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ExecuteStackRefactorInput'
-      x-stackql-resource: execute_stack_refactor
+      x-stackql-resource: stack_refactors
       x-stackql-method: execute_stack_refactor
       x-stackql-verb: EXEC
   /?Action=GetGeneratedTemplate&Version=2010-05-15:
@@ -4200,7 +4214,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/ImportStacksToStackSetOutputDisplay'
-      x-stackql-resource: stacks_to_stack_set
+      x-stackql-resource: stacks
       x-stackql-method: import_stacks_to_stack_set
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ImportStacksToStackSetOutputDisplay
@@ -4223,7 +4237,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/ImportStacksToStackSetInput'
-      x-stackql-resource: stacks_to_stack_set
+      x-stackql-resource: stacks
       x-stackql-method: import_stacks_to_stack_set
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: ImportStacksToStackSetOutputDisplay
@@ -4535,6 +4549,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListImportsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListImportsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n
+        "ListImportsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "Imports" }}{{
+        else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n)
+        "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if
+        $i }},{{ end }}{"import": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"import": {{
+        toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListImports
       description: Lists all stacks that are importing an exported output value. To modify or remove an exported output value,
@@ -4558,6 +4579,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListImportsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListImportsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n
+        "ListImportsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "Imports" }}{{
+        else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf $n)
+        "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if
+        $i }},{{ end }}{"import": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"import": {{
+        toJson $n }}}{{- end -}}]}'
   /?Action=ListResourceScanRelatedResources&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -5661,6 +5689,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTypeRegistrationsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListTypeRegistrationsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "ListTypeRegistrationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n =
+        index $n "RegistrationTokenList" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n
+        "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice"
+        -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"registration_token": {{ toJson $v }}}{{- end -}}{{- else if and
+        (eq (kindOf $n) "string") $n -}}{"registration_token": {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListTypeRegistrations
       description: Returns a list of registration tokens for the specified extension(s).
@@ -5682,6 +5717,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTypeRegistrationsOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListTypeRegistrationsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n
+        = index $n "ListTypeRegistrationsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n =
+        index $n "RegistrationTokenList" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n
+        "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice"
+        -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"registration_token": {{ toJson $v }}}{{- end -}}{{- else if and
+        (eq (kindOf $n) "string") $n -}}{"registration_token": {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListTypeVersions&Version=2010-05-15:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -6292,7 +6334,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/RollbackStackOutputDisplay'
-      x-stackql-resource: rollback_stack
+      x-stackql-resource: stacks
       x-stackql-method: rollback_stack
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RollbackStackOutputDisplay
@@ -6317,7 +6359,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/RollbackStackInput'
-      x-stackql-resource: rollback_stack
+      x-stackql-resource: stacks
       x-stackql-method: rollback_stack
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: RollbackStackOutputDisplay
@@ -6442,7 +6484,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetTypeConfigurationOutputDisplay'
-      x-stackql-resource: type_configurations
+      x-stackql-resource: types
       x-stackql-method: set_type_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetTypeConfigurationOutputDisplay
@@ -6470,7 +6512,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetTypeConfigurationInput'
-      x-stackql-resource: type_configurations
+      x-stackql-resource: types
       x-stackql-method: set_type_configuration
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetTypeConfigurationOutputDisplay
@@ -6522,7 +6564,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetTypeDefaultVersionOutputDisplay'
-      x-stackql-resource: type_default_versions
+      x-stackql-resource: types
       x-stackql-method: set_type_default_version
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetTypeDefaultVersionOutputDisplay
@@ -6544,7 +6586,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetTypeDefaultVersionInput'
-      x-stackql-resource: type_default_versions
+      x-stackql-resource: types
       x-stackql-method: set_type_default_version
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetTypeDefaultVersionOutputDisplay
@@ -6596,7 +6638,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: signal_resource
+      x-stackql-resource: stacks
       x-stackql-method: signal_resource
       x-stackql-verb: EXEC
     post:
@@ -6614,7 +6656,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SignalResourceInput'
-      x-stackql-resource: signal_resource
+      x-stackql-resource: stacks
       x-stackql-method: signal_resource
       x-stackql-verb: EXEC
   /?Action=StartResourceScan&Version=2010-05-15:
@@ -6722,7 +6764,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/StopStackSetOperationOutputDisplay'
-      x-stackql-resource: stack_set_operation
+      x-stackql-resource: stack_sets
       x-stackql-method: stop_stack_set_operation
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopStackSetOperationOutputDisplay
@@ -6744,7 +6786,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/StopStackSetOperationInput'
-      x-stackql-resource: stack_set_operation
+      x-stackql-resource: stack_sets
       x-stackql-method: stop_stack_set_operation
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: StopStackSetOperationOutputDisplay
@@ -7607,7 +7649,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UpdateTerminationProtectionOutputDisplay'
-      x-stackql-resource: termination_protections
+      x-stackql-resource: stacks
       x-stackql-method: update_termination_protection
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateTerminationProtectionOutputDisplay
@@ -7631,7 +7673,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateTerminationProtectionInput'
-      x-stackql-resource: termination_protections
+      x-stackql-resource: stacks
       x-stackql-method: update_termination_protection
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateTerminationProtectionOutputDisplay
@@ -9591,16 +9633,23 @@ components:
             extension publisher, DescribePublisher returns information about your own publisher account.
     ResourceScanId:
       type: string
-    ResourceTypeDisplay:
+    ScanFilterDisplay:
       type: object
-      properties: {}
+      properties:
+        Types:
+          type: string
+          description: An array of strings where each string represents an Amazon Web Services resource type you want to scan.
+            Each string defines the resource type using the format AWS::ServiceName::ResourceType, for example, AWS::DynamoDB::Table.
+            For the full list of supported resource types, see the Resource type support table in the CloudFormation User
+            Guide. To scan all resource types within a service, you can use a wildcard, represented by an asterisk (*). You
+            can place an asterisk at only the end of the string, for example, AWS::S3::*.
     DescribeResourceScanOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/ResourceTypeDisplay'
+            $ref: '#/components/schemas/ScanFilterDisplay'
     DescribeResourceScanInput:
       type: object
       properties:
@@ -9820,7 +9869,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/StackIdDisplay'
+            $ref: '#/components/schemas/DescribeStackRefactorRowDisplay'
     DescribeStackRefactorInput:
       type: object
       properties:
@@ -9829,6 +9878,31 @@ components:
           description: The ID associated with the stack refactor created from the CreateStackRefactor action.
       required:
       - StackRefactorId
+    DescribeStackRefactorRowDisplay:
+      type: object
+      properties:
+        description:
+          type: string
+          description: A description to help you identify the refactor.
+        stack_refactor_id:
+          type: string
+          description: The ID associated with the stack refactor created from the CreateStackRefactor action.
+        stack_ids:
+          type: array
+          description: The unique ID for each stack.
+        execution_status:
+          type: string
+          description: The stack refactor execution operation status that's provided after calling the ExecuteStackRefactor
+            action.
+        execution_status_reason:
+          type: string
+          description: A detailed explanation for the stack refactor ExecutionStatus.
+        status:
+          type: string
+          description: The stack refactor operation status that's provided after calling the CreateStackRefactor action.
+        status_reason:
+          type: string
+          description: A detailed explanation for the stack refactor operation Status.
     StackResourceDetailDisplay:
       type: object
       properties:
@@ -11044,7 +11118,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/StackNameDisplay'
+            $ref: '#/components/schemas/ListImportsRowDisplay'
     ListImportsInput:
       type: object
       properties:
@@ -11057,6 +11131,12 @@ components:
           description: The token for the next set of items to return. (You received this token from a previous call.)
       required:
       - ExportName
+    ListImportsRowDisplay:
+      type: object
+      properties:
+        import:
+          type: string
+          description: A list of stack names that are importing the specified exported output value.
     ScannedResourceIdentifiers:
       type: array
       items:
@@ -11978,7 +12058,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/RegistrationTokenDisplay'
+            $ref: '#/components/schemas/ListTypeRegistrationsRowDisplay'
     ListTypeRegistrationsInput:
       type: object
       properties:
@@ -12003,6 +12083,13 @@ components:
         NextToken:
           $ref: '#/components/schemas/NextToken'
           description: The token for the next set of items to return. (You received this token from a previous call.)
+    ListTypeRegistrationsRowDisplay:
+      type: object
+      properties:
+        registration_token:
+          type: string
+          description: A list of extension registration tokens. Use DescribeTypeRegistration to return detailed information
+            about a type registration request.
     DeprecatedStatus:
       type: string
       enum:

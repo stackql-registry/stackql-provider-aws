@@ -199,6 +199,9 @@ paths:
       x-stackql-method: list_analysis_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.analysisTemplateSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations:
     post:
       operationId: CreateCollaboration
@@ -293,6 +296,9 @@ paths:
       x-stackql-method: list_collaborations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/changeRequests:
     post:
       operationId: CreateCollaborationChangeRequest
@@ -366,6 +372,9 @@ paths:
       x-stackql-method: list_collaboration_change_requests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationChangeRequestSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/configuredaudiencemodelassociations:
     post:
       operationId: CreateConfiguredAudienceModelAssociation
@@ -445,6 +454,9 @@ paths:
       x-stackql-method: list_configured_audience_model_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configuredAudienceModelAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /configuredTables:
     post:
       operationId: CreateConfiguredTable
@@ -515,6 +527,9 @@ paths:
       x-stackql-method: list_configured_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configuredTableSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /configuredTables/{configured_table_identifier}/analysisRule:
     post:
       operationId: CreateConfiguredTableAnalysisRule
@@ -632,6 +647,9 @@ paths:
       x-stackql-method: list_configured_table_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configuredTableAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/configuredTableAssociations/{configured_table_association_identifier}/analysisRule:
     post:
       operationId: CreateConfiguredTableAssociationAnalysisRule
@@ -750,6 +768,9 @@ paths:
       x-stackql-method: list_id_mapping_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.idMappingTableSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/idnamespaceassociations:
     post:
       operationId: CreateIdNamespaceAssociation
@@ -825,6 +846,9 @@ paths:
       x-stackql-method: list_id_namespace_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.idNamespaceAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships:
     post:
       operationId: CreateMembership
@@ -901,6 +925,9 @@ paths:
       x-stackql-method: list_memberships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.membershipSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/privacybudgettemplates:
     post:
       operationId: CreatePrivacyBudgetTemplate
@@ -978,6 +1005,9 @@ paths:
       x-stackql-method: list_privacy_budget_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.privacyBudgetTemplateSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/analysistemplates/{analysis_template_identifier}:
     delete:
       operationId: DeleteAnalysisTemplate
@@ -1031,6 +1061,7 @@ paths:
       x-stackql-resource: analysis_templates
       x-stackql-method: get_analysis_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.analysisTemplate
     patch:
       operationId: UpdateAnalysisTemplate
       description: Updates the analysis template metadata.
@@ -1107,6 +1138,7 @@ paths:
       x-stackql-resource: collaborations
       x-stackql-method: get_collaboration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.collaboration
     patch:
       operationId: UpdateCollaboration
       description: Updates collaboration metadata and can only be called by the collaboration owner.
@@ -1194,6 +1226,7 @@ paths:
       x-stackql-resource: configured_audience_model_associations
       x-stackql-method: get_configured_audience_model_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.configuredAudienceModelAssociation
     patch:
       operationId: UpdateConfiguredAudienceModelAssociation
       description: Provides the details necessary to update a configured audience model association.
@@ -1273,6 +1306,7 @@ paths:
       x-stackql-resource: configured_tables
       x-stackql-method: get_configured_table
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.configuredTable
     patch:
       operationId: UpdateConfiguredTable
       description: Updates a configured table.
@@ -1368,6 +1402,7 @@ paths:
       x-stackql-resource: configured_table_analysis_rules
       x-stackql-method: get_configured_table_analysis_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.analysisRule
     patch:
       operationId: UpdateConfiguredTableAnalysisRule
       description: Updates a configured table analysis rule.
@@ -1464,6 +1499,7 @@ paths:
       x-stackql-resource: configured_table_associations
       x-stackql-method: get_configured_table_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.configuredTableAssociation
     patch:
       operationId: UpdateConfiguredTableAssociation
       description: Updates a configured table association.
@@ -1570,6 +1606,7 @@ paths:
       x-stackql-resource: configured_table_association_analysis_rules
       x-stackql-method: get_configured_table_association_analysis_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.analysisRule
     patch:
       operationId: UpdateConfiguredTableAssociationAnalysisRule
       description: Updates the analysis rule for a configured table association.
@@ -1667,6 +1704,7 @@ paths:
       x-stackql-resource: id_mapping_tables
       x-stackql-method: get_id_mapping_table
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.idMappingTable
     patch:
       operationId: UpdateIdMappingTable
       description: Provides the details that are necessary to update an ID mapping table.
@@ -1757,6 +1795,7 @@ paths:
       x-stackql-resource: id_namespace_associations
       x-stackql-method: get_id_namespace_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.idNamespaceAssociation
     patch:
       operationId: UpdateIdNamespaceAssociation
       description: Provides the details that are necessary to update an ID namespace association.
@@ -1865,6 +1904,7 @@ paths:
       x-stackql-resource: memberships
       x-stackql-method: get_membership
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.membership
     patch:
       operationId: UpdateMembership
       description: Updates a membership.
@@ -1955,6 +1995,7 @@ paths:
       x-stackql-resource: privacy_budget_templates
       x-stackql-method: get_privacy_budget_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.privacyBudgetTemplate
     patch:
       operationId: UpdatePrivacyBudgetTemplate
       description: Updates the privacy budget template for the specified collaboration.
@@ -2023,6 +2064,7 @@ paths:
       x-stackql-resource: collaboration_analysis_templates
       x-stackql-method: get_collaboration_analysis_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.collaborationAnalysisTemplate
   /collaborations/{collaboration_identifier}/changeRequests/{change_request_identifier}:
     get:
       operationId: GetCollaborationChangeRequest
@@ -2050,6 +2092,7 @@ paths:
       x-stackql-resource: collaboration_change_requests
       x-stackql-method: get_collaboration_change_request
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.collaborationChangeRequest
     patch:
       operationId: UpdateCollaborationChangeRequest
       description: Updates an existing collaboration change request. This operation allows approval actions for pending change
@@ -2118,6 +2161,7 @@ paths:
       x-stackql-resource: collaboration_configured_audience_model_associations
       x-stackql-method: get_collaboration_configured_audience_model_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.collaborationConfiguredAudienceModelAssociation
   /collaborations/{collaboration_identifier}/idnamespaceassociations/{id_namespace_association_identifier}:
     get:
       operationId: GetCollaborationIdNamespaceAssociation
@@ -2146,6 +2190,7 @@ paths:
       x-stackql-resource: collaboration_id_namespace_associations
       x-stackql-method: get_collaboration_id_namespace_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.collaborationIdNamespaceAssociation
   /collaborations/{collaboration_identifier}/privacybudgettemplates/{privacy_budget_template_identifier}:
     get:
       operationId: GetCollaborationPrivacyBudgetTemplate
@@ -2173,6 +2218,7 @@ paths:
       x-stackql-resource: collaboration_privacy_budget_templates
       x-stackql-method: get_collaboration_privacy_budget_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.collaborationPrivacyBudgetTemplate
   /memberships/{membership_identifier}/protectedJobs/{protected_job_identifier}:
     get:
       operationId: GetProtectedJob
@@ -2200,6 +2246,7 @@ paths:
       x-stackql-resource: protected_jobs
       x-stackql-method: get_protected_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.protectedJob
     patch:
       operationId: UpdateProtectedJob
       description: Updates the processing of a currently running job.
@@ -2264,6 +2311,7 @@ paths:
       x-stackql-resource: protected_queries
       x-stackql-method: get_protected_query
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.protectedQuery
     patch:
       operationId: UpdateProtectedQuery
       description: Updates the processing of a currently running query.
@@ -2329,6 +2377,7 @@ paths:
       x-stackql-resource: schemas
       x-stackql-method: get_schema
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.schema
   /collaborations/{collaboration_identifier}/schemas/{name}/analysisRule/{type}:
     get:
       operationId: GetSchemaAnalysisRule
@@ -2364,6 +2413,7 @@ paths:
       x-stackql-resource: schema_analysis_rules
       x-stackql-method: get_schema_analysis_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.analysisRule
   /collaborations/{collaboration_identifier}/analysistemplates:
     get:
       operationId: ListCollaborationAnalysisTemplates
@@ -2401,6 +2451,9 @@ paths:
       x-stackql-method: list_collaboration_analysis_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationAnalysisTemplateSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/configuredaudiencemodelassociations:
     get:
       operationId: ListCollaborationConfiguredAudienceModelAssociations
@@ -2438,6 +2491,9 @@ paths:
       x-stackql-method: list_collaboration_configured_audience_model_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationConfiguredAudienceModelAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/idnamespaceassociations:
     get:
       operationId: ListCollaborationIdNamespaceAssociations
@@ -2474,6 +2530,9 @@ paths:
       x-stackql-method: list_collaboration_id_namespace_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationIdNamespaceAssociationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/privacybudgettemplates:
     get:
       operationId: ListCollaborationPrivacyBudgetTemplates
@@ -2510,6 +2569,9 @@ paths:
       x-stackql-method: list_collaboration_privacy_budget_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationPrivacyBudgetTemplateSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/privacybudgets:
     get:
       operationId: ListCollaborationPrivacyBudgets
@@ -2560,6 +2622,9 @@ paths:
       x-stackql-method: list_collaboration_privacy_budgets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.collaborationPrivacyBudgetSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /collaborations/{collaboration_identifier}/members:
     get:
       operationId: ListMembers
@@ -2596,6 +2661,9 @@ paths:
       x-stackql-method: list_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.memberSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/privacybudgets:
     get:
       operationId: ListPrivacyBudgets
@@ -2645,6 +2713,9 @@ paths:
       x-stackql-method: list_privacy_budgets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.privacyBudgetSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memberships/{membership_identifier}/protectedJobs:
     get:
       operationId: ListProtectedJobs
@@ -2687,6 +2758,9 @@ paths:
       x-stackql-method: list_protected_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.protectedJobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartProtectedJob
       description: Creates a protected job that is started by Clean Rooms.
@@ -2722,7 +2796,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProtectedJobOutput'
-      x-stackql-resource: protected_job
+      x-stackql-resource: memberships
       x-stackql-method: start_protected_job
       x-stackql-verb: EXEC
   /memberships/{membership_identifier}/protectedQueries:
@@ -2767,6 +2841,9 @@ paths:
       x-stackql-method: list_protected_queries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.protectedQueries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartProtectedQuery
       description: Creates a protected query that is started by Clean Rooms.
@@ -2802,7 +2879,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartProtectedQueryOutput'
-      x-stackql-resource: protected_query
+      x-stackql-resource: memberships
       x-stackql-method: start_protected_query
       x-stackql-verb: EXEC
   /collaborations/{collaboration_identifier}/schemas:
@@ -2848,6 +2925,9 @@ paths:
       x-stackql-method: list_schemas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.schemaSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2866,7 +2946,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -2897,7 +2977,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2923,7 +3003,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /memberships/{membership_identifier}/idmappingtables/{id_mapping_table_identifier}/populate:
@@ -2959,7 +3039,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PopulateIdMappingTableOutput'
-      x-stackql-resource: populate_id_mapping_table
+      x-stackql-resource: id_mapping_tables
       x-stackql-method: populate_id_mapping_table
       x-stackql-verb: EXEC
   /memberships/{membership_identifier}/previewprivacyimpact:
@@ -2992,7 +3072,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PreviewPrivacyImpactOutput'
-      x-stackql-resource: preview_privacy_impact
+      x-stackql-resource: memberships
       x-stackql-method: preview_privacy_impact
       x-stackql-verb: EXEC
 components:

@@ -1,0 +1,7 @@
+-- Lifecycle transition via the EXEC surface (StopInstances is exec by
+-- design - rule 6 verb mapping - not a CRUD verb). Singleton scalar form:
+-- EC2 accepts the flat InstanceId= wire param; JSON-array strings are NOT
+-- fanned out from EXEC params.
+EXEC aws.ec2.instances.stop_instances
+  @region = '{{ region }}',
+  @InstanceId = '{{ instance_create.instance_id }}'

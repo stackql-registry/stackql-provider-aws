@@ -36,7 +36,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContactIdResponse'
-      x-stackql-resource: contact
+      x-stackql-resource: contacts
       x-stackql-method: cancel_contact
       x-stackql-verb: EXEC
     get:
@@ -117,6 +117,9 @@ paths:
       x-stackql-method: list_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.configList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /dataflowEndpointGroup:
     post:
       operationId: CreateDataflowEndpointGroup
@@ -180,6 +183,9 @@ paths:
       x-stackql-method: list_dataflow_endpoint_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.dataflowEndpointGroupList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /dataflowEndpointGroupV2:
     post:
       operationId: CreateDataflowEndpointGroupV2
@@ -212,7 +218,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDataflowEndpointGroupV2Response'
-      x-stackql-resource: dataflow_endpoint_group_v2s
+      x-stackql-resource: dataflow_endpoint_groups
       x-stackql-method: create_dataflow_endpoint_group_v2
       x-stackql-verb: INSERT
   /ephemeris:
@@ -331,6 +337,9 @@ paths:
       x-stackql-method: list_mission_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.missionProfileList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /config/{config_type}/{config_id}:
     delete:
       operationId: DeleteConfig
@@ -790,6 +799,9 @@ paths:
       x-stackql-method: list_antennas
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.antennaList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /contact/{contact_id}/versions:
     get:
       operationId: ListContactVersions
@@ -825,6 +837,9 @@ paths:
       x-stackql-method: list_contact_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contactVersionsList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: UpdateContact
       description: Updates a specific contact.
@@ -904,6 +919,9 @@ paths:
       x-stackql-method: list_contacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.contactList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ephemerides:
     post:
       operationId: ListEphemerides
@@ -952,6 +970,9 @@ paths:
       x-stackql-method: list_ephemerides
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ephemerides
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /groundstation/{ground_station_id}/reservation:
     get:
       operationId: ListGroundStationReservations
@@ -1005,6 +1026,9 @@ paths:
       x-stackql-method: list_ground_station_reservations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.reservationList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /groundstation:
     get:
       operationId: ListGroundStations
@@ -1039,6 +1063,9 @@ paths:
       x-stackql-method: list_ground_stations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.groundStationList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /satellite:
     get:
       operationId: ListSatellites
@@ -1067,6 +1094,9 @@ paths:
       x-stackql-method: list_satellites
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.satellites
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1085,7 +1115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1116,7 +1146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1142,7 +1172,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /agent:
@@ -1215,7 +1245,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContactIdResponse'
-      x-stackql-resource: reserve_contact
+      x-stackql-resource: mission_profiles
       x-stackql-method: reserve_contact
       x-stackql-verb: EXEC
   /agent/{agent_id}:

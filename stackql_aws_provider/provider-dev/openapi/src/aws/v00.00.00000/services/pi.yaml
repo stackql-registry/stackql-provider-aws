@@ -302,7 +302,6 @@ paths:
                   description: An immutable identifier for a data source that is unique for an Amazon Web Services Region. Performance Insights gathers metrics from this data source. To use a DB instance as a data source, specify its DbiResourceId value. For example, specify db-ABCDEFGHIJKLMNOPQRSTU1VW2X.
               required:
                 - ServiceType
-                - Identifier
       responses:
         "200":
           description: Success
@@ -360,7 +359,6 @@ paths:
                   description: The returned timestamp which is the start or end time of the time periods. The default value is END_TIME.
               required:
                 - ServiceType
-                - Identifier
                 - MetricQueries
                 - StartTime
                 - EndTime
@@ -584,7 +582,6 @@ paths:
               required:
                 - ServiceType
                 - ResourceARN
-                - Tags
       responses:
         "200":
           description: Success
@@ -1330,6 +1327,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AnalysisReport
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -1503,10 +1501,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.pi.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.pi.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1521,17 +1519,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.pi.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1559,9 +1546,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

@@ -51,7 +51,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteBuildsOutput'
-      x-stackql-resource: batch_delete_builds
+      x-stackql-resource: builds
       x-stackql-method: batch_delete_builds
       x-stackql-verb: EXEC
   /BatchGetBuildBatches:
@@ -725,7 +725,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateWebhookOutput'
-      x-stackql-resource: webhooks
+      x-stackql-resource: projects
       x-stackql-method: create_webhook
       x-stackql-verb: INSERT
   /DeleteBuildBatch:
@@ -1020,7 +1020,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteWebhookOutput'
-      x-stackql-resource: webhooks
+      x-stackql-resource: projects
       x-stackql-method: delete_webhook
       x-stackql-verb: DELETE
   /DescribeCodeCoverages:
@@ -1080,6 +1080,9 @@ paths:
       x-stackql-method: describe_code_coverages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.codeCoverages
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeTestCases:
     post:
       operationId: DescribeTestCases
@@ -1131,6 +1134,9 @@ paths:
       x-stackql-method: describe_test_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.testCases
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /GetReportGroupTrend:
     post:
       operationId: GetReportGroupTrend
@@ -1309,7 +1315,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvalidateProjectCacheOutput'
-      x-stackql-resource: invalidate_project_cache
+      x-stackql-resource: projects
       x-stackql-method: invalidate_project_cache
       x-stackql-verb: EXEC
   /ListBuildBatches:
@@ -1354,11 +1360,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListBuildBatchesOutput'
+                $ref: '#/components/schemas/ListBuildBatchesOutputDisplay'
       x-stackql-resource: build_batches
       x-stackql-method: list_build_batches
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ids
+      x-stackql-responseEnvelope: ListBuildBatchesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBuildBatchesForProject:
     post:
       operationId: ListBuildBatchesForProject
@@ -1404,11 +1418,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListBuildBatchesForProjectOutput'
+                $ref: '#/components/schemas/ListBuildBatchesForProjectOutputDisplay'
       x-stackql-resource: build_batches_for_projects
       x-stackql-method: list_build_batches_for_project
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ids
+      x-stackql-responseEnvelope: ListBuildBatchesForProjectOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBuilds:
     post:
       operationId: ListBuilds
@@ -1447,11 +1469,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListBuildsOutput'
+                $ref: '#/components/schemas/ListBuildsOutputDisplay'
       x-stackql-resource: builds
       x-stackql-method: list_builds
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ids
+      x-stackql-responseEnvelope: ListBuildsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListBuildsForProject:
     post:
       operationId: ListBuildsForProject
@@ -1499,11 +1529,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListBuildsForProjectOutput'
+                $ref: '#/components/schemas/ListBuildsForProjectOutputDisplay'
       x-stackql-resource: builds_for_projects
       x-stackql-method: list_builds_for_project
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ids
+      x-stackql-responseEnvelope: ListBuildsForProjectOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCommandExecutionsForSandbox:
     post:
       operationId: ListCommandExecutionsForSandbox
@@ -1551,6 +1589,9 @@ paths:
       x-stackql-method: list_command_executions_for_sandbox
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commandExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListCuratedEnvironmentImages:
     post:
       operationId: ListCuratedEnvironmentImages
@@ -1630,10 +1671,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFleetsOutput'
+                $ref: '#/components/schemas/ListFleetsOutputDisplay'
       x-stackql-resource: fleets
       x-stackql-method: list_fleets
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: ListFleetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "fleets" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range
+        $i, $v := $lst -}}{{- if $i }},{{ end }}{"fleet": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
   /ListProjects:
     post:
       operationId: ListProjects
@@ -1679,11 +1725,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListProjectsOutput'
+                $ref: '#/components/schemas/ListProjectsOutputDisplay'
       x-stackql-resource: projects
       x-stackql-method: list_projects
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.projects
+      x-stackql-responseEnvelope: ListProjectsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "projects" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"project": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListReportGroups:
     post:
       operationId: ListReportGroups
@@ -1731,11 +1785,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListReportGroupsOutput'
+                $ref: '#/components/schemas/ListReportGroupsOutputDisplay'
       x-stackql-resource: report_groups
       x-stackql-method: list_report_groups
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.reportGroups
+      x-stackql-responseEnvelope: ListReportGroupsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "reportGroups" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report_group": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListReports:
     post:
       operationId: ListReports
@@ -1782,11 +1844,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListReportsOutput'
+                $ref: '#/components/schemas/ListReportsOutputDisplay'
       x-stackql-resource: reports
       x-stackql-method: list_reports
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.reports
+      x-stackql-responseEnvelope: ListReportsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "reports" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListReportsForReportGroup:
     post:
       operationId: ListReportsForReportGroup
@@ -1836,11 +1906,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListReportsForReportGroupOutput'
+                $ref: '#/components/schemas/ListReportsForReportGroupOutputDisplay'
       x-stackql-resource: reports_for_report_groups
       x-stackql-method: list_reports_for_report_group
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.reports
+      x-stackql-responseEnvelope: ListReportsForReportGroupOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "reports" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSandboxes:
     post:
       operationId: ListSandboxes
@@ -1878,11 +1956,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSandboxesOutput'
+                $ref: '#/components/schemas/ListSandboxesOutputDisplay'
       x-stackql-resource: sandboxes
       x-stackql-method: list_sandboxes
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ids
+      x-stackql-responseEnvelope: ListSandboxesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSandboxesForProject:
     post:
       operationId: ListSandboxesForProject
@@ -1925,11 +2011,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSandboxesForProjectOutput'
+                $ref: '#/components/schemas/ListSandboxesForProjectOutputDisplay'
       x-stackql-resource: sandboxes_for_projects
       x-stackql-method: list_sandboxes_for_project
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ids
+      x-stackql-responseEnvelope: ListSandboxesForProjectOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ids" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq
+        (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"id": {{ toJson $v }}}{{- end -}}{{- end
+        -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSharedProjects:
     post:
       operationId: ListSharedProjects
@@ -1977,11 +2071,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSharedProjectsOutput'
+                $ref: '#/components/schemas/ListSharedProjectsOutputDisplay'
       x-stackql-resource: shared_projects
       x-stackql-method: list_shared_projects
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.projects
+      x-stackql-responseEnvelope: ListSharedProjectsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "projects" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"project": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSharedReportGroups:
     post:
       operationId: ListSharedReportGroups
@@ -2029,11 +2131,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSharedReportGroupsOutput'
+                $ref: '#/components/schemas/ListSharedReportGroupsOutputDisplay'
       x-stackql-resource: shared_report_groups
       x-stackql-method: list_shared_report_groups
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.reportGroups
+      x-stackql-responseEnvelope: ListSharedReportGroupsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "reportGroups" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"report_group": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListSourceCredentials:
     post:
       operationId: ListSourceCredentials
@@ -2544,7 +2654,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBuildBatchOutput'
-      x-stackql-resource: build_batch
+      x-stackql-resource: builds
       x-stackql-method: start_build_batch
       x-stackql-verb: EXEC
   /StartCommandExecution:
@@ -2587,7 +2697,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCommandExecutionOutput'
-      x-stackql-resource: command_execution
+      x-stackql-resource: sandboxes
       x-stackql-method: start_command_execution
       x-stackql-verb: EXEC
   /StartSandbox:
@@ -2660,7 +2770,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartSandboxConnectionOutput'
-      x-stackql-resource: sandbox_connection
+      x-stackql-resource: sandboxes
       x-stackql-method: start_sandbox_connection
       x-stackql-verb: EXEC
   /StopBuild:
@@ -2732,7 +2842,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBuildBatchOutput'
-      x-stackql-resource: build_batch
+      x-stackql-resource: builds
       x-stackql-method: stop_build_batch
       x-stackql-verb: EXEC
   /StopSandbox:
@@ -3072,7 +3182,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateProjectVisibilityOutput'
-      x-stackql-resource: project_visibilities
+      x-stackql-resource: projects
       x-stackql-method: update_project_visibility
       x-stackql-verb: UPDATE
   /UpdateReportGroup:
@@ -3177,7 +3287,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateWebhookOutput'
-      x-stackql-resource: webhooks
+      x-stackql-resource: projects
       x-stackql-method: update_webhook
       x-stackql-verb: UPDATE
 components:
@@ -5965,49 +6075,59 @@ components:
         status:
           $ref: '#/components/schemas/StatusType'
           description: The status of the batch builds to retrieve. Only batch builds that have this status will be retrieved.
-    ListBuildBatchesOutput:
+    ListBuildBatchesRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/BuildBatchIds'
+        id:
+          type: string
           description: An array of strings that contains the batch build identifiers.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If there are more items to return, this contains a token that is passed to a subsequent call to ListBuildBatches
-            to retrieve the next set of items.
-    ListBuildBatchesForProjectOutput:
+    ListBuildBatchesOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/BuildBatchIds'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListBuildBatchesRowDisplay'
+    ListBuildBatchesForProjectRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
           description: An array of strings that contains the batch build identifiers.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If there are more items to return, this contains a token that is passed to a subsequent call to ListBuildBatchesForProject
-            to retrieve the next set of items.
-    ListBuildsOutput:
+    ListBuildBatchesForProjectOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/BuildIds'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListBuildBatchesForProjectRowDisplay'
+    ListBuildsRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
           description: A list of build IDs, with each build ID representing a single build.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique
-            string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next
-            token to the call.
-    ListBuildsForProjectOutput:
+    ListBuildsOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/BuildIds'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListBuildsRowDisplay'
+    ListBuildsForProjectRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
           description: A list of build identifiers for the specified build project, with each build ID representing a single
             build.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique
-            string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next
-            token to the call.
+    ListBuildsForProjectOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListBuildsForProjectRowDisplay'
     SensitiveString:
       type: string
     ListCommandExecutionsForSandboxOutput:
@@ -6100,57 +6220,57 @@ components:
       - NAME
       - CREATED_TIME
       - LAST_MODIFIED_TIME
-    ListFleetsOutput:
+    ListFleetsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique
-            string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next
-            token to the call.
-        fleets:
-          $ref: '#/components/schemas/FleetArns'
+        fleet:
+          type: string
           description: The list of compute fleet names.
-    FleetArns:
-      type: array
-      items:
-        $ref: '#/components/schemas/NonEmptyString'
+    ListFleetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFleetsRowDisplay'
     ProjectSortByType:
       type: string
       enum:
       - NAME
       - CREATED_TIME
       - LAST_MODIFIED_TIME
-    ListProjectsOutput:
+    ListProjectsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If there are more than 100 items in the list, only the first 100 items are returned, along with a unique
-            string called a nextToken. To get the next batch of items in the list, call this operation again, adding the next
-            token to the call.
-        projects:
-          $ref: '#/components/schemas/ProjectNames'
+        project:
+          type: string
           description: The list of build project names, with each build project name representing a single build project.
+    ListProjectsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListProjectsRowDisplay'
     ReportGroupSortByType:
       type: string
       enum:
       - NAME
       - CREATED_TIME
       - LAST_MODIFIED_TIME
-    ListReportGroupsOutput:
+    ListReportGroupsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: During a previous call, the maximum number of items that can be returned is the value specified in
-            maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next
-            batch of items in the list, call this operation again, adding the next token to the call. To get all of the items
-            in the list, keep calling this operation with each subsequent next token that is returned, until no more next
-            tokens are returned.
-        reportGroups:
-          $ref: '#/components/schemas/ReportGroupArns'
+        report_group:
+          type: string
           description: The list of ARNs for the report groups in the current Amazon Web Services account.
+    ListReportGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReportGroupsRowDisplay'
     ReportFilter:
       description: A filter used to return reports with the status specified by the input status parameter.
       type: object
@@ -6158,85 +6278,89 @@ components:
         status:
           $ref: '#/components/schemas/ReportStatusType'
           description: The status used to filter reports. You can filter using one status only.
-    ListReportsOutput:
+    ListReportsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: During a previous call, the maximum number of items that can be returned is the value specified in
-            maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next
-            batch of items in the list, call this operation again, adding the next token to the call. To get all of the items
-            in the list, keep calling this operation with each subsequent next token that is returned, until no more next
-            tokens are returned.
-        reports:
-          $ref: '#/components/schemas/ReportArns'
+        report:
+          type: string
           description: The list of returned ARNs for the reports in the current Amazon Web Services account.
-    ListReportsForReportGroupOutput:
+    ListReportsOutputDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: During a previous call, the maximum number of items that can be returned is the value specified in
-            maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next
-            batch of items in the list, call this operation again, adding the next token to the call. To get all of the items
-            in the list, keep calling this operation with each subsequent next token that is returned, until no more next
-            tokens are returned.
-        reports:
-          $ref: '#/components/schemas/ReportArns'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReportsRowDisplay'
+    ListReportsForReportGroupRowDisplay:
+      type: object
+      properties:
+        report:
+          type: string
           description: The list of report ARNs.
-    ListSandboxesOutput:
+    ListReportsForReportGroupOutputDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/SandboxIds'
-          description: Information about the requested sandbox IDs.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: Information about the next token to get paginated results.
-    ListSandboxesForProjectOutput:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReportsForReportGroupRowDisplay'
+    ListSandboxesRowDisplay:
       type: object
       properties:
-        ids:
-          $ref: '#/components/schemas/SandboxIds'
+        id:
+          type: string
           description: Information about the requested sandbox IDs.
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: Information about the next token to get paginated results.
+    ListSandboxesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSandboxesRowDisplay'
+    ListSandboxesForProjectRowDisplay:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Information about the requested sandbox IDs.
+    ListSandboxesForProjectOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSandboxesForProjectRowDisplay'
     SharedResourceSortByType:
       type: string
       enum:
       - ARN
       - MODIFIED_TIME
-    ListSharedProjectsOutput:
+    ListSharedProjectsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: During a previous call, the maximum number of items that can be returned is the value specified in
-            maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next
-            batch of items in the list, call this operation again, adding the next token to the call. To get all of the items
-            in the list, keep calling this operation with each subsequent next token that is returned, until no more next
-            tokens are returned.
-        projects:
-          $ref: '#/components/schemas/ProjectArns'
+        project:
+          type: string
           description: The list of ARNs for the build projects shared with the current Amazon Web Services account or user.
-    ProjectArns:
-      type: array
-      items:
-        $ref: '#/components/schemas/NonEmptyString'
-    ListSharedReportGroupsOutput:
+    ListSharedProjectsOutputDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: During a previous call, the maximum number of items that can be returned is the value specified in
-            maxResults. If there more items in the list, then a unique string called a nextToken is returned. To get the next
-            batch of items in the list, call this operation again, adding the next token to the call. To get all of the items
-            in the list, keep calling this operation with each subsequent next token that is returned, until no more next
-            tokens are returned.
-        reportGroups:
-          $ref: '#/components/schemas/ReportGroupArns'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSharedProjectsRowDisplay'
+    ListSharedReportGroupsRowDisplay:
+      type: object
+      properties:
+        report_group:
+          type: string
           description: The list of ARNs for the report groups shared with the current Amazon Web Services account or user.
+    ListSharedReportGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSharedReportGroupsRowDisplay'
     ListSourceCredentialsOutput:
       type: object
       properties:

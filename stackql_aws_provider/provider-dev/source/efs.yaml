@@ -108,6 +108,9 @@ paths:
       x-stackql-method: describe_access_points
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AccessPoints
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2015-02-01/file-systems:
     post:
       operationId: CreateFileSystem
@@ -229,6 +232,9 @@ paths:
       x-stackql-method: describe_file_systems
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FileSystems
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2015-02-01/mount-targets:
     post:
       operationId: CreateMountTarget
@@ -362,6 +368,9 @@ paths:
       x-stackql-method: describe_mount_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MountTargets
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2015-02-01/file-systems/{source_file_system_id}/replication-configuration:
     post:
       operationId: CreateReplicationConfiguration
@@ -710,6 +719,7 @@ paths:
       x-stackql-resource: account_preferences
       x-stackql-method: describe_account_preferences
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResourceIdPreference
     put:
       operationId: PutAccountPreferences
       description: Use this operation to set the account preference in the current Amazon Web Services Region to use long
@@ -762,6 +772,7 @@ paths:
       x-stackql-resource: backup_policies
       x-stackql-method: describe_backup_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BackupPolicy
     put:
       operationId: PutBackupPolicy
       description: Updates the file system's backup policy. Use this action to start or stop automatic backups of the file
@@ -887,10 +898,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DescribeMountTargetSecurityGroupsResponse'
+                $ref: '#/components/schemas/DescribeMountTargetSecurityGroupsOutputDisplay'
       x-stackql-resource: mount_target_security_groups
       x-stackql-method: describe_mount_target_security_groups
       x-stackql-verb: SELECT
+      x-stackql-responseEnvelope: DescribeMountTargetSecurityGroupsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SecurityGroups" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{-
+        range $i, $v := $lst -}}{{- if $i }},{{ end }}{"security_group": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
     put:
       operationId: ModifyMountTargetSecurityGroups
       description: 'Modifies the set of security groups in effect for a mount target. When you create a mount target, Amazon
@@ -961,6 +977,9 @@ paths:
       x-stackql-method: describe_replication_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Replications
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2015-02-01/tags/{file_system_id}/:
     get:
       operationId: DescribeTags
@@ -1002,6 +1021,9 @@ paths:
       x-stackql-method: describe_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2015-02-01/resource-tags/{resource_id}:
     get:
       operationId: ListTagsForResource
@@ -1036,7 +1058,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1064,7 +1086,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1087,7 +1109,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /2015-02-01/file-systems/{file_system_id}/protection:
@@ -1118,7 +1140,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FileSystemProtectionDescription'
-      x-stackql-resource: file_system_protections
+      x-stackql-resource: file_systems
       x-stackql-method: update_file_system_protection
       x-stackql-verb: UPDATE
 components:
@@ -1952,14 +1974,19 @@ components:
       - AFTER_180_DAYS
       - AFTER_270_DAYS
       - AFTER_365_DAYS
-    DescribeMountTargetSecurityGroupsResponse:
+    DescribeMountTargetSecurityGroupsRowDisplay:
       type: object
       properties:
-        SecurityGroups:
-          $ref: '#/components/schemas/SecurityGroups'
+        security_group:
+          type: string
           description: An array of security groups.
-      required:
-      - SecurityGroups
+    DescribeMountTargetSecurityGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DescribeMountTargetSecurityGroupsRowDisplay'
     DescribeMountTargetsResponse:
       type: object
       properties:

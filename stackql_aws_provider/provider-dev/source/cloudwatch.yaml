@@ -5,7 +5,7 @@ info:
   description: Amazon CloudWatch
   x-serviceName: monitoring
   x-serviceAlias: cloudwatch
-  x-protocol: smithy-rpc-v2-cbor
+  x-protocol: json
   x-apiVersion: '2010-08-01'
   x-endpointPrefix: monitoring
   x-targetPrefix: GraniteServiceVersion20100801
@@ -371,6 +371,9 @@ paths:
       x-stackql-method: describe_alarm_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AlarmHistoryItems
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAlarms:
     post:
       operationId: DescribeAlarms
@@ -457,6 +460,9 @@ paths:
       x-stackql-method: describe_alarms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MetricAlarms
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeAlarmsForMetric:
     post:
       operationId: DescribeAlarmsForMetric
@@ -575,6 +581,9 @@ paths:
       x-stackql-method: describe_anomaly_detectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AnomalyDetectors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /DescribeInsightRules:
     post:
       operationId: DescribeInsightRules
@@ -644,7 +653,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alarm_actions
+      x-stackql-resource: alarms
       x-stackql-method: disable_alarm_actions
       x-stackql-verb: EXEC
   /DisableInsightRules:
@@ -714,7 +723,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alarm_actions
+      x-stackql-resource: alarms
       x-stackql-method: enable_alarm_actions
       x-stackql-verb: EXEC
   /EnableInsightRules:
@@ -1026,6 +1035,9 @@ paths:
       x-stackql-method: get_metric_data
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MetricDataResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /GetMetricStatistics:
     post:
       operationId: GetMetricStatistics
@@ -1317,6 +1329,9 @@ paths:
       x-stackql-method: list_alarm_mute_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AlarmMuteRuleSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDashboards:
     post:
       operationId: ListDashboards
@@ -1359,6 +1374,9 @@ paths:
       x-stackql-method: list_dashboards
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DashboardEntries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListManagedInsightRules:
     post:
       operationId: ListManagedInsightRules
@@ -1509,6 +1527,9 @@ paths:
       x-stackql-method: list_metrics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Metrics
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1548,7 +1569,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutAlarmMuteRule:
@@ -1817,7 +1838,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: composite_alarms
+      x-stackql-resource: alarms
       x-stackql-method: put_composite_alarm
       x-stackql-verb: REPLACE
   /PutDashboard:
@@ -2210,7 +2231,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: metric_alarms
+      x-stackql-resource: alarms
       x-stackql-method: put_metric_alarm
       x-stackql-verb: REPLACE
   /PutMetricData:
@@ -2445,7 +2466,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: alarm_states
+      x-stackql-resource: alarms
       x-stackql-method: set_alarm_state
       x-stackql-verb: UPDATE
   /StartMetricStreams:
@@ -2639,7 +2660,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2685,7 +2706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:

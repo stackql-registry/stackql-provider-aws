@@ -55,7 +55,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateChatTokenResponse'
-      x-stackql-resource: chat_tokens
+      x-stackql-resource: rooms
       x-stackql-method: create_chat_token
       x-stackql-verb: INSERT
   /CreateLoggingConfiguration:
@@ -174,7 +174,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteMessageResponse'
-      x-stackql-resource: messages
+      x-stackql-resource: rooms
       x-stackql-method: delete_message
       x-stackql-verb: DELETE
   /DeleteRoom:
@@ -228,7 +228,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisconnectUserResponse'
-      x-stackql-resource: disconnect_user
+      x-stackql-resource: rooms
       x-stackql-method: disconnect_user
       x-stackql-verb: EXEC
   /GetLoggingConfiguration:
@@ -361,7 +361,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -392,7 +392,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -421,7 +421,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /SendEvent:
@@ -453,7 +453,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendEventResponse'
-      x-stackql-resource: event
+      x-stackql-resource: rooms
       x-stackql-method: send_event
       x-stackql-verb: EXEC
   /UpdateLoggingConfiguration:

@@ -113,6 +113,9 @@ paths:
       x-stackql-method: list_apps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.apps
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /apps/{app_id}/backendenvironments:
     post:
       operationId: CreateBackendEnvironment
@@ -298,6 +301,9 @@ paths:
       x-stackql-method: list_branches
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.branches
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /apps/{app_id}/branches/{branch_name}/deployments:
     post:
       operationId: CreateDeployment
@@ -333,7 +339,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDeploymentResult'
-      x-stackql-resource: deployments
+      x-stackql-resource: branches
       x-stackql-method: create_deployment
       x-stackql-verb: INSERT
   /apps/{app_id}/domains:
@@ -414,6 +420,9 @@ paths:
       x-stackql-method: list_domain_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.domainAssociations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /apps/{app_id}/webhooks:
     post:
       operationId: CreateWebhook
@@ -522,6 +531,7 @@ paths:
       x-stackql-resource: apps
       x-stackql-method: get_app
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.app
     post:
       operationId: UpdateApp
       description: Updates an existing Amplify app.
@@ -650,6 +660,7 @@ paths:
       x-stackql-resource: backend_environments
       x-stackql-method: get_backend_environment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.backendEnvironment
   /apps/{app_id}/branches/{branch_name}:
     delete:
       operationId: DeleteBranch
@@ -703,6 +714,7 @@ paths:
       x-stackql-resource: branches
       x-stackql-method: get_branch
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.branch
     post:
       operationId: UpdateBranch
       description: Updates a branch for an Amplify app.
@@ -825,6 +837,7 @@ paths:
       x-stackql-resource: domain_associations
       x-stackql-method: get_domain_association
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.domainAssociation
     post:
       operationId: UpdateDomainAssociation
       description: Creates a new domain association for an Amplify app.
@@ -933,6 +946,7 @@ paths:
       x-stackql-resource: jobs
       x-stackql-method: get_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.job
   /webhooks/{webhook_id}:
     delete:
       operationId: DeleteWebhook
@@ -974,6 +988,7 @@ paths:
       x-stackql-resource: webhooks
       x-stackql-method: get_webhook
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.webhook
     post:
       operationId: UpdateWebhook
       description: Updates a webhook.
@@ -1038,7 +1053,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GenerateAccessLogsResult'
-      x-stackql-resource: access_logs
+      x-stackql-resource: apps
       x-stackql-method: generate_access_logs
       x-stackql-verb: EXEC
   /artifacts/{artifact_id}:
@@ -1151,6 +1166,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartJob
       description: Starts a new job for a branch of an Amplify app.
@@ -1195,7 +1213,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobResult'
-      x-stackql-resource: job
+      x-stackql-resource: branches
       x-stackql-method: start_job
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -1216,7 +1234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1247,7 +1265,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1273,7 +1291,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /apps/{app_id}/branches/{branch_name}/deployments/start:
@@ -1315,7 +1333,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartDeploymentResult'
-      x-stackql-resource: deployment
+      x-stackql-resource: branches
       x-stackql-method: start_deployment
       x-stackql-verb: EXEC
   /apps/{app_id}/branches/{branch_name}/jobs/{job_id}/stop:
@@ -1348,7 +1366,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopJobResult'
-      x-stackql-resource: job
+      x-stackql-resource: branches
       x-stackql-method: stop_job
       x-stackql-verb: EXEC
 components:

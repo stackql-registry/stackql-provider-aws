@@ -104,7 +104,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateEnvironmentEC2Result'
-      x-stackql-resource: environment_ec2s
+      x-stackql-resource: environments
       x-stackql-method: create_environment_ec2
       x-stackql-verb: INSERT
   /CreateEnvironmentMembership:
@@ -288,6 +288,9 @@ paths:
       x-stackql-method: describe_environment_memberships
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.memberships
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /DescribeEnvironmentStatus:
     post:
       operationId: DescribeEnvironmentStatus
@@ -401,11 +404,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListEnvironmentsResult'
+                $ref: '#/components/schemas/ListEnvironmentsOutputDisplay'
       x-stackql-resource: environments
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.environmentIds
+      x-stackql-responseEnvelope: ListEnvironmentsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "environmentIds" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"environment_id": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -440,7 +451,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /TagResource:
@@ -482,7 +493,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -523,7 +534,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateEnvironment:
@@ -941,21 +952,19 @@ components:
       - PENDING_START_REMOVAL_BY_OWNER
       - FAILED_REMOVAL_BY_COLLABORATOR
       - FAILED_REMOVAL_BY_OWNER
-    ListEnvironmentsResult:
+    ListEnvironmentsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/String'
-          description: If there are more than 25 items in the list, only the first 25 items are returned, along with a unique
-            string called a next token. To get the next batch of items in the list, call this operation again, adding the
-            next token to the call.
-        environmentIds:
-          $ref: '#/components/schemas/EnvironmentIdList'
+        environment_id:
+          type: string
           description: The list of environment identifiers.
-    EnvironmentIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/EnvironmentId'
+    ListEnvironmentsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListEnvironmentsRowDisplay'
     EnvironmentArn:
       type: string
       pattern: arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):cloud9:([a-z]{2}-[a-z]+-\d{1}):[0-9]{12}:environment:[a-zA-Z0-9]{8,32}

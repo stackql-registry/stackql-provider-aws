@@ -70,9 +70,6 @@ paths:
                   $ref: "#/components/schemas/PathOptions"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
-                - Input
       responses:
         "200":
           description: Success
@@ -145,7 +142,6 @@ paths:
                   $ref: "#/components/schemas/JobSample"
               required:
                 - DatasetName
-                - Name
                 - OutputLocation
                 - RoleArn
       responses:
@@ -181,7 +177,6 @@ paths:
                   $ref: "#/components/schemas/TagMap"
               required:
                 - DatasetName
-                - Name
                 - RecipeName
                 - RoleArn
       responses:
@@ -234,9 +229,6 @@ paths:
                   $ref: "#/components/schemas/RecipeStepList"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
-                - Steps
       responses:
         "200":
           description: Success
@@ -316,7 +308,6 @@ paths:
                 Timeout:
                   $ref: "#/components/schemas/Timeout"
               required:
-                - Name
                 - RoleArn
       responses:
         "200":
@@ -348,9 +339,7 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - TargetArn
-                - Rules
       responses:
         "200":
           description: Success
@@ -409,7 +398,6 @@ paths:
                   $ref: "#/components/schemas/ScheduleName"
               required:
                 - CronExpression
-                - Name
       responses:
         "200":
           description: Success
@@ -506,8 +494,6 @@ paths:
                   $ref: "#/components/schemas/Input"
                 PathOptions:
                   $ref: "#/components/schemas/PathOptions"
-              required:
-                - Input
       responses:
         "200":
           description: Success
@@ -695,8 +681,6 @@ paths:
                   $ref: "#/components/schemas/RulesetDescription"
                 Rules:
                   $ref: "#/components/schemas/RuleList"
-              required:
-                - Rules
       responses:
         "200":
           description: Success
@@ -978,8 +962,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -3326,6 +3308,14 @@ components:
             objectKey: $.Datasets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_dataset:
           operation:
             $ref: "#/paths/~1datasets~1{name}/delete"
@@ -3359,10 +3349,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/datasets/methods/update_dataset"
         delete:
           - $ref: "#/components/x-stackQL-resources/datasets/methods/delete_dataset"
-    profile_jobs:
-      id: aws.databrew.profile_jobs
-      name: profile_jobs
-      title: profile_jobs
+    jobs:
+      id: aws.databrew.jobs
+      name: jobs
+      title: jobs
       methods:
         create_profile_job:
           operation:
@@ -3375,6 +3365,58 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_recipe_job:
+          operation:
+            $ref: "#/paths/~1recipeJobs/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_jobs:
+          operation:
+            $ref: "#/paths/~1jobs/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Jobs
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        start_job_run:
+          operation:
+            $ref: "#/paths/~1jobs~1{name}~1startJobRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_job_run:
+          operation:
+            $ref: "#/paths/~1jobs~1{name}~1jobRun~1{run_id}~1stopJobRun/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         update_profile_job:
           operation:
             $ref: "#/paths/~1profileJobs~1{name}/put"
@@ -3386,13 +3428,29 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_recipe_job:
+          operation:
+            $ref: "#/paths/~1recipeJobs~1{name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
         insert:
-          - $ref: "#/components/x-stackQL-resources/profile_jobs/methods/create_profile_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/create_profile_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/create_recipe_job"
         update:
-          - $ref: "#/components/x-stackQL-resources/profile_jobs/methods/update_profile_job"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/update_profile_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/update_recipe_job"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/delete_job"
     projects:
       id: aws.databrew.projects
       name: projects
@@ -3418,6 +3476,14 @@ components:
             objectKey: $.Projects
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_project:
           operation:
             $ref: "#/paths/~1projects~1{name}/delete"
@@ -3433,6 +3499,28 @@ components:
         update_project:
           operation:
             $ref: "#/paths/~1projects~1{name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_project_session_action:
+          operation:
+            $ref: "#/paths/~1projects~1{name}~1sendProjectSessionAction/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_project_session:
+          operation:
+            $ref: "#/paths/~1projects~1{name}~1startProjectSession/put"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3476,6 +3564,14 @@ components:
             objectKey: $.Recipes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         describe_recipe:
           operation:
             $ref: "#/paths/~1recipes~1{name}/get"
@@ -3504,40 +3600,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/recipes/methods/update_recipe"
         delete: []
-    recipe_jobs:
-      id: aws.databrew.recipe_jobs
-      name: recipe_jobs
-      title: recipe_jobs
-      methods:
-        create_recipe_job:
-          operation:
-            $ref: "#/paths/~1recipeJobs/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_recipe_job:
-          operation:
-            $ref: "#/paths/~1recipeJobs~1{name}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/recipe_jobs/methods/create_recipe_job"
-        update:
-          - $ref: "#/components/x-stackQL-resources/recipe_jobs/methods/update_recipe_job"
-        delete: []
     rulesets:
       id: aws.databrew.rulesets
       name: rulesets
@@ -3563,6 +3625,14 @@ components:
             objectKey: $.Rulesets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_ruleset:
           operation:
             $ref: "#/paths/~1rulesets~1{name}/delete"
@@ -3621,6 +3691,14 @@ components:
             objectKey: $.Schedules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_schedule:
           operation:
             $ref: "#/paths/~1schedules~1{name}/delete"
@@ -3654,40 +3732,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/schedules/methods/update_schedule"
         delete:
           - $ref: "#/components/x-stackQL-resources/schedules/methods/delete_schedule"
-    jobs:
-      id: aws.databrew.jobs
-      name: jobs
-      title: jobs
-      methods:
-        delete_job:
-          operation:
-            $ref: "#/paths/~1jobs~1{name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_job:
-          operation:
-            $ref: "#/paths/~1jobs~1{name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_jobs:
-          operation:
-            $ref: "#/paths/~1jobs/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Jobs
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/delete_job"
     recipe_versions:
       id: aws.databrew.recipe_versions
       name: recipe_versions
@@ -3708,6 +3752,14 @@ components:
             objectKey: $.Recipes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/recipe_versions/methods/list_recipe_versions"
@@ -3735,6 +3787,14 @@ components:
             objectKey: $.JobRuns
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_runs/methods/describe_job_run"
@@ -3742,10 +3802,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.databrew.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.databrew.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3753,17 +3813,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.databrew.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3784,9 +3833,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

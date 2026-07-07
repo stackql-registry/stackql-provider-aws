@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateAttendeeResponse'
-      x-stackql-resource: batch_create_attendee
+      x-stackql-resource: meetings
       x-stackql-method: batch_create_attendee
       x-stackql-verb: EXEC
   /meetings/{meeting_id}/attendees/capabilities?operation=batch-update-except:
@@ -93,7 +93,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: batch_update_attendee_capabilities_except
+      x-stackql-resource: meetings
       x-stackql-method: batch_update_attendee_capabilities_except
       x-stackql-verb: EXEC
   /meetings/{meeting_id}/attendees:
@@ -266,7 +266,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateMeetingWithAttendeesResponse'
-      x-stackql-resource: meeting_with_attendees
+      x-stackql-resource: attendees
       x-stackql-method: create_meeting_with_attendees
       x-stackql-verb: INSERT
   /meetings/{meeting_id}/attendees/{attendee_id}:
@@ -321,6 +321,7 @@ paths:
       x-stackql-resource: attendees
       x-stackql-method: get_attendee
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Attendee
   /meetings/{meeting_id}:
     delete:
       operationId: DeleteMeeting
@@ -361,6 +362,7 @@ paths:
       x-stackql-resource: meetings
       x-stackql-method: get_meeting
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Meeting
   /tags:
     get:
       operationId: ListTagsForResource
@@ -379,7 +381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /meetings/{meeting_id}/transcription?operation=start:
@@ -418,7 +420,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: meeting_transcription
+      x-stackql-resource: meetings
       x-stackql-method: start_meeting_transcription
       x-stackql-verb: EXEC
   /meetings/{meeting_id}/transcription?operation=stop:
@@ -443,7 +445,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: meeting_transcription
+      x-stackql-resource: meetings
       x-stackql-method: stop_meeting_transcription
       x-stackql-verb: EXEC
   /tags?operation=tag-resource:
@@ -472,7 +474,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /tags?operation=untag-resource:
@@ -509,7 +511,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /meetings/{meeting_id}/attendees/{attendee_id}/capabilities:
@@ -563,7 +565,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateAttendeeCapabilitiesResponse'
-      x-stackql-resource: attendee_capabilities
+      x-stackql-resource: attendees
       x-stackql-method: update_attendee_capabilities
       x-stackql-verb: UPDATE
 components:

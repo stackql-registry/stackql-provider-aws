@@ -1,0 +1,5 @@
+-- Nested-struct query param: JSON() marks the value for AWSCanonical fan-out
+-- (EnableDnsHostnames.Value=true on the wire).
+UPDATE aws.ec2.vpc_attributes
+SET EnableDnsHostnames = JSON('{"Value":true}')
+WHERE region = '{{ region }}' AND vpc_id = '{{ vpc_create.vpc_id }}'

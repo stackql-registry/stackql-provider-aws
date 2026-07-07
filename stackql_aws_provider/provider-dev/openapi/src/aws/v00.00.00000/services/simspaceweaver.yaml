@@ -236,8 +236,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -292,10 +290,6 @@ paths:
                   $ref: "#/components/schemas/SimSpaceWeaverResourceName"
                 Simulation:
                   $ref: "#/components/schemas/SimSpaceWeaverResourceName"
-              required:
-                - Domain
-                - Name
-                - Simulation
       responses:
         "200":
           description: Success
@@ -384,8 +378,6 @@ paths:
                   $ref: "#/components/schemas/SimSpaceWeaverResourceName"
               required:
                 - App
-                - Domain
-                - Simulation
       responses:
         "200":
           description: Success
@@ -1027,10 +1019,10 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/simulations/methods/delete_simulation"
-    tags_for_resources:
-      id: aws.simspaceweaver.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.simspaceweaver.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1038,17 +1030,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.simspaceweaver.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1069,9 +1050,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

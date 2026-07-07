@@ -771,8 +771,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/InputTagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1882,6 +1880,14 @@ components:
             objectKey: $.Accessors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_accessor:
           operation:
             $ref: "#/paths/~1accessors~1{accessor_id}/delete"
@@ -1894,6 +1900,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Accessor
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/accessors/methods/get_accessor"
@@ -1939,6 +1946,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Member
         update_member:
           operation:
             $ref: "#/paths/~1networks~1{network_id}~1members~1{member_id}/patch"
@@ -1990,6 +1998,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Network
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/networks/methods/get_network"
@@ -2036,6 +2045,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Node
           request:
             nativeCasing: pascal
         update_node:
@@ -2089,6 +2099,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Proposal
+        vote_on_proposal:
+          operation:
+            $ref: "#/paths/~1networks~1{network_id}~1proposals~1{proposal_id}~1votes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/proposals/methods/get_proposal"
@@ -2110,6 +2132,12 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        reject_invitation:
+          operation:
+            $ref: "#/paths/~1invitations~1{invitation_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
@@ -2135,10 +2163,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.managedblockchain.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.managedblockchain.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2146,17 +2174,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.managedblockchain.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2177,9 +2194,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

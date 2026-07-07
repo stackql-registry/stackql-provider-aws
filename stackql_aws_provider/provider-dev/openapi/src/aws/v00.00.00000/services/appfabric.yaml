@@ -1547,6 +1547,17 @@ components:
       name: app_authorizations
       title: app_authorizations
       methods:
+        connect_app_authorization:
+          operation:
+            $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1appauthorizations~1{app_authorization_identifier}~1connect/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_app_authorization:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1appauthorizations/post"
@@ -1567,6 +1578,14 @@ components:
             objectKey: $.appAuthorizationSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_app_authorization:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1appauthorizations~1{app_authorization_identifier}/delete"
@@ -1579,6 +1598,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.appAuthorization
         update_app_authorization:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1appauthorizations~1{app_authorization_identifier}/patch"
@@ -1625,6 +1645,14 @@ components:
             objectKey: $.appBundleSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_app_bundle:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}/delete"
@@ -1634,6 +1662,19 @@ components:
         get_app_bundle:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.appBundle
+        start_ingestion:
+          operation:
+            $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_ingestion:
+          operation:
+            $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1stop/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -1671,6 +1712,14 @@ components:
             objectKey: $.ingestions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ingestion:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}/delete"
@@ -1683,6 +1732,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ingestion
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ingestions/methods/get_ingestion"
@@ -1717,6 +1767,14 @@ components:
             objectKey: $.ingestionDestinations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_ingestion_destination:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1ingestiondestinations~1{ingestion_destination_identifier}/delete"
@@ -1729,6 +1787,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ingestionDestination
         update_ingestion_destination:
           operation:
             $ref: "#/paths/~1appbundles~1{app_bundle_identifier}~1ingestions~1{ingestion_identifier}~1ingestiondestinations~1{ingestion_destination_identifier}/patch"
@@ -1750,10 +1809,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/ingestion_destinations/methods/update_ingestion_destination"
         delete:
           - $ref: "#/components/x-stackQL-resources/ingestion_destinations/methods/delete_ingestion_destination"
-    tags_for_resources:
-      id: aws.appfabric.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.appfabric.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1761,17 +1820,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.appfabric.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -1792,9 +1840,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

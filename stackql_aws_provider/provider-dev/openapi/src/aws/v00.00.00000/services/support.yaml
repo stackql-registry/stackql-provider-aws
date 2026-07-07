@@ -1330,10 +1330,10 @@ components:
     CaseStatus:
       type: string
   x-stackQL-resources:
-    attachments_to_sets:
-      id: aws.support.attachments_to_sets
-      name: attachments_to_sets
-      title: attachments_to_sets
+    attachments:
+      id: aws.support.attachments
+      name: attachments
+      title: attachments
       methods:
         add_attachments_to_set:
           operation:
@@ -1348,16 +1348,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_attachment:
+          operation:
+            $ref: "#/paths/~1DescribeAttachment/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.attachment
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/attachments/methods/describe_attachment"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/attachments_to_sets/methods/add_attachments_to_set"
+          - $ref: "#/components/x-stackQL-resources/attachments/methods/add_attachments_to_set"
         delete: []
-    communication_to_cases:
-      id: aws.support.communication_to_cases
-      name: communication_to_cases
-      title: communication_to_cases
+    cases:
+      id: aws.support.cases
+      name: cases
+      title: cases
       methods:
         add_communication_to_case:
           operation:
@@ -1372,17 +1387,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/communication_to_cases/methods/add_communication_to_case"
-        delete: []
-    cases:
-      id: aws.support.cases
-      name: cases
-      title: cases
-      methods:
         create_case:
           operation:
             $ref: "#/paths/~1CreateCase/post"
@@ -1408,6 +1412,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1415,31 +1426,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/cases/methods/describe_cases"
         insert:
           - $ref: "#/components/x-stackQL-resources/cases/methods/create_case"
-        update: []
-        delete: []
-    attachments:
-      id: aws.support.attachments
-      name: attachments
-      title: attachments
-      methods:
-        describe_attachment:
-          operation:
-            $ref: "#/paths/~1DescribeAttachment/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/attachments/methods/describe_attachment"
-        insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/cases/methods/add_communication_to_case"
         delete: []
     communications:
       id: aws.support.communications
@@ -1458,6 +1446,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -1597,6 +1592,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.result
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1

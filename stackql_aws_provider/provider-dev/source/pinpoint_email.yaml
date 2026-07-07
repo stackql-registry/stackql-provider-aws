@@ -84,11 +84,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListConfigurationSetsResponse'
+                $ref: '#/components/schemas/ListConfigurationSetsOutputDisplay'
       x-stackql-resource: configuration_sets
       x-stackql-method: list_configuration_sets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.ConfigurationSets
+      x-stackql-responseEnvelope: ListConfigurationSetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "ConfigurationSets" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"configuration_set": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/email/configuration-sets/{configuration_set_name}/event-destinations:
     post:
       operationId: CreateConfigurationSetEventDestination
@@ -208,11 +216,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDedicatedIpPoolsResponse'
+                $ref: '#/components/schemas/ListDedicatedIpPoolsOutputDisplay'
       x-stackql-resource: dedicated_ip_pools
       x-stackql-method: list_dedicated_ip_pools
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.DedicatedIpPools
+      x-stackql-responseEnvelope: ListDedicatedIpPoolsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "DedicatedIpPools" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"dedicated_ip_pool": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/email/deliverability-dashboard/test:
     post:
       operationId: CreateDeliverabilityTestReport
@@ -318,6 +334,9 @@ paths:
       x-stackql-method: list_email_identities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EmailIdentities
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/email/configuration-sets/{configuration_set_name}:
     delete:
       operationId: DeleteConfigurationSet
@@ -563,6 +582,7 @@ paths:
       x-stackql-resource: dedicated_ips
       x-stackql-method: get_dedicated_ip
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DedicatedIp
   /v1/email/dedicated-ips:
     get:
       operationId: GetDedicatedIps
@@ -600,6 +620,9 @@ paths:
       x-stackql-method: get_dedicated_ips
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DedicatedIps
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/email/deliverability-dashboard:
     get:
       operationId: GetDeliverabilityDashboardOptions
@@ -697,6 +720,7 @@ paths:
       x-stackql-resource: domain_deliverability_campaigns
       x-stackql-method: get_domain_deliverability_campaign
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DomainDeliverabilityCampaign
   /v1/email/deliverability-dashboard/statistics-report/{domain}:
     get:
       operationId: GetDomainStatisticsReport
@@ -764,6 +788,9 @@ paths:
       x-stackql-method: list_deliverability_test_reports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DeliverabilityTestReports
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/email/deliverability-dashboard/domains/{subscribed_domain}/campaigns:
     get:
       operationId: ListDomainDeliverabilityCampaigns
@@ -836,7 +863,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -868,7 +895,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -896,7 +923,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/email/account/dedicated-ips/warmup:
@@ -920,7 +947,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountDedicatedIpWarmupAttributesResponse'
-      x-stackql-resource: account_dedicated_ip_warmup_attributes
+      x-stackql-resource: accounts
       x-stackql-method: put_account_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
   /v1/email/account/sending:
@@ -944,7 +971,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutAccountSendingAttributesResponse'
-      x-stackql-resource: account_sending_attributes
+      x-stackql-resource: accounts
       x-stackql-method: put_account_sending_attributes
       x-stackql-verb: REPLACE
   /v1/email/configuration-sets/{configuration_set_name}/delivery-options:
@@ -977,7 +1004,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsResponse'
-      x-stackql-resource: configuration_set_delivery_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
   /v1/email/configuration-sets/{configuration_set_name}/reputation-options:
@@ -1008,7 +1035,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetReputationOptionsResponse'
-      x-stackql-resource: configuration_set_reputation_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_reputation_options
       x-stackql-verb: REPLACE
   /v1/email/configuration-sets/{configuration_set_name}/sending:
@@ -1039,7 +1066,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetSendingOptionsResponse'
-      x-stackql-resource: configuration_set_sending_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_sending_options
       x-stackql-verb: REPLACE
   /v1/email/configuration-sets/{configuration_set_name}/tracking-options:
@@ -1070,7 +1097,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetTrackingOptionsResponse'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_tracking_options
       x-stackql-verb: REPLACE
   /v1/email/dedicated-ips/{ip}/pool:
@@ -1105,7 +1132,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutDedicatedIpInPoolResponse'
-      x-stackql-resource: dedicated_ip_in_pools
+      x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_in_pool
       x-stackql-verb: REPLACE
   /v1/email/dedicated-ips/{ip}/warmup:
@@ -1136,7 +1163,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutDedicatedIpWarmupAttributesResponse'
-      x-stackql-resource: dedicated_ip_warmup_attributes
+      x-stackql-resource: dedicated_ips
       x-stackql-method: put_dedicated_ip_warmup_attributes
       x-stackql-verb: REPLACE
   /v1/email/identities/{email_identity}/dkim:
@@ -1166,7 +1193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityDkimAttributesResponse'
-      x-stackql-resource: email_identity_dkim_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_dkim_attributes
       x-stackql-verb: REPLACE
   /v1/email/identities/{email_identity}/feedback:
@@ -1203,7 +1230,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityFeedbackAttributesResponse'
-      x-stackql-resource: email_identity_feedback_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_feedback_attributes
       x-stackql-verb: REPLACE
   /v1/email/identities/{email_identity}/mail-from:
@@ -1235,7 +1262,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutEmailIdentityMailFromAttributesResponse'
-      x-stackql-resource: email_identity_mail_from_attributes
+      x-stackql-resource: email_identities
       x-stackql-method: put_email_identity_mail_from_attributes
       x-stackql-verb: REPLACE
   /v1/email/outbound-emails:
@@ -2486,38 +2513,33 @@ components:
       enum:
       - USE_DEFAULT_VALUE
       - REJECT_MESSAGE
-    ListConfigurationSetsResponse:
-      description: A list of configuration sets in your Amazon Pinpoint account in the current AWS Region.
+    ListConfigurationSetsRowDisplay:
       type: object
       properties:
-        ConfigurationSets:
-          $ref: '#/components/schemas/ConfigurationSetNameList'
+        configuration_set:
+          type: string
           description: An array that contains all of the configuration sets in your Amazon Pinpoint account in the current
             AWS Region.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token that indicates that there are additional configuration sets to list. To view additional configuration
-            sets, issue another request to ListConfigurationSets, and pass this token in the NextToken parameter.
-    ConfigurationSetNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ConfigurationSetName'
-    ListDedicatedIpPoolsResponse:
-      description: A list of dedicated IP pools.
+    ListConfigurationSetsOutputDisplay:
       type: object
       properties:
-        DedicatedIpPools:
-          $ref: '#/components/schemas/ListOfDedicatedIpPools'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListConfigurationSetsRowDisplay'
+    ListDedicatedIpPoolsRowDisplay:
+      type: object
+      properties:
+        dedicated_ip_pool:
+          type: string
           description: A list of all of the dedicated IP pools that are associated with your Amazon Pinpoint account.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token that indicates that there are additional IP pools to list. To view additional IP pools, issue
-            another request to ListDedicatedIpPools, passing this token in the NextToken parameter.
-    ListOfDedicatedIpPools:
-      description: A list of dedicated IP pools that are associated with your Amazon Pinpoint account.
-      type: array
-      items:
-        $ref: '#/components/schemas/PoolName'
+    ListDedicatedIpPoolsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDedicatedIpPoolsRowDisplay'
     ListDeliverabilityTestReportsResponse:
       description: A list of the predictive inbox placement test reports that are available for your account, regardless of
         whether or not those tests are complete.

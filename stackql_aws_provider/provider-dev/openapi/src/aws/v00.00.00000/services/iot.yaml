@@ -444,7 +444,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListThingPrincipalsResponse"
+                $ref: "#/components/schemas/ListThingPrincipalsOutputDisplay"
   /audit/mitigationactions/tasks/{task_id}/cancel:
     put:
       operationId: CancelAuditMitigationActionsTask
@@ -5488,7 +5488,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListCustomMetricsResponse"
+                $ref: "#/components/schemas/ListCustomMetricsOutputDisplay"
   /detect/mitigationactions/executions:
     get:
       operationId: ListDetectMitigationActionsExecutions
@@ -5602,7 +5602,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDimensionsResponse"
+                $ref: "#/components/schemas/ListDimensionsOutputDisplay"
   /domainConfigurations:
     get:
       operationId: ListDomainConfigurations
@@ -5680,7 +5680,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListIndicesResponse"
+                $ref: "#/components/schemas/ListIndicesOutputDisplay"
   /jobs/{job_id}/things:
     get:
       operationId: ListJobExecutionsForJob
@@ -6148,7 +6148,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPolicyPrincipalsResponse"
+                $ref: "#/components/schemas/ListPolicyPrincipalsOutputDisplay"
   /principal-policies:
     get:
       operationId: ListPrincipalPolicies
@@ -6214,7 +6214,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListPrincipalThingsResponse"
+                $ref: "#/components/schemas/ListPrincipalThingsOutputDisplay"
   /principals/things-v2:
     get:
       operationId: ListPrincipalThingsV2
@@ -6310,7 +6310,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRoleAliasesResponse"
+                $ref: "#/components/schemas/ListRoleAliasesOutputDisplay"
   /packages/{package_name}/versions/{version_name}/sbom-validation-results:
     get:
       operationId: ListSbomValidationResults
@@ -6557,7 +6557,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTargetsForPolicyResponse"
+                $ref: "#/components/schemas/ListTargetsForPolicyOutputDisplay"
   /thing-groups:
     get:
       operationId: ListThingGroups
@@ -6701,7 +6701,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListThingRegistrationTaskReportsResponse"
+                $ref: "#/components/schemas/ListThingRegistrationTaskReportsOutputDisplay"
   /thing-registration-tasks:
     get:
       operationId: ListThingRegistrationTasks
@@ -6731,7 +6731,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListThingRegistrationTasksResponse"
+                $ref: "#/components/schemas/ListThingRegistrationTasksOutputDisplay"
     post:
       operationId: StartThingRegistrationTask
       description: Creates a bulk thing provisioning task. Requires permission to access the StartThingRegistrationTask action.
@@ -6894,7 +6894,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListThingsInBillingGroupResponse"
+                $ref: "#/components/schemas/ListThingsInBillingGroupOutputDisplay"
   /thing-groups/{thing_group_name}/things:
     get:
       operationId: ListThingsInThingGroup
@@ -6930,7 +6930,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListThingsInThingGroupResponse"
+                $ref: "#/components/schemas/ListThingsInThingGroupOutputDisplay"
   /rules:
     get:
       operationId: ListTopicRules
@@ -14241,19 +14241,19 @@ components:
         pendingDeletion:
           $ref: "#/components/schemas/BooleanWrapperObject"
           description: Indicates whether the command is pending deletion.
-    ListCustomMetricsResponse:
+    ListCustomMetricsRowDisplay:
       type: object
       properties:
-        metricNames:
-          $ref: "#/components/schemas/MetricNames"
+        metric_name:
+          type: string
           description: The name of the custom metric.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: A token that can be used to retrieve the next set of results, or null if there are no additional results.
-    MetricNames:
-      type: array
-      items:
-        $ref: "#/components/schemas/MetricName"
+    ListCustomMetricsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListCustomMetricsRowDisplay"
     ListDetectMitigationActionsExecutionsResponse:
       type: object
       properties:
@@ -14320,19 +14320,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/DetectMitigationActionsTaskSummary"
-    ListDimensionsResponse:
+    ListDimensionsRowDisplay:
       type: object
       properties:
-        dimensionNames:
-          $ref: "#/components/schemas/DimensionNames"
+        dimension_name:
+          type: string
           description: A list of the names of the defined dimensions. Use DescribeDimension to get details for a dimension.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: A token that can be used to retrieve the next set of results, or null if there are no additional results.
-    DimensionNames:
-      type: array
-      items:
-        $ref: "#/components/schemas/DimensionName"
+    ListDimensionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDimensionsRowDisplay"
     ListDomainConfigurationsResponse:
       type: object
       properties:
@@ -14386,19 +14386,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    ListIndicesResponse:
+    ListIndicesRowDisplay:
       type: object
       properties:
-        indexNames:
-          $ref: "#/components/schemas/IndexNamesList"
+        index_name:
+          type: string
           description: The index names.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token used to get the next set of results, or null if there are no additional results.
-    IndexNamesList:
-      type: array
-      items:
-        $ref: "#/components/schemas/IndexName"
+    ListIndicesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListIndicesRowDisplay"
     LaserMaxResults:
       type: integer
       minimum: 1
@@ -14764,22 +14764,19 @@ components:
         nextMarker:
           $ref: "#/components/schemas/Marker"
           description: The marker for the next set of results, or null if there are no additional results.
-    ListPolicyPrincipalsResponse:
-      description: The output from the ListPolicyPrincipals operation.
+    ListPolicyPrincipalsRowDisplay:
       type: object
       properties:
-        principals:
-          $ref: "#/components/schemas/Principals"
+        principal:
+          type: string
           description: The descriptions of the principals.
-        nextMarker:
-          $ref: "#/components/schemas/Marker"
-          description: The marker for the next set of results, or null if there are no additional results.
-    Principals:
-      type: array
-      items:
-        $ref: "#/components/schemas/PrincipalArn"
-    PrincipalArn:
-      type: string
+    ListPolicyPrincipalsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPolicyPrincipalsRowDisplay"
     ListPolicyVersionsResponse:
       description: The output from the ListPolicyVersions operation.
       type: object
@@ -14814,20 +14811,19 @@ components:
         nextMarker:
           $ref: "#/components/schemas/Marker"
           description: The marker for the next set of results, or null if there are no additional results.
-    ListPrincipalThingsResponse:
-      description: The output from the ListPrincipalThings operation.
+    ListPrincipalThingsRowDisplay:
       type: object
       properties:
-        things:
-          $ref: "#/components/schemas/ThingNameList"
+        thing:
+          type: string
           description: The things.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use to get the next set of results, or null if there are no additional results.
-    ThingNameList:
-      type: array
-      items:
-        $ref: "#/components/schemas/ThingName"
+    ListPrincipalThingsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListPrincipalThingsRowDisplay"
     ListPrincipalThingsV2Response:
       type: object
       properties:
@@ -14926,19 +14922,19 @@ components:
         nextToken:
           $ref: "#/components/schemas/NextToken"
           description: A token that can be used to retrieve the next set of results, or null for the first API call.
-    ListRoleAliasesResponse:
+    ListRoleAliasesRowDisplay:
       type: object
       properties:
-        roleAliases:
-          $ref: "#/components/schemas/RoleAliases"
+        role_alias:
+          type: string
           description: The role aliases.
-        nextMarker:
-          $ref: "#/components/schemas/Marker"
-          description: A marker used to get the next set of results.
-    RoleAliases:
-      type: array
-      items:
-        $ref: "#/components/schemas/RoleAlias"
+    ListRoleAliasesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRoleAliasesRowDisplay"
     SbomValidationResult:
       type: string
       enum:
@@ -15110,19 +15106,19 @@ components:
         nextToken:
           $ref: "#/components/schemas/NextToken"
           description: The token to use to get the next set of results, or null if there are no additional results.
-    ListTargetsForPolicyResponse:
+    ListTargetsForPolicyRowDisplay:
       type: object
       properties:
-        targets:
-          $ref: "#/components/schemas/PolicyTargets"
+        target:
+          type: string
           description: The policy targets.
-        nextMarker:
-          $ref: "#/components/schemas/Marker"
-          description: A marker used to get the next set of results.
-    PolicyTargets:
-      type: array
-      items:
-        $ref: "#/components/schemas/PolicyTarget"
+    ListTargetsForPolicyOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTargetsForPolicyRowDisplay"
     ListTargetsForSecurityProfileResponse:
       type: object
       properties:
@@ -15156,16 +15152,19 @@ components:
         nextToken:
           $ref: "#/components/schemas/NextToken"
           description: The token to use to get the next set of results, or null if there are no additional results.
-    ListThingPrincipalsResponse:
-      description: The output from the ListThingPrincipals operation.
+    ListThingPrincipalsRowDisplay:
       type: object
       properties:
-        principals:
-          $ref: "#/components/schemas/Principals"
+        principal:
+          type: string
           description: The principals associated with the thing.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use to get the next set of results, or null if there are no additional results.
+    ListThingPrincipalsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListThingPrincipalsRowDisplay"
     ListThingPrincipalsV2Response:
       type: object
       properties:
@@ -15196,38 +15195,32 @@ components:
       enum:
         - ERRORS
         - RESULTS
-    ListThingRegistrationTaskReportsResponse:
+    ListThingRegistrationTaskReportsRowDisplay:
       type: object
       properties:
-        resourceLinks:
-          $ref: "#/components/schemas/S3FileUrlList"
+        resource_link:
+          type: string
           description: Links to the task resources.
-        reportType:
-          $ref: "#/components/schemas/ReportType"
-          description: The type of task report.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use to get the next set of results, or null if there are no additional results.
-    S3FileUrlList:
-      type: array
-      items:
-        $ref: "#/components/schemas/S3FileUrl"
-    S3FileUrl:
-      type: string
-      maxLength: 65535
-    ListThingRegistrationTasksResponse:
+    ListThingRegistrationTaskReportsOutputDisplay:
       type: object
       properties:
-        taskIds:
-          $ref: "#/components/schemas/TaskIdList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListThingRegistrationTaskReportsRowDisplay"
+    ListThingRegistrationTasksRowDisplay:
+      type: object
+      properties:
+        task_id:
+          type: string
           description: A list of bulk thing provisioning task IDs.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use to get the next set of results, or null if there are no additional results.
-    TaskIdList:
-      type: array
-      items:
-        $ref: "#/components/schemas/TaskId"
+    ListThingRegistrationTasksOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListThingRegistrationTasksRowDisplay"
     ListThingTypesResponse:
       description: The output for the ListThingTypes operation.
       type: object
@@ -15298,24 +15291,32 @@ components:
         version:
           $ref: "#/components/schemas/Version"
           description: The version of the thing record in the registry.
-    ListThingsInBillingGroupResponse:
+    ListThingsInBillingGroupRowDisplay:
       type: object
       properties:
-        things:
-          $ref: "#/components/schemas/ThingNameList"
+        thing:
+          type: string
           description: A list of things in the billing group.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use to get the next set of results. Will not be returned if operation has returned all results.
-    ListThingsInThingGroupResponse:
+    ListThingsInBillingGroupOutputDisplay:
       type: object
       properties:
-        things:
-          $ref: "#/components/schemas/ThingNameList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListThingsInBillingGroupRowDisplay"
+    ListThingsInThingGroupRowDisplay:
+      type: object
+      properties:
+        thing:
+          type: string
           description: The things in the specified thing group.
-        nextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: The token to use to get the next set of results, or null if there are no additional results.
+    ListThingsInThingGroupOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListThingsInThingGroupRowDisplay"
     TopicRuleDestinationMaxResults:
       type: integer
       minimum: 1
@@ -16200,10 +16201,137 @@ components:
           $ref: "#/components/schemas/ErrorMessage"
           description: The description of an error found in the behaviors.
   x-stackQL-resources:
-    thing_to_billing_groups:
-      id: aws.iot.thing_to_billing_groups
-      name: thing_to_billing_groups
-      title: thing_to_billing_groups
+    certificates:
+      id: aws.iot.certificates
+      name: certificates
+      title: certificates
+      methods:
+        accept_certificate_transfer:
+          operation:
+            $ref: "#/paths/~1accept-certificate-transfer~1{certificate_id}/patch"
+          response:
+            openAPIDocKey: "200"
+        cancel_certificate_transfer:
+          operation:
+            $ref: "#/paths/~1cancel-certificate-transfer~1{certificate_id}/patch"
+          response:
+            openAPIDocKey: "200"
+        create_certificate_from_csr:
+          operation:
+            $ref: "#/paths/~1certificates/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_certificates:
+          operation:
+            $ref: "#/paths/~1certificates/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.certificates
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
+        create_keys_and_certificate:
+          operation:
+            $ref: "#/paths/~1keys-and-certificate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        delete_certificate:
+          operation:
+            $ref: "#/paths/~1certificates~1{certificate_id}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        describe_certificate:
+          operation:
+            $ref: "#/paths/~1certificates~1{certificate_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.certificateDescription
+        update_certificate:
+          operation:
+            $ref: "#/paths/~1certificates~1{certificate_id}/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        register_certificate:
+          operation:
+            $ref: "#/paths/~1certificate~1register/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        register_certificate_without_ca:
+          operation:
+            $ref: "#/paths/~1certificate~1register-no-ca/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_certificate_transfer:
+          operation:
+            $ref: "#/paths/~1reject-certificate-transfer~1{certificate_id}/patch"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        transfer_certificate:
+          operation:
+            $ref: "#/paths/~1transfer-certificate~1{certificate_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/describe_certificate"
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/list_certificates"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/create_certificate_from_csr"
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/register_certificate"
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/create_keys_and_certificate"
+        update:
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/update_certificate"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/certificates/methods/delete_certificate"
+    billing_groups:
+      id: aws.iot.billing_groups
+      name: billing_groups
+      title: billing_groups
       methods:
         add_thing_to_billing_group:
           operation:
@@ -16216,16 +16344,85 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_billing_group:
+          operation:
+            $ref: "#/paths/~1billing-groups~1{billing_group_name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_billing_group:
+          operation:
+            $ref: "#/paths/~1billing-groups~1{billing_group_name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        describe_billing_group:
+          operation:
+            $ref: "#/paths/~1billing-groups~1{billing_group_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_billing_group:
+          operation:
+            $ref: "#/paths/~1billing-groups~1{billing_group_name}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_billing_groups:
+          operation:
+            $ref: "#/paths/~1billing-groups/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.billingGroups
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        remove_thing_from_billing_group:
+          operation:
+            $ref: "#/paths/~1billing-groups~1removeThingFromBillingGroup/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/describe_billing_group"
+          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/list_billing_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/create_billing_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/thing_to_billing_groups/methods/add_thing_to_billing_group"
-        delete: []
-    thing_to_thing_groups:
-      id: aws.iot.thing_to_thing_groups
-      name: thing_to_thing_groups
-      title: thing_to_thing_groups
+          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/update_billing_group"
+          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/add_thing_to_billing_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/delete_billing_group"
+    thing_groups:
+      id: aws.iot.thing_groups
+      name: thing_groups
+      title: thing_groups
       methods:
         add_thing_to_thing_group:
           operation:
@@ -16238,16 +16435,114 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_dynamic_thing_group:
+          operation:
+            $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_dynamic_thing_group:
+          operation:
+            $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_dynamic_thing_group:
+          operation:
+            $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_thing_group:
+          operation:
+            $ref: "#/paths/~1thing-groups~1{thing_group_name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_thing_group:
+          operation:
+            $ref: "#/paths/~1thing-groups~1{thing_group_name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        describe_thing_group:
+          operation:
+            $ref: "#/paths/~1thing-groups~1{thing_group_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_thing_group:
+          operation:
+            $ref: "#/paths/~1thing-groups~1{thing_group_name}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_thing_groups:
+          operation:
+            $ref: "#/paths/~1thing-groups/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.thingGroups
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        remove_thing_from_thing_group:
+          operation:
+            $ref: "#/paths/~1thing-groups~1removeThingFromThingGroup/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/describe_thing_group"
+          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/list_thing_groups"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/create_dynamic_thing_group"
+          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/create_thing_group"
         update:
-          - $ref: "#/components/x-stackQL-resources/thing_to_thing_groups/methods/add_thing_to_thing_group"
-        delete: []
-    sbom_with_package_versions:
-      id: aws.iot.sbom_with_package_versions
-      name: sbom_with_package_versions
-      title: sbom_with_package_versions
+          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/update_thing_group"
+          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/add_thing_to_thing_group"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/delete_thing_group"
+    package_versions:
+      id: aws.iot.package_versions
+      name: package_versions
+      title: package_versions
       methods:
         associate_sbom_with_package_version:
           operation:
@@ -16260,35 +16555,80 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/sbom_with_package_versions/methods/associate_sbom_with_package_version"
-        delete: []
-    sbom_from_package_versions:
-      id: aws.iot.sbom_from_package_versions
-      name: sbom_from_package_versions
-      title: sbom_from_package_versions
-      methods:
         disassociate_sbom_from_package_version:
           operation:
             $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}~1sbom/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        create_package_version:
+          operation:
+            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_package_version:
+          operation:
+            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        get_package_version:
+          operation:
+            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_package_version:
+          operation:
+            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_package_versions:
+          operation:
+            $ref: "#/paths/~1packages~1{package_name}~1versions/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.packageVersionSummaries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/package_versions/methods/get_package_version"
+          - $ref: "#/components/x-stackQL-resources/package_versions/methods/list_package_versions"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/package_versions/methods/create_package_version"
         update:
-          - $ref: "#/components/x-stackQL-resources/sbom_from_package_versions/methods/disassociate_sbom_from_package_version"
-        delete: []
-    targets_with_jobs:
-      id: aws.iot.targets_with_jobs
-      name: targets_with_jobs
-      title: targets_with_jobs
+          - $ref: "#/components/x-stackQL-resources/package_versions/methods/associate_sbom_with_package_version"
+          - $ref: "#/components/x-stackQL-resources/package_versions/methods/update_package_version"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/package_versions/methods/delete_package_version"
+    jobs:
+      id: aws.iot.jobs
+      name: jobs
+      title: jobs
       methods:
         associate_targets_with_job:
           operation:
@@ -16301,12 +16641,91 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        cancel_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{job_id}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        cancel_job_execution:
+          operation:
+            $ref: "#/paths/~1things~1{thing_name}~1jobs~1{job_id}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{job_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{job_id}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        describe_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{job_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        update_job:
+          operation:
+            $ref: "#/paths/~1jobs~1{job_id}/patch"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_jobs:
+          operation:
+            $ref: "#/paths/~1jobs/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.jobs
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/create_job"
         update:
-          - $ref: "#/components/x-stackQL-resources/targets_with_jobs/methods/associate_targets_with_job"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/associate_targets_with_job"
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/update_job"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/jobs/methods/delete_job"
     policies:
       id: aws.iot.policies
       name: policies
@@ -16363,6 +16782,14 @@ components:
             objectKey: $.policies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policies/methods/get_policy"
@@ -16397,6 +16824,14 @@ components:
             objectKey: $.policies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/principal_policies/methods/list_principal_policies"
@@ -16423,8 +16858,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
         create_security_profile:
           operation:
             $ref: "#/paths/~1security-profiles~1{security_profile_name}/post"
@@ -16470,6 +16903,25 @@ components:
             objectKey: $.securityProfileIdentifiers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        validate_security_profile_behaviors:
+          operation:
+            $ref: "#/paths/~1security-profile-behaviors~1validate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/describe_security_profile"
@@ -16495,6 +16947,14 @@ components:
             objectKey: $.securityProfileTargets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/targets_for_security_profiles/methods/list_targets_for_security_profile"
@@ -16526,9 +16986,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.principals
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListThingPrincipalsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "principals" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"principal": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/thing_principals/methods/list_thing_principals"
@@ -16547,6 +17021,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.authorizerDescription
         set_default_authorizer:
           operation:
             $ref: "#/paths/~1default-authorizer/post"
@@ -16565,6 +17040,76 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/default_authorizers/methods/set_default_authorizer"
         delete: []
+    topic_rules:
+      id: aws.iot.topic_rules
+      name: topic_rules
+      title: topic_rules
+      methods:
+        confirm_topic_rule_destination:
+          operation:
+            $ref: "#/paths/~1confirmdestination~1{confirmation_token}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_topic_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{rule_name}/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_topic_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{rule_name}/delete"
+          response:
+            openAPIDocKey: "200"
+        get_topic_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{rule_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        replace_topic_rule:
+          operation:
+            $ref: "#/paths/~1rules~1{rule_name}/patch"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_topic_rules:
+          operation:
+            $ref: "#/paths/~1rules/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.rules
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/get_topic_rule"
+          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/list_topic_rules"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/create_topic_rule"
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/replace_topic_rule"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/delete_topic_rule"
     audit_suppressions:
       id: aws.iot.audit_suppressions
       name: audit_suppressions
@@ -16613,6 +17158,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_audit_suppression:
@@ -16664,6 +17216,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.authorizerDescription
         update_authorizer:
           operation:
             $ref: "#/paths/~1authorizer~1{authorizer_name}/put"
@@ -16684,6 +17237,25 @@ components:
             objectKey: $.authorizers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
+        test_invoke_authorizer:
+          operation:
+            $ref: "#/paths/~1authorizer~1{authorizer_name}~1test/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/authorizers/methods/describe_authorizer"
@@ -16694,143 +17266,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/authorizers/methods/update_authorizer"
         delete:
           - $ref: "#/components/x-stackQL-resources/authorizers/methods/delete_authorizer"
-    billing_groups:
-      id: aws.iot.billing_groups
-      name: billing_groups
-      title: billing_groups
-      methods:
-        create_billing_group:
-          operation:
-            $ref: "#/paths/~1billing-groups~1{billing_group_name}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_billing_group:
-          operation:
-            $ref: "#/paths/~1billing-groups~1{billing_group_name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        describe_billing_group:
-          operation:
-            $ref: "#/paths/~1billing-groups~1{billing_group_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_billing_group:
-          operation:
-            $ref: "#/paths/~1billing-groups~1{billing_group_name}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_billing_groups:
-          operation:
-            $ref: "#/paths/~1billing-groups/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.billingGroups
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/describe_billing_group"
-          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/list_billing_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/create_billing_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/update_billing_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/billing_groups/methods/delete_billing_group"
-    certificate_from_csrs:
-      id: aws.iot.certificate_from_csrs
-      name: certificate_from_csrs
-      title: certificate_from_csrs
-      methods:
-        create_certificate_from_csr:
-          operation:
-            $ref: "#/paths/~1certificates/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/certificate_from_csrs/methods/create_certificate_from_csr"
-        update: []
-        delete: []
-    certificates:
-      id: aws.iot.certificates
-      name: certificates
-      title: certificates
-      methods:
-        list_certificates:
-          operation:
-            $ref: "#/paths/~1certificates/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.certificates
-          request:
-            nativeCasing: pascal
-        delete_certificate:
-          operation:
-            $ref: "#/paths/~1certificates~1{certificate_id}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        describe_certificate:
-          operation:
-            $ref: "#/paths/~1certificates~1{certificate_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_certificate:
-          operation:
-            $ref: "#/paths/~1certificates~1{certificate_id}/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        register_certificate:
-          operation:
-            $ref: "#/paths/~1certificate~1register/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/certificates/methods/describe_certificate"
-          - $ref: "#/components/x-stackQL-resources/certificates/methods/list_certificates"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/certificates/methods/register_certificate"
-        update:
-          - $ref: "#/components/x-stackQL-resources/certificates/methods/update_certificate"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/certificates/methods/delete_certificate"
     certificate_providers:
       id: aws.iot.certificate_providers
       name: certificate_providers
@@ -16936,6 +17371,14 @@ components:
             objectKey: $.commands
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/commands/methods/get_command"
@@ -16991,9 +17434,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.metricNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListCustomMetricsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "metricNames" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"metric_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/custom_metrics/methods/describe_custom_metric"
@@ -17049,9 +17506,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.dimensionNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDimensionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "dimensionNames" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"dimension_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/dimensions/methods/describe_dimension"
@@ -17110,6 +17581,14 @@ components:
             objectKey: $.domainConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/domain_configurations/methods/describe_domain_configuration"
@@ -17120,49 +17599,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/domain_configurations/methods/update_domain_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/domain_configurations/methods/delete_domain_configuration"
-    dynamic_thing_groups:
-      id: aws.iot.dynamic_thing_groups
-      name: dynamic_thing_groups
-      title: dynamic_thing_groups
-      methods:
-        create_dynamic_thing_group:
-          operation:
-            $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_dynamic_thing_group:
-          operation:
-            $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        update_dynamic_thing_group:
-          operation:
-            $ref: "#/paths/~1dynamic-thing-groups~1{thing_group_name}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/dynamic_thing_groups/methods/create_dynamic_thing_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/dynamic_thing_groups/methods/update_dynamic_thing_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/dynamic_thing_groups/methods/delete_dynamic_thing_group"
     fleet_metrics:
       id: aws.iot.fleet_metrics
       name: fleet_metrics
@@ -17211,6 +17647,14 @@ components:
             objectKey: $.fleetMetrics
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/fleet_metrics/methods/describe_fleet_metric"
@@ -17221,66 +17665,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/fleet_metrics/methods/update_fleet_metric"
         delete:
           - $ref: "#/components/x-stackQL-resources/fleet_metrics/methods/delete_fleet_metric"
-    jobs:
-      id: aws.iot.jobs
-      name: jobs
-      title: jobs
-      methods:
-        create_job:
-          operation:
-            $ref: "#/paths/~1jobs~1{job_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_job:
-          operation:
-            $ref: "#/paths/~1jobs~1{job_id}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        describe_job:
-          operation:
-            $ref: "#/paths/~1jobs~1{job_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        update_job:
-          operation:
-            $ref: "#/paths/~1jobs~1{job_id}/patch"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_jobs:
-          operation:
-            $ref: "#/paths/~1jobs/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.jobs
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/describe_job"
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/list_jobs"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/create_job"
-        update:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/update_job"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/jobs/methods/delete_job"
     job_templates:
       id: aws.iot.job_templates
       name: job_templates
@@ -17317,6 +17701,14 @@ components:
             objectKey: $.jobTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_templates/methods/describe_job_template"
@@ -17326,25 +17718,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/job_templates/methods/delete_job_template"
-    keys_and_certificates:
-      id: aws.iot.keys_and_certificates
-      name: keys_and_certificates
-      title: keys_and_certificates
-      methods:
-        create_keys_and_certificate:
-          operation:
-            $ref: "#/paths/~1keys-and-certificate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/keys_and_certificates/methods/create_keys_and_certificate"
-        update: []
-        delete: []
     mitigation_actions:
       id: aws.iot.mitigation_actions
       name: mitigation_actions
@@ -17393,6 +17766,14 @@ components:
             objectKey: $.actionIdentifiers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/mitigation_actions/methods/describe_mitigation_action"
@@ -17433,6 +17814,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.otaUpdateInfo
         list_ota_updates:
           operation:
             $ref: "#/paths/~1otaUpdates/get"
@@ -17442,6 +17824,14 @@ components:
             objectKey: $.otaUpdates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/ota_updates/methods/get_ota_update"
@@ -17501,6 +17891,14 @@ components:
             objectKey: $.packageSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/packages/methods/get_package"
@@ -17511,66 +17909,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/packages/methods/update_package"
         delete:
           - $ref: "#/components/x-stackQL-resources/packages/methods/delete_package"
-    package_versions:
-      id: aws.iot.package_versions
-      name: package_versions
-      title: package_versions
-      methods:
-        create_package_version:
-          operation:
-            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_package_version:
-          operation:
-            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        get_package_version:
-          operation:
-            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_package_version:
-          operation:
-            $ref: "#/paths/~1packages~1{package_name}~1versions~1{version_name}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_package_versions:
-          operation:
-            $ref: "#/paths/~1packages~1{package_name}~1versions/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.packageVersionSummaries
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/package_versions/methods/get_package_version"
-          - $ref: "#/components/x-stackQL-resources/package_versions/methods/list_package_versions"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/package_versions/methods/create_package_version"
-        update:
-          - $ref: "#/components/x-stackQL-resources/package_versions/methods/update_package_version"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/package_versions/methods/delete_package_version"
     policy_versions:
       id: aws.iot.policy_versions
       name: policy_versions
@@ -17604,13 +17942,19 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        set_default_policy_version:
+          operation:
+            $ref: "#/paths/~1policies~1{policy_name}~1version~1{policy_version_id}/patch"
+          response:
+            openAPIDocKey: "200"
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_versions/methods/get_policy_version"
           - $ref: "#/components/x-stackQL-resources/policy_versions/methods/list_policy_versions"
         insert:
           - $ref: "#/components/x-stackQL-resources/policy_versions/methods/create_policy_version"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/policy_versions/methods/set_default_policy_version"
         delete:
           - $ref: "#/components/x-stackQL-resources/policy_versions/methods/delete_policy_version"
     provisioning_claims:
@@ -17655,6 +17999,14 @@ components:
             objectKey: $.templates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_provisioning_template:
           operation:
             $ref: "#/paths/~1provisioning-templates~1{template_name}/delete"
@@ -17713,6 +18065,14 @@ components:
             objectKey: $.versions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_provisioning_template_version:
           operation:
             $ref: "#/paths/~1provisioning-templates~1{template_name}~1versions~1{version_id}/delete"
@@ -17762,6 +18122,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.roleAliasDescription
         update_role_alias:
           operation:
             $ref: "#/paths/~1role-aliases~1{role_alias}/put"
@@ -17830,6 +18191,14 @@ components:
             objectKey: $.scheduledAudits
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/scheduled_audits/methods/describe_scheduled_audit"
@@ -17868,6 +18237,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.streamInfo
         update_stream:
           operation:
             $ref: "#/paths/~1streams~1{stream_id}/put"
@@ -17888,6 +18258,14 @@ components:
             objectKey: $.streams
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/streams/methods/describe_stream"
@@ -17939,6 +18317,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_thing_registration_task:
+          operation:
+            $ref: "#/paths/~1thing-registration-tasks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_things:
           operation:
             $ref: "#/paths/~1things/get"
@@ -17948,6 +18337,14 @@ components:
             objectKey: $.things
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         register_thing:
           operation:
             $ref: "#/paths/~1things/post"
@@ -17959,6 +18356,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        stop_thing_registration_task:
+          operation:
+            $ref: "#/paths/~1thing-registration-tasks~1{task_id}~1cancel/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/things/methods/describe_thing"
@@ -17970,66 +18373,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/things/methods/update_thing"
         delete:
           - $ref: "#/components/x-stackQL-resources/things/methods/delete_thing"
-    thing_groups:
-      id: aws.iot.thing_groups
-      name: thing_groups
-      title: thing_groups
-      methods:
-        create_thing_group:
-          operation:
-            $ref: "#/paths/~1thing-groups~1{thing_group_name}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_thing_group:
-          operation:
-            $ref: "#/paths/~1thing-groups~1{thing_group_name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        describe_thing_group:
-          operation:
-            $ref: "#/paths/~1thing-groups~1{thing_group_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_thing_group:
-          operation:
-            $ref: "#/paths/~1thing-groups~1{thing_group_name}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_thing_groups:
-          operation:
-            $ref: "#/paths/~1thing-groups/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.thingGroups
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/describe_thing_group"
-          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/list_thing_groups"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/create_thing_group"
-        update:
-          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/update_thing_group"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/thing_groups/methods/delete_thing_group"
     thing_types:
       id: aws.iot.thing_types
       name: thing_types
@@ -18069,6 +18412,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        deprecate_thing_type:
+          operation:
+            $ref: "#/paths/~1thing-types~1{thing_type_name}~1deprecate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_thing_types:
           operation:
             $ref: "#/paths/~1thing-types/get"
@@ -18078,6 +18432,14 @@ components:
             objectKey: $.thingTypes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/thing_types/methods/describe_thing_type"
@@ -18088,62 +18450,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/thing_types/methods/update_thing_type"
         delete:
           - $ref: "#/components/x-stackQL-resources/thing_types/methods/delete_thing_type"
-    topic_rules:
-      id: aws.iot.topic_rules
-      name: topic_rules
-      title: topic_rules
-      methods:
-        create_topic_rule:
-          operation:
-            $ref: "#/paths/~1rules~1{rule_name}/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_topic_rule:
-          operation:
-            $ref: "#/paths/~1rules~1{rule_name}/delete"
-          response:
-            openAPIDocKey: "200"
-        get_topic_rule:
-          operation:
-            $ref: "#/paths/~1rules~1{rule_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        replace_topic_rule:
-          operation:
-            $ref: "#/paths/~1rules~1{rule_name}/patch"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_topic_rules:
-          operation:
-            $ref: "#/paths/~1rules/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.rules
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/get_topic_rule"
-          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/list_topic_rules"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/create_topic_rule"
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/replace_topic_rule"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/topic_rules/methods/delete_topic_rule"
     topic_rule_destinations:
       id: aws.iot.topic_rule_destinations
       name: topic_rule_destinations
@@ -18169,6 +18475,14 @@ components:
             objectKey: $.destinationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_topic_rule_destination:
           operation:
             $ref: "#/paths/~1destinations/patch"
@@ -18192,6 +18506,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.topicRuleDestination
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/topic_rule_destinations/methods/get_topic_rule_destination"
@@ -18276,6 +18591,14 @@ components:
             objectKey: $.certificates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
         register_ca_certificate:
           operation:
             $ref: "#/paths/~1cacertificate/post"
@@ -18328,6 +18651,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -18356,6 +18686,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.execution
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -18365,22 +18696,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/job_executions/methods/delete_job_execution"
-    default_policy_versions:
-      id: aws.iot.default_policy_versions
-      name: default_policy_versions
-      title: default_policy_versions
-      methods:
-        set_default_policy_version:
-          operation:
-            $ref: "#/paths/~1policies~1{policy_name}~1version~1{policy_version_id}/patch"
-          response:
-            openAPIDocKey: "200"
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/default_policy_versions/methods/set_default_policy_version"
-        delete: []
     registration_codes:
       id: aws.iot.registration_codes
       name: registration_codes
@@ -18426,6 +18741,14 @@ components:
             objectKey: $.logTargetConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         set_v2_logging_level:
           operation:
             $ref: "#/paths/~1v2LoggingLevel/post"
@@ -18455,6 +18778,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.finding
         list_audit_findings:
           operation:
             $ref: "#/paths/~1audit~1findings/post"
@@ -18465,6 +18789,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -18494,6 +18825,14 @@ components:
             objectKey: $.tasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/audit_mitigation_actions_tasks/methods/list_audit_mitigation_actions_tasks"
@@ -18521,6 +18860,14 @@ components:
             objectKey: $.tasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/audit_tasks/methods/list_audit_tasks"
@@ -18539,6 +18886,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.taskSummary
         list_detect_mitigation_actions_tasks:
           operation:
             $ref: "#/paths/~1detect~1mitigationactions~1tasks/get"
@@ -18548,6 +18896,14 @@ components:
             objectKey: $.tasks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/detect_mitigation_actions_tasks/methods/list_detect_mitigation_actions_tasks"
@@ -18683,6 +19039,14 @@ components:
             objectKey: $.managedJobTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/managed_job_templates/methods/describe_managed_job_template"
@@ -18707,9 +19071,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.taskIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListThingRegistrationTasksOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "taskIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"task_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/thing_registration_tasks/methods/describe_thing_registration_task"
@@ -18731,6 +19109,14 @@ components:
             objectKey: $.summaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/behavior_model_training_summaries/methods/get_behavior_model_training_summaries"
@@ -18890,6 +19276,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.versionUpdateByJobsConfig
         update_package_configuration:
           operation:
             $ref: "#/paths/~1package-configuration/patch"
@@ -18941,6 +19328,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.statistics
           request:
             nativeCasing: pascal
           config:
@@ -19013,6 +19401,14 @@ components:
             objectKey: $.activeViolations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/active_violations/methods/list_active_violations"
@@ -19033,6 +19429,14 @@ components:
             objectKey: $.policies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attached_policies/methods/list_attached_policies"
@@ -19053,6 +19457,14 @@ components:
             objectKey: $.actionsExecutions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/audit_mitigation_actions_executions/methods/list_audit_mitigation_actions_executions"
@@ -19073,6 +19485,14 @@ components:
             objectKey: $.certificates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/certificates_by_cas/methods/list_certificates_by_ca"
@@ -19093,6 +19513,14 @@ components:
             objectKey: $.actionsExecutions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/detect_mitigation_actions_executions/methods/list_detect_mitigation_actions_executions"
@@ -19110,9 +19538,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.indexNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListIndicesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "indexNames" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"index_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/indices/methods/list_indices"
@@ -19133,6 +19575,14 @@ components:
             objectKey: $.executionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_executions_for_jobs/methods/list_job_executions_for_job"
@@ -19153,6 +19603,14 @@ components:
             objectKey: $.executionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_executions_for_things/methods/list_job_executions_for_thing"
@@ -19173,6 +19631,14 @@ components:
             objectKey: $.metricDatumList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/metric_values/methods/list_metric_values"
@@ -19193,6 +19659,14 @@ components:
             objectKey: $.outgoingCertificates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outgoing_certificates/methods/list_outgoing_certificates"
@@ -19210,9 +19684,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.principals
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPolicyPrincipalsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "principals" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"principal": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_principals/methods/list_policy_principals"
@@ -19230,9 +19718,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.things
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListPrincipalThingsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "things" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"thing": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/principal_things/methods/list_principal_things"
@@ -19253,6 +19755,14 @@ components:
             objectKey: $.principalThingObjects
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/principal_things_v2s/methods/list_principal_things_v2"
@@ -19273,6 +19783,14 @@ components:
             objectKey: $.relatedResources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/related_resources_for_audit_findings/methods/list_related_resources_for_audit_finding"
@@ -19290,9 +19808,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.roleAliases
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRoleAliasesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "roleAliases" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"role_alias": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/role_aliases/methods/list_role_aliases"
@@ -19313,6 +19845,14 @@ components:
             objectKey: $.validationResultSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sbom_validation_results/methods/list_sbom_validation_results"
@@ -19333,16 +19873,24 @@ components:
             objectKey: $.securityProfileTargetMappings
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_profiles_for_targets/methods/list_security_profiles_for_target"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.iot.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.iot.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -19353,17 +19901,14 @@ components:
             objectKey: $.tags
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.iot.resources
-      name: resources
-      title: resources
-      methods:
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         tag_resource:
           operation:
             $ref: "#/paths/~1tags/post"
@@ -19387,11 +19932,12 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     targets_for_policies:
       id: aws.iot.targets_for_policies
@@ -19404,9 +19950,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.targets
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTargetsForPolicyOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "targets" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"target": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: marker
+                location: query
+              responseToken:
+                key: $.nextMarker
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/targets_for_policies/methods/list_targets_for_policy"
@@ -19427,6 +19987,14 @@ components:
             objectKey: $.thingGroups
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_thing_groups_for_thing:
           operation:
             $ref: "#/paths/~1thing-groups~1updateThingGroupsForThing/put"
@@ -19459,6 +20027,14 @@ components:
             objectKey: $.thingPrincipalObjects
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/thing_principals_v2s/methods/list_thing_principals_v2"
@@ -19476,9 +20052,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.resourceLinks
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListThingRegistrationTaskReportsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "resourceLinks" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_link": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/thing_registration_task_reports/methods/list_thing_registration_task_reports"
@@ -19496,9 +20086,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.things
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListThingsInBillingGroupOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "things" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"thing": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/things_in_billing_groups/methods/list_things_in_billing_group"
@@ -19516,9 +20120,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.things
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListThingsInThingGroupOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "things" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"thing": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/things_in_thing_groups/methods/list_things_in_thing_group"
@@ -19539,6 +20157,14 @@ components:
             objectKey: $.violationEvents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/violation_events/methods/list_violation_events"
@@ -19567,70 +20193,4 @@ components:
         update: []
         replace:
           - $ref: "#/components/x-stackQL-resources/verification_state_on_violations/methods/put_verification_state_on_violation"
-        delete: []
-    certificate_without_cas:
-      id: aws.iot.certificate_without_cas
-      name: certificate_without_cas
-      title: certificate_without_cas
-      methods:
-        register_certificate_without_ca:
-          operation:
-            $ref: "#/paths/~1certificate~1register-no-ca/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/certificate_without_cas/methods/register_certificate_without_ca"
-        update: []
-        delete: []
-    thing_from_billing_groups:
-      id: aws.iot.thing_from_billing_groups
-      name: thing_from_billing_groups
-      title: thing_from_billing_groups
-      methods:
-        remove_thing_from_billing_group:
-          operation:
-            $ref: "#/paths/~1billing-groups~1removeThingFromBillingGroup/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/thing_from_billing_groups/methods/remove_thing_from_billing_group"
-        delete: []
-    thing_from_thing_groups:
-      id: aws.iot.thing_from_thing_groups
-      name: thing_from_thing_groups
-      title: thing_from_thing_groups
-      methods:
-        remove_thing_from_thing_group:
-          operation:
-            $ref: "#/paths/~1thing-groups~1removeThingFromThingGroup/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/thing_from_thing_groups/methods/remove_thing_from_thing_group"
         delete: []

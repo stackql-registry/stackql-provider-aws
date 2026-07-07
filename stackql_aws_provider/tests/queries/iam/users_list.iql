@@ -1,0 +1,2 @@
+-- Plain query: query-protocol global list.
+SELECT user_name, arn FROM aws.iam.users WHERE region = 'us-east-1'

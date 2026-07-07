@@ -127,7 +127,6 @@ paths:
                   description: The name of the group that you want to add your user to.
               required:
                 - UserPoolId
-                - Username
                 - GroupName
       responses:
         "200":
@@ -164,7 +163,6 @@ paths:
                   description: "A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers. When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a clientMetadata attribute that provides the data that you assigned to the ClientMetadata parameter in your request. In your function code, you can process the clientMetadata value to enhance your workflow for your specific needs. To review the Lambda trigger types that Amazon Cognito invokes at runtime with API requests, see Connecting API actions to Lambda triggers in the Amazon Cognito Developer Guide. When you use the ClientMetadata parameter, note that Amazon Cognito won't do the following: Store the ClientMetadata value. This data is available only to Lambda triggers that are assigned to a user pool to support custom workflows. If your user pool configuration doesn't include triggers, the ClientMetadata parameter serves no purpose. Validate the ClientMetadata value. Encrypt the ClientMetadata value. Don't send sensitive information in this parameter."
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -222,7 +220,6 @@ paths:
                   description: "A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers. When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a clientMetadata attribute that provides the data that you assigned to the ClientMetadata parameter in your request. In your function code, you can process the clientMetadata value to enhance your workflow for your specific needs. To review the Lambda trigger types that Amazon Cognito invokes at runtime with API requests, see Connecting API actions to Lambda triggers in the Amazon Cognito Developer Guide. When you use the ClientMetadata parameter, note that Amazon Cognito won't do the following: Store the ClientMetadata value. This data is available only to Lambda triggers that are assigned to a user pool to support custom workflows. If your user pool configuration doesn't include triggers, the ClientMetadata parameter serves no purpose. Validate the ClientMetadata value. Encrypt the ClientMetadata value. Don't send sensitive information in this parameter."
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -259,7 +256,6 @@ paths:
                   description: The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If username isn't an alias attribute in your user pool, this value must be the sub of a local user or the username of a user from a third-party IdP.
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -295,7 +291,6 @@ paths:
                   description: "An array of strings representing the user attribute names you want to delete. For custom attributes, you must prepend the custom: prefix to the attribute name."
               required:
                 - UserPoolId
-                - Username
                 - UserAttributeNames
       responses:
         "200":
@@ -333,7 +328,6 @@ paths:
                   description: The user profile that you want to delete a linked identity from.
               required:
                 - UserPoolId
-                - User
       responses:
         "200":
           description: Success
@@ -370,7 +364,6 @@ paths:
                   description: The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If username isn't an alias attribute in your user pool, this value must be the sub of a local user or the username of a user from a third-party IdP.
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -407,7 +400,6 @@ paths:
                   description: The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If username isn't an alias attribute in your user pool, this value must be the sub of a local user or the username of a user from a third-party IdP.
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -447,7 +439,6 @@ paths:
                   description: The key ID of the device that you want to delete.
               required:
                 - UserPoolId
-                - Username
                 - DeviceKey
       responses:
         "200":
@@ -485,7 +476,6 @@ paths:
               required:
                 - DeviceKey
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -522,7 +512,6 @@ paths:
                   description: The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If username isn't an alias attribute in your user pool, this value must be the sub of a local user or the username of a user from a third-party IdP.
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -704,7 +693,6 @@ paths:
                   $ref: "#/components/schemas/PaginationKey"
                   description: This API operation returns a limited number of results. The pagination token is an identifier that you can present in an additional API request with the same parameters. When you include the pagination token, Amazon Cognito returns the next set of items after the current list. Subsequent requests return a new pagination token. By use of this token, you can paginate through the full list of items.
               required:
-                - Username
                 - UserPoolId
       responses:
         "200":
@@ -748,7 +736,6 @@ paths:
                   description: This API operation returns a limited number of results. The pagination token is an identifier that you can present in an additional API request with the same parameters. When you include the pagination token, Amazon Cognito returns the next set of items after the current list. Subsequent requests return a new pagination token. By use of this token, you can paginate through the full list of items.
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -788,7 +775,6 @@ paths:
                   description: The name of the group that you want to remove the user from, for example MyTestGroup.
               required:
                 - UserPoolId
-                - Username
                 - GroupName
       responses:
         "200":
@@ -825,7 +811,6 @@ paths:
                   description: "A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers. When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a clientMetadata attribute that provides the data that you assigned to the ClientMetadata parameter in your request. In your function code, you can process the clientMetadata value to enhance your workflow for your specific needs. To review the Lambda trigger types that Amazon Cognito invokes at runtime with API requests, see Connecting API actions to Lambda triggers in the Amazon Cognito Developer Guide. When you use the ClientMetadata parameter, note that Amazon Cognito won't do the following: Store the ClientMetadata value. This data is available only to Lambda triggers that are assigned to a user pool to support custom workflows. If your user pool configuration doesn't include triggers, the ClientMetadata parameter serves no purpose. Validate the ClientMetadata value. Encrypt the ClientMetadata value. Don't send sensitive information in this parameter."
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -929,7 +914,6 @@ paths:
                   $ref: "#/components/schemas/UserPoolIdType"
                   description: The ID of the user pool where you want to set a user's MFA preferences.
               required:
-                - Username
                 - UserPoolId
       responses:
         "200":
@@ -973,7 +957,6 @@ paths:
                   description: Set to true to set a password that the user can immediately sign in with. Set to false to set a temporary password that the user must change on their next sign-in.
               required:
                 - UserPoolId
-                - Username
                 - Password
       responses:
         "200":
@@ -1014,7 +997,6 @@ paths:
                   description: You can use this parameter only to set an SMS configuration that uses SMS for delivery.
               required:
                 - UserPoolId
-                - Username
                 - MFAOptions
       responses:
         "200":
@@ -1058,7 +1040,6 @@ paths:
                   description: Your feedback to the authentication event. When you provide a FeedbackValue value of valid, you tell Amazon Cognito that you trust a user session where Amazon Cognito has evaluated some level of risk. When you provide a FeedbackValue value of invalid, you tell Amazon Cognito that you don't trust a user session, or you don't believe that Amazon Cognito evaluated a high-enough risk level.
               required:
                 - UserPoolId
-                - Username
                 - EventId
                 - FeedbackValue
       responses:
@@ -1103,7 +1084,6 @@ paths:
                   description: To enable device authentication with the specified device, set to remembered.To disable, set to not_remembered.
               required:
                 - UserPoolId
-                - Username
                 - DeviceKey
       responses:
         "200":
@@ -1147,7 +1127,6 @@ paths:
                   description: "A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers. You create custom workflows by assigning Lambda functions to user pool triggers. When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a clientMetadata attribute that provides the data that you assigned to the ClientMetadata parameter in your request. In your function code, you can process the clientMetadata value to enhance your workflow for your specific needs. To review the Lambda trigger types that Amazon Cognito invokes at runtime with API requests, see Connecting API actions to Lambda triggers in the Amazon Cognito Developer Guide. When you use the ClientMetadata parameter, note that Amazon Cognito won't do the following: Store the ClientMetadata value. This data is available only to Lambda triggers that are assigned to a user pool to support custom workflows. If your user pool configuration doesn't include triggers, the ClientMetadata parameter serves no purpose. Validate the ClientMetadata value. Encrypt the ClientMetadata value. Don't send sensitive information in this parameter."
               required:
                 - UserPoolId
-                - Username
                 - UserAttributes
       responses:
         "200":
@@ -1185,7 +1164,6 @@ paths:
                   description: The name of the user that you want to query or modify. The value of this parameter is typically your user's username, but it can be any of their alias attributes. If username isn't an alias attribute in your user pool, this value must be the sub of a local user or the username of a user from a third-party IdP.
               required:
                 - UserPoolId
-                - Username
       responses:
         "200":
           description: Success
@@ -1641,8 +1619,6 @@ paths:
                   description: A list of custom scopes. Each scope is a key-value map with the keys ScopeName and ScopeDescription. The name of a custom scope is a combination of ScopeName and the resource server Name in this request, for example MyResourceServerName/MyScopeName.
               required:
                 - UserPoolId
-                - Identifier
-                - Name
       responses:
         "200":
           description: Success
@@ -2119,7 +2095,6 @@ paths:
                   description: The identifier of the resource server that you want to delete.
               required:
                 - UserPoolId
-                - Identifier
       responses:
         "200":
           description: Success
@@ -2545,7 +2520,6 @@ paths:
                   description: A unique resource server identifier for the resource server. The identifier can be an API friendly name like solar-system-data. You can also set an API URL like https://solar-system-data-api.example.com as your identifier. Amazon Cognito represents scopes in the access token in the format $resource-server-identifier/$scope. Longer scope-identifier strings increase the size of your access tokens.
               required:
                 - UserPoolId
-                - Identifier
       responses:
         "200":
           description: Success
@@ -4461,7 +4435,6 @@ paths:
                   description: An array of tag keys and values that you want to assign to the user pool.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -4544,7 +4517,6 @@ paths:
                   description: Your feedback to the authentication event. When you provide a FeedbackValue value of valid, you tell Amazon Cognito that you trust a user session where Amazon Cognito has evaluated some level of risk. When you provide a FeedbackValue value of invalid, you tell Amazon Cognito that you don't trust a user session, or you don't believe that Amazon Cognito evaluated a high-enough risk level.
               required:
                 - UserPoolId
-                - Username
                 - EventId
                 - FeedbackToken
                 - FeedbackValue
@@ -4765,8 +4737,6 @@ paths:
                   description: An array of updated custom scope names and descriptions that you want to associate with your resource server.
               required:
                 - UserPoolId
-                - Identifier
-                - Name
       responses:
         "200":
           description: Success
@@ -8513,10 +8483,10 @@ components:
       description: A container representing the response from the server from the request to verify user attributes.
       type: object
   x-stackQL-resources:
-    custom_attributes:
-      id: aws.cognito_idp.custom_attributes
-      name: custom_attributes
-      title: custom_attributes
+    user_pools:
+      id: aws.cognito_idp.user_pools
+      name: user_pools
+      title: user_pools
       methods:
         add_custom_attributes:
           operation:
@@ -8531,12 +8501,439 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        admin_add_user_to_group:
+          operation:
+            $ref: "#/paths/~1AdminAddUserToGroup/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_confirm_sign_up:
+          operation:
+            $ref: "#/paths/~1AdminConfirmSignUp/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_create_user:
+          operation:
+            $ref: "#/paths/~1AdminCreateUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_delete_user:
+          operation:
+            $ref: "#/paths/~1AdminDeleteUser/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_delete_user_attributes:
+          operation:
+            $ref: "#/paths/~1AdminDeleteUserAttributes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_disable_provider_for_user:
+          operation:
+            $ref: "#/paths/~1AdminDisableProviderForUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_disable_user:
+          operation:
+            $ref: "#/paths/~1AdminDisableUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_enable_user:
+          operation:
+            $ref: "#/paths/~1AdminEnableUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_forget_device:
+          operation:
+            $ref: "#/paths/~1AdminForgetDevice/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_get_device:
+          operation:
+            $ref: "#/paths/~1AdminGetDevice/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_get_user:
+          operation:
+            $ref: "#/paths/~1AdminGetUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_initiate_auth:
+          operation:
+            $ref: "#/paths/~1AdminInitiateAuth/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_link_provider_for_user:
+          operation:
+            $ref: "#/paths/~1AdminLinkProviderForUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_list_groups_for_user:
+          operation:
+            $ref: "#/paths/~1AdminListGroupsForUser/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        admin_list_user_auth_events:
+          operation:
+            $ref: "#/paths/~1AdminListUserAuthEvents/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        admin_remove_user_from_group:
+          operation:
+            $ref: "#/paths/~1AdminRemoveUserFromGroup/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_reset_user_password:
+          operation:
+            $ref: "#/paths/~1AdminResetUserPassword/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_respond_to_auth_challenge:
+          operation:
+            $ref: "#/paths/~1AdminRespondToAuthChallenge/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_set_user_mfa_preference:
+          operation:
+            $ref: "#/paths/~1AdminSetUserMFAPreference/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_set_user_password:
+          operation:
+            $ref: "#/paths/~1AdminSetUserPassword/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_set_user_settings:
+          operation:
+            $ref: "#/paths/~1AdminSetUserSettings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_update_auth_event_feedback:
+          operation:
+            $ref: "#/paths/~1AdminUpdateAuthEventFeedback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_update_device_status:
+          operation:
+            $ref: "#/paths/~1AdminUpdateDeviceStatus/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_update_user_attributes:
+          operation:
+            $ref: "#/paths/~1AdminUpdateUserAttributes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        admin_user_global_sign_out:
+          operation:
+            $ref: "#/paths/~1AdminUserGlobalSignOut/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_user_pool:
+          operation:
+            $ref: "#/paths/~1CreateUserPool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_user_pool:
+          operation:
+            $ref: "#/paths/~1DeleteUserPool/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_user_pool:
+          operation:
+            $ref: "#/paths/~1DescribeUserPool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.UserPool
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_user_pools:
+          operation:
+            $ref: "#/paths/~1ListUserPools/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.UserPools
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_auth_event_feedback:
+          operation:
+            $ref: "#/paths/~1UpdateAuthEventFeedback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_pool:
+          operation:
+            $ref: "#/paths/~1UpdateUserPool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/user_pools/methods/describe_user_pool"
+          - $ref: "#/components/x-stackQL-resources/user_pools/methods/list_user_pools"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/user_pools/methods/create_user_pool"
         update:
-          - $ref: "#/components/x-stackQL-resources/custom_attributes/methods/add_custom_attributes"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/user_pools/methods/update_auth_event_feedback"
+          - $ref: "#/components/x-stackQL-resources/user_pools/methods/add_custom_attributes"
+          - $ref: "#/components/x-stackQL-resources/user_pools/methods/update_user_pool"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/user_pools/methods/delete_user_pool"
     user_pool_client_secrets:
       id: aws.cognito_idp.user_pool_client_secrets
       name: user_pool_client_secrets
@@ -8589,6 +8986,72 @@ components:
           - $ref: "#/components/x-stackQL-resources/user_pool_client_secrets/methods/add_user_pool_client_secret"
         delete:
           - $ref: "#/components/x-stackQL-resources/user_pool_client_secrets/methods/delete_user_pool_client_secret"
+    devices:
+      id: aws.cognito_idp.devices
+      name: devices
+      title: devices
+      methods:
+        admin_list_devices:
+          operation:
+            $ref: "#/paths/~1AdminListDevices/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_device:
+          operation:
+            $ref: "#/paths/~1GetDevice/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Device
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_devices:
+          operation:
+            $ref: "#/paths/~1ListDevices/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_device_status:
+          operation:
+            $ref: "#/paths/~1UpdateDeviceStatus/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/devices/methods/get_device"
+          - $ref: "#/components/x-stackQL-resources/devices/methods/list_devices"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/devices/methods/update_device_status"
+        delete: []
     software_tokens:
       id: aws.cognito_idp.software_tokens
       name: software_tokens
@@ -8649,6 +9112,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Group
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8668,6 +9132,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_group:
@@ -8729,6 +9200,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.IdentityProvider
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8748,6 +9220,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_identity_provider:
@@ -8809,6 +9288,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ManagedLoginBranding
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8874,6 +9354,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResourceServer
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -8893,6 +9374,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_resource_server:
@@ -8911,7 +9399,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/resource_servers/methods/describe_resource_server"
-          - $ref: "#/components/x-stackQL-resources/resource_servers/methods/list_resource_servers"
         insert:
           - $ref: "#/components/x-stackQL-resources/resource_servers/methods/create_resource_server"
         update:
@@ -8954,6 +9441,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Terms
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9021,6 +9509,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.UserImportJob
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9049,86 +9538,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/user_import_jobs/methods/create_user_import_job"
         update: []
         delete: []
-    user_pools:
-      id: aws.cognito_idp.user_pools
-      name: user_pools
-      title: user_pools
-      methods:
-        create_user_pool:
-          operation:
-            $ref: "#/paths/~1CreateUserPool/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_user_pool:
-          operation:
-            $ref: "#/paths/~1DeleteUserPool/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_user_pool:
-          operation:
-            $ref: "#/paths/~1DescribeUserPool/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_user_pools:
-          operation:
-            $ref: "#/paths/~1ListUserPools/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.UserPools
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_user_pool:
-          operation:
-            $ref: "#/paths/~1UpdateUserPool/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/user_pools/methods/describe_user_pool"
-          - $ref: "#/components/x-stackQL-resources/user_pools/methods/list_user_pools"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/user_pools/methods/create_user_pool"
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_pools/methods/update_user_pool"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/user_pools/methods/delete_user_pool"
     user_pool_clients:
       id: aws.cognito_idp.user_pool_clients
       name: user_pool_clients
@@ -9165,6 +9574,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.UserPoolClient
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9184,6 +9594,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_user_pool_client:
@@ -9246,6 +9663,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DomainDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9292,6 +9710,19 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_user_attributes:
+          operation:
+            $ref: "#/paths/~1DeleteUserAttributes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         get_user:
           operation:
             $ref: "#/paths/~1GetUser/post"
@@ -9317,24 +9748,57 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: PaginationToken
+                location: body
+              responseToken:
+                key: $.PaginationToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/users/methods/get_user"
-          - $ref: "#/components/x-stackQL-resources/users/methods/list_users"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
-    user_attributes:
-      id: aws.cognito_idp.user_attributes
-      name: user_attributes
-      title: user_attributes
-      methods:
-        delete_user_attributes:
+        set_user_mfa_preference:
           operation:
-            $ref: "#/paths/~1DeleteUserAttributes/post"
+            $ref: "#/paths/~1SetUserMFAPreference/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_user_settings:
+          operation:
+            $ref: "#/paths/~1SetUserSettings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_user_import_job:
+          operation:
+            $ref: "#/paths/~1StartUserImportJob/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_user_import_job:
+          operation:
+            $ref: "#/paths/~1StopUserImportJob/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9358,13 +9822,31 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        verify_user_attribute:
+          operation:
+            $ref: "#/paths/~1VerifyUserAttribute/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/users/methods/get_user"
+          - $ref: "#/components/x-stackQL-resources/users/methods/list_users"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/user_attributes/methods/update_user_attributes"
+          - $ref: "#/components/x-stackQL-resources/users/methods/set_user_settings"
+          - $ref: "#/components/x-stackQL-resources/users/methods/update_user_attributes"
+          - $ref: "#/components/x-stackQL-resources/users/methods/set_user_mfa_preference"
         delete:
-          - $ref: "#/components/x-stackQL-resources/user_attributes/methods/delete_user_attributes"
+          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user_attributes"
+          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
     web_authn_credentials:
       id: aws.cognito_idp.web_authn_credentials
       name: web_authn_credentials
@@ -9414,6 +9896,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ManagedLoginBranding
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9438,6 +9921,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RiskConfiguration
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9489,44 +9973,6 @@ components:
         insert: []
         update: []
         delete: []
-    devices:
-      id: aws.cognito_idp.devices
-      name: devices
-      title: devices
-      methods:
-        get_device:
-          operation:
-            $ref: "#/paths/~1GetDevice/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_devices:
-          operation:
-            $ref: "#/paths/~1ListDevices/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/devices/methods/get_device"
-          - $ref: "#/components/x-stackQL-resources/devices/methods/list_devices"
-        insert: []
-        update: []
-        delete: []
     identity_provider_by_identifiers:
       id: aws.cognito_idp.identity_provider_by_identifiers
       name: identity_provider_by_identifiers
@@ -9538,6 +9984,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.IdentityProvider
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9562,6 +10009,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.LogDeliveryConfiguration
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9624,6 +10072,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AuthenticationResult
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9648,6 +10097,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.UICustomization
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9686,6 +10136,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CodeDeliveryDetails
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -9761,10 +10212,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/user_pool_mfa_configs/methods/set_user_pool_mfa_config"
         delete: []
-    tags_for_resources:
-      id: aws.cognito_idp.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.cognito_idp.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9779,11 +10230,39 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1TagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1UntagResource/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     users_in_groups:
       id: aws.cognito_idp.users_in_groups
@@ -9802,6 +10281,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9833,138 +10319,4 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/tokens/methods/revoke_token"
-        delete: []
-    user_mfa_preferences:
-      id: aws.cognito_idp.user_mfa_preferences
-      name: user_mfa_preferences
-      title: user_mfa_preferences
-      methods:
-        set_user_mfa_preference:
-          operation:
-            $ref: "#/paths/~1SetUserMFAPreference/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_mfa_preferences/methods/set_user_mfa_preference"
-        delete: []
-    user_settings:
-      id: aws.cognito_idp.user_settings
-      name: user_settings
-      title: user_settings
-      methods:
-        set_user_settings:
-          operation:
-            $ref: "#/paths/~1SetUserSettings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_settings/methods/set_user_settings"
-        delete: []
-    resources:
-      id: aws.cognito_idp.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1TagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1UntagResource/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    auth_event_feedbacks:
-      id: aws.cognito_idp.auth_event_feedbacks
-      name: auth_event_feedbacks
-      title: auth_event_feedbacks
-      methods:
-        update_auth_event_feedback:
-          operation:
-            $ref: "#/paths/~1UpdateAuthEventFeedback/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/auth_event_feedbacks/methods/update_auth_event_feedback"
-        delete: []
-    device_status:
-      id: aws.cognito_idp.device_status
-      name: device_status
-      title: device_status
-      methods:
-        update_device_status:
-          operation:
-            $ref: "#/paths/~1UpdateDeviceStatus/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/device_status/methods/update_device_status"
         delete: []

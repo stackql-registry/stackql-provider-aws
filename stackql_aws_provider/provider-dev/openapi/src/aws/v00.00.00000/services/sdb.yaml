@@ -703,19 +703,26 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    GetAttributesResultDisplay:
+    AttributeDisplay:
       type: object
       properties:
-        Attributes:
+        Name:
           type: string
-          description: The list of attributes returned by the operation.
+          description: The name of the attribute.
+        AlternateNameEncoding:
+          type: string
+        Value:
+          type: string
+          description: The value of the attribute.
+        AlternateValueEncoding:
+          type: string
     GetAttributesOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/GetAttributesResultDisplay"
+            $ref: "#/components/schemas/AttributeDisplay"
     GetAttributesRequest:
       type: object
       properties:
@@ -745,7 +752,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/StringDisplay"
+            $ref: "#/components/schemas/ListDomainsRowDisplay"
     ListDomainsRequest:
       type: object
       properties:
@@ -755,6 +762,12 @@ components:
         NextToken:
           $ref: "#/components/schemas/String"
           description: A string informing Amazon SimpleDB where to start the next list of domain names.
+    ListDomainsRowDisplay:
+      type: object
+      properties:
+        domain_name:
+          type: string
+          description: A list of domain names that match the expression.
     PutAttributesRequest:
       type: object
       properties:
@@ -807,67 +820,31 @@ components:
       required:
         - SelectExpression
   x-stackQL-resources:
-    domains:
-      id: aws.sdb.domains
-      name: domains
-      title: domains
-      methods:
-        create_domain:
-          operation:
-            $ref: "#/paths/~1?Action=CreateDomain&Version=2009-04-15/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_domain:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteDomain&Version=2009-04-15/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        list_domains:
-          operation:
-            $ref: "#/paths/~1?Action=ListDomains&Version=2009-04-15/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListDomainsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
     attributes:
       id: aws.sdb.attributes
       name: attributes
       title: attributes
       methods:
+        batch_delete_attributes:
+          operation:
+            $ref: "#/paths/~1?Action=BatchDeleteAttributes&Version=2009-04-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        batch_put_attributes:
+          operation:
+            $ref: "#/paths/~1?Action=BatchPutAttributes&Version=2009-04-15/get"
+          response:
+            openAPIDocKey: "200"
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         delete_attributes:
           operation:
             $ref: "#/paths/~1?Action=DeleteAttributes&Version=2009-04-15/get"
@@ -890,7 +867,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/GetAttributesOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $s := separator ", " -}}{{- $n := index . "GetAttributesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "GetAttributesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "Attributes" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $x := $n }}{{ call $s }}{{ toJson $x }}{{ end -}}{{- else if eq (kindOf $n) "map" -}}{{ call $s }}{{ toJson $n }}{{- end -}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -920,3 +898,77 @@ components:
           - $ref: "#/components/x-stackQL-resources/attributes/methods/put_attributes"
         delete:
           - $ref: "#/components/x-stackQL-resources/attributes/methods/delete_attributes"
+    domains:
+      id: aws.sdb.domains
+      name: domains
+      title: domains
+      methods:
+        create_domain:
+          operation:
+            $ref: "#/paths/~1?Action=CreateDomain&Version=2009-04-15/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_domain:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteDomain&Version=2009-04-15/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        domain_metadata:
+          operation:
+            $ref: "#/paths/~1?Action=DomainMetadata&Version=2009-04-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DomainMetadataOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        list_domains:
+          operation:
+            $ref: "#/paths/~1?Action=ListDomains&Version=2009-04-15/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDomainsOutputDisplay"
+            transform:
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "ListDomainsResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "ListDomainsResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DomainNames" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"domain_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"domain_name": {{ toJson $n }}}{{- end -}}]}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/list_domains"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"

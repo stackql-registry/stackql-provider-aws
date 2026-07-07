@@ -67,7 +67,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateEipToVlanResponse'
-      x-stackql-resource: eip_to_vlans
+      x-stackql-resource: environments
       x-stackql-method: associate_eip_to_vlan
       x-stackql-verb: UPDATE
   /CreateEntitlement:
@@ -123,7 +123,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateEntitlementResponse'
-      x-stackql-resource: entitlements
+      x-stackql-resource: environments
       x-stackql-method: create_entitlement
       x-stackql-verb: INSERT
   /CreateEnvironment:
@@ -431,7 +431,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteEntitlementResponse'
-      x-stackql-resource: entitlements
+      x-stackql-resource: environments
       x-stackql-method: delete_entitlement
       x-stackql-verb: DELETE
   /DeleteEnvironment:
@@ -623,7 +623,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateEipFromVlanResponse'
-      x-stackql-resource: eip_from_vlans
+      x-stackql-resource: environments
       x-stackql-method: disassociate_eip_from_vlan
       x-stackql-verb: UPDATE
   /GetEnvironment:
@@ -662,6 +662,7 @@ paths:
       x-stackql-resource: environments
       x-stackql-method: get_environment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environment
   /GetVersions:
     post:
       operationId: GetVersions
@@ -741,6 +742,9 @@ paths:
       x-stackql-method: list_environment_connectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.connectors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironmentHosts:
     post:
       operationId: ListEnvironmentHosts
@@ -788,6 +792,9 @@ paths:
       x-stackql-method: list_environment_hosts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environmentHosts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironmentVlans:
     post:
       operationId: ListEnvironmentVlans
@@ -835,6 +842,9 @@ paths:
       x-stackql-method: list_environment_vlans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environmentVlans
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListEnvironments:
     post:
       operationId: ListEnvironments
@@ -882,6 +892,9 @@ paths:
       x-stackql-method: list_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environmentSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -915,7 +928,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListVmEntitlements:
@@ -974,6 +987,9 @@ paths:
       x-stackql-method: list_vm_entitlements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.entitlements
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /TagResource:
     post:
       operationId: TagResource
@@ -1017,7 +1033,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1057,7 +1073,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateEnvironmentConnector:

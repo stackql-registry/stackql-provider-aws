@@ -1,0 +1,3 @@
+-- rest-json path-param routed get.
+SELECT id, name, description FROM aws.appconfig.applications
+WHERE region = '{{ region }}' AND application_id = '{{ appconfig_app_create.app_id }}'

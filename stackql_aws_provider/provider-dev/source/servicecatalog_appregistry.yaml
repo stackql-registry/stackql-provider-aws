@@ -273,6 +273,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.applications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /attribute-groups:
     post:
       operationId: CreateAttributeGroup
@@ -339,6 +342,9 @@ paths:
       x-stackql-method: list_attribute_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.attributeGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application}:
     delete:
       operationId: DeleteApplication
@@ -505,6 +511,7 @@ paths:
       x-stackql-resource: configurations
       x-stackql-method: get_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.configuration
     put:
       operationId: PutConfiguration
       description: Associates a TagKey configuration to an account.
@@ -556,11 +563,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAssociatedAttributeGroupsResponse'
+                $ref: '#/components/schemas/ListAssociatedAttributeGroupsOutputDisplay'
       x-stackql-resource: associated_attribute_groups
       x-stackql-method: list_associated_attribute_groups
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.attributeGroups
+      x-stackql-responseEnvelope: ListAssociatedAttributeGroupsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "attributeGroups" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"attribute_group": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application}/resources:
     get:
       operationId: ListAssociatedResources
@@ -598,6 +613,9 @@ paths:
       x-stackql-method: list_associated_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /applications/{application}/attribute-group-details:
     get:
       operationId: ListAttributeGroupsForApplication
@@ -634,6 +652,9 @@ paths:
       x-stackql-method: list_attribute_groups_for_application
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.attributeGroupsDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -652,7 +673,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -685,7 +706,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -711,7 +732,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /sync/{resource_type}/{resource}:
@@ -1290,19 +1311,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/ApplicationSummary'
-    ListAssociatedAttributeGroupsResponse:
+    ListAssociatedAttributeGroupsRowDisplay:
       type: object
       properties:
-        attributeGroups:
-          $ref: '#/components/schemas/AttributeGroupIds'
+        attribute_group:
+          type: string
           description: A list of attribute group IDs.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to get the next page of results after a previous API call.
-    AttributeGroupIds:
-      type: array
-      items:
-        $ref: '#/components/schemas/AttributeGroupId'
+    ListAssociatedAttributeGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAssociatedAttributeGroupsRowDisplay'
     ListAssociatedResourcesResponse:
       type: object
       properties:

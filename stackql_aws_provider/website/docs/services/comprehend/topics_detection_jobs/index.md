@@ -1,0 +1,312 @@
+--- 
+title: topics_detection_jobs
+hide_title: false
+hide_table_of_contents: false
+keywords:
+  - topics_detection_jobs
+  - comprehend
+  - aws
+  - infrastructure-as-code
+  - configuration-as-data
+  - cloud inventory
+description: Query, deploy and manage aws resources using SQL
+custom_edit_url: null
+image: /img/stackql-aws-provider-featured-image.png
+---
+
+import CopyableCode from '@site/src/components/CopyableCode/CopyableCode';
+import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+Creates, updates, deletes, gets or lists a <code>topics_detection_jobs</code> resource.
+
+## Overview
+<table><tbody>
+<tr><td><b>Name</b></td><td><CopyableCode code="topics_detection_jobs" /></td></tr>
+<tr><td><b>Type</b></td><td>Resource</td></tr>
+<tr><td><b>Id</b></td><td><CopyableCode code="aws.comprehend.topics_detection_jobs" /></td></tr>
+</tbody></table>
+
+## Fields
+
+The following fields are returned by `SELECT` queries:
+
+<Tabs
+    defaultValue="describe_topics_detection_job"
+    values={[
+        { label: 'describe_topics_detection_job', value: 'describe_topics_detection_job' },
+        { label: 'list_topics_detection_jobs', value: 'list_topics_detection_jobs' }
+    ]}
+>
+<TabItem value="describe_topics_detection_job">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to your job data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="EndTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that the topic detection job was completed.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><code>object</code></td>
+    <td>The input properties for an inference job. The document reader config field applies only to non-text inputs for custom analysis.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the topics detection job. It is a unique, fully qualified identifier for the job. It includes the Amazon Web Services account, Amazon Web Services Region, and the job ID. The format of the ARN is as follows: arn:<code>&lt;partition&gt;</code>:comprehend:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:topics-detection-job/<code>&lt;job-id&gt;</code> The following is an example job ARN: arn:aws:comprehend:us-west-2:111122223333:topics-detection-job/1234abcd12ab34cd56ef1234567890ab (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;a-zA-Z0-9-&#93;&#123;1,64&#125;/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*((/dataset/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)|(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*))?&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobId" /></td>
+    <td><code>string</code></td>
+    <td>The identifier assigned to the topic detection job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the topic detection job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobStatus" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the topic detection job. If the status is Failed, the reason for the failure is shown in the Message field. (SUBMITTED, IN_PROGRESS, COMPLETED, FAILED, STOP_REQUESTED, STOPPED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Message" /></td>
+    <td><code>string</code></td>
+    <td>A description for the status of a job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="NumberOfTopics" /></td>
+    <td><code>integer</code></td>
+    <td>The number of topics to detect supplied when you created the topic detection job. The default is 10.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><code>object</code></td>
+    <td>Provides configuration parameters for the output of inference jobs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="SubmitTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that the topic detection job was submitted for processing.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VolumeKmsKeyId" /></td>
+    <td><code>string</code></td>
+    <td>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VpcConfig" /></td>
+    <td><code>object</code></td>
+    <td>Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see Amazon VPC.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_topics_detection_jobs">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="DataAccessRoleArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend read access to your job data. (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:iam::&#91;0-9&#93;&#123;12&#125;:role/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="EndTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that the topic detection job was completed.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="InputDataConfig" /></td>
+    <td><code>object</code></td>
+    <td>The input properties for an inference job. The document reader config field applies only to non-text inputs for custom analysis.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the topics detection job. It is a unique, fully qualified identifier for the job. It includes the Amazon Web Services account, Amazon Web Services Region, and the job ID. The format of the ARN is as follows: arn:<code>&lt;partition&gt;</code>:comprehend:<code>&lt;region&gt;</code>:<code>&lt;account-id&gt;</code>:topics-detection-job/<code>&lt;job-id&gt;</code> The following is an example job ARN: arn:aws:comprehend:us-west-2:111122223333:topics-detection-job/1234abcd12ab34cd56ef1234567890ab (pattern: &lt;code&gt;arn:aws(-&#91;^:&#93;+)?:comprehend:&#91;a-zA-Z0-9-&#93;*:&#91;0-9&#93;&#123;12&#125;:&#91;a-zA-Z0-9-&#93;&#123;1,64&#125;/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*((/dataset/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*)|(/version/&#91;a-zA-Z0-9&#93;(-*&#91;a-zA-Z0-9&#93;)*))?&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobId" /></td>
+    <td><code>string</code></td>
+    <td>The identifier assigned to the topic detection job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the topic detection job. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-%@&#93;*)$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="JobStatus" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the topic detection job. If the status is Failed, the reason for the failure is shown in the Message field. (SUBMITTED, IN_PROGRESS, COMPLETED, FAILED, STOP_REQUESTED, STOPPED)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Message" /></td>
+    <td><code>string</code></td>
+    <td>A description for the status of a job.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="NumberOfTopics" /></td>
+    <td><code>integer</code></td>
+    <td>The number of topics to detect supplied when you created the topic detection job. The default is 10.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="OutputDataConfig" /></td>
+    <td><code>object</code></td>
+    <td>Provides configuration parameters for the output of inference jobs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="SubmitTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The time that the topic detection job was submitted for processing.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VolumeKmsKeyId" /></td>
+    <td><code>string</code></td>
+    <td>ID for the Amazon Web Services Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats: KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab" Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab" (pattern: &lt;code&gt;^\p&#123;ASCII&#125;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VpcConfig" /></td>
+    <td><code>object</code></td>
+    <td>Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for the job. For more information, see Amazon VPC.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+</Tabs>
+
+## Methods
+
+The following methods are available for this resource:
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Accessible by</th>
+    <th>Required Params</th>
+    <th>Optional Params</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><a href="#describe_topics_detection_job"><CopyableCode code="describe_topics_detection_job" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets the properties associated with a topic detection job. Use this operation to get the status of a detection job.</td>
+</tr>
+<tr>
+    <td><a href="#list_topics_detection_jobs"><CopyableCode code="list_topics_detection_jobs" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Gets a list of the topic detection jobs that you have submitted.</td>
+</tr>
+</tbody>
+</table>
+
+## Parameters
+
+Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#methods) section to see which parameters are required or optional for each operation.
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
+</tr>
+</tbody>
+</table>
+
+## `SELECT` examples
+
+<Tabs
+    defaultValue="describe_topics_detection_job"
+    values={[
+        { label: 'describe_topics_detection_job', value: 'describe_topics_detection_job' },
+        { label: 'list_topics_detection_jobs', value: 'list_topics_detection_jobs' }
+    ]}
+>
+<TabItem value="describe_topics_detection_job">
+
+Gets the properties associated with a topic detection job. Use this operation to get the status of a detection job.
+
+```sql
+SELECT
+DataAccessRoleArn,
+EndTime,
+InputDataConfig,
+JobArn,
+JobId,
+JobName,
+JobStatus,
+Message,
+NumberOfTopics,
+OutputDataConfig,
+SubmitTime,
+VolumeKmsKeyId,
+VpcConfig
+FROM aws.comprehend.topics_detection_jobs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_topics_detection_jobs">
+
+Gets a list of the topic detection jobs that you have submitted.
+
+```sql
+SELECT
+DataAccessRoleArn,
+EndTime,
+InputDataConfig,
+JobArn,
+JobId,
+JobName,
+JobStatus,
+Message,
+NumberOfTopics,
+OutputDataConfig,
+SubmitTime,
+VolumeKmsKeyId,
+VpcConfig
+FROM aws.comprehend.topics_detection_jobs
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+</Tabs>

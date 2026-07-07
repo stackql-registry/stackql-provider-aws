@@ -110,7 +110,6 @@ paths:
                 OutputConfig:
                   $ref: "#/components/schemas/OutputConfigInput"
               required:
-                - Arn
                 - ExecutionRoleArn
                 - OutputConfig
       responses:
@@ -141,7 +140,6 @@ paths:
                 OutputConfig:
                   $ref: "#/components/schemas/ExportVectorEnrichmentJobOutputConfig"
               required:
-                - Arn
                 - ExecutionRoleArn
                 - OutputConfig
       responses:
@@ -343,8 +341,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/Tags"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -423,7 +419,6 @@ paths:
                 RasterDataCollectionQuery:
                   $ref: "#/components/schemas/RasterDataCollectionQueryWithBandFilterInput"
               required:
-                - Arn
                 - RasterDataCollectionQuery
       responses:
         "200":
@@ -462,7 +457,6 @@ paths:
                 - ExecutionRoleArn
                 - InputConfig
                 - JobConfig
-                - Name
       responses:
         "200":
           description: Success
@@ -500,7 +494,6 @@ paths:
                 - ExecutionRoleArn
                 - InputConfig
                 - JobConfig
-                - Name
       responses:
         "200":
           description: Success
@@ -522,8 +515,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/EarthObservationJobArn"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -545,8 +536,6 @@ paths:
               properties:
                 Arn:
                   $ref: "#/components/schemas/VectorEnrichmentJobArn"
-              required:
-                - Arn
       responses:
         "200":
           description: Success
@@ -2095,6 +2084,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2132,6 +2128,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2162,6 +2165,14 @@ components:
             objectKey: $.RasterDataCollectionSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_raster_data_collection:
           operation:
             $ref: "#/paths/~1search-raster-data-collection/post"
@@ -2175,8 +2186,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/raster_data_collections/methods/search_raster_data_collection"
           - $ref: "#/components/x-stackQL-resources/raster_data_collections/methods/get_raster_data_collection"
+          - $ref: "#/components/x-stackQL-resources/raster_data_collections/methods/search_raster_data_collection"
           - $ref: "#/components/x-stackQL-resources/raster_data_collections/methods/list_raster_data_collections"
         insert: []
         update: []
@@ -2200,10 +2211,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.sagemaker_geospatial.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.sagemaker_geospatial.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2211,17 +2222,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.sagemaker_geospatial.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/put"
@@ -2242,9 +2242,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

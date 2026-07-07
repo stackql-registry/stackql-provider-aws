@@ -34,7 +34,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptDataGrantResponse'
-      x-stackql-resource: data_grant
+      x-stackql-resource: data_grants
       x-stackql-method: accept_data_grant
       x-stackql-verb: EXEC
   /v1/jobs/{job_id}:
@@ -51,7 +51,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
     get:
@@ -91,7 +91,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: start_job
       x-stackql-verb: EXEC
   /v1/data-grants:
@@ -162,6 +162,9 @@ paths:
       x-stackql-method: list_data_grants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataGrantSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/data-sets:
     post:
       operationId: CreateDataSet
@@ -231,6 +234,9 @@ paths:
       x-stackql-method: list_data_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataSets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/event-actions:
     post:
       operationId: CreateEventAction
@@ -295,6 +301,9 @@ paths:
       x-stackql-method: list_event_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventActions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/jobs:
     post:
       operationId: CreateJob
@@ -365,6 +374,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/data-sets/{data_set_id}/revisions:
     post:
       operationId: CreateRevision
@@ -430,6 +442,9 @@ paths:
       x-stackql-method: list_data_set_revisions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Revisions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/data-sets/{data_set_id}/revisions/{revision_id}/assets/{asset_id}:
     delete:
       operationId: DeleteAsset
@@ -846,6 +861,9 @@ paths:
       x-stackql-method: list_received_data_grants
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataGrantSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/data-sets/{data_set_id}/revisions/{revision_id}/assets:
     get:
       operationId: ListRevisionAssets
@@ -886,6 +904,9 @@ paths:
       x-stackql-method: list_revision_assets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Assets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -904,7 +925,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -931,7 +952,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -953,7 +974,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/data-sets/{data_set_id}/revisions/{revision_id}/revoke:
@@ -1099,7 +1120,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDataSetNotificationResponse'
-      x-stackql-resource: data_set_notification
+      x-stackql-resource: data_sets
       x-stackql-method: send_data_set_notification
       x-stackql-verb: EXEC
 components:

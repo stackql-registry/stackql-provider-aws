@@ -1,0 +1,6 @@
+-- Re-read the attribute we just set (DescribeInstanceAttribute requires
+-- both instance_id and Attribute).
+SELECT * FROM aws.ec2.instance_attributes
+WHERE region = '{{ region }}'
+  AND instance_id = '{{ instance_create.instance_id }}'
+  AND Attribute = 'instanceInitiatedShutdownBehavior'

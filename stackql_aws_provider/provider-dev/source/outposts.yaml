@@ -41,7 +41,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelCapacityTaskOutput'
-      x-stackql-resource: capacity_task
+      x-stackql-resource: outposts
       x-stackql-method: cancel_capacity_task
       x-stackql-verb: EXEC
     get:
@@ -88,7 +88,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelOrderOutput'
-      x-stackql-resource: order
+      x-stackql-resource: orders
       x-stackql-method: cancel_order
       x-stackql-verb: EXEC
   /orders:
@@ -209,6 +209,9 @@ paths:
       x-stackql-method: list_outposts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Outposts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /renewals:
     post:
       operationId: CreateRenewal
@@ -240,7 +243,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateRenewalOutput'
-      x-stackql-resource: renewals
+      x-stackql-resource: outposts
       x-stackql-method: create_renewal
       x-stackql-verb: INSERT
   /sites:
@@ -327,6 +330,9 @@ paths:
       x-stackql-method: list_sites
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Sites
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /outposts/{outpost_id}:
     delete:
       operationId: DeleteOutpost
@@ -368,6 +374,7 @@ paths:
       x-stackql-resource: outposts
       x-stackql-method: get_outpost
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Outpost
     patch:
       operationId: UpdateOutpost
       description: Updates an Outpost.
@@ -442,6 +449,7 @@ paths:
       x-stackql-resource: sites
       x-stackql-method: get_site
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Site
     patch:
       operationId: UpdateSite
       description: Updates the specified site.
@@ -496,6 +504,7 @@ paths:
       x-stackql-resource: catalog_items
       x-stackql-method: get_catalog_item
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CatalogItem
   /connections/{connection_id}:
     get:
       operationId: GetConnection
@@ -541,6 +550,7 @@ paths:
       x-stackql-resource: orders
       x-stackql-method: get_order
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Order
   /outpost/{outpost_identifier}/billing-information:
     get:
       operationId: GetOutpostBillingInformation
@@ -573,6 +583,9 @@ paths:
       x-stackql-method: get_outpost_billing_information
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Subscriptions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /outposts/{outpost_id}/instanceTypes:
     get:
       operationId: GetOutpostInstanceTypes
@@ -605,6 +618,9 @@ paths:
       x-stackql-method: get_outpost_instance_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceTypes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /outposts/{outpost_id}/supportedInstanceTypes:
     get:
       operationId: GetOutpostSupportedInstanceTypes
@@ -652,6 +668,9 @@ paths:
       x-stackql-method: get_outpost_supported_instance_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceTypes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /outpost/{outpost_identifier}/renewal-pricing:
     get:
       operationId: GetRenewalPricing
@@ -793,6 +812,9 @@ paths:
       x-stackql-method: list_asset_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AssetInstances
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /outposts/{outpost_id}/assets:
     get:
       operationId: ListAssets
@@ -847,6 +869,9 @@ paths:
       x-stackql-method: list_assets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Assets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /outposts/{outpost_id}/capacity/{capacity_task_id}/blockingInstances:
     get:
       operationId: ListBlockingInstancesForCapacityTask
@@ -886,6 +911,9 @@ paths:
       x-stackql-method: list_blocking_instances_for_capacity_task
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.BlockingInstances
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /capacity/tasks:
     get:
       operationId: ListCapacityTasks
@@ -927,6 +955,9 @@ paths:
       x-stackql-method: list_capacity_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CapacityTasks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /catalog/items:
     get:
       operationId: ListCatalogItems
@@ -973,6 +1004,9 @@ paths:
       x-stackql-method: list_catalog_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CatalogItems
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-orders:
     get:
       operationId: ListOrders
@@ -1005,6 +1039,9 @@ paths:
       x-stackql-method: list_orders
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Orders
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1023,7 +1060,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1054,7 +1091,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1080,7 +1117,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /outposts/{outpost_id}/capacity:
@@ -1122,7 +1159,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartCapacityTaskOutput'
-      x-stackql-resource: capacity_task
+      x-stackql-resource: outposts
       x-stackql-method: start_capacity_task
       x-stackql-verb: EXEC
   /connections:
@@ -1160,7 +1197,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartConnectionResponse'
-      x-stackql-resource: connection
+      x-stackql-resource: assets
       x-stackql-method: start_connection
       x-stackql-verb: EXEC
   /outposts/{outpost_id}/decommission:
@@ -1190,7 +1227,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOutpostDecommissionOutput'
-      x-stackql-resource: outpost_decommission
+      x-stackql-resource: outposts
       x-stackql-method: start_outpost_decommission
       x-stackql-verb: EXEC
   /sites/{site_id}/rackPhysicalProperties:
@@ -1238,7 +1275,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSiteRackPhysicalPropertiesOutput'
-      x-stackql-resource: site_rack_physical_properties
+      x-stackql-resource: sites
       x-stackql-method: update_site_rack_physical_properties
       x-stackql-verb: UPDATE
 components:

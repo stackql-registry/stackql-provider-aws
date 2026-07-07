@@ -166,8 +166,6 @@ paths:
                   $ref: "#/components/schemas/Origin"
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
-              required:
-                - Origin
       responses:
         "200":
           description: Success
@@ -493,7 +491,7 @@ paths:
           description: The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance..
         - name: functionArn
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/FunctionArn"
           description: The Amazon Resource Name (ARN) of the Lambda function being disassociated.
@@ -604,7 +602,7 @@ paths:
           description: A unique identifier for the phone number.
         - name: instanceId
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/InstanceId"
           description: The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.
@@ -728,8 +726,6 @@ paths:
                   $ref: "#/components/schemas/PEM"
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
-              required:
-                - Key
       responses:
         "200":
           description: Success
@@ -1512,7 +1508,6 @@ paths:
                   $ref: "#/components/schemas/ContactId"
               required:
                 - InstanceId
-                - Channel
                 - InitiationMethod
       responses:
         "200":
@@ -1551,10 +1546,6 @@ paths:
                   $ref: "#/components/schemas/ContactFlowStatus"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
-                - Type
-                - Content
       responses:
         "200":
           description: Success
@@ -1594,9 +1585,6 @@ paths:
                   $ref: "#/components/schemas/FlowModuleSettings"
                 ExternalInvocationConfiguration:
                   $ref: "#/components/schemas/ExternalInvocationConfiguration"
-              required:
-                - Name
-                - Content
       responses:
         "200":
           description: Success
@@ -1751,10 +1739,8 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - TimeZone
                 - ValueLockLevel
-                - Status
       responses:
         "200":
           description: Success
@@ -1826,7 +1812,6 @@ paths:
                 Validation:
                   $ref: "#/components/schemas/Validation"
               required:
-                - Name
                 - ValueType
       responses:
         "200":
@@ -1957,7 +1942,6 @@ paths:
                 LanguageConfiguration:
                   $ref: "#/components/schemas/EvaluationFormLanguageConfiguration"
               required:
-                - Title
                 - Items
       responses:
         "200":
@@ -2026,9 +2010,7 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - TimeZone
-                - Config
       responses:
         "200":
           description: Success
@@ -2075,8 +2057,6 @@ paths:
                 OverrideType:
                   $ref: "#/components/schemas/OverrideType"
               required:
-                - Name
-                - Config
                 - EffectiveFrom
                 - EffectiveTill
       responses:
@@ -2430,8 +2410,6 @@ paths:
                   $ref: "#/components/schemas/PredefinedAttributePurposeNameList"
                 AttributeConfiguration:
                   $ref: "#/components/schemas/InputPredefinedAttributeConfiguration"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -2491,7 +2469,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - S3Uri
       responses:
         "200":
@@ -2577,7 +2554,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - HoursOfOperationId
       responses:
         "200":
@@ -2613,7 +2589,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - QuickConnectConfig
       responses:
         "200":
@@ -2692,8 +2667,6 @@ paths:
                 AgentAvailabilityTimer:
                   $ref: "#/components/schemas/AgentAvailabilityTimer"
               required:
-                - Name
-                - Description
                 - DefaultOutboundQueueId
                 - MediaConcurrencies
       responses:
@@ -2734,7 +2707,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
               required:
-                - Name
                 - TriggerEventSource
                 - Function
                 - Actions
@@ -2872,9 +2844,6 @@ paths:
                   $ref: "#/components/schemas/TaskTemplateFields"
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
-              required:
-                - Name
-                - Fields
       responses:
         "200":
           description: Success
@@ -2973,9 +2942,6 @@ paths:
                   $ref: "#/components/schemas/TestCaseStatus"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
-                - Content
       responses:
         "200":
           description: Success
@@ -3006,7 +2972,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - InstanceId
       responses:
         "200":
@@ -3134,7 +3099,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Username
                 - SecurityProfileIds
                 - RoutingProfileId
       responses:
@@ -3168,8 +3132,6 @@ paths:
                   $ref: "#/components/schemas/HierarchyGroupId"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -3207,10 +3169,6 @@ paths:
                   $ref: "#/components/schemas/ViewName"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Status
-                - Content
-                - Name
       responses:
         "200":
           description: Success
@@ -3390,8 +3348,6 @@ paths:
                   $ref: "#/components/schemas/WorkspaceTitle"
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -3462,7 +3418,6 @@ paths:
                   $ref: "#/components/schemas/InputData"
               required:
                 - ResourceArn
-                - Page
       responses:
         "200":
           description: Success
@@ -3953,7 +3908,6 @@ paths:
                 TimeZone:
                   $ref: "#/components/schemas/TimeZone"
               required:
-                - Name
                 - ValueLockLevel
                 - TimeZone
       responses:
@@ -4062,7 +4016,6 @@ paths:
                 Validation:
                   $ref: "#/components/schemas/Validation"
               required:
-                - Name
                 - ValueType
       responses:
         "200":
@@ -4258,7 +4211,6 @@ paths:
                   $ref: "#/components/schemas/EvaluationFormLanguageConfiguration"
               required:
                 - EvaluationFormVersion
-                - Title
                 - Items
       responses:
         "200":
@@ -4756,7 +4708,7 @@ paths:
           description: The identifier for the registration.
         - name: contactId
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/ContactId"
           description: The identifier of the contact within the Amazon Connect instance.
@@ -4971,7 +4923,6 @@ paths:
                 PublishStatus:
                   $ref: "#/components/schemas/RulePublishStatus"
               required:
-                - Name
                 - Function
                 - Actions
                 - PublishStatus
@@ -5492,9 +5443,6 @@ paths:
                   $ref: "#/components/schemas/ViewStatus"
                 Content:
                   $ref: "#/components/schemas/ViewInputContent"
-              required:
-                - Status
-                - Content
       responses:
         "200":
           description: Success
@@ -6070,8 +6018,6 @@ paths:
                   $ref: "#/components/schemas/InstanceAttributeValue"
                 ClientToken:
                   $ref: "#/components/schemas/ClientToken"
-              required:
-                - Value
       responses:
         "200":
           description: Success
@@ -6094,7 +6040,7 @@ paths:
           description: The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.
         - name: resourceType
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/InstanceStorageResourceType"
           description: A valid resource type.
@@ -6123,7 +6069,7 @@ paths:
           description: The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.
         - name: resourceType
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/InstanceStorageResourceType"
           description: A valid resource type.
@@ -6154,7 +6100,7 @@ paths:
           description: The existing association identifier that uniquely identifies the resource type and storage config for the given instance ID.
         - name: resourceType
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/InstanceStorageResourceType"
           description: A valid resource type.
@@ -6727,8 +6673,6 @@ paths:
                   $ref: "#/components/schemas/DataTableValueEvaluationSetList"
                 TimeZone:
                   $ref: "#/components/schemas/TimeZone"
-              required:
-                - Values
       responses:
         "200":
           description: Success
@@ -7196,7 +7140,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListApprovedOriginsResponse"
+                $ref: "#/components/schemas/ListApprovedOriginsOutputDisplay"
   /contact/associated/{instance_id}:
     get:
       operationId: ListAssociatedContacts
@@ -7954,7 +7898,7 @@ paths:
           description: The identifier of the Amazon Connect instance. You can find the instance ID in the Amazon Resource Name (ARN) of the instance.
         - name: resourceType
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/InstanceStorageResourceType"
           description: A valid resource type.
@@ -8006,7 +7950,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListLambdaFunctionsResponse"
+                $ref: "#/components/schemas/ListLambdaFunctionsOutputDisplay"
   /instance/{instance_id}/lex-bots:
     get:
       operationId: ListLexBots
@@ -8561,7 +8505,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListSecurityProfilePermissionsResponse"
+                $ref: "#/components/schemas/ListSecurityProfilePermissionsOutputDisplay"
   /security-profiles-summary/{instance_id}:
     get:
       operationId: ListSecurityProfiles
@@ -8646,7 +8590,7 @@ paths:
           description: The Amazon Resource Name (ARN) of the resource.
         - name: tagKeys
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/TagKeyList"
           description: The tag keys.
@@ -10794,7 +10738,6 @@ paths:
               required:
                 - ContactId
                 - InstanceId
-                - Tags
       responses:
         "200":
           description: Success
@@ -10888,7 +10831,6 @@ paths:
               required:
                 - InitialContactId
                 - InstanceId
-                - Attributes
       responses:
         "200":
           description: Success
@@ -10922,8 +10864,6 @@ paths:
               properties:
                 Content:
                   $ref: "#/components/schemas/ContactFlowContent"
-              required:
-                - Content
       responses:
         "200":
           description: Success
@@ -11453,8 +11393,6 @@ paths:
               properties:
                 Status:
                   $ref: "#/components/schemas/QueueStatus"
-              required:
-                - Status
       responses:
         "200":
           description: Success
@@ -11736,8 +11674,6 @@ paths:
               properties:
                 Name:
                   $ref: "#/components/schemas/HierarchyGroupName"
-              required:
-                - Name
       responses:
         "200":
           description: Success
@@ -12049,8 +11985,6 @@ paths:
               properties:
                 Visibility:
                   $ref: "#/components/schemas/Visibility"
-              required:
-                - Visibility
       responses:
         "200":
           description: Success
@@ -20997,19 +20931,19 @@ components:
       type: integer
       minimum: 1
       maximum: 25
-    ListApprovedOriginsResponse:
+    ListApprovedOriginsRowDisplay:
       type: object
       properties:
-        Origins:
-          $ref: "#/components/schemas/OriginsList"
+        origin:
+          type: string
           description: The approved origins.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If there are additional results, this is the token for the next set of results.
-    OriginsList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Origin"
+    ListApprovedOriginsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListApprovedOriginsRowDisplay"
     ListAssociatedContactsRequestMaxResults:
       type: integer
       minimum: 1
@@ -22087,19 +22021,19 @@ components:
         SourceType:
           $ref: "#/components/schemas/SourceType"
           description: The name of the source.
-    ListLambdaFunctionsResponse:
+    ListLambdaFunctionsRowDisplay:
       type: object
       properties:
-        LambdaFunctions:
-          $ref: "#/components/schemas/FunctionArnsList"
+        lambda_function:
+          type: string
           description: The Lambdafunction ARNs associated with the specified instance.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If there are additional results, this is the token for the next set of results.
-    FunctionArnsList:
-      type: array
-      items:
-        $ref: "#/components/schemas/FunctionArn"
+    ListLambdaFunctionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListLambdaFunctionsRowDisplay"
     ListLexBotsResponse:
       type: object
       properties:
@@ -23008,21 +22942,19 @@ components:
         LastModifiedRegion:
           $ref: "#/components/schemas/RegionName"
           description: The Region that flow module was last modified in.
-    ListSecurityProfilePermissionsResponse:
+    ListSecurityProfilePermissionsRowDisplay:
       type: object
       properties:
-        Permissions:
-          $ref: "#/components/schemas/PermissionsList"
+        permission:
+          type: string
           description: The permissions granted to the security profile. For a complete list of valid permissions, see List of security profile permissions.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If there are additional results, this is the token for the next set of results.
-        LastModifiedTime:
-          $ref: "#/components/schemas/Timestamp"
-          description: The timestamp when this resource was last modified.
-        LastModifiedRegion:
-          $ref: "#/components/schemas/RegionName"
-          description: The Amazon Web Services Region where this resource was last modified.
+    ListSecurityProfilePermissionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListSecurityProfilePermissionsRowDisplay"
     ListSecurityProfilesResponse:
       type: object
       properties:
@@ -26855,10 +26787,114 @@ components:
     UpdateWorkspaceVisibilityResponse:
       type: object
   x-stackQL-resources:
-    analytics_data_sets:
-      id: aws.connect.analytics_data_sets
-      name: analytics_data_sets
-      title: analytics_data_sets
+    evaluation_forms:
+      id: aws.connect.evaluation_forms
+      name: evaluation_forms
+      title: evaluation_forms
+      methods:
+        activate_evaluation_form:
+          operation:
+            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}~1activate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_evaluation_form:
+          operation:
+            $ref: "#/paths/~1evaluation-forms~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_evaluation_forms:
+          operation:
+            $ref: "#/paths/~1evaluation-forms~1{instance_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.EvaluationFormSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        deactivate_evaluation_form:
+          operation:
+            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}~1deactivate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_evaluation_form:
+          operation:
+            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        describe_evaluation_form:
+          operation:
+            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.EvaluationForm
+          request:
+            nativeCasing: pascal
+        update_evaluation_form:
+          operation:
+            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_evaluation_forms:
+          operation:
+            $ref: "#/paths/~1search-evaluation-forms/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/describe_evaluation_form"
+          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/list_evaluation_forms"
+          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/search_evaluation_forms"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/create_evaluation_form"
+        update:
+          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/update_evaluation_form"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/delete_evaluation_form"
+    instances:
+      id: aws.connect.instances
+      name: instances
+      title: instances
       methods:
         associate_analytics_data_set:
           operation:
@@ -26881,12 +26917,327 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        associate_flow:
+          operation:
+            $ref: "#/paths/~1flow-associations~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_associate_analytics_data_set:
+          operation:
+            $ref: "#/paths/~1analytics-data~1instance~1{instance_id}~1associations/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_disassociate_analytics_data_set:
+          operation:
+            $ref: "#/paths/~1analytics-data~1instance~1{instance_id}~1associations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_put_contact:
+          operation:
+            $ref: "#/paths/~1contact~1batch~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        complete_attached_file_upload:
+          operation:
+            $ref: "#/paths/~1attached-files~1{instance_id}~1{file_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        create_instance:
+          operation:
+            $ref: "#/paths/~1instance/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_instances:
+          operation:
+            $ref: "#/paths/~1instance/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.InstanceSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        create_participant:
+          operation:
+            $ref: "#/paths/~1contact~1create-participant/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_persistent_contact_association:
+          operation:
+            $ref: "#/paths/~1contact~1persistent-contact-association~1{instance_id}~1{initial_contact_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_push_notification_registration:
+          operation:
+            $ref: "#/paths/~1push-notification~1{instance_id}~1registrations/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_instance:
+          operation:
+            $ref: "#/paths/~1instance~1{instance_id}/delete"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+        describe_instance:
+          operation:
+            $ref: "#/paths/~1instance~1{instance_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        delete_push_notification_registration:
+          operation:
+            $ref: "#/paths/~1push-notification~1{instance_id}~1registrations~1{registration_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        disassociate_flow:
+          operation:
+            $ref: "#/paths/~1flow-associations~1{instance_id}~1{resource_id}~1{resource_type}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        dismiss_user_contact:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1contact/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        import_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-number~1import/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        monitor_contact:
+          operation:
+            $ref: "#/paths/~1contact~1monitor/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        pause_contact:
+          operation:
+            $ref: "#/paths/~1contact~1pause/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        replicate_instance:
+          operation:
+            $ref: "#/paths/~1instance~1{instance_id}~1replicate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resume_contact:
+          operation:
+            $ref: "#/paths/~1contact~1resume/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_outbound_email:
+          operation:
+            $ref: "#/paths/~1instance~1{instance_id}~1outbound-email/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_email_contact:
+          operation:
+            $ref: "#/paths/~1contact~1email/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_outbound_email_contact:
+          operation:
+            $ref: "#/paths/~1contact~1outbound-email/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_screen_sharing:
+          operation:
+            $ref: "#/paths/~1contact~1screen-sharing/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_task_contact:
+          operation:
+            $ref: "#/paths/~1contact~1task/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_contact:
+          operation:
+            $ref: "#/paths/~1contact~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        suspend_contact_recording:
+          operation:
+            $ref: "#/paths/~1contact~1suspend-recording/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_participant_authentication:
+          operation:
+            $ref: "#/paths/~1contact~1update-participant-authentication/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_participant_role_config:
+          operation:
+            $ref: "#/paths/~1contact~1participant-role-config~1{instance_id}~1{contact_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/describe_instance"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/list_instances"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/create_push_notification_registration"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/create_persistent_contact_association"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/create_instance"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/create_participant"
         update:
-          - $ref: "#/components/x-stackQL-resources/analytics_data_sets/methods/associate_analytics_data_set"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/instances/methods/associate_flow"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/disassociate_flow"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/update_participant_role_config"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/associate_analytics_data_set"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/update_participant_authentication"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/instances/methods/delete_push_notification_registration"
+          - $ref: "#/components/x-stackQL-resources/instances/methods/delete_instance"
     analytics_data_associations:
       id: aws.connect.analytics_data_associations
       name: analytics_data_associations
@@ -26934,16 +27285,30 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Origins
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListApprovedOriginsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Origins" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"origin": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/approved_origins/methods/list_approved_origins"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/approved_origins/methods/associate_approved_origin"
           - $ref: "#/components/x-stackQL-resources/approved_origins/methods/disassociate_approved_origin"
+          - $ref: "#/components/x-stackQL-resources/approved_origins/methods/associate_approved_origin"
         delete: []
     bots:
       id: aws.connect.bots
@@ -26979,6 +27344,14 @@ components:
             objectKey: $.LexBots
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/bots/methods/list_bots"
@@ -26986,10 +27359,10 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/bots/methods/associate_bot"
         delete: []
-    contact_with_users:
-      id: aws.connect.contact_with_users
-      name: contact_with_users
-      title: contact_with_users
+    users:
+      id: aws.connect.users
+      name: users
+      title: users
       methods:
         associate_contact_with_user:
           operation:
@@ -27002,12 +27375,132 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_user:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_user:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}/delete"
+          response:
+            openAPIDocKey: "200"
+        describe_user:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.User
+        list_users:
+          operation:
+            $ref: "#/paths/~1users-summary~1{instance_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.UserSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        put_user_status:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1status/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_users:
+          operation:
+            $ref: "#/paths/~1search-users/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Users
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_config:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1config/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_hierarchy:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1hierarchy/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_identity_info:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1identity-info/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_phone_config:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1phone-config/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/users/methods/describe_user"
+          - $ref: "#/components/x-stackQL-resources/users/methods/list_users"
+          - $ref: "#/components/x-stackQL-resources/users/methods/search_users"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/users/methods/create_user"
         update:
-          - $ref: "#/components/x-stackQL-resources/contact_with_users/methods/associate_contact_with_user"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/users/methods/associate_contact_with_user"
+          - $ref: "#/components/x-stackQL-resources/users/methods/update_user_identity_info"
+          - $ref: "#/components/x-stackQL-resources/users/methods/update_user_phone_config"
+          - $ref: "#/components/x-stackQL-resources/users/methods/update_user_config"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/users/methods/put_user_status"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
     default_vocabularies:
       id: aws.connect.default_vocabularies
       name: default_vocabularies
@@ -27034,6 +27527,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -27043,14 +27543,48 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/default_vocabularies/methods/associate_default_vocabulary"
         delete: []
-    email_address_alias:
-      id: aws.connect.email_address_alias
-      name: email_address_alias
-      title: email_address_alias
+    email_address:
+      id: aws.connect.email_address
+      name: email_address
+      title: email_address
       methods:
         associate_email_address_alias:
           operation:
             $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}~1associate-alias/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_email_address:
+          operation:
+            $ref: "#/paths/~1email-addresses~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_email_address:
+          operation:
+            $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_email_address:
+          operation:
+            $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_email_address_metadata:
+          operation:
+            $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -27071,40 +27605,15 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/email_address/methods/describe_email_address"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/email_address/methods/create_email_address"
         update:
-          - $ref: "#/components/x-stackQL-resources/email_address_alias/methods/associate_email_address_alias"
-        delete: []
-    flows:
-      id: aws.connect.flows
-      name: flows
-      title: flows
-      methods:
-        associate_flow:
-          operation:
-            $ref: "#/paths/~1flow-associations~1{instance_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        disassociate_flow:
-          operation:
-            $ref: "#/paths/~1flow-associations~1{instance_id}~1{resource_id}~1{resource_type}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/associate_flow"
-          - $ref: "#/components/x-stackQL-resources/flows/methods/disassociate_flow"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/email_address/methods/associate_email_address_alias"
+          - $ref: "#/components/x-stackQL-resources/email_address/methods/update_email_address_metadata"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/email_address/methods/delete_email_address"
     hours_of_operations:
       id: aws.connect.hours_of_operations
       name: hours_of_operations
@@ -27142,6 +27651,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.HoursOfOperation
         update_hours_of_operation:
           operation:
             $ref: "#/paths/~1hours-of-operations~1{instance_id}~1{hours_of_operation_id}/post"
@@ -27171,6 +27681,14 @@ components:
             objectKey: $.HoursOfOperationSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_hours_of_operations:
           operation:
             $ref: "#/paths/~1search-hours-of-operations/post"
@@ -27178,6 +27696,23 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.HoursOfOperations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_queue_hours_of_operation:
+          operation:
+            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1hours-of-operation/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -27193,6 +27728,7 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/associate_hours_of_operations"
           - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/disassociate_hours_of_operations"
+          - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/update_queue_hours_of_operation"
           - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/update_hours_of_operation"
         delete:
           - $ref: "#/components/x-stackQL-resources/hours_of_operations/methods/delete_hours_of_operation"
@@ -27218,6 +27754,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.StorageConfig
           request:
             nativeCasing: pascal
         disassociate_instance_storage_config:
@@ -27246,14 +27783,22 @@ components:
             objectKey: $.StorageConfigs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instance_storage_configs/methods/describe_instance_storage_config"
           - $ref: "#/components/x-stackQL-resources/instance_storage_configs/methods/list_instance_storage_configs"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/instance_storage_configs/methods/update_instance_storage_config"
           - $ref: "#/components/x-stackQL-resources/instance_storage_configs/methods/associate_instance_storage_config"
+          - $ref: "#/components/x-stackQL-resources/instance_storage_configs/methods/update_instance_storage_config"
           - $ref: "#/components/x-stackQL-resources/instance_storage_configs/methods/disassociate_instance_storage_config"
         delete: []
     lambda_functions:
@@ -27284,9 +27829,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.LambdaFunctions
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListLambdaFunctionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "LambdaFunctions" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"lambda_function": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/lambda_functions/methods/list_lambda_functions"
@@ -27326,6 +27885,14 @@ components:
             objectKey: $.LexBots
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/lex_bots/methods/list_lex_bots"
@@ -27334,10 +27901,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/lex_bots/methods/disassociate_lex_bot"
           - $ref: "#/components/x-stackQL-resources/lex_bots/methods/associate_lex_bot"
         delete: []
-    phone_number_contact_flows:
-      id: aws.connect.phone_number_contact_flows
-      name: phone_number_contact_flows
-      title: phone_number_contact_flows
+    contact_flows:
+      id: aws.connect.contact_flows
+      name: contact_flows
+      title: contact_flows
       methods:
         associate_phone_number_contact_flow:
           operation:
@@ -27356,13 +27923,167 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+        create_contact_flow:
+          operation:
+            $ref: "#/paths/~1contact-flows~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_contact_flow:
+          operation:
+            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_contact_flow:
+          operation:
+            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ContactFlow
+        list_contact_flows:
+          operation:
+            $ref: "#/paths/~1contact-flows-summary~1{instance_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ContactFlowSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        search_contact_flows:
+          operation:
+            $ref: "#/paths/~1search-contact-flows/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ContactFlows
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_chat_contact:
+          operation:
+            $ref: "#/paths/~1contact~1chat/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_outbound_chat_contact:
+          operation:
+            $ref: "#/paths/~1contact~1outbound-chat/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_outbound_voice_contact:
+          operation:
+            $ref: "#/paths/~1contact~1outbound-voice/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_web_rtc_contact:
+          operation:
+            $ref: "#/paths/~1contact~1webrtc/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        transfer_contact:
+          operation:
+            $ref: "#/paths/~1contact~1transfer/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_contact_flow_content:
+          operation:
+            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1content/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_contact_flow_metadata:
+          operation:
+            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1metadata/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_contact_flow_name:
+          operation:
+            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1name/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/describe_contact_flow"
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/list_contact_flows"
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/search_contact_flows"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/create_contact_flow"
         update:
-          - $ref: "#/components/x-stackQL-resources/phone_number_contact_flows/methods/associate_phone_number_contact_flow"
-          - $ref: "#/components/x-stackQL-resources/phone_number_contact_flows/methods/disassociate_phone_number_contact_flow"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/associate_phone_number_contact_flow"
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/update_contact_flow_content"
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/disassociate_phone_number_contact_flow"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/delete_contact_flow"
     queue_email_addresses:
       id: aws.connect.queue_email_addresses
       name: queue_email_addresses
@@ -27438,6 +28159,14 @@ components:
             objectKey: $.QuickConnectSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/queue_quick_connects/methods/list_queue_quick_connects"
@@ -27479,6 +28208,14 @@ components:
             objectKey: $.RoutingProfileQueueConfigSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_routing_profile_queues:
           operation:
             $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1queues/post"
@@ -27529,13 +28266,21 @@ components:
             objectKey: $.SecurityKeys
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_keys/methods/list_security_keys"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/security_keys/methods/associate_security_key"
           - $ref: "#/components/x-stackQL-resources/security_keys/methods/disassociate_security_key"
+          - $ref: "#/components/x-stackQL-resources/security_keys/methods/associate_security_key"
         delete: []
     security_profiles:
       id: aws.connect.security_profiles
@@ -27574,6 +28319,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SecurityProfile
         update_security_profile:
           operation:
             $ref: "#/paths/~1security-profiles~1{instance_id}~1{security_profile_id}/post"
@@ -27603,6 +28349,14 @@ components:
             objectKey: $.SecurityProfileSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_security_profiles:
           operation:
             $ref: "#/paths/~1search-security-profiles/post"
@@ -27610,6 +28364,23 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.SecurityProfiles
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_security_profiles:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1security-profiles/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -27624,6 +28395,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/create_security_profile"
         update:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/associate_security_profiles"
+          - $ref: "#/components/x-stackQL-resources/security_profiles/methods/update_user_security_profiles"
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/update_security_profile"
         delete:
           - $ref: "#/components/x-stackQL-resources/security_profiles/methods/delete_security_profile"
@@ -27649,8 +28421,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-          request:
-            nativeCasing: pascal
         list_traffic_distribution_group_users:
           operation:
             $ref: "#/paths/~1traffic-distribution-group~1{traffic_distribution_group_id}~1user/get"
@@ -27660,6 +28430,14 @@ components:
             objectKey: $.TrafficDistributionGroupUserSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/traffic_distribution_group_users/methods/list_traffic_distribution_group_users"
@@ -27701,6 +28479,14 @@ components:
             objectKey: $.UserProficiencyList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         update_user_proficiencies:
           operation:
             $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1proficiencies/post"
@@ -27754,6 +28540,14 @@ components:
             objectKey: $.WorkspaceSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}/delete"
@@ -27766,6 +28560,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Workspace
+        import_workspace_media:
+          operation:
+            $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1media/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         disassociate_workspace:
           operation:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1disassociate/post"
@@ -27787,6 +28593,46 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_workspace_metadata:
+          operation:
+            $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1metadata/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_workspace_theme:
+          operation:
+            $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1theme/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_workspace_visibility:
+          operation:
+            $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1visibility/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -27798,8 +28644,140 @@ components:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/create_workspace"
         update:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/associate_workspace"
+          - $ref: "#/components/x-stackQL-resources/workspaces/methods/update_workspace_metadata"
         delete:
           - $ref: "#/components/x-stackQL-resources/workspaces/methods/delete_workspace"
+    data_tables:
+      id: aws.connect.data_tables
+      name: data_tables
+      title: data_tables
+      methods:
+        batch_create_data_table_value:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1values~1create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_delete_data_table_value:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1values~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_describe_data_table_value:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1values~1describe/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_data_table_value:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1values~1update/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_data_table:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_data_tables:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DataTableSummaryList
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_data_table:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_data_table:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DataTable
+        update_data_table_metadata:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        search_data_tables:
+          operation:
+            $ref: "#/paths/~1search-data-tables/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DataTables
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/data_tables/methods/describe_data_table"
+          - $ref: "#/components/x-stackQL-resources/data_tables/methods/list_data_tables"
+          - $ref: "#/components/x-stackQL-resources/data_tables/methods/search_data_tables"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/data_tables/methods/create_data_table"
+        update:
+          - $ref: "#/components/x-stackQL-resources/data_tables/methods/update_data_table_metadata"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/data_tables/methods/delete_data_table"
     attached_file_metadatas:
       id: aws.connect.attached_file_metadatas
       name: attached_file_metadatas
@@ -27822,6 +28800,45 @@ components:
         insert: []
         update: []
         delete: []
+    attached_files:
+      id: aws.connect.attached_files
+      name: attached_files
+      title: attached_files
+      methods:
+        start_attached_file_upload:
+          operation:
+            $ref: "#/paths/~1attached-files~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_attached_file:
+          operation:
+            $ref: "#/paths/~1attached-files~1{instance_id}~1{file_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        get_attached_file:
+          operation:
+            $ref: "#/paths/~1attached-files~1{instance_id}~1{file_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/attached_files/methods/get_attached_file"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/attached_files/methods/delete_attached_file"
     flow_associations:
       id: aws.connect.flow_associations
       name: flow_associations
@@ -27853,6 +28870,14 @@ components:
             objectKey: $.FlowAssociationSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_associations/methods/get_flow_association"
@@ -27861,34 +28886,6 @@ components:
         insert: []
         update: []
         delete: []
-    attached_files:
-      id: aws.connect.attached_files
-      name: attached_files
-      title: attached_files
-      methods:
-        delete_attached_file:
-          operation:
-            $ref: "#/paths/~1attached-files~1{instance_id}~1{file_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        get_attached_file:
-          operation:
-            $ref: "#/paths/~1attached-files~1{instance_id}~1{file_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/attached_files/methods/get_attached_file"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/attached_files/methods/delete_attached_file"
     agent_status:
       id: aws.connect.agent_status
       name: agent_status
@@ -27911,6 +28908,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AgentStatus
         update_agent_status:
           operation:
             $ref: "#/paths/~1agent-status~1{instance_id}~1{agent_status_id}/post"
@@ -27943,6 +28941,14 @@ components:
             objectKey: $.AgentStatusSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_agent_statuses:
           operation:
             $ref: "#/paths/~1search-agent-statuses/post"
@@ -27953,6 +28959,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -27984,9 +28997,32 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Contact
         update_contact:
           operation:
             $ref: "#/paths/~1contacts~1{instance_id}~1{contact_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_contact_evaluation:
+          operation:
+            $ref: "#/paths/~1contact-evaluations~1{instance_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        resume_contact_recording:
+          operation:
+            $ref: "#/paths/~1contact~1resume-recording/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -28005,11 +29041,18 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-        tag_contact:
+        start_contact_media_processing:
           operation:
-            $ref: "#/paths/~1contact~1tags/post"
+            $ref: "#/paths/~1contact~1start-contact-media-processing/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -28018,14 +29061,104 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        untag_contact:
+        start_contact_recording:
           operation:
-            $ref: "#/paths/~1contact~1tags~1{instance_id}~1{contact_id}/delete"
+            $ref: "#/paths/~1contact~1start-recording/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_contact_streaming:
+          operation:
+            $ref: "#/paths/~1contact~1start-streaming/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_contact_media_processing:
+          operation:
+            $ref: "#/paths/~1contact~1stop-contact-media-processing/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_contact_recording:
+          operation:
+            $ref: "#/paths/~1contact~1stop-recording/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_contact_streaming:
+          operation:
+            $ref: "#/paths/~1contact~1stop-streaming/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        submit_contact_evaluation:
+          operation:
+            $ref: "#/paths/~1contact-evaluations~1{instance_id}~1{evaluation_id}~1submit/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_contact_routing_data:
+          operation:
+            $ref: "#/paths/~1contacts~1{instance_id}~1{contact_id}~1routing-data/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_contact_schedule:
+          operation:
+            $ref: "#/paths/~1contact~1schedule/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_queue_max_contacts:
+          operation:
+            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1max-contacts/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/contacts/methods/describe_contact"
@@ -28033,69 +29166,10 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/contacts/methods/create_contact"
         update:
-          - $ref: "#/components/x-stackQL-resources/contacts/methods/tag_contact"
-          - $ref: "#/components/x-stackQL-resources/contacts/methods/untag_contact"
+          - $ref: "#/components/x-stackQL-resources/contacts/methods/update_contact_schedule"
           - $ref: "#/components/x-stackQL-resources/contacts/methods/update_contact"
+          - $ref: "#/components/x-stackQL-resources/contacts/methods/update_queue_max_contacts"
         delete: []
-    contact_flows:
-      id: aws.connect.contact_flows
-      name: contact_flows
-      title: contact_flows
-      methods:
-        create_contact_flow:
-          operation:
-            $ref: "#/paths/~1contact-flows~1{instance_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_contact_flow:
-          operation:
-            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_contact_flow:
-          operation:
-            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_contact_flows:
-          operation:
-            $ref: "#/paths/~1contact-flows-summary~1{instance_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ContactFlowSummaryList
-          request:
-            nativeCasing: pascal
-        search_contact_flows:
-          operation:
-            $ref: "#/paths/~1search-contact-flows/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ContactFlows
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/describe_contact_flow"
-          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/list_contact_flows"
-          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/search_contact_flows"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/create_contact_flow"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/contact_flows/methods/delete_contact_flow"
     contact_flow_modules:
       id: aws.connect.contact_flow_modules
       name: contact_flow_modules
@@ -28124,6 +29198,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ContactFlowModule
         list_contact_flow_modules:
           operation:
             $ref: "#/paths/~1contact-flow-modules-summary~1{instance_id}/get"
@@ -28133,6 +29208,14 @@ components:
             objectKey: $.ContactFlowModulesSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_contact_flow_modules:
           operation:
             $ref: "#/paths/~1search-contact-flow-modules/post"
@@ -28140,6 +29223,35 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.ContactFlowModules
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_contact_flow_module_content:
+          operation:
+            $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1content/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_contact_flow_module_metadata:
+          operation:
+            $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1metadata/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -28152,7 +29264,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/search_contact_flow_modules"
         insert:
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/create_contact_flow_module"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/update_contact_flow_module_content"
         delete:
           - $ref: "#/components/x-stackQL-resources/contact_flow_modules/methods/delete_contact_flow_module"
     contact_flow_module_alias:
@@ -28183,6 +29296,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ContactFlowModuleAlias
         update_contact_flow_module_alias:
           operation:
             $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1alias~1{alias_id}/post"
@@ -28234,6 +29348,14 @@ components:
             objectKey: $.ContactFlowModuleVersionSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/contact_flow_module_versions/methods/list_contact_flow_module_versions"
@@ -28273,6 +29395,14 @@ components:
             objectKey: $.ContactFlowVersionSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/contact_flow_versions/methods/list_contact_flow_versions"
@@ -28281,65 +29411,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/contact_flow_versions/methods/delete_contact_flow_version"
-    data_tables:
-      id: aws.connect.data_tables
-      name: data_tables
-      title: data_tables
-      methods:
-        create_data_table:
-          operation:
-            $ref: "#/paths/~1data-tables~1{instance_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_data_tables:
-          operation:
-            $ref: "#/paths/~1data-tables~1{instance_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.DataTableSummaryList
-          request:
-            nativeCasing: pascal
-        delete_data_table:
-          operation:
-            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_data_table:
-          operation:
-            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        search_data_tables:
-          operation:
-            $ref: "#/paths/~1search-data-tables/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.DataTables
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/data_tables/methods/describe_data_table"
-          - $ref: "#/components/x-stackQL-resources/data_tables/methods/list_data_tables"
-          - $ref: "#/components/x-stackQL-resources/data_tables/methods/search_data_tables"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/data_tables/methods/create_data_table"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/data_tables/methods/delete_data_table"
     data_table_attributes:
       id: aws.connect.data_table_attributes
       name: data_table_attributes
@@ -28366,6 +29437,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_data_table_attribute:
@@ -28380,6 +29458,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Attribute
         update_data_table_attribute:
           operation:
             $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1attributes~1{attribute_name}/post"
@@ -28401,115 +29480,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/data_table_attributes/methods/update_data_table_attribute"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_table_attributes/methods/delete_data_table_attribute"
-    email_address:
-      id: aws.connect.email_address
-      name: email_address
-      title: email_address
-      methods:
-        create_email_address:
-          operation:
-            $ref: "#/paths/~1email-addresses~1{instance_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_email_address:
-          operation:
-            $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_email_address:
-          operation:
-            $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/describe_email_address"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/create_email_address"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/email_address/methods/delete_email_address"
-    evaluation_forms:
-      id: aws.connect.evaluation_forms
-      name: evaluation_forms
-      title: evaluation_forms
-      methods:
-        create_evaluation_form:
-          operation:
-            $ref: "#/paths/~1evaluation-forms~1{instance_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_evaluation_forms:
-          operation:
-            $ref: "#/paths/~1evaluation-forms~1{instance_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.EvaluationFormSummaryList
-          request:
-            nativeCasing: pascal
-        delete_evaluation_form:
-          operation:
-            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        describe_evaluation_form:
-          operation:
-            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        update_evaluation_form:
-          operation:
-            $ref: "#/paths/~1evaluation-forms~1{instance_id}~1{evaluation_form_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        search_evaluation_forms:
-          operation:
-            $ref: "#/paths/~1search-evaluation-forms/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/describe_evaluation_form"
-          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/list_evaluation_forms"
-          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/search_evaluation_forms"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/create_evaluation_form"
-        update:
-          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/update_evaluation_form"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/evaluation_forms/methods/delete_evaluation_form"
     hours_of_operation_overrides:
       id: aws.connect.hours_of_operation_overrides
       name: hours_of_operation_overrides
@@ -28535,6 +29505,14 @@ components:
             objectKey: $.HoursOfOperationOverrideList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_hours_of_operation_override:
           operation:
             $ref: "#/paths/~1hours-of-operations~1{instance_id}~1{hours_of_operation_id}~1overrides~1{hours_of_operation_override_id}/delete"
@@ -28546,6 +29524,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.HoursOfOperationOverride
         update_hours_of_operation_override:
           operation:
             $ref: "#/paths/~1hours-of-operations~1{instance_id}~1{hours_of_operation_id}~1overrides~1{hours_of_operation_override_id}/post"
@@ -28566,6 +29545,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -28579,53 +29565,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/hours_of_operation_overrides/methods/update_hours_of_operation_override"
         delete:
           - $ref: "#/components/x-stackQL-resources/hours_of_operation_overrides/methods/delete_hours_of_operation_override"
-    instances:
-      id: aws.connect.instances
-      name: instances
-      title: instances
-      methods:
-        create_instance:
-          operation:
-            $ref: "#/paths/~1instance/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_instances:
-          operation:
-            $ref: "#/paths/~1instance/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.InstanceSummaryList
-          request:
-            nativeCasing: pascal
-        delete_instance:
-          operation:
-            $ref: "#/paths/~1instance~1{instance_id}/delete"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-        describe_instance:
-          operation:
-            $ref: "#/paths/~1instance~1{instance_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/instances/methods/describe_instance"
-          - $ref: "#/components/x-stackQL-resources/instances/methods/list_instances"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/instances/methods/create_instance"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/instances/methods/delete_instance"
     integration_associations:
       id: aws.connect.integration_associations
       name: integration_associations
@@ -28651,6 +29590,14 @@ components:
             objectKey: $.IntegrationAssociationSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_integration_association:
           operation:
             $ref: "#/paths/~1instance~1{instance_id}~1integration-associations~1{integration_association_id}/delete"
@@ -28700,6 +29647,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Notification
+        update_notification_content:
+          operation:
+            $ref: "#/paths/~1notifications~1{instance_id}~1{notification_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         search_notifications:
           operation:
             $ref: "#/paths/~1search-notifications/post"
@@ -28718,53 +29677,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/notifications/methods/search_notifications"
         insert:
           - $ref: "#/components/x-stackQL-resources/notifications/methods/create_notification"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/notifications/methods/update_notification_content"
         delete:
           - $ref: "#/components/x-stackQL-resources/notifications/methods/delete_notification"
-    participants:
-      id: aws.connect.participants
-      name: participants
-      title: participants
-      methods:
-        create_participant:
-          operation:
-            $ref: "#/paths/~1contact~1create-participant/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/participants/methods/create_participant"
-        update: []
-        delete: []
-    persistent_contact_associations:
-      id: aws.connect.persistent_contact_associations
-      name: persistent_contact_associations
-      title: persistent_contact_associations
-      methods:
-        create_persistent_contact_association:
-          operation:
-            $ref: "#/paths/~1contact~1persistent-contact-association~1{instance_id}~1{initial_contact_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/persistent_contact_associations/methods/create_persistent_contact_association"
-        update: []
-        delete: []
     predefined_attributes:
       id: aws.connect.predefined_attributes
       name: predefined_attributes
@@ -28789,6 +29705,14 @@ components:
             objectKey: $.PredefinedAttributeSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_predefined_attribute:
           operation:
             $ref: "#/paths/~1predefined-attributes~1{instance_id}~1{name}/delete"
@@ -28800,6 +29724,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PredefinedAttribute
         update_predefined_attribute:
           operation:
             $ref: "#/paths/~1predefined-attributes~1{instance_id}~1{name}/post"
@@ -28820,6 +29745,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -28860,6 +29792,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Prompt
         update_prompt:
           operation:
             $ref: "#/paths/~1prompts~1{instance_id}~1{prompt_id}/post"
@@ -28880,6 +29813,14 @@ components:
             objectKey: $.PromptSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_prompts:
           operation:
             $ref: "#/paths/~1search-prompts/post"
@@ -28890,6 +29831,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -28903,37 +29851,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/update_prompt"
         delete:
           - $ref: "#/components/x-stackQL-resources/prompts/methods/delete_prompt"
-    push_notification_registrations:
-      id: aws.connect.push_notification_registrations
-      name: push_notification_registrations
-      title: push_notification_registrations
-      methods:
-        create_push_notification_registration:
-          operation:
-            $ref: "#/paths/~1push-notification~1{instance_id}~1registrations/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_push_notification_registration:
-          operation:
-            $ref: "#/paths/~1push-notification~1{instance_id}~1registrations~1{registration_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/push_notification_registrations/methods/create_push_notification_registration"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/push_notification_registrations/methods/delete_push_notification_registration"
     queues:
       id: aws.connect.queues
       name: queues
@@ -28961,6 +29878,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Queue
         list_queues:
           operation:
             $ref: "#/paths/~1queues-summary~1{instance_id}/get"
@@ -28970,6 +29888,14 @@ components:
             objectKey: $.QueueSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_queues:
           operation:
             $ref: "#/paths/~1search-queues/post"
@@ -28977,6 +29903,63 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Queues
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_queue_name:
+          operation:
+            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1name/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_queue_outbound_caller_config:
+          operation:
+            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1outbound-caller-config/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_queue_outbound_email_config:
+          operation:
+            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1outbound-email-config/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_queue_status:
+          operation:
+            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1status/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_routing_profile_default_outbound_queue:
+          operation:
+            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1default-outbound-queue/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -28989,7 +29972,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/queues/methods/search_queues"
         insert:
           - $ref: "#/components/x-stackQL-resources/queues/methods/create_queue"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/queues/methods/update_queue_outbound_caller_config"
+          - $ref: "#/components/x-stackQL-resources/queues/methods/update_queue_outbound_email_config"
+          - $ref: "#/components/x-stackQL-resources/queues/methods/update_routing_profile_default_outbound_queue"
+          - $ref: "#/components/x-stackQL-resources/queues/methods/update_queue_name"
         delete:
           - $ref: "#/components/x-stackQL-resources/queues/methods/delete_queue"
     quick_connects:
@@ -29017,6 +30004,14 @@ components:
             objectKey: $.QuickConnectSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_quick_connect:
           operation:
             $ref: "#/paths/~1quick-connects~1{instance_id}~1{quick_connect_id}/delete"
@@ -29028,6 +30023,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.QuickConnect
         search_quick_connects:
           operation:
             $ref: "#/paths/~1search-quick-connects/post"
@@ -29035,6 +30031,33 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.QuickConnects
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_quick_connect_config:
+          operation:
+            $ref: "#/paths/~1quick-connects~1{instance_id}~1{quick_connect_id}~1config/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_quick_connect_name:
+          operation:
+            $ref: "#/paths/~1quick-connects~1{instance_id}~1{quick_connect_id}~1name/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -29047,7 +30070,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/quick_connects/methods/search_quick_connects"
         insert:
           - $ref: "#/components/x-stackQL-resources/quick_connects/methods/create_quick_connect"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/quick_connects/methods/update_quick_connect_config"
+          - $ref: "#/components/x-stackQL-resources/quick_connects/methods/update_quick_connect_name"
         delete:
           - $ref: "#/components/x-stackQL-resources/quick_connects/methods/delete_quick_connect"
     routing_profiles:
@@ -29077,6 +30102,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RoutingProfile
         list_routing_profiles:
           operation:
             $ref: "#/paths/~1routing-profiles-summary~1{instance_id}/get"
@@ -29086,6 +30112,14 @@ components:
             objectKey: $.RoutingProfileSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_routing_profiles:
           operation:
             $ref: "#/paths/~1search-routing-profiles/post"
@@ -29093,6 +30127,53 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.RoutingProfiles
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_routing_profile_agent_availability_timer:
+          operation:
+            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1agent-availability-timer/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_routing_profile_concurrency:
+          operation:
+            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1concurrency/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_routing_profile_name:
+          operation:
+            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1name/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_routing_profile:
+          operation:
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1routing-profile/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -29105,7 +30186,11 @@ components:
           - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/search_routing_profiles"
         insert:
           - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/create_routing_profile"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/update_routing_profile_agent_availability_timer"
+          - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/update_routing_profile_concurrency"
+          - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/update_user_routing_profile"
+          - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/update_routing_profile_name"
         delete:
           - $ref: "#/components/x-stackQL-resources/routing_profiles/methods/delete_routing_profile"
     rules:
@@ -29133,6 +30218,14 @@ components:
             objectKey: $.RuleSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_rule:
           operation:
             $ref: "#/paths/~1rules~1{instance_id}~1{rule_id}/delete"
@@ -29144,6 +30237,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Rule
         update_rule:
           operation:
             $ref: "#/paths/~1rules~1{instance_id}~1{rule_id}/put"
@@ -29189,6 +30283,14 @@ components:
             objectKey: $.TaskTemplates
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_task_template:
           operation:
             $ref: "#/paths/~1instance~1{instance_id}~1task~1template~1{task_template_id}/delete"
@@ -29252,6 +30354,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TestCase
           request:
             nativeCasing: pascal
         update_test_case:
@@ -29274,6 +30377,14 @@ components:
             objectKey: $.TestCaseSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_test_cases:
           operation:
             $ref: "#/paths/~1search-test-cases/post"
@@ -29281,6 +30392,35 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.TestCases
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        start_test_case_execution:
+          operation:
+            $ref: "#/paths/~1test-cases~1{instance_id}~1{test_case_id}~1start-execution/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_test_case_execution:
+          operation:
+            $ref: "#/paths/~1test-cases~1{instance_id}~1{test_case_id}~1{test_case_execution_id}~1stop-execution/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29325,6 +30465,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TrafficDistributionGroup
         list_traffic_distribution_groups:
           operation:
             $ref: "#/paths/~1traffic-distribution-groups/get"
@@ -29334,6 +30475,14 @@ components:
             objectKey: $.TrafficDistributionGroupSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/traffic_distribution_groups/methods/describe_traffic_distribution_group"
@@ -29368,6 +30517,14 @@ components:
             objectKey: $.UseCaseSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_use_case:
           operation:
             $ref: "#/paths/~1instance~1{instance_id}~1integration-associations~1{integration_association_id}~1use-cases~1{use_case_id}/delete"
@@ -29381,64 +30538,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/use_cases/methods/delete_use_case"
-    users:
-      id: aws.connect.users
-      name: users
-      title: users
-      methods:
-        create_user:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_user:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}/delete"
-          response:
-            openAPIDocKey: "200"
-        describe_user:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_users:
-          operation:
-            $ref: "#/paths/~1users-summary~1{instance_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.UserSummaryList
-          request:
-            nativeCasing: pascal
-        search_users:
-          operation:
-            $ref: "#/paths/~1search-users/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Users
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/users/methods/describe_user"
-          - $ref: "#/components/x-stackQL-resources/users/methods/list_users"
-          - $ref: "#/components/x-stackQL-resources/users/methods/search_users"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/users/methods/create_user"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/users/methods/delete_user"
     user_hierarchy_groups:
       id: aws.connect.user_hierarchy_groups
       name: user_hierarchy_groups
@@ -29466,6 +30565,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.HierarchyGroup
         list_user_hierarchy_groups:
           operation:
             $ref: "#/paths/~1user-hierarchy-groups-summary~1{instance_id}/get"
@@ -29475,6 +30575,14 @@ components:
             objectKey: $.UserHierarchyGroupSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_user_hierarchy_groups:
           operation:
             $ref: "#/paths/~1search-user-hierarchy-groups/post"
@@ -29482,6 +30590,23 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.UserHierarchyGroups
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_user_hierarchy_group_name:
+          operation:
+            $ref: "#/paths/~1user-hierarchy-groups~1{instance_id}~1{hierarchy_group_id}~1name/post"
+          response:
+            openAPIDocKey: "200"
           request:
             nativeCasing: pascal
           config:
@@ -29494,7 +30619,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/search_user_hierarchy_groups"
         insert:
           - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/create_user_hierarchy_group"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/update_user_hierarchy_group_name"
         delete:
           - $ref: "#/components/x-stackQL-resources/user_hierarchy_groups/methods/delete_user_hierarchy_group"
     views:
@@ -29522,6 +30648,14 @@ components:
             objectKey: $.ViewsSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_view:
           operation:
             $ref: "#/paths/~1views~1{instance_id}~1{view_id}/delete"
@@ -29534,6 +30668,18 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.View
+        update_view_content:
+          operation:
+            $ref: "#/paths/~1views~1{instance_id}~1{view_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         search_views:
           operation:
             $ref: "#/paths/~1search-views/post"
@@ -29541,6 +30687,24 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.Views
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_view_metadata:
+          operation:
+            $ref: "#/paths/~1views~1{instance_id}~1{view_id}~1metadata/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -29553,7 +30717,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/views/methods/search_views"
         insert:
           - $ref: "#/components/x-stackQL-resources/views/methods/create_view"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/views/methods/update_view_content"
         delete:
           - $ref: "#/components/x-stackQL-resources/views/methods/delete_view"
     view_versions:
@@ -29581,6 +30746,14 @@ components:
             objectKey: $.ViewVersionSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_view_version:
           operation:
             $ref: "#/paths/~1views~1{instance_id}~1{view_id}~1versions~1{view_version}/delete"
@@ -29623,6 +30796,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Vocabulary
         search_vocabularies:
           operation:
             $ref: "#/paths/~1vocabulary-summary~1{instance_id}/post"
@@ -29633,6 +30807,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -29669,6 +30850,14 @@ components:
             objectKey: $.WorkspacePageList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_workspace_page:
           operation:
             $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1pages~1{page}/delete"
@@ -29731,6 +30920,14 @@ components:
             objectKey: $.EvaluationSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         search_contact_evaluations:
           operation:
             $ref: "#/paths/~1search-contact-evaluations/post"
@@ -29752,94 +30949,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/contact_evaluations/methods/update_contact_evaluation"
         delete:
           - $ref: "#/components/x-stackQL-resources/contact_evaluations/methods/delete_contact_evaluation"
-    data_table_metadatas:
-      id: aws.connect.data_table_metadatas
-      name: data_table_metadatas
-      title: data_table_metadatas
-      methods:
-        update_data_table_metadata:
-          operation:
-            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/data_table_metadatas/methods/update_data_table_metadata"
-        delete: []
-    email_address_metadatas:
-      id: aws.connect.email_address_metadatas
-      name: email_address_metadatas
-      title: email_address_metadatas
-      methods:
-        update_email_address_metadata:
-          operation:
-            $ref: "#/paths/~1email-addresses~1{instance_id}~1{email_address_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/email_address_metadatas/methods/update_email_address_metadata"
-        delete: []
-    notification_contents:
-      id: aws.connect.notification_contents
-      name: notification_contents
-      title: notification_contents
-      methods:
-        update_notification_content:
-          operation:
-            $ref: "#/paths/~1notifications~1{instance_id}~1{notification_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/notification_contents/methods/update_notification_content"
-        delete: []
-    view_contents:
-      id: aws.connect.view_contents
-      name: view_contents
-      title: view_contents
-      methods:
-        update_view_content:
-          operation:
-            $ref: "#/paths/~1views~1{instance_id}~1{view_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/view_contents/methods/update_view_content"
-        delete: []
     workspace_medias:
       id: aws.connect.workspace_medias
       name: workspace_medias
@@ -29877,6 +30986,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AttachedFilesConfiguration
         update_attached_files_configuration:
           operation:
             $ref: "#/paths/~1attached-files-configurations~1{instance_id}~1{attachment_scope}/post"
@@ -29897,6 +31007,14 @@ components:
             objectKey: $.AttachedFilesConfigurations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attached_files_configurations/methods/describe_attached_files_configuration"
@@ -29916,6 +31034,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AuthenticationProfile
         update_authentication_profile:
           operation:
             $ref: "#/paths/~1authentication-profiles~1{instance_id}~1{authentication_profile_id}/post"
@@ -29935,6 +31054,14 @@ components:
             objectKey: $.AuthenticationProfileSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/authentication_profiles/methods/describe_authentication_profile"
@@ -29954,6 +31081,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Attribute
         update_instance_attribute:
           operation:
             $ref: "#/paths/~1instance~1{instance_id}~1attribute~1{attribute_type}/post"
@@ -29973,6 +31101,14 @@ components:
             objectKey: $.Attributes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/instance_attributes/methods/describe_instance_attribute"
@@ -29992,6 +31128,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ClaimedPhoneNumberSummary
         release_phone_number:
           operation:
             $ref: "#/paths/~1phone-number~1{phone_number_id}/delete"
@@ -30019,6 +31156,24 @@ components:
             objectKey: $.PhoneNumberSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        update_phone_number_metadata:
+          operation:
+            $ref: "#/paths/~1phone-number~1{phone_number_id}~1metadata/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/describe_phone_number"
@@ -30038,6 +31193,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.HierarchyStructure
         update_user_hierarchy_structure:
           operation:
             $ref: "#/paths/~1user-hierarchy-structure~1{instance_id}/post"
@@ -30054,6 +31210,47 @@ components:
         insert: []
         update:
           - $ref: "#/components/x-stackQL-resources/user_hierarchy_structures/methods/update_user_hierarchy_structure"
+        delete: []
+    data_table_values:
+      id: aws.connect.data_table_values
+      name: data_table_values
+      title: data_table_values
+      methods:
+        evaluate_data_table_values:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1values~1evaluate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_data_table_values:
+          operation:
+            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1values~1list/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Values
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/data_table_values/methods/list_data_table_values"
+        insert: []
+        update: []
         delete: []
     contact_attributes:
       id: aws.connect.contact_attributes
@@ -30201,6 +31398,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -30346,6 +31550,14 @@ components:
             objectKey: $.ChildHoursOfOperationsSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/child_hours_of_operations/methods/list_child_hours_of_operations"
@@ -30366,6 +31578,14 @@ components:
             objectKey: $.ContactFlowModuleAliasSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/contact_flow_module_aliases/methods/list_contact_flow_module_aliases"
@@ -30386,6 +31606,14 @@ components:
             objectKey: $.ReferenceSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/contact_references/methods/list_contact_references"
@@ -30407,6 +31635,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_data_table_primary_values:
@@ -30427,29 +31662,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/data_table_primary_values/methods/update_data_table_primary_values"
         delete: []
-    data_table_values:
-      id: aws.connect.data_table_values
-      name: data_table_values
-      title: data_table_values
-      methods:
-        list_data_table_values:
-          operation:
-            $ref: "#/paths/~1data-tables~1{instance_id}~1{data_table_id}~1values~1list/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Values
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/data_table_values/methods/list_data_table_values"
-        insert: []
-        update: []
-        delete: []
     entity_security_profiles:
       id: aws.connect.entity_security_profiles
       name: entity_security_profiles
@@ -30465,6 +31677,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -30487,6 +31706,14 @@ components:
             objectKey: $.EvaluationFormVersionSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/evaluation_form_versions/methods/list_evaluation_form_versions"
@@ -30508,6 +31735,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -30552,6 +31786,14 @@ components:
             objectKey: $.RoutingProfileManualAssignmentQueueConfigSummaryList
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/routing_profile_manual_assignment_queues/methods/list_routing_profile_manual_assignment_queues"
@@ -30572,6 +31814,14 @@ components:
             objectKey: $.Applications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_profile_applications/methods/list_security_profile_applications"
@@ -30592,6 +31842,14 @@ components:
             objectKey: $.AllowedFlowModules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_profile_flow_modules/methods/list_security_profile_flow_modules"
@@ -30609,19 +31867,33 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Permissions
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListSecurityProfilePermissionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Permissions" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"permission": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/security_profile_permissions/methods/list_security_profile_permissions"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.connect.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.connect.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -30629,17 +31901,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.connect.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -30657,12 +31918,34 @@ components:
             openAPIDocKey: "200"
           request:
             nativeCasing: pascal
+        tag_contact:
+          operation:
+            $ref: "#/paths/~1contact~1tags/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_contact:
+          operation:
+            $ref: "#/paths/~1contact~1tags~1{instance_id}~1{contact_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_contact"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_contact"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []
     test_case_execution_records:
       id: aws.connect.test_case_execution_records
@@ -30715,20 +31998,9 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/user_notifications/methods/list_user_notifications"
-        insert: []
-        update: []
-        delete: []
-    user_status:
-      id: aws.connect.user_status
-      name: user_status
-      title: user_status
-      methods:
-        put_user_status:
+        update_user_notification_status:
           operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1status/put"
+            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1notifications~1{notification_id}/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -30738,11 +32010,11 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/user_notifications/methods/list_user_notifications"
         insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/user_status/methods/put_user_status"
+        update:
+          - $ref: "#/components/x-stackQL-resources/user_notifications/methods/update_user_notification_status"
         delete: []
     available_phone_numbers:
       id: aws.connect.available_phone_numbers
@@ -30759,6 +32031,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -30804,6 +32083,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -30827,6 +32113,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -30834,732 +32127,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/workspace_associations/methods/search_workspace_associations"
         insert: []
         update: []
-        delete: []
-    contact_flow_contents:
-      id: aws.connect.contact_flow_contents
-      name: contact_flow_contents
-      title: contact_flow_contents
-      methods:
-        update_contact_flow_content:
-          operation:
-            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1content/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_contents/methods/update_contact_flow_content"
-        delete: []
-    contact_flow_metadatas:
-      id: aws.connect.contact_flow_metadatas
-      name: contact_flow_metadatas
-      title: contact_flow_metadatas
-      methods:
-        update_contact_flow_metadata:
-          operation:
-            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1metadata/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_metadatas/methods/update_contact_flow_metadata"
-        delete: []
-    contact_flow_module_contents:
-      id: aws.connect.contact_flow_module_contents
-      name: contact_flow_module_contents
-      title: contact_flow_module_contents
-      methods:
-        update_contact_flow_module_content:
-          operation:
-            $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1content/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_module_contents/methods/update_contact_flow_module_content"
-        delete: []
-    contact_flow_module_metadatas:
-      id: aws.connect.contact_flow_module_metadatas
-      name: contact_flow_module_metadatas
-      title: contact_flow_module_metadatas
-      methods:
-        update_contact_flow_module_metadata:
-          operation:
-            $ref: "#/paths/~1contact-flow-modules~1{instance_id}~1{contact_flow_module_id}~1metadata/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_module_metadatas/methods/update_contact_flow_module_metadata"
-        delete: []
-    contact_flow_names:
-      id: aws.connect.contact_flow_names
-      name: contact_flow_names
-      title: contact_flow_names
-      methods:
-        update_contact_flow_name:
-          operation:
-            $ref: "#/paths/~1contact-flows~1{instance_id}~1{contact_flow_id}~1name/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/contact_flow_names/methods/update_contact_flow_name"
-        delete: []
-    contact_routing_datas:
-      id: aws.connect.contact_routing_datas
-      name: contact_routing_datas
-      title: contact_routing_datas
-      methods:
-        update_contact_routing_data:
-          operation:
-            $ref: "#/paths/~1contacts~1{instance_id}~1{contact_id}~1routing-data/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/contact_routing_datas/methods/update_contact_routing_data"
-        delete: []
-    contact_schedules:
-      id: aws.connect.contact_schedules
-      name: contact_schedules
-      title: contact_schedules
-      methods:
-        update_contact_schedule:
-          operation:
-            $ref: "#/paths/~1contact~1schedule/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/contact_schedules/methods/update_contact_schedule"
-        delete: []
-    participant_authentications:
-      id: aws.connect.participant_authentications
-      name: participant_authentications
-      title: participant_authentications
-      methods:
-        update_participant_authentication:
-          operation:
-            $ref: "#/paths/~1contact~1update-participant-authentication/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/participant_authentications/methods/update_participant_authentication"
-        delete: []
-    participant_role_configs:
-      id: aws.connect.participant_role_configs
-      name: participant_role_configs
-      title: participant_role_configs
-      methods:
-        update_participant_role_config:
-          operation:
-            $ref: "#/paths/~1contact~1participant-role-config~1{instance_id}~1{contact_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/participant_role_configs/methods/update_participant_role_config"
-        delete: []
-    phone_number_metadatas:
-      id: aws.connect.phone_number_metadatas
-      name: phone_number_metadatas
-      title: phone_number_metadatas
-      methods:
-        update_phone_number_metadata:
-          operation:
-            $ref: "#/paths/~1phone-number~1{phone_number_id}~1metadata/put"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_number_metadatas/methods/update_phone_number_metadata"
-        delete: []
-    queue_hours_of_operations:
-      id: aws.connect.queue_hours_of_operations
-      name: queue_hours_of_operations
-      title: queue_hours_of_operations
-      methods:
-        update_queue_hours_of_operation:
-          operation:
-            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1hours-of-operation/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/queue_hours_of_operations/methods/update_queue_hours_of_operation"
-        delete: []
-    queue_max_contacts:
-      id: aws.connect.queue_max_contacts
-      name: queue_max_contacts
-      title: queue_max_contacts
-      methods:
-        update_queue_max_contacts:
-          operation:
-            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1max-contacts/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/queue_max_contacts/methods/update_queue_max_contacts"
-        delete: []
-    queue_names:
-      id: aws.connect.queue_names
-      name: queue_names
-      title: queue_names
-      methods:
-        update_queue_name:
-          operation:
-            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1name/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/queue_names/methods/update_queue_name"
-        delete: []
-    queue_outbound_caller_configs:
-      id: aws.connect.queue_outbound_caller_configs
-      name: queue_outbound_caller_configs
-      title: queue_outbound_caller_configs
-      methods:
-        update_queue_outbound_caller_config:
-          operation:
-            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1outbound-caller-config/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/queue_outbound_caller_configs/methods/update_queue_outbound_caller_config"
-        delete: []
-    queue_outbound_email_configs:
-      id: aws.connect.queue_outbound_email_configs
-      name: queue_outbound_email_configs
-      title: queue_outbound_email_configs
-      methods:
-        update_queue_outbound_email_config:
-          operation:
-            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1outbound-email-config/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/queue_outbound_email_configs/methods/update_queue_outbound_email_config"
-        delete: []
-    queue_status:
-      id: aws.connect.queue_status
-      name: queue_status
-      title: queue_status
-      methods:
-        update_queue_status:
-          operation:
-            $ref: "#/paths/~1queues~1{instance_id}~1{queue_id}~1status/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/queue_status/methods/update_queue_status"
-        delete: []
-    quick_connect_configs:
-      id: aws.connect.quick_connect_configs
-      name: quick_connect_configs
-      title: quick_connect_configs
-      methods:
-        update_quick_connect_config:
-          operation:
-            $ref: "#/paths/~1quick-connects~1{instance_id}~1{quick_connect_id}~1config/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/quick_connect_configs/methods/update_quick_connect_config"
-        delete: []
-    quick_connect_names:
-      id: aws.connect.quick_connect_names
-      name: quick_connect_names
-      title: quick_connect_names
-      methods:
-        update_quick_connect_name:
-          operation:
-            $ref: "#/paths/~1quick-connects~1{instance_id}~1{quick_connect_id}~1name/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/quick_connect_names/methods/update_quick_connect_name"
-        delete: []
-    routing_profile_agent_availability_timers:
-      id: aws.connect.routing_profile_agent_availability_timers
-      name: routing_profile_agent_availability_timers
-      title: routing_profile_agent_availability_timers
-      methods:
-        update_routing_profile_agent_availability_timer:
-          operation:
-            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1agent-availability-timer/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/routing_profile_agent_availability_timers/methods/update_routing_profile_agent_availability_timer"
-        delete: []
-    routing_profile_concurrencies:
-      id: aws.connect.routing_profile_concurrencies
-      name: routing_profile_concurrencies
-      title: routing_profile_concurrencies
-      methods:
-        update_routing_profile_concurrency:
-          operation:
-            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1concurrency/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/routing_profile_concurrencies/methods/update_routing_profile_concurrency"
-        delete: []
-    routing_profile_default_outbound_queues:
-      id: aws.connect.routing_profile_default_outbound_queues
-      name: routing_profile_default_outbound_queues
-      title: routing_profile_default_outbound_queues
-      methods:
-        update_routing_profile_default_outbound_queue:
-          operation:
-            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1default-outbound-queue/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/routing_profile_default_outbound_queues/methods/update_routing_profile_default_outbound_queue"
-        delete: []
-    routing_profile_names:
-      id: aws.connect.routing_profile_names
-      name: routing_profile_names
-      title: routing_profile_names
-      methods:
-        update_routing_profile_name:
-          operation:
-            $ref: "#/paths/~1routing-profiles~1{instance_id}~1{routing_profile_id}~1name/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/routing_profile_names/methods/update_routing_profile_name"
-        delete: []
-    user_configs:
-      id: aws.connect.user_configs
-      name: user_configs
-      title: user_configs
-      methods:
-        update_user_config:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1config/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_configs/methods/update_user_config"
-        delete: []
-    user_hierarchies:
-      id: aws.connect.user_hierarchies
-      name: user_hierarchies
-      title: user_hierarchies
-      methods:
-        update_user_hierarchy:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1hierarchy/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_hierarchies/methods/update_user_hierarchy"
-        delete: []
-    user_hierarchy_group_names:
-      id: aws.connect.user_hierarchy_group_names
-      name: user_hierarchy_group_names
-      title: user_hierarchy_group_names
-      methods:
-        update_user_hierarchy_group_name:
-          operation:
-            $ref: "#/paths/~1user-hierarchy-groups~1{instance_id}~1{hierarchy_group_id}~1name/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_hierarchy_group_names/methods/update_user_hierarchy_group_name"
-        delete: []
-    user_identity_infos:
-      id: aws.connect.user_identity_infos
-      name: user_identity_infos
-      title: user_identity_infos
-      methods:
-        update_user_identity_info:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1identity-info/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_identity_infos/methods/update_user_identity_info"
-        delete: []
-    user_notification_status:
-      id: aws.connect.user_notification_status
-      name: user_notification_status
-      title: user_notification_status
-      methods:
-        update_user_notification_status:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1notifications~1{notification_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_notification_status/methods/update_user_notification_status"
-        delete: []
-    user_phone_configs:
-      id: aws.connect.user_phone_configs
-      name: user_phone_configs
-      title: user_phone_configs
-      methods:
-        update_user_phone_config:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1phone-config/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_phone_configs/methods/update_user_phone_config"
-        delete: []
-    user_routing_profiles:
-      id: aws.connect.user_routing_profiles
-      name: user_routing_profiles
-      title: user_routing_profiles
-      methods:
-        update_user_routing_profile:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1routing-profile/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_routing_profiles/methods/update_user_routing_profile"
-        delete: []
-    user_security_profiles:
-      id: aws.connect.user_security_profiles
-      name: user_security_profiles
-      title: user_security_profiles
-      methods:
-        update_user_security_profiles:
-          operation:
-            $ref: "#/paths/~1users~1{instance_id}~1{user_id}~1security-profiles/post"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/user_security_profiles/methods/update_user_security_profiles"
-        delete: []
-    view_metadatas:
-      id: aws.connect.view_metadatas
-      name: view_metadatas
-      title: view_metadatas
-      methods:
-        update_view_metadata:
-          operation:
-            $ref: "#/paths/~1views~1{instance_id}~1{view_id}~1metadata/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/view_metadatas/methods/update_view_metadata"
-        delete: []
-    workspace_metadatas:
-      id: aws.connect.workspace_metadatas
-      name: workspace_metadatas
-      title: workspace_metadatas
-      methods:
-        update_workspace_metadata:
-          operation:
-            $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1metadata/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_metadatas/methods/update_workspace_metadata"
-        delete: []
-    workspace_themes:
-      id: aws.connect.workspace_themes
-      name: workspace_themes
-      title: workspace_themes
-      methods:
-        update_workspace_theme:
-          operation:
-            $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1theme/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_themes/methods/update_workspace_theme"
-        delete: []
-    workspace_visibilities:
-      id: aws.connect.workspace_visibilities
-      name: workspace_visibilities
-      title: workspace_visibilities
-      methods:
-        update_workspace_visibility:
-          operation:
-            $ref: "#/paths/~1workspaces~1{instance_id}~1{workspace_id}~1visibility/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/workspace_visibilities/methods/update_workspace_visibility"
         delete: []

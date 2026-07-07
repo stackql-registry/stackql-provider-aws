@@ -132,6 +132,9 @@ paths:
       x-stackql-method: get_compliance_summary
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SummaryList
+      x-stackql-pagination-request-token-key: PaginationToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.PaginationToken
   /GetResources:
     post:
       operationId: GetResources
@@ -251,6 +254,9 @@ paths:
       x-stackql-method: get_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceTagMappingList
+      x-stackql-pagination-request-token-key: PaginationToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.PaginationToken
   /GetTagKeys:
     post:
       operationId: GetTagKeys
@@ -286,11 +292,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetTagKeysOutput'
+                $ref: '#/components/schemas/GetTagKeysOutputDisplay'
       x-stackql-resource: tag_keys
       x-stackql-method: get_tag_keys
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.TagKeys
+      x-stackql-responseEnvelope: GetTagKeysOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "TagKeys" -}}{{- $tok := index . "PaginationToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"tag_key": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "PaginationToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: PaginationToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.PaginationToken
   /GetTagValues:
     post:
       operationId: GetTagValues
@@ -332,11 +346,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/GetTagValuesOutput'
+                $ref: '#/components/schemas/GetTagValuesOutputDisplay'
       x-stackql-resource: tag_values
       x-stackql-method: get_tag_values
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.TagValues
+      x-stackql-responseEnvelope: GetTagValuesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "TagValues" -}}{{- $tok := index . "PaginationToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"tag_value": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "PaginationToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: PaginationToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.PaginationToken
   /ListRequiredTags:
     post:
       operationId: ListRequiredTags
@@ -377,6 +399,9 @@ paths:
       x-stackql-method: list_required_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RequiredTags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /StartReportCreation:
     post:
       operationId: StartReportCreation
@@ -483,7 +508,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourcesOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resources
       x-stackql-verb: UPDATE
   /UntagResources:
@@ -536,7 +561,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourcesOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resources
       x-stackql-verb: UPDATE
 components:
@@ -822,33 +847,33 @@ components:
         $ref: '#/components/schemas/TagKey'
     ComplianceStatus:
       type: boolean
-    GetTagKeysOutput:
+    GetTagKeysRowDisplay:
       type: object
       properties:
-        PaginationToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: A string that indicates that there is more data available than this response contains. To receive the
-            next part of the response, specify this response value as the PaginationToken value in the request for the next
-            page.
-        TagKeys:
-          $ref: '#/components/schemas/TagKeyList'
+        tag_key:
+          type: string
           description: A list of all tag keys in the Amazon Web Services account.
-    GetTagValuesOutput:
+    GetTagKeysOutputDisplay:
       type: object
       properties:
-        PaginationToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: A string that indicates that there is more data available than this response contains. To receive the
-            next part of the response, specify this response value as the PaginationToken value in the request for the next
-            page.
-        TagValues:
-          $ref: '#/components/schemas/TagValuesOutputList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTagKeysRowDisplay'
+    GetTagValuesRowDisplay:
+      type: object
+      properties:
+        tag_value:
+          type: string
           description: A list of all tag values for the specified key currently used in the specified Amazon Web Services
             Region for the calling account.
-    TagValuesOutputList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TagValue'
+    GetTagValuesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetTagValuesRowDisplay'
     MaxResultsForListRequiredTags:
       type: integer
       minimum: 1

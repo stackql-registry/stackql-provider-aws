@@ -3728,7 +3728,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/CauseDisplay"
+            $ref: "#/components/schemas/DescribeEnvironmentHealthRowDisplay"
     DescribeEnvironmentHealthRequest:
       description: See the example below to learn how to create a request body.
       type: object
@@ -3742,6 +3742,33 @@ components:
         AttributeNames:
           $ref: "#/components/schemas/EnvironmentHealthAttributes"
           description: Specify the response elements to return. To retrieve all attributes, set to All. If no attribute names are specified, returns the name of the environment.
+    DescribeEnvironmentHealthRowDisplay:
+      type: object
+      properties:
+        environment_name:
+          type: string
+          description: The environment's name.
+        health_status:
+          type: string
+          description: The health status of the environment. For example, Ok.
+        status:
+          type: string
+          description: The environment's operational status. Ready, Launching, Updating, Terminating, or Terminated.
+        color:
+          type: string
+          description: The health color of the environment.
+        causes:
+          type: array
+          description: Descriptions of the data that contributed to the environment's current health status.
+        application_metrics:
+          type: object
+          description: Application request metrics for the environment.
+        instances_health:
+          type: object
+          description: Summary health information for the instances in the environment.
+        refreshed_at:
+          type: string
+          description: The date and time that the health information was retrieved.
     ManagedActionHistoryMaxItems:
       type: integer
       minimum: 1
@@ -4193,16 +4220,22 @@ components:
           description: The name of the environment from which to disassociate the operations role.
       required:
         - EnvironmentName
-    SolutionStackNameDisplay:
+    SolutionStackDescriptionDisplay:
       type: object
-      properties: {}
+      properties:
+        SolutionStackName:
+          type: string
+          description: The name of the solution stack.
+        PermittedFileTypes:
+          type: string
+          description: The permitted file types allowed for a solution stack.
     ListAvailableSolutionStacksOutputDisplay:
       type: object
       properties:
         line_items:
           type: array
           items:
-            $ref: "#/components/schemas/SolutionStackNameDisplay"
+            $ref: "#/components/schemas/SolutionStackDescriptionDisplay"
     SearchFilters:
       type: array
       items:
@@ -4655,16 +4688,83 @@ components:
         - ApplicationName
         - OptionSettings
   x-stackQL-resources:
-    environment_operations_roles:
-      id: aws.elasticbeanstalk.environment_operations_roles
-      name: environment_operations_roles
-      title: environment_operations_roles
+    environments:
+      id: aws.elasticbeanstalk.environments
+      name: environments
+      title: environments
       methods:
         associate_environment_operations_role:
           operation:
             $ref: "#/paths/~1?Action=AssociateEnvironmentOperationsRole&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        compose_environments:
+          operation:
+            $ref: "#/paths/~1?Action=ComposeEnvironments&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ComposeEnvironmentsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        create_environment:
+          operation:
+            $ref: "#/paths/~1?Action=CreateEnvironment&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateEnvironmentOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_environment_configuration:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteEnvironmentConfiguration&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        describe_environments:
+          operation:
+            $ref: "#/paths/~1?Action=DescribeEnvironments&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DescribeEnvironmentsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
@@ -4684,13 +4784,56 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        terminate_environment:
+          operation:
+            $ref: "#/paths/~1?Action=TerminateEnvironment&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/TerminateEnvironmentOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        update_environment:
+          operation:
+            $ref: "#/paths/~1?Action=UpdateEnvironment&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateEnvironmentOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/describe_environments"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/create_environment"
         update:
-          - $ref: "#/components/x-stackQL-resources/environment_operations_roles/methods/associate_environment_operations_role"
-          - $ref: "#/components/x-stackQL-resources/environment_operations_roles/methods/disassociate_environment_operations_role"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/environments/methods/associate_environment_operations_role"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/disassociate_environment_operations_role"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/environments/methods/delete_environment_configuration"
+          - $ref: "#/components/x-stackQL-resources/environments/methods/terminate_environment"
     applications:
       id: aws.elasticbeanstalk.applications
       name: applications
@@ -4715,9 +4858,40 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        create_configuration_template:
+          operation:
+            $ref: "#/paths/~1?Action=CreateConfigurationTemplate&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateConfigurationTemplateOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
         delete_application:
           operation:
             $ref: "#/paths/~1?Action=DeleteApplication&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        delete_configuration_template:
+          operation:
+            $ref: "#/paths/~1?Action=DeleteConfigurationTemplate&Version=2010-12-01/get"
           response:
             openAPIDocKey: "200"
           request:
@@ -4765,14 +4939,56 @@ components:
               algorithm: AWSCanonical
             requestTranslate:
               algorithm: get_query_to_post_form_utf_8
+        update_application_resource_lifecycle:
+          operation:
+            $ref: "#/paths/~1?Action=UpdateApplicationResourceLifecycle&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateApplicationResourceLifecycleOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
+        update_configuration_template:
+          operation:
+            $ref: "#/paths/~1?Action=UpdateConfigurationTemplate&Version=2010-12-01/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateConfigurationTemplateOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            queryParamTranspose:
+              algorithm: AWSCanonical
+            requestTranslate:
+              algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/applications/methods/describe_applications"
         insert:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/create_configuration_template"
           - $ref: "#/components/x-stackQL-resources/applications/methods/create_application"
         update:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/update_application_resource_lifecycle"
+          - $ref: "#/components/x-stackQL-resources/applications/methods/update_configuration_template"
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
+          - $ref: "#/components/x-stackQL-resources/applications/methods/delete_configuration_template"
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
     application_versions:
       id: aws.elasticbeanstalk.application_versions
@@ -4857,159 +5073,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/application_versions/methods/update_application_version"
         delete:
           - $ref: "#/components/x-stackQL-resources/application_versions/methods/delete_application_version"
-    configuration_templates:
-      id: aws.elasticbeanstalk.configuration_templates
-      name: configuration_templates
-      title: configuration_templates
-      methods:
-        create_configuration_template:
-          operation:
-            $ref: "#/paths/~1?Action=CreateConfigurationTemplate&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateConfigurationTemplateOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        delete_configuration_template:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteConfigurationTemplate&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        update_configuration_template:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateConfigurationTemplate&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateConfigurationTemplateOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/configuration_templates/methods/create_configuration_template"
-        update:
-          - $ref: "#/components/x-stackQL-resources/configuration_templates/methods/update_configuration_template"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/configuration_templates/methods/delete_configuration_template"
-    environments:
-      id: aws.elasticbeanstalk.environments
-      name: environments
-      title: environments
-      methods:
-        create_environment:
-          operation:
-            $ref: "#/paths/~1?Action=CreateEnvironment&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateEnvironmentOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        describe_environments:
-          operation:
-            $ref: "#/paths/~1?Action=DescribeEnvironments&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DescribeEnvironmentsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        terminate_environment:
-          operation:
-            $ref: "#/paths/~1?Action=TerminateEnvironment&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/TerminateEnvironmentOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-        update_environment:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateEnvironment&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateEnvironmentOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/describe_environments"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/create_environment"
-        update:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/update_environment"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/environments/methods/terminate_environment"
     platform_versions:
       id: aws.elasticbeanstalk.platform_versions
       name: platform_versions
@@ -5084,8 +5147,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -5127,29 +5188,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/storage_locations/methods/create_storage_location"
         update: []
         delete: []
-    environment_configurations:
-      id: aws.elasticbeanstalk.environment_configurations
-      name: environment_configurations
-      title: environment_configurations
-      methods:
-        delete_environment_configuration:
-          operation:
-            $ref: "#/paths/~1?Action=DeleteEnvironmentConfiguration&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/environment_configurations/methods/delete_environment_configuration"
     account_attributes:
       id: aws.elasticbeanstalk.account_attributes
       name: account_attributes
@@ -5244,8 +5282,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
           config:
             queryParamTranspose:
               algorithm: AWSCanonical
@@ -5272,7 +5308,8 @@ components:
             schema_override:
               $ref: "#/components/schemas/DescribeEnvironmentHealthOutputDisplay"
             transform:
-              type: schema_driven_xml_v0.1.0
+              type: golang_template_mxj_v0.3.0
+              body: '{{- $n := index . "DescribeEnvironmentHealthResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "DescribeEnvironmentHealthResult" }}{{ else }}{{ $n = "" }}{{ end -}}{"line_items": [{{{- if eq (kindOf $n) "map" -}}"environment_name": {{ toJson (index $n "EnvironmentName") }}, "health_status": {{ toJson (index $n "HealthStatus") }}, "status": {{ toJson (index $n "Status") }}, "color": {{ toJson (index $n "Color") }}, "causes": {{ toJson (index $n "Causes") }}, "application_metrics": {{ toJson (index $n "ApplicationMetrics") }}, "instances_health": {{ toJson (index $n "InstancesHealth") }}, "refreshed_at": {{ toJson (index $n "RefreshedAt") }}{{- end -}}}]}'
             objectKey: $.line_items
           request:
             nativeCasing: pascal
@@ -5495,10 +5532,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.elasticbeanstalk.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.elasticbeanstalk.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5533,38 +5570,8 @@ components:
               algorithm: get_query_to_post_form_utf_8
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/update_tags_for_resource"
-        delete: []
-    application_resource_lifecycles:
-      id: aws.elasticbeanstalk.application_resource_lifecycles
-      name: application_resource_lifecycles
-      title: application_resource_lifecycles
-      methods:
-        update_application_resource_lifecycle:
-          operation:
-            $ref: "#/paths/~1?Action=UpdateApplicationResourceLifecycle&Version=2010-12-01/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateApplicationResourceLifecycleOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-          config:
-            queryParamTranspose:
-              algorithm: AWSCanonical
-            requestTranslate:
-              algorithm: get_query_to_post_form_utf_8
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/application_resource_lifecycles/methods/update_application_resource_lifecycle"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/update_tags_for_resource"
         delete: []

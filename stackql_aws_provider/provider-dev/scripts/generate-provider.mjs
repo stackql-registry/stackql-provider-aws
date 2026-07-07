@@ -16,8 +16,10 @@ const args = parseArgs({
     'provider-name': { type: 'string' },
     'source-dir': { type: 'string' },
     'output-dir': { type: 'string' },
+    'mappings-csv': { type: 'string' },
     version: { type: 'string', default: 'v00.00.00000' },
     overwrite: { type: 'boolean', default: false },
+    'update-benchmarks': { type: 'boolean', default: false },
   },
 }).values;
 
@@ -32,6 +34,13 @@ const providerName = args['provider-name'];
 const sourceDir = path.resolve(args['source-dir']);
 const outputBase = path.resolve(args['output-dir']);
 const version = args.version;
+// Durable mapping table (the @stackql/provider-utils `analyze` contract):
+// checked-in CSV keyed by `filename::operationId`; existing rows are
+// authoritative for resource/method/verb/objectKey, new ops are appended.
+// Lives in provider-dev/config/ by cross-provider convention.
+const mappingsCsvPath = args['mappings-csv']
+  ? path.resolve(args['mappings-csv'])
+  : path.join(path.dirname(sourceDir), 'config', 'all_services.csv');
 
 const providerRoot = path.join(outputBase, providerName, version);
 const servicesRoot = path.join(providerRoot, 'services');
@@ -100,10 +109,30 @@ function derefSchema(spec, schema) {
 }
 
 /**
+ * The requestBody content key stackql's loader will actually bind, or null
+ * if the body schema is invisible at runtime. The loader matches the
+ * method's `request.mediaType` EXACTLY against the content map; with no
+ * `request.mediaType` it falls back to `application/json` only. An unbound
+ * body means its required fields never reach RequiredParams / routing -
+ * so signature computation must apply the same rule or build-time
+ * uniqueness diverges from what SHOW EXTENDED METHODS reports (the
+ * smithy-rpc-v2-cbor fallback services shipped exactly that skew).
+ */
+function bindableBodyContentKey(op, requestBlock) {
+  const content = (op.requestBody && op.requestBody.content) || null;
+  if (!content) return null;
+  const media = requestBlock && requestBlock.mediaType;
+  if (media) return content[media] ? media : null;
+  return content['application/json'] ? 'application/json' : null;
+}
+
+/**
  * Compute the required-param signature for an operation. The signature is
  * a sorted, comma-joined list of required parameter names (path + query +
- * header + required body-properties). Stackql's router uses the same set
- * to decide which method satisfies a SQL clause, so we mirror its view.
+ * header + required body-properties of the RUNTIME-BOUND body schema).
+ * Stackql's router uses the same set to decide which method satisfies a
+ * SQL clause, so we mirror its view - including the body-binding rule
+ * above, via the method's `request` block.
  *
  * We DON'T prefix body fields with `data__` here. With the
  * `requestBodyTranslate: naive` config (which we set on every body-bearing
@@ -111,34 +140,435 @@ function derefSchema(spec, schema) {
  * SHOW METHODS / SHOW EXTENDED METHODS. The signature has to match what
  * the user sees so the dedupe pass collides the right ops.
  */
-function requiredParamsOf(op, spec) {
+function requiredParamsOf(op, spec, requestBlock) {
   const names = new Set();
   for (const p of op.parameters || []) {
     if (p && p.required && !SIGNATURE_IGNORE.has(p.name)) {
       names.add(p.name);
     }
   }
-  const body = op.requestBody && op.requestBody.content;
-  if (body) {
-    for (const ct of Object.keys(body)) {
-      let schema = body[ct] && body[ct].schema;
-      schema = derefSchema(spec, schema);
-      if (schema && Array.isArray(schema.required)) {
-        for (const r of schema.required) names.add(r);
-      }
+  const boundKey = bindableBodyContentKey(op, requestBlock);
+  if (boundKey) {
+    const schema = derefSchema(spec, op.requestBody.content[boundKey].schema || {});
+    if (schema && Array.isArray(schema.required)) {
+      for (const r of schema.required) names.add(r);
     }
   }
   return [...names].sort();
 }
 
+// Mirror of stage 1's _pluralise - used to spot a resource's PRIMARY
+// method (create_vpc on `vpcs`) so signature-clash dedupe never lets a
+// merged-in variant (create_default_vpc) steal its sqlVerbs slot on
+// lexical accident.
+function pluralise(noun) {
+  if (noun.endsWith('s')) return noun;
+  if (noun.endsWith('y') && noun.length > 1 && !'aeiou'.includes(noun[noun.length - 2])) {
+    return noun.slice(0, -1) + 'ies';
+  }
+  if (/(ch|sh|x|z)$/.test(noun)) return noun + 'es';
+  return noun + 's';
+}
+
+function isPrimaryMethod(method, resource) {
+  const tokens = String(method).split('_');
+  if (tokens.length < 2) return false;
+  const noun = tokens.slice(1).join('_');
+  return noun === resource || pluralise(noun) === resource;
+}
+
+// Port of any-sdk casing.ToSnake (pkg/casing) - predicts the DDL column
+// alias the engine renders for a response property under snake_case_aliases.
+const SPECIAL_ACRONYM_RE = /[A-Z]{2,}s$/;
+function toSnakeAlias(name) {
+  if (name.includes('_')) return name;
+  let s = name;
+  const m = s.match(SPECIAL_ACRONYM_RE);
+  if (m) s = s.slice(0, s.length - m[0].length) + '_' + m[0].toLowerCase();
+  s = s.replace(/(.)([A-Z][a-z]+)/g, '$1_$2');
+  s = s.replace(/([a-z])([0-9]+)/g, '$1_$2');
+  s = s.replace(/([a-z0-9])([A-Z])/g, '$1_$2');
+  return s.toLowerCase();
+}
+
+/**
+ * The per-row response property names for an operation, BEFORE breadcrumbs
+ * are stripped. XML protocols carry the synthesised Display wrapper in
+ * x-stackql-responseEnvelope; rest-json / aws-json use the raw response
+ * schema, descending through x-stackql-objectKey (list row carrier) or a
+ * top-level array when present.
+ */
+function responseRowColumns(spec, op) {
+  const schemas = (spec.components && spec.components.schemas) || {};
+  const envelope = op['x-stackql-responseEnvelope'];
+  if (envelope && schemas[envelope]) {
+    const lineItems = (schemas[envelope].properties || {}).line_items || {};
+    const item = derefSchema(spec, lineItems.items || {});
+    return Object.keys((item && item.properties) || {});
+  }
+  const responses = op.responses || {};
+  const key = Object.keys(responses).find((k) => /^2\d\d$/.test(k));
+  if (!key) return [];
+  const content = (responses[key] || {}).content || {};
+  const ct = Object.keys(content)[0];
+  if (!ct || !content[ct]) return [];
+  let schema = derefSchema(spec, content[ct].schema || {});
+  if (!schema) return [];
+  const objectKey = op['x-stackql-objectKey'];
+  if (objectKey && objectKey.startsWith('$.')) {
+    const carrier = derefSchema(spec, (schema.properties || {})[objectKey.slice(2)] || {});
+    const item = carrier && carrier.items ? derefSchema(spec, carrier.items) : null;
+    if (item) schema = item;
+  } else if (schema.items) {
+    const item = derefSchema(spec, schema.items);
+    if (item) schema = item;
+  }
+  return Object.keys(schema.properties || {});
+}
+
+/**
+ * NOCASE collision demotion, resource-scoped, ALL protocols.
+ *
+ * The DDL column set for a resource's table is `snake-aliased response
+ * columns + union of required parameters (wire-cased) across the
+ * resource's methods`. SQLite's NOCASE collation treats `role` and `Role`
+ * as duplicates, aborting CREATE TABLE (lambda: response column `role`
+ * vs create_function's required body field `Role`). Demote any required
+ * query/header param or inline required body field whose lowercased form
+ * matches a rendered snake response column of the SAME resource but whose
+ * exact form differs. Runs BEFORE signature computation so sqlVerbs
+ * ordering / dedupe see the demoted view. Path params are exempt
+ * (structural; rule 17). The stage-1 (python) pass keeps its service-wide
+ * Display-based demotion for query/ec2/rest-xml; this pass subsumes and
+ * extends it to rest-json / aws-json.
+ */
+function demoteNocaseCollisions(spec) {
+  // Returns {resource: Set<snake column>} for the post-build verifier.
+  const paths = spec.paths || {};
+  const resourceCols = {};
+  for (const pathItem of Object.values(paths)) {
+    if (!pathItem || typeof pathItem !== 'object') continue;
+    for (const [httpMethod, op] of Object.entries(pathItem)) {
+      if (!HTTP_METHODS.has(httpMethod) || !op || typeof op !== 'object') continue;
+      const resource = op['x-stackql-resource'];
+      if (!resource) continue;
+      const cols = (resourceCols[resource] = resourceCols[resource] || new Set());
+      for (const prop of responseRowColumns(spec, op)) {
+        cols.add(toSnakeAlias(prop));
+      }
+      // Path params are structural (rule 5 snake-cases them, rule 17 exempts
+      // them from demotion) but they join the DDL column union like any
+      // required param - so they RESERVE their name: a non-path required
+      // param differing only by case (connect: body 'Origin' vs another
+      // method's path 'origin') must be demoted, and that is achieved by
+      // seeding them into the same collision set.
+      for (const p of op.parameters || []) {
+        if (p && typeof p === 'object' && p.in === 'path' && p.name) {
+          cols.add(p.name.toLowerCase());
+        }
+      }
+    }
+  }
+  const resourceOps = {};
+  for (const pathItem of Object.values(paths)) {
+    if (!pathItem || typeof pathItem !== 'object') continue;
+    for (const [httpMethod, op] of Object.entries(pathItem)) {
+      if (!HTTP_METHODS.has(httpMethod) || !op || typeof op !== 'object') continue;
+      const resource = op['x-stackql-resource'];
+      if (!resource) continue;
+      (resourceOps[resource] = resourceOps[resource] || []).push(op);
+    }
+  }
+
+  const demoteInOp = (op, shouldDemote) => {
+    for (const p of op.parameters || []) {
+      if (!p || typeof p !== 'object' || !p.name) continue;
+      if (p.in === 'path' || p.name.startsWith('X-Amz-')) continue;
+      if (p.required && shouldDemote(p.name)) p.required = false;
+    }
+    const content = (op.requestBody && op.requestBody.content) || {};
+    for (const mtBlock of Object.values(content)) {
+      const schema = mtBlock && mtBlock.schema;
+      // Inline body schemas only: mutating a $ref'ed component would
+      // bleed into unrelated usages of the shared shape.
+      if (!schema || schema.$ref || !Array.isArray(schema.required)) continue;
+      const kept = schema.required.filter((r) => typeof r !== 'string' || !shouldDemote(r));
+      if (kept.length !== schema.required.length) {
+        if (kept.length) schema.required = kept;
+        else delete schema.required;
+      }
+    }
+  };
+
+  for (const [resource, ops] of Object.entries(resourceOps)) {
+    const cols = resourceCols[resource];
+    if (cols && cols.size) {
+      const collides = (name) => cols.has(name.toLowerCase()) && !cols.has(name);
+      for (const op of ops) demoteInOp(op, collides);
+    }
+
+    // Param-vs-param: two REQUIRED non-path params in the same resource
+    // differing only by case (connect: query 'origin' vs body 'Origin')
+    // also NOCASE-collide in the DDL union. Keep one canonical exact form
+    // per group - the all-lowercase form when present (it matches the
+    // snake surface), else the lexicographically first - demote the rest.
+    const byLower = new Map();
+    for (const op of ops) {
+      for (const p of op.parameters || []) {
+        if (!p || typeof p !== 'object' || !p.name) continue;
+        if (p.in === 'path' || p.name.startsWith('X-Amz-') || !p.required) continue;
+        const group = byLower.get(p.name.toLowerCase()) || new Set();
+        group.add(p.name);
+        byLower.set(p.name.toLowerCase(), group);
+      }
+      const content = (op.requestBody && op.requestBody.content) || {};
+      for (const mtBlock of Object.values(content)) {
+        const schema = mtBlock && mtBlock.schema;
+        if (!schema || schema.$ref || !Array.isArray(schema.required)) continue;
+        for (const r of schema.required) {
+          if (typeof r !== 'string') continue;
+          const group = byLower.get(r.toLowerCase()) || new Set();
+          group.add(r);
+          byLower.set(r.toLowerCase(), group);
+        }
+      }
+    }
+    const losers = new Set();
+    for (const [lower, group] of byLower.entries()) {
+      if (group.size < 2) continue;
+      const keeper = group.has(lower) ? lower : [...group].sort()[0];
+      for (const form of group) {
+        if (form !== keeper) losers.add(form);
+      }
+    }
+    if (losers.size) {
+      for (const op of ops) demoteInOp(op, (name) => losers.has(name));
+    }
+  }
+  return resourceCols;
+}
+
+/**
+ * Build-time NOCASE-collision guard. After the resource tree is built,
+ * asserts that for every resource no surviving required parameter
+ * case-collides with a rendered snake response column (or with another
+ * required parameter). Throws - failing the whole build - so a
+ * "duplicate column name" DDL abort can never ship silently again.
+ */
+function verifyNoNocaseCollisions(spec, alias, resourceCols) {
+  const resources = (spec.components && spec.components['x-stackQL-resources']) || {};
+  for (const [rName, r] of Object.entries(resources)) {
+    const cols = resourceCols[rName] || new Set();
+    const paramsByLower = new Map();
+    for (const [mName, method] of Object.entries(r.methods || {})) {
+      const opRefStr = method.operation && method.operation.$ref;
+      if (!opRefStr) continue;
+      const parts = opRefStr.replace(/^#\/paths\//, '').split('/');
+      const httpVerb = parts.pop();
+      const pathKey = parts.join('/').replace(/~1/g, '/').replace(/~0/g, '~');
+      const op = ((spec.paths || {})[pathKey] || {})[httpVerb];
+      if (!op) continue;
+      for (const p of requiredParamsOf(op, spec, method.request)) {
+        const lower = p.toLowerCase();
+        if (cols.has(lower) && !cols.has(p)) {
+          const err = new Error(
+            `[${alias}] NOCASE collision in resource=${rName}: required param '${p}' ` +
+            `(method ${mName}) vs snake response column '${lower}'. ` +
+            `The demotion pass should have caught this - extend demoteNocaseCollisions.`
+          );
+          err.code = 'NOCASE_COLLISION';
+          throw err;
+        }
+        const prior = paramsByLower.get(lower);
+        if (prior && prior !== p) {
+          const err = new Error(
+            `[${alias}] NOCASE collision in resource=${rName}: required params ` +
+            `'${prior}' and '${p}' differ only by case.`
+          );
+          err.code = 'NOCASE_COLLISION';
+          throw err;
+        }
+        paramsByLower.set(lower, p);
+      }
+    }
+  }
+}
+
+function resolveOpFromRef(spec, opRefStr) {
+  const parts = opRefStr.replace(/^#\/paths\//, '').split('/');
+  const httpVerb = parts.pop();
+  const pathKey = parts.join('/').replace(/~1/g, '/').replace(/~0/g, '~');
+  return ((spec.paths || {})[pathKey] || {})[httpVerb];
+}
+
+/**
+ * Per-row response columns for a REGISTERED method entry (post-breadcrumb
+ * view, unlike responseRowColumns which reads the raw x-stackql-* tags).
+ * XML methods carry the Display envelope in response.schema_override;
+ * JSON methods use the op's 2xx schema, descending response.objectKey and
+ * array items. Mirrors stackql's column inference closely enough to decide
+ * whether DESCRIBE would return any fields at all.
+ */
+function methodEntryRowColumns(spec, methodEntry) {
+  const resp = methodEntry.response || {};
+  if (resp.schema_override && resp.schema_override.$ref) {
+    const env = derefSchema(spec, resp.schema_override);
+    if (!env) return [];
+    const li = (env.properties || {}).line_items;
+    if (li && li.items) {
+      const item = derefSchema(spec, li.items);
+      return Object.keys((item && item.properties) || {});
+    }
+    const props = { ...(env.properties || {}) };
+    delete props.line_items;
+    return Object.keys(props);
+  }
+  const opRefStr = methodEntry.operation && methodEntry.operation.$ref;
+  const op = opRefStr ? resolveOpFromRef(spec, opRefStr) : null;
+  if (!op) return [];
+  const responses = op.responses || {};
+  const key = Object.keys(responses).find((k) => /^2\d\d$/.test(k));
+  if (!key) return [];
+  const content = (responses[key] || {}).content || {};
+  const ct = Object.keys(content)[0];
+  if (!ct || !content[ct]) return [];
+  let schema = derefSchema(spec, content[ct].schema || {});
+  if (!schema) return [];
+  const objectKey = resp.objectKey;
+  if (objectKey && String(objectKey).startsWith('$.')) {
+    const carrier = derefSchema(spec, (schema.properties || {})[String(objectKey).slice(2)] || {});
+    if (carrier) schema = carrier;
+  }
+  if (schema.items) {
+    const item = derefSchema(spec, schema.items);
+    if (item) schema = item;
+  }
+  return Object.keys(schema.properties || {});
+}
+
+// ----- durable mappings CSV (provider-utils `analyze` contract) -----
+// One row per operation, keyed `filename::operationId`. The header and
+// escaping match @stackql/provider-utils analyze's all_services.csv so the
+// artifact is interchangeable with the standard provider-dev toolchain.
+// Existing rows are never rewritten (append-only): a regen maps a known
+// operation to exactly the resource/method/verb the CSV says, so the SQL
+// surface only changes through a conscious, reviewable CSV edit.
+
+const CSV_HEADER =
+  'filename,path,operationId,formatted_op_id,verb,response_object,tags,formatted_tags,' +
+  'stackql_resource_name,stackql_method_name,stackql_verb,stackql_object_key,op_description';
+
+function escapeCsvField(value) {
+  const s = value == null ? '' : String(value);
+  if (!s) return '';
+  if (s.includes(',') || s.includes('"') || s.includes('\n')) {
+    return `"${s.replace(/"/g, '""')}"`;
+  }
+  return s;
+}
+
+// Minimal RFC4180 parser (quoted fields, doubled quotes, CRLF). Returns an
+// array of objects keyed by the header row's column names.
+function parseCsv(text) {
+  const rows = [];
+  let field = '';
+  let row = [];
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (inQuotes) {
+      if (ch === '"') {
+        if (text[i + 1] === '"') {
+          field += '"';
+          i++;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        field += ch;
+      }
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === ',') {
+      row.push(field);
+      field = '';
+    } else if (ch === '\n' || ch === '\r') {
+      if (ch === '\r' && text[i + 1] === '\n') i++;
+      row.push(field);
+      field = '';
+      rows.push(row);
+      row = [];
+    } else {
+      field += ch;
+    }
+  }
+  if (field.length || row.length) {
+    row.push(field);
+    rows.push(row);
+  }
+  if (!rows.length) return [];
+  const header = rows[0];
+  return rows
+    .slice(1)
+    .filter((r) => r.length > 1 || (r.length === 1 && r[0] !== ''))
+    .map((r) => Object.fromEntries(header.map((h, idx) => [h, r[idx] ?? ''])));
+}
+
+function loadMappingsCsv(csvPath) {
+  const mappings = new Map();
+  if (!fs.existsSync(csvPath)) return mappings;
+  for (const row of parseCsv(fs.readFileSync(csvPath, 'utf8'))) {
+    if (!row.operationId) continue;
+    mappings.set(`${row.filename}::${row.operationId}`, {
+      resourceName: row.stackql_resource_name || '',
+      methodName: row.stackql_method_name || '',
+      sqlVerb: row.stackql_verb || '',
+      objectKey: row.stackql_object_key || '',
+    });
+  }
+  return mappings;
+}
+
+function appendMappingsCsv(csvPath, newRows) {
+  const exists = fs.existsSync(csvPath);
+  const lines = newRows.map((r) =>
+    [
+      r.filename, r.path, r.operationId, r.formattedOpId, r.verb, r.responseObject,
+      r.tags, r.formattedTags, r.resourceName, r.methodName, r.sqlVerb,
+      r.objectKey, r.opDescription,
+    ]
+      .map(escapeCsvField)
+      .join(','),
+  );
+  const body = lines.length ? lines.join('\n') + '\n' : '';
+  if (!exists) {
+    fs.writeFileSync(csvPath, CSV_HEADER + '\n' + body);
+  } else if (body) {
+    fs.appendFileSync(csvPath, body);
+  }
+}
+
 /**
  * Build x-stackQL-resources for a single service spec, in place.
+ * `fileName` + `mappings` implement the durable-mappings contract: an op
+ * whose `filename::operationId` key exists in the CSV takes its
+ * resource/method/verb/objectKey from the CSV (pinned), overriding the
+ * breadcrumb-derived values; ops without a row are derived as before and
+ * reported back via csvRows for appending.
  * Returns the mutated spec.
  */
-function rewriteService(spec, serviceAlias) {
+function rewriteService(spec, serviceAlias, fileName, mappings) {
   const stackqlResources = {};
   const protocol = (spec.info && spec.info['x-protocol']) || '';
   const jsonVersion = (spec.info && spec.info['x-jsonVersion']) || '1.0';
+  // One CSV row per operationId (query/ec2 register GET+POST for the same
+  // op - first wins). Also track pin-vs-derived divergences for the log.
+  const rowsByKey = new Map();
+  const pinDivergences = [];
+
+  // Must run before the candidates walk so required-param signatures,
+  // sqlVerbs ordering and the dedupe pass all see the demoted view.
+  const nocaseCols = demoteNocaseCollisions(spec);
 
   // Side-table indexed by (resource, verb) carrying per-method metadata we
   // need to sort and dedupe sqlVerbs entries at the end of the pass.
@@ -153,12 +583,17 @@ function rewriteService(spec, serviceAlias) {
       if (!HTTP_METHODS.has(httpMethod)) continue;
       if (!op || typeof op !== 'object') continue;
 
-      const resource = op['x-stackql-resource'];
-      const method = op['x-stackql-method'];
-      const verb = op['x-stackql-verb'];
-      const objectKey = op['x-stackql-objectKey'];
+      let resource = op['x-stackql-resource'];
+      let method = op['x-stackql-method'];
+      let verb = op['x-stackql-verb'];
+      let objectKey = op['x-stackql-objectKey'];
       const responseEnvelope = op['x-stackql-responseEnvelope'];
       const responseObjectKey = op['x-stackql-responseObjectKey'];
+      const transformType = op['x-stackql-transform-type'];
+      const transformBody = op['x-stackql-transform-body'];
+      const pagReqTokenKey = op['x-stackql-pagination-request-token-key'];
+      const pagReqTokenLoc = op['x-stackql-pagination-request-token-location'];
+      const pagRespTokenKey = op['x-stackql-pagination-response-token-key'];
 
       // Strip x-stackql-* tags from the operation regardless of whether
       // we register them (keeps output clean).
@@ -168,8 +603,62 @@ function rewriteService(spec, serviceAlias) {
       delete op['x-stackql-objectKey'];
       delete op['x-stackql-responseEnvelope'];
       delete op['x-stackql-responseObjectKey'];
+      delete op['x-stackql-transform-type'];
+      delete op['x-stackql-transform-body'];
+      delete op['x-stackql-pagination-request-token-key'];
+      delete op['x-stackql-pagination-request-token-location'];
+      delete op['x-stackql-pagination-response-token-key'];
 
       if (!resource || !method || !verb) continue;
+
+      // Durable-mapping pin: an existing CSV row is authoritative for this
+      // operation's resource/method/verb/objectKey. Derived (breadcrumb)
+      // values only apply to ops the CSV has never seen.
+      const operationId = op.operationId || '';
+      const mappingKey = `${fileName}::${operationId}`;
+      const pin = operationId ? mappings.get(mappingKey) : undefined;
+      const pinned = !!(pin && pin.resourceName && pin.methodName && pin.sqlVerb);
+      if (pinned) {
+        if (
+          pin.resourceName !== resource ||
+          pin.methodName !== method ||
+          pin.sqlVerb.toUpperCase() !== verb ||
+          (pin.objectKey || '') !== (objectKey || '')
+        ) {
+          pinDivergences.push(
+            `${mappingKey}: csv ${pin.resourceName}.${pin.methodName}/${pin.sqlVerb} ` +
+            `overrides derived ${resource}.${method}/${verb.toLowerCase()}`,
+          );
+        }
+        resource = pin.resourceName;
+        method = pin.methodName;
+        verb = pin.sqlVerb.toUpperCase();
+        objectKey = pin.objectKey || undefined;
+      }
+
+      if (operationId && !rowsByKey.has(mappingKey)) {
+        const responses = op.responses || {};
+        const respKey = Object.keys(responses).find((k) => /^2\d\d$/.test(k));
+        const respContent = (respKey && responses[respKey] && responses[respKey].content) || {};
+        const respCt = Object.keys(respContent)[0];
+        const respSchema = respCt && respContent[respCt] && respContent[respCt].schema;
+        rowsByKey.set(mappingKey, {
+          filename: fileName,
+          path: pathKey,
+          operationId,
+          formattedOpId: toSnakeAlias(operationId),
+          verb: httpMethod,
+          responseObject: (respSchema && respSchema.$ref) || '',
+          tags: '',
+          formattedTags: '',
+          resourceName: resource,
+          methodName: method,
+          sqlVerb: verb.toLowerCase(),
+          objectKey: objectKey || '',
+          opDescription: (op.description || '').replace(/\s+/g, ' ').slice(0, 200),
+          pinned,
+        });
+      }
 
       // Pick the response 2xx key + media type for the response block.
       let openAPIDocKey = '200';
@@ -199,7 +688,23 @@ function rewriteService(spec, serviceAlias) {
       // spec's info.x-protocol hint, and emits {"line_items": [...]} -
       // one row per list element (or the singleton as a single row). No
       // per-op template body is needed; the schema drives the projection.
-      if (responseEnvelope) {
+      if (transformType && transformBody && responseEnvelope) {
+        // Scalar-list explode (stage 1 emitted a golang template + faux
+        // envelope). mxj templates consume the XML body; json templates
+        // consume the raw JSON body (mediaType stays application/json).
+        if (transformType.includes('mxj')) {
+          responseBlock.mediaType = 'application/xml';
+        }
+        responseBlock.overrideMediaType = 'application/json';
+        responseBlock.schema_override = {
+          $ref: `#/components/schemas/${responseEnvelope}`,
+        };
+        responseBlock.transform = {
+          type: transformType,
+          body: transformBody,
+        };
+        responseBlock.objectKey = responseObjectKey || '$.line_items';
+      } else if (responseEnvelope) {
         responseBlock.mediaType = 'application/xml';
         responseBlock.overrideMediaType = 'application/json';
         responseBlock.schema_override = {
@@ -251,7 +756,14 @@ function rewriteService(spec, serviceAlias) {
       const hasQueryParams = (op.parameters || []).some(
         (p) => p && p.in === 'query' && !SIGNATURE_IGNORE.has(p.name),
       );
-      if (hasQueryParams || op.requestBody) {
+      // EXEC-verb methods with no requestBody (query/ec2 lifecycle ops -
+      // the $ref is the GET form) must NOT carry a `request` block: the
+      // exec analyzer treats a present `request` as "this method has a
+      // body schema" and hard-fails with "no request body for operation".
+      // Nothing is lost - `nativeCasing` only drives snake->Pascal WHERE
+      // key reversal, and EXEC invocations pass wire-cased @params.
+      const isExecVerb = VERB_MAP[verb] === 'exec';
+      if (op.requestBody || (hasQueryParams && !isExecVerb)) {
         methodEntry.request = { nativeCasing: 'pascal' };
       }
       // aws-json (X-Amz-Target routed) services require a JSON body on every
@@ -264,8 +776,16 @@ function rewriteService(spec, serviceAlias) {
       // request.default is NOT usable here - it diverts supplied body params
       // in any-sdk's armoury flow.
       if (protocol === 'json') {
+        // Derive the mediaType from the op's ACTUAL content key rather than
+        // reconstructing `application/x-amz-json-${jsonVersion}` - exact-match
+        // binding then holds by construction even if stage 1's content key
+        // and info.x-jsonVersion ever drift.
+        const bodyContent = (op.requestBody && op.requestBody.content) || {};
+        const amzKey = Object.keys(bodyContent).find((k) =>
+          k.startsWith('application/x-amz-json-'),
+        );
         methodEntry.request = methodEntry.request || {};
-        methodEntry.request.mediaType = `application/x-amz-json-${jsonVersion}`;
+        methodEntry.request.mediaType = amzKey || `application/x-amz-json-${jsonVersion}`;
         methodEntry.request.base = '{}';
       }
       // rest-xml request bodies go to the wire as XML: request.mediaType
@@ -289,6 +809,20 @@ function rewriteService(spec, serviceAlias) {
         methodEntry.config = methodEntry.config || {};
         methodEntry.config.queryParamTranspose = { algorithm: 'AWSCanonical' };
         methodEntry.config.requestTranslate = { algorithm: 'get_query_to_post_form_utf_8' };
+      }
+
+      // Multi-page traversal (rest-json / aws-json list ops; stage 1 gates
+      // the XML protocols pending the any-sdk schema_driven_xml token
+      // passthrough, any-sdk issue #117). stackql injects the request token into the next
+      // request (query param or re-marshalled body) and extracts the
+      // response token from the raw JSON body via JSONPath, terminating
+      // when absent.
+      if (pagReqTokenKey && pagReqTokenLoc && pagRespTokenKey) {
+        methodEntry.config = methodEntry.config || {};
+        methodEntry.config.pagination = {
+          requestToken: { key: pagReqTokenKey, location: pagReqTokenLoc },
+          responseToken: { key: pagRespTokenKey, location: 'body' },
+        };
       }
 
       // Any method that carries a requestBody gets `requestBodyTranslate:
@@ -317,12 +851,13 @@ function rewriteService(spec, serviceAlias) {
         // If the method already has an entry in candidates, replace its
         // requiredParams (the second iteration is the one whose $ref
         // ends up in methodEntry.operation.$ref). Otherwise add fresh.
-        const finalSig = requiredParamsOf(op, spec);
+        const finalSig = requiredParamsOf(op, spec, methodEntry.request);
         const existingIdx = verbCands.findIndex((c) => c.method === method);
         if (existingIdx >= 0) {
           verbCands[existingIdx].requiredParams = finalSig;
+          verbCands[existingIdx].pinned = pinned;
         } else {
-          verbCands.push({ method, requiredParams: finalSig });
+          verbCands.push({ method, requiredParams: finalSig, pinned });
         }
       }
     }
@@ -343,28 +878,85 @@ function rewriteService(spec, serviceAlias) {
   for (const [resource, byVerb] of Object.entries(candidates)) {
     const bucket = stackqlResources[resource];
     for (const [verbKey, list] of Object.entries(byVerb)) {
-      const sigToWinner = new Map();
-      const survivors = [];
+      // Group by signature. Within a group the winner is the first
+      // CSV-pinned candidate when one exists - a durable mapping must not
+      // lose its sqlVerbs slot to a new botocore op that happens to sort
+      // earlier - else the first by insertion order (botocore op-name
+      // lexical order). Losers are demoted to EXEC (left out of sqlVerbs,
+      // still callable via EXEC).
+      const groups = new Map();
       for (const cand of list) {
         const sig = cand.requiredParams.join(',');
-        if (sigToWinner.has(sig)) {
+        if (!groups.has(sig)) groups.set(sig, []);
+        groups.get(sig).push(cand);
+      }
+      const winners = new Set();
+      for (const group of groups.values()) {
+        // Precedence: CSV pin > primary method (noun matches the
+        // resource) > insertion order. Without the primary rule, a
+        // co-location merge can hand create_vpc's INSERT slot to
+        // create_default_vpc purely because it sorts earlier.
+        const winner =
+          group.find((c) => c.pinned) ||
+          group.find((c) => isPrimaryMethod(c.method, resource)) ||
+          group[0];
+        winners.add(winner);
+        for (const cand of group) {
+          if (cand === winner) continue;
+          if (cand.pinned) {
+            // Two CSV-pinned methods clashing means the pinned surface
+            // itself is inconsistent - surface loudly, keep building
+            // (verifySignatureUniqueness stays green because only the
+            // winner enters sqlVerbs).
+            console.warn(
+              `  WARN  [${serviceAlias}] csv-pinned method ${resource}.${cand.method} ` +
+              `(${verbKey}) demoted to EXEC: signature clash with ${winner.method}`,
+            );
+          }
           demotions.push({
             resource,
             verb: verbKey,
-            kept: sigToWinner.get(sig),
+            kept: winner.method,
             demoted: cand.method,
             signature: cand.requiredParams,
           });
-          continue;
         }
-        sigToWinner.set(sig, cand.method);
-        survivors.push(cand);
       }
+      const survivors = list.filter((c) => winners.has(c));
       survivors.sort((a, b) => b.requiredParams.length - a.requiredParams.length);
       bucket.sqlVerbs[verbKey] = survivors.map((c) => ({
         $ref: `#/components/x-stackQL-resources/${resource}/methods/${c.method}`,
       }));
     }
+  }
+
+  // Zero-column select demotion (invariant: every SELECT-routed method
+  // must project at least one field; resources without select are fine).
+  // Two ways a method ends up field-less: the API returns a bare scalar
+  // list (ListQueues -> [QueueUrl]), or stage 1's row-shape picker chose
+  // a scalar list member and synthesised an empty Display
+  // (DescribeResourceScan's ResourceTypes). DESCRIBE EXTENDED resolves
+  // columns via the first select method in router order, so a single
+  // empty method poisons the resource even when siblings have columns -
+  // test-meta-routes hard-fails on "No columns found". Demote each
+  // zero-column method to EXEC (still callable; raw response visible);
+  // the resource stays selectable through its remaining methods, keeps
+  // its other verbs, or is pruned by the empty-resource rule below.
+  const zeroColumnDemotions = [];
+  for (const [rName, bucket] of Object.entries(stackqlResources)) {
+    const sel = bucket.sqlVerbs.select || [];
+    if (!sel.length) continue;
+    const kept = [];
+    for (const ref of sel) {
+      const mName = ref.$ref.split('/').pop();
+      const mEntry = bucket.methods[mName];
+      if (mEntry && methodEntryRowColumns(spec, mEntry).length === 0) {
+        zeroColumnDemotions.push({ resource: rName, method: mName });
+      } else {
+        kept.push(ref);
+      }
+    }
+    if (kept.length !== sel.length) bucket.sqlVerbs.select = kept;
   }
 
   // Drop empty sqlVerb arrays the schema doesn't require (we still keep
@@ -398,7 +990,31 @@ function rewriteService(spec, serviceAlias) {
   spec.components = spec.components || {};
   spec.components['x-stackQL-resources'] = stackqlResources;
 
-  return { spec, demotions, prunedEmpty };
+  // New CSV rows: ops the mapping table has never seen. Record the
+  // EFFECTIVE verb - a method demoted by the signature dedupe or the
+  // zero-column pass goes in as `exec`, so the demotion is pinned and
+  // can't silently flip when a later botocore drop changes insertion
+  // order or signatures.
+  const demotedSet = new Set(demotions.map((d) => `${d.resource}::${d.demoted}`));
+  for (const d of zeroColumnDemotions) demotedSet.add(`${d.resource}::${d.method}`);
+  const csvNewRows = [];
+  for (const [key, row] of rowsByKey.entries()) {
+    if (mappings.has(key)) continue;
+    if (demotedSet.has(`${row.resourceName}::${row.methodName}`)) {
+      row.sqlVerb = 'exec';
+    }
+    csvNewRows.push(row);
+  }
+
+  return {
+    spec,
+    demotions,
+    zeroColumnDemotions,
+    prunedEmpty,
+    nocaseCols,
+    csvNewRows,
+    pinDivergences,
+  };
 }
 
 /**
@@ -430,7 +1046,7 @@ function verifySignatureUniqueness(spec, alias) {
         const pathKey = parts.join('/').replace(/~1/g, '/').replace(/~0/g, '~');
         const op = ((spec.paths || {})[pathKey] || {})[httpVerb];
         if (!op) continue;
-        const sig = requiredParamsOf(op, spec).join(',');
+        const sig = requiredParamsOf(op, spec, method.request).join(',');
         if (seen.has(sig)) {
           const err = new Error(
             `[${alias}] duplicate required-params signature in (resource=${rName}, verb=${verbKey}): ` +
@@ -442,6 +1058,42 @@ function verifySignatureUniqueness(spec, alias) {
           throw err;
         }
         seen.set(sig, m);
+      }
+    }
+  }
+}
+
+/**
+ * Build-time body-binding guard. Every registered method whose operation
+ * carries a requestBody must have a runtime-bindable content key (exact
+ * `request.mediaType` match, or the `application/json` default). An
+ * unbindable body ships silently: required body fields vanish from
+ * RequiredParams at runtime, get/list signature pairs collapse, and the
+ * failure only surfaces via test-meta-routes. Methods on the query/ec2
+ * GET->POST translate flow are exempt - their $ref points at the GET form
+ * and the form body is synthesised at request time.
+ */
+function verifyBodyBinding(spec, alias) {
+  const resources = (spec.components && spec.components['x-stackQL-resources']) || {};
+  for (const [rName, r] of Object.entries(resources)) {
+    for (const [mName, method] of Object.entries(r.methods || {})) {
+      if (method.config && method.config.requestTranslate) continue;
+      const opRefStr = method.operation && method.operation.$ref;
+      if (!opRefStr) continue;
+      const parts = opRefStr.replace(/^#\/paths\//, '').split('/');
+      const httpVerb = parts.pop();
+      const pathKey = parts.join('/').replace(/~1/g, '/').replace(/~0/g, '~');
+      const op = ((spec.paths || {})[pathKey] || {})[httpVerb];
+      if (!op || !op.requestBody || !op.requestBody.content) continue;
+      if (!bindableBodyContentKey(op, method.request)) {
+        const err = new Error(
+          `[${alias}] unbindable request body in resource=${rName}, method=${mName}: ` +
+          `content keys [${Object.keys(op.requestBody.content).join(', ')}] vs ` +
+          `request.mediaType '${(method.request && method.request.mediaType) || '(unset)'}'. ` +
+          `Required body fields would silently vanish from runtime routing.`
+        );
+        err.code = 'BODY_UNBOUND';
+        throw err;
       }
     }
   }
@@ -476,8 +1128,25 @@ const sourceFiles = fs
 
 console.log(`Processing ${sourceFiles.length} services from ${sourceDir}`);
 
+const mappings = loadMappingsCsv(mappingsCsvPath);
+if (mappings.size) {
+  console.log(`Loaded ${mappings.size} durable mappings from ${mappingsCsvPath}`);
+} else {
+  console.log(`No mappings CSV at ${mappingsCsvPath} - bootstrapping from derived mappings`);
+}
+
 const providerServices = {};
 const skippedServices = [];
+const allNewRows = [];
+const allPinDivergences = [];
+// Regression-guard counters (compared against the committed benchmarks).
+const stats = {
+  services: 0,
+  resources: 0,
+  methods: 0,
+  selectableResources: 0,
+  nonSelectableResources: 0,
+};
 
 for (const file of sourceFiles) {
   const srcPath = path.join(sourceDir, file);
@@ -493,14 +1162,23 @@ for (const file of sourceFiles) {
   const title = (spec.info && spec.info.title) || alias;
   const description = (spec.info && spec.info.description) || `${alias} API`;
 
-  const { demotions, prunedEmpty } = rewriteService(spec, alias);
+  const { demotions, zeroColumnDemotions, prunedEmpty, nocaseCols, csvNewRows, pinDivergences } =
+    rewriteService(spec, alias, file, mappings);
+  allNewRows.push(...csvNewRows);
+  allPinDivergences.push(...pinDivergences);
 
   // Build-time guard: assert no (resource, sqlVerb) bucket has duplicate
   // required-param signatures. Fails the whole build if violated.
   try {
     verifySignatureUniqueness(spec, alias);
+    verifyNoNocaseCollisions(spec, alias, nocaseCols);
+    verifyBodyBinding(spec, alias);
   } catch (err) {
-    if (err.code === 'DUPLICATE_SIGNATURE') {
+    if (
+      err.code === 'DUPLICATE_SIGNATURE' ||
+      err.code === 'NOCASE_COLLISION' ||
+      err.code === 'BODY_UNBOUND'
+    ) {
       console.error(`\n  FAIL  ${err.message}`);
       process.exit(1);
     }
@@ -524,11 +1202,26 @@ for (const file of sourceFiles) {
     continue;
   }
 
+  stats.services += 1;
+  const finalResources = spec.components['x-stackQL-resources'] || {};
+  for (const r of Object.values(finalResources)) {
+    stats.resources += 1;
+    stats.methods += Object.keys(r.methods || {}).length;
+    if (((r.sqlVerbs || {}).select || []).length) {
+      stats.selectableResources += 1;
+    } else {
+      stats.nonSelectableResources += 1;
+    }
+  }
+
   const outPath = path.join(servicesRoot, `${alias}.yaml`);
   dumpYaml(outPath, spec);
 
   const notes = [];
   if (demotions.length) notes.push(`${demotions.length} demoted to EXEC`);
+  if (zeroColumnDemotions.length) {
+    notes.push(`${zeroColumnDemotions.length} zero-column selects -> EXEC`);
+  }
   if (prunedEmpty.length) notes.push(`${prunedEmpty.length} pruned (no SQL verbs)`);
   const tail = notes.length ? ` [${notes.join(', ')}]` : '';
   console.log(`  ok    ${alias}  (${resourceCount} resources)${tail}`);
@@ -563,6 +1256,80 @@ const providerYaml = {
 };
 
 dumpYaml(path.join(providerRoot, 'provider.yaml'), providerYaml);
+
+// Persist durable mappings: append-only, existing rows never rewritten.
+appendMappingsCsv(mappingsCsvPath, allNewRows);
+if (allNewRows.length) {
+  console.log(
+    `${mappings.size ? 'Appended' : 'Bootstrapped'} ${allNewRows.length} mapping rows in ${mappingsCsvPath}`,
+  );
+}
+if (allPinDivergences.length) {
+  console.log(`\n${allPinDivergences.length} CSV pins override derived mappings:`);
+  for (const d of allPinDivergences.slice(0, 50)) console.log(`  pin   ${d}`);
+  if (allPinDivergences.length > 50) {
+    console.log(`  ... and ${allPinDivergences.length - 50} more`);
+  }
+}
+
+// ----- benchmark regression guard -------------------------------------------
+// Committed baseline (provider-dev/config/benchmarks.json): surface counts
+// only ever creep UP as botocore grows - any decrease means ops silently
+// fell off the SQL surface. The non-selectable ratio is the shape-quality
+// canary: a spike means a generator change started stranding readers.
+// Conscious changes update the baseline with --update-benchmarks.
+const benchmarksPath = path.join(path.dirname(mappingsCsvPath), 'benchmarks.json');
+const ratioPct = (100 * stats.nonSelectableResources) / (stats.resources || 1);
+const current = {
+  services: stats.services,
+  resources: stats.resources,
+  methods: stats.methods,
+  selectableResources: stats.selectableResources,
+  nonSelectableResources: stats.nonSelectableResources,
+  nonSelectableRatioPct: Math.round(ratioPct * 100) / 100,
+};
+
+console.log(
+  `\nSurface: ${current.services} services, ${current.resources} resources, ` +
+  `${current.methods} methods, ${current.nonSelectableResources} non-selectable ` +
+  `(${current.nonSelectableRatioPct}%)`,
+);
+
+if (fs.existsSync(benchmarksPath) && !args['update-benchmarks']) {
+  const baseline = JSON.parse(fs.readFileSync(benchmarksPath, 'utf8'));
+  const tolerancePct = baseline.ratioTolerancePct ?? 0.5;
+  const regressions = [];
+  for (const k of ['services', 'resources', 'methods', 'selectableResources']) {
+    if (baseline[k] != null && current[k] < baseline[k]) {
+      regressions.push(`${k} fell: ${baseline[k]} -> ${current[k]}`);
+    }
+  }
+  if (
+    baseline.nonSelectableRatioPct != null &&
+    current.nonSelectableRatioPct > baseline.nonSelectableRatioPct + tolerancePct
+  ) {
+    regressions.push(
+      `nonSelectableRatioPct spiked: ${baseline.nonSelectableRatioPct}% -> ` +
+      `${current.nonSelectableRatioPct}% (tolerance +${tolerancePct}pp)`,
+    );
+  }
+  if (regressions.length) {
+    console.error(`\n  FAIL  benchmark regression vs ${benchmarksPath}:`);
+    for (const r of regressions) console.error(`        ${r}`);
+    console.error('        If intentional, re-baseline with --update-benchmarks.');
+    process.exit(1);
+  }
+  console.log(`Benchmarks OK vs baseline (${benchmarksPath})`);
+} else {
+  const payload = {
+    ...current,
+    ratioTolerancePct: 0.5,
+    note: 'Regression baseline - counts must not fall, ratio must not spike. Update via generate-provider.mjs --update-benchmarks only.',
+  };
+  fs.writeFileSync(benchmarksPath, JSON.stringify(payload, null, 2) + '\n');
+  console.log(`Benchmarks ${args['update-benchmarks'] ? 'updated' : 'bootstrapped'}: ${benchmarksPath}`);
+}
+
 const writtenCount = Object.keys(providerServices).length;
 const skipNote = skippedServices.length
   ? ` (${skippedServices.length} services skipped: ${skippedServices.join(', ')})`

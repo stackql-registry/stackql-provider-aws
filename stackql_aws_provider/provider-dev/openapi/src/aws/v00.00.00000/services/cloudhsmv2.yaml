@@ -1236,116 +1236,24 @@ components:
     UntagResourceResponse:
       type: object
   x-stackQL-resources:
-    clusters:
-      id: aws.cloudhsmv2.clusters
-      name: clusters
-      title: clusters
-      methods:
-        create_cluster:
-          operation:
-            $ref: "#/paths/~1CreateCluster/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_cluster:
-          operation:
-            $ref: "#/paths/~1DeleteCluster/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_clusters:
-          operation:
-            $ref: "#/paths/~1DescribeClusters/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Clusters
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        modify_cluster:
-          operation:
-            $ref: "#/paths/~1ModifyCluster/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_clusters"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
-        update:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/modify_cluster"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
-    hsms:
-      id: aws.cloudhsmv2.hsms
-      name: hsms
-      title: hsms
-      methods:
-        create_hsm:
-          operation:
-            $ref: "#/paths/~1CreateHsm/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_hsm:
-          operation:
-            $ref: "#/paths/~1DeleteHsm/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/hsms/methods/create_hsm"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/hsms/methods/delete_hsm"
     backups:
       id: aws.cloudhsmv2.backups
       name: backups
       title: backups
       methods:
+        copy_backup_to_region:
+          operation:
+            $ref: "#/paths/~1CopyBackupToRegion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         delete_backup:
           operation:
             $ref: "#/paths/~1DeleteBackup/post"
@@ -1371,15 +1279,163 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        modify_backup_attributes:
+          operation:
+            $ref: "#/paths/~1ModifyBackupAttributes/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        restore_backup:
+          operation:
+            $ref: "#/paths/~1RestoreBackup/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/backups/methods/describe_backups"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/backups/methods/modify_backup_attributes"
         delete:
           - $ref: "#/components/x-stackQL-resources/backups/methods/delete_backup"
+    clusters:
+      id: aws.cloudhsmv2.clusters
+      name: clusters
+      title: clusters
+      methods:
+        create_cluster:
+          operation:
+            $ref: "#/paths/~1CreateCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_hsm:
+          operation:
+            $ref: "#/paths/~1CreateHsm/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_cluster:
+          operation:
+            $ref: "#/paths/~1DeleteCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_hsm:
+          operation:
+            $ref: "#/paths/~1DeleteHsm/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_clusters:
+          operation:
+            $ref: "#/paths/~1DescribeClusters/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Clusters
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        initialize_cluster:
+          operation:
+            $ref: "#/paths/~1InitializeCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        modify_cluster:
+          operation:
+            $ref: "#/paths/~1ModifyCluster/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_clusters"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/create_hsm"
+        update:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/modify_cluster"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
     resource_policies:
       id: aws.cloudhsmv2.resource_policies
       name: resource_policies
@@ -1450,43 +1506,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
-        insert: []
-        update: []
-        delete: []
-    backup_attributes:
-      id: aws.cloudhsmv2.backup_attributes
-      name: backup_attributes
-      title: backup_attributes
-      methods:
-        modify_backup_attributes:
-          operation:
-            $ref: "#/paths/~1ModifyBackupAttributes/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/backup_attributes/methods/modify_backup_attributes"
-        delete: []
-    resources:
-      id: aws.cloudhsmv2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -1514,9 +1542,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

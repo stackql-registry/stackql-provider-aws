@@ -1,0 +1,1 @@
+SELECT * FROM aws.dynamodb.tables WHERE region = '{{ region }}' AND TableName = '{{ table_name }}'

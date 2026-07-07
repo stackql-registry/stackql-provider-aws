@@ -34,7 +34,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelSessionResponse'
-      x-stackql-resource: session
+      x-stackql-resource: sessions
       x-stackql-method: cancel_session
       x-stackql-verb: EXEC
     get:
@@ -277,6 +277,7 @@ paths:
       x-stackql-resource: policy_versions
       x-stackql-method: get_policy_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PolicyVersion
   /GetResourcePolicy:
     post:
       operationId: GetResourcePolicy
@@ -340,6 +341,9 @@ paths:
       x-stackql-method: list_approval_teams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApprovalTeams
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /identity-sources/?List:
     post:
       operationId: ListIdentitySources
@@ -372,6 +376,9 @@ paths:
       x-stackql-method: list_identity_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IdentitySources
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /policies/?List:
     post:
       operationId: ListPolicies
@@ -403,6 +410,9 @@ paths:
       x-stackql-method: list_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Policies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /policies/{policy_arn}/?List:
     post:
       operationId: ListPolicyVersions
@@ -440,6 +450,9 @@ paths:
       x-stackql-method: list_policy_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PolicyVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /resource-policies/{resource_arn}/?List:
     post:
       operationId: ListResourcePolicies
@@ -477,6 +490,9 @@ paths:
       x-stackql-method: list_resource_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourcePolicies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /approval-teams/{approval_team_arn}/sessions/?List:
     post:
       operationId: ListSessions
@@ -513,6 +529,9 @@ paths:
       x-stackql-method: list_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Sessions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -531,7 +550,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     put:
@@ -563,7 +582,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     post:
@@ -595,7 +614,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /approval-teams/{arn}?Delete:
@@ -656,7 +675,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartApprovalTeamBaselineResponse'
-      x-stackql-resource: approval_team_baseline
+      x-stackql-resource: approval_teams
       x-stackql-method: start_approval_team_baseline
       x-stackql-verb: EXEC
 components:

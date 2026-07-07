@@ -40,7 +40,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateSubscriptionOutput'
-      x-stackql-resource: subscription
+      x-stackql-resource: subscriptions
       x-stackql-method: activate_subscription
       x-stackql-verb: EXEC
   /domain:
@@ -108,6 +108,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.domains
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /domains/{domain_id}/subscriptions:
     post:
       operationId: CreateSubscription
@@ -162,6 +165,9 @@ paths:
       x-stackql-method: list_subscriptions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.subscriptions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /domains/{domain_id}/subscriptions/{subscription_id}/deactivate:
     post:
       operationId: DeactivateSubscription
@@ -186,7 +192,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateSubscriptionOutput'
-      x-stackql-resource: subscription
+      x-stackql-resource: subscriptions
       x-stackql-method: deactivate_subscription
       x-stackql-verb: EXEC
   /domain/{domain_id}:
@@ -263,6 +269,7 @@ paths:
       x-stackql-resource: medical_scribe_listening_sessions
       x-stackql-method: get_medical_scribe_listening_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.medicalScribeListeningSessionDetails
   /domain/{domain_id}/patient-insights-job/{job_id}:
     get:
       operationId: GetPatientInsightsJob
@@ -315,6 +322,7 @@ paths:
       x-stackql-resource: subscriptions
       x-stackql-method: get_subscription
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.subscription
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -333,7 +341,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -360,7 +368,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -382,7 +390,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /medical-scribe-stream/:
@@ -490,7 +498,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPatientInsightsJobResponse'
-      x-stackql-resource: patient_insights_job
+      x-stackql-resource: domains
       x-stackql-method: start_patient_insights_job
       x-stackql-verb: EXEC
 components:

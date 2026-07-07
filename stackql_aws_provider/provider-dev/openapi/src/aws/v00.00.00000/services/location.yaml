@@ -409,7 +409,6 @@ paths:
                   $ref: "#/components/schemas/TagMap"
               required:
                 - KeyName
-                - Restrictions
       responses:
         "200":
           description: Success
@@ -441,7 +440,6 @@ paths:
                   $ref: "#/components/schemas/TagMap"
               required:
                 - MapName
-                - Configuration
       responses:
         "200":
           description: Success
@@ -1135,8 +1133,6 @@ paths:
                   $ref: "#/components/schemas/GeofenceGeometry"
                 GeofenceProperties:
                   $ref: "#/components/schemas/PropertyMap"
-              required:
-                - Geometry
       responses:
         "200":
           description: Success
@@ -1569,8 +1565,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "200":
           description: Success
@@ -1629,7 +1623,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTrackerConsumersResponse"
+                $ref: "#/components/schemas/ListTrackerConsumersOutputDisplay"
   /tracking/v0/list-trackers:
     post:
       operationId: ListTrackers
@@ -4153,21 +4147,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListTrackerConsumersResponse:
+    ListTrackerConsumersRowDisplay:
       type: object
       properties:
-        ConsumerArns:
-          $ref: "#/components/schemas/ArnList"
+        consumer_arn:
+          type: string
           description: Contains the list of geofence collection ARNs associated to the tracker resource.
-        NextToken:
-          $ref: "#/components/schemas/Token"
-          description: A pagination token indicating there are additional pages available. You can use the token in a following request to fetch the next set of results.
-      required:
-        - ConsumerArns
-    ArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Arn"
+    ListTrackerConsumersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTrackerConsumersRowDisplay"
     ListTrackersRequestMaxResultsInteger:
       type: integer
       minimum: 1
@@ -4856,10 +4848,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ConsumerArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTrackerConsumersOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ConsumerArns" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"consumer_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4869,6 +4874,179 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/tracker_consumers/methods/associate_tracker_consumer"
           - $ref: "#/components/x-stackQL-resources/tracker_consumers/methods/disassociate_tracker_consumer"
+        delete: []
+    trackers:
+      id: aws.location.trackers
+      name: trackers
+      title: trackers
+      methods:
+        batch_delete_device_position_history:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}~1delete-positions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_device_position:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}~1positions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_tracker:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1trackers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_tracker:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_tracker:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_tracker:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_trackers:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1list-trackers/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Entries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        verify_device_position:
+          operation:
+            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}~1positions~1verify/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/trackers/methods/describe_tracker"
+          - $ref: "#/components/x-stackQL-resources/trackers/methods/list_trackers"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/trackers/methods/create_tracker"
+        update:
+          - $ref: "#/components/x-stackQL-resources/trackers/methods/update_tracker"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/trackers/methods/delete_tracker"
+    geofences:
+      id: aws.location.geofences
+      name: geofences
+      title: geofences
+      methods:
+        batch_delete_geofence:
+          operation:
+            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1delete-geofences/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_evaluate_geofences:
+          operation:
+            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1positions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_geofence:
+          operation:
+            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1geofences~1{geofence_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        put_geofence:
+          operation:
+            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1geofences~1{geofence_id}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_geofences:
+          operation:
+            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1list-geofences/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Entries
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/geofences/methods/get_geofence"
+          - $ref: "#/components/x-stackQL-resources/geofences/methods/list_geofences"
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/geofences/methods/put_geofence"
         delete: []
     device_positions:
       id: aws.location.device_positions
@@ -4902,6 +5080,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4961,6 +5146,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5024,6 +5216,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5085,6 +5284,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5146,6 +5352,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5207,6 +5420,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5219,67 +5439,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/route_calculators/methods/update_route_calculator"
         delete:
           - $ref: "#/components/x-stackQL-resources/route_calculators/methods/delete_route_calculator"
-    trackers:
-      id: aws.location.trackers
-      name: trackers
-      title: trackers
-      methods:
-        create_tracker:
-          operation:
-            $ref: "#/paths/~1tracking~1v0~1trackers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_tracker:
-          operation:
-            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_tracker:
-          operation:
-            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_tracker:
-          operation:
-            $ref: "#/paths/~1tracking~1v0~1trackers~1{tracker_name}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_trackers:
-          operation:
-            $ref: "#/paths/~1tracking~1v0~1list-trackers/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Entries
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/trackers/methods/describe_tracker"
-          - $ref: "#/components/x-stackQL-resources/trackers/methods/list_trackers"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/trackers/methods/create_tracker"
-        update:
-          - $ref: "#/components/x-stackQL-resources/trackers/methods/update_tracker"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/trackers/methods/delete_tracker"
     device_position_histories:
       id: aws.location.device_position_histories
       name: device_position_histories
@@ -5295,6 +5454,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5302,49 +5468,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/device_position_histories/methods/get_device_position_history"
         insert: []
         update: []
-        delete: []
-    geofences:
-      id: aws.location.geofences
-      name: geofences
-      title: geofences
-      methods:
-        get_geofence:
-          operation:
-            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1geofences~1{geofence_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        put_geofence:
-          operation:
-            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1geofences~1{geofence_id}/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_geofences:
-          operation:
-            $ref: "#/paths/~1geofencing~1v0~1collections~1{collection_name}~1list-geofences/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Entries
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/geofences/methods/get_geofence"
-          - $ref: "#/components/x-stackQL-resources/geofences/methods/list_geofences"
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/geofences/methods/put_geofence"
         delete: []
     jobs:
       id: aws.location.jobs
@@ -5367,6 +5490,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5463,6 +5593,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Place
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -5471,10 +5602,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.location.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.location.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5482,17 +5613,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.location.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -5513,11 +5633,12 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []
     place_index_for_positions:
       id: aws.location.place_index_for_positions

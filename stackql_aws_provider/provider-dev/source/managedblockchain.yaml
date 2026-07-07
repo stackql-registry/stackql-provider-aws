@@ -86,6 +86,9 @@ paths:
       x-stackql-method: list_accessors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accessors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /networks/{network_id}/members:
     post:
       operationId: CreateMember
@@ -476,6 +479,7 @@ paths:
       x-stackql-resource: accessors
       x-stackql-method: get_accessor
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Accessor
   /networks/{network_id}/members/{member_id}:
     delete:
       operationId: DeleteMember
@@ -533,6 +537,7 @@ paths:
       x-stackql-resource: members
       x-stackql-method: get_member
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Member
     patch:
       operationId: UpdateMember
       description: Updates a member configuration with new parameters. Applies only to Hyperledger Fabric.
@@ -637,6 +642,7 @@ paths:
       x-stackql-resource: nodes
       x-stackql-method: get_node
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Node
     patch:
       operationId: UpdateNode
       description: Updates a node configuration with new parameters. Applies only to Hyperledger Fabric.
@@ -695,6 +701,7 @@ paths:
       x-stackql-resource: networks
       x-stackql-method: get_network
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Network
   /networks/{network_id}/proposals/{proposal_id}:
     get:
       operationId: GetProposal
@@ -722,6 +729,7 @@ paths:
       x-stackql-resource: proposals
       x-stackql-method: get_proposal
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Proposal
   /invitations:
     get:
       operationId: ListInvitations
@@ -829,7 +837,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VoteOnProposalOutput'
-      x-stackql-resource: vote_on_proposal
+      x-stackql-resource: proposals
       x-stackql-method: vote_on_proposal
       x-stackql-verb: EXEC
   /tags/{resource_arn}:
@@ -853,7 +861,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -890,7 +898,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -919,7 +927,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /invitations/{invitation_id}:
@@ -941,7 +949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectInvitationOutput'
-      x-stackql-resource: invitation
+      x-stackql-resource: invitations
       x-stackql-method: reject_invitation
       x-stackql-verb: EXEC
 components:

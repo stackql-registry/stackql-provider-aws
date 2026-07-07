@@ -216,7 +216,6 @@ paths:
                   description: The tags to be assigned to the report definition resource.
               required:
                 - ReportName
-                - Tags
       responses:
         "200":
           description: Success
@@ -584,6 +583,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         modify_report_definition:
@@ -622,10 +628,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/report_definitions/methods/put_report_definition"
         delete:
           - $ref: "#/components/x-stackQL-resources/report_definitions/methods/delete_report_definition"
-    tags_for_resources:
-      id: aws.cur.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.cur.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -640,17 +646,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.cur.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -678,9 +673,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

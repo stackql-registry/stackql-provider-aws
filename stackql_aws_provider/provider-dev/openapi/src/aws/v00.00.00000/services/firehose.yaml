@@ -424,7 +424,6 @@ paths:
                   description: A set of key-value pairs to use to create the tags.
               required:
                 - DeliveryStreamName
-                - Tags
       responses:
         "200":
           description: Success
@@ -3685,6 +3684,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DeliveryStreamDescription
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -3695,6 +3695,102 @@ components:
         list_delivery_streams:
           operation:
             $ref: "#/paths/~1ListDeliveryStreams/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_record:
+          operation:
+            $ref: "#/paths/~1PutRecord/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_record_batch:
+          operation:
+            $ref: "#/paths/~1PutRecordBatch/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_delivery_stream_encryption:
+          operation:
+            $ref: "#/paths/~1StartDeliveryStreamEncryption/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_delivery_stream_encryption:
+          operation:
+            $ref: "#/paths/~1StopDeliveryStreamEncryption/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_destination:
+          operation:
+            $ref: "#/paths/~1UpdateDestination/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/describe_delivery_stream"
+          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/list_delivery_streams"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/create_delivery_stream"
+        update:
+          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/update_destination"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/put_record"
+          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/put_record_batch"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/delete_delivery_stream"
+    tags:
+      id: aws.firehose.tags
+      name: tags
+      title: tags
+      methods:
+        list_tags_for_delivery_stream:
+          operation:
+            $ref: "#/paths/~1ListTagsForDeliveryStream/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3733,110 +3829,9 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/describe_delivery_stream"
-          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/list_delivery_streams"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/create_delivery_stream"
-        update:
-          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/tag_delivery_stream"
-          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/untag_delivery_stream"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/delivery_streams/methods/delete_delivery_stream"
-    tags_for_delivery_streams:
-      id: aws.firehose.tags_for_delivery_streams
-      name: tags_for_delivery_streams
-      title: tags_for_delivery_streams
-      methods:
-        list_tags_for_delivery_stream:
-          operation:
-            $ref: "#/paths/~1ListTagsForDeliveryStream/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_delivery_streams/methods/list_tags_for_delivery_stream"
-        insert: []
-        update: []
-        delete: []
-    records:
-      id: aws.firehose.records
-      name: records
-      title: records
-      methods:
-        put_record:
-          operation:
-            $ref: "#/paths/~1PutRecord/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/records/methods/put_record"
-        delete: []
-    record_batches:
-      id: aws.firehose.record_batches
-      name: record_batches
-      title: record_batches
-      methods:
-        put_record_batch:
-          operation:
-            $ref: "#/paths/~1PutRecordBatch/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/record_batches/methods/put_record_batch"
-        delete: []
-    destinations:
-      id: aws.firehose.destinations
-      name: destinations
-      title: destinations
-      methods:
-        update_destination:
-          operation:
-            $ref: "#/paths/~1UpdateDestination/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_delivery_stream"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/destinations/methods/update_destination"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_delivery_stream"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_delivery_stream"
         delete: []

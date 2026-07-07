@@ -36,8 +36,6 @@ paths:
               properties:
                 Attendees:
                   $ref: "#/components/schemas/CreateAttendeeRequestItemList"
-              required:
-                - Attendees
       responses:
         "200":
           description: Success
@@ -214,7 +212,6 @@ paths:
                 - ClientRequestToken
                 - MediaRegion
                 - ExternalMeetingId
-                - Attendees
       responses:
         "200":
           description: Success
@@ -371,7 +368,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceARN
-                - Tags
       responses:
         "204":
           description: Success
@@ -1072,6 +1068,78 @@ components:
           $ref: "#/components/schemas/Attendee"
           description: The updated attendee data.
   x-stackQL-resources:
+    meetings:
+      id: aws.chime_sdk_meetings.meetings
+      name: meetings
+      title: meetings
+      methods:
+        batch_create_attendee:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees?operation=batch-create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_attendee_capabilities_except:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees~1capabilities?operation=batch-update-except/put"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_meeting:
+          operation:
+            $ref: "#/paths/~1meetings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_meeting:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_meeting:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Meeting
+        start_meeting_transcription:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}~1transcription?operation=start/post"
+          response:
+            openAPIDocKey: "200"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_meeting_transcription:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}~1transcription?operation=stop/post"
+          response:
+            openAPIDocKey: "200"
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/meetings/methods/get_meeting"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/meetings/methods/create_meeting"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/meetings/methods/delete_meeting"
     attendees:
       id: aws.chime_sdk_meetings.attendees
       name: attendees
@@ -1096,66 +1164,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-        delete_attendee:
-          operation:
-            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees~1{attendee_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_attendee:
-          operation:
-            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees~1{attendee_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/attendees/methods/get_attendee"
-          - $ref: "#/components/x-stackQL-resources/attendees/methods/list_attendees"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/attendees/methods/create_attendee"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/attendees/methods/delete_attendee"
-    meetings:
-      id: aws.chime_sdk_meetings.meetings
-      name: meetings
-      title: meetings
-      methods:
-        create_meeting:
-          operation:
-            $ref: "#/paths/~1meetings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_meeting:
-          operation:
-            $ref: "#/paths/~1meetings~1{meeting_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_meeting:
-          operation:
-            $ref: "#/paths/~1meetings~1{meeting_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/meetings/methods/get_meeting"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/meetings/methods/create_meeting"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/meetings/methods/delete_meeting"
-    meeting_with_attendees:
-      id: aws.chime_sdk_meetings.meeting_with_attendees
-      name: meeting_with_attendees
-      title: meeting_with_attendees
-      methods:
         create_meeting_with_attendees:
           operation:
             $ref: "#/paths/~1meetings?operation=create-attendees/post"
@@ -1167,16 +1175,44 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        delete_attendee:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees~1{attendee_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_attendee:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees~1{attendee_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Attendee
+        update_attendee_capabilities:
+          operation:
+            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees~1{attendee_id}~1capabilities/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/attendees/methods/get_attendee"
+          - $ref: "#/components/x-stackQL-resources/attendees/methods/list_attendees"
         insert:
-          - $ref: "#/components/x-stackQL-resources/meeting_with_attendees/methods/create_meeting_with_attendees"
-        update: []
-        delete: []
-    tags_for_resources:
-      id: aws.chime_sdk_meetings.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+          - $ref: "#/components/x-stackQL-resources/attendees/methods/create_meeting_with_attendees"
+          - $ref: "#/components/x-stackQL-resources/attendees/methods/create_attendee"
+        update:
+          - $ref: "#/components/x-stackQL-resources/attendees/methods/update_attendee_capabilities"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/attendees/methods/delete_attendee"
+    tags:
+      id: aws.chime_sdk_meetings.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -1186,17 +1222,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.chime_sdk_meetings.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
@@ -1220,31 +1245,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    attendee_capabilities:
-      id: aws.chime_sdk_meetings.attendee_capabilities
-      name: attendee_capabilities
-      title: attendee_capabilities
-      methods:
-        update_attendee_capabilities:
-          operation:
-            $ref: "#/paths/~1meetings~1{meeting_id}~1attendees~1{attendee_id}~1capabilities/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/attendee_capabilities/methods/update_attendee_capabilities"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

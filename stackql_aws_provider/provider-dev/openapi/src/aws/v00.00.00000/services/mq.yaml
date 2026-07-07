@@ -131,7 +131,6 @@ paths:
                   $ref: "#/components/schemas/__mapOf__string"
               required:
                 - EngineType
-                - Name
       responses:
         "200":
           description: Success
@@ -1725,6 +1724,14 @@ components:
             objectKey: $.BrokerSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_broker:
           operation:
             $ref: "#/paths/~1v1~1brokers~1{broker-id}/delete"

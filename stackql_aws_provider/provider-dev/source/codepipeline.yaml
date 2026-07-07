@@ -169,7 +169,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCustomActionTypeOutput'
-      x-stackql-resource: custom_action_types
+      x-stackql-resource: action_types
       x-stackql-method: create_custom_action_type
       x-stackql-verb: INSERT
   /CreatePipeline:
@@ -253,7 +253,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: custom_action_types
+      x-stackql-resource: action_types
       x-stackql-method: delete_custom_action_type
       x-stackql-verb: DELETE
   /DeletePipeline:
@@ -358,7 +358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeregisterWebhookWithThirdPartyOutput'
-      x-stackql-resource: webhook_with_third_parties
+      x-stackql-resource: webhooks
       x-stackql-method: deregister_webhook_with_third_party
       x-stackql-verb: DELETE
   /DisableStageTransition:
@@ -406,7 +406,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: stage_transition
+      x-stackql-resource: pipelines
       x-stackql-method: disable_stage_transition
       x-stackql-verb: EXEC
   /EnableStageTransition:
@@ -450,7 +450,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: stage_transition
+      x-stackql-resource: pipelines
       x-stackql-method: enable_stage_transition
       x-stackql-verb: EXEC
   /GetActionType:
@@ -505,6 +505,7 @@ paths:
       x-stackql-resource: action_types
       x-stackql-method: get_action_type
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.actionType
   /GetJobDetails:
     post:
       operationId: GetJobDetails
@@ -543,6 +544,7 @@ paths:
       x-stackql-resource: job_details
       x-stackql-method: get_job_details
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.jobDetails
   /GetPipeline:
     post:
       operationId: GetPipeline
@@ -626,6 +628,7 @@ paths:
       x-stackql-resource: pipeline_executions
       x-stackql-method: get_pipeline_execution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.pipelineExecution
   /GetPipelineState:
     post:
       operationId: GetPipelineState
@@ -708,6 +711,7 @@ paths:
       x-stackql-resource: third_party_job_details
       x-stackql-method: get_third_party_job_details
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.jobDetails
   /ListActionExecutions:
     post:
       operationId: ListActionExecutions
@@ -757,6 +761,9 @@ paths:
       x-stackql-method: list_action_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actionExecutionDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListActionTypes:
     post:
       operationId: ListActionTypes
@@ -799,6 +806,9 @@ paths:
       x-stackql-method: list_action_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actionTypes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDeployActionExecutionTargets:
     post:
       operationId: ListDeployActionExecutionTargets
@@ -850,6 +860,9 @@ paths:
       x-stackql-method: list_deploy_action_execution_targets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.targets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPipelineExecutions:
     post:
       operationId: ListPipelineExecutions
@@ -901,6 +914,9 @@ paths:
       x-stackql-method: list_pipeline_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pipelineExecutionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPipelines:
     post:
       operationId: ListPipelines
@@ -942,6 +958,9 @@ paths:
       x-stackql-method: list_pipelines
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.pipelines
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRuleExecutions:
     post:
       operationId: ListRuleExecutions
@@ -991,6 +1010,9 @@ paths:
       x-stackql-method: list_rule_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ruleExecutionDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListRuleTypes:
     post:
       operationId: ListRuleTypes
@@ -1069,10 +1091,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListWebhooks:
     post:
       operationId: ListWebhooks
@@ -1115,6 +1140,9 @@ paths:
       x-stackql-method: list_webhooks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.webhooks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /OverrideStageCondition:
     post:
       operationId: OverrideStageCondition
@@ -1158,7 +1186,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: override_stage_condition
+      x-stackql-resource: pipeline_executions
       x-stackql-method: override_stage_condition
       x-stackql-verb: EXEC
   /PollForJobs:
@@ -1206,7 +1234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PollForJobsOutput'
-      x-stackql-resource: poll_for_jobs
+      x-stackql-resource: action_types
       x-stackql-method: poll_for_jobs
       x-stackql-verb: EXEC
   /PollForThirdPartyJobs:
@@ -1247,7 +1275,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PollForThirdPartyJobsOutput'
-      x-stackql-resource: poll_for_third_party_jobs
+      x-stackql-resource: action_types
       x-stackql-method: poll_for_third_party_jobs
       x-stackql-verb: EXEC
   /PutActionRevision:
@@ -1295,7 +1323,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutActionRevisionOutput'
-      x-stackql-resource: action_revisions
+      x-stackql-resource: pipelines
       x-stackql-method: put_action_revision
       x-stackql-verb: REPLACE
   /PutApprovalResult:
@@ -1353,7 +1381,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutApprovalResultOutput'
-      x-stackql-resource: approval_results
+      x-stackql-resource: pipelines
       x-stackql-method: put_approval_result
       x-stackql-verb: REPLACE
   /PutJobFailureResult:
@@ -1618,7 +1646,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterWebhookWithThirdPartyOutput'
-      x-stackql-resource: webhook_with_third_parties
+      x-stackql-resource: webhooks
       x-stackql-method: register_webhook_with_third_party
       x-stackql-verb: INSERT
   /RetryStageExecution:
@@ -1672,7 +1700,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetryStageExecutionOutput'
-      x-stackql-resource: retry_stage_execution
+      x-stackql-resource: pipeline_executions
       x-stackql-method: retry_stage_execution
       x-stackql-verb: EXEC
   /RollbackStage:
@@ -1716,7 +1744,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RollbackStageOutput'
-      x-stackql-resource: rollback_stage
+      x-stackql-resource: pipelines
       x-stackql-method: rollback_stage
       x-stackql-verb: EXEC
   /StartPipelineExecution:
@@ -1765,7 +1793,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartPipelineExecutionOutput'
-      x-stackql-resource: pipeline_execution
+      x-stackql-resource: pipelines
       x-stackql-method: start_pipeline_execution
       x-stackql-verb: EXEC
   /StopPipelineExecution:
@@ -1816,7 +1844,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopPipelineExecutionOutput'
-      x-stackql-resource: pipeline_execution
+      x-stackql-resource: pipelines
       x-stackql-method: stop_pipeline_execution
       x-stackql-verb: EXEC
   /TagResource:
@@ -1856,7 +1884,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1896,7 +1924,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateActionType:

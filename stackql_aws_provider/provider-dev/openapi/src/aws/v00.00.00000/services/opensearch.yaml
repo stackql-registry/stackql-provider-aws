@@ -59,7 +59,6 @@ paths:
                 Description:
                   $ref: "#/components/schemas/DataSourceDescription"
               required:
-                - Name
                 - DataSourceType
       responses:
         "200":
@@ -152,7 +151,6 @@ paths:
                 TagList:
                   $ref: "#/components/schemas/TagList"
               required:
-                - ARN
                 - TagList
       responses:
         "200":
@@ -1974,7 +1972,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListVersionsResponse"
+                $ref: "#/components/schemas/ListVersionsOutputDisplay"
   /2021-01-01/opensearch/domain/{domain_name}/listVpcEndpointAccess:
     get:
       operationId: ListVpcEndpointAccess
@@ -2118,7 +2116,6 @@ paths:
                 TagKeys:
                   $ref: "#/components/schemas/StringList"
               required:
-                - ARN
                 - TagKeys
       responses:
         "200":
@@ -2258,7 +2255,6 @@ paths:
                   $ref: "#/components/schemas/PackageUserList"
               required:
                 - PackageID
-                - Operation
                 - PackageUserList
       responses:
         "200":
@@ -6627,16 +6623,19 @@ components:
         TagList:
           $ref: "#/components/schemas/TagList"
           description: List of resource tags associated with the specified domain, data source, or application.
-    ListVersionsResponse:
-      description: Container for the parameters for response received from the ListVersions operation.
+    ListVersionsRowDisplay:
       type: object
       properties:
-        Versions:
-          $ref: "#/components/schemas/VersionList"
+        version:
+          type: string
           description: A list of all versions of OpenSearch and Elasticsearch that Amazon OpenSearch Service supports.
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: When nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Send the request again using the returned token to retrieve the next page.
+    ListVersionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListVersionsRowDisplay"
     ListVpcEndpointAccessResponse:
       type: object
       properties:
@@ -6963,8 +6962,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/list_data_sources"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/data_sources/methods/add_data_source"
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/update_data_source"
+          - $ref: "#/components/x-stackQL-resources/data_sources/methods/add_data_source"
         delete:
           - $ref: "#/components/x-stackQL-resources/data_sources/methods/delete_data_source"
     direct_query_data_sources:
@@ -7119,9 +7118,37 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        dissociate_package:
+          operation:
+            $ref: "#/paths/~12021-01-01~1packages~1dissociate~1{package_id}~1{domain_name}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        dissociate_packages:
+          operation:
+            $ref: "#/paths/~12021-01-01~1packages~1dissociateMultiple/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         update_package:
           operation:
             $ref: "#/paths/~12021-01-01~1packages~1update/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_package_scope:
+          operation:
+            $ref: "#/paths/~12021-01-01~1packages~1updateScope/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -7139,6 +7166,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/packages/methods/associate_package"
           - $ref: "#/components/x-stackQL-resources/packages/methods/associate_packages"
           - $ref: "#/components/x-stackQL-resources/packages/methods/update_package"
+          - $ref: "#/components/x-stackQL-resources/packages/methods/update_package_scope"
         delete:
           - $ref: "#/components/x-stackQL-resources/packages/methods/delete_package"
     vpc_endpoint_access:
@@ -7183,6 +7211,151 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoint_access/methods/authorize_vpc_endpoint_access"
         delete: []
+    domain_configs:
+      id: aws.opensearch.domain_configs
+      name: domain_configs
+      title: domain_configs
+      methods:
+        cancel_domain_config_change:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1config~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_domain_config:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1config/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DomainConfig
+        update_domain_config:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1config/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/domain_configs/methods/describe_domain_config"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/domain_configs/methods/update_domain_config"
+        delete: []
+    domains:
+      id: aws.opensearch.domains
+      name: domains
+      title: domains
+      methods:
+        cancel_service_software_update:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1serviceSoftwareUpdate~1cancel/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_domain:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_domain:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_domain:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.DomainStatus
+        describe_domains:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain-info/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_domain_maintenance:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1domainMaintenance/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        rollback_service_software_update:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1serviceSoftwareUpdate~1rollback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_service_software_update:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1serviceSoftwareUpdate~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        upgrade_domain:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1upgradeDomain/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/describe_domain"
+          - $ref: "#/components/x-stackQL-resources/domains/methods/describe_domains"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
     applications:
       id: aws.opensearch.applications
       name: applications
@@ -7231,6 +7404,14 @@ components:
             objectKey: $.ApplicationSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
@@ -7241,54 +7422,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
-    domains:
-      id: aws.opensearch.domains
-      name: domains
-      title: domains
-      methods:
-        create_domain:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1domain/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_domain:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_domain:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_domains:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1domain-info/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/describe_domain"
-          - $ref: "#/components/x-stackQL-resources/domains/methods/describe_domains"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/create_domain"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/domains/methods/delete_domain"
     indexes:
       id: aws.opensearch.indexes
       name: indexes
@@ -7535,6 +7668,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChangeProgressStatus
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -7542,35 +7676,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/domain_change_progress/methods/describe_domain_change_progress"
         insert: []
         update: []
-        delete: []
-    domain_configs:
-      id: aws.opensearch.domain_configs
-      name: domain_configs
-      title: domain_configs
-      methods:
-        describe_domain_config:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1config/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_domain_config:
-          operation:
-            $ref: "#/paths/~12021-01-01~1opensearch~1domain~1{domain_name}~1config/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/domain_configs/methods/describe_domain_config"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/domain_configs/methods/update_domain_config"
         delete: []
     domain_healths:
       id: aws.opensearch.domain_healths
@@ -7679,6 +7784,17 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
+        purchase_reserved_instance_offering:
+          operation:
+            $ref: "#/paths/~12021-01-01~1opensearch~1purchaseReservedInstanceOffering/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reserved_instance_offerings/methods/describe_reserved_instance_offerings"
@@ -7986,6 +8102,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListVersionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Versions" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"version": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -8012,26 +8135,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/vpc_endpoints_for_domains/methods/list_vpc_endpoints_for_domain"
         insert: []
         update: []
-        delete: []
-    package_scopes:
-      id: aws.opensearch.package_scopes
-      name: package_scopes
-      title: package_scopes
-      methods:
-        update_package_scope:
-          operation:
-            $ref: "#/paths/~12021-01-01~1packages~1updateScope/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/package_scopes/methods/update_package_scope"
         delete: []

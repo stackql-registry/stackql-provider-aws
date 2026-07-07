@@ -198,7 +198,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListDetectorsResponse"
+                $ref: "#/components/schemas/ListDetectorsOutputDisplay"
   /detector/{detector_id}/filter:
     post:
       operationId: CreateFilter
@@ -232,7 +232,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
                 - FindingCriteria
       responses:
         "200":
@@ -269,7 +268,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFiltersResponse"
+                $ref: "#/components/schemas/ListFiltersOutputDisplay"
   /detector/{detector_id}/ipset:
     post:
       operationId: CreateIPSet
@@ -303,9 +302,6 @@ paths:
                 ExpectedBucketOwner:
                   $ref: "#/components/schemas/AccountId"
               required:
-                - Name
-                - Format
-                - Location
                 - Activate
       responses:
         "200":
@@ -342,7 +338,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListIPSetsResponse"
+                $ref: "#/components/schemas/ListIPSetsOutputDisplay"
   /malware-protection-plan:
     post:
       operationId: CreateMalwareProtectionPlan
@@ -366,7 +362,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Role
                 - ProtectedResource
       responses:
         "200":
@@ -581,9 +576,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
-                - Format
-                - Location
                 - Activate
       responses:
         "200":
@@ -620,7 +612,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListThreatEntitySetsResponse"
+                $ref: "#/components/schemas/ListThreatEntitySetsOutputDisplay"
   /detector/{detector_id}/threatintelset:
     post:
       operationId: CreateThreatIntelSet
@@ -654,9 +646,6 @@ paths:
                 ExpectedBucketOwner:
                   $ref: "#/components/schemas/AccountId"
               required:
-                - Name
-                - Format
-                - Location
                 - Activate
       responses:
         "200":
@@ -693,7 +682,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListThreatIntelSetsResponse"
+                $ref: "#/components/schemas/ListThreatIntelSetsOutputDisplay"
   /detector/{detector_id}/trustedentityset:
     post:
       operationId: CreateTrustedEntitySet
@@ -727,9 +716,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
               required:
-                - Name
-                - Format
-                - Location
                 - Activate
       responses:
         "200":
@@ -766,7 +752,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListTrustedEntitySetsResponse"
+                $ref: "#/components/schemas/ListTrustedEntitySetsOutputDisplay"
   /invitation/decline:
     post:
       operationId: DeclineInvitations
@@ -2084,7 +2070,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFindingsResponse"
+                $ref: "#/components/schemas/ListFindingsOutputDisplay"
   /invitation:
     get:
       operationId: ListInvitations
@@ -2205,8 +2191,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/TagMap"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -7557,62 +7541,58 @@ components:
       enum:
         - HEALTHY
         - UNHEALTHY
-    ListDetectorsResponse:
+    ListDetectorsRowDisplay:
       type: object
       properties:
-        DetectorIds:
-          $ref: "#/components/schemas/DetectorIds"
+        detector_id:
+          type: string
           description: A list of detector IDs.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-        - DetectorIds
-    DetectorIds:
-      type: array
-      items:
-        $ref: "#/components/schemas/DetectorId"
-    ListFiltersResponse:
+    ListDetectorsOutputDisplay:
       type: object
       properties:
-        FilterNames:
-          $ref: "#/components/schemas/FilterNames"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListDetectorsRowDisplay"
+    ListFiltersRowDisplay:
+      type: object
+      properties:
+        filter_name:
+          type: string
           description: A list of filter names.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-        - FilterNames
-    FilterNames:
-      type: array
-      items:
-        $ref: "#/components/schemas/FilterName"
-    ListFindingsResponse:
+    ListFiltersOutputDisplay:
       type: object
       properties:
-        FindingIds:
-          $ref: "#/components/schemas/FindingIds"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFiltersRowDisplay"
+    ListFindingsRowDisplay:
+      type: object
+      properties:
+        finding_id:
+          type: string
           description: The IDs of the findings that you're listing.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-        - FindingIds
-    ListIPSetsResponse:
+    ListFindingsOutputDisplay:
       type: object
       properties:
-        IpSetIds:
-          $ref: "#/components/schemas/IpSetIds"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFindingsRowDisplay"
+    ListIPSetsRowDisplay:
+      type: object
+      properties:
+        ip_set_id:
+          type: string
           description: The IDs of the IPSet resources.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-        - IpSetIds
-    IpSetIds:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    ListIPSetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListIPSetsRowDisplay"
     ListInvitationsResponse:
       type: object
       properties:
@@ -7818,51 +7798,45 @@ components:
           type: object
           properties: {}
           description: The tags associated with the resource.
-    ListThreatEntitySetsResponse:
+    ListThreatEntitySetsRowDisplay:
       type: object
       properties:
-        ThreatEntitySetIds:
-          $ref: "#/components/schemas/ThreatEntitySetIds"
+        threat_entity_set_id:
+          type: string
           description: The IDs of the threat entity set resources.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-        - ThreatEntitySetIds
-    ThreatEntitySetIds:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
-    ListThreatIntelSetsResponse:
+    ListThreatEntitySetsOutputDisplay:
       type: object
       properties:
-        ThreatIntelSetIds:
-          $ref: "#/components/schemas/ThreatIntelSetIds"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListThreatEntitySetsRowDisplay"
+    ListThreatIntelSetsRowDisplay:
+      type: object
+      properties:
+        threat_intel_set_id:
+          type: string
           description: The IDs of the ThreatIntelSet resources.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-        - ThreatIntelSetIds
-    ThreatIntelSetIds:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
-    ListTrustedEntitySetsResponse:
+    ListThreatIntelSetsOutputDisplay:
       type: object
       properties:
-        TrustedEntitySetIds:
-          $ref: "#/components/schemas/TrustedEntitySetIds"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListThreatIntelSetsRowDisplay"
+    ListTrustedEntitySetsRowDisplay:
+      type: object
+      properties:
+        trusted_entity_set_id:
+          type: string
           description: The IDs of the trusted entity set resources.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The pagination parameter to be used on the next list operation to retrieve more items.
-      required:
-        - TrustedEntitySetIds
-    TrustedEntitySetIds:
-      type: array
-      items:
-        $ref: "#/components/schemas/String"
+    ListTrustedEntitySetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListTrustedEntitySetsRowDisplay"
     S3ObjectForSendObjectMalwareScan:
       description: The S3 object path to initiate a scan, including bucket name, object key, and optional version ID.
       type: object
@@ -8119,6 +8093,79 @@ components:
     UpdateTrustedEntitySetResponse:
       type: object
   x-stackQL-resources:
+    invitations:
+      id: aws.guardduty.invitations
+      name: invitations
+      title: invitations
+      methods:
+        accept_administrator_invitation:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1administrator/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        accept_invitation:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1master/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        decline_invitations:
+          operation:
+            $ref: "#/paths/~1invitation~1decline/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_invitations:
+          operation:
+            $ref: "#/paths/~1invitation~1delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_invitations:
+          operation:
+            $ref: "#/paths/~1invitation/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Invitations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
+        insert: []
+        update: []
+        delete:
+          - $ref: "#/components/x-stackQL-resources/invitations/methods/delete_invitations"
     administrator_accounts:
       id: aws.guardduty.administrator_accounts
       name: administrator_accounts
@@ -8130,11 +8177,19 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Administrator
+        disassociate_from_administrator_account:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1administrator~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/get_administrator_account"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/administrator_accounts/methods/disassociate_from_administrator_account"
         delete: []
     master_accounts:
       id: aws.guardduty.master_accounts
@@ -8147,11 +8202,113 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Master
+        disassociate_from_master_account:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1master~1disassociate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/master_accounts/methods/get_master_account"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/master_accounts/methods/disassociate_from_master_account"
+        delete: []
+    findings:
+      id: aws.guardduty.findings
+      name: findings
+      title: findings
+      methods:
+        archive_findings:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1findings~1archive/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_sample_findings:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1findings~1create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_findings:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1findings~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_findings:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1findings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFindingsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "FindingIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        unarchive_findings:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1findings~1unarchive/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_findings_feedback:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1findings~1feedback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/get_findings"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/create_sample_findings"
+        update:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/update_findings_feedback"
         delete: []
     detectors:
       id: aws.guardduty.detectors
@@ -8175,9 +8332,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.DetectorIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListDetectorsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "DetectorIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"detector_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_detector:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}/delete"
@@ -8233,9 +8404,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.FilterNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFiltersOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "FilterNames" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"filter_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_filter:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1filter~1{filter_name}/delete"
@@ -8291,9 +8476,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.IpSetIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListIPSetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "IpSetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"ip_set_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_ip_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1ipset~1{ip_set_id}/delete"
@@ -8407,6 +8606,14 @@ components:
             objectKey: $.Members
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_members:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1member~1delete/post"
@@ -8432,6 +8639,39 @@ components:
         get_members:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1member~1get/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        invite_members:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1member~1invite/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_monitoring_members:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1member~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        stop_monitoring_members:
+          operation:
+            $ref: "#/paths/~1detector~1{detector_id}~1member~1stop/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -8507,28 +8747,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/publishing_destinations/methods/update_publishing_destination"
         delete:
           - $ref: "#/components/x-stackQL-resources/publishing_destinations/methods/delete_publishing_destination"
-    sample_findings:
-      id: aws.guardduty.sample_findings
-      name: sample_findings
-      title: sample_findings
-      methods:
-        create_sample_findings:
-          operation:
-            $ref: "#/paths/~1detector~1{detector_id}~1findings~1create/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/sample_findings/methods/create_sample_findings"
-        update: []
-        delete: []
     threat_entity_sets:
       id: aws.guardduty.threat_entity_sets
       name: threat_entity_sets
@@ -8551,9 +8769,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ThreatEntitySetIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListThreatEntitySetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ThreatEntitySetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"threat_entity_set_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_threat_entity_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1threatentityset~1{threat_entity_set_id}/delete"
@@ -8609,9 +8841,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.ThreatIntelSetIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListThreatIntelSetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "ThreatIntelSetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"threat_intel_set_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_threat_intel_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1threatintelset~1{threat_intel_set_id}/delete"
@@ -8667,9 +8913,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.TrustedEntitySetIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListTrustedEntitySetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "TrustedEntitySetIds" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"trusted_entity_set_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_trusted_entity_set:
           operation:
             $ref: "#/paths/~1detector~1{detector_id}~1trustedentityset~1{trusted_entity_set_id}/delete"
@@ -8703,38 +8963,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/trusted_entity_sets/methods/update_trusted_entity_set"
         delete:
           - $ref: "#/components/x-stackQL-resources/trusted_entity_sets/methods/delete_trusted_entity_set"
-    invitations:
-      id: aws.guardduty.invitations
-      name: invitations
-      title: invitations
-      methods:
-        delete_invitations:
-          operation:
-            $ref: "#/paths/~1invitation~1delete/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_invitations:
-          operation:
-            $ref: "#/paths/~1invitation/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Invitations
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/invitations/methods/list_invitations"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/invitations/methods/delete_invitations"
     malware_scans:
       id: aws.guardduty.malware_scans
       name: malware_scans
@@ -8750,6 +8978,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         get_malware_scan:
@@ -8768,6 +9003,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -8809,40 +9051,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/organization_configurations/methods/update_organization_configuration"
         delete: []
-    from_administrator_accounts:
-      id: aws.guardduty.from_administrator_accounts
-      name: from_administrator_accounts
-      title: from_administrator_accounts
-      methods:
-        disassociate_from_administrator_account:
-          operation:
-            $ref: "#/paths/~1detector~1{detector_id}~1administrator~1disassociate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/from_administrator_accounts/methods/disassociate_from_administrator_account"
-        delete: []
-    from_master_accounts:
-      id: aws.guardduty.from_master_accounts
-      name: from_master_accounts
-      title: from_master_accounts
-      methods:
-        disassociate_from_master_account:
-          operation:
-            $ref: "#/paths/~1detector~1{detector_id}~1master~1disassociate/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/from_master_accounts/methods/disassociate_from_master_account"
-        delete: []
     coverage_statistics:
       id: aws.guardduty.coverage_statistics
       name: coverage_statistics
@@ -8854,6 +9062,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CoverageStatistics
           request:
             nativeCasing: pascal
           config:
@@ -8862,41 +9071,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/coverage_statistics/methods/get_coverage_statistics"
-        insert: []
-        update: []
-        delete: []
-    findings:
-      id: aws.guardduty.findings
-      name: findings
-      title: findings
-      methods:
-        get_findings:
-          operation:
-            $ref: "#/paths/~1detector~1{detector_id}~1findings~1get/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_findings:
-          operation:
-            $ref: "#/paths/~1detector~1{detector_id}~1findings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.FindingIds
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/get_findings"
-          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
         insert: []
         update: []
         delete: []
@@ -8911,6 +9085,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FindingStatistics
           request:
             nativeCasing: pascal
           config:
@@ -9013,6 +9188,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.OrganizationDetails
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_statistics/methods/get_organization_statistics"
@@ -9052,6 +9228,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.UsageStatistics
           request:
             nativeCasing: pascal
           config:
@@ -9078,6 +9255,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9100,16 +9284,24 @@ components:
             objectKey: $.AdminAccounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/organization_admin_accounts/methods/list_organization_admin_accounts"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.guardduty.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.guardduty.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -9117,17 +9309,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.guardduty.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -9148,31 +9329,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    findings_feedbacks:
-      id: aws.guardduty.findings_feedbacks
-      name: findings_feedbacks
-      title: findings_feedbacks
-      methods:
-        update_findings_feedback:
-          operation:
-            $ref: "#/paths/~1detector~1{detector_id}~1findings~1feedback/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/findings_feedbacks/methods/update_findings_feedback"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

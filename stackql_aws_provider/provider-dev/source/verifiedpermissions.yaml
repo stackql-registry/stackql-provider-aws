@@ -112,7 +112,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchIsAuthorizedOutput'
-      x-stackql-resource: batch_is_authorized
+      x-stackql-resource: policy_stores
       x-stackql-method: batch_is_authorized
       x-stackql-verb: EXEC
   /BatchIsAuthorizedWithToken:
@@ -185,7 +185,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchIsAuthorizedWithTokenOutput'
-      x-stackql-resource: batch_is_authorized_with_token
+      x-stackql-resource: policy_stores
       x-stackql-method: batch_is_authorized_with_token
       x-stackql-verb: EXEC
   /CreateIdentitySource:
@@ -1042,7 +1042,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IsAuthorizedOutput'
-      x-stackql-resource: is_authorized
+      x-stackql-resource: policy_stores
       x-stackql-method: is_authorized
       x-stackql-verb: EXEC
   /IsAuthorizedWithToken:
@@ -1120,7 +1120,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IsAuthorizedWithTokenOutput'
-      x-stackql-resource: is_authorized_with_token
+      x-stackql-resource: policy_stores
       x-stackql-method: is_authorized_with_token
       x-stackql-verb: EXEC
   /ListIdentitySources:
@@ -1181,6 +1181,9 @@ paths:
       x-stackql-method: list_identity_sources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.identitySources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPolicies:
     post:
       operationId: ListPolicies
@@ -1238,6 +1241,9 @@ paths:
       x-stackql-method: list_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPolicyStoreAliases:
     post:
       operationId: ListPolicyStoreAliases
@@ -1288,6 +1294,9 @@ paths:
       x-stackql-method: list_policy_store_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyStoreAliases
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPolicyStores:
     post:
       operationId: ListPolicyStores
@@ -1334,6 +1343,9 @@ paths:
       x-stackql-method: list_policy_stores
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyStores
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListPolicyTemplates:
     post:
       operationId: ListPolicyTemplates
@@ -1388,6 +1400,9 @@ paths:
       x-stackql-method: list_policy_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policyTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1422,7 +1437,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutSchema:
@@ -1517,7 +1532,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1558,7 +1573,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateIdentitySource:

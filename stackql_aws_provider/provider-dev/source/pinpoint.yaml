@@ -70,6 +70,7 @@ paths:
       x-stackql-resource: apps
       x-stackql-method: get_apps
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ApplicationsResponse
   /v1/apps/{application-id}/campaigns:
     post:
       operationId: CreateCampaign
@@ -138,6 +139,7 @@ paths:
       x-stackql-resource: campaigns
       x-stackql-method: get_campaigns
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CampaignsResponse
   /v1/templates/{template-name}/email:
     post:
       operationId: CreateEmailTemplate
@@ -244,6 +246,7 @@ paths:
       x-stackql-resource: email_templates
       x-stackql-method: get_email_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EmailTemplateResponse
     put:
       operationId: UpdateEmailTemplate
       description: Updates an existing message template for messages that are sent through the email channel.
@@ -368,6 +371,7 @@ paths:
       x-stackql-resource: export_jobs
       x-stackql-method: get_export_jobs
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExportJobsResponse
   /v1/apps/{application-id}/jobs/import:
     post:
       operationId: CreateImportJob
@@ -435,6 +439,7 @@ paths:
       x-stackql-resource: import_jobs
       x-stackql-method: get_import_jobs
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ImportJobsResponse
   /v1/templates/{template-name}/inapp:
     post:
       operationId: CreateInAppTemplate
@@ -541,6 +546,7 @@ paths:
       x-stackql-resource: in_app_templates
       x-stackql-method: get_in_app_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.InAppTemplateResponse
     put:
       operationId: UpdateInAppTemplate
       description: Updates an existing message template for messages sent through the in-app message channel.
@@ -666,6 +672,7 @@ paths:
       x-stackql-resource: journeys
       x-stackql-method: list_journeys
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneysResponse
   /v1/templates/{template-name}/push:
     post:
       operationId: CreatePushTemplate
@@ -773,6 +780,7 @@ paths:
       x-stackql-resource: push_templates
       x-stackql-method: get_push_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PushNotificationTemplateResponse
     put:
       operationId: UpdatePushTemplate
       description: Updates an existing message template for messages that are sent through a push notification channel.
@@ -884,6 +892,7 @@ paths:
       x-stackql-resource: recommender_configurations
       x-stackql-method: get_recommender_configurations
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ListRecommenderConfigurationsResponse
   /v1/apps/{application-id}/segments:
     post:
       operationId: CreateSegment
@@ -953,6 +962,7 @@ paths:
       x-stackql-resource: segments
       x-stackql-method: get_segments
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SegmentsResponse
   /v1/templates/{template-name}/sms:
     post:
       operationId: CreateSmsTemplate
@@ -1059,6 +1069,7 @@ paths:
       x-stackql-resource: sms_templates
       x-stackql-method: get_sms_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SMSTemplateResponse
     put:
       operationId: UpdateSmsTemplate
       description: Updates an existing message template for messages that are sent through the SMS channel.
@@ -1222,6 +1233,7 @@ paths:
       x-stackql-resource: voice_templates
       x-stackql-method: get_voice_template
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceTemplateResponse
     put:
       operationId: UpdateVoiceTemplate
       description: Updates an existing message template for messages that are sent through the voice channel.
@@ -1322,6 +1334,7 @@ paths:
       x-stackql-resource: adm_channels
       x-stackql-method: get_adm_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ADMChannelResponse
     put:
       operationId: UpdateAdmChannel
       description: Enables the ADM channel for an application or updates the status and settings of the ADM channel for an
@@ -1398,6 +1411,7 @@ paths:
       x-stackql-resource: apns_channels
       x-stackql-method: get_apns_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.APNSChannelResponse
     put:
       operationId: UpdateApnsChannel
       description: Enables the APNs channel for an application or updates the status and settings of the APNs channel for
@@ -1474,6 +1488,7 @@ paths:
       x-stackql-resource: apns_sandbox_channels
       x-stackql-method: get_apns_sandbox_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.APNSSandboxChannelResponse
     put:
       operationId: UpdateApnsSandboxChannel
       description: Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox
@@ -1550,6 +1565,7 @@ paths:
       x-stackql-resource: apns_voip_channels
       x-stackql-method: get_apns_voip_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.APNSVoipChannelResponse
     put:
       operationId: UpdateApnsVoipChannel
       description: Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel
@@ -1626,6 +1642,7 @@ paths:
       x-stackql-resource: apns_voip_sandbox_channels
       x-stackql-method: get_apns_voip_sandbox_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.APNSVoipSandboxChannelResponse
     put:
       operationId: UpdateApnsVoipSandboxChannel
       description: Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs
@@ -1702,6 +1719,7 @@ paths:
       x-stackql-resource: apps
       x-stackql-method: get_app
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ApplicationResponse
   /v1/apps/{application-id}/channels/baidu:
     delete:
       operationId: DeleteBaiduChannel
@@ -1745,6 +1763,7 @@ paths:
       x-stackql-resource: baidu_channels
       x-stackql-method: get_baidu_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.BaiduChannelResponse
     put:
       operationId: UpdateBaiduChannel
       description: Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for
@@ -1833,6 +1852,7 @@ paths:
       x-stackql-resource: campaigns
       x-stackql-method: get_campaign
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CampaignResponse
     put:
       operationId: UpdateCampaign
       description: Updates the configuration and other settings for a campaign.
@@ -1914,6 +1934,7 @@ paths:
       x-stackql-resource: email_channels
       x-stackql-method: get_email_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EmailChannelResponse
     put:
       operationId: UpdateEmailChannel
       description: Enables the email channel for an application or updates the status and settings of the email channel for
@@ -2002,6 +2023,7 @@ paths:
       x-stackql-resource: endpoints
       x-stackql-method: get_endpoint
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EndpointResponse
     put:
       operationId: UpdateEndpoint
       description: Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint
@@ -2086,6 +2108,7 @@ paths:
       x-stackql-resource: event_streams
       x-stackql-method: get_event_stream
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EventStream
     post:
       operationId: PutEventStream
       description: Creates a new event stream for an application or updates the settings of an existing event stream for an
@@ -2162,6 +2185,7 @@ paths:
       x-stackql-resource: gcm_channels
       x-stackql-method: get_gcm_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.GCMChannelResponse
     put:
       operationId: UpdateGcmChannel
       description: Enables the GCM channel for an application or updates the status and settings of the GCM channel for an
@@ -2250,6 +2274,7 @@ paths:
       x-stackql-resource: journeys
       x-stackql-method: get_journey
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneyResponse
     put:
       operationId: UpdateJourney
       description: Updates the configuration and other settings for a journey.
@@ -2331,6 +2356,7 @@ paths:
       x-stackql-resource: recommender_configurations
       x-stackql-method: get_recommender_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RecommenderConfigurationResponse
     put:
       operationId: UpdateRecommenderConfiguration
       description: Updates an Amazon Pinpoint configuration for a recommender model.
@@ -2419,6 +2445,7 @@ paths:
       x-stackql-resource: segments
       x-stackql-method: get_segment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SegmentResponse
     put:
       operationId: UpdateSegment
       description: Creates a new segment for an application or updates the configuration, dimension, and other settings for
@@ -2501,6 +2528,7 @@ paths:
       x-stackql-resource: sms_channels
       x-stackql-method: get_sms_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SMSChannelResponse
     put:
       operationId: UpdateSmsChannel
       description: Enables the SMS channel for an application or updates the status and settings of the SMS channel for an
@@ -2589,6 +2617,7 @@ paths:
       x-stackql-resource: user_endpoints
       x-stackql-method: get_user_endpoints
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EndpointsResponse
   /v1/apps/{application-id}/channels/voice:
     delete:
       operationId: DeleteVoiceChannel
@@ -2632,6 +2661,7 @@ paths:
       x-stackql-resource: voice_channels
       x-stackql-method: get_voice_channel
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.VoiceChannelResponse
     put:
       operationId: UpdateVoiceChannel
       description: Enables the voice channel for an application or updates the status and settings of the voice channel for
@@ -2727,6 +2757,7 @@ paths:
       x-stackql-resource: application_date_range_kpis
       x-stackql-method: get_application_date_range_kpi
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ApplicationDateRangeKpiResponse
   /v1/apps/{application-id}/settings:
     get:
       operationId: GetApplicationSettings
@@ -2749,6 +2780,7 @@ paths:
       x-stackql-resource: application_settings
       x-stackql-method: get_application_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ApplicationSettingsResource
     put:
       operationId: UpdateApplicationSettings
       description: Updates the settings for an application.
@@ -2822,6 +2854,7 @@ paths:
       x-stackql-resource: campaign_activities
       x-stackql-method: get_campaign_activities
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ActivitiesResponse
   /v1/apps/{application-id}/campaigns/{campaign-id}/kpis/daterange/{kpi-name}:
     get:
       operationId: GetCampaignDateRangeKpi
@@ -2890,6 +2923,7 @@ paths:
       x-stackql-resource: campaign_date_range_kpis
       x-stackql-method: get_campaign_date_range_kpi
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CampaignDateRangeKpiResponse
   /v1/apps/{application-id}/campaigns/{campaign-id}/versions/{version}:
     get:
       operationId: GetCampaignVersion
@@ -2924,6 +2958,7 @@ paths:
       x-stackql-resource: campaign_versions
       x-stackql-method: get_campaign_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CampaignResponse
   /v1/apps/{application-id}/campaigns/{campaign-id}/versions:
     get:
       operationId: GetCampaignVersions
@@ -2965,6 +3000,7 @@ paths:
       x-stackql-resource: campaign_versions
       x-stackql-method: get_campaign_versions
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CampaignsResponse
   /v1/apps/{application-id}/channels:
     get:
       operationId: GetChannels
@@ -2987,6 +3023,7 @@ paths:
       x-stackql-resource: channels
       x-stackql-method: get_channels
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ChannelsResponse
   /v1/apps/{application-id}/jobs/export/{job-id}:
     get:
       operationId: GetExportJob
@@ -3015,6 +3052,7 @@ paths:
       x-stackql-resource: export_jobs
       x-stackql-method: get_export_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExportJobResponse
   /v1/apps/{application-id}/jobs/import/{job-id}:
     get:
       operationId: GetImportJob
@@ -3043,6 +3081,7 @@ paths:
       x-stackql-resource: import_jobs
       x-stackql-method: get_import_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ImportJobResponse
   /v1/apps/{application-id}/endpoints/{endpoint-id}/inappmessages:
     get:
       operationId: GetInAppMessages
@@ -3071,6 +3110,7 @@ paths:
       x-stackql-resource: in_app_messages
       x-stackql-method: get_in_app_messages
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.InAppMessagesResponse
   /v1/apps/{application-id}/journeys/{journey-id}/kpis/daterange/{kpi-name}:
     get:
       operationId: GetJourneyDateRangeKpi
@@ -3139,6 +3179,7 @@ paths:
       x-stackql-resource: journey_date_range_kpis
       x-stackql-method: get_journey_date_range_kpi
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneyDateRangeKpiResponse
   /v1/apps/{application-id}/journeys/{journey-id}/activities/{journey-activity-id}/execution-metrics:
     get:
       operationId: GetJourneyExecutionActivityMetrics
@@ -3187,6 +3228,7 @@ paths:
       x-stackql-resource: journey_execution_activity_metrics
       x-stackql-method: get_journey_execution_activity_metrics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneyExecutionActivityMetricsResponse
   /v1/apps/{application-id}/journeys/{journey-id}/execution-metrics:
     get:
       operationId: GetJourneyExecutionMetrics
@@ -3229,6 +3271,7 @@ paths:
       x-stackql-resource: journey_execution_metrics
       x-stackql-method: get_journey_execution_metrics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneyExecutionMetricsResponse
   /v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/activities/{journey-activity-id}/execution-metrics:
     get:
       operationId: GetJourneyRunExecutionActivityMetrics
@@ -3283,6 +3326,7 @@ paths:
       x-stackql-resource: journey_run_execution_activity_metrics
       x-stackql-method: get_journey_run_execution_activity_metrics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneyRunExecutionActivityMetricsResponse
   /v1/apps/{application-id}/journeys/{journey-id}/runs/{run-id}/execution-metrics:
     get:
       operationId: GetJourneyRunExecutionMetrics
@@ -3331,6 +3375,7 @@ paths:
       x-stackql-resource: journey_run_execution_metrics
       x-stackql-method: get_journey_run_execution_metrics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneyRunExecutionMetricsResponse
   /v1/apps/{application-id}/journeys/{journey-id}/runs:
     get:
       operationId: GetJourneyRuns
@@ -3372,6 +3417,7 @@ paths:
       x-stackql-resource: journey_runs
       x-stackql-method: get_journey_runs
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.JourneyRunsResponse
   /v1/apps/{application-id}/segments/{segment-id}/jobs/export:
     get:
       operationId: GetSegmentExportJobs
@@ -3413,6 +3459,7 @@ paths:
       x-stackql-resource: segment_export_jobs
       x-stackql-method: get_segment_export_jobs
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ExportJobsResponse
   /v1/apps/{application-id}/segments/{segment-id}/jobs/import:
     get:
       operationId: GetSegmentImportJobs
@@ -3454,6 +3501,7 @@ paths:
       x-stackql-resource: segment_import_jobs
       x-stackql-method: get_segment_import_jobs
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ImportJobsResponse
   /v1/apps/{application-id}/segments/{segment-id}/versions/{version}:
     get:
       operationId: GetSegmentVersion
@@ -3489,6 +3537,7 @@ paths:
       x-stackql-resource: segment_versions
       x-stackql-method: get_segment_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SegmentResponse
   /v1/apps/{application-id}/segments/{segment-id}/versions:
     get:
       operationId: GetSegmentVersions
@@ -3531,6 +3580,7 @@ paths:
       x-stackql-resource: segment_versions
       x-stackql-method: get_segment_versions
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SegmentsResponse
   /v1/tags/{resource-arn}:
     get:
       operationId: ListTagsForResource
@@ -3550,9 +3600,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TagsModel
     post:
       operationId: TagResource
       description: Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
@@ -3577,7 +3628,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -3600,7 +3651,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/templates/{template-name}/{template-type}/versions:
@@ -3647,6 +3698,7 @@ paths:
       x-stackql-resource: template_versions
       x-stackql-method: list_template_versions
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TemplateVersionsResponse
   /v1/templates:
     get:
       operationId: ListTemplates
@@ -3690,6 +3742,7 @@ paths:
       x-stackql-resource: templates
       x-stackql-method: list_templates
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TemplatesResponse
   /v1/phone/number/validate:
     post:
       operationId: PhoneNumberValidate
@@ -3925,7 +3978,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEndpointsBatchResponse'
-      x-stackql-resource: endpoints_batches
+      x-stackql-resource: endpoints
       x-stackql-method: update_endpoints_batch
       x-stackql-verb: UPDATE
   /v1/apps/{application-id}/journeys/{journey-id}/state:
@@ -3964,7 +4017,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateJourneyStateResponse'
-      x-stackql-resource: journey_states
+      x-stackql-resource: journeys
       x-stackql-method: update_journey_state
       x-stackql-verb: UPDATE
   /v1/templates/{template-name}/{template-type}/active-version:
@@ -4005,7 +4058,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateTemplateActiveVersionResponse'
-      x-stackql-resource: template_active_versions
+      x-stackql-resource: templates
       x-stackql-method: update_template_active_version
       x-stackql-verb: UPDATE
   /v1/apps/{application-id}/verify-otp:

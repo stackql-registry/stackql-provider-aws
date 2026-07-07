@@ -74,6 +74,9 @@ paths:
       x-stackql-method: list_cells
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Cells
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /crossaccountauthorizations:
     post:
       operationId: CreateCrossAccountAuthorization
@@ -123,11 +126,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListCrossAccountAuthorizationsResponse'
+                $ref: '#/components/schemas/ListCrossAccountAuthorizationsOutputDisplay'
       x-stackql-resource: cross_account_authorizations
       x-stackql-method: list_cross_account_authorizations
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.CrossAccountAuthorizations
+      x-stackql-responseEnvelope: ListCrossAccountAuthorizationsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "CrossAccountAuthorizations" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"cross_account_authorization":
+        {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /readinesschecks:
     post:
       operationId: CreateReadinessCheck
@@ -188,6 +199,9 @@ paths:
       x-stackql-method: list_readiness_checks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReadinessChecks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /recoverygroups:
     post:
       operationId: CreateRecoveryGroup
@@ -246,6 +260,9 @@ paths:
       x-stackql-method: list_recovery_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RecoveryGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /resourcesets:
     post:
       operationId: CreateResourceSet
@@ -308,6 +325,9 @@ paths:
       x-stackql-method: list_resource_sets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceSets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /cells/{cell_name}:
     delete:
       operationId: DeleteCell
@@ -674,6 +694,9 @@ paths:
       x-stackql-method: get_cell_readiness_summary
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReadinessChecks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /readinesschecks/{readiness_check_name}/resource/{resource_identifier}/status:
     get:
       operationId: GetReadinessCheckResourceStatus
@@ -716,6 +739,9 @@ paths:
       x-stackql-method: get_readiness_check_resource_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /readinesschecks/{readiness_check_name}/status:
     get:
       operationId: GetReadinessCheckStatus
@@ -751,6 +777,9 @@ paths:
       x-stackql-method: get_readiness_check_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Resources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /recoverygroupreadiness/{recovery_group_name}:
     get:
       operationId: GetRecoveryGroupReadinessSummary
@@ -786,6 +815,9 @@ paths:
       x-stackql-method: get_recovery_group_readiness_summary
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReadinessChecks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /rules:
     get:
       operationId: ListRules
@@ -820,6 +852,9 @@ paths:
       x-stackql-method: list_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Rules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource-arn}:
     get:
       operationId: ListTagsForResources
@@ -838,7 +873,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourcesResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resources
       x-stackql-verb: SELECT
     post:
@@ -869,7 +904,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -891,7 +926,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
 components:
@@ -1393,19 +1428,19 @@ components:
       - CellArn
       - CellName
       - Cells
-    ListCrossAccountAuthorizationsResponse:
+    ListCrossAccountAuthorizationsRowDisplay:
       type: object
       properties:
-        CrossAccountAuthorizations:
-          $ref: '#/components/schemas/__listOfCrossAccountAuthorization'
+        cross_account_authorization:
+          type: string
           description: A list of cross-account authorizations.
-        NextToken:
-          $ref: '#/components/schemas/__string'
-          description: The token that identifies which batch of results you want to see.
-    __listOfCrossAccountAuthorization:
-      type: array
-      items:
-        $ref: '#/components/schemas/CrossAccountAuthorization'
+    ListCrossAccountAuthorizationsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCrossAccountAuthorizationsRowDisplay'
     ListReadinessChecksResponse:
       type: object
       properties:

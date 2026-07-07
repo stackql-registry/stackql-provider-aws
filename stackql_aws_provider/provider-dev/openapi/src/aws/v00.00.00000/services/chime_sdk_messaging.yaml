@@ -1141,8 +1141,6 @@ paths:
               properties:
                 Preferences:
                   $ref: "#/components/schemas/ChannelMembershipPreferences"
-              required:
-                - Preferences
       responses:
         "200":
           description: Success
@@ -1606,7 +1604,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
               required:
                 - ResourceARN
-                - Tags
       responses:
         "204":
           description: Success
@@ -2959,6 +2956,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        channel_flow_callback:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}?operation=channel-flow-callback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_channel_flow:
           operation:
             $ref: "#/paths/~1channel-flows/post"
@@ -2989,6 +2997,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelFlow
         update_channel_flow:
           operation:
             $ref: "#/paths/~1channel-flows~1{channel_flow_arn}/put"
@@ -3022,6 +3031,17 @@ components:
       name: channels
       title: channels
       methods:
+        batch_create_channel_membership:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}~1memberships?operation=batch-create/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_channel:
           operation:
             $ref: "#/paths/~1channels/post"
@@ -3052,9 +3072,43 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Channel
         update_channel:
           operation:
             $ref: "#/paths/~1channels~1{channel_arn}/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_channel_message:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}~1messages/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        put_channel_expiration_settings:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}~1expiration-settings/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        redact_channel_message:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}~1messages~1{message_id}?operation=redact/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -3074,6 +3128,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_channel_read_marker:
+          operation:
+            $ref: "#/paths/~1channels~1{channel_arn}~1readMarker/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channels/methods/list_channels"
@@ -3083,6 +3143,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/channels/methods/create_channel"
         update:
           - $ref: "#/components/x-stackQL-resources/channels/methods/update_channel"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/channels/methods/put_channel_expiration_settings"
         delete:
           - $ref: "#/components/x-stackQL-resources/channels/methods/delete_channel"
     channel_bans:
@@ -3120,6 +3182,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelBan
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_bans/methods/describe_channel_ban"
@@ -3166,6 +3229,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelMembership
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -3212,6 +3276,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelModerator
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/channel_moderators/methods/describe_channel_moderator"
@@ -3239,6 +3304,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelMessage
           request:
             nativeCasing: pascal
         update_channel_message:
@@ -3316,6 +3382,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ChannelMembership
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -3335,6 +3402,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Channel
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -3384,6 +3452,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Status
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -3403,6 +3472,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Endpoint
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -3487,10 +3557,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.chime_sdk_messaging.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.chime_sdk_messaging.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3500,40 +3570,6 @@ components:
             mediaType: application/json
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    channel_expiration_settings:
-      id: aws.chime_sdk_messaging.channel_expiration_settings
-      name: channel_expiration_settings
-      title: channel_expiration_settings
-      methods:
-        put_channel_expiration_settings:
-          operation:
-            $ref: "#/paths/~1channels~1{channel_arn}~1expiration-settings/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/channel_expiration_settings/methods/put_channel_expiration_settings"
-        delete: []
-    resources:
-      id: aws.chime_sdk_messaging.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags?operation=tag-resource/post"
@@ -3555,26 +3591,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    channel_read_markers:
-      id: aws.chime_sdk_messaging.channel_read_markers
-      name: channel_read_markers
-      title: channel_read_markers
-      methods:
-        update_channel_read_marker:
-          operation:
-            $ref: "#/paths/~1channels~1{channel_arn}~1readMarker/put"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/channel_read_markers/methods/update_channel_read_marker"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
         delete: []

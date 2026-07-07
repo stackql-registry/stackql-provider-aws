@@ -407,7 +407,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetResourcePoliciesResponse"
+                $ref: "#/components/schemas/GetResourcePoliciesOutputDisplay"
   /getresourceshareassociations:
     post:
       operationId: GetResourceShareAssociations
@@ -1485,19 +1485,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    GetResourcePoliciesResponse:
+    GetResourcePoliciesRowDisplay:
       type: object
       properties:
-        policies:
-          $ref: "#/components/schemas/PolicyList"
+        policy:
+          type: string
           description: An array of resource policy documents in JSON format.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If present, this value indicates that more output is available than is included in the current response. Use this value in the NextToken request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the NextToken response element comes back as null. This indicates that this is the last page of results.
-    PolicyList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Policy"
+    GetResourcePoliciesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/GetResourcePoliciesRowDisplay"
     ResourceShareArnList:
       type: array
       items:
@@ -1928,6 +1928,17 @@ components:
       name: resource_shares
       title: resource_shares
       methods:
+        accept_resource_share_invitation:
+          operation:
+            $ref: "#/paths/~1acceptresourceshareinvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         associate_resource_share:
           operation:
             $ref: "#/paths/~1associateresourceshare/post"
@@ -1976,6 +1987,30 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.resourceShares
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        promote_resource_share_created_from_policy:
+          operation:
+            $ref: "#/paths/~1promoteresourcesharecreatedfrompolicy/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        reject_resource_share_invitation:
+          operation:
+            $ref: "#/paths/~1rejectresourceshareinvitation/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
           config:
@@ -2076,6 +2111,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.permission
           request:
             nativeCasing: pascal
           config:
@@ -2084,6 +2120,17 @@ components:
         list_permissions:
           operation:
             $ref: "#/paths/~1listpermissions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        promote_permission_created_from_policy:
+          operation:
+            $ref: "#/paths/~1promotepermissioncreatedfrompolicy/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -2136,12 +2183,24 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        set_default_permission_version:
+          operation:
+            $ref: "#/paths/~1setdefaultpermissionversion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/permission_versions/methods/list_permission_versions"
         insert:
           - $ref: "#/components/x-stackQL-resources/permission_versions/methods/create_permission_version"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/permission_versions/methods/set_default_permission_version"
         delete:
           - $ref: "#/components/x-stackQL-resources/permission_versions/methods/delete_permission_version"
     resource_policies:
@@ -2155,10 +2214,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.policies
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetResourcePoliciesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "policies" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"policy": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2182,6 +2254,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2205,6 +2284,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2285,6 +2371,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2352,8 +2445,56 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
+        insert: []
+        update: []
+        delete: []
+    source_associations:
+      id: aws.ram.source_associations
+      name: source_associations
+      title: source_associations
+      methods:
+        list_source_associations:
+          operation:
+            $ref: "#/paths/~1listsourceassociations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.sourceAssociations
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/source_associations/methods/list_source_associations"
+        insert: []
+        update: []
+        delete: []
+    tags:
+      id: aws.ram.tags
+      name: tags
+      title: tags
+      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tagresource/post"
@@ -2377,55 +2518,9 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/list_resources"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    source_associations:
-      id: aws.ram.source_associations
-      name: source_associations
-      title: source_associations
-      methods:
-        list_source_associations:
-          operation:
-            $ref: "#/paths/~1listsourceassociations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.sourceAssociations
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/source_associations/methods/list_source_associations"
-        insert: []
-        update: []
-        delete: []
-    default_permission_versions:
-      id: aws.ram.default_permission_versions
-      name: default_permission_versions
-      title: default_permission_versions
-      methods:
-        set_default_permission_version:
-          operation:
-            $ref: "#/paths/~1setdefaultpermissionversion/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
         select: []
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/default_permission_versions/methods/set_default_permission_version"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -1,0 +1,7 @@
+-- Data-plane point read (GetItem needs TableName + Key; Key is a plain
+-- JSON string). ConsistentRead avoids a stale-read flake right after the put.
+SELECT * FROM aws.dynamodb.items
+WHERE region = '{{ region }}'
+  AND TableName = '{{ table_name }}'
+  AND Key = '{"pk":{"S":"smoke-1"}}'
+  AND ConsistentRead = true

@@ -47,7 +47,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateMemoryRecordsOutput'
-      x-stackql-resource: batch_create_memory_records
+      x-stackql-resource: memory_records
       x-stackql-method: batch_create_memory_records
       x-stackql-verb: EXEC
   /memories/{memory_id}/memoryRecords/batchDelete:
@@ -79,7 +79,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteMemoryRecordsOutput'
-      x-stackql-resource: batch_delete_memory_records
+      x-stackql-resource: memory_records
       x-stackql-method: batch_delete_memory_records
       x-stackql-verb: EXEC
   /memories/{memory_id}/memoryRecords/batchUpdate:
@@ -111,7 +111,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateMemoryRecordsOutput'
-      x-stackql-resource: batch_update_memory_records
+      x-stackql-resource: memory_records
       x-stackql-method: batch_update_memory_records
       x-stackql-verb: EXEC
   /identities/CompleteResourceTokenAuth:
@@ -221,6 +221,9 @@ paths:
       x-stackql-method: list_ab_tests
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.abTests
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /memories/{memory_id}/events:
     post:
       operationId: CreateEvent
@@ -570,6 +573,7 @@ paths:
       x-stackql-resource: events
       x-stackql-method: get_event
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.event
   /memories/{memory_id}/memoryRecords/{memory_record_id}:
     delete:
       operationId: DeleteMemoryRecord
@@ -887,6 +891,7 @@ paths:
       x-stackql-resource: memory_records
       x-stackql-method: get_memory_record
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.memoryRecord
   /payments/getPaymentInstrument:
     post:
       operationId: GetPaymentInstrument
@@ -930,6 +935,7 @@ paths:
       x-stackql-resource: payment_instruments
       x-stackql-method: get_payment_instrument
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.paymentInstrument
   /payments/getPaymentInstrumentBalance:
     post:
       operationId: GetPaymentInstrumentBalance
@@ -1021,6 +1027,7 @@ paths:
       x-stackql-resource: payment_sessions
       x-stackql-method: get_payment_session
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.paymentSession
   /identities/api-key:
     post:
       operationId: GetResourceApiKey
@@ -1131,6 +1138,7 @@ paths:
       x-stackql-resource: resource_payment_tokens
       x-stackql-method: get_resource_payment_token
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.paymentTokenResponse
   /identities/GetWorkloadAccessToken:
     post:
       operationId: GetWorkloadAccessToken
@@ -1626,6 +1634,9 @@ paths:
       x-stackql-method: list_actors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actorSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /evaluations/batch-evaluate:
     get:
       operationId: ListBatchEvaluations
@@ -1658,6 +1669,9 @@ paths:
       x-stackql-method: list_batch_evaluations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.batchEvaluations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartBatchEvaluation
       description: Starts a batch evaluation job that evaluates agent performance across multiple sessions. Batch evaluations
@@ -1693,7 +1707,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartBatchEvaluationResponse'
-      x-stackql-resource: batch_evaluation
+      x-stackql-resource: batch_evaluations
       x-stackql-method: start_batch_evaluation
       x-stackql-verb: EXEC
   /browsers/{browser_identifier}/sessions/list:
@@ -1826,6 +1840,9 @@ paths:
       x-stackql-method: list_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.events
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /memories/{memory_id}/extractionJobs:
     post:
       operationId: ListMemoryExtractionJobs
@@ -1862,6 +1879,9 @@ paths:
       x-stackql-method: list_memory_extraction_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /memories/{memory_id}/memoryRecords:
     post:
       operationId: ListMemoryRecords
@@ -1905,6 +1925,9 @@ paths:
       x-stackql-method: list_memory_records
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.memoryRecordSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /payments/listPaymentInstruments:
     post:
       operationId: ListPaymentInstruments
@@ -1950,6 +1973,9 @@ paths:
       x-stackql-method: list_payment_instruments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.paymentInstruments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /payments/listPaymentSessions:
     post:
       operationId: ListPaymentSessions
@@ -1993,6 +2019,9 @@ paths:
       x-stackql-method: list_payment_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.paymentSessions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /recommendations:
     get:
       operationId: ListRecommendations
@@ -2030,6 +2059,9 @@ paths:
       x-stackql-method: list_recommendations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.recommendationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartRecommendation
       description: Starts a recommendation job that analyzes agent traces and generates optimization suggestions for system
@@ -2109,6 +2141,9 @@ paths:
       x-stackql-method: list_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /payments/processPayment:
     post:
       operationId: ProcessPayment
@@ -2158,7 +2193,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProcessPaymentResponse'
-      x-stackql-resource: process_payment
+      x-stackql-resource: payment_instruments
       x-stackql-method: process_payment
       x-stackql-verb: EXEC
   /memories/{memory_id}/retrieve:
@@ -2200,9 +2235,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RetrieveMemoryRecordsOutput'
-      x-stackql-resource: retrieve_memory_records
+      x-stackql-resource: memory_records
       x-stackql-method: retrieve_memory_records
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /browser-profiles/{profile_identifier}/save:
     put:
       operationId: SaveBrowserSessionProfile
@@ -2258,7 +2296,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SaveBrowserSessionProfileResponse'
-      x-stackql-resource: save_browser_session_profile
+      x-stackql-resource: sessions
       x-stackql-method: save_browser_session_profile
       x-stackql-verb: EXEC
   /registry-records/search:
@@ -2468,7 +2506,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopBatchEvaluationResponse'
-      x-stackql-resource: batch_evaluation
+      x-stackql-resource: batch_evaluations
       x-stackql-method: stop_batch_evaluation
       x-stackql-verb: EXEC
   /browsers/{browser_identifier}/sessions/stop:
@@ -2656,7 +2694,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBrowserStreamResponse'
-      x-stackql-resource: browser_streams
+      x-stackql-resource: sessions
       x-stackql-method: update_browser_stream
       x-stackql-verb: UPDATE
 components:

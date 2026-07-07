@@ -46,7 +46,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: access_grants_identity_centers
+      x-stackql-resource: access_grants
       x-stackql-method: associate_access_grants_identity_center
       x-stackql-verb: UPDATE
     delete:
@@ -3619,7 +3619,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutputDisplay'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListTagsForResourceOutputDisplay
@@ -3668,7 +3668,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutputDisplay'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: TagResourceOutputDisplay
@@ -3712,7 +3712,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutputDisplay'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UntagResourceOutputDisplay
@@ -3791,7 +3791,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateJobPriorityOutputDisplay'
-      x-stackql-resource: job_priorities
+      x-stackql-resource: jobs
       x-stackql-method: update_job_priority
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateJobPriorityOutputDisplay
@@ -3836,7 +3836,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateJobStatusOutputDisplay'
-      x-stackql-resource: job_status
+      x-stackql-resource: jobs
       x-stackql-method: update_job_status
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateJobStatusOutputDisplay

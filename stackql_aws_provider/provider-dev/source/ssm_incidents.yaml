@@ -317,6 +317,7 @@ paths:
       x-stackql-resource: incident_records
       x-stackql-method: get_incident_record
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.incidentRecord
   /getReplicationSet:
     get:
       operationId: GetReplicationSet
@@ -338,6 +339,7 @@ paths:
       x-stackql-resource: replication_sets
       x-stackql-method: get_replication_set
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.replicationSet
   /getResourcePolicies:
     post:
       operationId: GetResourcePolicies
@@ -371,6 +373,9 @@ paths:
       x-stackql-method: get_resource_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.resourcePolicies
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /getResponsePlan:
     get:
       operationId: GetResponsePlan
@@ -419,6 +424,7 @@ paths:
       x-stackql-resource: timeline_events
       x-stackql-method: get_timeline_event
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.event
   /listIncidentFindings:
     post:
       operationId: ListIncidentFindings
@@ -452,6 +458,9 @@ paths:
       x-stackql-method: list_incident_findings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listIncidentRecords:
     post:
       operationId: ListIncidentRecords
@@ -482,6 +491,9 @@ paths:
       x-stackql-method: list_incident_records
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.incidentRecordSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listRelatedItems:
     post:
       operationId: ListRelatedItems
@@ -513,6 +525,9 @@ paths:
       x-stackql-method: list_related_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relatedItems
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listReplicationSets:
     post:
       operationId: ListReplicationSets
@@ -535,11 +550,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListReplicationSetsOutput'
+                $ref: '#/components/schemas/ListReplicationSetsOutputDisplay'
       x-stackql-resource: replication_sets
       x-stackql-method: list_replication_sets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.replicationSetArns
+      x-stackql-responseEnvelope: ListReplicationSetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "replicationSetArns" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"replication_set_arn": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /listResponsePlans:
     post:
       operationId: ListResponsePlans
@@ -567,6 +590,9 @@ paths:
       x-stackql-method: list_response_plans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.responsePlanSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -585,7 +611,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -616,7 +642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -642,7 +668,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /listTimelineEvents:
@@ -682,6 +708,9 @@ paths:
       x-stackql-method: list_timeline_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.eventSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /putResourcePolicy:
     post:
       operationId: PutResourcePolicy
@@ -746,7 +775,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartIncidentOutput'
-      x-stackql-resource: incident
+      x-stackql-resource: response_plans
       x-stackql-method: start_incident
       x-stackql-verb: EXEC
   /updateDeletionProtection:
@@ -1981,22 +2010,19 @@ components:
       type: string
       minLength: 0
       maxLength: 200
-    ListReplicationSetsOutput:
+    ListReplicationSetsRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token to use when requesting the next set of items. If there are no additional items
-            to return, the string is null.
-        replicationSetArns:
-          $ref: '#/components/schemas/ReplicationSetArnList'
+        replication_set_arn:
+          type: string
           description: The Amazon Resource Name (ARN) of the list replication set.
-      required:
-      - replicationSetArns
-    ReplicationSetArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Arn'
+    ListReplicationSetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListReplicationSetsRowDisplay'
     ListResponsePlansOutput:
       type: object
       properties:

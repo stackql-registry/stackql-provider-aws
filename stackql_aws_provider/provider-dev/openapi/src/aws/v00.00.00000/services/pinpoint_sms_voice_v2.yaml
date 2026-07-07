@@ -830,7 +830,6 @@ paths:
                   description: The keyword to delete.
               required:
                 - OriginationIdentity
-                - Keyword
       responses:
         "200":
           description: Success
@@ -2726,7 +2725,6 @@ paths:
                   description: "The action to perform for the new keyword when it is received. AUTOMATIC_RESPONSE: A message is sent to the recipient. OPT_OUT: Keeps the recipient from receiving future messages. OPT_IN: The recipient wants to receive future messages."
               required:
                 - OriginationIdentity
-                - Keyword
                 - KeywordMessage
       responses:
         "200":
@@ -2848,7 +2846,6 @@ paths:
               required:
                 - ProtectConfigurationId
                 - DestinationPhoneNumber
-                - Action
       responses:
         "200":
           description: Success
@@ -2931,7 +2928,6 @@ paths:
                   description: The JSON formatted resource-based policy to attach.
               required:
                 - ResourceArn
-                - Policy
       responses:
         "200":
           description: Success
@@ -3838,7 +3834,6 @@ paths:
                   description: An array of key and value pair tags that are associated with the resource.
               required:
                 - ResourceArn
-                - Tags
       responses:
         "200":
           description: Success
@@ -9003,10 +8998,10 @@ components:
         - Status
         - CreatedTimestamp
   x-stackQL-resources:
-    origination_identities:
-      id: aws.pinpoint_sms_voice_v2.origination_identities
-      name: origination_identities
-      title: origination_identities
+    pools:
+      id: aws.pinpoint_sms_voice_v2.pools
+      name: pools
+      title: pools
       methods:
         associate_origination_identity:
           operation:
@@ -9019,6 +9014,53 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_pool:
+          operation:
+            $ref: "#/paths/~1CreatePool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_pool:
+          operation:
+            $ref: "#/paths/~1DeletePool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_pools:
+          operation:
+            $ref: "#/paths/~1DescribePools/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Pools
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         disassociate_origination_identity:
@@ -9034,12 +9076,29 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_pool:
+          operation:
+            $ref: "#/paths/~1UpdatePool/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/pools/methods/describe_pools"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/pools/methods/create_pool"
         update:
-          - $ref: "#/components/x-stackQL-resources/origination_identities/methods/associate_origination_identity"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/pools/methods/associate_origination_identity"
+          - $ref: "#/components/x-stackQL-resources/pools/methods/update_pool"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/pools/methods/delete_pool"
     protect_configurations:
       id: aws.pinpoint_sms_voice_v2.protect_configurations
       name: protect_configurations
@@ -9061,6 +9120,19 @@ components:
         create_protect_configuration:
           operation:
             $ref: "#/paths/~1CreateProtectConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_account_default_protect_configuration:
+          operation:
+            $ref: "#/paths/~1DeleteAccountDefaultProtectConfiguration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9096,11 +9168,31 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         disassociate_protect_configuration:
           operation:
             $ref: "#/paths/~1DisassociateProtectConfiguration/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_account_default_protect_configuration:
+          operation:
+            $ref: "#/paths/~1SetAccountDefaultProtectConfiguration/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9134,6 +9226,7 @@ components:
           - $ref: "#/components/x-stackQL-resources/protect_configurations/methods/update_protect_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/protect_configurations/methods/delete_protect_configuration"
+          - $ref: "#/components/x-stackQL-resources/protect_configurations/methods/delete_account_default_protect_configuration"
     configuration_sets:
       id: aws.pinpoint_sms_voice_v2.configuration_sets
       name: configuration_sets
@@ -9142,6 +9235,19 @@ components:
         create_configuration_set:
           operation:
             $ref: "#/paths/~1CreateConfigurationSet/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_event_destination:
+          operation:
+            $ref: "#/paths/~1CreateEventDestination/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9165,36 +9271,9 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-        describe_configuration_sets:
+        delete_default_message_type:
           operation:
-            $ref: "#/paths/~1DescribeConfigurationSets/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ConfigurationSets
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/describe_configuration_sets"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/delete_configuration_set"
-    event_destinations:
-      id: aws.pinpoint_sms_voice_v2.event_destinations
-      name: event_destinations
-      title: event_destinations
-      methods:
-        create_event_destination:
-          operation:
-            $ref: "#/paths/~1CreateEventDestination/post"
+            $ref: "#/paths/~1DeleteDefaultMessageType/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9208,6 +9287,53 @@ components:
         delete_event_destination:
           operation:
             $ref: "#/paths/~1DeleteEventDestination/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_configuration_sets:
+          operation:
+            $ref: "#/paths/~1DescribeConfigurationSets/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ConfigurationSets
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        set_default_message_feedback_enabled:
+          operation:
+            $ref: "#/paths/~1SetDefaultMessageFeedbackEnabled/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        set_default_message_type:
+          operation:
+            $ref: "#/paths/~1SetDefaultMessageType/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9232,13 +9358,18 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/describe_configuration_sets"
         insert:
-          - $ref: "#/components/x-stackQL-resources/event_destinations/methods/create_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/create_configuration_set"
         update:
-          - $ref: "#/components/x-stackQL-resources/event_destinations/methods/update_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/set_default_message_feedback_enabled"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/set_default_message_type"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/update_event_destination"
         delete:
-          - $ref: "#/components/x-stackQL-resources/event_destinations/methods/delete_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/delete_event_destination"
+          - $ref: "#/components/x-stackQL-resources/configuration_sets/methods/delete_configuration_set"
     notify_configurations:
       id: aws.pinpoint_sms_voice_v2.notify_configurations
       name: notify_configurations
@@ -9277,6 +9408,39 @@ components:
             openAPIDocKey: "200"
             mediaType: application/json
             objectKey: $.NotifyConfigurations
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        send_notify_text_message:
+          operation:
+            $ref: "#/paths/~1SendNotifyTextMessage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        send_notify_voice_message:
+          operation:
+            $ref: "#/paths/~1SendNotifyVoiceMessage/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.0
@@ -9349,6 +9513,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9359,73 +9530,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/opt_out_lists/methods/delete_opt_out_list"
-    pools:
-      id: aws.pinpoint_sms_voice_v2.pools
-      name: pools
-      title: pools
-      methods:
-        create_pool:
-          operation:
-            $ref: "#/paths/~1CreatePool/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_pool:
-          operation:
-            $ref: "#/paths/~1DeletePool/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_pools:
-          operation:
-            $ref: "#/paths/~1DescribePools/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Pools
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_pool:
-          operation:
-            $ref: "#/paths/~1UpdatePool/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/pools/methods/describe_pools"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/pools/methods/create_pool"
-        update:
-          - $ref: "#/components/x-stackQL-resources/pools/methods/update_pool"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/pools/methods/delete_pool"
     rcs_agents:
       id: aws.pinpoint_sms_voice_v2.rcs_agents
       name: rcs_agents
@@ -9469,6 +9573,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_rcs_agent:
@@ -9536,6 +9647,39 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        discard_registration_version:
+          operation:
+            $ref: "#/paths/~1DiscardRegistrationVersion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        submit_registration_version:
+          operation:
+            $ref: "#/paths/~1SubmitRegistrationVersion/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9576,6 +9720,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9628,6 +9779,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9668,6 +9826,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9720,6 +9885,39 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        send_destination_number_verification_code:
+          operation:
+            $ref: "#/paths/~1SendDestinationNumberVerificationCode/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        verify_destination_number:
+          operation:
+            $ref: "#/paths/~1VerifyDestinationNumber/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -9730,90 +9928,48 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/verified_destination_numbers/methods/delete_verified_destination_number"
-    account_default_protect_configurations:
-      id: aws.pinpoint_sms_voice_v2.account_default_protect_configurations
-      name: account_default_protect_configurations
-      title: account_default_protect_configurations
-      methods:
-        delete_account_default_protect_configuration:
-          operation:
-            $ref: "#/paths/~1DeleteAccountDefaultProtectConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        set_account_default_protect_configuration:
-          operation:
-            $ref: "#/paths/~1SetAccountDefaultProtectConfiguration/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/account_default_protect_configurations/methods/set_account_default_protect_configuration"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/account_default_protect_configurations/methods/delete_account_default_protect_configuration"
-    default_message_types:
-      id: aws.pinpoint_sms_voice_v2.default_message_types
-      name: default_message_types
-      title: default_message_types
-      methods:
-        delete_default_message_type:
-          operation:
-            $ref: "#/paths/~1DeleteDefaultMessageType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        set_default_message_type:
-          operation:
-            $ref: "#/paths/~1SetDefaultMessageType/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/default_message_types/methods/set_default_message_type"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/default_message_types/methods/delete_default_message_type"
-    default_sender_ids:
-      id: aws.pinpoint_sms_voice_v2.default_sender_ids
-      name: default_sender_ids
-      title: default_sender_ids
+    sender_ids:
+      id: aws.pinpoint_sms_voice_v2.sender_ids
+      name: sender_ids
+      title: sender_ids
       methods:
         delete_default_sender_id:
           operation:
             $ref: "#/paths/~1DeleteDefaultSenderId/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_sender_ids:
+          operation:
+            $ref: "#/paths/~1DescribeSenderIds/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.SenderIds
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        release_sender_id:
+          operation:
+            $ref: "#/paths/~1ReleaseSenderId/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -9837,13 +9993,28 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_sender_id:
+          operation:
+            $ref: "#/paths/~1UpdateSenderId/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/sender_ids/methods/describe_sender_ids"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/default_sender_ids/methods/set_default_sender_id"
+          - $ref: "#/components/x-stackQL-resources/sender_ids/methods/release_sender_id"
+          - $ref: "#/components/x-stackQL-resources/sender_ids/methods/set_default_sender_id"
         delete:
-          - $ref: "#/components/x-stackQL-resources/default_sender_ids/methods/delete_default_sender_id"
+          - $ref: "#/components/x-stackQL-resources/sender_ids/methods/delete_default_sender_id"
     keywords:
       id: aws.pinpoint_sms_voice_v2.keywords
       name: keywords
@@ -9874,6 +10045,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_keyword:
@@ -10004,6 +10182,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_opted_out_number:
@@ -10058,6 +10243,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_protect_configuration_rule_set_number_override:
@@ -10112,6 +10304,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         put_registration_field_value:
@@ -10282,6 +10481,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10307,6 +10513,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10332,6 +10545,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10357,6 +10577,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         release_phone_number:
@@ -10409,6 +10636,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10434,6 +10668,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10459,6 +10700,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10484,6 +10732,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10491,58 +10746,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/registration_type_definitions/methods/describe_registration_type_definitions"
         insert: []
         update: []
-        delete: []
-    sender_ids:
-      id: aws.pinpoint_sms_voice_v2.sender_ids
-      name: sender_ids
-      title: sender_ids
-      methods:
-        describe_sender_ids:
-          operation:
-            $ref: "#/paths/~1DescribeSenderIds/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.SenderIds
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        release_sender_id:
-          operation:
-            $ref: "#/paths/~1ReleaseSenderId/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_sender_id:
-          operation:
-            $ref: "#/paths/~1UpdateSenderId/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/sender_ids/methods/describe_sender_ids"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/sender_ids/methods/release_sender_id"
         delete: []
     spend_limits:
       id: aws.pinpoint_sms_voice_v2.spend_limits
@@ -10561,6 +10764,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10624,6 +10834,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10649,6 +10866,13 @@ components:
             mediaType: application/x-amz-json-1.0
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -10657,10 +10881,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.pinpoint_sms_voice_v2.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.pinpoint_sms_voice_v2.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -10675,66 +10899,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    message_feedbacks:
-      id: aws.pinpoint_sms_voice_v2.message_feedbacks
-      name: message_feedbacks
-      title: message_feedbacks
-      methods:
-        put_message_feedback:
-          operation:
-            $ref: "#/paths/~1PutMessageFeedback/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update: []
-        replace:
-          - $ref: "#/components/x-stackQL-resources/message_feedbacks/methods/put_message_feedback"
-        delete: []
-    default_message_feedback_enableds:
-      id: aws.pinpoint_sms_voice_v2.default_message_feedback_enableds
-      name: default_message_feedback_enableds
-      title: default_message_feedback_enableds
-      methods:
-        set_default_message_feedback_enabled:
-          operation:
-            $ref: "#/paths/~1SetDefaultMessageFeedbackEnabled/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.0
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/default_message_feedback_enableds/methods/set_default_message_feedback_enabled"
-        delete: []
-    resources:
-      id: aws.pinpoint_sms_voice_v2.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -10762,9 +10926,35 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+        delete: []
+    message_feedbacks:
+      id: aws.pinpoint_sms_voice_v2.message_feedbacks
+      name: message_feedbacks
+      title: message_feedbacks
+      methods:
+        put_message_feedback:
+          operation:
+            $ref: "#/paths/~1PutMessageFeedback/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.0
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select: []
+        insert: []
+        update: []
+        replace:
+          - $ref: "#/components/x-stackQL-resources/message_feedbacks/methods/put_message_feedback"
         delete: []

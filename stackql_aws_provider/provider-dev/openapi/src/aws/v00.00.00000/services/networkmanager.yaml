@@ -217,13 +217,13 @@ paths:
           description: The ID of the global network.
         - name: deviceId
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/DeviceId"
           description: The ID of the device.
         - name: linkId
           in: query
-          required: true
+          required: false
           schema:
             $ref: "#/components/schemas/LinkId"
           description: The ID of the link.
@@ -823,7 +823,6 @@ paths:
                 Tags:
                   $ref: "#/components/schemas/TagList"
               required:
-                - Bandwidth
                 - SiteId
       responses:
         "200":
@@ -2932,8 +2931,6 @@ paths:
               properties:
                 Metadata:
                   $ref: "#/components/schemas/NetworkResourceMetadataMap"
-              required:
-                - Metadata
       responses:
         "200":
           description: Success
@@ -5838,6 +5835,73 @@ components:
           $ref: "#/components/schemas/VpcAttachment"
           description: Describes the updated VPC attachment.
   x-stackQL-resources:
+    attachments:
+      id: aws.networkmanager.attachments
+      name: attachments
+      title: attachments
+      methods:
+        accept_attachment:
+          operation:
+            $ref: "#/paths/~1attachments~1{attachment_id}~1accept/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        delete_attachment:
+          operation:
+            $ref: "#/paths/~1attachments~1{attachment_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        list_attachments:
+          operation:
+            $ref: "#/paths/~1attachments/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Attachments
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        put_attachment_routing_policy_label:
+          operation:
+            $ref: "#/paths/~1routing-policy-label/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        reject_attachment:
+          operation:
+            $ref: "#/paths/~1attachments~1{attachment_id}~1reject/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        remove_attachment_routing_policy_label:
+          operation:
+            $ref: "#/paths/~1routing-policy-label~1core-network~1{core_network_id}~1attachment~1{attachment_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/attachments/methods/list_attachments"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/attachments/methods/remove_attachment_routing_policy_label"
+        replace:
+          - $ref: "#/components/x-stackQL-resources/attachments/methods/put_attachment_routing_policy_label"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/attachments/methods/delete_attachment"
     connect_peers:
       id: aws.networkmanager.connect_peers
       name: connect_peers
@@ -5846,6 +5910,17 @@ components:
         associate_connect_peer:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1connect-peer-associations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        associate_transit_gateway_connect_peer:
+          operation:
+            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-connect-peer-associations/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5874,6 +5949,14 @@ components:
             objectKey: $.ConnectPeers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_connect_peer:
           operation:
             $ref: "#/paths/~1connect-peers~1{connect_peer_id}/delete"
@@ -5886,9 +5969,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ConnectPeer
         disassociate_connect_peer:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1connect-peer-associations~1{connect_peer_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        disassociate_transit_gateway_connect_peer:
+          operation:
+            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-connect-peer-associations~1{transit_gateway_connect_peer_arn}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -5900,7 +5990,9 @@ components:
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/create_connect_peer"
         update:
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/associate_connect_peer"
+          - $ref: "#/components/x-stackQL-resources/connect_peers/methods/associate_transit_gateway_connect_peer"
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/disassociate_connect_peer"
+          - $ref: "#/components/x-stackQL-resources/connect_peers/methods/disassociate_transit_gateway_connect_peer"
         delete:
           - $ref: "#/components/x-stackQL-resources/connect_peers/methods/delete_connect_peer"
     connect_peer_associations:
@@ -5917,16 +6009,24 @@ components:
             objectKey: $.ConnectPeerAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connect_peer_associations/methods/get_connect_peer_associations"
         insert: []
         update: []
         delete: []
-    customer_gateways:
-      id: aws.networkmanager.customer_gateways
-      name: customer_gateways
-      title: customer_gateways
+    global_networks:
+      id: aws.networkmanager.global_networks
+      name: global_networks
+      title: global_networks
       methods:
         associate_customer_gateway:
           operation:
@@ -5939,19 +6039,87 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_global_network:
+          operation:
+            $ref: "#/paths/~1global-networks/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        describe_global_networks:
+          operation:
+            $ref: "#/paths/~1global-networks/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.GlobalNetworks
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_global_network:
+          operation:
+            $ref: "#/paths/~1global-networks~1{global_network_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_global_network:
+          operation:
+            $ref: "#/paths/~1global-networks~1{global_network_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deregister_transit_gateway:
+          operation:
+            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-registrations~1{transit_gateway_arn}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         disassociate_customer_gateway:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1customer-gateway-associations~1{customer_gateway_arn}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        register_transit_gateway:
+          operation:
+            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-registrations/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/describe_global_networks"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/register_transit_gateway"
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/create_global_network"
         update:
-          - $ref: "#/components/x-stackQL-resources/customer_gateways/methods/associate_customer_gateway"
-          - $ref: "#/components/x-stackQL-resources/customer_gateways/methods/disassociate_customer_gateway"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/associate_customer_gateway"
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/disassociate_customer_gateway"
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/update_global_network"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/deregister_transit_gateway"
+          - $ref: "#/components/x-stackQL-resources/global_networks/methods/delete_global_network"
     customer_gateway_associations:
       id: aws.networkmanager.customer_gateway_associations
       name: customer_gateway_associations
@@ -5966,6 +6134,14 @@ components:
             objectKey: $.CustomerGatewayAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/customer_gateway_associations/methods/get_customer_gateway_associations"
@@ -6016,6 +6192,14 @@ components:
             objectKey: $.Links
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_link:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1links~1{link_id}/delete"
@@ -6040,8 +6224,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/links/methods/create_link"
         update:
           - $ref: "#/components/x-stackQL-resources/links/methods/associate_link"
-          - $ref: "#/components/x-stackQL-resources/links/methods/disassociate_link"
           - $ref: "#/components/x-stackQL-resources/links/methods/update_link"
+          - $ref: "#/components/x-stackQL-resources/links/methods/disassociate_link"
         delete:
           - $ref: "#/components/x-stackQL-resources/links/methods/delete_link"
     link_associations:
@@ -6058,40 +6242,19 @@ components:
             objectKey: $.LinkAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/link_associations/methods/get_link_associations"
         insert: []
         update: []
-        delete: []
-    transit_gateway_connect_peers:
-      id: aws.networkmanager.transit_gateway_connect_peers
-      name: transit_gateway_connect_peers
-      title: transit_gateway_connect_peers
-      methods:
-        associate_transit_gateway_connect_peer:
-          operation:
-            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-connect-peer-associations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        disassociate_transit_gateway_connect_peer:
-          operation:
-            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-connect-peer-associations~1{transit_gateway_connect_peer_arn}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/transit_gateway_connect_peers/methods/associate_transit_gateway_connect_peer"
-          - $ref: "#/components/x-stackQL-resources/transit_gateway_connect_peers/methods/disassociate_transit_gateway_connect_peer"
         delete: []
     transit_gateway_connect_peer_associations:
       id: aws.networkmanager.transit_gateway_connect_peer_associations
@@ -6107,6 +6270,14 @@ components:
             objectKey: $.TransitGatewayConnectPeerAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transit_gateway_connect_peer_associations/methods/get_transit_gateway_connect_peer_associations"
@@ -6135,6 +6306,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ConnectAttachment
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/connect_attachments/methods/get_connect_attachment"
@@ -6167,6 +6339,14 @@ components:
             objectKey: $.Connections
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_connection:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1connections~1{connection_id}/delete"
@@ -6218,6 +6398,14 @@ components:
             objectKey: $.CoreNetworks
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_core_network:
           operation:
             $ref: "#/paths/~1core-networks~1{core_network_id}/delete"
@@ -6230,6 +6418,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CoreNetwork
         update_core_network:
           operation:
             $ref: "#/paths/~1core-networks~1{core_network_id}/patch"
@@ -6241,6 +6430,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        execute_core_network_change_set:
+          operation:
+            $ref: "#/paths/~1core-networks~1{core_network_id}~1core-network-change-sets~1{policy_version_id}~1execute/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_networks/methods/get_core_network"
@@ -6282,6 +6477,14 @@ components:
             objectKey: $.PrefixListAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_prefix_list_associations/methods/list_core_network_prefix_list_associations"
@@ -6315,6 +6518,14 @@ components:
             objectKey: $.Devices
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_device:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1devices~1{device_id}/delete"
@@ -6363,6 +6574,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.DirectConnectGatewayAttachment
         update_direct_connect_gateway_attachment:
           operation:
             $ref: "#/paths/~1direct-connect-gateway-attachments~1{attachment_id}/patch"
@@ -6382,57 +6594,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/direct_connect_gateway_attachments/methods/update_direct_connect_gateway_attachment"
         delete: []
-    global_networks:
-      id: aws.networkmanager.global_networks
-      name: global_networks
-      title: global_networks
-      methods:
-        create_global_network:
-          operation:
-            $ref: "#/paths/~1global-networks/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        describe_global_networks:
-          operation:
-            $ref: "#/paths/~1global-networks/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.GlobalNetworks
-          request:
-            nativeCasing: pascal
-        delete_global_network:
-          operation:
-            $ref: "#/paths/~1global-networks~1{global_network_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_global_network:
-          operation:
-            $ref: "#/paths/~1global-networks~1{global_network_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/global_networks/methods/describe_global_networks"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/global_networks/methods/create_global_network"
-        update:
-          - $ref: "#/components/x-stackQL-resources/global_networks/methods/update_global_network"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/global_networks/methods/delete_global_network"
     sites:
       id: aws.networkmanager.sites
       name: sites
@@ -6458,6 +6619,14 @@ components:
             objectKey: $.Sites
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_site:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1sites~1{site_id}/delete"
@@ -6506,6 +6675,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.SiteToSiteVpnAttachment
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/site_to_site_vpn_attachments/methods/get_site_to_site_vpn_attachment"
@@ -6535,6 +6705,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TransitGatewayPeering
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transit_gateway_peerings/methods/get_transit_gateway_peering"
@@ -6564,6 +6735,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.TransitGatewayRouteTableAttachment
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transit_gateway_route_table_attachments/methods/get_transit_gateway_route_table_attachment"
@@ -6593,6 +6765,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.VpcAttachment
         update_vpc_attachment:
           operation:
             $ref: "#/paths/~1vpc-attachments~1{attachment_id}/patch"
@@ -6612,33 +6785,6 @@ components:
         update:
           - $ref: "#/components/x-stackQL-resources/vpc_attachments/methods/update_vpc_attachment"
         delete: []
-    attachments:
-      id: aws.networkmanager.attachments
-      name: attachments
-      title: attachments
-      methods:
-        delete_attachment:
-          operation:
-            $ref: "#/paths/~1attachments~1{attachment_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        list_attachments:
-          operation:
-            $ref: "#/paths/~1attachments/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Attachments
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/attachments/methods/list_attachments"
-        insert: []
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/attachments/methods/delete_attachment"
     core_network_policy_versions:
       id: aws.networkmanager.core_network_policy_versions
       name: core_network_policy_versions
@@ -6659,6 +6805,14 @@ components:
             objectKey: $.CoreNetworkPolicyVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_policy_versions/methods/list_core_network_policy_versions"
@@ -6686,6 +6840,14 @@ components:
             objectKey: $.Peerings
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/peerings/methods/list_peerings"
@@ -6730,35 +6892,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/put_resource_policy"
         delete:
           - $ref: "#/components/x-stackQL-resources/resource_policies/methods/delete_resource_policy"
-    transit_gateways:
-      id: aws.networkmanager.transit_gateways
-      name: transit_gateways
-      title: transit_gateways
-      methods:
-        deregister_transit_gateway:
-          operation:
-            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-registrations~1{transit_gateway_arn}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        register_transit_gateway:
-          operation:
-            $ref: "#/paths/~1global-networks~1{global_network_id}~1transit-gateway-registrations/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/transit_gateways/methods/register_transit_gateway"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/transit_gateways/methods/deregister_transit_gateway"
     core_network_change_events:
       id: aws.networkmanager.core_network_change_events
       name: core_network_change_events
@@ -6773,6 +6906,14 @@ components:
             objectKey: $.CoreNetworkChangeEvents
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_change_events/methods/get_core_network_change_events"
@@ -6793,6 +6934,14 @@ components:
             objectKey: $.CoreNetworkChanges
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_change_sets/methods/get_core_network_change_set"
@@ -6810,6 +6959,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.CoreNetworkPolicy
           request:
             nativeCasing: pascal
         put_core_network_policy:
@@ -6823,6 +6973,12 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        restore_core_network_policy_version:
+          operation:
+            $ref: "#/paths/~1core-networks~1{core_network_id}~1core-network-policy-versions~1{policy_version_id}~1restore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/core_network_policies/methods/get_core_network_policy"
@@ -6845,6 +7001,14 @@ components:
             objectKey: $.NetworkResourceCounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_resource_counts/methods/get_network_resource_counts"
@@ -6865,6 +7029,14 @@ components:
             objectKey: $.Relationships
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_resource_relationships/methods/get_network_resource_relationships"
@@ -6885,11 +7057,31 @@ components:
             objectKey: $.NetworkResources
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        update_network_resource_metadata:
+          operation:
+            $ref: "#/paths/~1global-networks~1{global_network_id}~1network-resources~1{resource_arn}~1metadata/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_resources/methods/get_network_resources"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/network_resources/methods/update_network_resource_metadata"
         delete: []
     network_routes:
       id: aws.networkmanager.network_routes
@@ -6927,6 +7119,14 @@ components:
             objectKey: $.NetworkTelemetry
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/network_telemetries/methods/get_network_telemetry"
@@ -6944,6 +7144,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RouteAnalysis
         start_route_analysis:
           operation:
             $ref: "#/paths/~1global-networks~1{global_network_id}~1route-analyses/post"
@@ -6975,6 +7176,14 @@ components:
             objectKey: $.TransitGatewayRegistrations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/transit_gateway_registrations/methods/get_transit_gateway_registrations"
@@ -6995,6 +7204,14 @@ components:
             objectKey: $.AttachmentRoutingPolicyAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/attachment_routing_policy_associations/methods/list_attachment_routing_policy_associations"
@@ -7016,6 +7233,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -7035,6 +7259,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.OrganizationStatus
           request:
             nativeCasing: pascal
       sqlVerbs:
@@ -7043,10 +7268,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.networkmanager.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.networkmanager.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -7054,17 +7279,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.networkmanager.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -7085,61 +7299,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    attachment_routing_policy_labels:
-      id: aws.networkmanager.attachment_routing_policy_labels
-      name: attachment_routing_policy_labels
-      title: attachment_routing_policy_labels
-      methods:
-        put_attachment_routing_policy_label:
-          operation:
-            $ref: "#/paths/~1routing-policy-label/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        remove_attachment_routing_policy_label:
-          operation:
-            $ref: "#/paths/~1routing-policy-label~1core-network~1{core_network_id}~1attachment~1{attachment_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/attachment_routing_policy_labels/methods/remove_attachment_routing_policy_label"
-        replace:
-          - $ref: "#/components/x-stackQL-resources/attachment_routing_policy_labels/methods/put_attachment_routing_policy_label"
-        delete: []
-    network_resource_metadatas:
-      id: aws.networkmanager.network_resource_metadatas
-      name: network_resource_metadatas
-      title: network_resource_metadatas
-      methods:
-        update_network_resource_metadata:
-          operation:
-            $ref: "#/paths/~1global-networks~1{global_network_id}~1network-resources~1{resource_arn}~1metadata/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/network_resource_metadatas/methods/update_network_resource_metadata"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

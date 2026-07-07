@@ -231,6 +231,7 @@ paths:
       x-stackql-resource: pipelines
       x-stackql-method: get_pipeline
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Pipeline
   /2022-01-01/osis/getPipelineBlueprint/{blueprint_name}:
     get:
       operationId: GetPipelineBlueprint
@@ -327,6 +328,9 @@ paths:
       x-stackql-method: list_pipeline_endpoint_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineEndpointConnections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2022-01-01/osis/listPipelineEndpoints:
     get:
       operationId: ListPipelineEndpoints
@@ -356,6 +360,9 @@ paths:
       x-stackql-method: list_pipeline_endpoints
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PipelineEndpoints
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /2022-01-01/osis/listPipelines:
     get:
       operationId: ListPipelines
@@ -405,7 +412,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /2022-01-01/osis/revokePipelineEndpointConnections:
@@ -508,7 +515,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /2022-01-01/osis/untagResource/:
@@ -541,7 +548,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /2022-01-01/osis/updatePipeline/{pipeline_name}:

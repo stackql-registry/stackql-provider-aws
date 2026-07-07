@@ -1,0 +1,1 @@
+SELECT name, bucket_arn, creation_date FROM aws.s3.buckets WHERE region = '{{ global_region }}'

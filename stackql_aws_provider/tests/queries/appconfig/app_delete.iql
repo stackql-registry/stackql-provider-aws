@@ -1,0 +1,2 @@
+DELETE FROM aws.appconfig.applications
+WHERE region = '{{ region }}' AND application_id = '{{ appconfig_app_create.app_id }}'

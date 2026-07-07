@@ -522,6 +522,9 @@ paths:
       x-stackql-method: list_kx_environments
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.environments
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /kx/environments/{environment_id}/scalingGroups:
     post:
       operationId: CreateKxScalingGroup
@@ -796,6 +799,7 @@ paths:
       x-stackql-resource: environments
       x-stackql-method: get_environment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.environment
     put:
       operationId: UpdateEnvironment
       description: Update your FinSpace environment.
@@ -1607,7 +1611,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1638,7 +1642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1665,7 +1669,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /kx/environments/{environment_id}/clusters/{cluster_name}/configuration/code:
@@ -1713,7 +1717,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateKxClusterCodeConfigurationResponse'
-      x-stackql-resource: kx_cluster_code_configurations
+      x-stackql-resource: kx_clusters
       x-stackql-method: update_kx_cluster_code_configuration
       x-stackql-verb: UPDATE
   /kx/environments/{environment_id}/clusters/{cluster_name}/configuration/databases:
@@ -1757,7 +1761,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateKxClusterDatabasesResponse'
-      x-stackql-resource: kx_cluster_databases
+      x-stackql-resource: kx_clusters
       x-stackql-method: update_kx_cluster_databases
       x-stackql-verb: UPDATE
   /kx/environments/{environment_id}/network:
@@ -1794,7 +1798,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateKxEnvironmentNetworkResponse'
-      x-stackql-resource: kx_environment_networks
+      x-stackql-resource: kx_environments
       x-stackql-method: update_kx_environment_network
       x-stackql-verb: UPDATE
 components:

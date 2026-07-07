@@ -2401,6 +2401,17 @@ components:
       name: blueprints
       title: blueprints
       methods:
+        copy_blueprint_stage:
+          operation:
+            $ref: "#/paths/~1blueprints~1{blueprint_arn}~1copy-stage/put"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_blueprint:
           operation:
             $ref: "#/paths/~1blueprints~1/put"
@@ -2422,6 +2433,24 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        create_blueprint_version:
+          operation:
+            $ref: "#/paths/~1blueprints~1{blueprint_arn}~1versions~1/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
             requestBodyTranslate:
               algorithm: naive
         delete_blueprint:
@@ -2438,6 +2467,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.blueprint
           request:
             nativeCasing: pascal
           config:
@@ -2454,26 +2484,11 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/blueprints/methods/get_blueprint"
-          - $ref: "#/components/x-stackQL-resources/blueprints/methods/list_blueprints"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/blueprints/methods/create_blueprint"
-        update:
-          - $ref: "#/components/x-stackQL-resources/blueprints/methods/update_blueprint"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/blueprints/methods/delete_blueprint"
-    blueprint_versions:
-      id: aws.bedrock_data_automation.blueprint_versions
-      name: blueprint_versions
-      title: blueprint_versions
-      methods:
-        create_blueprint_version:
+        invoke_blueprint_optimization_async:
           operation:
-            $ref: "#/paths/~1blueprints~1{blueprint_arn}~1versions~1/post"
+            $ref: "#/paths/~1invokeBlueprintOptimizationAsync/post"
           response:
-            openAPIDocKey: "201"
+            openAPIDocKey: "200"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -2481,11 +2496,16 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/blueprints/methods/get_blueprint"
+          - $ref: "#/components/x-stackQL-resources/blueprints/methods/list_blueprints"
         insert:
-          - $ref: "#/components/x-stackQL-resources/blueprint_versions/methods/create_blueprint_version"
-        update: []
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/blueprints/methods/create_blueprint"
+          - $ref: "#/components/x-stackQL-resources/blueprints/methods/create_blueprint_version"
+        update:
+          - $ref: "#/components/x-stackQL-resources/blueprints/methods/update_blueprint"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/blueprints/methods/delete_blueprint"
     data_automation_libraries:
       id: aws.bedrock_data_automation.data_automation_libraries
       name: data_automation_libraries
@@ -2512,6 +2532,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_data_automation_library:
@@ -2526,11 +2553,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.library
         update_data_automation_library:
           operation:
             $ref: "#/paths/~1data-automation-libraries~1{library_arn}~1/put"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        invoke_data_automation_library_ingestion_job:
+          operation:
+            $ref: "#/paths/~1data-automation-libraries~1{library_arn}~1library-ingestion-jobs~1/put"
+          response:
+            openAPIDocKey: "201"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -2573,6 +2612,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_data_automation_project:
@@ -2587,6 +2633,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.project
           request:
             nativeCasing: pascal
           config:
@@ -2641,6 +2688,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.entity
         list_data_automation_library_entities:
           operation:
             $ref: "#/paths/~1data-automation-libraries~1{library_arn}~1entityType~1{entity_type}~1entities~1/post"
@@ -2651,6 +2699,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2671,6 +2726,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.job
         list_data_automation_library_ingestion_jobs:
           operation:
             $ref: "#/paths/~1data-automation-libraries~1{library_arn}~1library-ingestion-jobs~1/post"
@@ -2681,6 +2737,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -2690,10 +2753,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.bedrock_data_automation.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.bedrock_data_automation.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2706,17 +2769,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.bedrock_data_automation.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tagResource/post"
@@ -2740,9 +2792,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

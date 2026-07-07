@@ -1,0 +1,5 @@
+-- Latest Amazon Linux 2023 AMI id via the public SSM parameter - no
+-- hardcoded, region-specific AMI ids in the suite. aws-json list-of-string
+-- body field passed as a plain JSON string.
+SELECT * FROM aws.ssm.parameters
+WHERE region = '{{ region }}' AND Names = '["{{ ami_ssm_param }}"]'

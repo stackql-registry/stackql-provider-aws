@@ -2130,40 +2130,17 @@ components:
       required:
         - application
   x-stackQL-resources:
-    job_runs:
-      id: aws.emr_serverless.job_runs
-      name: job_runs
-      title: job_runs
-      methods:
-        get_job_run:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1jobruns~1{job_run_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-        list_job_runs:
-          operation:
-            $ref: "#/paths/~1applications~1{application_id}~1jobruns/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.jobRuns
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/job_runs/methods/get_job_run"
-          - $ref: "#/components/x-stackQL-resources/job_runs/methods/list_job_runs"
-        insert: []
-        update: []
-        delete: []
     applications:
       id: aws.emr_serverless.applications
       name: applications
       title: applications
       methods:
+        cancel_job_run:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1jobruns~1{job_run_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         create_application:
           operation:
             $ref: "#/paths/~1applications/post"
@@ -2184,6 +2161,14 @@ components:
             objectKey: $.applications
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/delete"
@@ -2196,6 +2181,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.application
         update_application:
           operation:
             $ref: "#/paths/~1applications~1{application_id}/patch"
@@ -2207,6 +2193,40 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        start_job_run:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1jobruns/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_session:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1sessions/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1start/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        stop_application:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1stop/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/applications/methods/get_application"
@@ -2217,6 +2237,44 @@ components:
           - $ref: "#/components/x-stackQL-resources/applications/methods/update_application"
         delete:
           - $ref: "#/components/x-stackQL-resources/applications/methods/delete_application"
+    job_runs:
+      id: aws.emr_serverless.job_runs
+      name: job_runs
+      title: job_runs
+      methods:
+        get_job_run:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1jobruns~1{job_run_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.jobRun
+          request:
+            nativeCasing: pascal
+        list_job_runs:
+          operation:
+            $ref: "#/paths/~1applications~1{application_id}~1jobruns/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.jobRuns
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/job_runs/methods/get_job_run"
+          - $ref: "#/components/x-stackQL-resources/job_runs/methods/list_job_runs"
+        insert: []
+        update: []
+        delete: []
     dashboard_for_job_runs:
       id: aws.emr_serverless.dashboard_for_job_runs
       name: dashboard_for_job_runs
@@ -2266,6 +2324,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.session
         terminate_session:
           operation:
             $ref: "#/paths/~1applications~1{application_id}~1sessions~1{session_id}/delete"
@@ -2281,6 +2340,14 @@ components:
             objectKey: $.sessions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/sessions/methods/get_session"
@@ -2320,16 +2387,24 @@ components:
             objectKey: $.jobRunAttempts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/job_run_attempts/methods/list_job_run_attempts"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.emr_serverless.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.emr_serverless.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -2337,17 +2412,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.emr_serverless.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -2368,9 +2432,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

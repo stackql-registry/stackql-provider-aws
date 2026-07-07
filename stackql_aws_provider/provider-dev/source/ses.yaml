@@ -173,7 +173,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateConfigurationSetEventDestinationOutputDisplay'
-      x-stackql-resource: configuration_set_event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_event_destination
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateConfigurationSetEventDestinationOutputDisplay
@@ -198,7 +198,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateConfigurationSetEventDestinationRequest'
-      x-stackql-resource: configuration_set_event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_event_destination
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateConfigurationSetEventDestinationOutputDisplay
@@ -237,7 +237,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/CreateConfigurationSetTrackingOptionsOutputDisplay'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_tracking_options
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateConfigurationSetTrackingOptionsOutputDisplay
@@ -261,7 +261,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/CreateConfigurationSetTrackingOptionsRequest'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: create_configuration_set_tracking_options
       x-stackql-verb: INSERT
       x-stackql-responseEnvelope: CreateConfigurationSetTrackingOptionsOutputDisplay
@@ -669,7 +669,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationOutputDisplay'
-      x-stackql-resource: configuration_set_event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_event_destination
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteConfigurationSetEventDestinationOutputDisplay
@@ -692,7 +692,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteConfigurationSetEventDestinationRequest'
-      x-stackql-resource: configuration_set_event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_event_destination
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteConfigurationSetEventDestinationOutputDisplay
@@ -727,7 +727,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/DeleteConfigurationSetTrackingOptionsOutputDisplay'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_tracking_options
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteConfigurationSetTrackingOptionsOutputDisplay
@@ -752,7 +752,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/DeleteConfigurationSetTrackingOptionsRequest'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: delete_configuration_set_tracking_options
       x-stackql-verb: DELETE
       x-stackql-responseEnvelope: DeleteConfigurationSetTrackingOptionsOutputDisplay
@@ -817,7 +817,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: The identity to be removed from the list of identities for the Amazon Web Services account.
         schema:
           $ref: '#/components/schemas/Identity'
@@ -874,7 +874,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: 'The identity that is associated with the policy to delete. You can specify the identity by using its
           name or by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
           To successfully call this operation, you must own the identity.'
@@ -1711,7 +1711,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: 'The identity for which the policies are retrieved. You can specify an identity by using its name or
           by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
           To successfully call this operation, you must own the identity.'
@@ -2159,6 +2159,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListIdentitiesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListIdentitiesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListIdentitiesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "Identities"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"identity": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"identity":
+        {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListIdentities
       description: Returns a list containing all of the identities (email addresses and domains) for your Amazon Web Services
@@ -2186,6 +2193,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListIdentitiesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListIdentitiesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "ListIdentitiesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "Identities"
+        }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else if eq (kindOf
+        $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i, $v := $n -}}{{-
+        if $i }},{{ end }}{"identity": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string") $n -}}{"identity":
+        {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListIdentityPolicies&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2206,7 +2220,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: 'The identity that is associated with the policy for which the policies are listed. You can specify an
           identity by using its name or by using its Amazon Resource Name (ARN). Examples: user@example.com, example.com,
           arn:aws:ses:us-east-1:123456789012:identity/example.com. To successfully call this operation, you must own the identity.'
@@ -2224,6 +2238,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListIdentityPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListIdentityPoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n =
+        index $n "ListIdentityPoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "PolicyNames" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else
+        if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i,
+        $v := $n -}}{{- if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string")
+        $n -}}{"policy_name": {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListIdentityPolicies
       description: Returns a list of sending authorization policies that are attached to the given identity (an email address
@@ -2250,6 +2271,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListIdentityPoliciesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListIdentityPoliciesResponse" -}}{{- if eq (kindOf $n) "map" }}{{ $n =
+        index $n "ListIdentityPoliciesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "PolicyNames" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index $n "member" }}{{ else
+        if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice" -}}{{- range $i,
+        $v := $n -}}{{- if $i }},{{ end }}{"policy_name": {{ toJson $v }}}{{- end -}}{{- else if and (eq (kindOf $n) "string")
+        $n -}}{"policy_name": {{ toJson $n }}}{{- end -}}]}'
   /?Action=ListReceiptFilters&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2448,6 +2476,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListVerifiedEmailAddressesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListVerifiedEmailAddressesResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "ListVerifiedEmailAddressesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "VerifiedEmailAddresses" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice"
+        -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"verified_email_address": {{ toJson $v }}}{{- end -}}{{- else
+        if and (eq (kindOf $n) "string") $n -}}{"verified_email_address": {{ toJson $n }}}{{- end -}}]}'
     post:
       operationId: POST_ListVerifiedEmailAddresses
       description: Deprecated. Use the ListIdentities operation to list the email addresses and domains associated with your
@@ -2465,6 +2500,13 @@ paths:
       x-stackql-verb: SELECT
       x-stackql-responseEnvelope: ListVerifiedEmailAddressesOutputDisplay
       x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_mxj_v0.3.0
+      x-stackql-transform-body: '{{- $n := index . "ListVerifiedEmailAddressesResponse" -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "ListVerifiedEmailAddressesResult" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{
+        $n = index $n "VerifiedEmailAddresses" }}{{ else }}{{ $n = "" }}{{ end -}}{{- if eq (kindOf $n) "map" }}{{ $n = index
+        $n "member" }}{{ else if eq (kindOf $n) "string" }}{{ $n = "" }}{{ end -}}{"line_items": [{{- if eq (kindOf $n) "slice"
+        -}}{{- range $i, $v := $n -}}{{- if $i }},{{ end }}{"verified_email_address": {{ toJson $v }}}{{- end -}}{{- else
+        if and (eq (kindOf $n) "string") $n -}}{"verified_email_address": {{ toJson $n }}}{{- end -}}]}'
   /?Action=PutConfigurationSetDeliveryOptions&Version=2010-12-01:
     parameters:
     - $ref: '#/components/parameters/X-Amz-Content-Sha256'
@@ -2498,7 +2540,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsOutputDisplay'
-      x-stackql-resource: configuration_set_delivery_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutConfigurationSetDeliveryOptionsOutputDisplay
@@ -2519,7 +2561,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/PutConfigurationSetDeliveryOptionsRequest'
-      x-stackql-resource: configuration_set_delivery_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: put_configuration_set_delivery_options
       x-stackql-verb: REPLACE
       x-stackql-responseEnvelope: PutConfigurationSetDeliveryOptionsOutputDisplay
@@ -2543,7 +2585,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: 'The identity to which that the policy applies. You can specify an identity by using its name or by using
           its Amazon Resource Name (ARN). Examples: user@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.
           To successfully call this operation, you must own the identity.'
@@ -2965,7 +3007,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SendCustomVerificationEmailOutputDisplay'
-      x-stackql-resource: custom_verification_email
+      x-stackql-resource: templates
       x-stackql-method: send_custom_verification_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendCustomVerificationEmailOutputDisplay
@@ -2990,7 +3032,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SendCustomVerificationEmailRequest'
-      x-stackql-resource: custom_verification_email
+      x-stackql-resource: templates
       x-stackql-method: send_custom_verification_email
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: SendCustomVerificationEmailOutputDisplay
@@ -3590,7 +3632,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: The identity for which DKIM signing should be enabled or disabled.
         schema:
           $ref: '#/components/schemas/Identity'
@@ -3608,7 +3650,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetIdentityDkimEnabledOutputDisplay'
-      x-stackql-resource: identity_dkim_enableds
+      x-stackql-resource: identities
       x-stackql-method: set_identity_dkim_enabled
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityDkimEnabledOutputDisplay
@@ -3635,7 +3677,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetIdentityDkimEnabledRequest'
-      x-stackql-resource: identity_dkim_enableds
+      x-stackql-resource: identities
       x-stackql-method: set_identity_dkim_enabled
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityDkimEnabledOutputDisplay
@@ -3660,7 +3702,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: 'The identity for which to set bounce and complaint notification forwarding. Examples: user@example.com,
           example.com.'
         schema:
@@ -3681,7 +3723,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetIdentityFeedbackForwardingEnabledOutputDisplay'
-      x-stackql-resource: identity_feedback_forwarding_enableds
+      x-stackql-resource: identities
       x-stackql-method: set_identity_feedback_forwarding_enabled
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityFeedbackForwardingEnabledOutputDisplay
@@ -3707,7 +3749,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetIdentityFeedbackForwardingEnabledRequest'
-      x-stackql-resource: identity_feedback_forwarding_enableds
+      x-stackql-resource: identities
       x-stackql-method: set_identity_feedback_forwarding_enabled
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityFeedbackForwardingEnabledOutputDisplay
@@ -3730,7 +3772,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: 'The identity for which to enable or disable headers in notifications. Examples: user@example.com, example.com.'
         schema:
           $ref: '#/components/schemas/Identity'
@@ -3756,7 +3798,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetIdentityHeadersInNotificationsEnabledOutputDisplay'
-      x-stackql-resource: identity_headers_in_notifications_enableds
+      x-stackql-resource: identities
       x-stackql-method: set_identity_headers_in_notifications_enabled
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityHeadersInNotificationsEnabledOutputDisplay
@@ -3780,7 +3822,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetIdentityHeadersInNotificationsEnabledRequest'
-      x-stackql-resource: identity_headers_in_notifications_enableds
+      x-stackql-resource: identities
       x-stackql-method: set_identity_headers_in_notifications_enabled
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityHeadersInNotificationsEnabledOutputDisplay
@@ -3803,7 +3845,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: The verified identity.
         schema:
           $ref: '#/components/schemas/Identity'
@@ -3833,7 +3875,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetIdentityMailFromDomainOutputDisplay'
-      x-stackql-resource: identity_mail_from_domains
+      x-stackql-resource: identities
       x-stackql-method: set_identity_mail_from_domain
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityMailFromDomainOutputDisplay
@@ -3857,7 +3899,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetIdentityMailFromDomainRequest'
-      x-stackql-resource: identity_mail_from_domains
+      x-stackql-resource: identities
       x-stackql-method: set_identity_mail_from_domain
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityMailFromDomainOutputDisplay
@@ -3882,7 +3924,7 @@ paths:
       parameters:
       - name: Identity
         in: query
-        required: true
+        required: false
         description: 'The identity (email address or domain) for the Amazon SNS topic. You can only specify a verified identity
           for this parameter. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). The
           following examples are all valid identities: sender@example.com, example.com, arn:aws:ses:us-east-1:123456789012:identity/example.com.'
@@ -3908,7 +3950,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetIdentityNotificationTopicOutputDisplay'
-      x-stackql-resource: identity_notification_topics
+      x-stackql-resource: identities
       x-stackql-method: set_identity_notification_topic
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityNotificationTopicOutputDisplay
@@ -3934,7 +3976,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetIdentityNotificationTopicRequest'
-      x-stackql-resource: identity_notification_topics
+      x-stackql-resource: identities
       x-stackql-method: set_identity_notification_topic
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetIdentityNotificationTopicOutputDisplay
@@ -3978,7 +4020,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/SetReceiptRulePositionOutputDisplay'
-      x-stackql-resource: receipt_rule_positions
+      x-stackql-resource: receipt_rules
       x-stackql-method: set_receipt_rule_position
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetReceiptRulePositionOutputDisplay
@@ -4000,7 +4042,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/SetReceiptRulePositionRequest'
-      x-stackql-resource: receipt_rule_positions
+      x-stackql-resource: receipt_rules
       x-stackql-method: set_receipt_rule_position
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: SetReceiptRulePositionOutputDisplay
@@ -4039,7 +4081,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/TestRenderTemplateOutputDisplay'
-      x-stackql-resource: render_template
+      x-stackql-resource: templates
       x-stackql-method: test_render_template
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestRenderTemplateOutputDisplay
@@ -4061,7 +4103,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/TestRenderTemplateRequest'
-      x-stackql-resource: render_template
+      x-stackql-resource: templates
       x-stackql-method: test_render_template
       x-stackql-verb: EXEC
       x-stackql-responseEnvelope: TestRenderTemplateOutputDisplay
@@ -4150,7 +4192,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationOutputDisplay'
-      x-stackql-resource: configuration_set_event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_event_destination
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateConfigurationSetEventDestinationOutputDisplay
@@ -4176,7 +4218,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateConfigurationSetEventDestinationRequest'
-      x-stackql-resource: configuration_set_event_destinations
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_event_destination
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateConfigurationSetEventDestinationOutputDisplay
@@ -4213,7 +4255,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: configuration_set_reputation_metrics_enableds
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_reputation_metrics_enabled
       x-stackql-verb: UPDATE
     post:
@@ -4231,7 +4273,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateConfigurationSetReputationMetricsEnabledRequest'
-      x-stackql-resource: configuration_set_reputation_metrics_enableds
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_reputation_metrics_enabled
       x-stackql-verb: UPDATE
   /?Action=UpdateConfigurationSetSendingEnabled&Version=2010-12-01:
@@ -4265,7 +4307,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: configuration_set_sending_enableds
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_sending_enabled
       x-stackql-verb: UPDATE
     post:
@@ -4283,7 +4325,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateConfigurationSetSendingEnabledRequest'
-      x-stackql-resource: configuration_set_sending_enableds
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_sending_enabled
       x-stackql-verb: UPDATE
   /?Action=UpdateConfigurationSetTrackingOptions&Version=2010-12-01:
@@ -4320,7 +4362,7 @@ paths:
             text/xml:
               schema:
                 $ref: '#/components/schemas/UpdateConfigurationSetTrackingOptionsOutputDisplay'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_tracking_options
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateConfigurationSetTrackingOptionsOutputDisplay
@@ -4344,7 +4386,7 @@ paths:
           text/xml:
             schema:
               $ref: '#/components/schemas/UpdateConfigurationSetTrackingOptionsRequest'
-      x-stackql-resource: configuration_set_tracking_options
+      x-stackql-resource: configuration_sets
       x-stackql-method: update_configuration_set_tracking_options
       x-stackql-verb: UPDATE
       x-stackql-responseEnvelope: UpdateConfigurationSetTrackingOptionsOutputDisplay
@@ -6316,7 +6358,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/IdentityDisplay'
+            $ref: '#/components/schemas/ListIdentitiesRowDisplay'
     ListIdentitiesRequest:
       description: Represents a request to return a list of all identities (email addresses and domains) that you have attempted
         to verify under your Amazon Web Services account, regardless of verification status.
@@ -6332,6 +6374,12 @@ components:
         MaxItems:
           $ref: '#/components/schemas/MaxItems'
           description: The maximum number of identities per page. Possible values are 1-1000 inclusive.
+    ListIdentitiesRowDisplay:
+      type: object
+      properties:
+        identity:
+          type: string
+          description: A list of identities.
     PolicyNameDisplay:
       type: object
       properties: {}
@@ -6341,7 +6389,7 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/PolicyNameDisplay'
+            $ref: '#/components/schemas/ListIdentityPoliciesRowDisplay'
     ListIdentityPoliciesRequest:
       description: Represents a request to return a list of sending authorization policies that are attached to an identity.
         Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities.
@@ -6356,6 +6404,12 @@ components:
             identity.'
       required:
       - Identity
+    ListIdentityPoliciesRowDisplay:
+      type: object
+      properties:
+        policy_name:
+          type: string
+          description: A list of names of policies that apply to the specified identity.
     ReceiptFilterDisplay:
       type: object
       properties:
@@ -6444,7 +6498,13 @@ components:
         line_items:
           type: array
           items:
-            $ref: '#/components/schemas/AddressDisplay'
+            $ref: '#/components/schemas/ListVerifiedEmailAddressesRowDisplay'
+    ListVerifiedEmailAddressesRowDisplay:
+      type: object
+      properties:
+        verified_email_address:
+          type: string
+          description: A list of email addresses that have been verified.
     DeliveryOptions:
       description: Specifies whether messages that use the configuration set are required to use Transport Layer Security
         (TLS).

@@ -1,0 +1,58 @@
+name: Deploy provider microsite
+
+on:
+  push:
+    branches: [stackql-provider]
+    paths:
+      - 'stackql_aws_provider/website/**'
+      - '.github/workflows/deploy-website.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: stackql_aws_provider/website
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: yarn
+          cache-dependency-path: stackql_aws_provider/website/yarn.lock
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Vendor shared Docusaurus config
+        run: |
+          rm -rf .shared-config
+          git clone --depth 1 --branch main https://github.com/stackql/docusaurus-config.git .shared-config
+
+      - name: Build site
+        run: yarn build
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: stackql_aws_provider/website/build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

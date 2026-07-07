@@ -31,6 +31,7 @@ paths:
       x-stackql-resource: account_settings
       x-stackql-method: get_account_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.accountSettings
   /v1/report/get:
     get:
       operationId: GetReport
@@ -91,6 +92,7 @@ paths:
       x-stackql-resource: report_metadatas
       x-stackql-method: get_report_metadata
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.reportDetails
   /v1/report/getTermForReport:
     get:
       operationId: GetTermForReport
@@ -146,6 +148,9 @@ paths:
       x-stackql-method: list_customer_agreements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.customerAgreements
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/report/listVersions:
     get:
       operationId: ListReportVersions
@@ -180,6 +185,9 @@ paths:
       x-stackql-method: list_report_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.reports
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/report/list:
     get:
       operationId: ListReports
@@ -208,6 +216,9 @@ paths:
       x-stackql-method: list_reports
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.reports
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/account-settings/put:
     put:
       operationId: PutAccountSettings

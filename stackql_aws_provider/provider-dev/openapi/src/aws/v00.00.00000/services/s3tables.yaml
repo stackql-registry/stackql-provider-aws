@@ -2493,6 +2493,14 @@ components:
             objectKey: $.namespaces
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: continuationToken
+                location: query
+              responseToken:
+                key: $.continuationToken
+                location: body
         delete_namespace:
           operation:
             $ref: "#/paths/~1namespaces~1{table_bucket_arn}~1{namespace}/delete"
@@ -2553,6 +2561,14 @@ components:
             objectKey: $.tables
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: continuationToken
+                location: query
+              responseToken:
+                key: $.continuationToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/tables/methods/list_tables"
@@ -2587,6 +2603,14 @@ components:
             objectKey: $.tableBuckets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: continuationToken
+                location: query
+              responseToken:
+                key: $.continuationToken
+                location: body
         delete_table_bucket:
           operation:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}/delete"
@@ -2598,6 +2622,16 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        rename_table:
+          operation:
+            $ref: "#/paths/~1tables~1{table_bucket_arn}~1{namespace}~1{name}~1rename/put"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/table_buckets/methods/get_table_bucket"
@@ -2623,6 +2657,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.encryptionConfiguration
         put_table_bucket_encryption:
           operation:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}~1encryption/put"
@@ -2862,6 +2897,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.storageClassConfiguration
         put_table_bucket_storage_class:
           operation:
             $ref: "#/paths/~1buckets~1{table_bucket_arn}~1storage-class/put"
@@ -2891,6 +2927,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.encryptionConfiguration
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/table_encryptions/methods/get_table_encryption"
@@ -2983,6 +3020,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.configuration
           request:
             nativeCasing: pascal
         put_table_record_expiration_configuration:
@@ -3052,16 +3090,17 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.storageClassConfiguration
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/table_storage_class/methods/get_table_storage_class"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.s3tables.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.s3tables.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3069,17 +3108,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.s3tables.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tag~1{resource_arn}/post"
@@ -3100,9 +3128,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

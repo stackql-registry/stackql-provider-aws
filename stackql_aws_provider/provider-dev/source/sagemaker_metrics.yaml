@@ -68,7 +68,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutMetricsResponse'
-      x-stackql-resource: batch_put_metrics
+      x-stackql-resource: metrics
       x-stackql-method: batch_put_metrics
       x-stackql-verb: EXEC
 components:

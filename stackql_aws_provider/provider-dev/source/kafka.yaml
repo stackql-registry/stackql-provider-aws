@@ -46,7 +46,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateScramSecretResponse'
-      x-stackql-resource: batch_associate_scram_secret
+      x-stackql-resource: clusters
       x-stackql-method: batch_associate_scram_secret
       x-stackql-verb: EXEC
     patch:
@@ -77,7 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateScramSecretResponse'
-      x-stackql-resource: batch_disassociate_scram_secret
+      x-stackql-resource: clusters
       x-stackql-method: batch_disassociate_scram_secret
       x-stackql-verb: EXEC
     get:
@@ -108,11 +108,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListScramSecretsResponse'
+                $ref: '#/components/schemas/ListScramSecretsOutputDisplay'
       x-stackql-resource: scram_secrets
       x-stackql-method: list_scram_secrets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.SecretArnList
+      x-stackql-responseEnvelope: ListScramSecretsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "SecretArnList" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"secret_arn": {{ toJson $v
+        }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/clusters:
     post:
       operationId: CreateCluster
@@ -202,6 +210,9 @@ paths:
       x-stackql-method: list_clusters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterInfoList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /api/v2/clusters:
     post:
       operationId: CreateClusterV2
@@ -276,6 +287,9 @@ paths:
       x-stackql-method: list_clusters_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterInfoList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/configurations:
     post:
       operationId: CreateConfiguration
@@ -338,6 +352,9 @@ paths:
       x-stackql-method: list_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Configurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /replication/v1/replicators:
     post:
       operationId: CreateReplicator
@@ -414,6 +431,9 @@ paths:
       x-stackql-method: list_replicators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Replicators
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/clusters/{cluster_arn}/topics:
     post:
       operationId: CreateTopic
@@ -495,6 +515,9 @@ paths:
       x-stackql-method: list_topics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Topics
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/vpc-connection:
     post:
       operationId: CreateVpcConnection
@@ -582,6 +605,7 @@ paths:
       x-stackql-resource: clusters
       x-stackql-method: describe_cluster
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ClusterInfo
   /v1/clusters/{cluster_arn}/policy:
     delete:
       operationId: DeleteClusterPolicy
@@ -929,6 +953,7 @@ paths:
       x-stackql-resource: cluster_operations
       x-stackql-method: describe_cluster_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ClusterOperationInfo
   /api/v2/operations/{cluster_operation_arn}:
     get:
       operationId: DescribeClusterOperationV2
@@ -950,6 +975,7 @@ paths:
       x-stackql-resource: cluster_operation_v2s
       x-stackql-method: describe_cluster_operation_v2
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ClusterOperationInfo
   /api/v2/clusters/{cluster_arn}:
     get:
       operationId: DescribeClusterV2
@@ -971,6 +997,7 @@ paths:
       x-stackql-resource: cluster_v2s
       x-stackql-method: describe_cluster_v2
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ClusterInfo
   /v1/configurations/{arn}/revisions/{revision}:
     get:
       operationId: DescribeConfigurationRevision
@@ -1040,6 +1067,9 @@ paths:
       x-stackql-method: describe_topic_partitions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Partitions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/clusters/{cluster_arn}/bootstrap-brokers:
     get:
       operationId: GetBootstrapBrokers
@@ -1121,6 +1151,9 @@ paths:
       x-stackql-method: list_client_vpc_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClientVpcConnections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/clusters/{cluster_arn}/operations:
     get:
       operationId: ListClusterOperations
@@ -1157,6 +1190,9 @@ paths:
       x-stackql-method: list_cluster_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterOperationInfoList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /api/v2/clusters/{cluster_arn}/operations:
     get:
       operationId: ListClusterOperationsV2
@@ -1191,6 +1227,9 @@ paths:
       x-stackql-method: list_cluster_operations_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ClusterOperationInfoList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/configurations/{arn}/revisions:
     get:
       operationId: ListConfigurationRevisions
@@ -1227,6 +1266,9 @@ paths:
       x-stackql-method: list_configuration_revisions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Revisions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/kafka-versions:
     get:
       operationId: ListKafkaVersions
@@ -1257,6 +1299,9 @@ paths:
       x-stackql-method: list_kafka_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.KafkaVersions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/clusters/{cluster_arn}/nodes:
     get:
       operationId: ListNodes
@@ -1293,6 +1338,9 @@ paths:
       x-stackql-method: list_nodes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.NodeInfoList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1311,7 +1359,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1338,7 +1386,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1365,7 +1413,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/vpc-connections:
@@ -1398,6 +1446,9 @@ paths:
       x-stackql-method: list_vpc_connections
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VpcConnections
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /v1/clusters/{cluster_arn}/reboot-broker:
     put:
       operationId: RebootBroker
@@ -1427,7 +1478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RebootBrokerResponse'
-      x-stackql-resource: broker
+      x-stackql-resource: clusters
       x-stackql-method: reboot_broker
       x-stackql-verb: EXEC
   /v1/clusters/{cluster_arn}/client-vpc-connection:
@@ -1459,7 +1510,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RejectClientVpcConnectionResponse'
-      x-stackql-resource: client_vpc_connection
+      x-stackql-resource: vpc_connections
       x-stackql-method: reject_client_vpc_connection
       x-stackql-verb: EXEC
   /v1/clusters/{cluster_arn}/nodes/count:
@@ -1494,7 +1545,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBrokerCountResponse'
-      x-stackql-resource: broker_counts
+      x-stackql-resource: clusters
       x-stackql-method: update_broker_count
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/nodes/storage:
@@ -1529,7 +1580,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBrokerStorageResponse'
-      x-stackql-resource: broker_storages
+      x-stackql-resource: clusters
       x-stackql-method: update_broker_storage
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/nodes/type:
@@ -1564,7 +1615,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateBrokerTypeResponse'
-      x-stackql-resource: broker_types
+      x-stackql-resource: clusters
       x-stackql-method: update_broker_type
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/configuration:
@@ -1599,7 +1650,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateClusterConfigurationResponse'
-      x-stackql-resource: cluster_configurations
+      x-stackql-resource: configurations
       x-stackql-method: update_cluster_configuration
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/version:
@@ -1636,7 +1687,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateClusterKafkaVersionResponse'
-      x-stackql-resource: cluster_kafka_versions
+      x-stackql-resource: kafka_versions
       x-stackql-method: update_cluster_kafka_version
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/connectivity:
@@ -1672,7 +1723,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateConnectivityResponse'
-      x-stackql-resource: connectivities
+      x-stackql-resource: clusters
       x-stackql-method: update_connectivity
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/monitoring:
@@ -1711,7 +1762,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateMonitoringResponse'
-      x-stackql-resource: monitorings
+      x-stackql-resource: clusters
       x-stackql-method: update_monitoring
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/rebalancing:
@@ -1747,7 +1798,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateRebalancingResponse'
-      x-stackql-resource: rebalancings
+      x-stackql-resource: clusters
       x-stackql-method: update_rebalancing
       x-stackql-verb: UPDATE
   /replication/v1/replicators/{replicator_arn}/replication-info:
@@ -1793,7 +1844,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateReplicationInfoResponse'
-      x-stackql-resource: replication_infos
+      x-stackql-resource: replicators
       x-stackql-method: update_replication_info
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/security:
@@ -1830,7 +1881,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateSecurityResponse'
-      x-stackql-resource: securities
+      x-stackql-resource: clusters
       x-stackql-method: update_security
       x-stackql-verb: UPDATE
   /v1/clusters/{cluster_arn}/storage:
@@ -1868,7 +1919,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateStorageResponse'
-      x-stackql-resource: storages
+      x-stackql-resource: clusters
       x-stackql-method: update_storage
       x-stackql-verb: UPDATE
 components:
@@ -4219,15 +4270,19 @@ components:
         TargetKafkaClusterAlias:
           $ref: '#/components/schemas/__string'
           description: The alias of the target Kafka cluster.
-    ListScramSecretsResponse:
+    ListScramSecretsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: '#/components/schemas/__string'
-          description: Paginated results marker.
-        SecretArnList:
-          $ref: '#/components/schemas/__listOf__string'
+        secret_arn:
+          type: string
           description: The list of scram secrets associated with the cluster.
+    ListScramSecretsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListScramSecretsRowDisplay'
     ListTagsForResourceResponse:
       type: object
       properties:

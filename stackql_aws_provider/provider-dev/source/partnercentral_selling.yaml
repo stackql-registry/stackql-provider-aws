@@ -57,7 +57,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: engagement_invitation
+      x-stackql-resource: engagements
       x-stackql-method: accept_engagement_invitation
       x-stackql-verb: EXEC
   /AssignOpportunity:
@@ -300,7 +300,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateEngagementContextResponse'
-      x-stackql-resource: engagement_contexts
+      x-stackql-resource: engagements
       x-stackql-method: create_engagement_context
       x-stackql-verb: INSERT
   /CreateEngagementInvitation:
@@ -1088,6 +1088,9 @@ paths:
       x-stackql-method: list_engagement_by_accepting_invitation_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TaskSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEngagementFromOpportunityTasks:
     post:
       operationId: ListEngagementFromOpportunityTasks
@@ -1156,6 +1159,9 @@ paths:
       x-stackql-method: list_engagement_from_opportunity_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TaskSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEngagementInvitations:
     post:
       operationId: ListEngagementInvitations
@@ -1229,6 +1235,9 @@ paths:
       x-stackql-method: list_engagement_invitations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EngagementInvitationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEngagementMembers:
     post:
       operationId: ListEngagementMembers
@@ -1278,6 +1287,9 @@ paths:
       x-stackql-method: list_engagement_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EngagementMemberList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEngagementResourceAssociations:
     post:
       operationId: ListEngagementResourceAssociations
@@ -1340,6 +1352,9 @@ paths:
       x-stackql-method: list_engagement_resource_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EngagementResourceAssociationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEngagements:
     post:
       operationId: ListEngagements
@@ -1407,6 +1422,9 @@ paths:
       x-stackql-method: list_engagements
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EngagementSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOpportunities:
     post:
       operationId: ListOpportunities
@@ -1494,6 +1512,9 @@ paths:
       x-stackql-method: list_opportunities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OpportunitySummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOpportunityFromEngagementTasks:
     post:
       operationId: ListOpportunityFromEngagementTasks
@@ -1568,6 +1589,9 @@ paths:
       x-stackql-method: list_opportunity_from_engagement_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TaskSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceSnapshotJobs:
     post:
       operationId: ListResourceSnapshotJobs
@@ -1623,6 +1647,9 @@ paths:
       x-stackql-method: list_resource_snapshot_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceSnapshotJobSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListResourceSnapshots:
     post:
       operationId: ListResourceSnapshots
@@ -1685,6 +1712,9 @@ paths:
       x-stackql-method: list_resource_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceSnapshotSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListSolutions:
     post:
       operationId: ListSolutions
@@ -1749,6 +1779,9 @@ paths:
       x-stackql-method: list_solutions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SolutionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1782,7 +1815,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutSellingSystemSettings:
@@ -1869,7 +1902,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: engagement_invitation
+      x-stackql-resource: engagements
       x-stackql-method: reject_engagement_invitation
       x-stackql-verb: EXEC
   /StartEngagementByAcceptingInvitationTask:
@@ -1922,7 +1955,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEngagementByAcceptingInvitationTaskResponse'
-      x-stackql-resource: engagement_by_accepting_invitation_task
+      x-stackql-resource: engagements
       x-stackql-method: start_engagement_by_accepting_invitation_task
       x-stackql-verb: EXEC
   /StartEngagementFromOpportunityTask:
@@ -1979,7 +2012,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEngagementFromOpportunityTaskResponse'
-      x-stackql-resource: engagement_from_opportunity_task
+      x-stackql-resource: engagements
       x-stackql-method: start_engagement_from_opportunity_task
       x-stackql-verb: EXEC
   /StartOpportunityFromEngagementTask:
@@ -2037,7 +2070,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOpportunityFromEngagementTaskResponse'
-      x-stackql-resource: opportunity_from_engagement_task
+      x-stackql-resource: opportunities
       x-stackql-method: start_opportunity_from_engagement_task
       x-stackql-verb: EXEC
   /StartResourceSnapshotJob:
@@ -2075,7 +2108,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resource_snapshot_job
+      x-stackql-resource: resource_snapshots
       x-stackql-method: start_resource_snapshot_job
       x-stackql-verb: EXEC
   /StopResourceSnapshotJob:
@@ -2113,7 +2146,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resource_snapshot_job
+      x-stackql-resource: resource_snapshots
       x-stackql-method: stop_resource_snapshot_job
       x-stackql-verb: EXEC
   /SubmitOpportunity:
@@ -2205,7 +2238,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -2245,7 +2278,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateEngagementContext:
@@ -2308,7 +2341,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEngagementContextResponse'
-      x-stackql-resource: engagement_contexts
+      x-stackql-resource: engagements
       x-stackql-method: update_engagement_context
       x-stackql-verb: UPDATE
   /UpdateOpportunity:

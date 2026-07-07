@@ -66,7 +66,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddApplicationCloudWatchLoggingOptionResponse'
-      x-stackql-resource: application_cloud_watch_logging_options
+      x-stackql-resource: applications
       x-stackql-method: add_application_cloud_watch_logging_option
       x-stackql-verb: UPDATE
   /AddApplicationInput:
@@ -115,7 +115,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddApplicationInputResponse'
-      x-stackql-resource: application_inputs
+      x-stackql-resource: applications
       x-stackql-method: add_application_input
       x-stackql-verb: UPDATE
   /AddApplicationInputProcessingConfiguration:
@@ -168,7 +168,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddApplicationInputProcessingConfigurationResponse'
-      x-stackql-resource: application_input_processing_configurations
+      x-stackql-resource: applications
       x-stackql-method: add_application_input_processing_configuration
       x-stackql-verb: UPDATE
   /AddApplicationOutput:
@@ -224,7 +224,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddApplicationOutputResponse'
-      x-stackql-resource: application_outputs
+      x-stackql-resource: applications
       x-stackql-method: add_application_output
       x-stackql-verb: UPDATE
   /AddApplicationReferenceDataSource:
@@ -276,7 +276,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddApplicationReferenceDataSourceResponse'
-      x-stackql-resource: application_reference_data_sources
+      x-stackql-resource: applications
       x-stackql-method: add_application_reference_data_source
       x-stackql-verb: UPDATE
   /AddApplicationVpcConfiguration:
@@ -331,7 +331,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddApplicationVpcConfigurationResponse'
-      x-stackql-resource: application_vpc_configurations
+      x-stackql-resource: applications
       x-stackql-method: add_application_vpc_configuration
       x-stackql-verb: UPDATE
   /CreateApplication:
@@ -447,7 +447,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateApplicationPresignedUrlResponse'
-      x-stackql-resource: application_presigned_urls
+      x-stackql-resource: applications
       x-stackql-method: create_application_presigned_url
       x-stackql-verb: INSERT
   /CreateApplicationSnapshot:
@@ -580,7 +580,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteApplicationCloudWatchLoggingOptionResponse'
-      x-stackql-resource: application_cloud_watch_logging_options
+      x-stackql-resource: applications
       x-stackql-method: delete_application_cloud_watch_logging_option
       x-stackql-verb: DELETE
   /DeleteApplicationInputProcessingConfiguration:
@@ -626,7 +626,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteApplicationInputProcessingConfigurationResponse'
-      x-stackql-resource: application_input_processing_configurations
+      x-stackql-resource: applications
       x-stackql-method: delete_application_input_processing_configuration
       x-stackql-verb: DELETE
   /DeleteApplicationOutput:
@@ -676,7 +676,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteApplicationOutputResponse'
-      x-stackql-resource: application_outputs
+      x-stackql-resource: applications
       x-stackql-method: delete_application_output
       x-stackql-verb: DELETE
   /DeleteApplicationReferenceDataSource:
@@ -726,7 +726,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteApplicationReferenceDataSourceResponse'
-      x-stackql-resource: application_reference_data_sources
+      x-stackql-resource: applications
       x-stackql-method: delete_application_reference_data_source
       x-stackql-verb: DELETE
   /DeleteApplicationSnapshot:
@@ -822,7 +822,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteApplicationVpcConfigurationResponse'
-      x-stackql-resource: application_vpc_configurations
+      x-stackql-resource: applications
       x-stackql-method: delete_application_vpc_configuration
       x-stackql-verb: DELETE
   /DescribeApplication:
@@ -866,6 +866,7 @@ paths:
       x-stackql-resource: applications
       x-stackql-method: describe_application
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ApplicationDetail
   /DescribeApplicationOperation:
     post:
       operationId: DescribeApplicationOperation
@@ -906,6 +907,7 @@ paths:
       x-stackql-resource: application_operations
       x-stackql-method: describe_application_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ApplicationOperationInfoDetails
   /DescribeApplicationSnapshot:
     post:
       operationId: DescribeApplicationSnapshot
@@ -946,6 +948,7 @@ paths:
       x-stackql-resource: application_snapshots
       x-stackql-method: describe_application_snapshot
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SnapshotDetails
   /DescribeApplicationVersion:
     post:
       operationId: DescribeApplicationVersion
@@ -988,6 +991,7 @@ paths:
       x-stackql-resource: application_versions
       x-stackql-method: describe_application_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ApplicationVersionDetail
   /DiscoverInputSchema:
     post:
       operationId: DiscoverInputSchema
@@ -1090,6 +1094,9 @@ paths:
       x-stackql-method: list_application_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationOperationInfoList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationSnapshots:
     post:
       operationId: ListApplicationSnapshots
@@ -1135,6 +1142,9 @@ paths:
       x-stackql-method: list_application_snapshots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SnapshotSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplicationVersions:
     post:
       operationId: ListApplicationVersions
@@ -1183,6 +1193,9 @@ paths:
       x-stackql-method: list_application_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationVersionSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListApplications:
     post:
       operationId: ListApplications
@@ -1225,6 +1238,9 @@ paths:
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ApplicationSummaries
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1258,7 +1274,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /RollbackApplication:
@@ -1301,7 +1317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RollbackApplicationResponse'
-      x-stackql-resource: rollback_application
+      x-stackql-resource: applications
       x-stackql-method: rollback_application
       x-stackql-verb: EXEC
   /StartApplication:
@@ -1341,7 +1357,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartApplicationResponse'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: start_application
       x-stackql-verb: EXEC
   /StopApplication:
@@ -1388,7 +1404,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopApplicationResponse'
-      x-stackql-resource: application
+      x-stackql-resource: applications
       x-stackql-method: stop_application
       x-stackql-verb: EXEC
   /TagResource:
@@ -1430,7 +1446,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1471,7 +1487,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateApplication:
@@ -1587,7 +1603,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateApplicationMaintenanceConfigurationResponse'
-      x-stackql-resource: application_maintenance_configurations
+      x-stackql-resource: applications
       x-stackql-method: update_application_maintenance_configuration
       x-stackql-verb: UPDATE
 components:

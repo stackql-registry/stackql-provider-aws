@@ -65,7 +65,6 @@ paths:
                 - FirewallRuleGroupId
                 - VpcId
                 - Priority
-                - Name
       responses:
         "200":
           description: Success
@@ -219,7 +218,6 @@ paths:
                   description: A list of the tag keys and values that you want to associate with the domain list.
               required:
                 - CreatorRequestId
-                - Name
       responses:
         "200":
           description: Success
@@ -293,9 +291,6 @@ paths:
               required:
                 - CreatorRequestId
                 - FirewallRuleGroupId
-                - Priority
-                - Action
-                - Name
       responses:
         "200":
           description: Success
@@ -335,7 +330,6 @@ paths:
                   description: A list of the tag keys and values that you want to associate with the rule group.
               required:
                 - CreatorRequestId
-                - Name
       responses:
         "200":
           description: Success
@@ -384,7 +378,6 @@ paths:
                   description: A string that helps identify the Route 53 Resolvers on Outpost.
               required:
                 - CreatorRequestId
-                - Name
                 - PreferredInstanceType
                 - OutpostArn
       responses:
@@ -460,7 +453,6 @@ paths:
               required:
                 - CreatorRequestId
                 - SecurityGroupIds
-                - Direction
                 - IpAddresses
       responses:
         "200":
@@ -503,7 +495,6 @@ paths:
                   $ref: "#/components/schemas/TagList"
                   description: A list of the tag keys and values that you want to associate with the query logging configuration.
               required:
-                - Name
                 - DestinationArn
                 - CreatorRequestId
       responses:
@@ -700,8 +691,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/ResourceId"
                   description: A unique string that identifies the Resolver on the Outpost.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -1141,8 +1130,6 @@ paths:
                 Id:
                   $ref: "#/components/schemas/ResourceId"
                   description: The ID of the Resolver on the Outpost.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -1594,7 +1581,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFirewallDomainsResponse"
+                $ref: "#/components/schemas/ListFirewallDomainsOutputDisplay"
   /ListFirewallRuleGroupAssociations:
     post:
       operationId: ListFirewallRuleGroupAssociations
@@ -2513,8 +2500,6 @@ paths:
                 PreferredInstanceType:
                   $ref: "#/components/schemas/OutpostInstanceType"
                   description: Amazon EC2 instance type.
-              required:
-                - Id
       responses:
         "200":
           description: Success
@@ -3872,23 +3857,19 @@ components:
       type: integer
       minimum: 1
       maximum: 5000
-    ListFirewallDomainsResponse:
+    ListFirewallDomainsRowDisplay:
       type: object
       properties:
-        NextToken:
-          $ref: "#/components/schemas/NextToken"
-          description: If objects are still available for retrieval, Resolver returns this token in the response. To retrieve the next batch of objects, provide this token in your next request.
-        Domains:
-          $ref: "#/components/schemas/FirewallDomains"
+        domain:
+          type: string
           description: A list of the domains in the firewall domain list. This might be a partial list of the domains that you've defined in the domain list. For information, see MaxResults.
-    FirewallDomains:
-      type: array
-      items:
-        $ref: "#/components/schemas/FirewallDomainName"
-    FirewallDomainName:
-      type: string
-      minLength: 1
-      maxLength: 255
+    ListFirewallDomainsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFirewallDomainsRowDisplay"
     ListFirewallRuleGroupAssociationsResponse:
       type: object
       properties:
@@ -4224,6 +4205,14 @@ components:
         - ADD
         - REMOVE
         - REPLACE
+    FirewallDomains:
+      type: array
+      items:
+        $ref: "#/components/schemas/FirewallDomainName"
+    FirewallDomainName:
+      type: string
+      minLength: 1
+      maxLength: 255
     UpdateFirewallDomainsResponse:
       type: object
       properties:
@@ -4387,6 +4376,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FirewallRuleGroup
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4406,6 +4396,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4419,14 +4416,40 @@ components:
           - $ref: "#/components/x-stackQL-resources/firewall_rule_groups/methods/disassociate_firewall_rule_group"
         delete:
           - $ref: "#/components/x-stackQL-resources/firewall_rule_groups/methods/delete_firewall_rule_group"
-    resolver_endpoint_ip_address:
-      id: aws.route53resolver.resolver_endpoint_ip_address
-      name: resolver_endpoint_ip_address
-      title: resolver_endpoint_ip_address
+    resolver_endpoints:
+      id: aws.route53resolver.resolver_endpoints
+      name: resolver_endpoints
+      title: resolver_endpoints
       methods:
         associate_resolver_endpoint_ip_address:
           operation:
             $ref: "#/paths/~1AssociateResolverEndpointIpAddress/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_resolver_endpoint:
+          operation:
+            $ref: "#/paths/~1CreateResolverEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_resolver_endpoint:
+          operation:
+            $ref: "#/paths/~1DeleteResolverEndpoint/post"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
@@ -4450,12 +4473,65 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        get_resolver_endpoint:
+          operation:
+            $ref: "#/paths/~1GetResolverEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ResolverEndpoint
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_resolver_endpoints:
+          operation:
+            $ref: "#/paths/~1ListResolverEndpoints/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.ResolverEndpoints
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        update_resolver_endpoint:
+          operation:
+            $ref: "#/paths/~1UpdateResolverEndpoint/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/get_resolver_endpoint"
+          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/list_resolver_endpoints"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/create_resolver_endpoint"
         update:
-          - $ref: "#/components/x-stackQL-resources/resolver_endpoint_ip_address/methods/associate_resolver_endpoint_ip_address"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/associate_resolver_endpoint_ip_address"
+          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/update_resolver_endpoint"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/delete_resolver_endpoint"
     resolver_query_log_configs:
       id: aws.route53resolver.resolver_query_log_configs
       name: resolver_query_log_configs
@@ -4519,6 +4595,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResolverQueryLogConfig
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4538,6 +4615,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4613,6 +4697,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResolverRule
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4632,6 +4717,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_resolver_rule:
@@ -4695,6 +4787,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FirewallDomainList
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4714,6 +4807,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -4768,6 +4868,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_firewall_rule:
@@ -4829,6 +4936,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.OutpostResolver
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4848,6 +4956,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_outpost_resolver:
@@ -4866,94 +4981,12 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/outpost_resolvers/methods/get_outpost_resolver"
-          - $ref: "#/components/x-stackQL-resources/outpost_resolvers/methods/list_outpost_resolvers"
         insert:
           - $ref: "#/components/x-stackQL-resources/outpost_resolvers/methods/create_outpost_resolver"
         update:
           - $ref: "#/components/x-stackQL-resources/outpost_resolvers/methods/update_outpost_resolver"
         delete:
           - $ref: "#/components/x-stackQL-resources/outpost_resolvers/methods/delete_outpost_resolver"
-    resolver_endpoints:
-      id: aws.route53resolver.resolver_endpoints
-      name: resolver_endpoints
-      title: resolver_endpoints
-      methods:
-        create_resolver_endpoint:
-          operation:
-            $ref: "#/paths/~1CreateResolverEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_resolver_endpoint:
-          operation:
-            $ref: "#/paths/~1DeleteResolverEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        get_resolver_endpoint:
-          operation:
-            $ref: "#/paths/~1GetResolverEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_resolver_endpoints:
-          operation:
-            $ref: "#/paths/~1ListResolverEndpoints/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.ResolverEndpoints
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        update_resolver_endpoint:
-          operation:
-            $ref: "#/paths/~1UpdateResolverEndpoint/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/get_resolver_endpoint"
-          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/list_resolver_endpoints"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/create_resolver_endpoint"
-        update:
-          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/update_resolver_endpoint"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/resolver_endpoints/methods/delete_resolver_endpoint"
     firewall_configs:
       id: aws.route53resolver.firewall_configs
       name: firewall_configs
@@ -4965,6 +4998,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FirewallConfig
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -4984,6 +5018,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_firewall_config:
@@ -5018,6 +5059,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.FirewallRuleGroupAssociation
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5037,6 +5079,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_firewall_rule_group_association:
@@ -5110,6 +5159,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResolverConfig
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5129,6 +5179,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_resolver_config:
@@ -5163,6 +5220,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResolverDNSSECConfig
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5182,6 +5240,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_resolver_dnssec_config:
@@ -5216,6 +5281,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResolverQueryLogConfigAssociation
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5235,6 +5301,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5294,6 +5367,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ResolverRuleAssociation
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
@@ -5313,6 +5387,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5385,12 +5466,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.Domains
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFirewallDomainsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "Domains" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"domain": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_firewall_domains:
@@ -5430,6 +5524,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5438,10 +5539,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.route53resolver.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.route53resolver.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5455,19 +5556,15 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: body
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.route53resolver.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1TagResource/post"
@@ -5495,9 +5592,10 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

@@ -3697,11 +3697,23 @@ components:
           items:
             $ref: "#/components/schemas/TrafficPolicyInstanceDisplay"
   x-stackQL-resources:
-    vpc_with_hosted_zones:
-      id: aws.route53.vpc_with_hosted_zones
-      name: vpc_with_hosted_zones
-      title: vpc_with_hosted_zones
+    hosted_zones:
+      id: aws.route53.hosted_zones
+      name: hosted_zones
+      title: hosted_zones
       methods:
+        activate_key_signing_key:
+          operation:
+            $ref: "#/paths/~12013-04-01~1keysigningkey~1{hosted_zone_id}~1{name}~1activate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ActivateKeySigningKeyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
         associate_vpc_with_hosted_zone:
           operation:
             $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1associatevpc/post"
@@ -3720,11 +3732,252 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        create_hosted_zone:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateHostedZoneOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_hosted_zones:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListHostedZonesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+        create_key_signing_key:
+          operation:
+            $ref: "#/paths/~12013-04-01~1keysigningkey/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/CreateKeySigningKeyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        deactivate_key_signing_key:
+          operation:
+            $ref: "#/paths/~12013-04-01~1keysigningkey~1{hosted_zone_id}~1{name}~1deactivate/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeactivateKeySigningKeyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        delete_hosted_zone:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteHostedZoneOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        get_hosted_zone:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetHostedZoneOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        update_hosted_zone_comment:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateHostedZoneCommentOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_key_signing_key:
+          operation:
+            $ref: "#/paths/~12013-04-01~1keysigningkey~1{hosted_zone_id}~1{name}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DeleteKeySigningKeyOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        disable_hosted_zone_dnssec:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1disable-dnssec/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisableHostedZoneDNSSECOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        disassociate_vpc_from_hosted_zone:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1disassociatevpc/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/DisassociateVPCFromHostedZoneOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        enable_hosted_zone_dnssec:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1enable-dnssec/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/EnableHostedZoneDNSSECOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+        update_hosted_zone_features:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1features/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateHostedZoneFeaturesOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/get_hosted_zone"
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/list_hosted_zones"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/create_key_signing_key"
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/create_hosted_zone"
         update:
-          - $ref: "#/components/x-stackQL-resources/vpc_with_hosted_zones/methods/associate_vpc_with_hosted_zone"
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/associate_vpc_with_hosted_zone"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/delete_key_signing_key"
+          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/delete_hosted_zone"
+    changes:
+      id: aws.route53.changes
+      name: changes
+      title: changes
+      methods:
+        change_cidr_collection:
+          operation:
+            $ref: "#/paths/~12013-04-01~1cidrcollection~1{cidr_collection_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ChangeCidrCollectionOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        change_tags_for_resource:
+          operation:
+            $ref: "#/paths/~12013-04-01~1tags~1{resource_type}~1{resource_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ChangeTagsForResourceOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        get_change:
+          operation:
+            $ref: "#/paths/~12013-04-01~1change~1{id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/GetChangeOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/changes/methods/get_change"
+        insert: []
+        update: []
         delete: []
     cidr_collections:
       id: aws.route53.cidr_collections
@@ -3808,10 +4061,53 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.route53.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    resource_record_sets:
+      id: aws.route53.resource_record_sets
+      name: resource_record_sets
+      title: resource_record_sets
+      methods:
+        change_resource_record_sets:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1rrset~1/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ChangeResourceRecordSetsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_resource_record_sets:
+          operation:
+            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1rrset/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListResourceRecordSetsOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/resource_record_sets/methods/list_resource_record_sets"
+        insert: []
+        update: []
+        delete: []
+    tags:
+      id: aws.route53.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3845,8 +4141,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resources"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resources"
         insert: []
         update: []
         delete: []
@@ -3939,118 +4235,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/health_checks/methods/update_health_check"
         delete:
           - $ref: "#/components/x-stackQL-resources/health_checks/methods/delete_health_check"
-    hosted_zones:
-      id: aws.route53.hosted_zones
-      name: hosted_zones
-      title: hosted_zones
-      methods:
-        create_hosted_zone:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateHostedZoneOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_hosted_zones:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListHostedZonesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-        delete_hosted_zone:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteHostedZoneOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-        get_hosted_zone:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetHostedZoneOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/get_hosted_zone"
-          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/list_hosted_zones"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/create_hosted_zone"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/hosted_zones/methods/delete_hosted_zone"
-    key_signing_keys:
-      id: aws.route53.key_signing_keys
-      name: key_signing_keys
-      title: key_signing_keys
-      methods:
-        create_key_signing_key:
-          operation:
-            $ref: "#/paths/~12013-04-01~1keysigningkey/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/CreateKeySigningKeyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_key_signing_key:
-          operation:
-            $ref: "#/paths/~12013-04-01~1keysigningkey~1{hosted_zone_id}~1{name}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DeleteKeySigningKeyOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-      sqlVerbs:
-        select: []
-        insert:
-          - $ref: "#/components/x-stackQL-resources/key_signing_keys/methods/create_key_signing_key"
-        update: []
-        delete:
-          - $ref: "#/components/x-stackQL-resources/key_signing_keys/methods/delete_key_signing_key"
     query_logging_configs:
       id: aws.route53.query_logging_configs
       name: query_logging_configs
@@ -4238,6 +4422,24 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
+        update_traffic_policy_comment:
+          operation:
+            $ref: "#/paths/~12013-04-01~1trafficpolicy~1{id}~1{version}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/xml
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/UpdateTrafficPolicyCommentOutputDisplay"
+            transform:
+              type: schema_driven_xml_v0.1.0
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/xml
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_traffic_policies:
           operation:
             $ref: "#/paths/~12013-04-01~1trafficpolicies/get"
@@ -4258,7 +4460,8 @@ components:
           - $ref: "#/components/x-stackQL-resources/traffic_policies/methods/list_traffic_policies"
         insert:
           - $ref: "#/components/x-stackQL-resources/traffic_policies/methods/create_traffic_policy"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/traffic_policies/methods/update_traffic_policy_comment"
         delete:
           - $ref: "#/components/x-stackQL-resources/traffic_policies/methods/delete_traffic_policy"
     traffic_policy_instances:
@@ -4457,93 +4660,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/vpc_association_authorizations/methods/delete_vpc_association_authorization"
-    hosted_zone_comments:
-      id: aws.route53.hosted_zone_comments
-      name: hosted_zone_comments
-      title: hosted_zone_comments
-      methods:
-        update_hosted_zone_comment:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateHostedZoneCommentOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/hosted_zone_comments/methods/update_hosted_zone_comment"
-        delete: []
-    traffic_policy_comments:
-      id: aws.route53.traffic_policy_comments
-      name: traffic_policy_comments
-      title: traffic_policy_comments
-      methods:
-        update_traffic_policy_comment:
-          operation:
-            $ref: "#/paths/~12013-04-01~1trafficpolicy~1{id}~1{version}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateTrafficPolicyCommentOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/traffic_policy_comments/methods/update_traffic_policy_comment"
-        delete: []
-    vpc_from_hosted_zones:
-      id: aws.route53.vpc_from_hosted_zones
-      name: vpc_from_hosted_zones
-      title: vpc_from_hosted_zones
-      methods:
-        disassociate_vpc_from_hosted_zone:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1disassociatevpc/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/DisassociateVPCFromHostedZoneOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/vpc_from_hosted_zones/methods/disassociate_vpc_from_hosted_zone"
-        delete: []
     account_limits:
       id: aws.route53.account_limits
       name: account_limits
@@ -4564,29 +4680,6 @@ components:
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/account_limits/methods/get_account_limit"
-        insert: []
-        update: []
-        delete: []
-    changes:
-      id: aws.route53.changes
-      name: changes
-      title: changes
-      methods:
-        get_change:
-          operation:
-            $ref: "#/paths/~12013-04-01~1change~1{id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/GetChangeOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/changes/methods/get_change"
         insert: []
         update: []
         delete: []
@@ -4667,8 +4760,6 @@ components:
             transform:
               type: schema_driven_xml_v0.1.0
             objectKey: $.line_items
-          request:
-            nativeCasing: pascal
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/geo_locations/methods/get_geo_location"
@@ -4911,31 +5002,6 @@ components:
         insert: []
         update: []
         delete: []
-    resource_record_sets:
-      id: aws.route53.resource_record_sets
-      name: resource_record_sets
-      title: resource_record_sets
-      methods:
-        list_resource_record_sets:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1rrset/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/ListResourceRecordSetsOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/resource_record_sets/methods/list_resource_record_sets"
-        insert: []
-        update: []
-        delete: []
     traffic_policy_instances_by_hosted_zones:
       id: aws.route53.traffic_policy_instances_by_hosted_zones
       name: traffic_policy_instances_by_hosted_zones
@@ -4985,33 +5051,4 @@ components:
           - $ref: "#/components/x-stackQL-resources/traffic_policy_instances_by_policies/methods/list_traffic_policy_instances_by_policy"
         insert: []
         update: []
-        delete: []
-    hosted_zone_features:
-      id: aws.route53.hosted_zone_features
-      name: hosted_zone_features
-      title: hosted_zone_features
-      methods:
-        update_hosted_zone_features:
-          operation:
-            $ref: "#/paths/~12013-04-01~1hostedzone~1{id}~1features/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/xml
-            overrideMediaType: application/json
-            schema_override:
-              $ref: "#/components/schemas/UpdateHostedZoneFeaturesOutputDisplay"
-            transform:
-              type: schema_driven_xml_v0.1.0
-            objectKey: $.line_items
-          request:
-            nativeCasing: pascal
-            mediaType: application/xml
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/hosted_zone_features/methods/update_hosted_zone_features"
         delete: []

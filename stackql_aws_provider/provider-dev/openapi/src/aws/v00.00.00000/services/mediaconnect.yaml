@@ -36,8 +36,6 @@ paths:
               properties:
                 Outputs:
                   $ref: "#/components/schemas/__listOfAddBridgeOutputRequest"
-              required:
-                - Outputs
       responses:
         "202":
           description: Success
@@ -65,8 +63,6 @@ paths:
               properties:
                 Sources:
                   $ref: "#/components/schemas/__listOfAddBridgeSourceRequest"
-              required:
-                - Sources
       responses:
         "202":
           description: Success
@@ -123,8 +119,6 @@ paths:
               properties:
                 Outputs:
                   $ref: "#/components/schemas/__listOfAddOutputRequest"
-              required:
-                - Outputs
       responses:
         "201":
           description: Success
@@ -152,8 +146,6 @@ paths:
               properties:
                 Sources:
                   $ref: "#/components/schemas/__listOfSetSourceRequest"
-              required:
-                - Sources
       responses:
         "201":
           description: Success
@@ -367,9 +359,7 @@ paths:
                 Sources:
                   $ref: "#/components/schemas/__listOfAddBridgeSourceRequest"
               required:
-                - Name
                 - PlacementArn
-                - Sources
       responses:
         "201":
           description: Success
@@ -448,8 +438,6 @@ paths:
                   $ref: "#/components/schemas/EncodingConfig"
                 FlowTags:
                   $ref: "#/components/schemas/__mapOfString"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -500,7 +488,6 @@ paths:
                   $ref: "#/components/schemas/__listOfGatewayNetwork"
               required:
                 - EgressCidrBlocks
-                - Name
                 - Networks
       responses:
         "201":
@@ -567,7 +554,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/String"
               required:
-                - Name
                 - Configuration
                 - MaximumBitrate
                 - RoutingScope
@@ -602,7 +588,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/String"
               required:
-                - Name
                 - Configuration
       responses:
         "201":
@@ -644,7 +629,6 @@ paths:
                 ClientToken:
                   $ref: "#/components/schemas/String"
               required:
-                - Name
                 - Configuration
                 - MaximumBitrate
                 - RoutingScope
@@ -1178,7 +1162,6 @@ paths:
                   $ref: "#/components/schemas/String"
               required:
                 - ReservationName
-                - Start
       responses:
         "201":
           description: Success
@@ -1260,8 +1243,6 @@ paths:
               properties:
                 Entitlements:
                   $ref: "#/components/schemas/__listOfGrantEntitlementRequest"
-              required:
-                - Entitlements
       responses:
         "200":
           description: Success
@@ -1408,8 +1389,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/__mapOfString"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -1469,8 +1448,6 @@ paths:
               properties:
                 Tags:
                   $ref: "#/components/schemas/__mapOfString"
-              required:
-                - Tags
       responses:
         "204":
           description: Success
@@ -7081,14 +7058,77 @@ components:
       required:
         - RouterOutput
   x-stackQL-resources:
-    bridge_outputs:
-      id: aws.mediaconnect.bridge_outputs
-      name: bridge_outputs
-      title: bridge_outputs
+    bridges:
+      id: aws.mediaconnect.bridges
+      name: bridges
+      title: bridges
       methods:
         add_bridge_outputs:
           operation:
             $ref: "#/paths/~1v1~1bridges~1{bridge_arn}~1outputs/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        add_bridge_sources:
+          operation:
+            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}~1sources/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_bridge:
+          operation:
+            $ref: "#/paths/~1v1~1bridges/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_bridges:
+          operation:
+            $ref: "#/paths/~1v1~1bridges/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Bridges
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_bridge:
+          operation:
+            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        describe_bridge:
+          operation:
+            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Bridge
+        update_bridge:
+          operation:
+            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
@@ -7114,29 +7154,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/bridge_outputs/methods/add_bridge_outputs"
-          - $ref: "#/components/x-stackQL-resources/bridge_outputs/methods/remove_bridge_output"
-        delete: []
-    bridge_sources:
-      id: aws.mediaconnect.bridge_sources
-      name: bridge_sources
-      title: bridge_sources
-      methods:
-        add_bridge_sources:
-          operation:
-            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}~1sources/post"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         remove_bridge_source:
           operation:
             $ref: "#/paths/~1v1~1bridges~1{bridge_arn}~1sources~1{source_name}/delete"
@@ -7154,23 +7171,124 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_bridge_state:
+          operation:
+            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}~1state/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/describe_bridge"
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/list_bridges"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/create_bridge"
         update:
-          - $ref: "#/components/x-stackQL-resources/bridge_sources/methods/add_bridge_sources"
-          - $ref: "#/components/x-stackQL-resources/bridge_sources/methods/remove_bridge_source"
-        delete: []
-    flow_media_streams:
-      id: aws.mediaconnect.flow_media_streams
-      name: flow_media_streams
-      title: flow_media_streams
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/remove_bridge_output"
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/remove_bridge_source"
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/update_bridge_state"
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/update_bridge"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/bridges/methods/delete_bridge"
+    flows:
+      id: aws.mediaconnect.flows
+      name: flows
+      title: flows
       methods:
         add_flow_media_streams:
           operation:
             $ref: "#/paths/~1v1~1flows~1{flow_arn}~1mediaStreams/post"
           response:
             openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        add_flow_outputs:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1{flow_arn}~1outputs/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        add_flow_sources:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1{flow_arn}~1source/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        add_flow_vpc_interfaces:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1{flow_arn}~1vpcInterfaces/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_flow:
+          operation:
+            $ref: "#/paths/~1v1~1flows/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_flows:
+          operation:
+            $ref: "#/paths/~1v1~1flows/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.Flows
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
+        delete_flow:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1{flow_arn}/delete"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        describe_flow:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1{flow_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_flow:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1{flow_arn}/put"
+          response:
+            openAPIDocKey: "202"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -7194,29 +7312,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/flow_media_streams/methods/add_flow_media_streams"
-          - $ref: "#/components/x-stackQL-resources/flow_media_streams/methods/remove_flow_media_stream"
-        delete: []
-    flow_outputs:
-      id: aws.mediaconnect.flow_outputs
-      name: flow_outputs
-      title: flow_outputs
-      methods:
-        add_flow_outputs:
-          operation:
-            $ref: "#/paths/~1v1~1flows~1{flow_arn}~1outputs/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         remove_flow_output:
           operation:
             $ref: "#/paths/~1v1~1flows~1{flow_arn}~1outputs~1{output_arn}/delete"
@@ -7228,29 +7323,6 @@ components:
             $ref: "#/paths/~1v1~1flows~1{flow_arn}~1outputs~1{output_arn}/put"
           response:
             openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/flow_outputs/methods/add_flow_outputs"
-          - $ref: "#/components/x-stackQL-resources/flow_outputs/methods/remove_flow_output"
-        delete: []
-    flow_sources:
-      id: aws.mediaconnect.flow_sources
-      name: flow_sources
-      title: flow_sources
-      methods:
-        add_flow_sources:
-          operation:
-            $ref: "#/paths/~1v1~1flows~1{flow_arn}~1source/post"
-          response:
-            openAPIDocKey: "201"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -7274,42 +7346,40 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/flow_sources/methods/add_flow_sources"
-          - $ref: "#/components/x-stackQL-resources/flow_sources/methods/remove_flow_source"
-        delete: []
-    flow_vpc_interfaces:
-      id: aws.mediaconnect.flow_vpc_interfaces
-      name: flow_vpc_interfaces
-      title: flow_vpc_interfaces
-      methods:
-        add_flow_vpc_interfaces:
-          operation:
-            $ref: "#/paths/~1v1~1flows~1{flow_arn}~1vpcInterfaces/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
         remove_flow_vpc_interface:
           operation:
             $ref: "#/paths/~1v1~1flows~1{flow_arn}~1vpcInterfaces~1{vpc_interface_name}/delete"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+        start_flow:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1start~1{flow_arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        stop_flow:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1stop~1{flow_arn}/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
       sqlVerbs:
-        select: []
-        insert: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/flows/methods/describe_flow"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/list_flows"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/flows/methods/create_flow"
         update:
-          - $ref: "#/components/x-stackQL-resources/flow_vpc_interfaces/methods/add_flow_vpc_interfaces"
-          - $ref: "#/components/x-stackQL-resources/flow_vpc_interfaces/methods/remove_flow_vpc_interface"
-        delete: []
+          - $ref: "#/components/x-stackQL-resources/flows/methods/add_flow_media_streams"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/add_flow_vpc_interfaces"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/remove_flow_media_stream"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/remove_flow_output"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/remove_flow_source"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/remove_flow_vpc_interface"
+          - $ref: "#/components/x-stackQL-resources/flows/methods/update_flow"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/flows/methods/delete_flow"
     router_inputs:
       id: aws.mediaconnect.router_inputs
       name: router_inputs
@@ -7333,6 +7403,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         create_router_input:
@@ -7358,6 +7435,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RouterInput
         update_router_input:
           operation:
             $ref: "#/paths/~1v1~1routerInput~1{arn}/put"
@@ -7403,6 +7481,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         create_router_network_interface:
@@ -7428,6 +7513,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RouterNetworkInterface
         update_router_network_interface:
           operation:
             $ref: "#/paths/~1v1~1routerNetworkInterface~1{arn}/put"
@@ -7473,6 +7559,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         create_router_output:
@@ -7498,9 +7591,21 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.RouterOutput
         update_router_output:
           operation:
             $ref: "#/paths/~1v1~1routerOutput~1{arn}/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        take_router_input:
+          operation:
+            $ref: "#/paths/~1v1~1routerOutput~1takeRouterInput~1{router_output_arn}/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
@@ -7520,122 +7625,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/router_outputs/methods/update_router_output"
         delete:
           - $ref: "#/components/x-stackQL-resources/router_outputs/methods/delete_router_output"
-    bridges:
-      id: aws.mediaconnect.bridges
-      name: bridges
-      title: bridges
-      methods:
-        create_bridge:
-          operation:
-            $ref: "#/paths/~1v1~1bridges/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_bridges:
-          operation:
-            $ref: "#/paths/~1v1~1bridges/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Bridges
-          request:
-            nativeCasing: pascal
-        delete_bridge:
-          operation:
-            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        describe_bridge:
-          operation:
-            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_bridge:
-          operation:
-            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}/put"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/bridges/methods/describe_bridge"
-          - $ref: "#/components/x-stackQL-resources/bridges/methods/list_bridges"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/bridges/methods/create_bridge"
-        update:
-          - $ref: "#/components/x-stackQL-resources/bridges/methods/update_bridge"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/bridges/methods/delete_bridge"
-    flows:
-      id: aws.mediaconnect.flows
-      name: flows
-      title: flows
-      methods:
-        create_flow:
-          operation:
-            $ref: "#/paths/~1v1~1flows/post"
-          response:
-            openAPIDocKey: "201"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_flows:
-          operation:
-            $ref: "#/paths/~1v1~1flows/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.Flows
-          request:
-            nativeCasing: pascal
-        delete_flow:
-          operation:
-            $ref: "#/paths/~1v1~1flows~1{flow_arn}/delete"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-        describe_flow:
-          operation:
-            $ref: "#/paths/~1v1~1flows~1{flow_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_flow:
-          operation:
-            $ref: "#/paths/~1v1~1flows~1{flow_arn}/put"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/describe_flow"
-          - $ref: "#/components/x-stackQL-resources/flows/methods/list_flows"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/create_flow"
-        update:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/update_flow"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/flows/methods/delete_flow"
     gateways:
       id: aws.mediaconnect.gateways
       name: gateways
@@ -7661,6 +7650,14 @@ components:
             objectKey: $.Gateways
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_gateway:
           operation:
             $ref: "#/paths/~1v1~1gateways~1{gateway_arn}/delete"
@@ -7673,6 +7670,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Gateway
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/gateways/methods/describe_gateway"
@@ -7701,6 +7699,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.GatewayInstance
         update_gateway_instance:
           operation:
             $ref: "#/paths/~1v1~1gateway-instances~1{gateway_instance_arn}/put"
@@ -7721,6 +7720,14 @@ components:
             objectKey: $.Instances
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/gateway_instances/methods/describe_gateway_instance"
@@ -7758,6 +7765,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.ThumbnailDetails
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/flow_source_thumbnails/methods/describe_flow_source_thumbnail"
@@ -7775,6 +7783,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Offering
         list_offerings:
           operation:
             $ref: "#/paths/~1v1~1offerings/get"
@@ -7784,6 +7793,14 @@ components:
             objectKey: $.Offerings
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/offerings/methods/describe_offering"
@@ -7796,12 +7813,24 @@ components:
       name: reservations
       title: reservations
       methods:
+        purchase_offering:
+          operation:
+            $ref: "#/paths/~1v1~1offerings~1{offering_arn}/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         describe_reservation:
           operation:
             $ref: "#/paths/~1v1~1reservations~1{reservation_arn}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Reservation
         list_reservations:
           operation:
             $ref: "#/paths/~1v1~1reservations/get"
@@ -7811,6 +7840,14 @@ components:
             objectKey: $.Reservations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/reservations/methods/describe_reservation"
@@ -7857,6 +7894,17 @@ components:
       name: entitlements
       title: entitlements
       methods:
+        grant_flow_entitlements:
+          operation:
+            $ref: "#/paths/~1v1~1flows~1{flow_arn}~1entitlements/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         list_entitlements:
           operation:
             $ref: "#/paths/~1v1~1entitlements/get"
@@ -7866,109 +7914,14 @@ components:
             objectKey: $.Entitlements
           request:
             nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/entitlements/methods/list_entitlements"
-        insert: []
-        update: []
-        delete: []
-    tags_for_global_resources:
-      id: aws.mediaconnect.tags_for_global_resources
-      name: tags_for_global_resources
-      title: tags_for_global_resources
-      methods:
-        list_tags_for_global_resource:
-          operation:
-            $ref: "#/paths/~1tags~1global~1{resource_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_global_resources/methods/list_tags_for_global_resource"
-        insert: []
-        update: []
-        delete: []
-    global_resources:
-      id: aws.mediaconnect.global_resources
-      name: global_resources
-      title: global_resources
-      methods:
-        tag_global_resource:
-          operation:
-            $ref: "#/paths/~1tags~1global~1{resource_arn}/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
           config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_global_resource:
-          operation:
-            $ref: "#/paths/~1tags~1global~1{resource_arn}/delete"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/global_resources/methods/tag_global_resource"
-          - $ref: "#/components/x-stackQL-resources/global_resources/methods/untag_global_resource"
-        delete: []
-    tags_for_resources:
-      id: aws.mediaconnect.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
-      methods:
-        list_tags_for_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.mediaconnect.resources
-      name: resources
-      title: resources
-      methods:
-        tag_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/post"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        untag_resource:
-          operation:
-            $ref: "#/paths/~1tags~1{resource_arn}/delete"
-          response:
-            openAPIDocKey: "204"
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    flow_entitlements:
-      id: aws.mediaconnect.flow_entitlements
-      name: flow_entitlements
-      title: flow_entitlements
-      methods:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         revoke_flow_entitlement:
           operation:
             $ref: "#/paths/~1v1~1flows~1{flow_arn}~1entitlements~1{entitlement_arn}/delete"
@@ -7987,30 +7940,66 @@ components:
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/entitlements/methods/list_entitlements"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/flow_entitlements/methods/revoke_flow_entitlement"
+          - $ref: "#/components/x-stackQL-resources/entitlements/methods/revoke_flow_entitlement"
         delete: []
-    bridge_states:
-      id: aws.mediaconnect.bridge_states
-      name: bridge_states
-      title: bridge_states
+    tags:
+      id: aws.mediaconnect.tags
+      name: tags
+      title: tags
       methods:
-        update_bridge_state:
+        list_tags_for_global_resource:
           operation:
-            $ref: "#/paths/~1v1~1bridges~1{bridge_arn}~1state/put"
+            $ref: "#/paths/~1tags~1global~1{resource_arn}/get"
           response:
-            openAPIDocKey: "202"
+            openAPIDocKey: "200"
             mediaType: application/json
+        tag_global_resource:
+          operation:
+            $ref: "#/paths/~1tags~1global~1{resource_arn}/post"
+          response:
+            openAPIDocKey: "204"
           request:
             nativeCasing: pascal
           config:
             requestBodyTranslate:
               algorithm: naive
+        untag_global_resource:
+          operation:
+            $ref: "#/paths/~1tags~1global~1{resource_arn}/delete"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+        list_tags_for_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        tag_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/post"
+          response:
+            openAPIDocKey: "204"
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        untag_resource:
+          operation:
+            $ref: "#/paths/~1tags~1{resource_arn}/delete"
+          response:
+            openAPIDocKey: "204"
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_global_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/bridge_states/methods/update_bridge_state"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_global_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_global_resource"
         delete: []

@@ -42,7 +42,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: library_item_reviews
+      x-stackql-resource: library_items
       x-stackql-method: associate_library_item_review
       x-stackql-verb: UPDATE
   /apps.install:
@@ -72,7 +72,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: q_app_with_users
+      x-stackql-resource: q_apps
       x-stackql-method: associate_q_app_with_user
       x-stackql-verb: UPDATE
   /catalog.createCategories:
@@ -402,7 +402,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: library_item_reviews
+      x-stackql-resource: library_items
       x-stackql-method: disassociate_library_item_review
       x-stackql-verb: UPDATE
   /apps.uninstall:
@@ -430,7 +430,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: q_app_from_users
+      x-stackql-resource: q_apps
       x-stackql-method: disassociate_q_app_from_user
       x-stackql-verb: UPDATE
   /runtime.exportQAppSessionData:
@@ -462,7 +462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ExportQAppSessionDataOutput'
-      x-stackql-resource: q_app_session_data
+      x-stackql-resource: q_app_sessions
       x-stackql-method: export_q_app_session_data
       x-stackql-verb: EXEC
   /catalog.getItem:
@@ -697,6 +697,9 @@ paths:
       x-stackql-method: list_library_items
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.libraryItems
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /runtime.listQAppSessionData:
     get:
       operationId: ListQAppSessionData
@@ -760,6 +763,9 @@ paths:
       x-stackql-method: list_q_apps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.apps
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -778,7 +784,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -809,7 +815,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -835,7 +841,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /apps.predictQApp:
@@ -908,7 +914,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartQAppSessionOutput'
-      x-stackql-resource: q_app_session
+      x-stackql-resource: q_apps
       x-stackql-method: start_q_app_session
       x-stackql-verb: EXEC
   /runtime.deleteMiniAppRun:
@@ -937,7 +943,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: q_app_session
+      x-stackql-resource: q_apps
       x-stackql-method: stop_q_app_session
       x-stackql-verb: EXEC
   /catalog.updateItem:
@@ -1003,7 +1009,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: library_item_metadatas
+      x-stackql-resource: library_items
       x-stackql-method: update_library_item_metadata
       x-stackql-verb: UPDATE
   /apps.update:

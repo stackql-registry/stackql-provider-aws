@@ -124,7 +124,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateJobForDevicesResponse'
-      x-stackql-resource: job_for_devices
+      x-stackql-resource: devices
       x-stackql-method: create_job_for_devices
       x-stackql-verb: INSERT
     get:
@@ -411,7 +411,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDeviceMetadataResponse'
-      x-stackql-resource: device_metadatas
+      x-stackql-resource: devices
       x-stackql-method: update_device_metadata
       x-stackql-verb: UPDATE
   /packages/{package_id}:
@@ -970,7 +970,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1001,7 +1001,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1027,7 +1027,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /application-instances/{application_instance_id}/node-signals:
@@ -1059,7 +1059,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignalApplicationInstanceNodeInstancesResponse'
-      x-stackql-resource: signal_application_instance_node_instances
+      x-stackql-resource: application_instance_node_instances
       x-stackql-method: signal_application_instance_node_instances
       x-stackql-verb: EXEC
 components:

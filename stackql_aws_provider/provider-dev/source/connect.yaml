@@ -54,7 +54,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ActivateEvaluationFormResponse'
-      x-stackql-resource: evaluation_form
+      x-stackql-resource: evaluation_forms
       x-stackql-method: activate_evaluation_form
       x-stackql-verb: EXEC
   /analytics-data/instance/{instance_id}/association:
@@ -90,7 +90,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateAnalyticsDataSetResponse'
-      x-stackql-resource: analytics_data_sets
+      x-stackql-resource: instances
       x-stackql-method: associate_analytics_data_set
       x-stackql-verb: UPDATE
     post:
@@ -120,7 +120,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: analytics_data_sets
+      x-stackql-resource: instances
       x-stackql-method: disassociate_analytics_data_set
       x-stackql-verb: UPDATE
     get:
@@ -335,7 +335,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateContactWithUserResponse'
-      x-stackql-resource: contact_with_users
+      x-stackql-resource: users
       x-stackql-method: associate_contact_with_user
       x-stackql-verb: UPDATE
   /default-vocabulary/{instance_id}/{language_code}:
@@ -432,7 +432,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateEmailAddressAliasResponse'
-      x-stackql-resource: email_address_alias
+      x-stackql-resource: email_address
       x-stackql-method: associate_email_address_alias
       x-stackql-verb: UPDATE
   /flow-associations/{instance_id}:
@@ -471,7 +471,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateFlowResponse'
-      x-stackql-resource: flows
+      x-stackql-resource: instances
       x-stackql-method: associate_flow
       x-stackql-verb: UPDATE
   /hours-of-operations/{instance_id}/{hours_of_operation_id}/associate-hours:
@@ -720,7 +720,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: phone_number_contact_flows
+      x-stackql-resource: contact_flows
       x-stackql-method: associate_phone_number_contact_flow
       x-stackql-verb: UPDATE
     delete:
@@ -749,7 +749,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: phone_number_contact_flows
+      x-stackql-resource: contact_flows
       x-stackql-method: disassociate_phone_number_contact_flow
       x-stackql-verb: UPDATE
   /queues/{instance_id}/{queue_id}/associate-email-addresses:
@@ -1046,6 +1046,9 @@ paths:
       x-stackql-method: list_traffic_distribution_group_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrafficDistributionGroupUserSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /users/{instance_id}/{user_id}/associate-proficiencies:
     post:
       operationId: AssociateUserProficiencies
@@ -1154,7 +1157,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchAssociateAnalyticsDataSetResponse'
-      x-stackql-resource: batch_associate_analytics_data_set
+      x-stackql-resource: instances
       x-stackql-method: batch_associate_analytics_data_set
       x-stackql-verb: EXEC
     post:
@@ -1189,7 +1192,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDisassociateAnalyticsDataSetResponse'
-      x-stackql-resource: batch_disassociate_analytics_data_set
+      x-stackql-resource: instances
       x-stackql-method: batch_disassociate_analytics_data_set
       x-stackql-verb: EXEC
   /data-tables/{instance_id}/{data_table_id}/values/create:
@@ -1233,7 +1236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchCreateDataTableValueResponse'
-      x-stackql-resource: batch_create_data_table_value
+      x-stackql-resource: data_tables
       x-stackql-method: batch_create_data_table_value
       x-stackql-verb: EXEC
   /data-tables/{instance_id}/{data_table_id}/values/delete:
@@ -1273,7 +1276,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDeleteDataTableValueResponse'
-      x-stackql-resource: batch_delete_data_table_value
+      x-stackql-resource: data_tables
       x-stackql-method: batch_delete_data_table_value
       x-stackql-verb: EXEC
   /data-tables/{instance_id}/{data_table_id}/values/describe:
@@ -1313,7 +1316,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchDescribeDataTableValueResponse'
-      x-stackql-resource: batch_describe_data_table_value
+      x-stackql-resource: data_tables
       x-stackql-method: batch_describe_data_table_value
       x-stackql-verb: EXEC
   /attached-files/{instance_id}:
@@ -1406,7 +1409,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartAttachedFileUploadResponse'
-      x-stackql-resource: attached_file_upload
+      x-stackql-resource: attached_files
       x-stackql-method: start_attached_file_upload
       x-stackql-verb: EXEC
   /flow-associations-batch/{instance_id}:
@@ -1480,7 +1483,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchPutContactResponse'
-      x-stackql-resource: batch_put_contact
+      x-stackql-resource: instances
       x-stackql-method: batch_put_contact
       x-stackql-verb: EXEC
   /data-tables/{instance_id}/{data_table_id}/values/update:
@@ -1520,7 +1523,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateDataTableValueResponse'
-      x-stackql-resource: batch_update_data_table_value
+      x-stackql-resource: data_tables
       x-stackql-method: batch_update_data_table_value
       x-stackql-verb: EXEC
   /phone-number/claim:
@@ -1604,7 +1607,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompleteAttachedFileUploadResponse'
-      x-stackql-resource: complete_attached_file_upload
+      x-stackql-resource: instances
       x-stackql-method: complete_attached_file_upload
       x-stackql-verb: EXEC
     delete:
@@ -1764,6 +1767,9 @@ paths:
       x-stackql-method: list_agent_statuses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AgentStatusSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact/create-contact:
     put:
       operationId: CreateContact
@@ -2128,6 +2134,9 @@ paths:
       x-stackql-method: list_data_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataTableSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /data-tables/{instance_id}/{data_table_id}/attributes:
     put:
       operationId: CreateDataTableAttribute
@@ -2230,6 +2239,9 @@ paths:
       x-stackql-method: list_data_table_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Attributes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /email-addresses/{instance_id}:
     put:
       operationId: CreateEmailAddress
@@ -2363,6 +2375,9 @@ paths:
       x-stackql-method: list_evaluation_forms
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EvaluationFormSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /hours-of-operations/{instance_id}:
     put:
       operationId: CreateHoursOfOperation
@@ -2501,6 +2516,9 @@ paths:
       x-stackql-method: list_hours_of_operation_overrides
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HoursOfOperationOverrideList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance:
     put:
       operationId: CreateInstance
@@ -2577,6 +2595,9 @@ paths:
       x-stackql-method: list_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.InstanceSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/{instance_id}/integration-associations:
     put:
       operationId: CreateIntegrationAssociation
@@ -2669,6 +2690,9 @@ paths:
       x-stackql-method: list_integration_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.IntegrationAssociationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /notifications/{instance_id}:
     put:
       operationId: CreateNotification
@@ -2783,7 +2807,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateParticipantResponse'
-      x-stackql-resource: participants
+      x-stackql-resource: instances
       x-stackql-method: create_participant
       x-stackql-verb: INSERT
   /contact/persistent-contact-association/{instance_id}/{initial_contact_id}:
@@ -2829,7 +2853,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePersistentContactAssociationResponse'
-      x-stackql-resource: persistent_contact_associations
+      x-stackql-resource: instances
       x-stackql-method: create_persistent_contact_association
       x-stackql-verb: INSERT
   /predefined-attributes/{instance_id}:
@@ -2915,6 +2939,9 @@ paths:
       x-stackql-method: list_predefined_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PredefinedAttributeSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /prompts/{instance_id}:
     put:
       operationId: CreatePrompt
@@ -2999,7 +3026,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreatePushNotificationRegistrationResponse'
-      x-stackql-resource: push_notification_registrations
+      x-stackql-resource: instances
       x-stackql-method: create_push_notification_registration
       x-stackql-verb: INSERT
   /queues/{instance_id}:
@@ -3143,6 +3170,9 @@ paths:
       x-stackql-method: list_quick_connects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.QuickConnectSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /routing-profiles/{instance_id}:
     put:
       operationId: CreateRoutingProfile
@@ -3288,6 +3318,9 @@ paths:
       x-stackql-method: list_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RuleSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /security-profiles/{instance_id}:
     put:
       operationId: CreateSecurityProfile
@@ -3442,6 +3475,9 @@ paths:
       x-stackql-method: list_task_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TaskTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /test-cases/{instance_id}:
     put:
       operationId: CreateTestCase
@@ -3626,6 +3662,9 @@ paths:
       x-stackql-method: list_use_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UseCaseSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /users/{instance_id}:
     put:
       operationId: CreateUser
@@ -3820,6 +3859,9 @@ paths:
       x-stackql-method: list_views
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ViewsSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /views/{instance_id}/{view_id}/versions:
     put:
       operationId: CreateViewVersion
@@ -3901,6 +3943,9 @@ paths:
       x-stackql-method: list_view_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ViewVersionSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /vocabulary/{instance_id}:
     post:
       operationId: CreateVocabulary
@@ -4023,6 +4068,9 @@ paths:
       x-stackql-method: list_workspaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkspaceSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /workspaces/{instance_id}/{workspace_id}/pages:
     put:
       operationId: CreateWorkspacePage
@@ -4110,6 +4158,9 @@ paths:
       x-stackql-method: list_workspace_pages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkspacePageList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /evaluation-forms/{instance_id}/{evaluation_form_id}/deactivate:
     post:
       operationId: DeactivateEvaluationForm
@@ -4147,7 +4198,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeactivateEvaluationFormResponse'
-      x-stackql-resource: evaluation_form
+      x-stackql-resource: evaluation_forms
       x-stackql-method: deactivate_evaluation_form
       x-stackql-verb: EXEC
   /contact-evaluations/{instance_id}/{evaluation_id}:
@@ -4302,6 +4353,7 @@ paths:
       x-stackql-resource: contact_flows
       x-stackql-method: describe_contact_flow
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ContactFlow
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}:
     delete:
       operationId: DeleteContactFlowModule
@@ -4359,6 +4411,7 @@ paths:
       x-stackql-resource: contact_flow_modules
       x-stackql-method: describe_contact_flow_module
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ContactFlowModule
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/alias/{alias_id}:
     delete:
       operationId: DeleteContactFlowModuleAlias
@@ -4428,6 +4481,7 @@ paths:
       x-stackql-resource: contact_flow_module_alias
       x-stackql-method: describe_contact_flow_module_alias
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ContactFlowModuleAlias
     post:
       operationId: UpdateContactFlowModuleAlias
       description: Updates a specific Aliases metadata, including the version it’s tied to, it’s name, and description.
@@ -4603,6 +4657,7 @@ paths:
       x-stackql-resource: data_tables
       x-stackql-method: describe_data_table
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.DataTable
     post:
       operationId: UpdateDataTableMetadata
       description: Updates the metadata properties of a data table. Accepts all fields similar to CreateDataTable, except
@@ -4649,7 +4704,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDataTableMetadataResponse'
-      x-stackql-resource: data_table_metadatas
+      x-stackql-resource: data_tables
       x-stackql-method: update_data_table_metadata
       x-stackql-verb: UPDATE
   /data-tables/{instance_id}/{data_table_id}/attributes/{attribute_name}:
@@ -4718,6 +4773,7 @@ paths:
       x-stackql-resource: data_table_attributes
       x-stackql-method: describe_data_table_attribute
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Attribute
     post:
       operationId: UpdateDataTableAttribute
       description: Updates all properties for an attribute using all properties from CreateDataTableAttribute. There are no
@@ -4866,7 +4922,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateEmailAddressMetadataResponse'
-      x-stackql-resource: email_address_metadatas
+      x-stackql-resource: email_address
       x-stackql-method: update_email_address_metadata
       x-stackql-verb: UPDATE
   /evaluation-forms/{instance_id}/{evaluation_form_id}:
@@ -4935,6 +4991,7 @@ paths:
       x-stackql-resource: evaluation_forms
       x-stackql-method: describe_evaluation_form
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EvaluationForm
     put:
       operationId: UpdateEvaluationForm
       description: Updates details about a specific evaluation form version in the specified Amazon Connect instance. Question
@@ -5050,6 +5107,7 @@ paths:
       x-stackql-resource: hours_of_operations
       x-stackql-method: describe_hours_of_operation
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.HoursOfOperation
     post:
       operationId: UpdateHoursOfOperation
       description: Updates the hours of operation.
@@ -5149,6 +5207,7 @@ paths:
       x-stackql-resource: hours_of_operation_overrides
       x-stackql-method: describe_hours_of_operation_override
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.HoursOfOperationOverride
     post:
       operationId: UpdateHoursOfOperationOverride
       description: Update the hours of operation override.
@@ -5334,6 +5393,7 @@ paths:
       x-stackql-resource: notifications
       x-stackql-method: describe_notification
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Notification
     post:
       operationId: UpdateNotificationContent
       description: Updates the localized content of an existing notification. This operation applies to all users for whom
@@ -5370,7 +5430,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateNotificationContentResponse'
-      x-stackql-resource: notification_contents
+      x-stackql-resource: notifications
       x-stackql-method: update_notification_content
       x-stackql-verb: UPDATE
   /predefined-attributes/{instance_id}/{name}:
@@ -5430,6 +5490,7 @@ paths:
       x-stackql-resource: predefined_attributes
       x-stackql-method: describe_predefined_attribute
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.PredefinedAttribute
     post:
       operationId: UpdatePredefinedAttribute
       description: 'Updates a predefined attribute for the specified Amazon Connect instance. A predefined attribute is made
@@ -5523,6 +5584,7 @@ paths:
       x-stackql-resource: prompts
       x-stackql-method: describe_prompt
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Prompt
     post:
       operationId: UpdatePrompt
       description: Updates a prompt.
@@ -5594,7 +5656,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeletePushNotificationRegistrationResponse'
-      x-stackql-resource: push_notification_registrations
+      x-stackql-resource: instances
       x-stackql-method: delete_push_notification_registration
       x-stackql-verb: DELETE
   /queues/{instance_id}/{queue_id}:
@@ -5648,6 +5710,7 @@ paths:
       x-stackql-resource: queues
       x-stackql-method: describe_queue
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Queue
   /quick-connects/{instance_id}/{quick_connect_id}:
     delete:
       operationId: DeleteQuickConnect
@@ -5702,6 +5765,7 @@ paths:
       x-stackql-resource: quick_connects
       x-stackql-method: describe_quick_connect
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.QuickConnect
   /routing-profiles/{instance_id}/{routing_profile_id}:
     delete:
       operationId: DeleteRoutingProfile
@@ -5755,6 +5819,7 @@ paths:
       x-stackql-resource: routing_profiles
       x-stackql-method: describe_routing_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.RoutingProfile
   /rules/{instance_id}/{rule_id}:
     delete:
       operationId: DeleteRule
@@ -5806,6 +5871,7 @@ paths:
       x-stackql-resource: rules
       x-stackql-method: describe_rule
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Rule
     put:
       operationId: UpdateRule
       description: Updates a rule for the specified Amazon Connect instance. Use the Rules Function language to code conditions
@@ -5903,6 +5969,7 @@ paths:
       x-stackql-resource: security_profiles
       x-stackql-method: describe_security_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.SecurityProfile
     post:
       operationId: UpdateSecurityProfile
       description: Updates a security profile. For information about security profiles, see Security Profiles in the Amazon
@@ -6126,6 +6193,7 @@ paths:
       x-stackql-resource: test_cases
       x-stackql-method: describe_test_case
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TestCase
     post:
       operationId: UpdateTestCase
       description: Updates any of the metadata for a test case, such as the name, description, and status or content of an
@@ -6231,6 +6299,7 @@ paths:
       x-stackql-resource: traffic_distribution_groups
       x-stackql-method: describe_traffic_distribution_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TrafficDistributionGroup
   /instance/{instance_id}/integration-associations/{integration_association_id}/use-cases/{use_case_id}:
     delete:
       operationId: DeleteUseCase
@@ -6319,6 +6388,7 @@ paths:
       x-stackql-resource: users
       x-stackql-method: describe_user
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.User
   /user-hierarchy-groups/{instance_id}/{hierarchy_group_id}:
     delete:
       operationId: DeleteUserHierarchyGroup
@@ -6371,6 +6441,7 @@ paths:
       x-stackql-resource: user_hierarchy_groups
       x-stackql-method: describe_user_hierarchy_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.HierarchyGroup
   /views/{instance_id}/{view_id}:
     delete:
       operationId: DeleteView
@@ -6429,6 +6500,7 @@ paths:
       x-stackql-resource: views
       x-stackql-method: describe_view
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.View
     post:
       operationId: UpdateViewContent
       description: Updates the view content of the given view identifier in the specified Amazon Connect instance. It performs
@@ -6469,7 +6541,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateViewContentResponse'
-      x-stackql-resource: view_contents
+      x-stackql-resource: views
       x-stackql-method: update_view_content
       x-stackql-verb: UPDATE
   /views/{instance_id}/{view_id}/versions/{view_version}:
@@ -6588,6 +6660,7 @@ paths:
       x-stackql-resource: workspaces
       x-stackql-method: describe_workspace
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Workspace
   /workspaces/{instance_id}/{workspace_id}/media:
     delete:
       operationId: DeleteWorkspaceMedia
@@ -6660,7 +6733,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportWorkspaceMediaResponse'
-      x-stackql-resource: workspace_media
+      x-stackql-resource: workspaces
       x-stackql-method: import_workspace_media
       x-stackql-verb: EXEC
     get:
@@ -6801,6 +6874,7 @@ paths:
       x-stackql-resource: agent_status
       x-stackql-method: describe_agent_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AgentStatus
     post:
       operationId: UpdateAgentStatus
       description: Updates agent status.
@@ -6871,6 +6945,7 @@ paths:
       x-stackql-resource: attached_files_configurations
       x-stackql-method: describe_attached_files_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AttachedFilesConfiguration
     post:
       operationId: UpdateAttachedFilesConfiguration
       description: Updates the attached files configuration for the specified Amazon Connect instance and attachment scope.
@@ -6940,6 +7015,7 @@ paths:
       x-stackql-resource: authentication_profiles
       x-stackql-method: describe_authentication_profile
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AuthenticationProfile
     post:
       operationId: UpdateAuthenticationProfile
       description: This API is in preview release for Amazon Connect and is subject to change. To request access to this API,
@@ -7022,6 +7098,7 @@ paths:
       x-stackql-resource: contacts
       x-stackql-method: describe_contact
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Contact
     post:
       operationId: UpdateContact
       description: This API is in preview release for Amazon Connect and is subject to change. Adds or updates user-defined
@@ -7104,6 +7181,7 @@ paths:
       x-stackql-resource: instance_attributes
       x-stackql-method: describe_instance_attribute
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Attribute
     post:
       operationId: UpdateInstanceAttribute
       description: This API is in preview release for Amazon Connect and is subject to change. Updates the value for the specified
@@ -7180,6 +7258,7 @@ paths:
       x-stackql-resource: instance_storage_configs
       x-stackql-method: describe_instance_storage_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.StorageConfig
     delete:
       operationId: DisassociateInstanceStorageConfig
       description: This API is in preview release for Amazon Connect and is subject to change. Removes the storage type configurations
@@ -7289,6 +7368,7 @@ paths:
       x-stackql-resource: phone_numbers
       x-stackql-method: describe_phone_number
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ClaimedPhoneNumberSummary
     delete:
       operationId: ReleasePhoneNumber
       description: Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group.
@@ -7385,6 +7465,7 @@ paths:
       x-stackql-resource: user_hierarchy_structures
       x-stackql-method: describe_user_hierarchy_structure
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.HierarchyStructure
     post:
       operationId: UpdateUserHierarchyStructure
       description: 'Updates the user hierarchy structure: add, remove, and rename user hierarchy levels.'
@@ -7441,6 +7522,7 @@ paths:
       x-stackql-resource: vocabularies
       x-stackql-method: describe_vocabulary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Vocabulary
   /email-addresses/{instance_id}/{email_address_id}/disassociate-alias:
     post:
       operationId: DisassociateEmailAddressAlias
@@ -7497,7 +7579,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateEmailAddressAliasResponse'
-      x-stackql-resource: email_address_alias
+      x-stackql-resource: email_address
       x-stackql-method: disassociate_email_address_alias
       x-stackql-verb: UPDATE
   /flow-associations/{instance_id}/{resource_id}/{resource_type}:
@@ -7532,7 +7614,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateFlowResponse'
-      x-stackql-resource: flows
+      x-stackql-resource: instances
       x-stackql-method: disassociate_flow
       x-stackql-verb: UPDATE
     get:
@@ -7898,7 +7980,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DismissUserContactResponse'
-      x-stackql-resource: dismiss_user_contact
+      x-stackql-resource: instances
       x-stackql-method: dismiss_user_contact
       x-stackql-verb: EXEC
   /data-tables/{instance_id}/{data_table_id}/values/evaluate:
@@ -7954,7 +8036,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EvaluateDataTableValuesResponse'
-      x-stackql-resource: evaluate_data_table_values
+      x-stackql-resource: data_table_values
       x-stackql-method: evaluate_data_table_values
       x-stackql-verb: EXEC
   /contact/attributes/{instance_id}/{initial_contact_id}:
@@ -8233,6 +8315,9 @@ paths:
       x-stackql-method: get_metric_data
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.MetricResults
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /metrics/data:
     post:
       operationId: GetMetricDataV2
@@ -8461,7 +8546,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportPhoneNumberResponse'
-      x-stackql-resource: phone_number
+      x-stackql-resource: instances
       x-stackql-method: import_phone_number
       x-stackql-verb: EXEC
   /analytics-data/instance/{instance_id}/datasets:
@@ -8531,11 +8616,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListApprovedOriginsResponse'
+                $ref: '#/components/schemas/ListApprovedOriginsOutputDisplay'
       x-stackql-resource: approved_origins
       x-stackql-method: list_approved_origins
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Origins
+      x-stackql-responseEnvelope: ListApprovedOriginsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Origins" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"origin": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact/associated/{instance_id}:
     get:
       operationId: ListAssociatedContacts
@@ -8615,6 +8708,9 @@ paths:
       x-stackql-method: list_attached_files_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AttachedFilesConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /authentication-profiles-summary/{instance_id}:
     get:
       operationId: ListAuthenticationProfiles
@@ -8653,6 +8749,9 @@ paths:
       x-stackql-method: list_authentication_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AuthenticationProfileSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/{instance_id}/bots:
     get:
       operationId: ListBots
@@ -8697,6 +8796,9 @@ paths:
       x-stackql-method: list_bots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LexBots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /hours-of-operations/{instance_id}/{hours_of_operation_id}/hours:
     get:
       operationId: ListChildHoursOfOperations
@@ -8741,6 +8843,9 @@ paths:
       x-stackql-method: list_child_hours_of_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ChildHoursOfOperationsSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact-evaluations/{instance_id}:
     get:
       operationId: ListContactEvaluations
@@ -8778,6 +8883,9 @@ paths:
       x-stackql-method: list_contact_evaluations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EvaluationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     put:
       operationId: StartContactEvaluation
       description: Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for
@@ -8819,7 +8927,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContactEvaluationResponse'
-      x-stackql-resource: contact_evaluation
+      x-stackql-resource: contacts
       x-stackql-method: start_contact_evaluation
       x-stackql-verb: EXEC
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/aliases:
@@ -8864,6 +8972,9 @@ paths:
       x-stackql-method: list_contact_flow_module_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactFlowModuleAliasSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/versions:
     get:
       operationId: ListContactFlowModuleVersions
@@ -8906,6 +9017,9 @@ paths:
       x-stackql-method: list_contact_flow_module_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactFlowModuleVersionSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact-flow-modules-summary/{instance_id}:
     get:
       operationId: ListContactFlowModules
@@ -8948,6 +9062,9 @@ paths:
       x-stackql-method: list_contact_flow_modules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactFlowModulesSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact-flows/{instance_id}/{contact_flow_id}/versions:
     get:
       operationId: ListContactFlowVersions
@@ -8989,6 +9106,9 @@ paths:
       x-stackql-method: list_contact_flow_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactFlowVersionSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact-flows-summary/{instance_id}:
     get:
       operationId: ListContactFlows
@@ -9033,6 +9153,9 @@ paths:
       x-stackql-method: list_contact_flows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactFlowSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact/references/{instance_id}/{contact_id}:
     get:
       operationId: ListContactReferences
@@ -9078,6 +9201,9 @@ paths:
       x-stackql-method: list_contact_references
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ReferenceSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /data-tables/{instance_id}/{data_table_id}/values/list-primary:
     post:
       operationId: ListDataTablePrimaryValues
@@ -9130,6 +9256,9 @@ paths:
       x-stackql-method: list_data_table_primary_values
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PrimaryValuesList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /data-tables/{instance_id}/{data_table_id}/values/list:
     post:
       operationId: ListDataTableValues
@@ -9182,6 +9311,9 @@ paths:
       x-stackql-method: list_data_table_values
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Values
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /default-vocabulary-summary/{instance_id}:
     post:
       operationId: ListDefaultVocabularies
@@ -9218,6 +9350,9 @@ paths:
       x-stackql-method: list_default_vocabularies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DefaultVocabularyList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /entity-security-profiles-summary/{instance_id}:
     post:
       operationId: ListEntitySecurityProfiles
@@ -9259,6 +9394,9 @@ paths:
       x-stackql-method: list_entity_security_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SecurityProfiles
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /evaluation-forms/{instance_id}/{evaluation_form_id}/versions:
     get:
       operationId: ListEvaluationFormVersions
@@ -9301,6 +9439,9 @@ paths:
       x-stackql-method: list_evaluation_form_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EvaluationFormVersionSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /flow-associations-summary/{instance_id}:
     get:
       operationId: ListFlowAssociations
@@ -9343,6 +9484,9 @@ paths:
       x-stackql-method: list_flow_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FlowAssociationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /hours-of-operations-summary/{instance_id}:
     get:
       operationId: ListHoursOfOperations
@@ -9380,6 +9524,9 @@ paths:
       x-stackql-method: list_hours_of_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HoursOfOperationSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/{instance_id}/attributes:
     get:
       operationId: ListInstanceAttributes
@@ -9417,6 +9564,9 @@ paths:
       x-stackql-method: list_instance_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Attributes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/{instance_id}/storage-configs:
     get:
       operationId: ListInstanceStorageConfigs
@@ -9460,6 +9610,9 @@ paths:
       x-stackql-method: list_instance_storage_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.StorageConfigs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/{instance_id}/lambda-functions:
     get:
       operationId: ListLambdaFunctions
@@ -9492,11 +9645,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListLambdaFunctionsResponse'
+                $ref: '#/components/schemas/ListLambdaFunctionsOutputDisplay'
       x-stackql-resource: lambda_functions
       x-stackql-method: list_lambda_functions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.LambdaFunctions
+      x-stackql-responseEnvelope: ListLambdaFunctionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "LambdaFunctions" -}}{{- $tok := index . "NextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"lambda_function": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/{instance_id}/lex-bots:
     get:
       operationId: ListLexBots
@@ -9535,6 +9696,9 @@ paths:
       x-stackql-method: list_lex_bots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LexBots
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /phone-numbers-summary/{instance_id}:
     get:
       operationId: ListPhoneNumbers
@@ -9591,6 +9755,9 @@ paths:
       x-stackql-method: list_phone_numbers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PhoneNumberSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /phone-number/list:
     post:
       operationId: ListPhoneNumbersV2
@@ -9633,6 +9800,9 @@ paths:
       x-stackql-method: list_phone_numbers_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ListPhoneNumbersSummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /prompts-summary/{instance_id}:
     get:
       operationId: ListPrompts
@@ -9668,6 +9838,9 @@ paths:
       x-stackql-method: list_prompts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PromptSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /queues/{instance_id}/{queue_id}/email-addresses:
     get:
       operationId: ListQueueEmailAddresses
@@ -9758,6 +9931,9 @@ paths:
       x-stackql-method: list_queue_quick_connects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.QuickConnectSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /queues-summary/{instance_id}:
     get:
       operationId: ListQueues
@@ -9803,6 +9979,9 @@ paths:
       x-stackql-method: list_queues
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.QueueSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact/list-real-time-analysis-segments-v2/{instance_id}/{contact_id}:
     post:
       operationId: ListRealtimeContactAnalysisSegmentsV2
@@ -9899,6 +10078,9 @@ paths:
       x-stackql-method: list_routing_profile_manual_assignment_queues
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RoutingProfileManualAssignmentQueueConfigSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /routing-profiles/{instance_id}/{routing_profile_id}/queues:
     get:
       operationId: ListRoutingProfileQueues
@@ -9941,6 +10123,9 @@ paths:
       x-stackql-method: list_routing_profile_queues
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RoutingProfileQueueConfigSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: UpdateRoutingProfileQueues
       description: Updates the properties associated with a set of queues for a routing profile.
@@ -10013,6 +10198,9 @@ paths:
       x-stackql-method: list_routing_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RoutingProfileSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /instance/{instance_id}/security-keys:
     get:
       operationId: ListSecurityKeys
@@ -10050,6 +10238,9 @@ paths:
       x-stackql-method: list_security_keys
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SecurityKeys
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /security-profiles-applications/{instance_id}/{security_profile_id}:
     get:
       operationId: ListSecurityProfileApplications
@@ -10092,6 +10283,9 @@ paths:
       x-stackql-method: list_security_profile_applications
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Applications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /security-profiles-flow-modules/{instance_id}/{security_profile_id}:
     get:
       operationId: ListSecurityProfileFlowModules
@@ -10134,6 +10328,9 @@ paths:
       x-stackql-method: list_security_profile_flow_modules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AllowedFlowModules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /security-profiles-permissions/{instance_id}/{security_profile_id}:
     get:
       operationId: ListSecurityProfilePermissions
@@ -10173,11 +10370,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSecurityProfilePermissionsResponse'
+                $ref: '#/components/schemas/ListSecurityProfilePermissionsOutputDisplay'
       x-stackql-resource: security_profile_permissions
       x-stackql-method: list_security_profile_permissions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.Permissions
+      x-stackql-responseEnvelope: ListSecurityProfilePermissionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "Permissions" -}}{{- $tok := index . "NextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"permission": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "NextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /security-profiles-summary/{instance_id}:
     get:
       operationId: ListSecurityProfiles
@@ -10216,6 +10421,9 @@ paths:
       x-stackql-method: list_security_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SecurityProfileSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -10237,7 +10445,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -10267,7 +10475,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -10289,7 +10497,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /test-cases/{instance_id}/{test_case_id}/{test_case_execution_id}/records:
@@ -10445,6 +10653,9 @@ paths:
       x-stackql-method: list_test_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TestCaseSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /traffic-distribution-groups:
     get:
       operationId: ListTrafficDistributionGroups
@@ -10481,6 +10692,9 @@ paths:
       x-stackql-method: list_traffic_distribution_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TrafficDistributionGroupSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /user-hierarchy-groups-summary/{instance_id}:
     get:
       operationId: ListUserHierarchyGroups
@@ -10518,6 +10732,9 @@ paths:
       x-stackql-method: list_user_hierarchy_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserHierarchyGroupSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /users/{instance_id}/{user_id}/notifications:
     get:
       operationId: ListUserNotifications
@@ -10602,6 +10819,9 @@ paths:
       x-stackql-method: list_user_proficiencies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserProficiencyList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
     post:
       operationId: UpdateUserProficiencies
       description: Updates the properties associated with the proficiencies of a user.
@@ -10672,6 +10892,9 @@ paths:
       x-stackql-method: list_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserSummaryList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /contact/monitor:
     post:
       operationId: MonitorContact
@@ -10706,7 +10929,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MonitorContactResponse'
-      x-stackql-resource: monitor_contact
+      x-stackql-resource: instances
       x-stackql-method: monitor_contact
       x-stackql-verb: EXEC
   /contact/pause:
@@ -10737,7 +10960,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PauseContactResponse'
-      x-stackql-resource: contact
+      x-stackql-resource: instances
       x-stackql-method: pause_contact
       x-stackql-verb: EXEC
   /users/{instance_id}/{user_id}/status:
@@ -10778,7 +11001,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutUserStatusResponse'
-      x-stackql-resource: user_status
+      x-stackql-resource: users
       x-stackql-method: put_user_status
       x-stackql-verb: REPLACE
   /instance/{instance_id}/replicate:
@@ -10819,7 +11042,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReplicateInstanceResponse'
-      x-stackql-resource: replicate_instance
+      x-stackql-resource: instances
       x-stackql-method: replicate_instance
       x-stackql-verb: EXEC
   /contact/resume:
@@ -10850,7 +11073,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResumeContactResponse'
-      x-stackql-resource: contact
+      x-stackql-resource: instances
       x-stackql-method: resume_contact
       x-stackql-verb: EXEC
   /contact/resume-recording:
@@ -10886,7 +11109,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResumeContactRecordingResponse'
-      x-stackql-resource: contact_recording
+      x-stackql-resource: contacts
       x-stackql-method: resume_contact_recording
       x-stackql-verb: EXEC
   /search-agent-statuses:
@@ -10924,6 +11147,9 @@ paths:
       x-stackql-method: search_agent_statuses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AgentStatuses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /phone-number/search-available:
     post:
       operationId: SearchAvailablePhoneNumbers
@@ -10966,6 +11192,9 @@ paths:
       x-stackql-method: search_available_phone_numbers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.AvailableNumbersList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-contact-evaluations:
     post:
       operationId: SearchContactEvaluations
@@ -11040,6 +11269,9 @@ paths:
       x-stackql-method: search_contact_flow_modules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactFlowModules
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-contact-flows:
     post:
       operationId: SearchContactFlows
@@ -11075,6 +11307,9 @@ paths:
       x-stackql-method: search_contact_flows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ContactFlows
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-contacts:
     post:
       operationId: SearchContacts
@@ -11113,6 +11348,9 @@ paths:
       x-stackql-method: search_contacts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Contacts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-data-tables:
     post:
       operationId: SearchDataTables
@@ -11150,6 +11388,9 @@ paths:
       x-stackql-method: search_data_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DataTables
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-email-addresses:
     post:
       operationId: SearchEmailAddresses
@@ -11258,6 +11499,9 @@ paths:
       x-stackql-method: search_hours_of_operation_overrides
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HoursOfOperationOverrides
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-hours-of-operations:
     post:
       operationId: SearchHoursOfOperations
@@ -11293,6 +11537,9 @@ paths:
       x-stackql-method: search_hours_of_operations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.HoursOfOperations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-notifications:
     post:
       operationId: SearchNotifications
@@ -11366,6 +11613,9 @@ paths:
       x-stackql-method: search_predefined_attributes
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.PredefinedAttributes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-prompts:
     post:
       operationId: SearchPrompts
@@ -11401,6 +11651,9 @@ paths:
       x-stackql-method: search_prompts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Prompts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-queues:
     post:
       operationId: SearchQueues
@@ -11436,6 +11689,9 @@ paths:
       x-stackql-method: search_queues
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Queues
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-quick-connects:
     post:
       operationId: SearchQuickConnects
@@ -11471,6 +11727,9 @@ paths:
       x-stackql-method: search_quick_connects
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.QuickConnects
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-resource-tags:
     post:
       operationId: SearchResourceTags
@@ -11506,6 +11765,9 @@ paths:
       x-stackql-method: search_resource_tags
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-routing-profiles:
     post:
       operationId: SearchRoutingProfiles
@@ -11543,6 +11805,9 @@ paths:
       x-stackql-method: search_routing_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.RoutingProfiles
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-security-profiles:
     post:
       operationId: SearchSecurityProfiles
@@ -11580,6 +11845,9 @@ paths:
       x-stackql-method: search_security_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.SecurityProfiles
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-test-cases:
     post:
       operationId: SearchTestCases
@@ -11615,6 +11883,9 @@ paths:
       x-stackql-method: search_test_cases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TestCases
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-user-hierarchy-groups:
     post:
       operationId: SearchUserHierarchyGroups
@@ -11652,6 +11923,9 @@ paths:
       x-stackql-method: search_user_hierarchy_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.UserHierarchyGroups
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-users:
     post:
       operationId: SearchUsers
@@ -11688,6 +11962,9 @@ paths:
       x-stackql-method: search_users
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Users
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-views:
     post:
       operationId: SearchViews
@@ -11723,6 +12000,9 @@ paths:
       x-stackql-method: search_views
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Views
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /vocabulary-summary/{instance_id}:
     post:
       operationId: SearchVocabularies
@@ -11763,6 +12043,9 @@ paths:
       x-stackql-method: search_vocabularies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.VocabularySummaryList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-workspace-associations:
     post:
       operationId: SearchWorkspaceAssociations
@@ -11798,6 +12081,9 @@ paths:
       x-stackql-method: search_workspace_associations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkspaceAssociations
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /search-workspaces:
     post:
       operationId: SearchWorkspaces
@@ -11833,6 +12119,9 @@ paths:
       x-stackql-method: search_workspaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Workspaces
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /chat-integration-event:
     post:
       operationId: SendChatIntegrationEvent
@@ -11921,7 +12210,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendOutboundEmailResponse'
-      x-stackql-resource: outbound_email
+      x-stackql-resource: instances
       x-stackql-method: send_outbound_email
       x-stackql-verb: EXEC
   /contact/chat:
@@ -11984,7 +12273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartChatContactResponse'
-      x-stackql-resource: chat_contact
+      x-stackql-resource: contact_flows
       x-stackql-method: start_chat_contact
       x-stackql-verb: EXEC
   /contact/start-contact-media-processing:
@@ -12015,7 +12304,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContactMediaProcessingResponse'
-      x-stackql-resource: contact_media_processing
+      x-stackql-resource: contacts
       x-stackql-method: start_contact_media_processing
       x-stackql-verb: EXEC
   /contact/start-recording:
@@ -12056,7 +12345,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContactRecordingResponse'
-      x-stackql-resource: contact_recording
+      x-stackql-resource: contacts
       x-stackql-method: start_contact_recording
       x-stackql-verb: EXEC
   /contact/start-streaming:
@@ -12094,7 +12383,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartContactStreamingResponse'
-      x-stackql-resource: contact_streaming
+      x-stackql-resource: contacts
       x-stackql-method: start_contact_streaming
       x-stackql-verb: EXEC
   /contact/email:
@@ -12150,7 +12439,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartEmailContactResponse'
-      x-stackql-resource: email_contact
+      x-stackql-resource: instances
       x-stackql-method: start_email_contact
       x-stackql-verb: EXEC
   /contact/outbound-chat:
@@ -12211,7 +12500,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOutboundChatContactResponse'
-      x-stackql-resource: outbound_chat_contact
+      x-stackql-resource: contact_flows
       x-stackql-method: start_outbound_chat_contact
       x-stackql-verb: EXEC
   /contact/outbound-email:
@@ -12253,7 +12542,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOutboundEmailContactResponse'
-      x-stackql-resource: outbound_email_contact
+      x-stackql-resource: instances
       x-stackql-method: start_outbound_email_contact
       x-stackql-verb: EXEC
   /contact/outbound-voice:
@@ -12321,7 +12610,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartOutboundVoiceContactResponse'
-      x-stackql-resource: outbound_voice_contact
+      x-stackql-resource: contact_flows
       x-stackql-method: start_outbound_voice_contact
       x-stackql-verb: EXEC
   /contact/screen-sharing:
@@ -12353,7 +12642,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartScreenSharingResponse'
-      x-stackql-resource: screen_sharing
+      x-stackql-resource: instances
       x-stackql-method: start_screen_sharing
       x-stackql-verb: EXEC
   /contact/task:
@@ -12419,7 +12708,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTaskContactResponse'
-      x-stackql-resource: task_contact
+      x-stackql-resource: instances
       x-stackql-method: start_task_contact
       x-stackql-verb: EXEC
   /test-cases/{instance_id}/{test_case_id}/start-execution:
@@ -12455,7 +12744,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTestCaseExecutionResponse'
-      x-stackql-resource: test_case_execution
+      x-stackql-resource: test_cases
       x-stackql-method: start_test_case_execution
       x-stackql-verb: EXEC
   /contact/webrtc:
@@ -12501,7 +12790,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWebRTCContactResponse'
-      x-stackql-resource: web_rtc_contact
+      x-stackql-resource: contact_flows
       x-stackql-method: start_web_rtc_contact
       x-stackql-verb: EXEC
   /contact/stop:
@@ -12534,7 +12823,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopContactResponse'
-      x-stackql-resource: contact
+      x-stackql-resource: instances
       x-stackql-method: stop_contact
       x-stackql-verb: EXEC
   /contact/stop-contact-media-processing:
@@ -12560,7 +12849,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopContactMediaProcessingResponse'
-      x-stackql-resource: contact_media_processing
+      x-stackql-resource: contacts
       x-stackql-method: stop_contact_media_processing
       x-stackql-verb: EXEC
   /contact/stop-recording:
@@ -12598,7 +12887,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopContactRecordingResponse'
-      x-stackql-resource: contact_recording
+      x-stackql-resource: contacts
       x-stackql-method: stop_contact_recording
       x-stackql-verb: EXEC
   /contact/stop-streaming:
@@ -12631,7 +12920,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopContactStreamingResponse'
-      x-stackql-resource: contact_streaming
+      x-stackql-resource: contacts
       x-stackql-method: stop_contact_streaming
       x-stackql-verb: EXEC
   /test-cases/{instance_id}/{test_case_id}/{test_case_execution_id}/stop-execution:
@@ -12673,7 +12962,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopTestCaseExecutionResponse'
-      x-stackql-resource: test_case_execution
+      x-stackql-resource: test_cases
       x-stackql-method: stop_test_case_execution
       x-stackql-verb: EXEC
   /contact-evaluations/{instance_id}/{evaluation_id}/submit:
@@ -12717,7 +13006,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SubmitContactEvaluationResponse'
-      x-stackql-resource: contact_evaluation
+      x-stackql-resource: contacts
       x-stackql-method: submit_contact_evaluation
       x-stackql-verb: EXEC
   /contact/suspend-recording:
@@ -12755,7 +13044,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SuspendContactRecordingResponse'
-      x-stackql-resource: suspend_contact_recording
+      x-stackql-resource: instances
       x-stackql-method: suspend_contact_recording
       x-stackql-verb: EXEC
   /contact/tags:
@@ -12788,7 +13077,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagContactResponse'
-      x-stackql-resource: contacts
+      x-stackql-resource: tags
       x-stackql-method: tag_contact
       x-stackql-verb: UPDATE
   /contact/transfer:
@@ -12832,7 +13121,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransferContactResponse'
-      x-stackql-resource: transfer_contact
+      x-stackql-resource: contact_flows
       x-stackql-method: transfer_contact
       x-stackql-verb: EXEC
   /contact/tags/{instance_id}/{contact_id}:
@@ -12867,7 +13156,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagContactResponse'
-      x-stackql-resource: contacts
+      x-stackql-resource: tags
       x-stackql-method: untag_contact
       x-stackql-verb: UPDATE
   /contact/attributes:
@@ -12946,7 +13235,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContactFlowContentResponse'
-      x-stackql-resource: contact_flow_contents
+      x-stackql-resource: contact_flows
       x-stackql-method: update_contact_flow_content
       x-stackql-verb: UPDATE
   /contact-flows/{instance_id}/{contact_flow_id}/metadata:
@@ -12987,7 +13276,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContactFlowMetadataResponse'
-      x-stackql-resource: contact_flow_metadatas
+      x-stackql-resource: contact_flows
       x-stackql-method: update_contact_flow_metadata
       x-stackql-verb: UPDATE
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/content:
@@ -13028,7 +13317,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContactFlowModuleContentResponse'
-      x-stackql-resource: contact_flow_module_contents
+      x-stackql-resource: contact_flow_modules
       x-stackql-method: update_contact_flow_module_content
       x-stackql-verb: UPDATE
   /contact-flow-modules/{instance_id}/{contact_flow_module_id}/metadata:
@@ -13069,7 +13358,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContactFlowModuleMetadataResponse'
-      x-stackql-resource: contact_flow_module_metadatas
+      x-stackql-resource: contact_flow_modules
       x-stackql-method: update_contact_flow_module_metadata
       x-stackql-verb: UPDATE
   /contact-flows/{instance_id}/{contact_flow_id}/name:
@@ -13107,7 +13396,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContactFlowNameResponse'
-      x-stackql-resource: contact_flow_names
+      x-stackql-resource: contact_flows
       x-stackql-method: update_contact_flow_name
       x-stackql-verb: UPDATE
   /contacts/{instance_id}/{contact_id}/routing-data:
@@ -13155,7 +13444,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContactRoutingDataResponse'
-      x-stackql-resource: contact_routing_datas
+      x-stackql-resource: contacts
       x-stackql-method: update_contact_routing_data
       x-stackql-verb: UPDATE
   /contact/schedule:
@@ -13187,7 +13476,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateContactScheduleResponse'
-      x-stackql-resource: contact_schedules
+      x-stackql-resource: contacts
       x-stackql-method: update_contact_schedule
       x-stackql-verb: UPDATE
   /data-tables/{instance_id}/{data_table_id}/values/update-primary:
@@ -13274,7 +13563,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateParticipantAuthenticationResponse'
-      x-stackql-resource: participant_authentications
+      x-stackql-resource: instances
       x-stackql-method: update_participant_authentication
       x-stackql-verb: UPDATE
   /contact/participant-role-config/{instance_id}/{contact_id}:
@@ -13316,7 +13605,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateParticipantRoleConfigResponse'
-      x-stackql-resource: participant_role_configs
+      x-stackql-resource: instances
       x-stackql-method: update_participant_role_config
       x-stackql-verb: UPDATE
   /phone-number/{phone_number_id}/metadata:
@@ -13345,7 +13634,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: phone_number_metadatas
+      x-stackql-resource: phone_numbers
       x-stackql-method: update_phone_number_metadata
       x-stackql-verb: UPDATE
   /queues/{instance_id}/{queue_id}/hours-of-operation:
@@ -13380,7 +13669,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queue_hours_of_operations
+      x-stackql-resource: hours_of_operations
       x-stackql-method: update_queue_hours_of_operation
       x-stackql-verb: UPDATE
   /queues/{instance_id}/{queue_id}/max-contacts:
@@ -13413,7 +13702,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queue_max_contacts
+      x-stackql-resource: contacts
       x-stackql-method: update_queue_max_contacts
       x-stackql-verb: UPDATE
   /queues/{instance_id}/{queue_id}/name:
@@ -13448,7 +13737,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queue_names
+      x-stackql-resource: queues
       x-stackql-method: update_queue_name
       x-stackql-verb: UPDATE
   /queues/{instance_id}/{queue_id}/outbound-caller-config:
@@ -13492,7 +13781,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queue_outbound_caller_configs
+      x-stackql-resource: queues
       x-stackql-method: update_queue_outbound_caller_config
       x-stackql-verb: UPDATE
   /queues/{instance_id}/{queue_id}/outbound-email-config:
@@ -13527,7 +13816,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queue_outbound_email_configs
+      x-stackql-resource: queues
       x-stackql-method: update_queue_outbound_email_config
       x-stackql-verb: UPDATE
   /queues/{instance_id}/{queue_id}/status:
@@ -13562,7 +13851,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: queue_status
+      x-stackql-resource: queues
       x-stackql-method: update_queue_status
       x-stackql-verb: UPDATE
   /quick-connects/{instance_id}/{quick_connect_id}/config:
@@ -13597,7 +13886,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: quick_connect_configs
+      x-stackql-resource: quick_connects
       x-stackql-method: update_quick_connect_config
       x-stackql-verb: UPDATE
   /quick-connects/{instance_id}/{quick_connect_id}/name:
@@ -13633,7 +13922,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: quick_connect_names
+      x-stackql-resource: quick_connects
       x-stackql-method: update_quick_connect_name
       x-stackql-verb: UPDATE
   /routing-profiles/{instance_id}/{routing_profile_id}/agent-availability-timer:
@@ -13669,7 +13958,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: routing_profile_agent_availability_timers
+      x-stackql-resource: routing_profiles
       x-stackql-method: update_routing_profile_agent_availability_timer
       x-stackql-verb: UPDATE
   /routing-profiles/{instance_id}/{routing_profile_id}/concurrency:
@@ -13704,7 +13993,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: routing_profile_concurrencies
+      x-stackql-resource: routing_profiles
       x-stackql-method: update_routing_profile_concurrency
       x-stackql-verb: UPDATE
   /routing-profiles/{instance_id}/{routing_profile_id}/default-outbound-queue:
@@ -13739,7 +14028,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: routing_profile_default_outbound_queues
+      x-stackql-resource: queues
       x-stackql-method: update_routing_profile_default_outbound_queue
       x-stackql-verb: UPDATE
   /routing-profiles/{instance_id}/{routing_profile_id}/name:
@@ -13775,7 +14064,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: routing_profile_names
+      x-stackql-resource: routing_profiles
       x-stackql-method: update_routing_profile_name
       x-stackql-verb: UPDATE
   /users/{instance_id}/{user_id}/config:
@@ -13819,7 +14108,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_configs
+      x-stackql-resource: users
       x-stackql-method: update_user_config
       x-stackql-verb: UPDATE
   /users/{instance_id}/{user_id}/hierarchy:
@@ -13852,7 +14141,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_hierarchies
+      x-stackql-resource: users
       x-stackql-method: update_user_hierarchy
       x-stackql-verb: UPDATE
   /user-hierarchy-groups/{instance_id}/{hierarchy_group_id}/name:
@@ -13887,7 +14176,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_hierarchy_group_names
+      x-stackql-resource: user_hierarchy_groups
       x-stackql-method: update_user_hierarchy_group_name
       x-stackql-verb: UPDATE
   /users/{instance_id}/{user_id}/identity-info:
@@ -13926,7 +14215,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_identity_infos
+      x-stackql-resource: users
       x-stackql-method: update_user_identity_info
       x-stackql-verb: UPDATE
   /users/{instance_id}/{user_id}/notifications/{notification_id}:
@@ -13986,7 +14275,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateUserNotificationStatusResponse'
-      x-stackql-resource: user_notification_status
+      x-stackql-resource: user_notifications
       x-stackql-method: update_user_notification_status
       x-stackql-verb: UPDATE
   /users/{instance_id}/{user_id}/phone-config:
@@ -14024,7 +14313,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_phone_configs
+      x-stackql-resource: users
       x-stackql-method: update_user_phone_config
       x-stackql-verb: UPDATE
   /users/{instance_id}/{user_id}/routing-profile:
@@ -14059,7 +14348,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_routing_profiles
+      x-stackql-resource: routing_profiles
       x-stackql-method: update_user_routing_profile
       x-stackql-verb: UPDATE
   /users/{instance_id}/{user_id}/security-profiles:
@@ -14094,7 +14383,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: user_security_profiles
+      x-stackql-resource: security_profiles
       x-stackql-method: update_user_security_profiles
       x-stackql-verb: UPDATE
   /views/{instance_id}/{view_id}/metadata:
@@ -14132,7 +14421,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateViewMetadataResponse'
-      x-stackql-resource: view_metadatas
+      x-stackql-resource: views
       x-stackql-method: update_view_metadata
       x-stackql-verb: UPDATE
   /workspaces/{instance_id}/{workspace_id}/metadata:
@@ -14173,7 +14462,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateWorkspaceMetadataResponse'
-      x-stackql-resource: workspace_metadatas
+      x-stackql-resource: workspaces
       x-stackql-method: update_workspace_metadata
       x-stackql-verb: UPDATE
   /workspaces/{instance_id}/{workspace_id}/theme:
@@ -14210,7 +14499,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateWorkspaceThemeResponse'
-      x-stackql-resource: workspace_themes
+      x-stackql-resource: workspaces
       x-stackql-method: update_workspace_theme
       x-stackql-verb: UPDATE
   /workspaces/{instance_id}/{workspace_id}/visibility:
@@ -14250,7 +14539,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateWorkspaceVisibilityResponse'
-      x-stackql-resource: workspace_visibilities
+      x-stackql-resource: workspaces
       x-stackql-method: update_workspace_visibility
       x-stackql-verb: UPDATE
 components:
@@ -23608,19 +23897,19 @@ components:
       type: integer
       minimum: 1
       maximum: 25
-    ListApprovedOriginsResponse:
+    ListApprovedOriginsRowDisplay:
       type: object
       properties:
-        Origins:
-          $ref: '#/components/schemas/OriginsList'
+        origin:
+          type: string
           description: The approved origins.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If there are additional results, this is the token for the next set of results.
-    OriginsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/Origin'
+    ListApprovedOriginsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListApprovedOriginsRowDisplay'
     ListAssociatedContactsRequestMaxResults:
       type: integer
       minimum: 1
@@ -24714,19 +25003,19 @@ components:
         SourceType:
           $ref: '#/components/schemas/SourceType'
           description: The name of the source.
-    ListLambdaFunctionsResponse:
+    ListLambdaFunctionsRowDisplay:
       type: object
       properties:
-        LambdaFunctions:
-          $ref: '#/components/schemas/FunctionArnsList'
+        lambda_function:
+          type: string
           description: The Lambdafunction ARNs associated with the specified instance.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If there are additional results, this is the token for the next set of results.
-    FunctionArnsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FunctionArn'
+    ListLambdaFunctionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListLambdaFunctionsRowDisplay'
     ListLexBotsResponse:
       type: object
       properties:
@@ -25664,22 +25953,20 @@ components:
         LastModifiedRegion:
           $ref: '#/components/schemas/RegionName'
           description: The Region that flow module was last modified in.
-    ListSecurityProfilePermissionsResponse:
+    ListSecurityProfilePermissionsRowDisplay:
       type: object
       properties:
-        Permissions:
-          $ref: '#/components/schemas/PermissionsList'
+        permission:
+          type: string
           description: The permissions granted to the security profile. For a complete list of valid permissions, see List
             of security profile permissions.
-        NextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If there are additional results, this is the token for the next set of results.
-        LastModifiedTime:
-          $ref: '#/components/schemas/Timestamp'
-          description: The timestamp when this resource was last modified.
-        LastModifiedRegion:
-          $ref: '#/components/schemas/RegionName'
-          description: The Amazon Web Services Region where this resource was last modified.
+    ListSecurityProfilePermissionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListSecurityProfilePermissionsRowDisplay'
     ListSecurityProfilesResponse:
       type: object
       properties:

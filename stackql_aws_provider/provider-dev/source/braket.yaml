@@ -34,7 +34,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
   /quantum-task/{quantum_task_arn}/cancel:
@@ -66,7 +66,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelQuantumTaskResponse'
-      x-stackql-resource: quantum_task
+      x-stackql-resource: quantum_tasks
       x-stackql-method: cancel_quantum_task
       x-stackql-verb: EXEC
   /job:
@@ -336,7 +336,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -367,7 +367,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -393,7 +393,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /devices:
@@ -427,6 +427,9 @@ paths:
       x-stackql-method: search_devices
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.devices
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /jobs:
     post:
       operationId: SearchJobs
@@ -458,6 +461,9 @@ paths:
       x-stackql-method: search_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /quantum-tasks:
     post:
       operationId: SearchQuantumTasks
@@ -489,6 +495,9 @@ paths:
       x-stackql-method: search_quantum_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.quantumTasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /spending-limits:
     post:
       operationId: SearchSpendingLimits
@@ -520,6 +529,9 @@ paths:
       x-stackql-method: search_spending_limits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.spendingLimits
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /spending-limit/{spending_limit_arn}/update:
     patch:
       operationId: UpdateSpendingLimit

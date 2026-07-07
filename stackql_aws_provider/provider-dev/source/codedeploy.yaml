@@ -52,7 +52,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_to_on_premises_instances
+      x-stackql-resource: tags
       x-stackql-method: add_tags_to_on_premises_instances
       x-stackql-verb: UPDATE
   /BatchGetApplicationRevisions:
@@ -949,6 +949,7 @@ paths:
       x-stackql-resource: applications
       x-stackql-method: get_application
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.application
   /GetApplicationRevision:
     post:
       operationId: GetApplicationRevision
@@ -1027,6 +1028,7 @@ paths:
       x-stackql-resource: deployments
       x-stackql-method: get_deployment
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deploymentInfo
   /GetDeploymentConfig:
     post:
       operationId: GetDeploymentConfig
@@ -1063,6 +1065,7 @@ paths:
       x-stackql-resource: deployment_configs
       x-stackql-method: get_deployment_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deploymentConfigInfo
   /GetDeploymentGroup:
     post:
       operationId: GetDeploymentGroup
@@ -1103,6 +1106,7 @@ paths:
       x-stackql-resource: deployment_groups
       x-stackql-method: get_deployment_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deploymentGroupInfo
   /GetDeploymentInstance:
     post:
       operationId: GetDeploymentInstance
@@ -1143,6 +1147,7 @@ paths:
       x-stackql-resource: deployment_instances
       x-stackql-method: get_deployment_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.instanceSummary
   /GetDeploymentTarget:
     post:
       operationId: GetDeploymentTarget
@@ -1183,6 +1188,7 @@ paths:
       x-stackql-resource: deployment_targets
       x-stackql-method: get_deployment_target
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.deploymentTarget
   /GetOnPremisesInstance:
     post:
       operationId: GetOnPremisesInstance
@@ -1219,6 +1225,7 @@ paths:
       x-stackql-resource: on_premises_instances
       x-stackql-method: get_on_premises_instance
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.instanceInfo
   /ListApplicationRevisions:
     post:
       operationId: ListApplicationRevisions
@@ -1283,6 +1290,9 @@ paths:
       x-stackql-method: list_application_revisions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.revisions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListApplications:
     post:
       operationId: ListApplications
@@ -1314,11 +1324,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListApplicationsOutput'
+                $ref: '#/components/schemas/ListApplicationsOutputDisplay'
       x-stackql-resource: applications
       x-stackql-method: list_applications
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.applications
+      x-stackql-responseEnvelope: ListApplicationsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "applications" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"application": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDeploymentConfigs:
     post:
       operationId: ListDeploymentConfigs
@@ -1350,11 +1368,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDeploymentConfigsOutput'
+                $ref: '#/components/schemas/ListDeploymentConfigsOutputDisplay'
       x-stackql-resource: deployment_configs
       x-stackql-method: list_deployment_configs
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.deploymentConfigsList
+      x-stackql-responseEnvelope: ListDeploymentConfigsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "deploymentConfigsList" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"deployment_configs": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDeploymentGroups:
     post:
       operationId: ListDeploymentGroups
@@ -1392,11 +1418,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDeploymentGroupsOutput'
+                $ref: '#/components/schemas/ListDeploymentGroupsOutputDisplay'
       x-stackql-resource: deployment_groups
       x-stackql-method: list_deployment_groups
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.deploymentGroups
+      x-stackql-responseEnvelope: ListDeploymentGroupsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "deploymentGroups" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"deployment_group": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDeploymentInstances:
     post:
       operationId: ListDeploymentInstances
@@ -1446,11 +1480,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDeploymentInstancesOutput'
+                $ref: '#/components/schemas/ListDeploymentInstancesOutputDisplay'
       x-stackql-resource: deployment_instances
       x-stackql-method: list_deployment_instances
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.instancesList
+      x-stackql-responseEnvelope: ListDeploymentInstancesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "instancesList" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"instances": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDeploymentTargets:
     post:
       operationId: ListDeploymentTargets
@@ -1492,11 +1534,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDeploymentTargetsOutput'
+                $ref: '#/components/schemas/ListDeploymentTargetsOutputDisplay'
       x-stackql-resource: deployment_targets
       x-stackql-method: list_deployment_targets
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.targetIds
+      x-stackql-responseEnvelope: ListDeploymentTargetsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "targetIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"target_id": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListDeployments:
     post:
       operationId: ListDeployments
@@ -1550,11 +1600,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDeploymentsOutput'
+                $ref: '#/components/schemas/ListDeploymentsOutputDisplay'
       x-stackql-resource: deployments
       x-stackql-method: list_deployments
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.deployments
+      x-stackql-responseEnvelope: ListDeploymentsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "deployments" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"deployment": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListGitHubAccountTokenNames:
     post:
       operationId: ListGitHubAccountTokenNames
@@ -1586,11 +1644,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListGitHubAccountTokenNamesOutput'
+                $ref: '#/components/schemas/ListGitHubAccountTokenNamesOutputDisplay'
       x-stackql-resource: git_hub_account_token_names
       x-stackql-method: list_git_hub_account_token_names
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.tokenNameList
+      x-stackql-responseEnvelope: ListGitHubAccountTokenNamesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "tokenNameList" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"token_name": {{ toJson $v
+        }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListOnPremisesInstances:
     post:
       operationId: ListOnPremisesInstances
@@ -1632,11 +1698,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOnPremisesInstancesOutput'
+                $ref: '#/components/schemas/ListOnPremisesInstancesOutputDisplay'
       x-stackql-resource: on_premises_instances
       x-stackql-method: list_on_premises_instances
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.instanceNames
+      x-stackql-responseEnvelope: ListOnPremisesInstancesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "instanceNames" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"instance_name": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -1676,7 +1750,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceOutput'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /PutLifecycleEventHookExecutionStatus:
@@ -1839,7 +1913,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tags_from_on_premises_instances
+      x-stackql-resource: tags
       x-stackql-method: remove_tags_from_on_premises_instances
       x-stackql-verb: UPDATE
   /SkipWaitTimeForInstanceTermination:
@@ -1911,7 +1985,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDeploymentOutput'
-      x-stackql-resource: deployment
+      x-stackql-resource: deployments
       x-stackql-method: stop_deployment
       x-stackql-verb: EXEC
   /TagResource:
@@ -1953,7 +2027,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -1996,7 +2070,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceOutput'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateApplication:
@@ -4009,46 +4083,45 @@ components:
           $ref: '#/components/schemas/NextToken'
           description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
             list application revisions call to return the next set of application revisions in the list.
-    ListApplicationsOutput:
-      description: Represents the output of a ListApplications operation.
+    ListApplicationsRowDisplay:
       type: object
       properties:
-        applications:
-          $ref: '#/components/schemas/ApplicationsList'
+        application:
+          type: string
           description: A list of application names.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
-            list applications call to return the next set of applications in the list.
-    ListDeploymentConfigsOutput:
-      description: Represents the output of a ListDeploymentConfigs operation.
+    ListApplicationsOutputDisplay:
       type: object
       properties:
-        deploymentConfigsList:
-          $ref: '#/components/schemas/DeploymentConfigsList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListApplicationsRowDisplay'
+    ListDeploymentConfigsRowDisplay:
+      type: object
+      properties:
+        deployment_configs:
+          type: string
           description: A list of deployment configurations, including built-in configurations such as CodeDeployDefault.OneAtATime.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
-            list deployment configurations call to return the next set of deployment configurations in the list.
-    DeploymentConfigsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/DeploymentConfigName'
-    ListDeploymentGroupsOutput:
-      description: Represents the output of a ListDeploymentGroups operation.
+    ListDeploymentConfigsOutputDisplay:
       type: object
       properties:
-        applicationName:
-          $ref: '#/components/schemas/ApplicationName'
-          description: The application name.
-        deploymentGroups:
-          $ref: '#/components/schemas/DeploymentGroupsList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDeploymentConfigsRowDisplay'
+    ListDeploymentGroupsRowDisplay:
+      type: object
+      properties:
+        deployment_group:
+          type: string
           description: A list of deployment group names.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
-            list deployment groups call to return the next set of deployment groups in the list.
+    ListDeploymentGroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDeploymentGroupsRowDisplay'
     InstanceStatusList:
       type: array
       items:
@@ -4057,30 +4130,35 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/InstanceType'
-    ListDeploymentInstancesOutput:
-      description: Represents the output of a ListDeploymentInstances operation.
+    ListDeploymentInstancesRowDisplay:
       type: object
       properties:
-        instancesList:
-          $ref: '#/components/schemas/InstancesList'
+        instances:
+          type: string
           description: A list of instance IDs.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
-            list deployment instances call to return the next set of deployment instances in the list.
+    ListDeploymentInstancesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDeploymentInstancesRowDisplay'
     TargetFilters:
       type: object
       properties: {}
-    ListDeploymentTargetsOutput:
+    ListDeploymentTargetsRowDisplay:
       type: object
       properties:
-        targetIds:
-          $ref: '#/components/schemas/TargetIdList'
+        target_id:
+          type: string
           description: The unique IDs of deployment targets.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, a token identifier is also returned. It can be used in
-            a subsequent ListDeploymentTargets call to return the next set of deployment targets in the list.
+    ListDeploymentTargetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDeploymentTargetsRowDisplay'
     DeploymentStatusList:
       type: array
       items:
@@ -4095,48 +4173,50 @@ components:
         end:
           $ref: '#/components/schemas/Timestamp'
           description: The end time of the time range. Specify null to leave the end time open-ended.
-    ListDeploymentsOutput:
-      description: Represents the output of a ListDeployments operation.
+    ListDeploymentsRowDisplay:
       type: object
       properties:
-        deployments:
-          $ref: '#/components/schemas/DeploymentsList'
+        deployment:
+          type: string
           description: A list of deployment IDs.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
-            list deployments call to return the next set of deployments in the list.
-    ListGitHubAccountTokenNamesOutput:
-      description: Represents the output of a ListGitHubAccountTokenNames operation.
+    ListDeploymentsOutputDisplay:
       type: object
       properties:
-        tokenNameList:
-          $ref: '#/components/schemas/GitHubAccountTokenNameList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDeploymentsRowDisplay'
+    ListGitHubAccountTokenNamesRowDisplay:
+      type: object
+      properties:
+        token_name:
+          type: string
           description: A list of names of connections to GitHub accounts.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
-            ListGitHubAccountTokenNames call to return the next set of names in the list.
-    GitHubAccountTokenNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/GitHubAccountTokenName'
+    ListGitHubAccountTokenNamesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListGitHubAccountTokenNamesRowDisplay'
     RegistrationStatus:
       type: string
       enum:
       - Registered
       - Deregistered
-    ListOnPremisesInstancesOutput:
-      description: Represents the output of the list on-premises instances operation.
+    ListOnPremisesInstancesRowDisplay:
       type: object
       properties:
-        instanceNames:
-          $ref: '#/components/schemas/InstanceNameList'
+        instance_name:
+          type: string
           description: The list of matching on-premises instance names.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent
-            list on-premises instances call to return the next set of on-premises instances in the list.
+    ListOnPremisesInstancesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListOnPremisesInstancesRowDisplay'
     Arn:
       type: string
       minLength: 1

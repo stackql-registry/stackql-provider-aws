@@ -36,7 +36,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: tag_sync_task
+      x-stackql-resource: tags
       x-stackql-method: cancel_tag_sync_task
       x-stackql-verb: EXEC
   /groups:
@@ -126,6 +126,7 @@ paths:
       x-stackql-resource: account_settings
       x-stackql-method: get_account_settings
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.AccountSettings
   /get-group:
     post:
       operationId: GetGroup
@@ -153,6 +154,7 @@ paths:
       x-stackql-resource: groups
       x-stackql-method: get_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Group
   /get-group-configuration:
     post:
       operationId: GetGroupConfiguration
@@ -179,6 +181,7 @@ paths:
       x-stackql-resource: group_configurations
       x-stackql-method: get_group_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.GroupConfiguration
   /get-group-query:
     post:
       operationId: GetGroupQuery
@@ -207,6 +210,7 @@ paths:
       x-stackql-resource: group_queries
       x-stackql-method: get_group_query
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.GroupQuery
   /get-tag-sync-task:
     post:
       operationId: GetTagSyncTask
@@ -391,6 +395,9 @@ paths:
       x-stackql-method: list_group_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceIdentifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-grouping-statuses:
     post:
       operationId: ListGroupingStatuses
@@ -425,6 +432,9 @@ paths:
       x-stackql-method: list_grouping_statuses
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupingStatuses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /groups-list:
     post:
       operationId: ListGroups
@@ -470,6 +480,9 @@ paths:
       x-stackql-method: list_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.GroupIdentifiers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextToken
   /list-tag-sync-tasks:
     post:
       operationId: ListTagSyncTasks
@@ -501,6 +514,9 @@ paths:
       x-stackql-method: list_tag_sync_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TagSyncTasks
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /put-group-configuration:
     post:
       operationId: PutGroupConfiguration
@@ -563,6 +579,9 @@ paths:
       x-stackql-method: search_resources
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ResourceIdentifiers
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /start-tag-sync-task:
     post:
       operationId: StartTagSyncTask
@@ -601,7 +620,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartTagSyncTaskOutput'
-      x-stackql-resource: tag_sync_task
+      x-stackql-resource: tags
       x-stackql-method: start_tag_sync_task
       x-stackql-verb: EXEC
   /ungroup-resources:
@@ -633,7 +652,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UngroupResourcesOutput'
-      x-stackql-resource: ungroup_resources
+      x-stackql-resource: resources
       x-stackql-method: ungroup_resources
       x-stackql-verb: EXEC
   /update-account-settings:

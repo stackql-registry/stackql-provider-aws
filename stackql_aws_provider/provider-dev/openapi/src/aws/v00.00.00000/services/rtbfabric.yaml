@@ -846,7 +846,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRequesterGatewaysResponse"
+                $ref: "#/components/schemas/ListRequesterGatewaysOutputDisplay"
   /responder-gateways:
     get:
       operationId: ListResponderGateways
@@ -870,7 +870,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListResponderGatewaysResponse"
+                $ref: "#/components/schemas/ListResponderGatewaysOutputDisplay"
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -2634,32 +2634,36 @@ components:
       type: integer
       minimum: 1
       maximum: 10
-    ListRequesterGatewaysResponse:
+    ListRequesterGatewaysRowDisplay:
       type: object
       properties:
-        gatewayIds:
-          $ref: "#/components/schemas/GatewayIdList"
+        gateway_id:
+          type: string
           description: The unique identifier of the gateways.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error.
-    GatewayIdList:
-      type: array
-      items:
-        $ref: "#/components/schemas/GatewayId"
+    ListRequesterGatewaysOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRequesterGatewaysRowDisplay"
     ListResponderGatewaysRequestMaxResultsInteger:
       type: integer
       minimum: 1
       maximum: 10
-    ListResponderGatewaysResponse:
+    ListResponderGatewaysRowDisplay:
       type: object
       properties:
-        gatewayIds:
-          $ref: "#/components/schemas/GatewayIdList"
+        gateway_id:
+          type: string
           description: The unique identifier of the gateways.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: If nextToken is returned, there are more results available. The value of nextToken is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an HTTP 400 InvalidToken error.
+    ListResponderGatewaysOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListResponderGatewaysRowDisplay"
     RtbTaggableResourceArn:
       type: string
       minLength: 1
@@ -2809,6 +2813,101 @@ components:
         - gatewayId
         - status
   x-stackQL-resources:
+    links:
+      id: aws.rtbfabric.links
+      name: links
+      title: links
+      methods:
+        accept_link:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}~1accept/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        create_link:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1create-link/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_link:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}/delete"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        get_link:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_link:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}/patch"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_links:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1links~1/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.links
+          request:
+            nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
+        reject_link:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}~1reject/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        update_link_module_flow:
+          operation:
+            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}~1module-flow/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/links/methods/get_link"
+          - $ref: "#/components/x-stackQL-resources/links/methods/list_links"
+        insert:
+          - $ref: "#/components/x-stackQL-resources/links/methods/create_link"
+        update:
+          - $ref: "#/components/x-stackQL-resources/links/methods/update_link_module_flow"
+          - $ref: "#/components/x-stackQL-resources/links/methods/update_link"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/links/methods/delete_link"
     certificates:
       id: aws.rtbfabric.certificates
       name: certificates
@@ -2862,6 +2961,14 @@ components:
             objectKey: $.certificateAssociations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/certificate_associations/methods/get_certificate_association"
@@ -2905,64 +3012,6 @@ components:
         update: []
         delete:
           - $ref: "#/components/x-stackQL-resources/inbound_external_links/methods/delete_inbound_external_link"
-    links:
-      id: aws.rtbfabric.links
-      name: links
-      title: links
-      methods:
-        create_link:
-          operation:
-            $ref: "#/paths/~1gateway~1{gateway_id}~1create-link/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        delete_link:
-          operation:
-            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}/delete"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        get_link:
-          operation:
-            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_link:
-          operation:
-            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}/patch"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_links:
-          operation:
-            $ref: "#/paths/~1gateway~1{gateway_id}~1links~1/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.links
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/links/methods/get_link"
-          - $ref: "#/components/x-stackQL-resources/links/methods/list_links"
-        insert:
-          - $ref: "#/components/x-stackQL-resources/links/methods/create_link"
-        update:
-          - $ref: "#/components/x-stackQL-resources/links/methods/update_link"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/links/methods/delete_link"
     link_routing_rules:
       id: aws.rtbfabric.link_routing_rules
       name: link_routing_rules
@@ -3011,6 +3060,14 @@ components:
             objectKey: $.rules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/link_routing_rules/methods/get_link_routing_rule"
@@ -3091,9 +3148,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.gatewayIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRequesterGatewaysOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "gatewayIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"gateway_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_requester_gateway:
           operation:
             $ref: "#/paths/~1requester-gateway~1{gateway_id}~1update/post"
@@ -3149,9 +3220,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.gatewayIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListResponderGatewaysOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "gatewayIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"gateway_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_responder_gateway:
           operation:
             $ref: "#/paths/~1responder-gateway~1{gateway_id}~1update/post"
@@ -3173,10 +3258,10 @@ components:
           - $ref: "#/components/x-stackQL-resources/responder_gateways/methods/update_responder_gateway"
         delete:
           - $ref: "#/components/x-stackQL-resources/responder_gateways/methods/delete_responder_gateway"
-    tags_for_resources:
-      id: aws.rtbfabric.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.rtbfabric.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3184,17 +3269,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.rtbfabric.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -3215,31 +3289,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    link_module_flows:
-      id: aws.rtbfabric.link_module_flows
-      name: link_module_flows
-      title: link_module_flows
-      methods:
-        update_link_module_flow:
-          operation:
-            $ref: "#/paths/~1gateway~1{gateway_id}~1link~1{link_id}~1module-flow/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/link_module_flows/methods/update_link_module_flow"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

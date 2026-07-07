@@ -578,6 +578,9 @@ paths:
       x-stackql-method: list_keyspaces
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.keyspaces
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTables:
     post:
       operationId: ListTables
@@ -625,6 +628,9 @@ paths:
       x-stackql-method: list_tables
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tables
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -669,10 +675,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /ListTypes:
     post:
       operationId: ListTypes
@@ -716,11 +725,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTypesResponse'
+                $ref: '#/components/schemas/ListTypesOutputDisplay'
       x-stackql-resource: types
       x-stackql-method: list_types
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.types
+      x-stackql-responseEnvelope: ListTypesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "types" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"type": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /RestoreTable:
     post:
       operationId: RestoreTable
@@ -858,7 +875,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -899,7 +916,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateKeyspace:
@@ -2047,18 +2064,19 @@ components:
         tags:
           $ref: '#/components/schemas/TagList'
           description: A list of tags.
-    ListTypesResponse:
+    ListTypesRowDisplay:
       type: object
       properties:
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The pagination token. To resume pagination, provide the NextToken value as an argument of a subsequent
-            API invocation.
-        types:
-          $ref: '#/components/schemas/TypeNameList'
+        type:
+          type: string
           description: The list of types contained in the specified keyspace.
-      required:
-      - types
+    ListTypesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTypesRowDisplay'
     RestoreTableResponse:
       type: object
       properties:

@@ -1,0 +1,7 @@
+-- Subnet for the instance lifecycle, carved from the smoke VPC. Tagged so
+-- test-created resources are identifiable (wire names: TagSpecification /
+-- inner Tag).
+INSERT INTO aws.ec2.subnets(region, VpcId, CidrBlock, TagSpecification)
+SELECT '{{ region }}', '{{ vpc_create.vpc_id }}', '{{ subnet_cidr }}',
+       JSON('[{"ResourceType":"subnet","Tag":[{"Key":"stackql-provider-test","Value":"subnet_create"}]}]')
+RETURNING subnet_id, state, cidr_block

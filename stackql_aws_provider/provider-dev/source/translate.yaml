@@ -181,6 +181,7 @@ paths:
       x-stackql-resource: text_translation_jobs
       x-stackql-method: describe_text_translation_job
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.TextTranslationJobProperties
   /GetParallelData:
     post:
       operationId: GetParallelData
@@ -432,7 +433,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTerminologies:
@@ -474,6 +475,9 @@ paths:
       x-stackql-method: list_terminologies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TerminologyPropertiesList
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTextTranslationJobs:
     post:
       operationId: ListTextTranslationJobs
@@ -690,7 +694,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TranslateDocument:
@@ -863,7 +867,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateParallelData:

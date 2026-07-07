@@ -247,7 +247,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BatchUpdateMemberEc2DeepInspectionStatusResponse'
-      x-stackql-resource: batch_update_member_ec2_deep_inspection_status
+      x-stackql-resource: member_ec2_deep_inspection_status
       x-stackql-method: batch_update_member_ec2_deep_inspection_status
       x-stackql-verb: EXEC
   /reporting/cancel:
@@ -273,7 +273,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelFindingsReportResponse'
-      x-stackql-resource: findings_report
+      x-stackql-resource: findings
       x-stackql-method: cancel_findings_report
       x-stackql-verb: EXEC
   /sbomexport/cancel:
@@ -478,7 +478,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateFindingsReportResponse'
-      x-stackql-resource: findings_reports
+      x-stackql-resource: findings
       x-stackql-method: create_findings_report
       x-stackql-verb: INSERT
   /sbomexport/create:
@@ -681,7 +681,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisableDelegatedAdminAccountResponse'
-      x-stackql-resource: delegated_admin_account
+      x-stackql-resource: delegated_admin_accounts
       x-stackql-method: disable_delegated_admin_account
       x-stackql-verb: EXEC
   /members/disassociate:
@@ -765,7 +765,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnableDelegatedAdminAccountResponse'
-      x-stackql-resource: delegated_admin_account
+      x-stackql-resource: delegated_admin_accounts
       x-stackql-method: enable_delegated_admin_account
       x-stackql-verb: EXEC
   /cis/scan/report/get:
@@ -841,6 +841,9 @@ paths:
       x-stackql-method: get_cis_scan_result_details
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scanResultDetails
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /cluster/get:
     post:
       operationId: GetClustersForImage
@@ -872,6 +875,9 @@ paths:
       x-stackql-method: get_clusters_for_image
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.cluster
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /codesecurity/integration/get:
     post:
       operationId: GetCodeSecurityIntegration
@@ -985,6 +991,7 @@ paths:
       x-stackql-resource: delegated_admin_accounts
       x-stackql-method: get_delegated_admin_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.delegatedAdmin
   /ec2deepinspectionconfiguration/get:
     post:
       operationId: GetEc2DeepInspectionConfiguration
@@ -1078,6 +1085,7 @@ paths:
       x-stackql-resource: members
       x-stackql-method: get_member
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.member
   /sbomexport/get:
     post:
       operationId: GetSbomExport
@@ -1134,6 +1142,9 @@ paths:
       x-stackql-method: list_account_permissions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.permissions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /cis/scan-configuration/list:
     post:
       operationId: ListCisScanConfigurations
@@ -1167,6 +1178,9 @@ paths:
       x-stackql-method: list_cis_scan_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scanConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /cis/scan-result/check/list:
     post:
       operationId: ListCisScanResultsAggregatedByChecks
@@ -1204,6 +1218,9 @@ paths:
       x-stackql-method: list_cis_scan_results_aggregated_by_checks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.checkAggregations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /cis/scan-result/resource/list:
     post:
       operationId: ListCisScanResultsAggregatedByTargetResource
@@ -1241,6 +1258,9 @@ paths:
       x-stackql-method: list_cis_scan_results_aggregated_by_target_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.targetResourceAggregations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /cis/scan/list:
     post:
       operationId: ListCisScans
@@ -1276,6 +1296,9 @@ paths:
       x-stackql-method: list_cis_scans
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scans
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /codesecurity/integration/list:
     post:
       operationId: ListCodeSecurityIntegrations
@@ -1404,6 +1427,9 @@ paths:
       x-stackql-method: list_coverage
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.coveredResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /coverage/statistics/list:
     post:
       operationId: ListCoverageStatistics
@@ -1433,6 +1459,9 @@ paths:
       x-stackql-method: list_coverage_statistics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.countsByGroup
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /delegatedadminaccounts/list:
     post:
       operationId: ListDelegatedAdminAccounts
@@ -1460,6 +1489,9 @@ paths:
       x-stackql-method: list_delegated_admin_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.delegatedAdminAccounts
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /filters/list:
     post:
       operationId: ListFilters
@@ -1491,6 +1523,9 @@ paths:
       x-stackql-method: list_filters
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.filters
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /findings/aggregation/list:
     post:
       operationId: ListFindingAggregations
@@ -1526,6 +1561,9 @@ paths:
       x-stackql-method: list_finding_aggregations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.responses
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /findings/list:
     post:
       operationId: ListFindings
@@ -1557,6 +1595,9 @@ paths:
       x-stackql-method: list_findings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /members/list:
     post:
       operationId: ListMembers
@@ -1586,6 +1627,9 @@ paths:
       x-stackql-method: list_members
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.members
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags/{resource_arn}:
     get:
       operationId: ListTagsForResource
@@ -1604,7 +1648,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -1635,7 +1679,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -1661,7 +1705,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /usage/list:
@@ -1693,6 +1737,9 @@ paths:
       x-stackql-method: list_usage_totals
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.totals
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /encryptionkey/reset:
     put:
       operationId: ResetEncryptionKey
@@ -1752,6 +1799,9 @@ paths:
       x-stackql-method: search_vulnerabilities
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.vulnerabilities
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /cissession/health/send:
     put:
       operationId: SendCisSessionHealth
@@ -2151,7 +2201,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateOrgEc2DeepInspectionConfigurationResponse'
-      x-stackql-resource: org_ec2_deep_inspection_configurations
+      x-stackql-resource: ec2_deep_inspection_configurations
       x-stackql-method: update_org_ec2_deep_inspection_configuration
       x-stackql-verb: UPDATE
   /organizationconfiguration/update:

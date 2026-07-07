@@ -227,7 +227,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAccessEntriesResponse"
+                $ref: "#/components/schemas/ListAccessEntriesOutputDisplay"
   /clusters/{name}/addons:
     post:
       operationId: CreateAddon
@@ -301,7 +301,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAddonsResponse"
+                $ref: "#/components/schemas/ListAddonsOutputDisplay"
   /clusters/{name}/capabilities:
     post:
       operationId: CreateCapability
@@ -464,7 +464,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListClustersResponse"
+                $ref: "#/components/schemas/ListClustersOutputDisplay"
   /eks-anywhere-subscriptions:
     post:
       operationId: CreateEksAnywhereSubscription
@@ -598,7 +598,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFargateProfilesResponse"
+                $ref: "#/components/schemas/ListFargateProfilesOutputDisplay"
   /clusters/{name}/node-groups:
     post:
       operationId: CreateNodegroup
@@ -694,7 +694,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListNodegroupsResponse"
+                $ref: "#/components/schemas/ListNodegroupsOutputDisplay"
   /clusters/{name}/pod-identity-associations:
     post:
       operationId: CreatePodIdentityAssociation
@@ -1831,7 +1831,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListUpdatesResponse"
+                $ref: "#/components/schemas/ListUpdatesOutputDisplay"
     post:
       operationId: UpdateClusterVersion
       description: Updates an Amazon EKS cluster to the specified Kubernetes version. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the DescribeUpdate API operation. Cluster updates are asynchronous, and they should finish within a few minutes. During an update, the cluster status moves to UPDATING (this status transition is eventually consistent). When the update is complete (either Failed or Successful), the cluster status moves to Active. If your cluster has managed node groups attached to it, all of your node groups' Kubernetes versions must match the cluster's Kubernetes version in order to update the cluster to a new Kubernetes version.
@@ -4504,15 +4504,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListAccessEntriesResponse:
+    ListAccessEntriesRowDisplay:
       type: object
       properties:
-        accessEntries:
-          $ref: "#/components/schemas/StringList"
+        access_entry:
+          type: string
           description: The list of access entries that exist for the cluster.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+    ListAccessEntriesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAccessEntriesRowDisplay"
     ListAccessPoliciesRequestMaxResults:
       type: integer
       minimum: 1
@@ -4544,15 +4548,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListAddonsResponse:
+    ListAddonsRowDisplay:
       type: object
       properties:
-        addons:
-          $ref: "#/components/schemas/StringList"
+        addon:
+          type: string
           description: A list of installed add-ons.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value to include in a future ListAddons request. When the results of a ListAddons request exceed maxResults, you can use this value to retrieve the next page of results. This value is null when there are no more results to return. This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+    ListAddonsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAddonsRowDisplay"
     ListAssociatedAccessPoliciesRequestMaxResults:
       type: integer
       minimum: 1
@@ -4626,15 +4634,19 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/String"
-    ListClustersResponse:
+    ListClustersRowDisplay:
       type: object
       properties:
-        clusters:
-          $ref: "#/components/schemas/StringList"
+        cluster:
+          type: string
           description: A list of all of the clusters for your account in the specified Amazon Web Services Region .
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+    ListClustersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListClustersRowDisplay"
     ListEksAnywhereSubscriptionsRequestMaxResults:
       type: integer
       minimum: 1
@@ -4669,15 +4681,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListFargateProfilesResponse:
+    ListFargateProfilesRowDisplay:
       type: object
       properties:
-        fargateProfileNames:
-          $ref: "#/components/schemas/StringList"
+        fargate_profile_name:
+          type: string
           description: A list of all of the Fargate profiles associated with the specified cluster.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+    ListFargateProfilesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFargateProfilesRowDisplay"
     ListIdentityProviderConfigsRequestMaxResults:
       type: integer
       minimum: 1
@@ -4765,15 +4781,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListNodegroupsResponse:
+    ListNodegroupsRowDisplay:
       type: object
       properties:
-        nodegroups:
-          $ref: "#/components/schemas/StringList"
+        nodegroup:
+          type: string
           description: A list of all of the node groups associated with the specified cluster.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+    ListNodegroupsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListNodegroupsRowDisplay"
     ListPodIdentityAssociationsMaxResults:
       type: integer
       minimum: 1
@@ -4824,15 +4844,19 @@ components:
       type: integer
       minimum: 1
       maximum: 100
-    ListUpdatesResponse:
+    ListUpdatesRowDisplay:
       type: object
       properties:
-        updateIds:
-          $ref: "#/components/schemas/StringList"
+        update_id:
+          type: string
           description: A list of all the updates for the specified cluster and Region.
-        nextToken:
-          $ref: "#/components/schemas/String"
-          description: The nextToken value returned from a previous paginated request, where maxResults was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the nextToken value. This value is null when there are no more results to return. This token should be treated as an opaque identifier that is used only to retrieve the next items in a list and not for other programmatic purposes.
+    ListUpdatesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListUpdatesRowDisplay"
     ConnectorConfigRequest:
       description: The configuration sent to a cluster for configuration.
       type: object
@@ -5025,6 +5049,14 @@ components:
             objectKey: $.accessPolicies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/access_policies/methods/list_access_policies"
@@ -5047,6 +5079,14 @@ components:
             objectKey: $.associatedAccessPolicies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/associated_access_policies/methods/list_associated_access_policies"
@@ -5097,6 +5137,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.identityProviderConfig
           request:
             nativeCasing: pascal
           config:
@@ -5122,6 +5163,14 @@ components:
             objectKey: $.identityProviderConfigs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/identity_provider_configs/methods/describe_identity_provider_config"
@@ -5153,9 +5202,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.accessEntries
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAccessEntriesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "accessEntries" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"access_entry": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_access_entry:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1access-entries~1{principal_arn}/delete"
@@ -5168,6 +5231,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.accessEntry
         update_access_entry:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1access-entries~1{principal_arn}/post"
@@ -5211,9 +5275,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.addons
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAddonsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "addons" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"addon": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_addon:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1addons~1{addon_name}/delete"
@@ -5228,6 +5306,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.addon
         update_addon:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1addons~1{addon_name}~1update/post"
@@ -5274,6 +5353,14 @@ components:
             objectKey: $.capabilities
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_capability:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1capabilities~1{capability_name}/delete"
@@ -5286,6 +5373,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.capability
         update_capability:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1capabilities~1{capability_name}/post"
@@ -5329,9 +5417,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.clusters
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListClustersOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "clusters" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"cluster": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_cluster:
           operation:
             $ref: "#/paths/~1clusters~1{name}/delete"
@@ -5344,6 +5446,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.cluster
         deregister_cluster:
           operation:
             $ref: "#/paths/~1cluster-registrations~1{name}/delete"
@@ -5361,6 +5464,17 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        update_cluster_config:
+          operation:
+            $ref: "#/paths/~1clusters~1{name}~1update-config/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/describe_cluster"
@@ -5368,7 +5482,8 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/create_cluster"
           - $ref: "#/components/x-stackQL-resources/clusters/methods/register_cluster"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/clusters/methods/update_cluster_config"
         delete:
           - $ref: "#/components/x-stackQL-resources/clusters/methods/delete_cluster"
     eks_anywhere_subscriptions:
@@ -5396,6 +5511,14 @@ components:
             objectKey: $.subscriptions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_eks_anywhere_subscription:
           operation:
             $ref: "#/paths/~1eks-anywhere-subscriptions~1{id}/delete"
@@ -5408,6 +5531,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.subscription
         update_eks_anywhere_subscription:
           operation:
             $ref: "#/paths/~1eks-anywhere-subscriptions~1{id}/post"
@@ -5451,9 +5575,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.fargateProfileNames
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFargateProfilesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "fargateProfileNames" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"fargate_profile_name": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_fargate_profile:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1fargate-profiles~1{fargate_profile_name}/delete"
@@ -5466,6 +5604,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.fargateProfile
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/fargate_profiles/methods/describe_fargate_profile"
@@ -5497,9 +5636,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.nodegroups
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListNodegroupsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "nodegroups" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"nodegroup": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_nodegroup:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1node-groups~1{nodegroup_name}/delete"
@@ -5512,13 +5665,37 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.nodegroup
+        update_nodegroup_config:
+          operation:
+            $ref: "#/paths/~1clusters~1{name}~1node-groups~1{nodegroup_name}~1update-config/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        update_nodegroup_version:
+          operation:
+            $ref: "#/paths/~1clusters~1{name}~1node-groups~1{nodegroup_name}~1update-version/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/nodegroups/methods/describe_nodegroup"
           - $ref: "#/components/x-stackQL-resources/nodegroups/methods/list_nodegroups"
         insert:
           - $ref: "#/components/x-stackQL-resources/nodegroups/methods/create_nodegroup"
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/nodegroups/methods/update_nodegroup_config"
         delete:
           - $ref: "#/components/x-stackQL-resources/nodegroups/methods/delete_nodegroup"
     pod_identity_associations:
@@ -5546,6 +5723,14 @@ components:
             objectKey: $.associations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_pod_identity_association:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1pod-identity-associations~1{association_id}/delete"
@@ -5558,6 +5743,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.association
         update_pod_identity_association:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1pod-identity-associations~1{association_id}/post"
@@ -5612,6 +5798,14 @@ components:
             objectKey: $.addons
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/addon_versions/methods/describe_addon_versions"
@@ -5632,6 +5826,14 @@ components:
             objectKey: $.clusterVersions
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         update_cluster_version:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1updates/post"
@@ -5661,6 +5863,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.insight
+        start_insights_refresh:
+          operation:
+            $ref: "#/paths/~1clusters~1{name}~1insights-refresh/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         list_insights:
           operation:
             $ref: "#/paths/~1clusters~1{name}~1insights/post"
@@ -5671,6 +5880,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -5708,6 +5924,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.update
           request:
             nativeCasing: pascal
         list_updates:
@@ -5716,9 +5933,23 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.updateIds
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListUpdatesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "updateIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"update_id": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/updates/methods/describe_update"
@@ -5726,10 +5957,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.eks.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.eks.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -5737,17 +5968,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.eks.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -5768,75 +5988,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    cluster_configs:
-      id: aws.eks.cluster_configs
-      name: cluster_configs
-      title: cluster_configs
-      methods:
-        update_cluster_config:
-          operation:
-            $ref: "#/paths/~1clusters~1{name}~1update-config/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/cluster_configs/methods/update_cluster_config"
-        delete: []
-    nodegroup_configs:
-      id: aws.eks.nodegroup_configs
-      name: nodegroup_configs
-      title: nodegroup_configs
-      methods:
-        update_nodegroup_config:
-          operation:
-            $ref: "#/paths/~1clusters~1{name}~1node-groups~1{nodegroup_name}~1update-config/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/nodegroup_configs/methods/update_nodegroup_config"
-        delete: []
-    nodegroup_versions:
-      id: aws.eks.nodegroup_versions
-      name: nodegroup_versions
-      title: nodegroup_versions
-      methods:
-        update_nodegroup_version:
-          operation:
-            $ref: "#/paths/~1clusters~1{name}~1node-groups~1{nodegroup_name}~1update-version/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/nodegroup_versions/methods/update_nodegroup_version"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

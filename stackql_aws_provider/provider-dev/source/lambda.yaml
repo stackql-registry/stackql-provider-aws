@@ -69,7 +69,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddLayerVersionPermissionResponse'
-      x-stackql-resource: layer_version_permissions
+      x-stackql-resource: layer_versions
       x-stackql-method: add_layer_version_permission
       x-stackql-verb: UPDATE
     get:
@@ -166,7 +166,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddPermissionResponse'
-      x-stackql-resource: permissions
+      x-stackql-resource: functions
       x-stackql-method: add_permission
       x-stackql-verb: UPDATE
     get:
@@ -236,7 +236,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckpointDurableExecutionResponse'
-      x-stackql-resource: checkpoint_durable_execution
+      x-stackql-resource: durable_executions
       x-stackql-method: checkpoint_durable_execution
       x-stackql-verb: EXEC
   /2015-03-31/functions/{function_name}/aliases:
@@ -324,6 +324,9 @@ paths:
       x-stackql-method: list_aliases
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Aliases
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2025-11-30/capacity-providers:
     post:
       operationId: CreateCapacityProvider
@@ -397,6 +400,9 @@ paths:
       x-stackql-method: list_capacity_providers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CapacityProviders
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2020-04-22/code-signing-configs:
     post:
       operationId: CreateCodeSigningConfig
@@ -458,6 +464,9 @@ paths:
       x-stackql-method: list_code_signing_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CodeSigningConfigs
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2015-03-31/event-source-mappings:
     post:
       operationId: CreateEventSourceMapping
@@ -598,6 +607,9 @@ paths:
       x-stackql-method: list_event_source_mappings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EventSourceMappings
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2015-03-31/functions:
     post:
       operationId: CreateFunction
@@ -754,6 +766,9 @@ paths:
       x-stackql-method: list_functions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Functions
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2021-10-31/functions/{function_name}/url:
     post:
       operationId: CreateFunctionUrlConfig
@@ -1032,6 +1047,7 @@ paths:
       x-stackql-resource: capacity_providers
       x-stackql-method: get_capacity_provider
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CapacityProvider
     put:
       operationId: UpdateCapacityProvider
       description: Updates the configuration of an existing capacity provider.
@@ -1103,6 +1119,7 @@ paths:
       x-stackql-resource: code_signing_configs
       x-stackql-method: get_code_signing_config
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CodeSigningConfig
     put:
       operationId: UpdateCodeSigningConfig
       description: Update the code signing configuration. Changes to the code signing configuration take effect the next time
@@ -1851,6 +1868,9 @@ paths:
       x-stackql-method: get_durable_execution_history
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Events
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2025-12-01/durable-executions/{durable_execution_arn}/state:
     get:
       operationId: GetDurableExecutionState
@@ -1898,6 +1918,9 @@ paths:
       x-stackql-method: get_durable_execution_state
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Operations
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2019-09-30/functions/{function_name}/concurrency:
     get:
       operationId: GetFunctionConcurrency
@@ -2346,7 +2369,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvocationResponse'
-      x-stackql-resource: invoke
+      x-stackql-resource: functions
       x-stackql-method: invoke
       x-stackql-verb: EXEC
   /2014-11-13/functions/{function_name}/invoke-async:
@@ -2383,7 +2406,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeAsyncResponse'
-      x-stackql-resource: async
+      x-stackql-resource: functions
       x-stackql-method: invoke_async
       x-stackql-verb: EXEC
   /2021-11-15/functions/{function_name}/response-streaming-invocations:
@@ -2453,7 +2476,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeWithResponseStreamResponse'
-      x-stackql-resource: with_response_stream
+      x-stackql-resource: functions
       x-stackql-method: invoke_with_response_stream
       x-stackql-verb: EXEC
   /2025-12-01/functions/{function_name}/durable-executions:
@@ -2527,6 +2550,9 @@ paths:
       x-stackql-method: list_durable_executions_by_function
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DurableExecutions
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2019-09-25/functions/{function_name}/event-invoke-config/list:
     get:
       operationId: ListFunctionEventInvokeConfigs
@@ -2564,6 +2590,9 @@ paths:
       x-stackql-method: list_function_event_invoke_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FunctionEventInvokeConfigs
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2021-10-31/functions/{function_name}/urls:
     get:
       operationId: ListFunctionUrlConfigs
@@ -2601,6 +2630,9 @@ paths:
       x-stackql-method: list_function_url_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FunctionUrlConfigs
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2025-11-30/capacity-providers/{capacity_provider_name}/function-versions:
     get:
       operationId: ListFunctionVersionsByCapacityProvider
@@ -2635,6 +2667,9 @@ paths:
       x-stackql-method: list_function_versions_by_capacity_provider
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.FunctionVersions
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2020-04-22/code-signing-configs/{code_signing_config_arn}/functions:
     get:
       operationId: ListFunctionsByCodeSigningConfig
@@ -2665,11 +2700,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListFunctionsByCodeSigningConfigResponse'
+                $ref: '#/components/schemas/ListFunctionsByCodeSigningConfigOutputDisplay'
       x-stackql-resource: functions_by_code_signing_configs
       x-stackql-method: list_functions_by_code_signing_config
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.FunctionArns
+      x-stackql-responseEnvelope: ListFunctionsByCodeSigningConfigOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "FunctionArns" -}}{{- $tok := index . "NextMarker" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"function_arn": {{ toJson $v
+        }}}{{- end -}}{{- end -}}]{{- if $tok }}, "NextMarker": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2018-10-31/layers/{layer_name}/versions:
     get:
       operationId: ListLayerVersions
@@ -2719,6 +2762,9 @@ paths:
       x-stackql-method: list_layer_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.LayerVersions
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
     post:
       operationId: PublishLayerVersion
       description: Creates an Lambda layer from a ZIP archive. Each time you call PublishLayerVersion with the same layer
@@ -2756,7 +2802,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishLayerVersionResponse'
-      x-stackql-resource: layer_version
+      x-stackql-resource: layers
       x-stackql-method: publish_layer_version
       x-stackql-verb: EXEC
   /2018-10-31/layers:
@@ -2802,6 +2848,9 @@ paths:
       x-stackql-method: list_layers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Layers
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2019-09-30/functions/{function_name}/provisioned-concurrency?List=ALL:
     get:
       operationId: ListProvisionedConcurrencyConfigs
@@ -2838,6 +2887,9 @@ paths:
       x-stackql-method: list_provisioned_concurrency_configs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.ProvisionedConcurrencyConfigs
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
   /2017-03-31/tags/{resource}:
     get:
       operationId: ListTags
@@ -2885,7 +2937,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -2907,7 +2959,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /2015-03-31/functions/{function_name}/versions:
@@ -2948,6 +3000,9 @@ paths:
       x-stackql-method: list_versions_by_function
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Versions
+      x-stackql-pagination-request-token-key: Marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.NextMarker
     post:
       operationId: PublishVersion
       description: Creates a version from the current code and configuration of a function. Use versions to create a snapshot
@@ -2986,7 +3041,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FunctionConfiguration'
-      x-stackql-resource: version
+      x-stackql-resource: functions
       x-stackql-method: publish_version
       x-stackql-verb: EXEC
   /2018-10-31/layers/{layer_name}/versions/{version_number}/policy/{statement_id}:
@@ -3023,7 +3078,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: layer_version_permissions
+      x-stackql-resource: layer_versions
       x-stackql-method: remove_layer_version_permission
       x-stackql-verb: UPDATE
   /2015-03-31/functions/{function_name}/policy/{statement_id}:
@@ -3064,7 +3119,7 @@ paths:
       responses:
         '204':
           description: Success
-      x-stackql-resource: permissions
+      x-stackql-resource: functions
       x-stackql-method: remove_permission
       x-stackql-verb: UPDATE
   /2025-12-01/durable-execution-callbacks/{callback_id}/fail:
@@ -3095,7 +3150,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDurableExecutionCallbackFailureResponse'
-      x-stackql-resource: durable_execution_callback_failure
+      x-stackql-resource: durable_executions
       x-stackql-method: send_durable_execution_callback_failure
       x-stackql-verb: EXEC
   /2025-12-01/durable-execution-callbacks/{callback_id}/heartbeat:
@@ -3117,7 +3172,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDurableExecutionCallbackHeartbeatResponse'
-      x-stackql-resource: durable_execution_callback_heartbeat
+      x-stackql-resource: durable_executions
       x-stackql-method: send_durable_execution_callback_heartbeat
       x-stackql-verb: EXEC
   /2025-12-01/durable-execution-callbacks/{callback_id}/succeed:
@@ -3148,7 +3203,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendDurableExecutionCallbackSuccessResponse'
-      x-stackql-resource: durable_execution_callback_success
+      x-stackql-resource: durable_executions
       x-stackql-method: send_durable_execution_callback_success
       x-stackql-verb: EXEC
   /2025-12-01/durable-executions/{durable_execution_arn}/stop:
@@ -3179,7 +3234,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopDurableExecutionResponse'
-      x-stackql-resource: durable_execution
+      x-stackql-resource: durable_executions
       x-stackql-method: stop_durable_execution
       x-stackql-verb: EXEC
   /2015-03-31/functions/{function_name}/code:
@@ -3240,7 +3295,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/FunctionConfiguration'
-      x-stackql-resource: function_codes
+      x-stackql-resource: functions
       x-stackql-method: update_function_code
       x-stackql-verb: UPDATE
 components:
@@ -6787,19 +6842,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/FunctionConfiguration'
-    ListFunctionsByCodeSigningConfigResponse:
+    ListFunctionsByCodeSigningConfigRowDisplay:
       type: object
       properties:
-        NextMarker:
-          $ref: '#/components/schemas/String'
-          description: The pagination token that's included if more results are available.
-        FunctionArns:
-          $ref: '#/components/schemas/FunctionArnList'
+        function_arn:
+          type: string
           description: The function ARNs.
-    FunctionArnList:
-      type: array
-      items:
-        $ref: '#/components/schemas/FunctionArn'
+    ListFunctionsByCodeSigningConfigOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListFunctionsByCodeSigningConfigRowDisplay'
     MaxLayerListItems:
       type: integer
       minimum: 1

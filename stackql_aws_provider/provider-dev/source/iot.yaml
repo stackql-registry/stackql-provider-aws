@@ -38,7 +38,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_transfer
+      x-stackql-resource: certificates
       x-stackql-method: accept_certificate_transfer
       x-stackql-verb: EXEC
   /billing-groups/addThingToBillingGroup:
@@ -68,7 +68,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddThingToBillingGroupResponse'
-      x-stackql-resource: thing_to_billing_groups
+      x-stackql-resource: billing_groups
       x-stackql-method: add_thing_to_billing_group
       x-stackql-verb: UPDATE
   /thing-groups/addThingToThingGroup:
@@ -100,7 +100,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AddThingToThingGroupResponse'
-      x-stackql-resource: thing_to_thing_groups
+      x-stackql-resource: thing_groups
       x-stackql-method: add_thing_to_thing_group
       x-stackql-verb: UPDATE
   /packages/{package_name}/versions/{version_name}/sbom:
@@ -146,7 +146,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateSbomWithPackageVersionResponse'
-      x-stackql-resource: sbom_with_package_versions
+      x-stackql-resource: package_versions
       x-stackql-method: associate_sbom_with_package_version
       x-stackql-verb: UPDATE
     delete:
@@ -180,7 +180,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisassociateSbomFromPackageVersionResponse'
-      x-stackql-resource: sbom_from_package_versions
+      x-stackql-resource: package_versions
       x-stackql-method: disassociate_sbom_from_package_version
       x-stackql-verb: UPDATE
   /jobs/{job_id}/targets:
@@ -225,7 +225,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AssociateTargetsWithJobResponse'
-      x-stackql-resource: targets_with_jobs
+      x-stackql-resource: jobs
       x-stackql-method: associate_targets_with_job
       x-stackql-verb: UPDATE
   /target-policies/{policy_name}:
@@ -427,6 +427,9 @@ paths:
       x-stackql-method: list_targets_for_security_profile
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.securityProfileTargets
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /things/{thing_name}/principals:
     put:
       operationId: AttachThingPrincipal
@@ -525,11 +528,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThingPrincipalsResponse'
+                $ref: '#/components/schemas/ListThingPrincipalsOutputDisplay'
       x-stackql-resource: thing_principals
       x-stackql-method: list_thing_principals
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.principals
+      x-stackql-responseEnvelope: ListThingPrincipalsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "principals" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"principal": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /audit/mitigationactions/tasks/{task_id}/cancel:
     put:
       operationId: CancelAuditMitigationActionsTask
@@ -592,7 +603,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_transfer
+      x-stackql-resource: certificates
       x-stackql-method: cancel_certificate_transfer
       x-stackql-verb: EXEC
   /detect/mitigationactions/tasks/{task_id}/cancel:
@@ -655,7 +666,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelJobResponse'
-      x-stackql-resource: job
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job
       x-stackql-verb: EXEC
   /things/{thing_name}/jobs/{job_id}/cancel:
@@ -700,7 +711,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: job_execution
+      x-stackql-resource: jobs
       x-stackql-method: cancel_job_execution
       x-stackql-verb: EXEC
   /default-authorizer:
@@ -732,6 +743,7 @@ paths:
       x-stackql-resource: default_authorizers
       x-stackql-method: describe_default_authorizer
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.authorizerDescription
     post:
       operationId: SetDefaultAuthorizer
       description: Sets the default authorizer. This will be used if a websocket connection is made without specifying an
@@ -779,7 +791,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ConfirmTopicRuleDestinationResponse'
-      x-stackql-resource: topic_rule_destination
+      x-stackql-resource: topic_rules
       x-stackql-method: confirm_topic_rule_destination
       x-stackql-verb: EXEC
   /audit/suppressions/create:
@@ -904,6 +916,7 @@ paths:
       x-stackql-resource: authorizers
       x-stackql-method: describe_authorizer
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.authorizerDescription
     put:
       operationId: UpdateAuthorizer
       description: Updates an authorizer. Requires permission to access the UpdateAuthorizer action.
@@ -1100,7 +1113,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateCertificateFromCsrResponse'
-      x-stackql-resource: certificate_from_csrs
+      x-stackql-resource: certificates
       x-stackql-method: create_certificate_from_csr
       x-stackql-verb: INSERT
     get:
@@ -1139,6 +1152,9 @@ paths:
       x-stackql-method: list_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.certificates
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /certificate-providers/{certificate_provider_name}:
     post:
       operationId: CreateCertificateProvider
@@ -1785,7 +1801,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateDynamicThingGroupResponse'
-      x-stackql-resource: dynamic_thing_groups
+      x-stackql-resource: thing_groups
       x-stackql-method: create_dynamic_thing_group
       x-stackql-verb: INSERT
     delete:
@@ -1811,7 +1827,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteDynamicThingGroupResponse'
-      x-stackql-resource: dynamic_thing_groups
+      x-stackql-resource: thing_groups
       x-stackql-method: delete_dynamic_thing_group
       x-stackql-verb: DELETE
     patch:
@@ -1850,7 +1866,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateDynamicThingGroupResponse'
-      x-stackql-resource: dynamic_thing_groups
+      x-stackql-resource: thing_groups
       x-stackql-method: update_dynamic_thing_group
       x-stackql-verb: UPDATE
   /fleet-metric/{metric_name}:
@@ -2278,7 +2294,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateKeysAndCertificateResponse'
-      x-stackql-resource: keys_and_certificates
+      x-stackql-resource: certificates
       x-stackql-method: create_keys_and_certificate
       x-stackql-verb: INSERT
   /mitigationactions/actions/{action_name}:
@@ -2508,6 +2524,7 @@ paths:
       x-stackql-resource: ota_updates
       x-stackql-method: get_ota_update
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.otaUpdateInfo
   /packages/{package_name}:
     put:
       operationId: CreatePackage
@@ -3035,6 +3052,9 @@ paths:
       x-stackql-method: list_provisioning_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.templates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /provisioning-templates/{template_name}/versions:
     post:
       operationId: CreateProvisioningTemplateVersion
@@ -3108,6 +3128,9 @@ paths:
       x-stackql-method: list_provisioning_template_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.versions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /role-aliases/{role_alias}:
     post:
       operationId: CreateRoleAlias
@@ -3188,6 +3211,7 @@ paths:
       x-stackql-resource: role_alias
       x-stackql-method: describe_role_alias
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.roleAliasDescription
     put:
       operationId: UpdateRoleAlias
       description: Updates a role alias. Requires permission to access the UpdateRoleAlias action. The value of credentialDurationSeconds
@@ -3565,6 +3589,7 @@ paths:
       x-stackql-resource: streams
       x-stackql-method: describe_stream
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.streamInfo
     put:
       operationId: UpdateStream
       description: Updates an existing stream. The stream version will be incremented by one. Requires permission to access
@@ -4100,6 +4125,9 @@ paths:
       x-stackql-method: list_topic_rule_destinations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.destinationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     patch:
       operationId: UpdateTopicRuleDestination
       description: Updates a topic rule destination. You use this to change the status, endpoint URL, or confirmation URL
@@ -4354,6 +4382,7 @@ paths:
       x-stackql-resource: certificates
       x-stackql-method: describe_certificate
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.certificateDescription
     put:
       operationId: UpdateCertificate
       description: Updates the status of the specified certificate. This operation is idempotent. Requires permission to access
@@ -4568,7 +4597,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: default_policy_versions
+      x-stackql-resource: policy_versions
       x-stackql-method: set_default_policy_version
       x-stackql-verb: UPDATE
   /provisioning-templates/{template_name}:
@@ -4781,6 +4810,7 @@ paths:
       x-stackql-resource: topic_rule_destinations
       x-stackql-method: get_topic_rule_destination
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.topicRuleDestination
   /v2LoggingLevel:
     delete:
       operationId: DeleteV2LoggingLevel
@@ -4838,6 +4868,9 @@ paths:
       x-stackql-method: list_v2_logging_levels
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.logTargetConfigurations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: SetV2LoggingLevel
       description: Sets the logging level. Requires permission to access the SetV2LoggingLevel action.
@@ -4890,7 +4923,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeprecateThingTypeResponse'
-      x-stackql-resource: deprecate_thing_type
+      x-stackql-resource: thing_types
       x-stackql-method: deprecate_thing_type
       x-stackql-verb: EXEC
   /audit/findings/{finding_id}:
@@ -4917,6 +4950,7 @@ paths:
       x-stackql-resource: audit_findings
       x-stackql-method: describe_audit_finding
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.finding
   /audit/mitigationactions/tasks/{task_id}:
     get:
       operationId: DescribeAuditMitigationActionsTask
@@ -5051,6 +5085,7 @@ paths:
       x-stackql-resource: detect_mitigation_actions_tasks
       x-stackql-method: describe_detect_mitigation_actions_task
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.taskSummary
     put:
       operationId: StartDetectMitigationActionsTask
       description: Starts a Device Defender ML Detect mitigation actions task. Requires permission to access the StartDetectMitigationActionsTask
@@ -5265,6 +5300,7 @@ paths:
       x-stackql-resource: job_executions
       x-stackql-method: describe_job_execution
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.execution
   /managed-job-templates/{template_name}:
     get:
       operationId: DescribeManagedJobTemplate
@@ -5384,6 +5420,9 @@ paths:
       x-stackql-method: get_behavior_model_training_summaries
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.summaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /indices/buckets:
     post:
       operationId: GetBucketsAggregation
@@ -5609,6 +5648,7 @@ paths:
       x-stackql-resource: package_configurations
       x-stackql-method: get_package_configuration
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.versionUpdateByJobsConfig
     patch:
       operationId: UpdatePackageConfiguration
       description: Updates the software package configuration. Requires permission to access the UpdatePackageConfiguration
@@ -5714,6 +5754,7 @@ paths:
       x-stackql-resource: statistics
       x-stackql-method: get_statistics
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.statistics
   /things/{thing_name}/connectivity-data:
     post:
       operationId: GetThingConnectivityData
@@ -5842,6 +5883,9 @@ paths:
       x-stackql-method: list_active_violations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.activeViolations
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /attached-policies/{target}:
     post:
       operationId: ListAttachedPolicies
@@ -5884,6 +5928,9 @@ paths:
       x-stackql-method: list_attached_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policies
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /audit/findings:
     post:
       operationId: ListAuditFindings
@@ -5924,6 +5971,9 @@ paths:
       x-stackql-method: list_audit_findings
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.findings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /audit/mitigationactions/executions:
     get:
       operationId: ListAuditMitigationActionsExecutions
@@ -5971,6 +6021,9 @@ paths:
       x-stackql-method: list_audit_mitigation_actions_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actionsExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /audit/mitigationactions/tasks:
     get:
       operationId: ListAuditMitigationActionsTasks
@@ -6031,6 +6084,9 @@ paths:
       x-stackql-method: list_audit_mitigation_actions_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /audit/suppressions/list:
     post:
       operationId: ListAuditSuppressions
@@ -6064,6 +6120,9 @@ paths:
       x-stackql-method: list_audit_suppressions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.suppressions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /audit/tasks:
     get:
       operationId: ListAuditTasks
@@ -6120,6 +6179,9 @@ paths:
       x-stackql-method: list_audit_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartOnDemandAuditTask
       description: Starts an on-demand Device Defender audit. Requires permission to access the StartOnDemandAuditTask action.
@@ -6185,6 +6247,9 @@ paths:
       x-stackql-method: list_authorizers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.authorizers
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /billing-groups:
     get:
       operationId: ListBillingGroups
@@ -6220,6 +6285,9 @@ paths:
       x-stackql-method: list_billing_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.billingGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /cacertificates:
     get:
       operationId: ListCACertificates
@@ -6262,6 +6330,9 @@ paths:
       x-stackql-method: list_ca_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.certificates
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /certificate-providers/:
     get:
       operationId: ListCertificateProviders
@@ -6333,6 +6404,9 @@ paths:
       x-stackql-method: list_certificates_by_ca
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.certificates
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /command-executions:
     post:
       operationId: ListCommandExecutions
@@ -6388,6 +6462,9 @@ paths:
       x-stackql-method: list_command_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commandExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /commands:
     get:
       operationId: ListCommands
@@ -6439,6 +6516,9 @@ paths:
       x-stackql-method: list_commands
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.commands
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /custom-metrics:
     get:
       operationId: ListCustomMetrics
@@ -6462,11 +6542,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListCustomMetricsResponse'
+                $ref: '#/components/schemas/ListCustomMetricsOutputDisplay'
       x-stackql-resource: custom_metrics
       x-stackql-method: list_custom_metrics
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.metricNames
+      x-stackql-responseEnvelope: ListCustomMetricsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "metricNames" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"metric_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /detect/mitigationactions/executions:
     get:
       operationId: ListDetectMitigationActionsExecutions
@@ -6527,6 +6615,9 @@ paths:
       x-stackql-method: list_detect_mitigation_actions_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actionsExecutions
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /detect/mitigationactions/tasks:
     get:
       operationId: ListDetectMitigationActionsTasks
@@ -6569,6 +6660,9 @@ paths:
       x-stackql-method: list_detect_mitigation_actions_tasks
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tasks
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /dimensions:
     get:
       operationId: ListDimensions
@@ -6593,11 +6687,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListDimensionsResponse'
+                $ref: '#/components/schemas/ListDimensionsOutputDisplay'
       x-stackql-resource: dimensions
       x-stackql-method: list_dimensions
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.dimensionNames
+      x-stackql-responseEnvelope: ListDimensionsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "dimensionNames" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"dimension_name": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /domainConfigurations:
     get:
       operationId: ListDomainConfigurations
@@ -6633,6 +6735,9 @@ paths:
       x-stackql-method: list_domain_configurations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.domainConfigurations
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /fleet-metrics:
     get:
       operationId: ListFleetMetrics
@@ -6662,6 +6767,9 @@ paths:
       x-stackql-method: list_fleet_metrics
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.fleetMetrics
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /indices:
     get:
       operationId: ListIndices
@@ -6685,11 +6793,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListIndicesResponse'
+                $ref: '#/components/schemas/ListIndicesOutputDisplay'
       x-stackql-resource: indices
       x-stackql-method: list_indices
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.indexNames
+      x-stackql-responseEnvelope: ListIndicesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "indexNames" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"index_name": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /jobs/{job_id}/things:
     get:
       operationId: ListJobExecutionsForJob
@@ -6730,6 +6846,9 @@ paths:
       x-stackql-method: list_job_executions_for_job
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /things/{thing_name}/jobs:
     get:
       operationId: ListJobExecutionsForThing
@@ -6786,6 +6905,9 @@ paths:
       x-stackql-method: list_job_executions_for_thing
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.executionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /job-templates:
     get:
       operationId: ListJobTemplates
@@ -6814,6 +6936,9 @@ paths:
       x-stackql-method: list_job_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /jobs:
     get:
       operationId: ListJobs
@@ -6880,6 +7005,9 @@ paths:
       x-stackql-method: list_jobs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.jobs
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /managed-job-templates:
     get:
       operationId: ListManagedJobTemplates
@@ -6915,6 +7043,9 @@ paths:
       x-stackql-method: list_managed_job_templates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.managedJobTemplates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /metric-values:
     get:
       operationId: ListMetricValues
@@ -6980,6 +7111,9 @@ paths:
       x-stackql-method: list_metric_values
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.metricDatumList
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /mitigationactions/actions:
     get:
       operationId: ListMitigationActions
@@ -7015,6 +7149,9 @@ paths:
       x-stackql-method: list_mitigation_actions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.actionIdentifiers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /otaUpdates:
     get:
       operationId: ListOTAUpdates
@@ -7049,6 +7186,9 @@ paths:
       x-stackql-method: list_ota_updates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.otaUpdates
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /certificates-out-going:
     get:
       operationId: ListOutgoingCertificates
@@ -7085,6 +7225,9 @@ paths:
       x-stackql-method: list_outgoing_certificates
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.outgoingCertificates
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /packages/{package_name}/versions:
     get:
       operationId: ListPackageVersions
@@ -7126,6 +7269,9 @@ paths:
       x-stackql-method: list_package_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.packageVersionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /packages:
     get:
       operationId: ListPackages
@@ -7154,6 +7300,9 @@ paths:
       x-stackql-method: list_packages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.packageSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /policies:
     get:
       operationId: ListPolicies
@@ -7188,6 +7337,9 @@ paths:
       x-stackql-method: list_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policies
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /policy-principals:
     get:
       operationId: ListPolicyPrincipals
@@ -7225,11 +7377,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPolicyPrincipalsResponse'
+                $ref: '#/components/schemas/ListPolicyPrincipalsOutputDisplay'
       x-stackql-resource: policy_principals
       x-stackql-method: list_policy_principals
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.principals
+      x-stackql-responseEnvelope: ListPolicyPrincipalsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "principals" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"principal": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /principal-policies:
     get:
       operationId: ListPrincipalPolicies
@@ -7274,6 +7434,9 @@ paths:
       x-stackql-method: list_principal_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.policies
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /principals/things:
     get:
       operationId: ListPrincipalThings
@@ -7306,11 +7469,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListPrincipalThingsResponse'
+                $ref: '#/components/schemas/ListPrincipalThingsOutputDisplay'
       x-stackql-resource: principal_things
       x-stackql-method: list_principal_things
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.things
+      x-stackql-responseEnvelope: ListPrincipalThingsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "things" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"thing": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /principals/things-v2:
     get:
       operationId: ListPrincipalThingsV2
@@ -7357,6 +7528,9 @@ paths:
       x-stackql-method: list_principal_things_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.principalThingObjects
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /audit/relatedResources:
     get:
       operationId: ListRelatedResourcesForAuditFinding
@@ -7396,6 +7570,9 @@ paths:
       x-stackql-method: list_related_resources_for_audit_finding
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.relatedResources
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /role-aliases:
     get:
       operationId: ListRoleAliases
@@ -7425,11 +7602,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListRoleAliasesResponse'
+                $ref: '#/components/schemas/ListRoleAliasesOutputDisplay'
       x-stackql-resource: role_aliases
       x-stackql-method: list_role_aliases
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.roleAliases
+      x-stackql-responseEnvelope: ListRoleAliasesOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "roleAliases" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"role_alias": {{ toJson $v }}}{{-
+        end -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /packages/{package_name}/versions/{version_name}/sbom-validation-results:
     get:
       operationId: ListSbomValidationResults
@@ -7477,6 +7662,9 @@ paths:
       x-stackql-method: list_sbom_validation_results
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.validationResultSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /audit/scheduledaudits:
     get:
       operationId: ListScheduledAudits
@@ -7505,6 +7693,9 @@ paths:
       x-stackql-method: list_scheduled_audits
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.scheduledAudits
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /security-profiles:
     get:
       operationId: ListSecurityProfiles
@@ -7548,6 +7739,9 @@ paths:
       x-stackql-method: list_security_profiles
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.securityProfileIdentifiers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /security-profiles-for-target:
     get:
       operationId: ListSecurityProfilesForTarget
@@ -7589,6 +7783,9 @@ paths:
       x-stackql-method: list_security_profiles_for_target
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.securityProfileTargetMappings
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /streams:
     get:
       operationId: ListStreams
@@ -7624,6 +7821,9 @@ paths:
       x-stackql-method: list_streams
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.streams
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /tags:
     get:
       operationId: ListTagsForResource
@@ -7650,10 +7850,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.tags
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: TagResource
       description: Adds to or modifies the tags of the given resource. Tags are metadata which can be used to manage a resource.
@@ -7680,7 +7883,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /policy-targets/{policy_name}:
@@ -7712,11 +7915,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListTargetsForPolicyResponse'
+                $ref: '#/components/schemas/ListTargetsForPolicyOutputDisplay'
       x-stackql-resource: targets_for_policies
       x-stackql-method: list_targets_for_policy
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.targets
+      x-stackql-responseEnvelope: ListTargetsForPolicyOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "targets" -}}{{- $tok := index . "nextMarker" -}}{"line_items": [{{-
+        if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"target": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextMarker": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: marker
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextMarker
   /thing-groups:
     get:
       operationId: ListThingGroups
@@ -7764,6 +7975,9 @@ paths:
       x-stackql-method: list_thing_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.thingGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /things/{thing_name}/thing-groups:
     get:
       operationId: ListThingGroupsForThing
@@ -7800,6 +8014,9 @@ paths:
       x-stackql-method: list_thing_groups_for_thing
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.thingGroups
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /things/{thing_name}/principals-v2:
     get:
       operationId: ListThingPrincipalsV2
@@ -7846,6 +8063,9 @@ paths:
       x-stackql-method: list_thing_principals_v2
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.thingPrincipalObjects
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /thing-registration-tasks/{task_id}/reports:
     get:
       operationId: ListThingRegistrationTaskReports
@@ -7882,11 +8102,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThingRegistrationTaskReportsResponse'
+                $ref: '#/components/schemas/ListThingRegistrationTaskReportsOutputDisplay'
       x-stackql-resource: thing_registration_task_reports
       x-stackql-method: list_thing_registration_task_reports
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.resourceLinks
+      x-stackql-responseEnvelope: ListThingRegistrationTaskReportsOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "resourceLinks" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"resource_link": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /thing-registration-tasks:
     get:
       operationId: ListThingRegistrationTasks
@@ -7917,11 +8145,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThingRegistrationTasksResponse'
+                $ref: '#/components/schemas/ListThingRegistrationTasksOutputDisplay'
       x-stackql-resource: thing_registration_tasks
       x-stackql-method: list_thing_registration_tasks
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.taskIds
+      x-stackql-responseEnvelope: ListThingRegistrationTasksOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "taskIds" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"task_id": {{ toJson $v }}}{{- end
+        -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: StartThingRegistrationTask
       description: Creates a bulk thing provisioning task. Requires permission to access the StartThingRegistrationTask action.
@@ -7953,7 +8189,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartThingRegistrationTaskResponse'
-      x-stackql-resource: thing_registration_task
+      x-stackql-resource: things
       x-stackql-method: start_thing_registration_task
       x-stackql-verb: EXEC
   /thing-types:
@@ -7991,6 +8227,9 @@ paths:
       x-stackql-method: list_thing_types
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.thingTypes
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /things:
     get:
       operationId: ListThings
@@ -8051,6 +8290,9 @@ paths:
       x-stackql-method: list_things
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.things
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     post:
       operationId: RegisterThing
       description: Provisions a thing in the device registry. RegisterThing calls other IoT control plane APIs. These calls
@@ -8111,11 +8353,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThingsInBillingGroupResponse'
+                $ref: '#/components/schemas/ListThingsInBillingGroupOutputDisplay'
       x-stackql-resource: things_in_billing_groups
       x-stackql-method: list_things_in_billing_group
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.things
+      x-stackql-responseEnvelope: ListThingsInBillingGroupOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "things" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"thing": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /thing-groups/{thing_group_name}/things:
     get:
       operationId: ListThingsInThingGroup
@@ -8152,11 +8402,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListThingsInThingGroupResponse'
+                $ref: '#/components/schemas/ListThingsInThingGroupOutputDisplay'
       x-stackql-resource: things_in_thing_groups
       x-stackql-method: list_things_in_thing_group
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.things
+      x-stackql-responseEnvelope: ListThingsInThingGroupOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "things" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if
+        eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"thing": {{ toJson $v }}}{{- end -}}{{-
+        end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /rules:
     get:
       operationId: ListTopicRules
@@ -8198,6 +8456,9 @@ paths:
       x-stackql-method: list_topic_rules
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.rules
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /violation-events:
     get:
       operationId: ListViolationEvents
@@ -8270,6 +8531,9 @@ paths:
       x-stackql-method: list_violation_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.violationEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /violations/verification-state/{violation_id}:
     post:
       operationId: PutVerificationStateOnViolation
@@ -8416,7 +8680,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RegisterCertificateWithoutCAResponse'
-      x-stackql-resource: certificate_without_cas
+      x-stackql-resource: certificates
       x-stackql-method: register_certificate_without_ca
       x-stackql-verb: INSERT
   /reject-certificate-transfer/{certificate_id}:
@@ -8446,7 +8710,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: certificate_transfer
+      x-stackql-resource: certificates
       x-stackql-method: reject_certificate_transfer
       x-stackql-verb: EXEC
   /billing-groups/removeThingFromBillingGroup:
@@ -8477,7 +8741,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveThingFromBillingGroupResponse'
-      x-stackql-resource: thing_from_billing_groups
+      x-stackql-resource: billing_groups
       x-stackql-method: remove_thing_from_billing_group
       x-stackql-verb: UPDATE
   /thing-groups/removeThingFromThingGroup:
@@ -8509,7 +8773,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemoveThingFromThingGroupResponse'
-      x-stackql-resource: thing_from_thing_groups
+      x-stackql-resource: thing_groups
       x-stackql-method: remove_thing_from_thing_group
       x-stackql-verb: UPDATE
   /indices/search:
@@ -8564,7 +8828,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopThingRegistrationTaskResponse'
-      x-stackql-resource: thing_registration_task
+      x-stackql-resource: things
       x-stackql-method: stop_thing_registration_task
       x-stackql-verb: EXEC
   /test-authorization:
@@ -8646,7 +8910,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TestInvokeAuthorizerResponse'
-      x-stackql-resource: invoke_authorizer
+      x-stackql-resource: authorizers
       x-stackql-method: test_invoke_authorizer
       x-stackql-verb: EXEC
   /transfer-certificate/{certificate_id}:
@@ -8696,7 +8960,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TransferCertificateResponse'
-      x-stackql-resource: transfer_certificate
+      x-stackql-resource: certificates
       x-stackql-method: transfer_certificate
       x-stackql-verb: EXEC
   /untag:
@@ -8725,7 +8989,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /audit/suppressions/update:
@@ -8818,7 +9082,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ValidateSecurityProfileBehaviorsResponse'
-      x-stackql-resource: security_profile_behaviors
+      x-stackql-resource: security_profiles
       x-stackql-method: validate_security_profile_behaviors
       x-stackql-verb: EXEC
 components:
@@ -15933,19 +16197,19 @@ components:
         pendingDeletion:
           $ref: '#/components/schemas/BooleanWrapperObject'
           description: Indicates whether the command is pending deletion.
-    ListCustomMetricsResponse:
+    ListCustomMetricsRowDisplay:
       type: object
       properties:
-        metricNames:
-          $ref: '#/components/schemas/MetricNames'
+        metric_name:
+          type: string
           description: The name of the custom metric.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token that can be used to retrieve the next set of results, or null if there are no additional results.
-    MetricNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/MetricName'
+    ListCustomMetricsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListCustomMetricsRowDisplay'
     ListDetectMitigationActionsExecutionsResponse:
       type: object
       properties:
@@ -16012,19 +16276,19 @@ components:
       type: array
       items:
         $ref: '#/components/schemas/DetectMitigationActionsTaskSummary'
-    ListDimensionsResponse:
+    ListDimensionsRowDisplay:
       type: object
       properties:
-        dimensionNames:
-          $ref: '#/components/schemas/DimensionNames'
+        dimension_name:
+          type: string
           description: A list of the names of the defined dimensions. Use DescribeDimension to get details for a dimension.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: A token that can be used to retrieve the next set of results, or null if there are no additional results.
-    DimensionNames:
-      type: array
-      items:
-        $ref: '#/components/schemas/DimensionName'
+    ListDimensionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListDimensionsRowDisplay'
     ListDomainConfigurationsResponse:
       type: object
       properties:
@@ -16080,19 +16344,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    ListIndicesResponse:
+    ListIndicesRowDisplay:
       type: object
       properties:
-        indexNames:
-          $ref: '#/components/schemas/IndexNamesList'
+        index_name:
+          type: string
           description: The index names.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token used to get the next set of results, or null if there are no additional results.
-    IndexNamesList:
-      type: array
-      items:
-        $ref: '#/components/schemas/IndexName'
+    ListIndicesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListIndicesRowDisplay'
     LaserMaxResults:
       type: integer
       minimum: 1
@@ -16465,22 +16729,19 @@ components:
         nextMarker:
           $ref: '#/components/schemas/Marker'
           description: The marker for the next set of results, or null if there are no additional results.
-    ListPolicyPrincipalsResponse:
-      description: The output from the ListPolicyPrincipals operation.
+    ListPolicyPrincipalsRowDisplay:
       type: object
       properties:
-        principals:
-          $ref: '#/components/schemas/Principals'
+        principal:
+          type: string
           description: The descriptions of the principals.
-        nextMarker:
-          $ref: '#/components/schemas/Marker'
-          description: The marker for the next set of results, or null if there are no additional results.
-    Principals:
-      type: array
-      items:
-        $ref: '#/components/schemas/PrincipalArn'
-    PrincipalArn:
-      type: string
+    ListPolicyPrincipalsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPolicyPrincipalsRowDisplay'
     ListPolicyVersionsResponse:
       description: The output from the ListPolicyVersions operation.
       type: object
@@ -16515,20 +16776,19 @@ components:
         nextMarker:
           $ref: '#/components/schemas/Marker'
           description: The marker for the next set of results, or null if there are no additional results.
-    ListPrincipalThingsResponse:
-      description: The output from the ListPrincipalThings operation.
+    ListPrincipalThingsRowDisplay:
       type: object
       properties:
-        things:
-          $ref: '#/components/schemas/ThingNameList'
+        thing:
+          type: string
           description: The things.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to get the next set of results, or null if there are no additional results.
-    ThingNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ThingName'
+    ListPrincipalThingsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListPrincipalThingsRowDisplay'
     ListPrincipalThingsV2Response:
       type: object
       properties:
@@ -16633,19 +16893,19 @@ components:
         nextToken:
           $ref: '#/components/schemas/NextToken'
           description: A token that can be used to retrieve the next set of results, or null for the first API call.
-    ListRoleAliasesResponse:
+    ListRoleAliasesRowDisplay:
       type: object
       properties:
-        roleAliases:
-          $ref: '#/components/schemas/RoleAliases'
+        role_alias:
+          type: string
           description: The role aliases.
-        nextMarker:
-          $ref: '#/components/schemas/Marker'
-          description: A marker used to get the next set of results.
-    RoleAliases:
-      type: array
-      items:
-        $ref: '#/components/schemas/RoleAlias'
+    ListRoleAliasesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListRoleAliasesRowDisplay'
     SbomValidationResult:
       type: string
       enum:
@@ -16820,19 +17080,19 @@ components:
         nextToken:
           $ref: '#/components/schemas/NextToken'
           description: The token to use to get the next set of results, or null if there are no additional results.
-    ListTargetsForPolicyResponse:
+    ListTargetsForPolicyRowDisplay:
       type: object
       properties:
-        targets:
-          $ref: '#/components/schemas/PolicyTargets'
+        target:
+          type: string
           description: The policy targets.
-        nextMarker:
-          $ref: '#/components/schemas/Marker'
-          description: A marker used to get the next set of results.
-    PolicyTargets:
-      type: array
-      items:
-        $ref: '#/components/schemas/PolicyTarget'
+    ListTargetsForPolicyOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListTargetsForPolicyRowDisplay'
     ListTargetsForSecurityProfileResponse:
       type: object
       properties:
@@ -16867,16 +17127,19 @@ components:
         nextToken:
           $ref: '#/components/schemas/NextToken'
           description: The token to use to get the next set of results, or null if there are no additional results.
-    ListThingPrincipalsResponse:
-      description: The output from the ListThingPrincipals operation.
+    ListThingPrincipalsRowDisplay:
       type: object
       properties:
-        principals:
-          $ref: '#/components/schemas/Principals'
+        principal:
+          type: string
           description: The principals associated with the thing.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to get the next set of results, or null if there are no additional results.
+    ListThingPrincipalsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListThingPrincipalsRowDisplay'
     ListThingPrincipalsV2Response:
       type: object
       properties:
@@ -16911,38 +17174,32 @@ components:
       enum:
       - ERRORS
       - RESULTS
-    ListThingRegistrationTaskReportsResponse:
+    ListThingRegistrationTaskReportsRowDisplay:
       type: object
       properties:
-        resourceLinks:
-          $ref: '#/components/schemas/S3FileUrlList'
+        resource_link:
+          type: string
           description: Links to the task resources.
-        reportType:
-          $ref: '#/components/schemas/ReportType'
-          description: The type of task report.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to get the next set of results, or null if there are no additional results.
-    S3FileUrlList:
-      type: array
-      items:
-        $ref: '#/components/schemas/S3FileUrl'
-    S3FileUrl:
-      type: string
-      maxLength: 65535
-    ListThingRegistrationTasksResponse:
+    ListThingRegistrationTaskReportsOutputDisplay:
       type: object
       properties:
-        taskIds:
-          $ref: '#/components/schemas/TaskIdList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListThingRegistrationTaskReportsRowDisplay'
+    ListThingRegistrationTasksRowDisplay:
+      type: object
+      properties:
+        task_id:
+          type: string
           description: A list of bulk thing provisioning task IDs.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to get the next set of results, or null if there are no additional results.
-    TaskIdList:
-      type: array
-      items:
-        $ref: '#/components/schemas/TaskId'
+    ListThingRegistrationTasksOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListThingRegistrationTasksRowDisplay'
     ListThingTypesResponse:
       description: The output for the ListThingTypes operation.
       type: object
@@ -17015,25 +17272,32 @@ components:
         version:
           $ref: '#/components/schemas/Version'
           description: The version of the thing record in the registry.
-    ListThingsInBillingGroupResponse:
+    ListThingsInBillingGroupRowDisplay:
       type: object
       properties:
-        things:
-          $ref: '#/components/schemas/ThingNameList'
+        thing:
+          type: string
           description: A list of things in the billing group.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to get the next set of results. Will not be returned if operation has returned all
-            results.
-    ListThingsInThingGroupResponse:
+    ListThingsInBillingGroupOutputDisplay:
       type: object
       properties:
-        things:
-          $ref: '#/components/schemas/ThingNameList'
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListThingsInBillingGroupRowDisplay'
+    ListThingsInThingGroupRowDisplay:
+      type: object
+      properties:
+        thing:
+          type: string
           description: The things in the specified thing group.
-        nextToken:
-          $ref: '#/components/schemas/NextToken'
-          description: The token to use to get the next set of results, or null if there are no additional results.
+    ListThingsInThingGroupOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListThingsInThingGroupRowDisplay'
     TopicRuleDestinationMaxResults:
       type: integer
       minimum: 1

@@ -117,8 +117,6 @@ paths:
               properties:
                 Body:
                   $ref: "#/components/schemas/PayloadBlob"
-              required:
-                - Body
       responses:
         "200":
           description: Success
@@ -425,6 +423,14 @@ components:
             objectKey: $.Items
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: NextToken
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/items/methods/list_items"

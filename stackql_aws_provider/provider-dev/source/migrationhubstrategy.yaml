@@ -147,6 +147,7 @@ paths:
       x-stackql-resource: portfolio_summaries
       x-stackql-method: get_portfolio_summary
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.assessmentSummary
   /get-recommendation-report-details/{id}:
     get:
       operationId: GetRecommendationReportDetails
@@ -204,6 +205,9 @@ paths:
       x-stackql-method: get_server_details
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.associatedApplications
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /get-server-strategies/{server_id}:
     get:
       operationId: GetServerStrategies
@@ -254,6 +258,9 @@ paths:
       x-stackql-method: list_analyzable_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.analyzableServers
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-applicationcomponents:
     post:
       operationId: ListApplicationComponents
@@ -289,6 +296,9 @@ paths:
       x-stackql-method: list_application_components
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.applicationComponentInfos
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-collectors:
     get:
       operationId: ListCollectors
@@ -319,6 +329,9 @@ paths:
       x-stackql-method: list_collectors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Collectors
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-import-file-task:
     get:
       operationId: ListImportFileTask
@@ -349,6 +362,9 @@ paths:
       x-stackql-method: list_import_file_task
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.taskInfos
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /list-servers:
     post:
       operationId: ListServers
@@ -384,6 +400,9 @@ paths:
       x-stackql-method: list_servers
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.serverInfos
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /put-portfolio-preferences:
     post:
       operationId: PutPortfolioPreferences
@@ -569,7 +588,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateApplicationComponentConfigResponse'
-      x-stackql-resource: application_component_configs
+      x-stackql-resource: application_components
       x-stackql-method: update_application_component_config
       x-stackql-verb: UPDATE
   /update-server-config/:
@@ -597,7 +616,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdateServerConfigResponse'
-      x-stackql-resource: server_configs
+      x-stackql-resource: servers
       x-stackql-method: update_server_config
       x-stackql-verb: UPDATE
 components:

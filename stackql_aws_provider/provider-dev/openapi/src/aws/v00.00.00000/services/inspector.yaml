@@ -753,7 +753,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAssessmentRunsResponse"
+                $ref: "#/components/schemas/ListAssessmentRunsOutputDisplay"
   /ListAssessmentTargets:
     post:
       operationId: ListAssessmentTargets
@@ -790,7 +790,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAssessmentTargetsResponse"
+                $ref: "#/components/schemas/ListAssessmentTargetsOutputDisplay"
   /ListAssessmentTemplates:
     post:
       operationId: ListAssessmentTemplates
@@ -830,7 +830,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListAssessmentTemplatesResponse"
+                $ref: "#/components/schemas/ListAssessmentTemplatesOutputDisplay"
   /ListEventSubscriptions:
     post:
       operationId: ListEventSubscriptions
@@ -906,7 +906,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListExclusionsResponse"
+                $ref: "#/components/schemas/ListExclusionsOutputDisplay"
   /ListFindings:
     post:
       operationId: ListFindings
@@ -946,7 +946,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListFindingsResponse"
+                $ref: "#/components/schemas/ListFindingsOutputDisplay"
   /ListRulesPackages:
     post:
       operationId: ListRulesPackages
@@ -980,7 +980,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ListRulesPackagesResponse"
+                $ref: "#/components/schemas/ListRulesPackagesOutputDisplay"
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2453,21 +2453,19 @@ components:
         endDate:
           $ref: "#/components/schemas/Timestamp"
           description: The maximum value of the timestamp range.
-    ListAssessmentRunsResponse:
+    ListAssessmentRunsRowDisplay:
       type: object
       properties:
-        assessmentRunArns:
-          $ref: "#/components/schemas/ListReturnedArnList"
+        assessment_run_arn:
+          type: string
           description: A list of ARNs that specifies the assessment runs that are returned by the action.
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
-      required:
-        - assessmentRunArns
-    ListReturnedArnList:
-      type: array
-      items:
-        $ref: "#/components/schemas/Arn"
+    ListAssessmentRunsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAssessmentRunsRowDisplay"
     AssessmentTargetFilter:
       description: Used as the request parameter in the ListAssessmentTargets action.
       type: object
@@ -2475,17 +2473,19 @@ components:
         assessmentTargetNamePattern:
           $ref: "#/components/schemas/NamePattern"
           description: For a record to match a filter, an explicit value or a string that contains a wildcard that is specified for this data type property must match the value of the assessmentTargetName property of the AssessmentTarget data type.
-    ListAssessmentTargetsResponse:
+    ListAssessmentTargetsRowDisplay:
       type: object
       properties:
-        assessmentTargetArns:
-          $ref: "#/components/schemas/ListReturnedArnList"
+        assessment_target_arn:
+          type: string
           description: A list of ARNs that specifies the assessment targets that are returned by the action.
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
-      required:
-        - assessmentTargetArns
+    ListAssessmentTargetsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAssessmentTargetsRowDisplay"
     AssessmentTemplateFilter:
       description: Used as the request parameter in the ListAssessmentTemplates action.
       type: object
@@ -2499,17 +2499,19 @@ components:
         rulesPackageArns:
           $ref: "#/components/schemas/FilterRulesPackageArnList"
           description: For a record to match a filter, the values that are specified for this data type property must be contained in the list of values of the rulesPackageArns property of the AssessmentTemplate data type.
-    ListAssessmentTemplatesResponse:
+    ListAssessmentTemplatesRowDisplay:
       type: object
       properties:
-        assessmentTemplateArns:
-          $ref: "#/components/schemas/ListReturnedArnList"
+        assessment_template_arn:
+          type: string
           description: A list of ARNs that specifies the assessment templates returned by the action.
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
-      required:
-        - assessmentTemplateArns
+    ListAssessmentTemplatesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListAssessmentTemplatesRowDisplay"
     ListEventSubscriptionsMaxResults:
       type: integer
     ListEventSubscriptionsResponse:
@@ -2561,17 +2563,19 @@ components:
       required:
         - event
         - subscribedAt
-    ListExclusionsResponse:
+    ListExclusionsRowDisplay:
       type: object
       properties:
-        exclusionArns:
-          $ref: "#/components/schemas/ListReturnedArnList"
+        exclusion_arn:
+          type: string
           description: A list of exclusions' ARNs returned by the action.
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: When a response is generated, if there is more data to be listed, this parameters is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
-      required:
-        - exclusionArns
+    ListExclusionsOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListExclusionsRowDisplay"
     FindingFilter:
       description: This data type is used as a request parameter in the ListFindings action.
       type: object
@@ -2619,28 +2623,32 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/Severity"
-    ListFindingsResponse:
+    ListFindingsRowDisplay:
       type: object
       properties:
-        findingArns:
-          $ref: "#/components/schemas/ListReturnedArnList"
+        finding_arn:
+          type: string
           description: A list of ARNs that specifies the findings returned by the action.
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
-      required:
-        - findingArns
-    ListRulesPackagesResponse:
+    ListFindingsOutputDisplay:
       type: object
       properties:
-        rulesPackageArns:
-          $ref: "#/components/schemas/ListReturnedArnList"
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListFindingsRowDisplay"
+    ListRulesPackagesRowDisplay:
+      type: object
+      properties:
+        rules_package_arn:
+          type: string
           description: The list of ARNs that specifies the rules packages returned by the action.
-        nextToken:
-          $ref: "#/components/schemas/PaginationToken"
-          description: When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the nextToken parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
-      required:
-        - rulesPackageArns
+    ListRulesPackagesOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/ListRulesPackagesRowDisplay"
     ListTagsForResourceResponse:
       type: object
       properties:
@@ -2739,10 +2747,10 @@ components:
         - START_EVALUATION
         - SKIP_EVALUATION
   x-stackQL-resources:
-    attributes_to_findings:
-      id: aws.inspector.attributes_to_findings
-      name: attributes_to_findings
-      title: attributes_to_findings
+    findings:
+      id: aws.inspector.findings
+      name: findings
+      title: findings
       methods:
         add_attributes_to_findings:
           operation:
@@ -2757,11 +2765,67 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        describe_findings:
+          operation:
+            $ref: "#/paths/~1DescribeFindings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_findings:
+          operation:
+            $ref: "#/paths/~1ListFindings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListFindingsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "findingArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"finding_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
+            requestBodyTranslate:
+              algorithm: naive
+        remove_attributes_from_findings:
+          operation:
+            $ref: "#/paths/~1RemoveAttributesFromFindings/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+            mediaType: application/x-amz-json-1.1
+            base: "{}"
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/findings/methods/describe_findings"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/attributes_to_findings/methods/add_attributes_to_findings"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/add_attributes_to_findings"
+          - $ref: "#/components/x-stackQL-resources/findings/methods/remove_attributes_from_findings"
         delete: []
     assessment_targets:
       id: aws.inspector.assessment_targets
@@ -2812,12 +2876,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.assessmentTargetArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAssessmentTargetsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "assessmentTargetArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"assessment_target_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_assessment_target:
@@ -2891,12 +2968,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.assessmentTemplateArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAssessmentTemplatesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "assessmentTemplateArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"assessment_template_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3020,12 +3110,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.assessmentRunArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListAssessmentRunsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "assessmentRunArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"assessment_run_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3093,57 +3196,31 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.exclusionArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListExclusionsOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "exclusionArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"exclusion_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/exclusions/methods/describe_exclusions"
           - $ref: "#/components/x-stackQL-resources/exclusions/methods/list_exclusions"
-        insert: []
-        update: []
-        delete: []
-    findings:
-      id: aws.inspector.findings
-      name: findings
-      title: findings
-      methods:
-        describe_findings:
-          operation:
-            $ref: "#/paths/~1DescribeFindings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_findings:
-          operation:
-            $ref: "#/paths/~1ListFindings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-            objectKey: $.findingArns
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/findings/methods/describe_findings"
-          - $ref: "#/components/x-stackQL-resources/findings/methods/list_findings"
         insert: []
         update: []
         delete: []
@@ -3171,12 +3248,25 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-            objectKey: $.rulesPackageArns
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/ListRulesPackagesOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "rulesPackageArns" -}}{{- $tok := index . "nextToken" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"rules_package_arn": {{ toJson $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3251,6 +3341,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3276,6 +3373,13 @@ components:
             mediaType: application/x-amz-json-1.1
             base: "{}"
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -3284,10 +3388,10 @@ components:
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.inspector.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.inspector.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -3316,32 +3420,8 @@ components:
               algorithm: naive
       sqlVerbs:
         select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/set_tags_for_resource"
-        delete: []
-    attributes_from_findings:
-      id: aws.inspector.attributes_from_findings
-      name: attributes_from_findings
-      title: attributes_from_findings
-      methods:
-        remove_attributes_from_findings:
-          operation:
-            $ref: "#/paths/~1RemoveAttributesFromFindings/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-            mediaType: application/x-amz-json-1.1
-            base: "{}"
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/attributes_from_findings/methods/remove_attributes_from_findings"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/set_tags_for_resource"
         delete: []

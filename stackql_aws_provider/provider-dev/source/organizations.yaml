@@ -58,7 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AcceptHandshakeResponse'
-      x-stackql-resource: handshake
+      x-stackql-resource: handshakes
       x-stackql-method: accept_handshake
       x-stackql-verb: EXEC
   /AttachPolicy:
@@ -147,7 +147,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CancelHandshakeResponse'
-      x-stackql-resource: handshake
+      x-stackql-resource: handshakes
       x-stackql-method: cancel_handshake
       x-stackql-verb: EXEC
   /CloseAccount:
@@ -198,7 +198,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: close_account
+      x-stackql-resource: accounts
       x-stackql-method: close_account
       x-stackql-verb: EXEC
   /CreateAccount:
@@ -432,7 +432,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateGovCloudAccountResponse'
-      x-stackql-resource: gov_cloud_accounts
+      x-stackql-resource: accounts
       x-stackql-method: create_gov_cloud_account
       x-stackql-verb: INSERT
   /CreateOrganization:
@@ -637,7 +637,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeclineHandshakeResponse'
-      x-stackql-resource: decline_handshake
+      x-stackql-resource: handshakes
       x-stackql-method: decline_handshake
       x-stackql-verb: EXEC
   /DeleteOrganization:
@@ -839,6 +839,7 @@ paths:
       x-stackql-resource: accounts
       x-stackql-method: describe_account
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Account
   /DescribeCreateAccountStatus:
     post:
       operationId: DescribeCreateAccountStatus
@@ -879,6 +880,7 @@ paths:
       x-stackql-resource: create_account_status
       x-stackql-method: describe_create_account_status
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.CreateAccountStatus
   /DescribeEffectivePolicy:
     post:
       operationId: DescribeEffectivePolicy
@@ -926,6 +928,7 @@ paths:
       x-stackql-resource: effective_policies
       x-stackql-method: describe_effective_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.EffectivePolicy
   /DescribeHandshake:
     post:
       operationId: DescribeHandshake
@@ -965,6 +968,7 @@ paths:
       x-stackql-resource: handshakes
       x-stackql-method: describe_handshake
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Handshake
   /DescribeOrganization:
     post:
       operationId: DescribeOrganization
@@ -992,6 +996,7 @@ paths:
       x-stackql-resource: organizations
       x-stackql-method: describe_organization
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Organization
   /DescribeOrganizationalUnit:
     post:
       operationId: DescribeOrganizationalUnit
@@ -1032,6 +1037,7 @@ paths:
       x-stackql-resource: organizational_units
       x-stackql-method: describe_organizational_unit
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.OrganizationalUnit
   /DescribePolicy:
     post:
       operationId: DescribePolicy
@@ -1071,6 +1077,7 @@ paths:
       x-stackql-resource: policies
       x-stackql-method: describe_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.Policy
   /DescribeResourcePolicy:
     post:
       operationId: DescribeResourcePolicy
@@ -1096,6 +1103,7 @@ paths:
       x-stackql-resource: resource_policies
       x-stackql-method: describe_resource_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResourcePolicy
   /DescribeResponsibilityTransfer:
     post:
       operationId: DescribeResponsibilityTransfer
@@ -1133,6 +1141,7 @@ paths:
       x-stackql-resource: responsibility_transfers
       x-stackql-method: describe_responsibility_transfer
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.ResponsibilityTransfer
   /DetachPolicy:
     post:
       operationId: DetachPolicy
@@ -1293,7 +1302,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisablePolicyTypeResponse'
-      x-stackql-resource: policy_type
+      x-stackql-resource: policies
       x-stackql-method: disable_policy_type
       x-stackql-verb: EXEC
   /EnableAWSServiceAccess:
@@ -1429,7 +1438,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnablePolicyTypeResponse'
-      x-stackql-resource: policy_type
+      x-stackql-resource: policies
       x-stackql-method: enable_policy_type
       x-stackql-verb: EXEC
   /InviteAccountToOrganization:
@@ -1648,6 +1657,9 @@ paths:
       x-stackql-method: list_aws_service_access_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EnabledServicePrincipals
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAccounts:
     post:
       operationId: ListAccounts
@@ -1694,6 +1706,9 @@ paths:
       x-stackql-method: list_accounts
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accounts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAccountsForParent:
     post:
       operationId: ListAccountsForParent
@@ -1748,6 +1763,9 @@ paths:
       x-stackql-method: list_accounts_for_parent
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accounts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListAccountsWithInvalidEffectivePolicy:
     post:
       operationId: ListAccountsWithInvalidEffectivePolicy
@@ -1799,6 +1817,9 @@ paths:
       x-stackql-method: list_accounts_with_invalid_effective_policy
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Accounts
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListChildren:
     post:
       operationId: ListChildren
@@ -1858,6 +1879,9 @@ paths:
       x-stackql-method: list_children
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Children
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListCreateAccountStatus:
     post:
       operationId: ListCreateAccountStatus
@@ -1908,6 +1932,9 @@ paths:
       x-stackql-method: list_create_account_status
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.CreateAccountStatuses
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDelegatedAdministrators:
     post:
       operationId: ListDelegatedAdministrators
@@ -1955,6 +1982,9 @@ paths:
       x-stackql-method: list_delegated_administrators
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DelegatedAdministrators
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListDelegatedServicesForAccount:
     post:
       operationId: ListDelegatedServicesForAccount
@@ -2002,6 +2032,9 @@ paths:
       x-stackql-method: list_delegated_services_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.DelegatedServices
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListEffectivePolicyValidationErrors:
     post:
       operationId: ListEffectivePolicyValidationErrors
@@ -2056,6 +2089,9 @@ paths:
       x-stackql-method: list_effective_policy_validation_errors
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.EffectivePolicyValidationErrors
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHandshakesForAccount:
     post:
       operationId: ListHandshakesForAccount
@@ -2105,6 +2141,9 @@ paths:
       x-stackql-method: list_handshakes_for_account
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Handshakes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListHandshakesForOrganization:
     post:
       operationId: ListHandshakesForOrganization
@@ -2154,6 +2193,9 @@ paths:
       x-stackql-method: list_handshakes_for_organization
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Handshakes
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListInboundResponsibilityTransfers:
     post:
       operationId: ListInboundResponsibilityTransfers
@@ -2260,6 +2302,9 @@ paths:
       x-stackql-method: list_organizational_units_for_parent
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.OrganizationalUnits
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListOutboundResponsibilityTransfers:
     post:
       operationId: ListOutboundResponsibilityTransfers
@@ -2365,6 +2410,9 @@ paths:
       x-stackql-method: list_parents
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Parents
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPolicies:
     post:
       operationId: ListPolicies
@@ -2418,6 +2466,9 @@ paths:
       x-stackql-method: list_policies
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Policies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListPoliciesForTarget:
     post:
       operationId: ListPoliciesForTarget
@@ -2481,6 +2532,9 @@ paths:
       x-stackql-method: list_policies_for_target
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Policies
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListRoots:
     post:
       operationId: ListRoots
@@ -2529,6 +2583,9 @@ paths:
       x-stackql-method: list_roots
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Roots
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTagsForResource:
     post:
       operationId: ListTagsForResource
@@ -2573,10 +2630,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Tags
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListTargetsForPolicy:
     post:
       operationId: ListTargetsForPolicy
@@ -2629,6 +2689,9 @@ paths:
       x-stackql-method: list_targets_for_policy
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Targets
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /MoveAccount:
     post:
       operationId: MoveAccount
@@ -2676,7 +2739,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: account
+      x-stackql-resource: accounts
       x-stackql-method: move_account
       x-stackql-verb: EXEC
   /PutResourcePolicy:
@@ -2810,7 +2873,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: account_from_organizations
+      x-stackql-resource: organizations
       x-stackql-method: remove_account_from_organization
       x-stackql-verb: UPDATE
   /TagResource:
@@ -2854,7 +2917,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /TerminateResponsibilityTransfer:
@@ -2936,7 +2999,7 @@ paths:
       responses:
         '200':
           description: Success
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateOrganizationalUnit:

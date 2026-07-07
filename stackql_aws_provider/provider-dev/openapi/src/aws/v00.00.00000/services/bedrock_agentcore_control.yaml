@@ -13813,6 +13813,14 @@ components:
             objectKey: $.agentRuntimes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_agent_runtime:
           operation:
             $ref: "#/paths/~1runtimes~1{agent_runtime_id}~1/delete"
@@ -13875,6 +13883,14 @@ components:
             objectKey: $.runtimeEndpoints
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_agent_runtime_endpoint:
           operation:
             $ref: "#/paths/~1runtimes~1{agent_runtime_id}~1runtime-endpoints~1{endpoint_name}~1/delete"
@@ -13958,6 +13974,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_api_key_credential_provider:
@@ -14006,6 +14029,14 @@ components:
             objectKey: $.browserSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_browser:
           operation:
             $ref: "#/paths/~1browsers~1{browser_id}/delete"
@@ -14055,6 +14086,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         delete_browser_profile:
@@ -14105,6 +14143,14 @@ components:
             objectKey: $.codeInterpreterSummaries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_code_interpreter:
           operation:
             $ref: "#/paths/~1code-interpreters~1{code_interpreter_id}/delete"
@@ -14178,6 +14224,14 @@ components:
             objectKey: $.bundles
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/configuration_bundles/methods/get_configuration_bundle"
@@ -14238,6 +14292,14 @@ components:
             objectKey: $.evaluators
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/evaluators/methods/get_evaluator"
@@ -14273,6 +14335,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_gateway:
           operation:
             $ref: "#/paths/~1gateways~1{gateway_identifier}~1/delete"
@@ -14331,6 +14401,14 @@ components:
             objectKey: $.gatewayRules
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_gateway_rule:
           operation:
             $ref: "#/paths/~1gateways~1{gateway_identifier}~1rules~1{rule_id}/delete"
@@ -14389,6 +14467,14 @@ components:
             objectKey: $.items_
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_gateway_target:
           operation:
             $ref: "#/paths/~1gateways~1{gateway_identifier}~1targets~1{target_id}~1/delete"
@@ -14404,6 +14490,17 @@ components:
         update_gateway_target:
           operation:
             $ref: "#/paths/~1gateways~1{gateway_identifier}~1targets~1{target_id}~1/put"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        synchronize_gateway_targets:
+          operation:
+            $ref: "#/paths/~1gateways~1{gateway_identifier}~1synchronizeTargets/put"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
@@ -14452,6 +14549,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.harness
         update_harness:
           operation:
             $ref: "#/paths/~1harnesses~1{harness_id}/patch"
@@ -14486,6 +14584,14 @@ components:
             objectKey: $.harnesses
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/harnesses/methods/list_harnesses"
@@ -14522,6 +14628,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.memory
           request:
             nativeCasing: pascal
         list_memories:
@@ -14534,6 +14641,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_memory:
@@ -14605,6 +14719,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_oauth2_credential_provider:
@@ -14676,6 +14797,14 @@ components:
             objectKey: $.onlineEvaluationConfigs
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/online_evaluation_configs/methods/get_online_evaluation_config"
@@ -14736,6 +14865,14 @@ components:
             objectKey: $.paymentConnectors
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/payment_connectors/methods/get_payment_connector"
@@ -14794,6 +14931,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_payment_credential_provider:
@@ -14867,6 +15011,14 @@ components:
             objectKey: $.paymentManagers
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/payment_managers/methods/get_payment_manager"
@@ -14902,6 +15054,14 @@ components:
             objectKey: $.policies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_policy:
           operation:
             $ref: "#/paths/~1policy-engines~1{policy_engine_id}~1policies~1{policy_id}/delete"
@@ -14917,6 +15077,17 @@ components:
         update_policy:
           operation:
             $ref: "#/paths/~1policy-engines~1{policy_engine_id}~1policies~1{policy_id}/patch"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        start_policy_generation:
+          operation:
+            $ref: "#/paths/~1policy-engines~1{policy_engine_id}~1policy-generations/post"
           response:
             openAPIDocKey: "202"
             mediaType: application/json
@@ -14960,6 +15131,14 @@ components:
             objectKey: $.policyEngines
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_policy_engine:
           operation:
             $ref: "#/paths/~1policy-engines~1{policy_engine_id}/delete"
@@ -15018,6 +15197,14 @@ components:
             objectKey: $.registries
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_registry:
           operation:
             $ref: "#/paths/~1registries~1{registry_id}/delete"
@@ -15076,6 +15263,14 @@ components:
             objectKey: $.registryRecords
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
         delete_registry_record:
           operation:
             $ref: "#/paths/~1registries~1{registry_id}~1records~1{record_id}/delete"
@@ -15099,6 +15294,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        submit_registry_record_for_approval:
+          operation:
+            $ref: "#/paths/~1registries~1{registry_id}~1records~1{record_id}~1submit-for-approval/post"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+        update_registry_record_status:
+          operation:
+            $ref: "#/paths/~1registries~1{registry_id}~1records~1{record_id}~1status/patch"
+          response:
+            openAPIDocKey: "202"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/registry_records/methods/get_registry_record"
@@ -15106,6 +15318,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/registry_records/methods/create_registry_record"
         update:
+          - $ref: "#/components/x-stackQL-resources/registry_records/methods/update_registry_record_status"
           - $ref: "#/components/x-stackQL-resources/registry_records/methods/update_registry_record"
         delete:
           - $ref: "#/components/x-stackQL-resources/registry_records/methods/delete_registry_record"
@@ -15157,6 +15370,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: body
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
         update_workload_identity:
@@ -15238,6 +15458,13 @@ components:
           request:
             nativeCasing: pascal
           config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
             requestBodyTranslate:
               algorithm: naive
       sqlVerbs:
@@ -15267,6 +15494,14 @@ components:
             objectKey: $.policyEngines
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_engine_summaries/methods/get_policy_engine_summary"
@@ -15294,6 +15529,14 @@ components:
             objectKey: $.policyGenerations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generations/methods/get_policy_generation"
@@ -15321,6 +15564,14 @@ components:
             objectKey: $.policyGenerations
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generation_summaries/methods/get_policy_generation_summary"
@@ -15348,6 +15599,14 @@ components:
             objectKey: $.policies
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_summaries/methods/get_policy_summary"
@@ -15371,11 +15630,23 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        set_token_vault_cmk:
+          operation:
+            $ref: "#/paths/~1identities~1set-token-vault-cmk/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/token_vaults/methods/get_token_vault"
         insert: []
-        update: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/token_vaults/methods/set_token_vault_cmk"
         delete: []
     agent_runtime_versions:
       id: aws.bedrock_agentcore_control.agent_runtime_versions
@@ -15391,6 +15662,14 @@ components:
             objectKey: $.agentRuntimes
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/agent_runtime_versions/methods/list_agent_runtime_versions"
@@ -15411,16 +15690,24 @@ components:
             objectKey: $.policyGenerationAssets
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: nextToken
+                location: query
+              responseToken:
+                key: $.nextToken
+                location: body
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/policy_generation_assets/methods/list_policy_generation_assets"
         insert: []
         update: []
         delete: []
-    tags_for_resources:
-      id: aws.bedrock_agentcore_control.tags_for_resources
-      name: tags_for_resources
-      title: tags_for_resources
+    tags:
+      id: aws.bedrock_agentcore_control.tags
+      name: tags
+      title: tags
       methods:
         list_tags_for_resource:
           operation:
@@ -15428,17 +15715,6 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/tags_for_resources/methods/list_tags_for_resource"
-        insert: []
-        update: []
-        delete: []
-    resources:
-      id: aws.bedrock_agentcore_control.resources
-      name: resources
-      title: resources
-      methods:
         tag_resource:
           operation:
             $ref: "#/paths/~1tags~1{resource_arn}/post"
@@ -15459,53 +15735,10 @@ components:
           request:
             nativeCasing: pascal
       sqlVerbs:
-        select: []
+        select:
+          - $ref: "#/components/x-stackQL-resources/tags/methods/list_tags_for_resource"
         insert: []
         update:
-          - $ref: "#/components/x-stackQL-resources/resources/methods/tag_resource"
-          - $ref: "#/components/x-stackQL-resources/resources/methods/untag_resource"
-        delete: []
-    token_vault_cmks:
-      id: aws.bedrock_agentcore_control.token_vault_cmks
-      name: token_vault_cmks
-      title: token_vault_cmks
-      methods:
-        set_token_vault_cmk:
-          operation:
-            $ref: "#/paths/~1identities~1set-token-vault-cmk/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/token_vault_cmks/methods/set_token_vault_cmk"
-        delete: []
-    registry_record_status:
-      id: aws.bedrock_agentcore_control.registry_record_status
-      name: registry_record_status
-      title: registry_record_status
-      methods:
-        update_registry_record_status:
-          operation:
-            $ref: "#/paths/~1registries~1{registry_id}~1records~1{record_id}~1status/patch"
-          response:
-            openAPIDocKey: "202"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/registry_record_status/methods/update_registry_record_status"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/tag_resource"
+          - $ref: "#/components/x-stackQL-resources/tags/methods/untag_resource"
         delete: []

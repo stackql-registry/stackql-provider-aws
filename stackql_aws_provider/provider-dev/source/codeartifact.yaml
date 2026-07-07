@@ -273,6 +273,7 @@ paths:
       x-stackql-resource: domains
       x-stackql-method: describe_domain
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.domain
   /v1/package-group:
     post:
       operationId: CreatePackageGroup
@@ -388,6 +389,7 @@ paths:
       x-stackql-resource: package_groups
       x-stackql-method: describe_package_group
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.packageGroup
     put:
       operationId: UpdatePackageGroup
       description: Updates a package group. This API cannot be used to update a package group's origin configuration or pattern.
@@ -544,6 +546,7 @@ paths:
       x-stackql-resource: repositories
       x-stackql-method: describe_repository
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.repository
     put:
       operationId: UpdateRepository
       description: Update the properties of a repository.
@@ -652,6 +655,7 @@ paths:
       x-stackql-resource: domain_permissions_policies
       x-stackql-method: get_domain_permissions_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.policy
     put:
       operationId: PutDomainPermissionsPolicy
       description: Sets a resource policy on a domain that specifies permissions to access it. When you call PutDomainPermissionsPolicy,
@@ -798,6 +802,7 @@ paths:
       x-stackql-resource: packages
       x-stackql-method: describe_package
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.package
     post:
       operationId: PutPackageOriginConfiguration
       description: Sets the package origin configuration for a package. The package origin configuration determines how new
@@ -868,7 +873,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PutPackageOriginConfigurationResult'
-      x-stackql-resource: package_origin_configurations
+      x-stackql-resource: packages
       x-stackql-method: put_package_origin_configuration
       x-stackql-verb: REPLACE
   /v1/package/versions/delete:
@@ -1049,6 +1054,7 @@ paths:
       x-stackql-resource: package_versions
       x-stackql-method: describe_package_version
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.packageVersion
   /v1/package/versions/dispose:
     post:
       operationId: DisposePackageVersions
@@ -1120,7 +1126,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DisposePackageVersionsResult'
-      x-stackql-resource: dispose_package_versions
+      x-stackql-resource: package_versions
       x-stackql-method: dispose_package_versions
       x-stackql-verb: EXEC
   /v1/get-associated-package-group:
@@ -1447,6 +1453,7 @@ paths:
       x-stackql-resource: repository_permissions_policies
       x-stackql-method: get_repository_permissions_policy
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.policy
     put:
       operationId: PutRepositoryPermissionsPolicy
       description: Sets the resource policy on a repository that specifies permissions to access it. When you call PutRepositoryPermissionsPolicy,
@@ -1546,11 +1553,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAllowedRepositoriesForGroupResult'
+                $ref: '#/components/schemas/ListAllowedRepositoriesForGroupOutputDisplay'
       x-stackql-resource: allowed_repositories_for_groups
       x-stackql-method: list_allowed_repositories_for_group
       x-stackql-verb: SELECT
-      x-stackql-objectKey: $.allowedRepositories
+      x-stackql-responseEnvelope: ListAllowedRepositoriesForGroupOutputDisplay
+      x-stackql-responseObjectKey: $.line_items
+      x-stackql-transform-type: golang_template_json_v0.3.0
+      x-stackql-transform-body: '{{- $lst := index . "allowedRepositories" -}}{{- $tok := index . "nextToken" -}}{"line_items":
+        [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"allowed_repository": {{ toJson
+        $v }}}{{- end -}}{{- end -}}]{{- if $tok }}, "nextToken": {{ toJson $tok }}{{- end }}}'
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/list-associated-packages:
     get:
       operationId: ListAssociatedPackages
@@ -1607,6 +1622,9 @@ paths:
       x-stackql-method: list_associated_packages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.packages
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/domains:
     post:
       operationId: ListDomains
@@ -1635,6 +1653,9 @@ paths:
       x-stackql-method: list_domains
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.domains
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/package-groups:
     post:
       operationId: ListPackageGroups
@@ -1684,6 +1705,9 @@ paths:
       x-stackql-method: list_package_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.packageGroups
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/package/version/assets:
     post:
       operationId: ListPackageVersionAssets
@@ -1761,6 +1785,9 @@ paths:
       x-stackql-method: list_package_version_assets
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.assets
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/package/version/dependencies:
     post:
       operationId: ListPackageVersionDependencies
@@ -1925,6 +1952,9 @@ paths:
       x-stackql-method: list_package_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.versions
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/packages:
     post:
       operationId: ListPackages
@@ -2011,6 +2041,9 @@ paths:
       x-stackql-method: list_packages
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.packages
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/repositories:
     post:
       operationId: ListRepositories
@@ -2048,6 +2081,9 @@ paths:
       x-stackql-method: list_repositories
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.repositories
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/domain/repositories:
     post:
       operationId: ListRepositoriesInDomain
@@ -2105,6 +2141,9 @@ paths:
       x-stackql-method: list_repositories_in_domain
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.repositories
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/package-groups/sub-groups:
     post:
       operationId: ListSubPackageGroups
@@ -2154,6 +2193,9 @@ paths:
       x-stackql-method: list_sub_package_groups
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.packageGroups
+      x-stackql-pagination-request-token-key: next-token
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /v1/tags:
     post:
       operationId: ListTagsForResource
@@ -2172,7 +2214,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResult'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /v1/package/version/publish:
@@ -2269,7 +2311,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublishPackageVersionResult'
-      x-stackql-resource: package_version
+      x-stackql-resource: packages
       x-stackql-method: publish_package_version
       x-stackql-verb: EXEC
   /v1/tag:
@@ -2301,7 +2343,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /v1/untag:
@@ -2333,7 +2375,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResult'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /v1/package-group-origin-configuration:
@@ -2384,7 +2426,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePackageGroupOriginConfigurationResult'
-      x-stackql-resource: package_group_origin_configurations
+      x-stackql-resource: package_groups
       x-stackql-method: update_package_group_origin_configuration
       x-stackql-verb: UPDATE
   /v1/package/versions/update_status:
@@ -2461,7 +2503,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UpdatePackageVersionsStatusResult'
-      x-stackql-resource: package_versions_status
+      x-stackql-resource: package_versions
       x-stackql-method: update_package_versions_status
       x-stackql-verb: UPDATE
 components:
@@ -3260,20 +3302,19 @@ components:
       minLength: 1
       maxLength: 2000
       pattern: \S+
-    ListAllowedRepositoriesForGroupResult:
+    ListAllowedRepositoriesForGroupRowDisplay:
       type: object
       properties:
-        allowedRepositories:
-          $ref: '#/components/schemas/RepositoryNameList'
+        allowed_repository:
+          type: string
           description: The list of allowed repositories for the package group and origin configuration restriction type.
-        nextToken:
-          $ref: '#/components/schemas/PaginationToken'
-          description: The token for the next set of results. Use the value returned in the previous response in the next
-            request to retrieve the next set of results.
-    RepositoryNameList:
-      type: array
-      items:
-        $ref: '#/components/schemas/RepositoryName'
+    ListAllowedRepositoriesForGroupOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/ListAllowedRepositoriesForGroupRowDisplay'
     ListPackagesMaxResults:
       type: integer
       minimum: 1

@@ -326,7 +326,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
   /ListTaskInstances:
@@ -377,6 +377,9 @@ paths:
       x-stackql-method: list_task_instances
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.TaskInstances
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkflowRuns:
     post:
       operationId: ListWorkflowRuns
@@ -425,6 +428,9 @@ paths:
       x-stackql-method: list_workflow_runs
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkflowRuns
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkflowVersions:
     post:
       operationId: ListWorkflowVersions
@@ -469,6 +475,9 @@ paths:
       x-stackql-method: list_workflow_versions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.WorkflowVersions
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /ListWorkflows:
     post:
       operationId: ListWorkflows
@@ -512,6 +521,9 @@ paths:
       x-stackql-method: list_workflows
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.Workflows
+      x-stackql-pagination-request-token-key: NextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.NextToken
   /StartWorkflowRun:
     post:
       operationId: StartWorkflowRun
@@ -563,7 +575,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StartWorkflowRunResponse'
-      x-stackql-resource: workflow_run
+      x-stackql-resource: workflows
       x-stackql-method: start_workflow_run
       x-stackql-verb: EXEC
   /StopWorkflowRun:
@@ -607,7 +619,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/StopWorkflowRunResponse'
-      x-stackql-resource: workflow_run
+      x-stackql-resource: workflows
       x-stackql-method: stop_workflow_run
       x-stackql-verb: EXEC
   /TagResource:
@@ -648,7 +660,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
   /UntagResource:
@@ -690,7 +702,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /UpdateWorkflow:

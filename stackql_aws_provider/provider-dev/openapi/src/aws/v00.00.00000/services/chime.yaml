@@ -303,8 +303,6 @@ paths:
               properties:
                 Name:
                   $ref: "#/components/schemas/AccountName"
-              required:
-                - Name
       responses:
         "201":
           description: Success
@@ -1697,7 +1695,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/SearchAvailablePhoneNumbersResponse"
+                $ref: "#/components/schemas/SearchAvailablePhoneNumbersOutputDisplay"
 components:
   parameters:
     X-Amz-Content-Sha256:
@@ -2805,15 +2803,19 @@ components:
       type: integer
       minimum: 1
       maximum: 500
-    SearchAvailablePhoneNumbersResponse:
+    SearchAvailablePhoneNumbersRowDisplay:
       type: object
       properties:
-        E164PhoneNumbers:
-          $ref: "#/components/schemas/E164PhoneNumberList"
+        e164_phone_number:
+          type: string
           description: List of phone numbers, in E.164 format.
-        NextToken:
-          $ref: "#/components/schemas/String"
-          description: The token used to retrieve the next page of search results.
+    SearchAvailablePhoneNumbersOutputDisplay:
+      type: object
+      properties:
+        line_items:
+          type: array
+          items:
+            $ref: "#/components/schemas/SearchAvailablePhoneNumbersRowDisplay"
     UpdateAccountResponse:
       type: object
       properties:
@@ -2853,10 +2855,10 @@ components:
           $ref: "#/components/schemas/User"
           description: The updated user details.
   x-stackQL-resources:
-    phone_number_with_users:
-      id: aws.chime.phone_number_with_users
-      name: phone_number_with_users
-      title: phone_number_with_users
+    users:
+      id: aws.chime.users
+      name: users
+      title: users
       methods:
         associate_phone_number_with_user:
           operation:
@@ -2869,39 +2871,6 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_number_with_users/methods/associate_phone_number_with_user"
-        delete: []
-    signin_delegate_groups_with_accounts:
-      id: aws.chime.signin_delegate_groups_with_accounts
-      name: signin_delegate_groups_with_accounts
-      title: signin_delegate_groups_with_accounts
-      methods:
-        associate_signin_delegate_groups_with_account:
-          operation:
-            $ref: "#/paths/~1accounts~1{account_id}?operation=associate-signin-delegate-groups/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/signin_delegate_groups_with_accounts/methods/associate_signin_delegate_groups_with_account"
-        delete: []
-    users:
-      id: aws.chime.users
-      name: users
-      title: users
-      methods:
         list_users:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1users/get"
@@ -2911,6 +2880,14 @@ components:
             objectKey: $.Users
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         create_user:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1users?operation=create/post"
@@ -2922,17 +2899,35 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disassociate_phone_number_from_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}?operation=disassociate-phone-number/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
         get_user:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}/get"
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.User
         update_user:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}/post"
           response:
             openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        invite_users:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1users?operation=add/post"
+          response:
+            openAPIDocKey: "201"
             mediaType: application/json
           request:
             nativeCasing: pascal
@@ -2946,6 +2941,7 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/users/methods/create_user"
         update:
+          - $ref: "#/components/x-stackQL-resources/users/methods/associate_phone_number_with_user"
           - $ref: "#/components/x-stackQL-resources/users/methods/update_user"
         delete: []
     accounts:
@@ -2953,6 +2949,61 @@ components:
       name: accounts
       title: accounts
       methods:
+        associate_signin_delegate_groups_with_account:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}?operation=associate-signin-delegate-groups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_create_room_membership:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1rooms~1{room_id}~1memberships?operation=batch-create/post"
+          response:
+            openAPIDocKey: "201"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_suspend_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1users?operation=suspend/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_unsuspend_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1users?operation=unsuspend/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        batch_update_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1users/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
         create_account:
           operation:
             $ref: "#/paths/~1accounts/post"
@@ -2973,6 +3024,14 @@ components:
             objectKey: $.Accounts
           request:
             nativeCasing: pascal
+          config:
+            pagination:
+              requestToken:
+                key: next-token
+                location: query
+              responseToken:
+                key: $.NextToken
+                location: body
         delete_account:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}/delete"
@@ -2985,6 +3044,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Account
         update_account:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}/post"
@@ -2996,6 +3056,47 @@ components:
           config:
             requestBodyTranslate:
               algorithm: naive
+        disassociate_signin_delegate_groups_from_account:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}?operation=disassociate-signin-delegate-groups/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        logout_user:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}?operation=logout/post"
+          response:
+            openAPIDocKey: "204"
+            mediaType: application/json
+        redact_conversation_message:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1conversations~1{conversation_id}~1messages~1{message_id}?operation=redact/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        redact_room_message:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1rooms~1{room_id}~1messages~1{message_id}?operation=redact/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        regenerate_security_token:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1bots~1{bot_id}?operation=regenerate-security-token/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+        reset_personal_pin:
+          operation:
+            $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}?operation=reset-personal-pin/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/accounts/methods/get_account"
@@ -3003,9 +3104,73 @@ components:
         insert:
           - $ref: "#/components/x-stackQL-resources/accounts/methods/create_account"
         update:
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/associate_signin_delegate_groups_with_account"
+          - $ref: "#/components/x-stackQL-resources/accounts/methods/disassociate_signin_delegate_groups_from_account"
           - $ref: "#/components/x-stackQL-resources/accounts/methods/update_account"
         delete:
           - $ref: "#/components/x-stackQL-resources/accounts/methods/delete_account"
+    phone_numbers:
+      id: aws.chime.phone_numbers
+      name: phone_numbers
+      title: phone_numbers
+      methods:
+        batch_delete_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers?operation=batch-delete/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        delete_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/delete"
+          response:
+            openAPIDocKey: "204"
+        get_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+            objectKey: $.PhoneNumber
+        update_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+          config:
+            requestBodyTranslate:
+              algorithm: naive
+        list_phone_numbers:
+          operation:
+            $ref: "#/paths/~1phone-numbers/get"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+          request:
+            nativeCasing: pascal
+        restore_phone_number:
+          operation:
+            $ref: "#/paths/~1phone-numbers~1{phone_number_id}?operation=restore/post"
+          response:
+            openAPIDocKey: "200"
+            mediaType: application/json
+      sqlVerbs:
+        select:
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/get_phone_number"
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/list_phone_numbers"
+        insert: []
+        update:
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/update_phone_number"
+        delete:
+          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/delete_phone_number"
     bots:
       id: aws.chime.bots
       name: bots
@@ -3036,6 +3201,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Bot
         update_bot:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1bots~1{bot_id}/post"
@@ -3108,6 +3274,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.PhoneNumberOrder
       sqlVerbs:
         select:
           - $ref: "#/components/x-stackQL-resources/phone_number_orders/methods/get_phone_number_order"
@@ -3151,6 +3318,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.Room
         update_room:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1rooms~1{room_id}/post"
@@ -3237,6 +3405,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.EventsConfiguration
         put_events_configuration:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1bots~1{bot_id}~1events-configuration/put"
@@ -3257,89 +3426,6 @@ components:
           - $ref: "#/components/x-stackQL-resources/events_configurations/methods/put_events_configuration"
         delete:
           - $ref: "#/components/x-stackQL-resources/events_configurations/methods/delete_events_configuration"
-    phone_numbers:
-      id: aws.chime.phone_numbers
-      name: phone_numbers
-      title: phone_numbers
-      methods:
-        delete_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/delete"
-          response:
-            openAPIDocKey: "204"
-        get_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-        update_phone_number:
-          operation:
-            $ref: "#/paths/~1phone-numbers~1{phone_number_id}/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-        list_phone_numbers:
-          operation:
-            $ref: "#/paths/~1phone-numbers/get"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-      sqlVerbs:
-        select:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/get_phone_number"
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/list_phone_numbers"
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/update_phone_number"
-        delete:
-          - $ref: "#/components/x-stackQL-resources/phone_numbers/methods/delete_phone_number"
-    phone_number_from_users:
-      id: aws.chime.phone_number_from_users
-      name: phone_number_from_users
-      title: phone_number_from_users
-      methods:
-        disassociate_phone_number_from_user:
-          operation:
-            $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}?operation=disassociate-phone-number/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/phone_number_from_users/methods/disassociate_phone_number_from_user"
-        delete: []
-    signin_delegate_groups_from_accounts:
-      id: aws.chime.signin_delegate_groups_from_accounts
-      name: signin_delegate_groups_from_accounts
-      title: signin_delegate_groups_from_accounts
-      methods:
-        disassociate_signin_delegate_groups_from_account:
-          operation:
-            $ref: "#/paths/~1accounts~1{account_id}?operation=disassociate-signin-delegate-groups/post"
-          response:
-            openAPIDocKey: "200"
-            mediaType: application/json
-          request:
-            nativeCasing: pascal
-          config:
-            requestBodyTranslate:
-              algorithm: naive
-      sqlVerbs:
-        select: []
-        insert: []
-        update:
-          - $ref: "#/components/x-stackQL-resources/signin_delegate_groups_from_accounts/methods/disassociate_signin_delegate_groups_from_account"
-        delete: []
     account_settings:
       id: aws.chime.account_settings
       name: account_settings
@@ -3351,6 +3437,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.AccountSettings
         update_account_settings:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1settings/put"
@@ -3466,6 +3553,7 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            objectKey: $.UserSettings
         update_user_settings:
           operation:
             $ref: "#/paths/~1accounts~1{account_id}~1users~1{user_id}~1settings/put"
@@ -3513,6 +3601,13 @@ components:
           response:
             openAPIDocKey: "200"
             mediaType: application/json
+            overrideMediaType: application/json
+            schema_override:
+              $ref: "#/components/schemas/SearchAvailablePhoneNumbersOutputDisplay"
+            transform:
+              type: golang_template_json_v0.3.0
+              body: '{{- $lst := index . "E164PhoneNumbers" -}}{"line_items": [{{- if eq (kindOf $lst) "slice" -}}{{- range $i, $v := $lst -}}{{- if $i }},{{ end }}{"e164_phone_number": {{ toJson $v }}}{{- end -}}{{- end -}}]}'
+            objectKey: $.line_items
           request:
             nativeCasing: pascal
       sqlVerbs:

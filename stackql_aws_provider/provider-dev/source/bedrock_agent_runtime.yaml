@@ -90,6 +90,9 @@ paths:
       x-stackql-method: list_invocations
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.invocationSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /sessions/:
     put:
       operationId: CreateSession
@@ -157,6 +160,9 @@ paths:
       x-stackql-method: list_sessions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.sessionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /agents/{agent_id}/agentAliases/{agent_alias_id}/memories:
     delete:
       operationId: DeleteAgentMemory
@@ -250,6 +256,9 @@ paths:
       x-stackql-method: get_agent_memory
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.memoryContents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /sessions/{session_identifier}/:
     delete:
       operationId: DeleteSession
@@ -348,7 +357,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EndSessionResponse'
-      x-stackql-resource: end_session
+      x-stackql-resource: sessions
       x-stackql-method: end_session
       x-stackql-verb: EXEC
   /generateQuery:
@@ -491,6 +500,7 @@ paths:
       x-stackql-resource: invocation_steps
       x-stackql-method: get_invocation_step
       x-stackql-verb: SELECT
+      x-stackql-objectKey: $.invocationStep
   /agents/{agent_id}/agentAliases/{agent_alias_id}/sessions/{session_id}/text:
     post:
       operationId: InvokeAgent
@@ -560,7 +570,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeAgentResponse'
-      x-stackql-resource: agent
+      x-stackql-resource: sessions
       x-stackql-method: invoke_agent
       x-stackql-verb: EXEC
   /flows/{flow_identifier}/aliases/{flow_alias_identifier}:
@@ -686,7 +696,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InvokeInlineAgentResponse'
-      x-stackql-resource: inline_agent
+      x-stackql-resource: sessions
       x-stackql-method: invoke_inline_agent
       x-stackql-verb: EXEC
   /flows/{flow_identifier}/aliases/{flow_alias_identifier}/executions/{execution_identifier}/events:
@@ -745,6 +755,9 @@ paths:
       x-stackql-method: list_flow_execution_events
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.flowExecutionEvents
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /flows/{flow_identifier}/executions:
     get:
       operationId: ListFlowExecutions
@@ -789,6 +802,9 @@ paths:
       x-stackql-method: list_flow_executions
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.flowExecutionSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
   /sessions/{session_identifier}/invocationSteps/:
     post:
       operationId: ListInvocationSteps
@@ -837,6 +853,9 @@ paths:
       x-stackql-method: list_invocation_steps
       x-stackql-verb: SELECT
       x-stackql-objectKey: $.invocationStepSummaries
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: query
+      x-stackql-pagination-response-token-key: $.nextToken
     put:
       operationId: PutInvocationStep
       description: 'Add an invocation step to an invocation in a session. An invocation step stores fine-grained state checkpoints,
@@ -898,7 +917,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListTagsForResourceResponse'
-      x-stackql-resource: tags_for_resources
+      x-stackql-resource: tags
       x-stackql-method: list_tags_for_resource
       x-stackql-verb: SELECT
     post:
@@ -930,7 +949,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: tag_resource
       x-stackql-verb: UPDATE
     delete:
@@ -956,7 +975,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UntagResourceResponse'
-      x-stackql-resource: resources
+      x-stackql-resource: tags
       x-stackql-method: untag_resource
       x-stackql-verb: UPDATE
   /optimize-prompt:
@@ -1024,6 +1043,9 @@ paths:
       x-stackql-resource: rerank
       x-stackql-method: rerank
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /knowledgebases/{knowledge_base_id}/retrieve:
     post:
       operationId: Retrieve
@@ -1062,6 +1084,9 @@ paths:
       x-stackql-resource: retrieve
       x-stackql-method: retrieve
       x-stackql-verb: EXEC
+      x-stackql-pagination-request-token-key: nextToken
+      x-stackql-pagination-request-token-location: body
+      x-stackql-pagination-response-token-key: $.nextToken
   /retrieveAndGenerate:
     post:
       operationId: RetrieveAndGenerate
