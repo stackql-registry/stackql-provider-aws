@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_database"
     values={[
-        { label: 'get_database', value: 'get_database' }
+        { label: 'get_database', value: 'get_database' },
+        { label: 'list_databases', value: 'list_databases' }
     ]}
 >
 <TabItem value="get_database">
@@ -58,6 +59,50 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="Tags" /></td>
     <td><code>object</code></td>
     <td>The tags of a database.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_databases">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="ApplicationId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the application. (pattern: &lt;code&gt;&#91;\w\d\.-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the database. (pattern: &lt;code&gt;arn:(.+:)&#123;2,4&#125;.+$|^arn:(.+:)&#123;1,3&#125;.+\/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ComponentId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the component. (pattern: &lt;code&gt;&#91;\w\d-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DatabaseId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the database. (pattern: &lt;code&gt;.*&#91;\w\d&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DatabaseType" /></td>
+    <td><code>string</code></td>
+    <td>The type of the database. (SYSTEM, TENANT)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Tags" /></td>
+    <td><code>object</code></td>
+    <td>The tags of the database.</td>
 </tr>
 </tbody>
 </table>
@@ -88,7 +133,7 @@ The following methods are available for this resource:
 </tr>
 <tr>
     <td><a href="#list_databases"><CopyableCode code="list_databases" /></a></td>
-    <td><CopyableCode code="exec" /></td>
+    <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP.</td>
@@ -122,7 +167,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_database"
     values={[
-        { label: 'get_database', value: 'get_database' }
+        { label: 'get_database', value: 'get_database' },
+        { label: 'list_databases', value: 'list_databases' }
     ]}
 >
 <TabItem value="get_database">
@@ -138,31 +184,20 @@ WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_databases"
-    values={[
-        { label: 'list_databases', value: 'list_databases' }
-    ]}
->
 <TabItem value="list_databases">
 
 Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP.
 
 ```sql
-EXEC aws.ssm_sap.databases.list_databases 
-@region='{{ region }}' --required 
-@@json=
-'{
-"ApplicationId": "{{ ApplicationId }}", 
-"ComponentId": "{{ ComponentId }}", 
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
+SELECT
+ApplicationId,
+Arn,
+ComponentId,
+DatabaseId,
+DatabaseType,
+Tags
+FROM aws.ssm_sap.databases
+WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_vector_bucket"
     values={[
-        { label: 'get_vector_bucket', value: 'get_vector_bucket' }
+        { label: 'get_vector_bucket', value: 'get_vector_bucket' },
+        { label: 'list_vector_buckets', value: 'list_vector_buckets' }
     ]}
 >
 <TabItem value="get_vector_bucket">
@@ -58,6 +59,35 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="encryptionConfiguration" /></td>
     <td><code>object</code></td>
     <td>The encryption configuration for a vector bucket or index. By default, if you don't specify, all new vectors in Amazon S3 vector buckets use server-side encryption with Amazon S3 managed keys (SSE-S3), specifically AES256. You can optionally override bucket level encryption settings, and set a specific encryption configuration for a vector index at the time of index creation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vectorBucketArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the vector bucket. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:s3vectors:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vectorBucketName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the vector bucket.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_vector_buckets">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="creationTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>Date and time when the vector bucket was created.</td>
 </tr>
 <tr>
     <td><CopyableCode code="vectorBucketArn" /></td>
@@ -97,6 +127,13 @@ The following methods are available for this resource:
     <td>Returns vector bucket attributes. To specify the bucket, you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:GetVectorBucket permission to use this operation.</td>
 </tr>
 <tr>
+    <td><a href="#list_vector_buckets"><CopyableCode code="list_vector_buckets" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of all the vector buckets that are owned by the authenticated sender of the request. Permissions You must have the s3vectors:ListVectorBuckets permission to use this operation.</td>
+</tr>
+<tr>
     <td><a href="#create_vector_bucket"><CopyableCode code="create_vector_bucket" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-vectorBucketName"><code>vectorBucketName</code></a></td>
@@ -109,13 +146,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a vector bucket. All vector indexes in the vector bucket must be deleted before the vector bucket can be deleted. To perform this operation, you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:DeleteVectorBucket permission to use this operation.</td>
-</tr>
-<tr>
-    <td><a href="#list_vector_buckets"><CopyableCode code="list_vector_buckets" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns a list of all the vector buckets that are owned by the authenticated sender of the request. Permissions You must have the s3vectors:ListVectorBuckets permission to use this operation.</td>
 </tr>
 </tbody>
 </table>
@@ -146,7 +176,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_vector_bucket"
     values={[
-        { label: 'get_vector_bucket', value: 'get_vector_bucket' }
+        { label: 'get_vector_bucket', value: 'get_vector_bucket' },
+        { label: 'list_vector_buckets', value: 'list_vector_buckets' }
     ]}
 >
 <TabItem value="get_vector_bucket">
@@ -157,6 +188,20 @@ Returns vector bucket attributes. To specify the bucket, you must use either the
 SELECT
 creationTime,
 encryptionConfiguration,
+vectorBucketArn,
+vectorBucketName
+FROM aws.s3vectors.vector_buckets
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_vector_buckets">
+
+Returns a list of all the vector buckets that are owned by the authenticated sender of the request. Permissions You must have the s3vectors:ListVectorBuckets permission to use this operation.
+
+```sql
+SELECT
+creationTime,
 vectorBucketArn,
 vectorBucketName
 FROM aws.s3vectors.vector_buckets
@@ -236,33 +281,6 @@ Deletes a vector bucket. All vector indexes in the vector bucket must be deleted
 ```sql
 DELETE FROM aws.s3vectors.vector_buckets
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_vector_buckets"
-    values={[
-        { label: 'list_vector_buckets', value: 'list_vector_buckets' }
-    ]}
->
-<TabItem value="list_vector_buckets">
-
-Returns a list of all the vector buckets that are owned by the authenticated sender of the request. Permissions You must have the s3vectors:ListVectorBuckets permission to use this operation.
-
-```sql
-EXEC aws.s3vectors.vector_buckets.list_vector_buckets 
-@region='{{ region }}' --required 
-@@json=
-'{
-"maxResults": {{ maxResults }}, 
-"nextToken": "{{ nextToken }}", 
-"prefix": "{{ prefix }}"
-}'
 ;
 ```
 </TabItem>

@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_group"
     values={[
-        { label: 'get_group', value: 'get_group' }
+        { label: 'get_group', value: 'get_group' },
+        { label: 'list_groups', value: 'list_groups' }
     ]}
 >
 <TabItem value="get_group">
@@ -87,6 +88,50 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_groups">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Criticality" /></td>
+    <td><code>integer</code></td>
+    <td>The critical rank of the application group on a scale of 1 to 10, with a rank of 1 being the most critical, and a rank of 10 being least critical.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Description" /></td>
+    <td><code>string</code></td>
+    <td>The description of the application group. (pattern: &lt;code&gt;&#91;\sa-zA-Z0-9_\.-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DisplayName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the application group, which you can change at any time. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="GroupArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon resource name (ARN) of the resource group. (pattern: &lt;code&gt;arn:aws(-&#91;a-z&#93;+)*:resource-groups:&#91;a-z&#93;&#123;2&#125;(-&#91;a-z&#93;+)+-\d&#123;1&#125;:&#91;0-9&#93;&#123;12&#125;:group/(&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="GroupName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the resource group. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_\.-&#93;&#123;1,300&#125;|&#91;a-zA-Z0-9_\.-&#93;&#123;1,150&#125;/&#91;a-z0-9&#93;&#123;26&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Owner" /></td>
+    <td><code>string</code></td>
+    <td>A name, email address or other identifier for the person or group who is considered as the owner of this group within your organization. (pattern: &lt;code&gt;^(&#91;\p&#123;L&#125;\p&#123;Z&#125;\p&#123;N&#125;_.:/=+\-@&#93;*)$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -112,6 +157,13 @@ The following methods are available for this resource:
     <td>Returns information about a specified resource group. Minimum permissions To run this command, you must have the following permissions: resource-groups:GetGroup</td>
 </tr>
 <tr>
+    <td><a href="#list_groups"><CopyableCode code="list_groups" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
+    <td>Returns a list of existing Resource Groups in your account. Minimum permissions To run this command, you must have the following permissions: resource-groups:ListGroups</td>
+</tr>
+<tr>
     <td><a href="#create_group"><CopyableCode code="create_group" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Name"><code>Name</code></a></td>
@@ -131,13 +183,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified resource group. Deleting a resource group does not delete any resources that are members of the group; it only deletes the group structure. Minimum permissions To run this command, you must have the following permissions: resource-groups:DeleteGroup</td>
-</tr>
-<tr>
-    <td><a href="#list_groups"><CopyableCode code="list_groups" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-maxResults"><code>maxResults</code></a>, <a href="#parameter-nextToken"><code>nextToken</code></a></td>
-    <td>Returns a list of existing Resource Groups in your account. Minimum permissions To run this command, you must have the following permissions: resource-groups:ListGroups</td>
 </tr>
 </tbody>
 </table>
@@ -178,7 +223,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_group"
     values={[
-        { label: 'get_group', value: 'get_group' }
+        { label: 'get_group', value: 'get_group' },
+        { label: 'list_groups', value: 'list_groups' }
     ]}
 >
 <TabItem value="get_group">
@@ -196,6 +242,25 @@ Name,
 Owner
 FROM aws.resource_groups.groups
 WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_groups">
+
+Returns a list of existing Resource Groups in your account. Minimum permissions To run this command, you must have the following permissions: resource-groups:ListGroups
+
+```sql
+SELECT
+Criticality,
+Description,
+DisplayName,
+GroupArn,
+GroupName,
+Owner
+FROM aws.resource_groups.groups
+WHERE region = '{{ region }}' -- required
+AND maxResults = '{{ maxResults }}'
+AND nextToken = '{{ nextToken }}'
 ;
 ```
 </TabItem>
@@ -326,33 +391,6 @@ Deletes the specified resource group. Deleting a resource group does not delete 
 ```sql
 DELETE FROM aws.resource_groups.groups
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_groups"
-    values={[
-        { label: 'list_groups', value: 'list_groups' }
-    ]}
->
-<TabItem value="list_groups">
-
-Returns a list of existing Resource Groups in your account. Minimum permissions To run this command, you must have the following permissions: resource-groups:ListGroups
-
-```sql
-EXEC aws.resource_groups.groups.list_groups 
-@region='{{ region }}' --required, 
-@maxResults='{{ maxResults }}', 
-@nextToken='{{ nextToken }}' 
-@@json=
-'{
-"Filters": "{{ Filters }}"
-}'
 ;
 ```
 </TabItem>

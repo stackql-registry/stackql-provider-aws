@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_release_label"
     values={[
-        { label: 'describe_release_label', value: 'describe_release_label' }
+        { label: 'describe_release_label', value: 'describe_release_label' },
+        { label: 'list_release_labels', value: 'list_release_labels' }
     ]}
 >
 <TabItem value="describe_release_label">
@@ -72,6 +73,25 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_release_labels">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="release_label" /></td>
+    <td><code>string</code></td>
+    <td>The returned release labels.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -98,7 +118,7 @@ The following methods are available for this resource:
 </tr>
 <tr>
     <td><a href="#list_release_labels"><CopyableCode code="list_release_labels" /></a></td>
-    <td><CopyableCode code="exec" /></td>
+    <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Retrieves release labels of Amazon EMR services in the Region where the API is called.</td>
@@ -132,7 +152,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_release_label"
     values={[
-        { label: 'describe_release_label', value: 'describe_release_label' }
+        { label: 'describe_release_label', value: 'describe_release_label' },
+        { label: 'list_release_labels', value: 'list_release_labels' }
     ]}
 >
 <TabItem value="describe_release_label">
@@ -150,30 +171,15 @@ WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_release_labels"
-    values={[
-        { label: 'list_release_labels', value: 'list_release_labels' }
-    ]}
->
 <TabItem value="list_release_labels">
 
 Retrieves release labels of Amazon EMR services in the Region where the API is called.
 
 ```sql
-EXEC aws.emr.release_labels.list_release_labels 
-@region='{{ region }}' --required 
-@@json=
-'{
-"Filters": "{{ Filters }}", 
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
+SELECT
+release_label
+FROM aws.emr.release_labels
+WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

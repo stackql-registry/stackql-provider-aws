@@ -35,10 +35,55 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_container"
     values={[
-        { label: 'describe_container', value: 'describe_container' }
+        { label: 'describe_container', value: 'describe_container' },
+        { label: 'list_containers', value: 'list_containers' }
     ]}
 >
 <TabItem value="describe_container">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="ARN" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the container. The ARN has the following format: arn:aws:<code>&lt;region&gt;</code>:&lt;account that owns this container&gt;:container/&lt;name of container&gt; For example: arn:aws:mediastore:us-west-2:111122223333:container/movies (pattern: &lt;code&gt;arn:aws:mediastore:&#91;a-z&#93;+-&#91;a-z&#93;+-\d:\d&#123;12&#125;:container/&#91;\w-&#93;&#123;1,255&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="AccessLoggingEnabled" /></td>
+    <td><code>boolean</code></td>
+    <td>The state of access logging on the container. This value is false by default, indicating that AWS Elemental MediaStore does not send access logs to Amazon CloudWatch Logs. When you enable access logging on the container, MediaStore changes this value to true, indicating that the service delivers access logs for objects stored in that container to CloudWatch Logs.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="CreationTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>Unix timestamp.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Endpoint" /></td>
+    <td><code>string</code></td>
+    <td>The DNS endpoint of the container. Use the endpoint to identify the specific container when sending requests to the data plane. The service assigns this value when the container is created. Once the value has been assigned, it does not change. (pattern: &lt;code&gt;&#91;\u0009\u000A\u000D\u0020-\u00FF&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the container. (pattern: &lt;code&gt;&#91;\w-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Status" /></td>
+    <td><code>string</code></td>
+    <td>The status of container creation or deletion. The status is one of the following: CREATING, ACTIVE, or DELETING. While the service is creating the container, the status is CREATING. When the endpoint is available, the status changes to ACTIVE. (ACTIVE, CREATING, DELETING)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_containers">
 
 <table>
 <thead>
@@ -107,6 +152,13 @@ The following methods are available for this resource:
     <td>Retrieves the properties of the requested container. This request is commonly used to retrieve the endpoint of a container. An endpoint is a value assigned by the service when a new container is created. A container's endpoint does not change after it has been assigned. The DescribeContainer request returns a single Container object based on ContainerName. To return all Container objects that are associated with a specified AWS account, use ListContainers.</td>
 </tr>
 <tr>
+    <td><a href="#list_containers"><CopyableCode code="list_containers" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists the properties of all containers in AWS Elemental MediaStore. You can query to receive all the containers in one response. Or you can include the MaxResults parameter to receive a limited number of containers in each response. In this case, the response includes a token. To get the next set of containers, send the command again, this time with the NextToken parameter (with the returned token as its value). The next set of responses appears, with a token if there are still more containers to receive. See also DescribeContainer, which gets the properties of one container.</td>
+</tr>
+<tr>
     <td><a href="#create_container"><CopyableCode code="create_container" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ContainerName"><code>ContainerName</code></a></td>
@@ -119,13 +171,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified container. Before you make a DeleteContainer request, delete any objects in the container or in any folders in the container. You can delete only empty containers.</td>
-</tr>
-<tr>
-    <td><a href="#list_containers"><CopyableCode code="list_containers" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Lists the properties of all containers in AWS Elemental MediaStore. You can query to receive all the containers in one response. Or you can include the MaxResults parameter to receive a limited number of containers in each response. In this case, the response includes a token. To get the next set of containers, send the command again, this time with the NextToken parameter (with the returned token as its value). The next set of responses appears, with a token if there are still more containers to receive. See also DescribeContainer, which gets the properties of one container.</td>
 </tr>
 <tr>
     <td><a href="#start_access_logging"><CopyableCode code="start_access_logging" /></a></td>
@@ -170,12 +215,30 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_container"
     values={[
-        { label: 'describe_container', value: 'describe_container' }
+        { label: 'describe_container', value: 'describe_container' },
+        { label: 'list_containers', value: 'list_containers' }
     ]}
 >
 <TabItem value="describe_container">
 
 Retrieves the properties of the requested container. This request is commonly used to retrieve the endpoint of a container. An endpoint is a value assigned by the service when a new container is created. A container's endpoint does not change after it has been assigned. The DescribeContainer request returns a single Container object based on ContainerName. To return all Container objects that are associated with a specified AWS account, use ListContainers.
+
+```sql
+SELECT
+ARN,
+AccessLoggingEnabled,
+CreationTime,
+Endpoint,
+Name,
+Status
+FROM aws.mediastore.containers
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_containers">
+
+Lists the properties of all containers in AWS Elemental MediaStore. You can query to receive all the containers in one response. Or you can include the MaxResults parameter to receive a limited number of containers in each response. In this case, the response includes a token. To get the next set of containers, send the command again, this time with the NextToken parameter (with the returned token as its value). The next set of responses appears, with a token if there are still more containers to receive. See also DescribeContainer, which gets the properties of one container.
 
 ```sql
 SELECT
@@ -269,28 +332,12 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_containers"
+    defaultValue="start_access_logging"
     values={[
-        { label: 'list_containers', value: 'list_containers' },
         { label: 'start_access_logging', value: 'start_access_logging' },
         { label: 'stop_access_logging', value: 'stop_access_logging' }
     ]}
 >
-<TabItem value="list_containers">
-
-Lists the properties of all containers in AWS Elemental MediaStore. You can query to receive all the containers in one response. Or you can include the MaxResults parameter to receive a limited number of containers in each response. In this case, the response includes a token. To get the next set of containers, send the command again, this time with the NextToken parameter (with the returned token as its value). The next set of responses appears, with a token if there are still more containers to receive. See also DescribeContainer, which gets the properties of one container.
-
-```sql
-EXEC aws.mediastore.containers.list_containers 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
-;
-```
-</TabItem>
 <TabItem value="start_access_logging">
 
 Starts access logging on the specified container. When you enable access logging on a container, MediaStore delivers access logs for objects stored in that container to Amazon CloudWatch Logs.

@@ -18,7 +18,7 @@ resource_explorer_2 service documentation.
 
 :::info[Service Summary]
 
-total resources: __13__  
+total resources: __14__  
 
 :::
 
@@ -34,6 +34,7 @@ total resources: __13__
 <a href="/services/resource_explorer_2/resources/">resources</a>
 </div>
 <div class="providerDocColumn">
+<a href="/services/resource_explorer_2/search/">search</a><br />
 <a href="/services/resource_explorer_2/service_indexes/">service_indexes</a><br />
 <a href="/services/resource_explorer_2/service_views/">service_views</a><br />
 <a href="/services/resource_explorer_2/streaming_access_for_services/">streaming_access_for_services</a><br />

@@ -33,11 +33,46 @@ Creates, updates, deletes, gets or lists a <code>users</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="list_users"
+    defaultValue="search_users"
     values={[
+        { label: 'search_users', value: 'search_users' },
         { label: 'list_users', value: 'list_users' }
     ]}
 >
+<TabItem value="search_users">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="FaceModelVersion" /></td>
+    <td><code>string</code></td>
+    <td>Version number of the face detection model associated with the input CollectionId.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="SearchedFace" /></td>
+    <td><code>object</code></td>
+    <td>Contains the ID of a face that was used to search for matches in a collection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="SearchedUser" /></td>
+    <td><code>object</code></td>
+    <td>Contains the ID of the UserID that was used to search for matches in a collection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="UserMatches" /></td>
+    <td><code>array</code></td>
+    <td>An array of UserMatch objects that matched the input face along with the confidence in the match. Array will be empty if there are no matches.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="list_users">
 
 <table>
@@ -80,6 +115,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#search_users"><CopyableCode code="search_users" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Searches for UserIDs within a collection based on a FaceId or UserId. This API can be used to find the closest UserID (with a highest similarity) to associate a face. The request must be provided with either FaceId or UserId. The operation returns an array of UserID that match the FaceId or UserId, ordered by similarity score with the highest similarity first.</td>
+</tr>
+<tr>
     <td><a href="#list_users"><CopyableCode code="list_users" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
@@ -99,13 +141,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified UserID within the collection. Faces that are associated with the UserID are disassociated from the UserID before deleting the specified UserID. If the specified Collection or UserID is already deleted or not found, a ResourceNotFoundException will be thrown. If the action is successful with a 200 response, an empty HTTP body is returned.</td>
-</tr>
-<tr>
-    <td><a href="#search_users"><CopyableCode code="search_users" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-CollectionId"><code>CollectionId</code></a></td>
-    <td></td>
-    <td>Searches for UserIDs within a collection based on a FaceId or UserId. This API can be used to find the closest UserID (with a highest similarity) to associate a face. The request must be provided with either FaceId or UserId. The operation returns an array of UserID that match the FaceId or UserId, ordered by similarity score with the highest similarity first.</td>
 </tr>
 </tbody>
 </table>
@@ -134,11 +169,27 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="list_users"
+    defaultValue="search_users"
     values={[
+        { label: 'search_users', value: 'search_users' },
         { label: 'list_users', value: 'list_users' }
     ]}
 >
+<TabItem value="search_users">
+
+Searches for UserIDs within a collection based on a FaceId or UserId. This API can be used to find the closest UserID (with a highest similarity) to associate a face. The request must be provided with either FaceId or UserId. The operation returns an array of UserID that match the FaceId or UserId, ordered by similarity score with the highest similarity first.
+
+```sql
+SELECT
+FaceModelVersion,
+SearchedFace,
+SearchedUser,
+UserMatches
+FROM aws.rekognition.users
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="list_users">
 
 Returns metadata of the User such as UserID in the specified collection. Anonymous User (to reserve faces without any identity) is not returned as part of this request. The results are sorted by system generated primary key ID. If the response is truncated, NextToken is returned in the response that can be used in the subsequent request to retrieve the next set of identities.
@@ -224,35 +275,6 @@ Deletes the specified UserID within the collection. Faces that are associated wi
 ```sql
 DELETE FROM aws.rekognition.users
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="search_users"
-    values={[
-        { label: 'search_users', value: 'search_users' }
-    ]}
->
-<TabItem value="search_users">
-
-Searches for UserIDs within a collection based on a FaceId or UserId. This API can be used to find the closest UserID (with a highest similarity) to associate a face. The request must be provided with either FaceId or UserId. The operation returns an array of UserID that match the FaceId or UserId, ordered by similarity score with the highest similarity first.
-
-```sql
-EXEC aws.rekognition.users.search_users 
-@region='{{ region }}' --required 
-@@json=
-'{
-"CollectionId": "{{ CollectionId }}", 
-"UserId": "{{ UserId }}", 
-"FaceId": "{{ FaceId }}", 
-"UserMatchThreshold": {{ UserMatchThreshold }}, 
-"MaxUsers": {{ MaxUsers }}
-}'
 ;
 ```
 </TabItem>

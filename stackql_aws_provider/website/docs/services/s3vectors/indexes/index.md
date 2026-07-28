@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_index"
     values={[
-        { label: 'get_index', value: 'get_index' }
+        { label: 'get_index', value: 'get_index' },
+        { label: 'list_indexes', value: 'list_indexes' }
     ]}
 >
 <TabItem value="get_index">
@@ -97,6 +98,40 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_indexes">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="creationTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>Date and time when the vector index was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="indexArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the vector index. (pattern: &lt;code&gt;arn:aws&#91;-a-z0-9&#93;*:s3vectors:&#91;a-z0-9-&#93;+:&#91;0-9&#93;&#123;12&#125;:bucket/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;/index/&#91;a-z0-9&#93;&#91;a-z0-9-.&#93;&#123;1,61&#125;&#91;a-z0-9&#93;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="indexName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the vector index.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="vectorBucketName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the vector bucket that contains the vector index.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -122,6 +157,13 @@ The following methods are available for this resource:
     <td>Returns vector index attributes. To specify the vector index, you can either use both the vector bucket name and the vector index name, or use the vector index Amazon Resource Name (ARN). Permissions You must have the s3vectors:GetIndex permission to use this operation.</td>
 </tr>
 <tr>
+    <td><a href="#list_indexes"><CopyableCode code="list_indexes" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns a list of all the vector indexes within the specified vector bucket. To specify the bucket, you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:ListIndexes permission to use this operation.</td>
+</tr>
+<tr>
     <td><a href="#create_index"><CopyableCode code="create_index" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-indexName"><code>indexName</code></a>, <a href="#parameter-dataType"><code>dataType</code></a>, <a href="#parameter-dimension"><code>dimension</code></a>, <a href="#parameter-distanceMetric"><code>distanceMetric</code></a></td>
@@ -134,13 +176,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a vector index. To specify the vector index, you can either use both the vector bucket name and vector index name, or use the vector index Amazon Resource Name (ARN). Permissions You must have the s3vectors:DeleteIndex permission to use this operation.</td>
-</tr>
-<tr>
-    <td><a href="#list_indexes"><CopyableCode code="list_indexes" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns a list of all the vector indexes within the specified vector bucket. To specify the bucket, you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:ListIndexes permission to use this operation.</td>
 </tr>
 </tbody>
 </table>
@@ -171,7 +206,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_index"
     values={[
-        { label: 'get_index', value: 'get_index' }
+        { label: 'get_index', value: 'get_index' },
+        { label: 'list_indexes', value: 'list_indexes' }
     ]}
 >
 <TabItem value="get_index">
@@ -188,6 +224,21 @@ encryptionConfiguration,
 indexArn,
 indexName,
 metadataConfiguration,
+vectorBucketName
+FROM aws.s3vectors.indexes
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_indexes">
+
+Returns a list of all the vector indexes within the specified vector bucket. To specify the bucket, you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:ListIndexes permission to use this operation.
+
+```sql
+SELECT
+creationTime,
+indexArn,
+indexName,
 vectorBucketName
 FROM aws.s3vectors.indexes
 WHERE region = '{{ region }}' -- required
@@ -296,35 +347,6 @@ Deletes a vector index. To specify the vector index, you can either use both the
 ```sql
 DELETE FROM aws.s3vectors.indexes
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_indexes"
-    values={[
-        { label: 'list_indexes', value: 'list_indexes' }
-    ]}
->
-<TabItem value="list_indexes">
-
-Returns a list of all the vector indexes within the specified vector bucket. To specify the bucket, you must use either the vector bucket name or the vector bucket Amazon Resource Name (ARN). Permissions You must have the s3vectors:ListIndexes permission to use this operation.
-
-```sql
-EXEC aws.s3vectors.indexes.list_indexes 
-@region='{{ region }}' --required 
-@@json=
-'{
-"vectorBucketName": "{{ vectorBucketName }}", 
-"vectorBucketArn": "{{ vectorBucketArn }}", 
-"maxResults": {{ maxResults }}, 
-"nextToken": "{{ nextToken }}", 
-"prefix": "{{ prefix }}"
-}'
 ;
 ```
 </TabItem>

@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_type"
     values={[
-        { label: 'describe_type', value: 'describe_type' }
+        { label: 'describe_type', value: 'describe_type' },
+        { label: 'list_types', value: 'list_types' }
     ]}
 >
 <TabItem value="describe_type">
@@ -72,6 +73,85 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_types">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="DefaultVersionId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the default version of the extension. The default version is used when the extension version isn't specified. This applies only to private extensions you have registered in your account. For public extensions, both those provided by Amazon and published by third parties, CloudFormation returns null. For more information, see RegisterType. To set the default version of an extension, use SetTypeDefaultVersion.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Description" /></td>
+    <td><code>string</code></td>
+    <td>The description of the extension.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="IsActivated" /></td>
+    <td><code>boolean</code></td>
+    <td>Whether the extension is activated for this account and Region. This applies only to third-party public extensions. Extensions published by Amazon are activated by default.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="LastUpdated" /></td>
+    <td><code>string</code></td>
+    <td>When the specified extension version was registered. This applies only to: Private extensions you have registered in your account. For more information, see RegisterType. Public extensions you have activated in your account with auto-update specified. For more information, see ActivateType. For all other extension types, CloudFormation returns null.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="LatestPublicVersion" /></td>
+    <td><code>string</code></td>
+    <td>For public extensions that have been activated for this account and Region, the latest version of the public extension that is available. For any extensions other than activated third-party extensions, CloudFormation returns null. How you specified AutoUpdate when enabling the extension affects whether CloudFormation automatically updates the extension in this account and Region when a new version is released. For more information, see Automatically use new versions of extensions in the CloudFormation User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="OriginalTypeName" /></td>
+    <td><code>string</code></td>
+    <td>For public extensions that have been activated for this account and Region, the type name of the public extension. If you specified a TypeNameAlias when enabling the extension in this account and Region, CloudFormation treats that alias as the extension's type name within the account and Region, not the type name of the public extension. For more information, see Use aliases to refer to extensions in the CloudFormation User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="PublicVersionNumber" /></td>
+    <td><code>string</code></td>
+    <td>For public extensions that have been activated for this account and Region, the version of the public extension to be used for CloudFormation operations in this account and Region. How you specified AutoUpdate when enabling the extension affects whether CloudFormation automatically updates the extension in this account and Region when a new version is released. For more information, see Automatically use new versions of extensions in the CloudFormation User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="PublisherId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the extension publisher, if the extension is published by a third party. Extensions published by Amazon don't return a publisher ID.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="PublisherIdentity" /></td>
+    <td><code>string</code></td>
+    <td>The service used to verify the publisher identity. For more information, see Publishing extensions to make them available for public use in the CloudFormation Command Line Interface (CLI) User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="PublisherName" /></td>
+    <td><code>string</code></td>
+    <td>The publisher name, as defined in the public profile for that publisher in the service used to verify the publisher identity.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Type" /></td>
+    <td><code>string</code></td>
+    <td>The kind of extension.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TypeArn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the extension.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TypeName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the extension. If you specified a TypeNameAlias when you call the ActivateType API operation in your account and Region, CloudFormation considers that alias as the type name.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -92,9 +172,16 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#describe_type"><CopyableCode code="describe_type" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-Arn"><code>Arn</code></a>, <a href="#parameter-VersionId"><code>VersionId</code></a>, <a href="#parameter-PublisherId"><code>PublisherId</code></a>, <a href="#parameter-PublicVersionNumber"><code>PublicVersionNumber</code></a></td>
+    <td><a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-Arn"><code>Arn</code></a>, <a href="#parameter-VersionId"><code>VersionId</code></a>, <a href="#parameter-PublisherId"><code>PublisherId</code></a>, <a href="#parameter-PublicVersionNumber"><code>PublicVersionNumber</code></a></td>
     <td>Returns detailed information about an extension from the CloudFormation registry in your current account and Region. If you specify a VersionId, DescribeType returns information about that specific extension version. Otherwise, it returns information about the default extension version. For more information, see Edit configuration data for extensions in your account in the CloudFormation User Guide.</td>
+</tr>
+<tr>
+    <td><a href="#list_types"><CopyableCode code="list_types" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-Visibility"><code>Visibility</code></a>, <a href="#parameter-ProvisioningType"><code>ProvisioningType</code></a>, <a href="#parameter-DeprecatedStatus"><code>DeprecatedStatus</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-Filters"><code>Filters</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
+    <td>Returns summary information about all extensions, including your private resource types, modules, and Hooks as well as all public extensions from Amazon Web Services and third-party publishers.</td>
 </tr>
 <tr>
     <td><a href="#register_type"><CopyableCode code="register_type" /></a></td>
@@ -123,13 +210,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-Arn"><code>Arn</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-TypeName"><code>TypeName</code></a>, <a href="#parameter-VersionId"><code>VersionId</code></a></td>
     <td>Marks an extension or extension version as DEPRECATED in the CloudFormation registry, removing it from active use. Deprecated extensions or extension versions cannot be used in CloudFormation operations. To deregister an entire extension, you must individually deregister all active versions of that extension. If an extension has only a single active version, deregistering that version results in the extension itself being deregistered and marked as deprecated in the registry. You can't deregister the default version of an extension if there are other active version of that extension. If you do deregister the default version of an extension, the extension type itself is deregistered as well and marked as deprecated. To view the deprecation status of an extension or extension version, use DescribeType. For more information, see Remove third-party private extensions from your account in the CloudFormation User Guide.</td>
-</tr>
-<tr>
-    <td><a href="#list_types"><CopyableCode code="list_types" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-Visibility"><code>Visibility</code></a>, <a href="#parameter-ProvisioningType"><code>ProvisioningType</code></a>, <a href="#parameter-DeprecatedStatus"><code>DeprecatedStatus</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-Filters"><code>Filters</code></a>, <a href="#parameter-MaxResults"><code>MaxResults</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
-    <td>Returns summary information about all extensions, including your private resource types, modules, and Hooks as well as all public extensions from Amazon Web Services and third-party publishers.</td>
 </tr>
 </tbody>
 </table>
@@ -230,7 +310,7 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <tr id="parameter-Type">
     <td><CopyableCode code="Type" /></td>
     <td><code>string</code></td>
-    <td>The type of extension.</td>
+    <td>The kind of extension. Conditional: You must specify either TypeName and Type, or Arn.</td>
 </tr>
 <tr id="parameter-TypeArn">
     <td><CopyableCode code="TypeArn" /></td>
@@ -260,7 +340,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_type"
     values={[
-        { label: 'describe_type', value: 'describe_type' }
+        { label: 'describe_type', value: 'describe_type' },
+        { label: 'list_types', value: 'list_types' }
     ]}
 >
 <TabItem value="describe_type">
@@ -274,13 +355,44 @@ PublisherId,
 SupportedMajorVersions,
 TypeNameAlias
 FROM aws.cloudformation.types
-WHERE region = '{{ region }}' -- required
+WHERE TypeName = '{{ TypeName }}' -- required
+AND region = '{{ region }}' -- required
 AND Type = '{{ Type }}'
-AND TypeName = '{{ TypeName }}'
 AND Arn = '{{ Arn }}'
 AND VersionId = '{{ VersionId }}'
 AND PublisherId = '{{ PublisherId }}'
 AND PublicVersionNumber = '{{ PublicVersionNumber }}'
+;
+```
+</TabItem>
+<TabItem value="list_types">
+
+Returns summary information about all extensions, including your private resource types, modules, and Hooks as well as all public extensions from Amazon Web Services and third-party publishers.
+
+```sql
+SELECT
+DefaultVersionId,
+Description,
+IsActivated,
+LastUpdated,
+LatestPublicVersion,
+OriginalTypeName,
+PublicVersionNumber,
+PublisherId,
+PublisherIdentity,
+PublisherName,
+Type,
+TypeArn,
+TypeName
+FROM aws.cloudformation.types
+WHERE region = '{{ region }}' -- required
+AND Visibility = '{{ Visibility }}'
+AND ProvisioningType = '{{ ProvisioningType }}'
+AND DeprecatedStatus = '{{ DeprecatedStatus }}'
+AND Type = '{{ Type }}'
+AND Filters = '{{ Filters }}'
+AND MaxResults = '{{ MaxResults }}'
+AND NextToken = '{{ NextToken }}'
 ;
 ```
 </TabItem>
@@ -427,34 +539,6 @@ AND Arn = '{{ Arn }}'
 AND Type = '{{ Type }}'
 AND TypeName = '{{ TypeName }}'
 AND VersionId = '{{ VersionId }}'
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_types"
-    values={[
-        { label: 'list_types', value: 'list_types' }
-    ]}
->
-<TabItem value="list_types">
-
-Returns summary information about all extensions, including your private resource types, modules, and Hooks as well as all public extensions from Amazon Web Services and third-party publishers.
-
-```sql
-EXEC aws.cloudformation.types.list_types 
-@region='{{ region }}' --required, 
-@Visibility='{{ Visibility }}', 
-@ProvisioningType='{{ ProvisioningType }}', 
-@DeprecatedStatus='{{ DeprecatedStatus }}', 
-@Type='{{ Type }}', 
-@Filters='{{ Filters }}', 
-@MaxResults='{{ MaxResults }}', 
-@NextToken='{{ NextToken }}'
 ;
 ```
 </TabItem>

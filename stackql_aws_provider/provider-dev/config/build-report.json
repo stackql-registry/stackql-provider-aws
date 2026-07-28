@@ -1,0 +1,214 @@
+{
+  "promotions": [
+    {
+      "service": "cloudformation",
+      "file": "cloudformation.yaml",
+      "resource": "stacks",
+      "method": "describe_stacks",
+      "param": "StackName",
+      "anchor": "list_stacks"
+    },
+    {
+      "service": "cloudformation",
+      "file": "cloudformation.yaml",
+      "resource": "types",
+      "method": "describe_type",
+      "param": "TypeName",
+      "anchor": "list_types"
+    },
+    {
+      "service": "cloudformation",
+      "file": "cloudformation.yaml",
+      "resource": "hook_results",
+      "method": "get_hook_result",
+      "param": "HookResultId",
+      "anchor": "list_hook_results"
+    },
+    {
+      "service": "cloudhsm",
+      "file": "cloudhsm.yaml",
+      "resource": "hsms",
+      "method": "describe_hsm",
+      "param": "HsmArn",
+      "anchor": "list_hsms"
+    },
+    {
+      "service": "emr",
+      "file": "emr.yaml",
+      "resource": "release_labels",
+      "method": "describe_release_label",
+      "param": "ReleaseLabel",
+      "anchor": "list_release_labels"
+    },
+    {
+      "service": "iam",
+      "file": "iam.yaml",
+      "resource": "users",
+      "method": "get_user",
+      "param": "UserName",
+      "anchor": "list_users"
+    },
+    {
+      "service": "kinesis",
+      "file": "kinesis.yaml",
+      "resource": "streams",
+      "method": "describe_stream",
+      "param": "StreamName",
+      "anchor": "list_streams"
+    },
+    {
+      "service": "kinesisvideo",
+      "file": "kinesisvideo.yaml",
+      "resource": "streams",
+      "method": "describe_stream",
+      "param": "StreamName",
+      "anchor": "list_streams"
+    },
+    {
+      "service": "mediastore",
+      "file": "mediastore.yaml",
+      "resource": "containers",
+      "method": "describe_container",
+      "param": "ContainerName",
+      "anchor": "list_containers"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
+      "resource": "firewall_policies",
+      "method": "describe_firewall_policy",
+      "param": "FirewallPolicyName",
+      "anchor": "list_firewall_policies"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
+      "resource": "proxy_configurations",
+      "method": "describe_proxy_configuration",
+      "param": "ProxyConfigurationName",
+      "anchor": "list_proxy_configurations"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
+      "resource": "firewalls",
+      "method": "describe_firewall",
+      "param": "FirewallName",
+      "anchor": "list_firewalls"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
+      "resource": "proxies",
+      "method": "describe_proxy",
+      "param": "ProxyName",
+      "anchor": "list_proxies"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
+      "resource": "proxy_rule_groups",
+      "method": "describe_proxy_rule_group",
+      "param": "ProxyRuleGroupName",
+      "anchor": "list_proxy_rule_groups"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
+      "resource": "rule_groups",
+      "method": "describe_rule_group",
+      "param": "RuleGroupName",
+      "anchor": "list_rule_groups"
+    },
+    {
+      "service": "network_firewall",
+      "file": "network_firewall.yaml",
+      "resource": "tls_inspection_configurations",
+      "method": "describe_tls_inspection_configuration",
+      "param": "TLSInspectionConfigurationArn",
+      "anchor": "list_tls_inspection_configurations"
+    },
+    {
+      "service": "redshift_data",
+      "file": "redshift_data.yaml",
+      "resource": "tables",
+      "method": "describe_table",
+      "param": "Table",
+      "anchor": "list_tables"
+    },
+    {
+      "service": "redshift_serverless",
+      "file": "redshift_serverless.yaml",
+      "resource": "snapshots",
+      "method": "get_snapshot",
+      "param": "snapshotArn",
+      "anchor": "list_snapshots"
+    },
+    {
+      "service": "rekognition",
+      "file": "rekognition.yaml",
+      "resource": "users",
+      "method": "search_users",
+      "param": "UserId",
+      "anchor": "list_users"
+    },
+    {
+      "service": "resource_groups",
+      "file": "resource_groups.yaml",
+      "resource": "groups",
+      "method": "get_group",
+      "param": "GroupName",
+      "anchor": "list_groups"
+    },
+    {
+      "service": "s3vectors",
+      "file": "s3vectors.yaml",
+      "resource": "indexes",
+      "method": "get_index",
+      "param": "indexName",
+      "anchor": "list_indexes"
+    },
+    {
+      "service": "s3vectors",
+      "file": "s3vectors.yaml",
+      "resource": "vector_buckets",
+      "method": "get_vector_bucket",
+      "param": "vectorBucketName",
+      "anchor": "list_vector_buckets"
+    },
+    {
+      "service": "shield",
+      "file": "shield.yaml",
+      "resource": "protections",
+      "method": "describe_protection",
+      "param": "ProtectionId",
+      "anchor": "list_protections"
+    },
+    {
+      "service": "ssm",
+      "file": "ssm.yaml",
+      "resource": "associations",
+      "method": "describe_association",
+      "param": "AssociationId",
+      "anchor": "list_associations"
+    },
+    {
+      "service": "ssm_sap",
+      "file": "ssm_sap.yaml",
+      "resource": "applications",
+      "method": "get_application",
+      "param": "ApplicationId",
+      "anchor": "list_applications"
+    },
+    {
+      "service": "ssm_sap",
+      "file": "ssm_sap.yaml",
+      "resource": "databases",
+      "method": "get_database",
+      "param": "DatabaseId",
+      "anchor": "list_databases"
+    }
+  ],
+  "demotions": [],
+  "zeroColumnDemotions": []
+}

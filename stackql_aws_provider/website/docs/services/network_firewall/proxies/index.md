@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_proxy"
     values={[
-        { label: 'describe_proxy', value: 'describe_proxy' }
+        { label: 'describe_proxy', value: 'describe_proxy' },
+        { label: 'list_proxies', value: 'list_proxies' }
     ]}
 >
 <TabItem value="describe_proxy">
@@ -58,6 +59,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="UpdateToken" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the proxy. The token marks the state of the proxy resource at the time of the request. To make changes to the proxy, you provide the token in your request. Network Firewall uses the token to ensure that the proxy hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the proxy again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_proxies">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of a proxy. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The descriptive name of the proxy. You can't change the name of a proxy after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -87,6 +112,13 @@ The following methods are available for this resource:
     <td>Returns the data objects for the specified proxy.</td>
 </tr>
 <tr>
+    <td><a href="#list_proxies"><CopyableCode code="list_proxies" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the metadata for the proxies that you have defined. Depending on your setting for max results and the number of proxies, a single call might not return the full list.</td>
+</tr>
+<tr>
     <td><a href="#create_proxy"><CopyableCode code="create_proxy" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProxyName"><code>ProxyName</code></a>, <a href="#parameter-NatGatewayId"><code>NatGatewayId</code></a>, <a href="#parameter-TlsInterceptProperties"><code>TlsInterceptProperties</code></a></td>
@@ -106,13 +138,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified Proxy. Detaches a Proxy configuration from a NAT Gateway.</td>
-</tr>
-<tr>
-    <td><a href="#list_proxies"><CopyableCode code="list_proxies" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the metadata for the proxies that you have defined. Depending on your setting for max results and the number of proxies, a single call might not return the full list.</td>
 </tr>
 </tbody>
 </table>
@@ -143,7 +168,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_proxy"
     values={[
-        { label: 'describe_proxy', value: 'describe_proxy' }
+        { label: 'describe_proxy', value: 'describe_proxy' },
+        { label: 'list_proxies', value: 'list_proxies' }
     ]}
 >
 <TabItem value="describe_proxy">
@@ -154,6 +180,19 @@ Returns the data objects for the specified proxy.
 SELECT
 Proxy,
 UpdateToken
+FROM aws.network_firewall.proxies
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_proxies">
+
+Retrieves the metadata for the proxies that you have defined. Depending on your setting for max results and the number of proxies, a single call might not return the full list.
+
+```sql
+SELECT
+Arn,
+Name
 FROM aws.network_firewall.proxies
 WHERE region = '{{ region }}' -- required
 ;
@@ -298,32 +337,6 @@ Deletes the specified Proxy. Detaches a Proxy configuration from a NAT Gateway.
 ```sql
 DELETE FROM aws.network_firewall.proxies
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_proxies"
-    values={[
-        { label: 'list_proxies', value: 'list_proxies' }
-    ]}
->
-<TabItem value="list_proxies">
-
-Retrieves the metadata for the proxies that you have defined. Depending on your setting for max results and the number of proxies, a single call might not return the full list.
-
-```sql
-EXEC aws.network_firewall.proxies.list_proxies 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
 ;
 ```
 </TabItem>

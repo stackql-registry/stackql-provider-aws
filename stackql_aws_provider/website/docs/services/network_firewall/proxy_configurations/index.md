@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_proxy_configuration"
     values={[
-        { label: 'describe_proxy_configuration', value: 'describe_proxy_configuration' }
+        { label: 'describe_proxy_configuration', value: 'describe_proxy_configuration' },
+        { label: 'list_proxy_configurations', value: 'list_proxy_configurations' }
     ]}
 >
 <TabItem value="describe_proxy_configuration">
@@ -58,6 +59,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="UpdateToken" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the proxy configuration. The token marks the state of the proxy configuration resource at the time of the request. To make changes to the proxy configuration, you provide the token in your request. Network Firewall uses the token to ensure that the proxy configuration hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the proxy configuration again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_proxy_configurations">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of a proxy configuration. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The descriptive name of the proxy configuration. You can't change the name of a proxy configuration after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -85,6 +110,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns the data objects for the specified proxy configuration.</td>
+</tr>
+<tr>
+    <td><a href="#list_proxy_configurations"><CopyableCode code="list_proxy_configurations" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the metadata for the proxy configuration that you have defined. Depending on your setting for max results and the number of proxy configurations, a single call might not return the full list.</td>
 </tr>
 <tr>
     <td><a href="#create_proxy_configuration"><CopyableCode code="create_proxy_configuration" /></a></td>
@@ -121,13 +153,6 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified ProxyConfiguration.</td>
 </tr>
-<tr>
-    <td><a href="#list_proxy_configurations"><CopyableCode code="list_proxy_configurations" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the metadata for the proxy configuration that you have defined. Depending on your setting for max results and the number of proxy configurations, a single call might not return the full list.</td>
-</tr>
 </tbody>
 </table>
 
@@ -157,7 +182,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_proxy_configuration"
     values={[
-        { label: 'describe_proxy_configuration', value: 'describe_proxy_configuration' }
+        { label: 'describe_proxy_configuration', value: 'describe_proxy_configuration' },
+        { label: 'list_proxy_configurations', value: 'list_proxy_configurations' }
     ]}
 >
 <TabItem value="describe_proxy_configuration">
@@ -168,6 +194,19 @@ Returns the data objects for the specified proxy configuration.
 SELECT
 ProxyConfiguration,
 UpdateToken
+FROM aws.network_firewall.proxy_configurations
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_proxy_configurations">
+
+Retrieves the metadata for the proxy configuration that you have defined. Depending on your setting for max results and the number of proxy configurations, a single call might not return the full list.
+
+```sql
+SELECT
+Arn,
+Name
 FROM aws.network_firewall.proxy_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -346,32 +385,6 @@ Deletes the specified ProxyConfiguration.
 ```sql
 DELETE FROM aws.network_firewall.proxy_configurations
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_proxy_configurations"
-    values={[
-        { label: 'list_proxy_configurations', value: 'list_proxy_configurations' }
-    ]}
->
-<TabItem value="list_proxy_configurations">
-
-Retrieves the metadata for the proxy configuration that you have defined. Depending on your setting for max results and the number of proxy configurations, a single call might not return the full list.
-
-```sql
-EXEC aws.network_firewall.proxy_configurations.list_proxy_configurations 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
 ;
 ```
 </TabItem>

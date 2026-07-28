@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_tls_inspection_configuration"
     values={[
-        { label: 'describe_tls_inspection_configuration', value: 'describe_tls_inspection_configuration' }
+        { label: 'describe_tls_inspection_configuration', value: 'describe_tls_inspection_configuration' },
+        { label: 'list_tls_inspection_configurations', value: 'list_tls_inspection_configurations' }
     ]}
 >
 <TabItem value="describe_tls_inspection_configuration">
@@ -67,6 +68,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_tls_inspection_configurations">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the TLS inspection configuration. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The descriptive name of the TLS inspection configuration. You can't change the name of a TLS inspection configuration after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -92,6 +117,13 @@ The following methods are available for this resource:
     <td>Returns the data objects for the specified TLS inspection configuration.</td>
 </tr>
 <tr>
+    <td><a href="#list_tls_inspection_configurations"><CopyableCode code="list_tls_inspection_configurations" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.</td>
+</tr>
+<tr>
     <td><a href="#create_tls_inspection_configuration"><CopyableCode code="create_tls_inspection_configuration" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-TLSInspectionConfigurationName"><code>TLSInspectionConfigurationName</code></a>, <a href="#parameter-TLSInspectionConfiguration"><code>TLSInspectionConfiguration</code></a></td>
@@ -111,13 +143,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified TLSInspectionConfiguration.</td>
-</tr>
-<tr>
-    <td><a href="#list_tls_inspection_configurations"><CopyableCode code="list_tls_inspection_configurations" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.</td>
 </tr>
 </tbody>
 </table>
@@ -148,7 +173,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_tls_inspection_configuration"
     values={[
-        { label: 'describe_tls_inspection_configuration', value: 'describe_tls_inspection_configuration' }
+        { label: 'describe_tls_inspection_configuration', value: 'describe_tls_inspection_configuration' },
+        { label: 'list_tls_inspection_configurations', value: 'list_tls_inspection_configurations' }
     ]}
 >
 <TabItem value="describe_tls_inspection_configuration">
@@ -160,6 +186,19 @@ SELECT
 TLSInspectionConfiguration,
 TLSInspectionConfigurationResponse,
 UpdateToken
+FROM aws.network_firewall.tls_inspection_configurations
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_tls_inspection_configurations">
+
+Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.
+
+```sql
+SELECT
+Arn,
+Name
 FROM aws.network_firewall.tls_inspection_configurations
 WHERE region = '{{ region }}' -- required
 ;
@@ -296,32 +335,6 @@ Deletes the specified TLSInspectionConfiguration.
 ```sql
 DELETE FROM aws.network_firewall.tls_inspection_configurations
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_tls_inspection_configurations"
-    values={[
-        { label: 'list_tls_inspection_configurations', value: 'list_tls_inspection_configurations' }
-    ]}
->
-<TabItem value="list_tls_inspection_configurations">
-
-Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.
-
-```sql
-EXEC aws.network_firewall.tls_inspection_configurations.list_tls_inspection_configurations 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
 ;
 ```
 </TabItem>

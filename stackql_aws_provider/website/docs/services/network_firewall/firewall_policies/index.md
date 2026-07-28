@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_firewall_policy"
     values={[
-        { label: 'describe_firewall_policy', value: 'describe_firewall_policy' }
+        { label: 'describe_firewall_policy', value: 'describe_firewall_policy' },
+        { label: 'list_firewall_policies', value: 'list_firewall_policies' }
     ]}
 >
 <TabItem value="describe_firewall_policy">
@@ -67,6 +68,30 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_firewall_policies">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the firewall policy. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The descriptive name of the firewall policy. You can't change the name of a firewall policy after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -90,6 +115,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns the data objects for the specified firewall policy.</td>
+</tr>
+<tr>
+    <td><a href="#list_firewall_policies"><CopyableCode code="list_firewall_policies" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the metadata for the firewall policies that you have defined. Depending on your setting for max results and the number of firewall policies, a single call might not return the full list.</td>
 </tr>
 <tr>
     <td><a href="#create_firewall_policy"><CopyableCode code="create_firewall_policy" /></a></td>
@@ -126,13 +158,6 @@ The following methods are available for this resource:
     <td></td>
     <td>Deletes the specified FirewallPolicy.</td>
 </tr>
-<tr>
-    <td><a href="#list_firewall_policies"><CopyableCode code="list_firewall_policies" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the metadata for the firewall policies that you have defined. Depending on your setting for max results and the number of firewall policies, a single call might not return the full list.</td>
-</tr>
 </tbody>
 </table>
 
@@ -162,7 +187,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_firewall_policy"
     values={[
-        { label: 'describe_firewall_policy', value: 'describe_firewall_policy' }
+        { label: 'describe_firewall_policy', value: 'describe_firewall_policy' },
+        { label: 'list_firewall_policies', value: 'list_firewall_policies' }
     ]}
 >
 <TabItem value="describe_firewall_policy">
@@ -174,6 +200,19 @@ SELECT
 FirewallPolicy,
 FirewallPolicyResponse,
 UpdateToken
+FROM aws.network_firewall.firewall_policies
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_firewall_policies">
+
+Retrieves the metadata for the firewall policies that you have defined. Depending on your setting for max results and the number of firewall policies, a single call might not return the full list.
+
+```sql
+SELECT
+Arn,
+Name
 FROM aws.network_firewall.firewall_policies
 WHERE region = '{{ region }}' -- required
 ;
@@ -384,32 +423,6 @@ Deletes the specified FirewallPolicy.
 ```sql
 DELETE FROM aws.network_firewall.firewall_policies
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_firewall_policies"
-    values={[
-        { label: 'list_firewall_policies', value: 'list_firewall_policies' }
-    ]}
->
-<TabItem value="list_firewall_policies">
-
-Retrieves the metadata for the firewall policies that you have defined. Depending on your setting for max results and the number of firewall policies, a single call might not return the full list.
-
-```sql
-EXEC aws.network_firewall.firewall_policies.list_firewall_policies 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
 ;
 ```
 </TabItem>

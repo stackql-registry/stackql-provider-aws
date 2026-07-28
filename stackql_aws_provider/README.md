@@ -117,26 +117,68 @@ REG="{\"url\":\"file://${REG_PATH}\",\"localDocRoot\":\"${REG_PATH}\",\"verifyCo
 
 ```sql
 -- query-protocol service
-SELECT VolumeId, Size, AvailabilityZone, State
+SELECT volume_id, size, availability_zone, state
 FROM aws.ec2.volumes
 WHERE region = 'us-east-1';
 
 -- rest-json service
-SELECT FunctionName, Runtime, LastModified
+SELECT function_name, runtime, last_modified
 FROM aws.lambda.functions
 WHERE region = 'us-east-1';
 
 -- query service (no region path-param needed for global IAM)
-SELECT UserName, CreateDate, PasswordLastUsed
-FROM aws.iam.users;
+SELECT user_name, create_date, password_last_used
+FROM aws.iam.users
+WHERE region = 'us-east-1';
 
 -- aws-json service
-SELECT TableName, TableStatus, ItemCount
+SELECT table_name, table_status, item_count
 FROM aws.dynamodb.tables
 WHERE region = 'us-east-1';
 ```
 
-## 6. Generate the web docs
+## 6. Integration tests
+
+```bash
+AWS_RUN_DML_TESTS=1 STACKQL=./stackql bash bin/integration-tests.sh --select-only 2>&1 | tail -30
+```
+
+## 7. Smoke tests
+
+`tests/smoke.py` is a pluggable smoke-test runner: each test is an `.iql`
+file (plain stackql, or a Jinja2 template) orchestrated by
+`tests/manifest.yaml`. The suite exercises every wire protocol
+(query/ec2/rest-json/rest-xml/aws-json) across control plane AND data
+plane - including a full EC2 instance lifecycle (VPC -> subnet -> run ->
+stop -> start -> modify -> terminate) and DynamoDB item put/get/delete.
+
+**These tests create real, billable AWS resources** (a `t3.micro`
+instance, a DynamoDB table, an S3 bucket, an SNS topic, ...). Everything
+created is tagged `stackql-provider-test:<test-name>`; the runner cleans
+up after itself and auto-runs a breadcrumb rollback if a run fails or is
+interrupted.
+
+```bash
+# full suite against the local registry (run under WSL / Linux)
+python3 tests/smoke.py --env-file .env
+
+# against the PUBLISHED provider in the public stackql registry
+# (pulls the latest version and prints it, drops the local registry override)
+python3 tests/smoke.py --env-file .env --live
+
+# useful flags
+python3 tests/smoke.py --list                    # list tests and exit
+python3 tests/smoke.py --only caller_identity    # run a subset (no dependency resolution)
+python3 tests/smoke.py --rollback                # teardown-only: discover and delete smoke leftovers
+python3 tests/smoke.py --no-rollback --verbose   # keep breadcrumbs, print rendered SQL + raw output
+python3 tests/smoke.py --rendered-sql out.sql    # export every rendered query executed
+```
+
+Credentials come from `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` (or a
+dotenv file via `--env-file`). The stackql binary resolves from
+`--stackql`, else the `STACKQL` env var, else the manifest default.
+
+## 8. Generate the web docs
 
 ```bash
 rm -rf website/docs/*
@@ -174,32 +216,6 @@ yarn build
 yarn serve
 ```
 
-## Repository layout
-
-```
-stackql_aws_provider/
-├── bin/                                shell wrappers + meta-route tests
-│   ├── generate-openapi.sh             wraps openapi-generation/botocore_to_openapi.py
-│   ├── generate-provider.sh            wraps provider-dev/scripts/generate-provider.mjs
-│   ├── start-server.sh                 start stackql pg-wire server against local registry
-│   ├── stop-server.sh
-│   ├── server-status.sh
-│   └── test-meta-routes.cjs            connects via pgwire-lite, walks the metadata graph
-├── openapi-generation/
-│   └── botocore_to_openapi.py          stage 1 - botocore -> source spec
-├── provider-dev/
-│   ├── source/                         stage 1 output (per-service OpenAPI)
-│   ├── scripts/
-│   │   └── generate-provider.mjs       stage 2 - source spec -> stackql provider
-│   ├── openapi/src/aws/v00.00.00000/   stage 2 output (the published provider)
-│   ├── config/                         (reserved - the analyze step is short-circuited)
-│   └── docgen/provider-data/           docusaurus header content
-├── website/                            docusaurus microsite
-├── package.json
-├── .npmrc                              wires @jsr to npm.jsr.io
-└── README.md
-```
-
 ## Notes on the verb-prefix heuristic
 
 The Python generator maps operation-name prefixes to SQL verbs. The full mapping lives in `openapi-generation/botocore_to_openapi.py:VERB_PREFIXES`. The key design rule:
@@ -214,12 +230,6 @@ The Python generator maps operation-name prefixes to SQL verbs. The full mapping
 The resource name is the operation's *noun* part after the verb prefix is stripped, always pluralised (`DescribeVolumes` -> `volumes`, `CreateVolume` -> `volumes`, `AttachVolume` -> `volumes`). This co-locates the full CRUD-and-lifecycle surface for an entity under a single stackql resource - matching the convention used in `ref/iam.yaml`'s `access_keys` resource (Create + Delete + Update + List all together).
 
 EXEC verbs are kept off the CRUD verb lists so the test-meta-routes signature-uniqueness check passes - e.g. `AttachVolume`, `DetachVolume`, and `ModifyVolume` all require `[VolumeId]`, which would collide if they shared an `UPDATE` slot. They live in `methods:` and are callable via stackql's `EXEC` clause.
-
-## Integration tests
-
-```bash
-AWS_RUN_DML_TESTS=1 STACKQL=./stackql bash bin/integration-tests.sh --select-only 2>&1 | tail -30
-```
 
 ## Pagination
 

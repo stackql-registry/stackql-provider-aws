@@ -35,10 +35,70 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_stream"
     values={[
-        { label: 'describe_stream', value: 'describe_stream' }
+        { label: 'describe_stream', value: 'describe_stream' },
+        { label: 'list_streams', value: 'list_streams' }
     ]}
 >
 <TabItem value="describe_stream">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="CreationTime" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>A time stamp that indicates when the stream was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DataRetentionInHours" /></td>
+    <td><code>integer</code></td>
+    <td>How long the stream retains data, in hours.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DeviceName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the device that is associated with the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="KmsKeyId" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the Key Management Service (KMS) key that Kinesis Video Streams uses to encrypt data on the stream. (pattern: &lt;code&gt;.+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="MediaType" /></td>
+    <td><code>string</code></td>
+    <td>The MediaType of the stream. (pattern: &lt;code&gt;&#91;\w\-\.\+&#93;+/&#91;\w\-\.\+&#93;+(,&#91;\w\-\.\+&#93;+/&#91;\w\-\.\+&#93;+)*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the stream. (CREATING, ACTIVE, UPDATING, DELETING)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="StreamARN" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the stream. (pattern: &lt;code&gt;arn:&#91;a-z\d-&#93;+:kinesisvideo:&#91;a-z0-9-&#93;+:&#91;0-9&#93;+:&#91;a-z&#93;+/&#91;a-zA-Z0-9_.-&#93;+/&#91;0-9&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="StreamName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9_.-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Version" /></td>
+    <td><code>string</code></td>
+    <td>The version of the stream. (pattern: &lt;code&gt;&#91;a-zA-Z0-9&#93;+&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_streams">
 
 <table>
 <thead>
@@ -122,6 +182,13 @@ The following methods are available for this resource:
     <td>Returns the most current information about the specified stream. You must specify either the StreamName or the StreamARN.</td>
 </tr>
 <tr>
+    <td><a href="#list_streams"><CopyableCode code="list_streams" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns an array of StreamInfo objects. Each object describes a stream. To retrieve only streams that satisfy a specific condition, you can specify a StreamNameCondition.</td>
+</tr>
+<tr>
     <td><a href="#create_stream"><CopyableCode code="create_stream" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-StreamName"><code>StreamName</code></a></td>
@@ -141,13 +208,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes a Kinesis video stream and the data contained in the stream. This method marks the stream for deletion, and makes the data in the stream inaccessible immediately. To ensure that you have the latest version of the stream before deleting it, you can specify the stream version. Kinesis Video Streams assigns a version to each stream. When you update a stream, Kinesis Video Streams assigns a new version number. To get the latest stream version, use the DescribeStream API. This operation requires permission for the KinesisVideo:DeleteStream action.</td>
-</tr>
-<tr>
-    <td><a href="#list_streams"><CopyableCode code="list_streams" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns an array of StreamInfo objects. Each object describes a stream. To retrieve only streams that satisfy a specific condition, you can specify a StreamNameCondition.</td>
 </tr>
 </tbody>
 </table>
@@ -178,12 +238,33 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_stream"
     values={[
-        { label: 'describe_stream', value: 'describe_stream' }
+        { label: 'describe_stream', value: 'describe_stream' },
+        { label: 'list_streams', value: 'list_streams' }
     ]}
 >
 <TabItem value="describe_stream">
 
 Returns the most current information about the specified stream. You must specify either the StreamName or the StreamARN.
+
+```sql
+SELECT
+CreationTime,
+DataRetentionInHours,
+DeviceName,
+KmsKeyId,
+MediaType,
+Status,
+StreamARN,
+StreamName,
+Version
+FROM aws.kinesisvideo.streams
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_streams">
+
+Returns an array of StreamInfo objects. Each object describes a stream. To retrieve only streams that satisfy a specific condition, you can specify a StreamNameCondition.
 
 ```sql
 SELECT
@@ -316,33 +397,6 @@ Deletes a Kinesis video stream and the data contained in the stream. This method
 ```sql
 DELETE FROM aws.kinesisvideo.streams
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_streams"
-    values={[
-        { label: 'list_streams', value: 'list_streams' }
-    ]}
->
-<TabItem value="list_streams">
-
-Returns an array of StreamInfo objects. Each object describes a stream. To retrieve only streams that satisfy a specific condition, you can specify a StreamNameCondition.
-
-```sql
-EXEC aws.kinesisvideo.streams.list_streams 
-@region='{{ region }}' --required 
-@@json=
-'{
-"MaxResults": {{ MaxResults }}, 
-"NextToken": "{{ NextToken }}", 
-"StreamNameCondition": "{{ StreamNameCondition }}"
-}'
 ;
 ```
 </TabItem>

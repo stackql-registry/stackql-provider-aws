@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_stacks"
     values={[
-        { label: 'describe_stacks', value: 'describe_stacks' }
+        { label: 'describe_stacks', value: 'describe_stacks' },
+        { label: 'list_stacks', value: 'list_stacks' }
     ]}
 >
 <TabItem value="describe_stacks">
@@ -182,6 +183,80 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_stacks">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="CreationTime" /></td>
+    <td><code>string</code></td>
+    <td>The time the stack was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DeletionTime" /></td>
+    <td><code>string</code></td>
+    <td>The time the stack was deleted.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DriftInformation" /></td>
+    <td><code>string</code></td>
+    <td>Summarizes information about whether a stack's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see Detect unmanaged configuration changes to stacks and resources with drift detection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="LastOperations" /></td>
+    <td><code>string</code></td>
+    <td>Information about the most recent operations performed on this stack.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="LastUpdatedTime" /></td>
+    <td><code>string</code></td>
+    <td>The time the stack was last updated. This field will only be returned if the stack has been updated at least once.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ParentId" /></td>
+    <td><code>string</code></td>
+    <td>For nested stacks, the stack ID of the direct parent of this stack. For the first level of nested stacks, the root stack is also the parent stack. For more information, see Nested stacks in the CloudFormation User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="RootId" /></td>
+    <td><code>string</code></td>
+    <td>For nested stacks, the stack ID of the top-level stack to which the nested stack ultimately belongs. For more information, see Nested stacks in the CloudFormation User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="StackId" /></td>
+    <td><code>string</code></td>
+    <td>Unique stack identifier.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="StackName" /></td>
+    <td><code>string</code></td>
+    <td>The name associated with the stack.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="StackStatus" /></td>
+    <td><code>string</code></td>
+    <td>The current status of the stack.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="StackStatusReason" /></td>
+    <td><code>string</code></td>
+    <td>Success/Failure message associated with the stack status.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TemplateDescription" /></td>
+    <td><code>string</code></td>
+    <td>The template description of the template used to create the stack.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -202,9 +277,16 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#describe_stacks"><CopyableCode code="describe_stacks" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
+    <td><a href="#parameter-StackName"><code>StackName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-NextToken"><code>NextToken</code></a></td>
     <td>Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created. For more information about a stack's event history, see Understand CloudFormation stack creation events in the CloudFormation User Guide. If the stack doesn't exist, a ValidationError is returned.</td>
+</tr>
+<tr>
+    <td><a href="#list_stacks"><CopyableCode code="list_stacks" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-StackStatusFilter"><code>StackStatusFilter</code></a></td>
+    <td>Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).</td>
 </tr>
 <tr>
     <td><a href="#create_stack"><CopyableCode code="create_stack" /></a></td>
@@ -268,13 +350,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-StackSetName"><code>StackSetName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-StackIds"><code>StackIds</code></a>, <a href="#parameter-StackIdsUrl"><code>StackIdsUrl</code></a>, <a href="#parameter-OrganizationalUnitIds"><code>OrganizationalUnitIds</code></a>, <a href="#parameter-OperationPreferences"><code>OperationPreferences</code></a>, <a href="#parameter-OperationId"><code>OperationId</code></a>, <a href="#parameter-CallAs"><code>CallAs</code></a></td>
     <td>Import existing stacks into a new StackSets. Use the stack import operation to import up to 10 stacks into a new StackSet in the same account as the source stack or in a different administrator account and Region, by specifying the stack ID of the stack you intend to import.</td>
-</tr>
-<tr>
-    <td><a href="#list_stacks"><CopyableCode code="list_stacks" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-NextToken"><code>NextToken</code></a>, <a href="#parameter-StackStatusFilter"><code>StackStatusFilter</code></a></td>
-    <td>Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).</td>
 </tr>
 <tr>
     <td><a href="#rollback_stack"><CopyableCode code="rollback_stack" /></a></td>
@@ -446,11 +521,6 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>string</code></td>
     <td>The Amazon S3 URL which contains list of stack ids to be inputted. Specify either StackIds or StackIdsUrl.</td>
 </tr>
-<tr id="parameter-StackName">
-    <td><CopyableCode code="StackName" /></td>
-    <td><code>string</code></td>
-    <td>If you don't pass a parameter to StackName, the API returns a response that describes all resources in the account, which can impact performance. This requires ListStacks and DescribeStacks permissions. Consider using the ListStacks API if you're not passing a parameter to StackName. The IAM policy below can be added to IAM policies when you want to limit resource-level permissions and avoid returning a response when no parameter is sent in the request: &#123; "Version": "2012-10-17", "Statement": &#91;&#123; "Effect": "Deny", "Action": "cloudformation:DescribeStacks", "NotResource": "arn:aws:cloudformation:*:*:stack/*/*" &#125;&#93; &#125; The name or the unique stack ID that's associated with the stack, which aren't always interchangeable: Running stacks: You can specify either the stack's name or its unique stack ID. Deleted stacks: You must specify the unique stack ID.</td>
-</tr>
 <tr id="parameter-StackPolicyBody">
     <td><CopyableCode code="StackPolicyBody" /></td>
     <td><code>string</code></td>
@@ -514,7 +584,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_stacks"
     values={[
-        { label: 'describe_stacks', value: 'describe_stacks' }
+        { label: 'describe_stacks', value: 'describe_stacks' },
+        { label: 'list_stacks', value: 'list_stacks' }
     ]}
 >
 <TabItem value="describe_stacks">
@@ -550,9 +621,34 @@ StackStatusReason,
 Tags,
 TimeoutInMinutes
 FROM aws.cloudformation.stacks
-WHERE region = '{{ region }}' -- required
-AND StackName = '{{ StackName }}'
+WHERE StackName = '{{ StackName }}' -- required
+AND region = '{{ region }}' -- required
 AND NextToken = '{{ NextToken }}'
+;
+```
+</TabItem>
+<TabItem value="list_stacks">
+
+Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).
+
+```sql
+SELECT
+CreationTime,
+DeletionTime,
+DriftInformation,
+LastOperations,
+LastUpdatedTime,
+ParentId,
+RootId,
+StackId,
+StackName,
+StackStatus,
+StackStatusReason,
+TemplateDescription
+FROM aws.cloudformation.stacks
+WHERE region = '{{ region }}' -- required
+AND NextToken = '{{ NextToken }}'
+AND StackStatusFilter = '{{ StackStatusFilter }}'
 ;
 ```
 </TabItem>
@@ -800,7 +896,6 @@ AND DeletionMode = '{{ DeletionMode }}'
         { label: 'detect_stack_drift', value: 'detect_stack_drift' },
         { label: 'detect_stack_resource_drift', value: 'detect_stack_resource_drift' },
         { label: 'import_stacks_to_stack_set', value: 'import_stacks_to_stack_set' },
-        { label: 'list_stacks', value: 'list_stacks' },
         { label: 'rollback_stack', value: 'rollback_stack' },
         { label: 'signal_resource', value: 'signal_resource' }
     ]}
@@ -869,18 +964,6 @@ EXEC aws.cloudformation.stacks.import_stacks_to_stack_set
 @OperationPreferences='{{ OperationPreferences }}', 
 @OperationId='{{ OperationId }}', 
 @CallAs='{{ CallAs }}'
-;
-```
-</TabItem>
-<TabItem value="list_stacks">
-
-Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).
-
-```sql
-EXEC aws.cloudformation.stacks.list_stacks 
-@region='{{ region }}' --required, 
-@NextToken='{{ NextToken }}', 
-@StackStatusFilter='{{ StackStatusFilter }}'
 ;
 ```
 </TabItem>

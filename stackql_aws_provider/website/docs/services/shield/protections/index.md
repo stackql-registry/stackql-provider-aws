@@ -35,10 +35,55 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_protection"
     values={[
-        { label: 'describe_protection', value: 'describe_protection' }
+        { label: 'describe_protection', value: 'describe_protection' },
+        { label: 'list_protections', value: 'list_protections' }
     ]}
 >
 <TabItem value="describe_protection">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="ApplicationLayerAutomaticResponseConfiguration" /></td>
+    <td><code>object</code></td>
+    <td>The automatic application layer DDoS mitigation settings for the protection. This configuration determines whether Shield Advanced automatically manages rules in the web ACL in order to respond to application layer events that Shield Advanced determines to be DDoS attacks.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="HealthCheckIds" /></td>
+    <td><code>array</code></td>
+    <td>The unique identifier (ID) for the Route 53 health check that's associated with the protection.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Id" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier (ID) of the protection. (pattern: &lt;code&gt;&#91;a-zA-Z0-9\\-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the protection. For example, My CloudFront distributions. (pattern: &lt;code&gt;&#91; a-zA-Z0-9_\\.\\-&#93;*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ProtectionArn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN (Amazon Resource Name) of the protection. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ResourceArn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN (Amazon Resource Name) of the Amazon Web Services resource that is protected. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_protections">
 
 <table>
 <thead>
@@ -107,6 +152,13 @@ The following methods are available for this resource:
     <td>Lists the details of a Protection object.</td>
 </tr>
 <tr>
+    <td><a href="#list_protections"><CopyableCode code="list_protections" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves Protection objects for the account. You can retrieve all protections or you can provide filtering criteria and retrieve just the subset of protections that match the criteria.</td>
+</tr>
+<tr>
     <td><a href="#create_protection"><CopyableCode code="create_protection" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ResourceArn"><code>ResourceArn</code></a></td>
@@ -133,13 +185,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProtectionId"><code>ProtectionId</code></a>, <a href="#parameter-HealthCheckArn"><code>HealthCheckArn</code></a></td>
     <td></td>
     <td>Removes health-based detection from the Shield Advanced protection for a resource. Shield Advanced health-based detection uses the health of your Amazon Web Services resource to improve responsiveness and accuracy in attack detection and response. You define the health check in Route 53 and then associate or disassociate it with your Shield Advanced protection. For more information, see Shield Advanced Health-Based Detection in the WAF Developer Guide.</td>
-</tr>
-<tr>
-    <td><a href="#list_protections"><CopyableCode code="list_protections" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves Protection objects for the account. You can retrieve all protections or you can provide filtering criteria and retrieve just the subset of protections that match the criteria.</td>
 </tr>
 </tbody>
 </table>
@@ -170,12 +215,30 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_protection"
     values={[
-        { label: 'describe_protection', value: 'describe_protection' }
+        { label: 'describe_protection', value: 'describe_protection' },
+        { label: 'list_protections', value: 'list_protections' }
     ]}
 >
 <TabItem value="describe_protection">
 
 Lists the details of a Protection object.
+
+```sql
+SELECT
+ApplicationLayerAutomaticResponseConfiguration,
+HealthCheckIds,
+Id,
+Name,
+ProtectionArn,
+ResourceArn
+FROM aws.shield.protections
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_protections">
+
+Retrieves Protection objects for the account. You can retrieve all protections or you can provide filtering criteria and retrieve just the subset of protections that match the criteria.
 
 ```sql
 SELECT
@@ -303,8 +366,7 @@ WHERE region = '{{ region }}' --required
 <Tabs
     defaultValue="disassociate_health_check"
     values={[
-        { label: 'disassociate_health_check', value: 'disassociate_health_check' },
-        { label: 'list_protections', value: 'list_protections' }
+        { label: 'disassociate_health_check', value: 'disassociate_health_check' }
     ]}
 >
 <TabItem value="disassociate_health_check">
@@ -318,22 +380,6 @@ EXEC aws.shield.protections.disassociate_health_check
 '{
 "ProtectionId": "{{ ProtectionId }}", 
 "HealthCheckArn": "{{ HealthCheckArn }}"
-}'
-;
-```
-</TabItem>
-<TabItem value="list_protections">
-
-Retrieves Protection objects for the account. You can retrieve all protections or you can provide filtering criteria and retrieve just the subset of protections that match the criteria.
-
-```sql
-EXEC aws.shield.protections.list_protections 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}, 
-"InclusionFilters": "{{ InclusionFilters }}"
 }'
 ;
 ```

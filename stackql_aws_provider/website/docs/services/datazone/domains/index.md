@@ -33,12 +33,42 @@ Creates, updates, deletes, gets or lists a <code>domains</code> resource.
 The following fields are returned by `SELECT` queries:
 
 <Tabs
-    defaultValue="get_domain"
+    defaultValue="search"
     values={[
+        { label: 'search', value: 'search' },
         { label: 'get_domain', value: 'get_domain' },
         { label: 'list_domains', value: 'list_domains' }
     ]}
 >
+<TabItem value="search">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="items_" /></td>
+    <td><code>array</code></td>
+    <td>The results of the Search action.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="nextToken" /></td>
+    <td><code>string</code></td>
+    <td>When the number of results is greater than the default value for the MaxResults parameter, or if you explicitly specify a value for MaxResults that is less than the number of results, the response includes a pagination token named NextToken. You can specify this NextToken value in a subsequent call to Search to list the next set of results.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="totalMatchCount" /></td>
+    <td><code>integer</code></td>
+    <td>Total number of search results.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 <TabItem value="get_domain">
 
 <table>
@@ -210,6 +240,13 @@ The following methods are available for this resource:
 </thead>
 <tbody>
 <tr>
+    <td><a href="#search"><CopyableCode code="search" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful capability that enables users to discover and explore data assets, glossary terms, and data products across their organization. It provides both basic and advanced search functionality, allowing users to find resources based on names, descriptions, metadata, and other attributes. Search can be scoped to specific types of resources (like assets, glossary terms, or data products) and can be filtered using various criteria such as creation date, owner, or status. The search functionality is essential for making the wealth of data resources in an organization discoverable and usable, helping users find the right data for their needs quickly and efficiently. Many search commands in Amazon DataZone are paginated, including search and search-types. When the result set is large, Amazon DataZone returns a nextToken in the response. This token can be used to retrieve the next page of results. Prerequisites: The --domain-identifier must refer to an existing Amazon DataZone domain. --search-scope must be one of: ASSET, GLOSSARY_TERM, DATA_PRODUCT, or GLOSSARY. The user must have search permissions in the specified domain. If using --filters, ensure that the JSON is well-formed and that each filter includes valid attribute and value keys. For paginated results, be prepared to use --next-token to fetch additional pages. To run a standard free-text search, the searchText parameter must be supplied. By default, all searchable fields are indexed for semantic search and will return semantic matches for SearchListings queries. To prevent semantic search indexing for a custom form attribute, see the CreateFormType API documentation. To run a lexical search query, enclose the query with double quotes (""). This will disable semantic search even for fields that have semantic search enabled and will only return results that contain the keywords wrapped by double quotes (order of tokens in the query is not enforced). Free-text search is supported for all attributes annotated with @amazon.datazone#searchable. To run a filtered search, provide filter clause using the filters parameter. To filter on glossary terms, use the special attribute __DataZoneGlossaryTerms. To filter on an indexed numeric attribute (i.e., a numeric attribute annotated with @amazon.datazone#sortable), provide a filter using the intValue parameter. The filters parameter can also be used to run more advanced free-text searches that target specific attributes (attributes must be annotated with @amazon.datazone#searchable for free-text search). Create/update timestamp filtering is supported using the special creationTime/lastUpdatedTime attributes. Filter types can be mixed and matched to power complex queries. To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.</td>
+</tr>
+<tr>
     <td><a href="#get_domain"><CopyableCode code="get_domain" /></a></td>
     <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-identifier"><code>identifier</code></a>, <a href="#parameter-region"><code>region</code></a></td>
@@ -321,13 +358,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-revision"><code>revision</code></a></td>
     <td>Rejects automatically generated business-friendly metadata for your Amazon DataZone assets.</td>
 </tr>
-<tr>
-    <td><a href="#search"><CopyableCode code="search" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-domain_identifier"><code>domain_identifier</code></a>, <a href="#parameter-region"><code>region</code></a>, <a href="#parameter-searchScope"><code>searchScope</code></a></td>
-    <td></td>
-    <td>Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful capability that enables users to discover and explore data assets, glossary terms, and data products across their organization. It provides both basic and advanced search functionality, allowing users to find resources based on names, descriptions, metadata, and other attributes. Search can be scoped to specific types of resources (like assets, glossary terms, or data products) and can be filtered using various criteria such as creation date, owner, or status. The search functionality is essential for making the wealth of data resources in an organization discoverable and usable, helping users find the right data for their needs quickly and efficiently. Many search commands in Amazon DataZone are paginated, including search and search-types. When the result set is large, Amazon DataZone returns a nextToken in the response. This token can be used to retrieve the next page of results. Prerequisites: The --domain-identifier must refer to an existing Amazon DataZone domain. --search-scope must be one of: ASSET, GLOSSARY_TERM, DATA_PRODUCT, or GLOSSARY. The user must have search permissions in the specified domain. If using --filters, ensure that the JSON is well-formed and that each filter includes valid attribute and value keys. For paginated results, be prepared to use --next-token to fetch additional pages. To run a standard free-text search, the searchText parameter must be supplied. By default, all searchable fields are indexed for semantic search and will return semantic matches for SearchListings queries. To prevent semantic search indexing for a custom form attribute, see the CreateFormType API documentation. To run a lexical search query, enclose the query with double quotes (""). This will disable semantic search even for fields that have semantic search enabled and will only return results that contain the keywords wrapped by double quotes (order of tokens in the query is not enforced). Free-text search is supported for all attributes annotated with @amazon.datazone#searchable. To run a filtered search, provide filter clause using the filters parameter. To filter on glossary terms, use the special attribute __DataZoneGlossaryTerms. To filter on an indexed numeric attribute (i.e., a numeric attribute annotated with @amazon.datazone#sortable), provide a filter using the intValue parameter. The filters parameter can also be used to run more advanced free-text searches that target specific attributes (attributes must be annotated with @amazon.datazone#searchable for free-text search). Create/update timestamp filtering is supported using the special creationTime/lastUpdatedTime attributes. Filter types can be mixed and matched to power complex queries. To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.</td>
-</tr>
 </tbody>
 </table>
 
@@ -410,12 +440,28 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 ## `SELECT` examples
 
 <Tabs
-    defaultValue="get_domain"
+    defaultValue="search"
     values={[
+        { label: 'search', value: 'search' },
         { label: 'get_domain', value: 'get_domain' },
         { label: 'list_domains', value: 'list_domains' }
     ]}
 >
+<TabItem value="search">
+
+Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful capability that enables users to discover and explore data assets, glossary terms, and data products across their organization. It provides both basic and advanced search functionality, allowing users to find resources based on names, descriptions, metadata, and other attributes. Search can be scoped to specific types of resources (like assets, glossary terms, or data products) and can be filtered using various criteria such as creation date, owner, or status. The search functionality is essential for making the wealth of data resources in an organization discoverable and usable, helping users find the right data for their needs quickly and efficiently. Many search commands in Amazon DataZone are paginated, including search and search-types. When the result set is large, Amazon DataZone returns a nextToken in the response. This token can be used to retrieve the next page of results. Prerequisites: The --domain-identifier must refer to an existing Amazon DataZone domain. --search-scope must be one of: ASSET, GLOSSARY_TERM, DATA_PRODUCT, or GLOSSARY. The user must have search permissions in the specified domain. If using --filters, ensure that the JSON is well-formed and that each filter includes valid attribute and value keys. For paginated results, be prepared to use --next-token to fetch additional pages. To run a standard free-text search, the searchText parameter must be supplied. By default, all searchable fields are indexed for semantic search and will return semantic matches for SearchListings queries. To prevent semantic search indexing for a custom form attribute, see the CreateFormType API documentation. To run a lexical search query, enclose the query with double quotes (""). This will disable semantic search even for fields that have semantic search enabled and will only return results that contain the keywords wrapped by double quotes (order of tokens in the query is not enforced). Free-text search is supported for all attributes annotated with @amazon.datazone#searchable. To run a filtered search, provide filter clause using the filters parameter. To filter on glossary terms, use the special attribute __DataZoneGlossaryTerms. To filter on an indexed numeric attribute (i.e., a numeric attribute annotated with @amazon.datazone#sortable), provide a filter using the intValue parameter. The filters parameter can also be used to run more advanced free-text searches that target specific attributes (attributes must be annotated with @amazon.datazone#searchable for free-text search). Create/update timestamp filtering is supported using the special creationTime/lastUpdatedTime attributes. Filter types can be mixed and matched to power complex queries. To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.
+
+```sql
+SELECT
+items_,
+nextToken,
+totalMatchCount
+FROM aws.datazone.domains
+WHERE domain_identifier = '{{ domain_identifier }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
 <TabItem value="get_domain">
 
 Gets an Amazon DataZone domain.
@@ -672,8 +718,7 @@ AND skipDeletionCheck = '{{ skipDeletionCheck }}'
         { label: 'post_lineage_event', value: 'post_lineage_event' },
         { label: 'start_metadata_generation_run', value: 'start_metadata_generation_run' },
         { label: 'query_graph', value: 'query_graph' },
-        { label: 'reject_predictions', value: 'reject_predictions' },
-        { label: 'search', value: 'search' }
+        { label: 'reject_predictions', value: 'reject_predictions' }
     ]}
 >
 <TabItem value="accept_predictions">
@@ -822,29 +867,6 @@ EXEC aws.datazone.domains.reject_predictions
 "rejectRule": "{{ rejectRule }}", 
 "rejectChoices": "{{ rejectChoices }}", 
 "clientToken": "{{ clientToken }}"
-}'
-;
-```
-</TabItem>
-<TabItem value="search">
-
-Searches for assets in Amazon DataZone. Search in Amazon DataZone is a powerful capability that enables users to discover and explore data assets, glossary terms, and data products across their organization. It provides both basic and advanced search functionality, allowing users to find resources based on names, descriptions, metadata, and other attributes. Search can be scoped to specific types of resources (like assets, glossary terms, or data products) and can be filtered using various criteria such as creation date, owner, or status. The search functionality is essential for making the wealth of data resources in an organization discoverable and usable, helping users find the right data for their needs quickly and efficiently. Many search commands in Amazon DataZone are paginated, including search and search-types. When the result set is large, Amazon DataZone returns a nextToken in the response. This token can be used to retrieve the next page of results. Prerequisites: The --domain-identifier must refer to an existing Amazon DataZone domain. --search-scope must be one of: ASSET, GLOSSARY_TERM, DATA_PRODUCT, or GLOSSARY. The user must have search permissions in the specified domain. If using --filters, ensure that the JSON is well-formed and that each filter includes valid attribute and value keys. For paginated results, be prepared to use --next-token to fetch additional pages. To run a standard free-text search, the searchText parameter must be supplied. By default, all searchable fields are indexed for semantic search and will return semantic matches for SearchListings queries. To prevent semantic search indexing for a custom form attribute, see the CreateFormType API documentation. To run a lexical search query, enclose the query with double quotes (""). This will disable semantic search even for fields that have semantic search enabled and will only return results that contain the keywords wrapped by double quotes (order of tokens in the query is not enforced). Free-text search is supported for all attributes annotated with @amazon.datazone#searchable. To run a filtered search, provide filter clause using the filters parameter. To filter on glossary terms, use the special attribute __DataZoneGlossaryTerms. To filter on an indexed numeric attribute (i.e., a numeric attribute annotated with @amazon.datazone#sortable), provide a filter using the intValue parameter. The filters parameter can also be used to run more advanced free-text searches that target specific attributes (attributes must be annotated with @amazon.datazone#searchable for free-text search). Create/update timestamp filtering is supported using the special creationTime/lastUpdatedTime attributes. Filter types can be mixed and matched to power complex queries. To find out whether an attribute has been annotated and indexed for a given search type, use the GetFormType API to retrieve the form containing the attribute.
-
-```sql
-EXEC aws.datazone.domains.search 
-@domain_identifier='{{ domain_identifier }}' --required, 
-@region='{{ region }}' --required 
-@@json=
-'{
-"owningProjectIdentifier": "{{ owningProjectIdentifier }}", 
-"maxResults": {{ maxResults }}, 
-"nextToken": "{{ nextToken }}", 
-"searchScope": "{{ searchScope }}", 
-"searchText": "{{ searchText }}", 
-"searchIn": "{{ searchIn }}", 
-"filters": "{{ filters }}", 
-"sort": "{{ sort }}", 
-"additionalAttributes": "{{ additionalAttributes }}"
 }'
 ;
 ```

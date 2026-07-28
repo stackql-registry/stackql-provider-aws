@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_association"
     values={[
-        { label: 'describe_association', value: 'describe_association' }
+        { label: 'describe_association', value: 'describe_association' },
+        { label: 'list_associations', value: 'list_associations' }
     ]}
 >
 <TabItem value="describe_association">
@@ -202,6 +203,85 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_associations">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="AssociationId" /></td>
+    <td><code>string</code></td>
+    <td>The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule. (pattern: &lt;code&gt;&#91;0-9a-fA-F&#93;&#123;8&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;4&#125;-&#91;0-9a-fA-F&#93;&#123;12&#125;&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="AssociationName" /></td>
+    <td><code>string</code></td>
+    <td>The association name. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="AssociationVersion" /></td>
+    <td><code>string</code></td>
+    <td>The association version. (pattern: &lt;code&gt;(&#91;$&#93;LATEST)|(&#91;1-9&#93;&#91;0-9&#93;*)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DocumentVersion" /></td>
+    <td><code>string</code></td>
+    <td>The version of the document used in the association. If you change a document version for a State Manager association, Systems Manager immediately runs the association unless you previously specifed the apply-only-at-cron-interval parameter. State Manager doesn't support running associations that use a new version of a document if that document is shared from another account. State Manager always runs the default version of a document if shared from another account, even though the Systems Manager console shows that a new version was processed. If you want to run an association using a new version of a document shared form another account, you must set the document version to default. (pattern: &lt;code&gt;(&#91;$&#93;LATEST|&#91;$&#93;DEFAULT|^&#91;1-9&#93;&#91;0-9&#93;*$)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Duration" /></td>
+    <td><code>integer</code></td>
+    <td>The number of hours that an association can run on specified targets. After the resulting cutoff time passes, associations that are currently running are cancelled, and no pending executions are started on remaining targets.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="InstanceId" /></td>
+    <td><code>string</code></td>
+    <td>The managed node ID. (pattern: &lt;code&gt;(^i-(\w&#123;8&#125;|\w&#123;17&#125;)$)|(^mi-\w&#123;17&#125;$)&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="LastExecutionDate" /></td>
+    <td><code>string (date-time)</code></td>
+    <td>The date on which the association was last run.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the SSM document. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9_\-.:/&#93;&#123;3,128&#125;$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Overview" /></td>
+    <td><code>object</code></td>
+    <td>Information about the association.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ScheduleExpression" /></td>
+    <td><code>string</code></td>
+    <td>A cron expression that specifies a schedule when the association runs. The schedule runs in Coordinated Universal Time (UTC).</td>
+</tr>
+<tr>
+    <td><CopyableCode code="ScheduleOffset" /></td>
+    <td><code>integer</code></td>
+    <td>Number of days to wait after the scheduled day to run an association.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TargetMaps" /></td>
+    <td><code>array</code></td>
+    <td>A key-value mapping of document parameters to target resources. Both Targets and TargetMaps can't be specified together.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Targets" /></td>
+    <td><code>array</code></td>
+    <td>The managed nodes targeted by the request to create an association. You can target all managed nodes in an Amazon Web Services account by specifying the InstanceIds key with a value of *.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -225,6 +305,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Describes the association for the specified target or managed node. If you created the association by using the Targets parameter, then you must retrieve the association by using the association ID.</td>
+</tr>
+<tr>
+    <td><a href="#list_associations"><CopyableCode code="list_associations" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a tool in Amazon Web Services Systems Manager.</td>
 </tr>
 <tr>
     <td><a href="#create_association_batch"><CopyableCode code="create_association_batch" /></a></td>
@@ -262,13 +349,6 @@ The following methods are available for this resource:
     <td>Disassociates the specified Amazon Web Services Systems Manager document (SSM document) from the specified managed node. If you created the association by using the Targets parameter, then you must delete the association by using the association ID. When you disassociate a document from a managed node, it doesn't change the configuration of the node. To change the configuration state of a managed node after you disassociate a document, you must create a new document with the desired configuration and associate it with the node.</td>
 </tr>
 <tr>
-    <td><a href="#list_associations"><CopyableCode code="list_associations" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a tool in Amazon Web Services Systems Manager.</td>
-</tr>
-<tr>
     <td><a href="#start_associations_once"><CopyableCode code="start_associations_once" /></a></td>
     <td><CopyableCode code="exec" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-AssociationIds"><code>AssociationIds</code></a></td>
@@ -304,7 +384,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_association"
     values={[
-        { label: 'describe_association', value: 'describe_association' }
+        { label: 'describe_association', value: 'describe_association' },
+        { label: 'list_associations', value: 'list_associations' }
     ]}
 >
 <TabItem value="describe_association">
@@ -343,6 +424,30 @@ TargetLocations,
 TargetMaps,
 Targets,
 TriggeredAlarms
+FROM aws.ssm.associations
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_associations">
+
+Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a tool in Amazon Web Services Systems Manager.
+
+```sql
+SELECT
+AssociationId,
+AssociationName,
+AssociationVersion,
+DocumentVersion,
+Duration,
+InstanceId,
+LastExecutionDate,
+Name,
+Overview,
+ScheduleExpression,
+ScheduleOffset,
+TargetMaps,
+Targets
 FROM aws.ssm.associations
 WHERE region = '{{ region }}' -- required
 ;
@@ -691,28 +796,11 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_associations"
+    defaultValue="start_associations_once"
     values={[
-        { label: 'list_associations', value: 'list_associations' },
         { label: 'start_associations_once', value: 'start_associations_once' }
     ]}
 >
-<TabItem value="list_associations">
-
-Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a tool in Amazon Web Services Systems Manager.
-
-```sql
-EXEC aws.ssm.associations.list_associations 
-@region='{{ region }}' --required 
-@@json=
-'{
-"AssociationFilterList": "{{ AssociationFilterList }}", 
-"MaxResults": {{ MaxResults }}, 
-"NextToken": "{{ NextToken }}"
-}'
-;
-```
-</TabItem>
 <TabItem value="start_associations_once">
 
 Runs an association immediately and only one time. This operation can be helpful when troubleshooting associations.

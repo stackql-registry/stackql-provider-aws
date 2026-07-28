@@ -18,7 +18,7 @@ sagemaker service documentation.
 
 :::info[Service Summary]
 
-total resources: __102__  
+total resources: __103__  
 
 :::
 
@@ -75,10 +75,10 @@ total resources: __102__
 <a href="/services/sagemaker/lineage_group_policies/">lineage_group_policies</a><br />
 <a href="/services/sagemaker/lineage_groups/">lineage_groups</a><br />
 <a href="/services/sagemaker/mlflow_apps/">mlflow_apps</a><br />
-<a href="/services/sagemaker/mlflow_tracking_servers/">mlflow_tracking_servers</a>
+<a href="/services/sagemaker/mlflow_tracking_servers/">mlflow_tracking_servers</a><br />
+<a href="/services/sagemaker/model_bias_job_definitions/">model_bias_job_definitions</a>
 </div>
 <div class="providerDocColumn">
-<a href="/services/sagemaker/model_bias_job_definitions/">model_bias_job_definitions</a><br />
 <a href="/services/sagemaker/model_card_export_jobs/">model_card_export_jobs</a><br />
 <a href="/services/sagemaker/model_card_versions/">model_card_versions</a><br />
 <a href="/services/sagemaker/model_cards/">model_cards</a><br />
@@ -111,6 +111,7 @@ total resources: __102__
 <a href="/services/sagemaker/resource_catalogs/">resource_catalogs</a><br />
 <a href="/services/sagemaker/sagemaker_servicecatalog_portfolio_status/">sagemaker_servicecatalog_portfolio_status</a><br />
 <a href="/services/sagemaker/scaling_configuration_recommendations/">scaling_configuration_recommendations</a><br />
+<a href="/services/sagemaker/search/">search</a><br />
 <a href="/services/sagemaker/search_suggestions/">search_suggestions</a><br />
 <a href="/services/sagemaker/spaces/">spaces</a><br />
 <a href="/services/sagemaker/stage_devices/">stage_devices</a><br />

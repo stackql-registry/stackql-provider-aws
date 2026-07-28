@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_proxy_rule_group"
     values={[
-        { label: 'describe_proxy_rule_group', value: 'describe_proxy_rule_group' }
+        { label: 'describe_proxy_rule_group', value: 'describe_proxy_rule_group' },
+        { label: 'list_proxy_rule_groups', value: 'list_proxy_rule_groups' }
     ]}
 >
 <TabItem value="describe_proxy_rule_group">
@@ -58,6 +59,30 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="UpdateToken" /></td>
     <td><code>string</code></td>
     <td>A token used for optimistic locking. Network Firewall returns a token to your requests that access the proxy rule group. The token marks the state of the proxy rule group resource at the time of the request. To make changes to the proxy rule group, you provide the token in your request. Network Firewall uses the token to ensure that the proxy rule group hasn't changed since you last retrieved it. If it has changed, the operation fails with an InvalidTokenException. If this happens, retrieve the proxy rule group again to get a current copy of it with a current token. Reapply your changes as needed, then try the operation again using the new token. (pattern: &lt;code&gt;^(&#91;0-9a-f&#93;&#123;8&#125;)-(&#91;0-9a-f&#93;&#123;4&#125;-)&#123;3&#125;(&#91;0-9a-f&#93;&#123;12&#125;)$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_proxy_rule_groups">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of a proxy rule group. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The descriptive name of the proxy rule group. You can't change the name of a proxy rule group after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
 </tr>
 </tbody>
 </table>
@@ -87,6 +112,13 @@ The following methods are available for this resource:
     <td>Returns the data objects for the specified proxy rule group.</td>
 </tr>
 <tr>
+    <td><a href="#list_proxy_rule_groups"><CopyableCode code="list_proxy_rule_groups" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the metadata for the proxy rule groups that you have defined. Depending on your setting for max results and the number of proxy rule groups, a single call might not return the full list.</td>
+</tr>
+<tr>
     <td><a href="#create_proxy_rule_group"><CopyableCode code="create_proxy_rule_group" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ProxyRuleGroupName"><code>ProxyRuleGroupName</code></a></td>
@@ -106,13 +138,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified ProxyRuleGroup.</td>
-</tr>
-<tr>
-    <td><a href="#list_proxy_rule_groups"><CopyableCode code="list_proxy_rule_groups" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the metadata for the proxy rule groups that you have defined. Depending on your setting for max results and the number of proxy rule groups, a single call might not return the full list.</td>
 </tr>
 </tbody>
 </table>
@@ -143,7 +168,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_proxy_rule_group"
     values={[
-        { label: 'describe_proxy_rule_group', value: 'describe_proxy_rule_group' }
+        { label: 'describe_proxy_rule_group', value: 'describe_proxy_rule_group' },
+        { label: 'list_proxy_rule_groups', value: 'list_proxy_rule_groups' }
     ]}
 >
 <TabItem value="describe_proxy_rule_group">
@@ -154,6 +180,19 @@ Returns the data objects for the specified proxy rule group.
 SELECT
 ProxyRuleGroup,
 UpdateToken
+FROM aws.network_firewall.proxy_rule_groups
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_proxy_rule_groups">
+
+Retrieves the metadata for the proxy rule groups that you have defined. Depending on your setting for max results and the number of proxy rule groups, a single call might not return the full list.
+
+```sql
+SELECT
+Arn,
+Name
 FROM aws.network_firewall.proxy_rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -288,32 +327,6 @@ Deletes the specified ProxyRuleGroup.
 ```sql
 DELETE FROM aws.network_firewall.proxy_rule_groups
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_proxy_rule_groups"
-    values={[
-        { label: 'list_proxy_rule_groups', value: 'list_proxy_rule_groups' }
-    ]}
->
-<TabItem value="list_proxy_rule_groups">
-
-Retrieves the metadata for the proxy rule groups that you have defined. Depending on your setting for max results and the number of proxy rule groups, a single call might not return the full list.
-
-```sql
-EXEC aws.network_firewall.proxy_rule_groups.list_proxy_rule_groups 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}
-}'
 ;
 ```
 </TabItem>

@@ -26,8 +26,8 @@ For the AWS Cloud Control provider see the [__`awscc`__](https://awscc-provider.
 
 :::info[Provider Summary] 
 
-total services: __413__  
-total resources: __6398__  
+total services: __414__  
+total resources: __6402__  
 
 :::
 
@@ -121,6 +121,7 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/cloudhsm/">cloudhsm</a><br />
 <a href="/services/cloudhsmv2/">cloudhsmv2</a><br />
 <a href="/services/cloudsearch/">cloudsearch</a><br />
+<a href="/services/cloudsearchdomain/">cloudsearchdomain</a><br />
 <a href="/services/cloudtrail/">cloudtrail</a><br />
 <a href="/services/cloudtrail_data/">cloudtrail_data</a><br />
 <a href="/services/cloudwatch/">cloudwatch</a><br />
@@ -255,9 +256,9 @@ Resources are available in all AWS regions. Use the `region` parameter to specif
 <a href="/services/kinesis/">kinesis</a><br />
 <a href="/services/kinesis_video_archived_media/">kinesis_video_archived_media</a><br />
 <a href="/services/kinesis_video_media/">kinesis_video_media</a><br />
-<a href="/services/kinesis_video_signaling/">kinesis_video_signaling</a><br />
 </div>
 <div class="providerDocColumn">
+<a href="/services/kinesis_video_signaling/">kinesis_video_signaling</a><br />
 <a href="/services/kinesisanalytics/">kinesisanalytics</a><br />
 <a href="/services/kinesisanalyticsv2/">kinesisanalyticsv2</a><br />
 <a href="/services/kinesisvideo/">kinesisvideo</a><br />

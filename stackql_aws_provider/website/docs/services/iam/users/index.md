@@ -35,10 +35,65 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_user"
     values={[
-        { label: 'get_user', value: 'get_user' }
+        { label: 'get_user', value: 'get_user' },
+        { label: 'list_users', value: 'list_users' }
     ]}
 >
 <TabItem value="get_user">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) that identifies the user. For more information about ARNs and how to use ARNs in policies, see IAM Identifiers in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="CreateDate" /></td>
+    <td><code>string</code></td>
+    <td>The date and time, in ISO 8601 date-time format, when the user was created.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="PasswordLastUsed" /></td>
+    <td><code>string</code></td>
+    <td>The date and time, in ISO 8601 date-time format, when the user's password was last used to sign in to an Amazon Web Services website. For a list of Amazon Web Services websites that capture a user's last sign-in time, see the Credential reports topic in the IAM User Guide. If a password is used more than once in a five-minute span, only the first use is returned in this field. If the field is null (no value), then it indicates that they never signed in with a password. This can be because: The user never had a password. A password exists but has not been used since IAM started tracking this information on October 20, 2014. A null value does not mean that the user never had a password. Also, if the user does not currently have a password but had one in the past, then this field contains the date and time the most recent password was used. This value is returned only in the GetUser and ListUsers operations.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Path" /></td>
+    <td><code>string</code></td>
+    <td>The path to the user. For more information about paths, see IAM identifiers in the IAM User Guide. The ARN of the policy used to set the permissions boundary for the user.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="PermissionsBoundary" /></td>
+    <td><code>string</code></td>
+    <td>For more information about permissions boundaries, see Permissions boundaries for IAM identities in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Tags" /></td>
+    <td><code>string</code></td>
+    <td>A list of tags that are associated with the user. For more information about tagging, see Tagging IAM resources in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="UserId" /></td>
+    <td><code>string</code></td>
+    <td>The stable and unique string identifying the user. For more information about IDs, see IAM identifiers in the IAM User Guide.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="UserName" /></td>
+    <td><code>string</code></td>
+    <td>The friendly name identifying the user.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_users">
 
 <table>
 <thead>
@@ -112,9 +167,16 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#get_user"><CopyableCode code="get_user" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-UserName"><code>UserName</code></a></td>
+    <td><a href="#parameter-UserName"><code>UserName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
     <td>Retrieves information about the specified IAM user, including the user's creation date, path, unique ID, and ARN. If you do not specify a user name, IAM determines the user name implicitly based on the Amazon Web Services access key ID used to sign the request to this operation.</td>
+</tr>
+<tr>
+    <td><a href="#list_users"><CopyableCode code="list_users" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td><a href="#parameter-PathPrefix"><code>PathPrefix</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
+    <td>Lists the IAM users that have the specified path prefix. If no path prefix is specified, the operation returns all users in the Amazon Web Services account. If there are none, the operation returns an empty list. IAM resource-listing operations return a subset of the available attributes for the resource. This operation does not return the following attributes, even though they are an attribute of the returned object: PermissionsBoundary Tags To view all of the information for a user, see GetUser. You can paginate the results using the MaxItems and Marker parameters.</td>
 </tr>
 <tr>
     <td><a href="#create_user"><CopyableCode code="create_user" /></a></td>
@@ -150,13 +212,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-UserName"><code>UserName</code></a>, <a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the permissions boundary for the specified IAM user. Deleting the permissions boundary for a user might increase its permissions by allowing the user to perform all the actions granted in its permissions policies.</td>
-</tr>
-<tr>
-    <td><a href="#list_users"><CopyableCode code="list_users" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-PathPrefix"><code>PathPrefix</code></a>, <a href="#parameter-Marker"><code>Marker</code></a>, <a href="#parameter-MaxItems"><code>MaxItems</code></a></td>
-    <td>Lists the IAM users that have the specified path prefix. If no path prefix is specified, the operation returns all users in the Amazon Web Services account. If there are none, the operation returns an empty list. IAM resource-listing operations return a subset of the available attributes for the resource. This operation does not return the following attributes, even though they are an attribute of the returned object: PermissionsBoundary Tags To view all of the information for a user, see GetUser. You can paginate the results using the MaxItems and Marker parameters.</td>
 </tr>
 <tr>
     <td><a href="#resync_mfa_device"><CopyableCode code="resync_mfa_device" /></a></td>
@@ -263,11 +318,6 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     <td><code>array</code></td>
     <td>A list of tags that you want to attach to the new user. Each tag consists of a key name and an associated value. For more information about tagging, see Tagging IAM resources in the IAM User Guide. If any one of the tags is invalid or if you exceed the allowed maximum number of tags, then the entire request fails and the resource is not created.</td>
 </tr>
-<tr id="parameter-UserName">
-    <td><CopyableCode code="UserName" /></td>
-    <td><code>string</code></td>
-    <td>The name of the user to get information about. This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (through its regex pattern) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-</td>
-</tr>
 </tbody>
 </table>
 
@@ -276,7 +326,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_user"
     values={[
-        { label: 'get_user', value: 'get_user' }
+        { label: 'get_user', value: 'get_user' },
+        { label: 'list_users', value: 'list_users' }
     ]}
 >
 <TabItem value="get_user">
@@ -294,8 +345,30 @@ Tags,
 UserId,
 UserName
 FROM aws.iam.users
+WHERE UserName = '{{ UserName }}' -- required
+AND region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_users">
+
+Lists the IAM users that have the specified path prefix. If no path prefix is specified, the operation returns all users in the Amazon Web Services account. If there are none, the operation returns an empty list. IAM resource-listing operations return a subset of the available attributes for the resource. This operation does not return the following attributes, even though they are an attribute of the returned object: PermissionsBoundary Tags To view all of the information for a user, see GetUser. You can paginate the results using the MaxItems and Marker parameters.
+
+```sql
+SELECT
+Arn,
+CreateDate,
+PasswordLastUsed,
+Path,
+PermissionsBoundary,
+Tags,
+UserId,
+UserName
+FROM aws.iam.users
 WHERE region = '{{ region }}' -- required
-AND UserName = '{{ UserName }}'
+AND PathPrefix = '{{ PathPrefix }}'
+AND Marker = '{{ Marker }}'
+AND MaxItems = '{{ MaxItems }}'
 ;
 ```
 </TabItem>
@@ -449,7 +522,6 @@ AND region = '{{ region }}' --required
     defaultValue="delete_user_permissions_boundary"
     values={[
         { label: 'delete_user_permissions_boundary', value: 'delete_user_permissions_boundary' },
-        { label: 'list_users', value: 'list_users' },
         { label: 'resync_mfa_device', value: 'resync_mfa_device' },
         { label: 'upload_ssh_public_key', value: 'upload_ssh_public_key' }
     ]}
@@ -462,19 +534,6 @@ Deletes the permissions boundary for the specified IAM user. Deleting the permis
 EXEC aws.iam.users.delete_user_permissions_boundary 
 @UserName='{{ UserName }}' --required, 
 @region='{{ region }}' --required
-;
-```
-</TabItem>
-<TabItem value="list_users">
-
-Lists the IAM users that have the specified path prefix. If no path prefix is specified, the operation returns all users in the Amazon Web Services account. If there are none, the operation returns an empty list. IAM resource-listing operations return a subset of the available attributes for the resource. This operation does not return the following attributes, even though they are an attribute of the returned object: PermissionsBoundary Tags To view all of the information for a user, see GetUser. You can paginate the results using the MaxItems and Marker parameters.
-
-```sql
-EXEC aws.iam.users.list_users 
-@region='{{ region }}' --required, 
-@PathPrefix='{{ PathPrefix }}', 
-@Marker='{{ Marker }}', 
-@MaxItems='{{ MaxItems }}'
 ;
 ```
 </TabItem>

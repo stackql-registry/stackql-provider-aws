@@ -177,6 +177,77 @@ function isPrimaryMethod(method, resource) {
   return noun === resource || pluralise(noun) === resource;
 }
 
+// Inverse of pluralise, for identifier-param promotion below.
+function singularise(noun) {
+  if (noun.endsWith('ies') && noun.length > 3) return noun.slice(0, -3) + 'y';
+  if (/(ches|shes|xes|zes)$/.test(noun)) return noun.slice(0, -2);
+  if (noun.endsWith('s') && !noun.endsWith('ss')) return noun.slice(0, -1);
+  return noun;
+}
+
+const normIdent = (s) => String(s).toLowerCase().replace(/[_-]/g, '');
+
+// Resolve a method's operation.$ref back to the live op object in spec.
+function resolveMethodOp(spec, methodEntry) {
+  const ref = methodEntry && methodEntry.operation && methodEntry.operation.$ref;
+  if (!ref) return null;
+  const parts = ref.replace(/^#\/paths\//, '').split('/');
+  const httpVerb = parts.pop();
+  const pathKey = parts.join('/').replace(/~1/g, '/').replace(/~0/g, '~');
+  return ((spec.paths || {})[pathKey] || {})[httpVerb] || null;
+}
+
+/**
+ * Identifier-param promotion: signature-clash resolution for SELECT
+ * buckets. When Get<X> (identifier optional in botocore - e.g. IAM
+ * GetUser defaults UserName to the caller) collides with List<Xs>, the
+ * stackql contract is that the point-read REQUIRES its identifier:
+ * SELECT ... WHERE UserName = 'x' routes to get_user, a bare SELECT
+ * routes to list_users. Promote the op's optional identifier param
+ * (singular(resource) + name|id|arn|identifier, separator-insensitive)
+ * to required - in the typed parameters, or in the runtime-bound body
+ * schema for body-protocol services - and return the new signature.
+ * Returns null when the method carries no promotable identifier.
+ */
+function promoteIdentifierParam(spec, methodEntry, resource, resourceCols) {
+  const op = resolveMethodOp(spec, methodEntry);
+  if (!op) return null;
+  const base = normIdent(singularise(resource));
+  const acceptable = new Set(
+    ['', 'name', 'id', 'arn', 'identifier'].map((sfx) => base + sfx),
+  );
+  // A newly-required param must not NOCASE-collide with the resource's
+  // response columns (mirror of verifyNoNocaseCollisions: collision when
+  // the lowercased param exists as a column but its exact form does not) -
+  // promotion would otherwise recreate the DDL abort the demotion pass
+  // exists to prevent (cloudformation types.describe_type: param 'Type'
+  // vs column 'type').
+  const cols = resourceCols || new Set();
+  const collides = (name) => cols.has(name.toLowerCase()) && !cols.has(name);
+  for (const p of op.parameters || []) {
+    if (!p || p.required || SIGNATURE_IGNORE.has(p.name)) continue;
+    if (acceptable.has(normIdent(p.name)) && !collides(p.name)) {
+      p.required = true;
+      return { param: p.name, newSig: requiredParamsOf(op, spec, methodEntry.request) };
+    }
+  }
+  const boundKey = bindableBodyContentKey(op, methodEntry.request);
+  if (boundKey) {
+    const schema = derefSchema(spec, op.requestBody.content[boundKey].schema || {});
+    if (schema && schema.properties) {
+      const req = new Set(schema.required || []);
+      for (const name of Object.keys(schema.properties)) {
+        if (req.has(name)) continue;
+        if (acceptable.has(normIdent(name)) && !collides(name)) {
+          schema.required = [...req, name].sort();
+          return { param: name, newSig: requiredParamsOf(op, spec, methodEntry.request) };
+        }
+      }
+    }
+  }
+  return null;
+}
+
 // Port of any-sdk casing.ToSnake (pkg/casing) - predicts the DDL column
 // alias the engine renders for a response property under snake_case_aliases.
 const SPECIAL_ACRONYM_RE = /[A-Z]{2,}s$/;
@@ -873,8 +944,10 @@ function rewriteService(spec, serviceAlias, fileName, mappings) {
   //   3. Sort the survivors by `requiredParams.length` DESC so the most
   //      specific method wins router precedence (a Get<X> with [id,region]
   //      sits ahead of a List<X> with [region]).
-  // Track every demotion so the build summary can surface them.
+  // Track every demotion and promotion so the build summary can surface
+  // them (and the report file can drive CSV reconciliation).
   const demotions = [];
+  const promotions = [];
   for (const [resource, byVerb] of Object.entries(candidates)) {
     const bucket = stackqlResources[resource];
     for (const [verbKey, list] of Object.entries(byVerb)) {
@@ -884,22 +957,75 @@ function rewriteService(spec, serviceAlias, fileName, mappings) {
       // earlier - else the first by insertion order (botocore op-name
       // lexical order). Losers are demoted to EXEC (left out of sqlVerbs,
       // still callable via EXEC).
-      const groups = new Map();
-      for (const cand of list) {
-        const sig = cand.requiredParams.join(',');
-        if (!groups.has(sig)) groups.set(sig, []);
-        groups.get(sig).push(cand);
+      const buildGroups = () => {
+        const g = new Map();
+        for (const cand of list) {
+          const sig = cand.requiredParams.join(',');
+          if (!g.has(sig)) g.set(sig, []);
+          g.get(sig).push(cand);
+        }
+        return g;
+      };
+      let groups = buildGroups();
+
+      // The generic anchor of a clashing SELECT group: the member whose
+      // contract is the unfiltered listing. Preference: list_* form >
+      // primary method (noun matches the resource, e.g. xray get_groups
+      // on `groups`) > any, with CSV-pinned members winning within each
+      // tier (a durable mapping must not lose its slot to a new botocore
+      // op). Used both to pick which member skips identifier promotion
+      // and as the winner when a clash is unresolvable - a batch_get_* or
+      // point-read get_* must not steal the bare-SELECT slot on lexical
+      // accident.
+      // All pinned tiers outrank all unpinned tiers: a NEW (unpinned)
+      // botocore list_* op must never evict a pinned incumbent.
+      const pickSelectAnchor = (group) =>
+        group.find((c) => c.pinned && c.method.startsWith('list_')) ||
+        group.find((c) => c.pinned && isPrimaryMethod(c.method, resource)) ||
+        group.find((c) => c.pinned) ||
+        group.find((c) => c.method.startsWith('list_')) ||
+        group.find((c) => isPrimaryMethod(c.method, resource)) ||
+        group[0];
+
+      // SELECT clashes get a rescue attempt before any demotion:
+      // promote the optional identifier param on the point-read members
+      // (see promoteIdentifierParam); the anchor stays generic.
+      if (verbKey === 'select') {
+        let promotedAny = false;
+        for (const group of groups.values()) {
+          if (group.length < 2) continue;
+          const anchor = pickSelectAnchor(group);
+          for (const cand of group) {
+            if (cand === anchor) continue;
+            const res = promoteIdentifierParam(
+              spec, bucket.methods[cand.method], resource, nocaseCols[resource],
+            );
+            if (res) {
+              cand.requiredParams = res.newSig;
+              promotions.push({
+                resource,
+                method: cand.method,
+                param: res.param,
+                anchor: anchor.method,
+              });
+              promotedAny = true;
+            }
+          }
+        }
+        if (promotedAny) groups = buildGroups();
       }
       const winners = new Set();
       for (const group of groups.values()) {
-        // Precedence: CSV pin > primary method (noun matches the
-        // resource) > insertion order. Without the primary rule, a
-        // co-location merge can hand create_vpc's INSERT slot to
+        // Precedence: for SELECT buckets, the generic anchor (see
+        // pickSelectAnchor). Otherwise: CSV pin > primary method (noun
+        // matches the resource) > insertion order. Without the primary
+        // rule, a co-location merge can hand create_vpc's INSERT slot to
         // create_default_vpc purely because it sorts earlier.
-        const winner =
-          group.find((c) => c.pinned) ||
-          group.find((c) => isPrimaryMethod(c.method, resource)) ||
-          group[0];
+        const winner = verbKey === 'select'
+          ? pickSelectAnchor(group)
+          : group.find((c) => c.pinned) ||
+            group.find((c) => isPrimaryMethod(c.method, resource)) ||
+            group[0];
         winners.add(winner);
         for (const cand of group) {
           if (cand === winner) continue;
@@ -1009,6 +1135,7 @@ function rewriteService(spec, serviceAlias, fileName, mappings) {
   return {
     spec,
     demotions,
+    promotions,
     zeroColumnDemotions,
     prunedEmpty,
     nocaseCols,
@@ -1139,6 +1266,9 @@ const providerServices = {};
 const skippedServices = [];
 const allNewRows = [];
 const allPinDivergences = [];
+// Per-run record of every promotion/demotion, written next to the CSV -
+// drives CSV verb reconciliation after intentional remapping passes.
+const buildReport = { promotions: [], demotions: [], zeroColumnDemotions: [] };
 // Regression-guard counters (compared against the committed benchmarks).
 const stats = {
   services: 0,
@@ -1162,10 +1292,13 @@ for (const file of sourceFiles) {
   const title = (spec.info && spec.info.title) || alias;
   const description = (spec.info && spec.info.description) || `${alias} API`;
 
-  const { demotions, zeroColumnDemotions, prunedEmpty, nocaseCols, csvNewRows, pinDivergences } =
+  const { demotions, promotions, zeroColumnDemotions, prunedEmpty, nocaseCols, csvNewRows, pinDivergences } =
     rewriteService(spec, alias, file, mappings);
   allNewRows.push(...csvNewRows);
   allPinDivergences.push(...pinDivergences);
+  for (const p of promotions) buildReport.promotions.push({ service: alias, file, ...p });
+  for (const d of demotions) buildReport.demotions.push({ service: alias, file, ...d });
+  for (const z of zeroColumnDemotions) buildReport.zeroColumnDemotions.push({ service: alias, file, ...z });
 
   // Build-time guard: assert no (resource, sqlVerb) bucket has duplicate
   // required-param signatures. Fails the whole build if violated.
@@ -1218,6 +1351,7 @@ for (const file of sourceFiles) {
   dumpYaml(outPath, spec);
 
   const notes = [];
+  if (promotions.length) notes.push(`${promotions.length} identifier params promoted`);
   if (demotions.length) notes.push(`${demotions.length} demoted to EXEC`);
   if (zeroColumnDemotions.length) {
     notes.push(`${zeroColumnDemotions.length} zero-column selects -> EXEC`);
@@ -1259,6 +1393,14 @@ dumpYaml(path.join(providerRoot, 'provider.yaml'), providerYaml);
 
 // Persist durable mappings: append-only, existing rows never rewritten.
 appendMappingsCsv(mappingsCsvPath, allNewRows);
+
+const buildReportPath = path.join(path.dirname(mappingsCsvPath), 'build-report.json');
+fs.writeFileSync(buildReportPath, JSON.stringify(buildReport, null, 2) + '\n');
+console.log(
+  `Build report: ${buildReport.promotions.length} promotions, ` +
+  `${buildReport.demotions.length} demotions, ` +
+  `${buildReport.zeroColumnDemotions.length} zero-column demotions -> ${buildReportPath}`,
+);
 if (allNewRows.length) {
   console.log(
     `${mappings.size ? 'Appended' : 'Bootstrapped'} ${allNewRows.length} mapping rows in ${mappingsCsvPath}`,

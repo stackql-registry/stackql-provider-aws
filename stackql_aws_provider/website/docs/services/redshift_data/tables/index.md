@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_table"
     values={[
-        { label: 'describe_table', value: 'describe_table' }
+        { label: 'describe_table', value: 'describe_table' },
+        { label: 'list_tables', value: 'list_tables' }
     ]}
 >
 <TabItem value="describe_table">
@@ -117,6 +118,35 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_tables">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="name" /></td>
+    <td><code>string</code></td>
+    <td>The name of the table.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="schema" /></td>
+    <td><code>string</code></td>
+    <td>The schema containing the table.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="type_" /></td>
+    <td><code>string</code></td>
+    <td>The type of the table. Possible values include TABLE, VIEW, SYSTEM TABLE, GLOBAL TEMPORARY, LOCAL TEMPORARY, ALIAS, and SYNONYM.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -143,8 +173,8 @@ The following methods are available for this resource:
 </tr>
 <tr>
     <td><a href="#list_tables"><CopyableCode code="list_tables" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-Database"><code>Database</code></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>List the tables in a database. If neither SchemaPattern nor TablePattern are specified, then all tables in the database are returned. A token is returned to page through the table list. Depending on the authorization method, use one of the following combinations of request parameters: Secrets Manager - when connecting to a cluster, provide the secret-arn of a secret stored in Secrets Manager which has username and password. The specified secret contains credentials to connect to the database you specify. When you are connecting to a cluster, you also supply the database name, If you provide a cluster identifier (dbClusterIdentifier), it must match the cluster identifier stored in the secret. When you are connecting to a serverless workgroup, you also supply the database name. Temporary credentials - when connecting to your data warehouse, choose one of the following options: When connecting to a serverless workgroup, specify the workgroup name and database name. The database user name is derived from the IAM identity. For example, arn:iam::123456789012:user:foo has the database user name IAM:foo. Also, permission to call the redshift-serverless:GetCredentials operation is required. When connecting to a cluster as an IAM identity, specify the cluster identifier and the database name. The database user name is derived from the IAM identity. For example, arn:iam::123456789012:user:foo has the database user name IAM:foo. Also, permission to call the redshift:GetClusterCredentialsWithIAM operation is required. When connecting to a cluster as a database user, specify the cluster identifier, the database name, and the database user name. Also, permission to call the redshift:GetClusterCredentials operation is required. For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the Amazon Redshift Management Guide.</td>
 </tr>
@@ -177,7 +207,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_table"
     values={[
-        { label: 'describe_table', value: 'describe_table' }
+        { label: 'describe_table', value: 'describe_table' },
+        { label: 'list_tables', value: 'list_tables' }
     ]}
 >
 <TabItem value="describe_table">
@@ -204,37 +235,17 @@ WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_tables"
-    values={[
-        { label: 'list_tables', value: 'list_tables' }
-    ]}
->
 <TabItem value="list_tables">
 
 List the tables in a database. If neither SchemaPattern nor TablePattern are specified, then all tables in the database are returned. A token is returned to page through the table list. Depending on the authorization method, use one of the following combinations of request parameters: Secrets Manager - when connecting to a cluster, provide the secret-arn of a secret stored in Secrets Manager which has username and password. The specified secret contains credentials to connect to the database you specify. When you are connecting to a cluster, you also supply the database name, If you provide a cluster identifier (dbClusterIdentifier), it must match the cluster identifier stored in the secret. When you are connecting to a serverless workgroup, you also supply the database name. Temporary credentials - when connecting to your data warehouse, choose one of the following options: When connecting to a serverless workgroup, specify the workgroup name and database name. The database user name is derived from the IAM identity. For example, arn:iam::123456789012:user:foo has the database user name IAM:foo. Also, permission to call the redshift-serverless:GetCredentials operation is required. When connecting to a cluster as an IAM identity, specify the cluster identifier and the database name. The database user name is derived from the IAM identity. For example, arn:iam::123456789012:user:foo has the database user name IAM:foo. Also, permission to call the redshift:GetClusterCredentialsWithIAM operation is required. When connecting to a cluster as a database user, specify the cluster identifier, the database name, and the database user name. Also, permission to call the redshift:GetClusterCredentials operation is required. For more information about the Amazon Redshift Data API and CLI usage examples, see Using the Amazon Redshift Data API in the Amazon Redshift Management Guide.
 
 ```sql
-EXEC aws.redshift_data.tables.list_tables 
-@region='{{ region }}' --required 
-@@json=
-'{
-"ClusterIdentifier": "{{ ClusterIdentifier }}", 
-"SecretArn": "{{ SecretArn }}", 
-"DbUser": "{{ DbUser }}", 
-"Database": "{{ Database }}", 
-"ConnectedDatabase": "{{ ConnectedDatabase }}", 
-"SchemaPattern": "{{ SchemaPattern }}", 
-"TablePattern": "{{ TablePattern }}", 
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}, 
-"WorkgroupName": "{{ WorkgroupName }}"
-}'
+SELECT
+name,
+schema,
+type_
+FROM aws.redshift_data.tables
+WHERE region = '{{ region }}' -- required
 ;
 ```
 </TabItem>

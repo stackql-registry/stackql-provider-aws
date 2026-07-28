@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_application"
     values={[
-        { label: 'get_application', value: 'get_application' }
+        { label: 'get_application', value: 'get_application' },
+        { label: 'list_applications', value: 'list_applications' }
     ]}
 >
 <TabItem value="get_application">
@@ -58,6 +59,45 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="Tags" /></td>
     <td><code>object</code></td>
     <td>The tags of a registered application.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_applications">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the application. (pattern: &lt;code&gt;arn:(.+:)&#123;2,4&#125;.+$|^arn:(.+:)&#123;1,3&#125;.+\/.+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="DiscoveryStatus" /></td>
+    <td><code>string</code></td>
+    <td>The status of the latest discovery. (SUCCESS, REGISTRATION_FAILED, REFRESH_FAILED, REGISTERING, DELETING)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Id" /></td>
+    <td><code>string</code></td>
+    <td>The ID of the application. (pattern: &lt;code&gt;&#91;\w\d\.-&#93;+&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Tags" /></td>
+    <td><code>object</code></td>
+    <td>The tags on the application.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Type" /></td>
+    <td><code>string</code></td>
+    <td>The type of the application. (HANA, SAP_ABAP)</td>
 </tr>
 </tbody>
 </table>
@@ -87,6 +127,13 @@ The following methods are available for this resource:
     <td>Gets an application registered with AWS Systems Manager for SAP. It also returns the components of the application.</td>
 </tr>
 <tr>
+    <td><a href="#list_applications"><CopyableCode code="list_applications" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Lists all the applications registered with AWS Systems Manager for SAP.</td>
+</tr>
+<tr>
     <td><a href="#register_application"><CopyableCode code="register_application" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-ApplicationId"><code>ApplicationId</code></a>, <a href="#parameter-ApplicationType"><code>ApplicationType</code></a>, <a href="#parameter-Instances"><code>Instances</code></a></td>
@@ -106,13 +153,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deregister an SAP application with AWS Systems Manager for SAP. This action does not aﬀect the existing setup of your SAP workloads on Amazon EC2.</td>
-</tr>
-<tr>
-    <td><a href="#list_applications"><CopyableCode code="list_applications" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Lists all the applications registered with AWS Systems Manager for SAP.</td>
 </tr>
 <tr>
     <td><a href="#start_application"><CopyableCode code="start_application" /></a></td>
@@ -171,7 +211,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_application"
     values={[
-        { label: 'get_application', value: 'get_application' }
+        { label: 'get_application', value: 'get_application' },
+        { label: 'list_applications', value: 'list_applications' }
     ]}
 >
 <TabItem value="get_application">
@@ -182,6 +223,22 @@ Gets an application registered with AWS Systems Manager for SAP. It also returns
 SELECT
 Application,
 Tags
+FROM aws.ssm_sap.applications
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_applications">
+
+Lists all the applications registered with AWS Systems Manager for SAP.
+
+```sql
+SELECT
+Arn,
+DiscoveryStatus,
+Id,
+Tags,
+Type
 FROM aws.ssm_sap.applications
 WHERE region = '{{ region }}' -- required
 ;
@@ -328,31 +385,14 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_applications"
+    defaultValue="start_application"
     values={[
-        { label: 'list_applications', value: 'list_applications' },
         { label: 'start_application', value: 'start_application' },
         { label: 'start_application_refresh', value: 'start_application_refresh' },
         { label: 'start_configuration_checks', value: 'start_configuration_checks' },
         { label: 'stop_application', value: 'stop_application' }
     ]}
 >
-<TabItem value="list_applications">
-
-Lists all the applications registered with AWS Systems Manager for SAP.
-
-```sql
-EXEC aws.ssm_sap.applications.list_applications 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}, 
-"Filters": "{{ Filters }}"
-}'
-;
-```
-</TabItem>
 <TabItem value="start_application">
 
 Request is an operation which starts an application. Parameter ApplicationId is required.

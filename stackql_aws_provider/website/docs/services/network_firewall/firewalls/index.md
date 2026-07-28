@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_firewall"
     values={[
-        { label: 'describe_firewall', value: 'describe_firewall' }
+        { label: 'describe_firewall', value: 'describe_firewall' },
+        { label: 'list_firewalls', value: 'list_firewalls' }
     ]}
 >
 <TabItem value="describe_firewall">
@@ -67,6 +68,35 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_firewalls">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="FirewallArn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the firewall. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="FirewallName" /></td>
+    <td><code>string</code></td>
+    <td>The descriptive name of the firewall. You can't change the name of a firewall after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TransitGatewayAttachmentId" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the transit gateway attachment associated with this firewall. This field is only present for transit gateway-attached firewalls. (pattern: &lt;code&gt;^tgw-attach-&#91;0-9a-z&#93;+$&lt;/code&gt;)</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -90,6 +120,13 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Returns the data objects for the specified firewall.</td>
+</tr>
+<tr>
+    <td><a href="#list_firewalls"><CopyableCode code="list_firewalls" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the metadata for the firewalls that you have defined. If you provide VPC identifiers in your request, this returns only the firewalls for those VPCs. Depending on your setting for max results and the number of firewalls, a single call might not return the full list.</td>
 </tr>
 <tr>
     <td><a href="#create_firewall"><CopyableCode code="create_firewall" /></a></td>
@@ -118,13 +155,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified Firewall and its FirewallStatus. This operation requires the firewall's DeleteProtection flag to be FALSE. You can't revert this operation. You can check whether a firewall is in use by reviewing the route tables for the Availability Zones where you have firewall subnet mappings. Retrieve the subnet mappings by calling DescribeFirewall. You define and update the route tables through Amazon VPC. As needed, update the route tables for the zones to remove the firewall endpoints. When the route tables no longer use the firewall endpoints, you can remove the firewall safely. To delete a firewall, remove the delete protection if you need to using UpdateFirewallDeleteProtection, then delete the firewall by calling DeleteFirewall.</td>
-</tr>
-<tr>
-    <td><a href="#list_firewalls"><CopyableCode code="list_firewalls" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the metadata for the firewalls that you have defined. If you provide VPC identifiers in your request, this returns only the firewalls for those VPCs. Depending on your setting for max results and the number of firewalls, a single call might not return the full list.</td>
 </tr>
 <tr>
     <td><a href="#start_flow_capture"><CopyableCode code="start_flow_capture" /></a></td>
@@ -183,7 +213,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_firewall"
     values={[
-        { label: 'describe_firewall', value: 'describe_firewall' }
+        { label: 'describe_firewall', value: 'describe_firewall' },
+        { label: 'list_firewalls', value: 'list_firewalls' }
     ]}
 >
 <TabItem value="describe_firewall">
@@ -195,6 +226,20 @@ SELECT
 Firewall,
 FirewallStatus,
 UpdateToken
+FROM aws.network_firewall.firewalls
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_firewalls">
+
+Retrieves the metadata for the firewalls that you have defined. If you provide VPC identifiers in your request, this returns only the firewalls for those VPCs. Depending on your setting for max results and the number of firewalls, a single call might not return the full list.
+
+```sql
+SELECT
+FirewallArn,
+FirewallName,
+TransitGatewayAttachmentId
 FROM aws.network_firewall.firewalls
 WHERE region = '{{ region }}' -- required
 ;
@@ -411,31 +456,14 @@ WHERE region = '{{ region }}' --required
 ## Lifecycle Methods
 
 <Tabs
-    defaultValue="list_firewalls"
+    defaultValue="start_flow_capture"
     values={[
-        { label: 'list_firewalls', value: 'list_firewalls' },
         { label: 'start_flow_capture', value: 'start_flow_capture' },
         { label: 'start_flow_flush', value: 'start_flow_flush' },
         { label: 'update_firewall_description', value: 'update_firewall_description' },
         { label: 'update_firewall_encryption_configuration', value: 'update_firewall_encryption_configuration' }
     ]}
 >
-<TabItem value="list_firewalls">
-
-Retrieves the metadata for the firewalls that you have defined. If you provide VPC identifiers in your request, this returns only the firewalls for those VPCs. Depending on your setting for max results and the number of firewalls, a single call might not return the full list.
-
-```sql
-EXEC aws.network_firewall.firewalls.list_firewalls 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"VpcIds": "{{ VpcIds }}", 
-"MaxResults": {{ MaxResults }}
-}'
-;
-```
-</TabItem>
 <TabItem value="start_flow_capture">
 
 Begins capturing the flows in a firewall, according to the filters you define. Captures are similar, but not identical to snapshots. Capture operations provide visibility into flows that are not closed and are tracked by a firewall's flow table. Unlike snapshots, captures are a time-boxed view. A flow is network traffic that is monitored by a firewall, either by stateful or stateless rules. For traffic to be considered part of a flow, it must share Destination, DestinationPort, Direction, Protocol, Source, and SourcePort. To avoid encountering operation limits, you should avoid starting captures with broad filters, like wide IP ranges. Instead, we recommend you define more specific criteria with FlowFilters, like narrow IP ranges, ports, or protocols.

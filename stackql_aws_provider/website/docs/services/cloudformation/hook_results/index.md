@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="get_hook_result"
     values={[
-        { label: 'get_hook_result', value: 'get_hook_result' }
+        { label: 'get_hook_result', value: 'get_hook_result' },
+        { label: 'list_hook_results', value: 'list_hook_results' }
     ]}
 >
 <TabItem value="get_hook_result">
@@ -53,6 +54,85 @@ The following fields are returned by `SELECT` queries:
     <td><CopyableCode code="line_items" /></td>
     <td><code>array</code></td>
     <td></td>
+</tr>
+</tbody>
+</table>
+</TabItem>
+<TabItem value="list_hook_results">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="FailureMode" /></td>
+    <td><code>string</code></td>
+    <td>The failure mode of the invocation.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="HookExecutionTarget" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the target stack or request token of the Cloud Control API operation. Only shown in responses when the request does not specify TargetType and TargetId filters.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="HookResultId" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier for this Hook invocation result.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="HookStatusReason" /></td>
+    <td><code>string</code></td>
+    <td>A description of the Hook results status. For example, if the Hook result is in a failed state, this may contain additional information for the failed state.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="InvocationPoint" /></td>
+    <td><code>string</code></td>
+    <td>The specific point in the provisioning process where the Hook is invoked.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="InvokedAt" /></td>
+    <td><code>string</code></td>
+    <td>The timestamp when the Hook was invoked. Only shown in responses when the request does not specify TargetType and TargetId filters.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Status" /></td>
+    <td><code>string</code></td>
+    <td>The status of the Hook invocation. The following statuses are possible: HOOK_IN_PROGRESS: The Hook is currently running. HOOK_COMPLETE_SUCCEEDED: The Hook completed successfully. HOOK_COMPLETE_FAILED: The Hook completed but failed validation. HOOK_FAILED: The Hook encountered an error during execution.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TargetId" /></td>
+    <td><code>string</code></td>
+    <td>The unique identifier of the Hook invocation target.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TargetType" /></td>
+    <td><code>string</code></td>
+    <td>The target type that the Hook was invoked against.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TypeArn" /></td>
+    <td><code>string</code></td>
+    <td>The ARN of the Hook that was invoked.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TypeConfigurationVersionId" /></td>
+    <td><code>string</code></td>
+    <td>The version of the Hook configuration.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TypeName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the Hook that was invoked.</td>
+</tr>
+<tr>
+    <td><CopyableCode code="TypeVersionId" /></td>
+    <td><code>string</code></td>
+    <td>The version of the Hook that was invoked.</td>
 </tr>
 </tbody>
 </table>
@@ -77,13 +157,13 @@ The following methods are available for this resource:
 <tr>
     <td><a href="#get_hook_result"><CopyableCode code="get_hook_result" /></a></td>
     <td><CopyableCode code="select" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td><a href="#parameter-HookResultId"><code>HookResultId</code></a></td>
+    <td><a href="#parameter-HookResultId"><code>HookResultId</code></a>, <a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
     <td>Retrieves detailed information and remediation guidance for a Hook invocation result. If the Hook uses a KMS key to encrypt annotations, callers of the GetHookResult operation must have kms:Decrypt permissions. For more information, see KMS key policy and permissions for encrypting CloudFormation Hooks results at rest in the CloudFormation Hooks User Guide.</td>
 </tr>
 <tr>
     <td><a href="#list_hook_results"><CopyableCode code="list_hook_results" /></a></td>
-    <td><CopyableCode code="exec" /></td>
+    <td><CopyableCode code="select" /></td>
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td><a href="#parameter-TargetType"><code>TargetType</code></a>, <a href="#parameter-TargetId"><code>TargetId</code></a>, <a href="#parameter-TypeArn"><code>TypeArn</code></a>, <a href="#parameter-Status"><code>Status</code></a>, <a href="#parameter-NextToken"><code>NextToken</code></a></td>
     <td>Returns summaries of invoked Hooks. For more information, see View invocation summaries for CloudFormation Hooks in the CloudFormation Hooks User Guide. This operation supports the following parameter combinations: No parameters: Returns all Hook invocation summaries. TypeArn only: Returns summaries for a specific Hook. TypeArn and Status: Returns summaries for a specific Hook filtered by status. TargetId and TargetType: Returns summaries for a specific Hook invocation target.</td>
@@ -104,15 +184,15 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
     </tr>
 </thead>
 <tbody>
-<tr id="parameter-region">
-    <td><CopyableCode code="region" /></td>
-    <td><code>string</code></td>
-    <td>AWS region (default: us-east-1)</td>
-</tr>
 <tr id="parameter-HookResultId">
     <td><CopyableCode code="HookResultId" /></td>
     <td><code>string</code></td>
     <td>The unique identifier (ID) of the Hook invocation result that you want details about. You can get the ID from the ListHookResults operation.</td>
+</tr>
+<tr id="parameter-region">
+    <td><CopyableCode code="region" /></td>
+    <td><code>string</code></td>
+    <td>AWS region (default: us-east-1)</td>
 </tr>
 <tr id="parameter-NextToken">
     <td><CopyableCode code="NextToken" /></td>
@@ -147,7 +227,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="get_hook_result"
     values={[
-        { label: 'get_hook_result', value: 'get_hook_result' }
+        { label: 'get_hook_result', value: 'get_hook_result' },
+        { label: 'list_hook_results', value: 'list_hook_results' }
     ]}
 >
 <TabItem value="get_hook_result">
@@ -158,34 +239,37 @@ Retrieves detailed information and remediation guidance for a Hook invocation re
 SELECT
 line_items
 FROM aws.cloudformation.hook_results
-WHERE region = '{{ region }}' -- required
-AND HookResultId = '{{ HookResultId }}'
+WHERE HookResultId = '{{ HookResultId }}' -- required
+AND region = '{{ region }}' -- required
 ;
 ```
 </TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_hook_results"
-    values={[
-        { label: 'list_hook_results', value: 'list_hook_results' }
-    ]}
->
 <TabItem value="list_hook_results">
 
 Returns summaries of invoked Hooks. For more information, see View invocation summaries for CloudFormation Hooks in the CloudFormation Hooks User Guide. This operation supports the following parameter combinations: No parameters: Returns all Hook invocation summaries. TypeArn only: Returns summaries for a specific Hook. TypeArn and Status: Returns summaries for a specific Hook filtered by status. TargetId and TargetType: Returns summaries for a specific Hook invocation target.
 
 ```sql
-EXEC aws.cloudformation.hook_results.list_hook_results 
-@region='{{ region }}' --required, 
-@TargetType='{{ TargetType }}', 
-@TargetId='{{ TargetId }}', 
-@TypeArn='{{ TypeArn }}', 
-@Status='{{ Status }}', 
-@NextToken='{{ NextToken }}'
+SELECT
+FailureMode,
+HookExecutionTarget,
+HookResultId,
+HookStatusReason,
+InvocationPoint,
+InvokedAt,
+Status,
+TargetId,
+TargetType,
+TypeArn,
+TypeConfigurationVersionId,
+TypeName,
+TypeVersionId
+FROM aws.cloudformation.hook_results
+WHERE region = '{{ region }}' -- required
+AND TargetType = '{{ TargetType }}'
+AND TargetId = '{{ TargetId }}'
+AND TypeArn = '{{ TypeArn }}'
+AND Status = '{{ Status }}'
+AND NextToken = '{{ NextToken }}'
 ;
 ```
 </TabItem>

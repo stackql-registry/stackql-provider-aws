@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_rule_group"
     values={[
-        { label: 'describe_rule_group', value: 'describe_rule_group' }
+        { label: 'describe_rule_group', value: 'describe_rule_group' },
+        { label: 'list_rule_groups', value: 'list_rule_groups' }
     ]}
 >
 <TabItem value="describe_rule_group">
@@ -67,6 +68,35 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_rule_groups">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="Arn" /></td>
+    <td><code>string</code></td>
+    <td>The Amazon Resource Name (ARN) of the rule group. (pattern: &lt;code&gt;^arn:aws.*&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="Name" /></td>
+    <td><code>string</code></td>
+    <td>The descriptive name of the rule group. You can't change the name of a rule group after you create it. (pattern: &lt;code&gt;^&#91;a-zA-Z0-9-&#93;+$&lt;/code&gt;)</td>
+</tr>
+<tr>
+    <td><CopyableCode code="VendorName" /></td>
+    <td><code>string</code></td>
+    <td>The name of the Amazon Web Services Marketplace seller that provides this rule group.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -92,6 +122,13 @@ The following methods are available for this resource:
     <td>Returns the data objects for the specified rule group.</td>
 </tr>
 <tr>
+    <td><a href="#list_rule_groups"><CopyableCode code="list_rule_groups" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>Retrieves the metadata for the rule groups that you have defined. Depending on your setting for max results and the number of rule groups, a single call might not return the full list.</td>
+</tr>
+<tr>
     <td><a href="#create_rule_group"><CopyableCode code="create_rule_group" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-RuleGroupName"><code>RuleGroupName</code></a>, <a href="#parameter-Type"><code>Type</code></a>, <a href="#parameter-Capacity"><code>Capacity</code></a></td>
@@ -111,13 +148,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>Deletes the specified RuleGroup.</td>
-</tr>
-<tr>
-    <td><a href="#list_rule_groups"><CopyableCode code="list_rule_groups" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>Retrieves the metadata for the rule groups that you have defined. Depending on your setting for max results and the number of rule groups, a single call might not return the full list.</td>
 </tr>
 </tbody>
 </table>
@@ -148,7 +178,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_rule_group"
     values={[
-        { label: 'describe_rule_group', value: 'describe_rule_group' }
+        { label: 'describe_rule_group', value: 'describe_rule_group' },
+        { label: 'list_rule_groups', value: 'list_rule_groups' }
     ]}
 >
 <TabItem value="describe_rule_group">
@@ -160,6 +191,20 @@ SELECT
 RuleGroup,
 RuleGroupResponse,
 UpdateToken
+FROM aws.network_firewall.rule_groups
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_rule_groups">
+
+Retrieves the metadata for the rule groups that you have defined. Depending on your setting for max results and the number of rule groups, a single call might not return the full list.
+
+```sql
+SELECT
+Arn,
+Name,
+VendorName
 FROM aws.network_firewall.rule_groups
 WHERE region = '{{ region }}' -- required
 ;
@@ -376,36 +421,6 @@ Deletes the specified RuleGroup.
 ```sql
 DELETE FROM aws.network_firewall.rule_groups
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_rule_groups"
-    values={[
-        { label: 'list_rule_groups', value: 'list_rule_groups' }
-    ]}
->
-<TabItem value="list_rule_groups">
-
-Retrieves the metadata for the rule groups that you have defined. Depending on your setting for max results and the number of rule groups, a single call might not return the full list.
-
-```sql
-EXEC aws.network_firewall.rule_groups.list_rule_groups 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}", 
-"MaxResults": {{ MaxResults }}, 
-"Scope": "{{ Scope }}", 
-"ManagedType": "{{ ManagedType }}", 
-"SubscriptionStatus": "{{ SubscriptionStatus }}", 
-"Type": "{{ Type }}"
-}'
 ;
 ```
 </TabItem>

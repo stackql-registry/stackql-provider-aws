@@ -35,7 +35,8 @@ The following fields are returned by `SELECT` queries:
 <Tabs
     defaultValue="describe_hsm"
     values={[
-        { label: 'describe_hsm', value: 'describe_hsm' }
+        { label: 'describe_hsm', value: 'describe_hsm' },
+        { label: 'list_hsms', value: 'list_hsms' }
     ]}
 >
 <TabItem value="describe_hsm">
@@ -157,6 +158,25 @@ The following fields are returned by `SELECT` queries:
 </tbody>
 </table>
 </TabItem>
+<TabItem value="list_hsms">
+
+<table>
+<thead>
+    <tr>
+    <th>Name</th>
+    <th>Datatype</th>
+    <th>Description</th>
+    </tr>
+</thead>
+<tbody>
+<tr>
+    <td><CopyableCode code="hsm" /></td>
+    <td><code>string</code></td>
+    <td>The list of ARNs that identify the HSMs.</td>
+</tr>
+</tbody>
+</table>
+</TabItem>
 </Tabs>
 
 ## Methods
@@ -182,6 +202,13 @@ The following methods are available for this resource:
     <td>This is documentation for AWS CloudHSM Classic. For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference. For information about the current version of AWS CloudHSM, see AWS CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference. Retrieves information about an HSM. You can identify the HSM by its ARN or its serial number.</td>
 </tr>
 <tr>
+    <td><a href="#list_hsms"><CopyableCode code="list_hsms" /></a></td>
+    <td><CopyableCode code="select" /></td>
+    <td><a href="#parameter-region"><code>region</code></a></td>
+    <td></td>
+    <td>This is documentation for AWS CloudHSM Classic. For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference. For information about the current version of AWS CloudHSM, see AWS CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference. Retrieves the identifiers of all of the HSMs provisioned for the current customer. This operation supports pagination with the use of the NextToken member. If more results are available, the NextToken member of the response contains a token that you pass in the next call to ListHsms to retrieve the next set of items.</td>
+</tr>
+<tr>
     <td><a href="#create_hsm"><CopyableCode code="create_hsm" /></a></td>
     <td><CopyableCode code="insert" /></td>
     <td><a href="#parameter-region"><code>region</code></a>, <a href="#parameter-SubnetId"><code>SubnetId</code></a>, <a href="#parameter-SshKey"><code>SshKey</code></a>, <a href="#parameter-IamRoleArn"><code>IamRoleArn</code></a>, <a href="#parameter-SubscriptionType"><code>SubscriptionType</code></a></td>
@@ -201,13 +228,6 @@ The following methods are available for this resource:
     <td><a href="#parameter-region"><code>region</code></a></td>
     <td></td>
     <td>This is documentation for AWS CloudHSM Classic. For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference. For information about the current version of AWS CloudHSM, see AWS CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference. Deletes an HSM. After completion, this operation cannot be undone and your key material cannot be recovered.</td>
-</tr>
-<tr>
-    <td><a href="#list_hsms"><CopyableCode code="list_hsms" /></a></td>
-    <td><CopyableCode code="exec" /></td>
-    <td><a href="#parameter-region"><code>region</code></a></td>
-    <td></td>
-    <td>This is documentation for AWS CloudHSM Classic. For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference. For information about the current version of AWS CloudHSM, see AWS CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference. Retrieves the identifiers of all of the HSMs provisioned for the current customer. This operation supports pagination with the use of the NextToken member. If more results are available, the NextToken member of the response contains a token that you pass in the next call to ListHsms to retrieve the next set of items.</td>
 </tr>
 </tbody>
 </table>
@@ -238,7 +258,8 @@ Parameters can be passed in the `WHERE` clause of a query. Check the [Methods](#
 <Tabs
     defaultValue="describe_hsm"
     values={[
-        { label: 'describe_hsm', value: 'describe_hsm' }
+        { label: 'describe_hsm', value: 'describe_hsm' },
+        { label: 'list_hsms', value: 'list_hsms' }
     ]}
 >
 <TabItem value="describe_hsm">
@@ -268,6 +289,18 @@ SubscriptionStartDate,
 SubscriptionType,
 VendorName,
 VpcId
+FROM aws.cloudhsm.hsms
+WHERE region = '{{ region }}' -- required
+;
+```
+</TabItem>
+<TabItem value="list_hsms">
+
+This is documentation for AWS CloudHSM Classic. For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference. For information about the current version of AWS CloudHSM, see AWS CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference. Retrieves the identifiers of all of the HSMs provisioned for the current customer. This operation supports pagination with the use of the NextToken member. If more results are available, the NextToken member of the response contains a token that you pass in the next call to ListHsms to retrieve the next set of items.
+
+```sql
+SELECT
+hsm
 FROM aws.cloudhsm.hsms
 WHERE region = '{{ region }}' -- required
 ;
@@ -409,31 +442,6 @@ This is documentation for AWS CloudHSM Classic. For more information, see AWS Cl
 ```sql
 DELETE FROM aws.cloudhsm.hsms
 WHERE region = '{{ region }}' --required
-;
-```
-</TabItem>
-</Tabs>
-
-
-## Lifecycle Methods
-
-<Tabs
-    defaultValue="list_hsms"
-    values={[
-        { label: 'list_hsms', value: 'list_hsms' }
-    ]}
->
-<TabItem value="list_hsms">
-
-This is documentation for AWS CloudHSM Classic. For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM Classic User Guide, and the AWS CloudHSM Classic API Reference. For information about the current version of AWS CloudHSM, see AWS CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference. Retrieves the identifiers of all of the HSMs provisioned for the current customer. This operation supports pagination with the use of the NextToken member. If more results are available, the NextToken member of the response contains a token that you pass in the next call to ListHsms to retrieve the next set of items.
-
-```sql
-EXEC aws.cloudhsm.hsms.list_hsms 
-@region='{{ region }}' --required 
-@@json=
-'{
-"NextToken": "{{ NextToken }}"
-}'
 ;
 ```
 </TabItem>
