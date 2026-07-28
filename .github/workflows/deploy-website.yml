@@ -40,7 +40,22 @@ jobs:
           rm -rf .shared-config
           git clone --depth 1 --branch main https://github.com/stackql/docusaurus-config.git .shared-config
 
+      # 6,400+ SSG pages: parallel worker threads can exhaust the hosted
+      # runner's memory and kill the runner agent mid-build ("The operation
+      # was canceled"). Swap is the safety net; the env caps below bound
+      # the SSG fan-out. Local builds are untouched.
+      - name: Add swap space
+        run: |
+          sudo fallocate -l 8G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+
       - name: Build site
+        env:
+          DOCUSAURUS_SSG_WORKER_THREAD_COUNT: '2'
+          NODE_OPTIONS: --max-old-space-size=4096
         run: yarn build
 
       - uses: actions/upload-pages-artifact@v5
