@@ -15,13 +15,6 @@ const config = createConfig({
       v4: true,
       faster: true,
     },
-    // `yarn deploy` (docusaurus deploy) pushes the local build/ to the
-    // gh-pages branch, which GitHub Pages serves directly. The shared
-    // config assumes org `stackql`; this repo lives under
-    // `stackql-registry`.
-    organizationName: 'stackql-registry',
-    projectName: 'stackql-provider-aws',
-    deploymentBranch: 'gh-pages',
   },
 });
 

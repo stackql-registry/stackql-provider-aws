@@ -218,24 +218,12 @@ yarn serve
 
 ### Deploying
 
-The site deploys from your LOCAL, verified build - the 6,400+ page SSG
-build is too memory-hungry for hosted CI runners to build reliably.
-`docusaurus deploy` pushes `build/` to the `gh-pages` branch as a single
-commit (force-pushed each deploy, so the default branch stays clean);
-GitHub Pages serves that branch (one-time setting: Settings -> Pages ->
-Source: Deploy from a branch -> `gh-pages` / root). The custom-domain
-CNAME and `.nojekyll` ship inside `build/` via `static/`.
-
-```bash
-cd website
-yarn build                       # always deploy exactly what you verified
-GIT_USER=<github-username> yarn deploy   # https + token, or:
-USE_SSH=true yarn deploy                 # ssh keys
-```
-
-`.github/workflows/deploy-website.yml` remains as a manually-triggered
-(workflow_dispatch) CI fallback that builds with a capped SSG worker
-count and deploys via the Pages artifact path.
+The site is hosted on Netlify; build configuration, deploy webhooks and
+the custom hostname are all managed on the Netlify side (no `netlify.toml`
+in this repo). Memory note for the Netlify build settings: the site is
+6,400+ SSG pages - if the build environment is memory-constrained, cap
+the SSG fan-out with `DOCUSAURUS_SSG_WORKER_THREAD_COUNT=2` (and
+`NODE_OPTIONS=--max-old-space-size=4096`).
 
 ## Notes on the verb-prefix heuristic
 
