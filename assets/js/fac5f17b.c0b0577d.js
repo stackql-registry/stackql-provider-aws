@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["976573"],{810021(s){s.exports=JSON.parse('{"to":"https://stackql.io/contact-us"}')}}]);

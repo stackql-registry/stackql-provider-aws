@@ -1,0 +1,39 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["953121"],{664763(e,i,n){n.r(i),n.d(i,{metadata:()=>s,default:()=>_,frontMatter:()=>o,contentTitle:()=>p,toc:()=>m,assets:()=>h});var s=JSON.parse('{"id":"services/chime_sdk_media_pipelines/media_concatenation_pipelines/index","title":"media_concatenation_pipelines","description":"Query, deploy and manage aws resources using SQL","source":"@site/docs/services/chime_sdk_media_pipelines/media_concatenation_pipelines/index.md","sourceDirName":"services/chime_sdk_media_pipelines/media_concatenation_pipelines","slug":"/services/chime_sdk_media_pipelines/media_concatenation_pipelines/","permalink":"/services/chime_sdk_media_pipelines/media_concatenation_pipelines/","draft":false,"unlisted":false,"editUrl":null,"tags":[],"version":"current","frontMatter":{"title":"media_concatenation_pipelines","hide_title":false,"hide_table_of_contents":false,"keywords":["media_concatenation_pipelines","chime_sdk_media_pipelines","aws","infrastructure-as-code","configuration-as-data","cloud inventory"],"description":"Query, deploy and manage aws resources using SQL","custom_edit_url":null,"image":"/img/stackql-aws-provider-featured-image.png"},"sidebar":"mainSidebar","previous":{"title":"media_capture_pipelines","permalink":"/services/chime_sdk_media_pipelines/media_capture_pipelines/"},"next":{"title":"media_insights_pipeline_configurations","permalink":"/services/chime_sdk_media_pipelines/media_insights_pipeline_configurations/"}}'),a=n(474848),t=n(28453),r=n(97362),d=n(897272),c=n(413554),l=n(541647);let o={title:"media_concatenation_pipelines",hide_title:!1,hide_table_of_contents:!1,keywords:["media_concatenation_pipelines","chime_sdk_media_pipelines","aws","infrastructure-as-code","configuration-as-data","cloud inventory"],description:"Query, deploy and manage aws resources using SQL",custom_edit_url:null,image:"/img/stackql-aws-provider-featured-image.png"},p,h={},m=[{value:"Overview",id:"overview",level:2},{value:"Fields",id:"fields",level:2},{value:"Methods",id:"methods",level:2},{value:"Parameters",id:"parameters",level:2},{value:"<code>INSERT</code> examples",id:"insert-examples",level:2}];function u(e){let i={a:"a",code:"code",h2:"h2",p:"p",pre:"pre",...(0,t.R)(),...e.components};return(0,a.jsxs)(a.Fragment,{children:[(0,a.jsxs)(i.p,{children:["Creates, updates, deletes, gets or lists a ",(0,a.jsx)("code",{children:"media_concatenation_pipelines"})," resource."]}),"\n",(0,a.jsx)(i.h2,{id:"overview",children:"Overview"}),"\n",(0,a.jsx)("table",{children:(0,a.jsxs)("tbody",{children:[(0,a.jsxs)("tr",{children:[(0,a.jsx)("td",{children:(0,a.jsx)("b",{children:"Name"})}),(0,a.jsx)("td",{children:(0,a.jsx)(r.A,{code:"media_concatenation_pipelines"})})]}),(0,a.jsxs)("tr",{children:[(0,a.jsx)("td",{children:(0,a.jsx)("b",{children:"Type"})}),(0,a.jsx)("td",{children:"Resource"})]}),(0,a.jsxs)("tr",{children:[(0,a.jsx)("td",{children:(0,a.jsx)("b",{children:"Id"})}),(0,a.jsx)("td",{children:(0,a.jsx)(r.A,{code:"aws.chime_sdk_media_pipelines.media_concatenation_pipelines"})})]})]})}),"\n",(0,a.jsx)(i.h2,{id:"fields",children:"Fields"}),"\n",(0,a.jsxs)(i.p,{children:["The following fields are returned by ",(0,a.jsx)(i.code,{children:"SELECT"})," queries:"]}),"\n",(0,a.jsxs)(i.p,{children:[(0,a.jsx)(i.code,{children:"SELECT"})," not supported for this resource, use ",(0,a.jsx)(i.code,{children:"SHOW METHODS"})," to view available operations for the resource."]}),"\n",(0,a.jsx)(i.h2,{id:"methods",children:"Methods"}),"\n",(0,a.jsx)(i.p,{children:"The following methods are available for this resource:"}),"\n",(0,a.jsxs)("table",{children:[(0,a.jsx)("thead",{children:(0,a.jsxs)("tr",{children:[(0,a.jsx)("th",{children:"Name"}),(0,a.jsx)("th",{children:"Accessible by"}),(0,a.jsx)("th",{children:"Required Params"}),(0,a.jsx)("th",{children:"Optional Params"}),(0,a.jsx)("th",{children:"Description"})]})}),(0,a.jsx)("tbody",{children:(0,a.jsxs)("tr",{children:[(0,a.jsx)("td",{children:(0,a.jsx)("a",{href:"#create_media_concatenation_pipeline",children:(0,a.jsx)(r.A,{code:"create_media_concatenation_pipeline"})})}),(0,a.jsx)("td",{children:(0,a.jsx)(r.A,{code:"insert"})}),(0,a.jsxs)("td",{children:[(0,a.jsx)("a",{href:"#parameter-region",children:(0,a.jsx)("code",{children:"region"})}),", ",(0,a.jsx)("a",{href:"#parameter-Sources",children:(0,a.jsx)("code",{children:"Sources"})}),", ",(0,a.jsx)("a",{href:"#parameter-Sinks",children:(0,a.jsx)("code",{children:"Sinks"})})]}),(0,a.jsx)("td",{}),(0,a.jsx)("td",{children:"Creates a media concatenation pipeline."})]})})]}),"\n",(0,a.jsx)(i.h2,{id:"parameters",children:"Parameters"}),"\n",(0,a.jsxs)(i.p,{children:["Parameters can be passed in the ",(0,a.jsx)(i.code,{children:"WHERE"})," clause of a query. Check the ",(0,a.jsx)(i.a,{href:"#methods",children:"Methods"})," section to see which parameters are required or optional for each operation."]}),"\n",(0,a.jsxs)("table",{children:[(0,a.jsx)("thead",{children:(0,a.jsxs)("tr",{children:[(0,a.jsx)("th",{children:"Name"}),(0,a.jsx)("th",{children:"Datatype"}),(0,a.jsx)("th",{children:"Description"})]})}),(0,a.jsx)("tbody",{children:(0,a.jsxs)("tr",{id:"parameter-region",children:[(0,a.jsx)("td",{children:(0,a.jsx)(r.A,{code:"region"})}),(0,a.jsx)("td",{children:(0,a.jsx)("code",{children:"string"})}),(0,a.jsx)("td",{children:"AWS region (default: us-east-1)"})]})})]}),"\n",(0,a.jsxs)(i.h2,{id:"insert-examples",children:[(0,a.jsx)(i.code,{children:"INSERT"})," examples"]}),"\n",(0,a.jsxs)(c.A,{defaultValue:"create_media_concatenation_pipeline",values:[{label:"create_media_concatenation_pipeline",value:"create_media_concatenation_pipeline"},{label:"Manifest",value:"manifest"}],children:[(0,a.jsxs)(l.A,{value:"create_media_concatenation_pipeline",children:[(0,a.jsx)(i.p,{children:"Creates a media concatenation pipeline."}),(0,a.jsx)(i.pre,{children:(0,a.jsx)(i.code,{className:"language-sql",children:"INSERT INTO aws.chime_sdk_media_pipelines.media_concatenation_pipelines (\nSources,\nSinks,\nClientRequestToken,\nTags,\nregion\n)\nSELECT \n'{{ Sources }}' /* required */,\n'{{ Sinks }}' /* required */,\n'{{ ClientRequestToken }}',\n'{{ Tags }}',\n'{{ region }}'\nRETURNING\nMediaConcatenationPipeline\n;\n"})})]}),(0,a.jsx)(l.A,{value:"manifest",children:(0,a.jsx)(d.A,{language:"yaml",children:`# Description fields are for documentation purposes
+- name: media_concatenation_pipelines
+props:
+  - name: region
+    value: "{{ region }}"
+    description: Required parameter for the media_concatenation_pipelines resource.
+  - name: Sources
+    value:
+      - Type: "{{ Type }}"
+        MediaCapturePipelineSourceConfiguration:
+          MediaPipelineArn: "{{ MediaPipelineArn }}"
+          ChimeSdkMeetingConfiguration:
+            ArtifactsConfiguration:
+              Audio:
+                State: "{{ State }}"
+              Video:
+                State: "{{ State }}"
+              Content:
+                State: "{{ State }}"
+              DataChannel:
+                State: "{{ State }}"
+              TranscriptionMessages:
+                State: "{{ State }}"
+              MeetingEvents:
+                State: "{{ State }}"
+              CompositedVideo:
+                State: "{{ State }}"
+  - name: Sinks
+    value:
+      - Type: "{{ Type }}"
+        S3BucketSinkConfiguration:
+          Destination: "{{ Destination }}"
+  - name: ClientRequestToken
+    value: "{{ ClientRequestToken }}"
+  - name: Tags
+    value:
+      - Key: "{{ Key }}"
+        Value: "{{ Value }}"
+`})})]})]})}function _(e={}){let{wrapper:i}={...(0,t.R)(),...e.components};return i?(0,a.jsx)(i,{...e,children:(0,a.jsx)(u,{...e})}):u(e)}}}]);

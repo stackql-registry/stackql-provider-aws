@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["331563"],{879348(e){e.exports=JSON.parse('{"to":"https://azure-provider.stackql.io/"}')}}]);

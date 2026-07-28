@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["480333"],{722463(e){e.exports=JSON.parse('{"to":"https://databricks-provider.stackql.io/"}')}}]);

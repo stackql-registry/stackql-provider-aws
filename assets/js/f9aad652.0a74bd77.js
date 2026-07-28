@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["948662"],{394548(e){e.exports=JSON.parse('{"to":"https://okta-provider.stackql.io/"}')}}]);

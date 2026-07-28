@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["421292"],{58899(e){e.exports=JSON.parse('{"to":"https://snowflake-provider.stackql.io/"}')}}]);

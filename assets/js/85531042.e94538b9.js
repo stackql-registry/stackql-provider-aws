@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["597840"],{340233(e){e.exports=JSON.parse('{"to":"https://stackql.io/docs/command-line-usage/mcp"}')}}]);

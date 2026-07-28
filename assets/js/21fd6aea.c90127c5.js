@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["870256"],{643765(s){s.exports=JSON.parse('{"to":"https://stackql.io/install"}')}}]);

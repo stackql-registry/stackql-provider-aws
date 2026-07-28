@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["137304"],{16665(e){e.exports=JSON.parse('{"to":"https://confluent-provider.stackql.io/"}')}}]);
