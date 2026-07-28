@@ -216,6 +216,27 @@ yarn build
 yarn serve
 ```
 
+### Deploying
+
+The site deploys from your LOCAL, verified build - the 6,400+ page SSG
+build is too memory-hungry for hosted CI runners to build reliably.
+`docusaurus deploy` pushes `build/` to the `gh-pages` branch as a single
+commit (force-pushed each deploy, so the default branch stays clean);
+GitHub Pages serves that branch (one-time setting: Settings -> Pages ->
+Source: Deploy from a branch -> `gh-pages` / root). The custom-domain
+CNAME and `.nojekyll` ship inside `build/` via `static/`.
+
+```bash
+cd website
+yarn build                       # always deploy exactly what you verified
+GIT_USER=<github-username> yarn deploy   # https + token, or:
+USE_SSH=true yarn deploy                 # ssh keys
+```
+
+`.github/workflows/deploy-website.yml` remains as a manually-triggered
+(workflow_dispatch) CI fallback that builds with a capped SSG worker
+count and deploys via the Pages artifact path.
+
 ## Notes on the verb-prefix heuristic
 
 The Python generator maps operation-name prefixes to SQL verbs. The full mapping lives in `openapi-generation/botocore_to_openapi.py:VERB_PREFIXES`. The key design rule:
